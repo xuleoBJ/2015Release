@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace DOGPlatform
+{
+    struct  ItemPerforationInput
+    {
+        public string sJH;
+        public string sYM;
+        public float fDS1;
+        public float fDS2;
+
+        public static ItemPerforationInput parseLine(string line)
+        {
+            string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            ItemPerforationInput item = new ItemPerforationInput();
+            if (split.Length >= 4)
+            {
+                item.sJH = split[0];
+                item.sYM = split[1];
+                item.fDS1 = 0.0f;
+                float.TryParse(split[2], out item.fDS1);
+                item.fDS2 = 0.0f;
+                float.TryParse(split[3], out item.fDS2);
+
+            }
+            return item;
+        }
+
+        public static string item2string(ItemPerforationInput item)
+        {
+            List<string> ltStrWrited = new List<string>();
+            ltStrWrited.Add(item.sJH);
+            ltStrWrited.Add(item.sYM);
+            ltStrWrited.Add(item.fDS1.ToString());
+            ltStrWrited.Add(item.fDS2.ToString());
+            return string.Join("\t", ltStrWrited.ToArray());
+        }
+
+
+    }
+}
