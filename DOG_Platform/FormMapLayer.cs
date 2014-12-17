@@ -48,7 +48,6 @@ namespace DOGPlatform
             ltStrStaticDataChoise.Add("孔隙度");
             ltStrStaticDataChoise.Add("渗透率");
             ltStrStaticDataChoise.Add("饱和度");
-            cbbStaticData.DataSource = ltStrStaticDataChoise;
             cbbSelectedXCMTop.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedXCMBot.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedYM.DataSource = cProjectData.ltStrProjectYM;
@@ -434,44 +433,7 @@ namespace DOGPlatform
             cXMLLayerMapLog.setLogFaceLineWidth(filePathXMLconfigLayerMap, Convert.ToSingle(nUDLogLineWidth.Value));
         }
 
-        private void cbxAddStaticData_CheckedChanged(object sender, EventArgs e)
-        {
-            if (cbxAddStaticData.Checked == true)
-            {
-                string fileNameStatic = cProjectManager.filePathLayerDataDic;
-                if (File.Exists(fileNameStatic))
-                {
-                    int iIndex = 3;
-                    string sItem = cbbStaticData.SelectedItem.ToString();
-                    if (sItem == "海拔顶深") iIndex = 4;
-                    if (sItem == "砂厚") iIndex = 6;
-                    if (sItem == "有效厚度") iIndex = 7;
-                    if (sItem == "孔隙度") iIndex = 8;
-                    if (sItem == "渗透率") iIndex = 9;
-                    if (sItem == "饱和度") iIndex = 10;
-
-                }
-                else
-                {
-                    MessageBox.Show("请先计算小层字典表。");
-                }
-            }
-            else
-            {
-
-            }
-        }
-
-        private void cbbStaticDataColor_Click(object sender, EventArgs e)
-        {
-            ColorDialog colorDialog1 = new ColorDialog();
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                this.cbbStaticDataColor.BackColor = colorDialog1.Color;
-            }
-        }
-
-        private void nUDStaticDatafscale_ValueChanged(object sender, EventArgs e)
+             private void nUDStaticDatafscale_ValueChanged(object sender, EventArgs e)
         {
             cXMLLayerMapBase.setStaticDataVScale(filePathXMLconfigLayerMap, Convert.ToSingle(nUDStaticDatafscale.Value));
         }
@@ -535,8 +497,6 @@ namespace DOGPlatform
                 cXMLLayerMapHorizonalWell.delHorizonalWellIntervalNode(this.filePathXMLconfigLayerMap);
             }
         }
-
-
 
         private void btnAddHorizonalIntervel_Click(object sender, EventArgs e)
         {

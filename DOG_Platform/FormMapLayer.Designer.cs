@@ -55,6 +55,9 @@
             this.tbgWellData = new System.Windows.Forms.TabPage();
             this.btnDrawAddProperty = new System.Windows.Forms.Button();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.cbxAddGeologyProperty = new System.Windows.Forms.CheckBox();
             this.nUDLayerGeologyProperyDyOffset = new System.Windows.Forms.NumericUpDown();
             this.label30 = new System.Windows.Forms.Label();
             this.comboBox8 = new System.Windows.Forms.ComboBox();
@@ -63,15 +66,13 @@
             this.nUDLayerGeologyProperyFontSize = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.cbxAddGeologyProperty = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.cbxAddStaticData = new System.Windows.Forms.CheckBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.cbbStaticDataColor = new System.Windows.Forms.ComboBox();
-            this.rdbStaticDataPie = new System.Windows.Forms.RadioButton();
-            this.rdbStaticDataBar = new System.Windows.Forms.RadioButton();
-            this.cbbStaticData = new System.Windows.Forms.ComboBox();
             this.tbgLine = new System.Windows.Forms.TabPage();
+            this.groupBox26 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
+            this.comboBox15 = new System.Windows.Forms.ComboBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
@@ -252,14 +253,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label58 = new System.Windows.Forms.Label();
-            this.groupBox26 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox15 = new System.Windows.Forms.ComboBox();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tbgWellPosition.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDCirleLineWidth)).BeginInit();
@@ -273,8 +266,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyDyOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyDxOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyFontSize)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.tbgLine.SuspendLayout();
+            this.groupBox26.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.groupBox24.SuspendLayout();
@@ -325,8 +319,6 @@
             this.groupBox23.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            this.groupBox26.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             this.SuspendLayout();
             // 
             // tbgWellPosition
@@ -623,7 +615,6 @@
             // 
             this.tbgWellData.Controls.Add(this.btnDrawAddProperty);
             this.tbgWellData.Controls.Add(this.groupBox25);
-            this.tbgWellData.Controls.Add(this.groupBox3);
             this.tbgWellData.Location = new System.Drawing.Point(4, 22);
             this.tbgWellData.Name = "tbgWellData";
             this.tbgWellData.Padding = new System.Windows.Forms.Padding(3);
@@ -656,10 +647,40 @@
             this.groupBox25.Controls.Add(this.label29);
             this.groupBox25.Location = new System.Drawing.Point(11, 25);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(396, 101);
+            this.groupBox25.Size = new System.Drawing.Size(396, 161);
             this.groupBox25.TabIndex = 28;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "井点地层属性设置";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(31, 65);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(29, 12);
+            this.label58.TabIndex = 24;
+            this.label58.Text = "砂厚";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label57.Location = new System.Drawing.Point(19, 51);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(53, 12);
+            this.label57.TabIndex = 23;
+            this.label57.Text = "有效厚度";
+            // 
+            // cbxAddGeologyProperty
+            // 
+            this.cbxAddGeologyProperty.AutoSize = true;
+            this.cbxAddGeologyProperty.Location = new System.Drawing.Point(11, 20);
+            this.cbxAddGeologyProperty.Name = "cbxAddGeologyProperty";
+            this.cbxAddGeologyProperty.Size = new System.Drawing.Size(96, 16);
+            this.cbxAddGeologyProperty.TabIndex = 27;
+            this.cbxAddGeologyProperty.Text = "井点地质属性";
+            this.cbxAddGeologyProperty.UseVisualStyleBackColor = true;
+            this.cbxAddGeologyProperty.CheckedChanged += new System.EventHandler(this.cbxAddGeologyProperty_CheckedChanged);
             // 
             // nUDLayerGeologyProperyDyOffset
             // 
@@ -752,100 +773,6 @@
             this.label29.TabIndex = 12;
             this.label29.Text = "字号";
             // 
-            // cbxAddGeologyProperty
-            // 
-            this.cbxAddGeologyProperty.AutoSize = true;
-            this.cbxAddGeologyProperty.Location = new System.Drawing.Point(11, 20);
-            this.cbxAddGeologyProperty.Name = "cbxAddGeologyProperty";
-            this.cbxAddGeologyProperty.Size = new System.Drawing.Size(96, 16);
-            this.cbxAddGeologyProperty.TabIndex = 27;
-            this.cbxAddGeologyProperty.Text = "井点地质属性";
-            this.cbxAddGeologyProperty.UseVisualStyleBackColor = true;
-            this.cbxAddGeologyProperty.CheckedChanged += new System.EventHandler(this.cbxAddGeologyProperty_CheckedChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.cbxAddStaticData);
-            this.groupBox3.Controls.Add(this.label37);
-            this.groupBox3.Controls.Add(this.cbbStaticDataColor);
-            this.groupBox3.Controls.Add(this.rdbStaticDataPie);
-            this.groupBox3.Controls.Add(this.rdbStaticDataBar);
-            this.groupBox3.Controls.Add(this.cbbStaticData);
-            this.groupBox3.Location = new System.Drawing.Point(22, 139);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(296, 86);
-            this.groupBox3.TabIndex = 23;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "静态数据分析";
-            // 
-            // cbxAddStaticData
-            // 
-            this.cbxAddStaticData.AutoSize = true;
-            this.cbxAddStaticData.Location = new System.Drawing.Point(150, 25);
-            this.cbxAddStaticData.Name = "cbxAddStaticData";
-            this.cbxAddStaticData.Size = new System.Drawing.Size(96, 16);
-            this.cbxAddStaticData.TabIndex = 27;
-            this.cbxAddStaticData.Text = "增加静态数据";
-            this.cbxAddStaticData.UseVisualStyleBackColor = true;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(177, 52);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(29, 12);
-            this.label37.TabIndex = 25;
-            this.label37.Text = "颜色";
-            // 
-            // cbbStaticDataColor
-            // 
-            this.cbbStaticDataColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.cbbStaticDataColor.FormattingEnabled = true;
-            this.cbbStaticDataColor.Items.AddRange(new object[] {
-            "black"});
-            this.cbbStaticDataColor.Location = new System.Drawing.Point(215, 48);
-            this.cbbStaticDataColor.Name = "cbbStaticDataColor";
-            this.cbbStaticDataColor.Size = new System.Drawing.Size(61, 20);
-            this.cbbStaticDataColor.TabIndex = 24;
-            // 
-            // rdbStaticDataPie
-            // 
-            this.rdbStaticDataPie.AutoSize = true;
-            this.rdbStaticDataPie.Location = new System.Drawing.Point(101, 49);
-            this.rdbStaticDataPie.Name = "rdbStaticDataPie";
-            this.rdbStaticDataPie.Size = new System.Drawing.Size(59, 16);
-            this.rdbStaticDataPie.TabIndex = 23;
-            this.rdbStaticDataPie.Text = "饼状图";
-            this.rdbStaticDataPie.UseVisualStyleBackColor = true;
-            // 
-            // rdbStaticDataBar
-            // 
-            this.rdbStaticDataBar.AutoSize = true;
-            this.rdbStaticDataBar.Checked = true;
-            this.rdbStaticDataBar.Location = new System.Drawing.Point(28, 49);
-            this.rdbStaticDataBar.Name = "rdbStaticDataBar";
-            this.rdbStaticDataBar.Size = new System.Drawing.Size(59, 16);
-            this.rdbStaticDataBar.TabIndex = 18;
-            this.rdbStaticDataBar.TabStop = true;
-            this.rdbStaticDataBar.Text = "柱状图";
-            this.rdbStaticDataBar.UseVisualStyleBackColor = true;
-            // 
-            // cbbStaticData
-            // 
-            this.cbbStaticData.FormattingEnabled = true;
-            this.cbbStaticData.Items.AddRange(new object[] {
-            "有效厚度",
-            "海拔深度",
-            "砂岩厚度",
-            "孔隙度",
-            "渗透率",
-            "饱和度"});
-            this.cbbStaticData.Location = new System.Drawing.Point(28, 22);
-            this.cbbStaticData.Name = "cbbStaticData";
-            this.cbbStaticData.Size = new System.Drawing.Size(101, 20);
-            this.cbbStaticData.TabIndex = 10;
-            this.cbbStaticData.Text = "空白";
-            // 
             // tbgLine
             // 
             this.tbgLine.Controls.Add(this.groupBox26);
@@ -860,6 +787,73 @@
             this.tbgLine.TabIndex = 4;
             this.tbgLine.Text = "线信息";
             this.tbgLine.UseVisualStyleBackColor = true;
+            // 
+            // groupBox26
+            // 
+            this.groupBox26.Controls.Add(this.numericUpDown7);
+            this.groupBox26.Controls.Add(this.comboBox15);
+            this.groupBox26.Controls.Add(this.label59);
+            this.groupBox26.Controls.Add(this.label60);
+            this.groupBox26.Location = new System.Drawing.Point(41, 273);
+            this.groupBox26.Name = "groupBox26";
+            this.groupBox26.Size = new System.Drawing.Size(322, 68);
+            this.groupBox26.TabIndex = 23;
+            this.groupBox26.TabStop = false;
+            this.groupBox26.Text = "线型设置";
+            // 
+            // numericUpDown7
+            // 
+            this.numericUpDown7.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.numericUpDown7.Location = new System.Drawing.Point(157, 20);
+            this.numericUpDown7.Name = "numericUpDown7";
+            this.numericUpDown7.Size = new System.Drawing.Size(57, 21);
+            this.numericUpDown7.TabIndex = 17;
+            this.numericUpDown7.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // comboBox15
+            // 
+            this.comboBox15.BackColor = System.Drawing.Color.Red;
+            this.comboBox15.FormattingEnabled = true;
+            this.comboBox15.Location = new System.Drawing.Point(46, 21);
+            this.comboBox15.Name = "comboBox15";
+            this.comboBox15.Size = new System.Drawing.Size(61, 20);
+            this.comboBox15.TabIndex = 10;
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(7, 24);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(29, 12);
+            this.label59.TabIndex = 12;
+            this.label59.Text = "颜色";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(122, 25);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(29, 12);
+            this.label60.TabIndex = 12;
+            this.label60.Text = "线宽";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(41, 243);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(60, 16);
+            this.checkBox3.TabIndex = 22;
+            this.checkBox3.Text = "尖灭线";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // groupBox9
             // 
@@ -2973,92 +2967,6 @@
             this.comboBox13.Size = new System.Drawing.Size(61, 20);
             this.comboBox13.TabIndex = 10;
             // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label57.Location = new System.Drawing.Point(19, 51);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(53, 12);
-            this.label57.TabIndex = 23;
-            this.label57.Text = "有效厚度";
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(31, 65);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(29, 12);
-            this.label58.TabIndex = 24;
-            this.label58.Text = "砂厚";
-            // 
-            // groupBox26
-            // 
-            this.groupBox26.Controls.Add(this.numericUpDown7);
-            this.groupBox26.Controls.Add(this.comboBox15);
-            this.groupBox26.Controls.Add(this.label59);
-            this.groupBox26.Controls.Add(this.label60);
-            this.groupBox26.Location = new System.Drawing.Point(41, 273);
-            this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(322, 68);
-            this.groupBox26.TabIndex = 23;
-            this.groupBox26.TabStop = false;
-            this.groupBox26.Text = "线型设置";
-            // 
-            // numericUpDown7
-            // 
-            this.numericUpDown7.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown7.Location = new System.Drawing.Point(157, 20);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(57, 21);
-            this.numericUpDown7.TabIndex = 17;
-            this.numericUpDown7.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // comboBox15
-            // 
-            this.comboBox15.BackColor = System.Drawing.Color.Red;
-            this.comboBox15.FormattingEnabled = true;
-            this.comboBox15.Location = new System.Drawing.Point(46, 21);
-            this.comboBox15.Name = "comboBox15";
-            this.comboBox15.Size = new System.Drawing.Size(61, 20);
-            this.comboBox15.TabIndex = 10;
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(7, 24);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(29, 12);
-            this.label59.TabIndex = 12;
-            this.label59.Text = "颜色";
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(122, 25);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(29, 12);
-            this.label60.TabIndex = 12;
-            this.label60.Text = "线宽";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(41, 243);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(60, 16);
-            this.checkBox3.TabIndex = 22;
-            this.checkBox3.Text = "尖灭线";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
             // FormMapLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3085,10 +2993,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyDyOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyDxOffset)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyFontSize)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.tbgLine.ResumeLayout(false);
             this.tbgLine.PerformLayout();
+            this.groupBox26.ResumeLayout(false);
+            this.groupBox26.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
@@ -3164,9 +3073,6 @@
             this.groupBox23.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            this.groupBox26.ResumeLayout(false);
-            this.groupBox26.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3282,13 +3188,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.TabPage tbgWellData;
         private System.Windows.Forms.CheckBox cbxAddGeologyProperty;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox cbxAddStaticData;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.ComboBox cbbStaticDataColor;
-        private System.Windows.Forms.RadioButton rdbStaticDataPie;
-        private System.Windows.Forms.RadioButton rdbStaticDataBar;
-        private System.Windows.Forms.ComboBox cbbStaticData;
         private System.Windows.Forms.TabPage tbgLine;
         private System.Windows.Forms.CheckBox cbxAddCoutourLine;
         private System.Windows.Forms.CheckBox cbxAddFaultLine;

@@ -13,7 +13,7 @@ using DOGPlatform;
 
 namespace DOGPlatform
 {
-   
+
     public partial class FormMain : Form
     {
         public static List<string> ltTV_SelectedJH = new List<string>();
@@ -57,6 +57,7 @@ namespace DOGPlatform
             listToolStripButtonsDraw.Add(tsBtnMove);
             listToolStripButtonsDraw.Add(tsBtnDrawPolyGon);
             initialCbbScale();
+         
         }
 
         //初始化控件当新建工程或者打开工程时
@@ -80,7 +81,7 @@ namespace DOGPlatform
                 cbbScale.Items.Add(sItem);
             }
             cbbScale.SelectedIndex = 0;
-           
+
         }
 
         bool openProject()
@@ -89,6 +90,9 @@ namespace DOGPlatform
             if (OpenProject.loadProjectData())
             {
                 this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirProject;
+                tlsCbbLayer.Items.Add("井口");
+                foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
+                tlsCbbLayer.SelectedIndex = 0;
                 return true;
             }
             else
@@ -96,7 +100,6 @@ namespace DOGPlatform
                 return false;
             }
         }
-      
 
         private void updateTreeView()
         {
@@ -135,7 +138,26 @@ namespace DOGPlatform
             }
         }
 
-        #region  工程菜单
+        #region 工程管理
+        void createNewProject()
+        {
+            if (cProjectManager.creatProject())
+            {
+                showInputStaticGeologyTabpage();
+                this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirPathUserData;
+            }
+        }
+
+        private void tsBtnNewProject_Click(object sender, EventArgs e)
+        {
+            createNewProject();
+        }
+
+        private void tsBtnOpenProject_Click(object sender, EventArgs e)
+        {
+            openProject();
+        }
+       
         private void tsmiNewProject_Click(object sender, EventArgs e)
         {
             createNewProject();
@@ -193,7 +215,6 @@ namespace DOGPlatform
         private void btnImportWellHead_Click(object sender, EventArgs e)
         {
             cIOinputWellHead.readInput2Project(this.dgvWellHead, cProjectManager.filePathInputWellhead);
-
             cIOinputWellHead.codeReplaceWellHead();
 
             cDataQuanlityControl cTestControl = new cDataQuanlityControl();
@@ -207,20 +228,18 @@ namespace DOGPlatform
                     cProjectData.ltStrProjectJH.Add(_sJH);
                     cProjectManager.createWellDir(_sJH);
                 }
-                
                 cProjectData.setProjectWellsInfor();
                 updateTreeView();
                 this.tbcMain.SelectedIndex = 0;
             }
 
-
         }
-     
+
         private void btnOpenLayerSeriers_Click(object sender, EventArgs e)
         {
             cPublicMethodForm.read2DataGridViewByTextFile(dgvLayerSeriers);
         }
-       
+
         private void btnImportLayerSeriers_Click(object sender, EventArgs e)
         {
             importDataGridView(dgvLayerSeriers, cProjectManager.filePathInputLayerSeriers);
@@ -228,7 +247,7 @@ namespace DOGPlatform
             cProjectManager.createLayerDir();
             updateTreeView();
         }
-       
+
         private void btnCopyFromExcelWellHead_Click(object sender, EventArgs e)
         {
             cPublicMethodForm.DataGridViewCellPaste(dgvWellHead);
@@ -246,14 +265,14 @@ namespace DOGPlatform
         {
             FormMapLayer formLayerMap = new FormMapLayer();
             formLayerMap.ShowDialog();
-            updateWebSVG();  
+            updateWebSVG();
         }
 
         private void tsmiSectionReservior_Click(object sender, EventArgs e)
         {
             FormWellSectionPath FormWellsGroup = new FormWellSectionPath();
             FormWellsGroup.ShowDialog();
-            updateWebSVG();  
+            updateWebSVG();
         }
 
         private void ToolStripStatusLabelProjectionInfor_Click(object sender, EventArgs e)
@@ -272,7 +291,7 @@ namespace DOGPlatform
             cCalHeterogeneity.calHeterogeneityInnerLayer();
         }
 
-        
+
         private void calXCSJBWorkerMethod(object sender, WaitWindowEventArgs e)
         {
             cIODicLayerData cCalLayerData = new cIODicLayerData();
@@ -296,11 +315,7 @@ namespace DOGPlatform
             FormCalWellDistance formCalDistance = new FormCalWellDistance();
             formCalDistance.Show();
         }
-        private void tsmiProjectGraphManager_Click(object sender, EventArgs e)
-        {
-            FormMapManager formOutcomeManager = new FormMapManager();
-            formOutcomeManager.ShowDialog();
-        }
+    
         private void tsmi注采关系分析_Click(object sender, EventArgs e)
         {
             FormInjProAna forminjectProductAna = new FormInjProAna();
@@ -319,17 +334,17 @@ namespace DOGPlatform
             FormWellsGroup formFD = new FormWellsGroup();
             formFD.Show();
         }
-       
+
         private void tsmiCalWellProductionDictionary_Click(object sender, EventArgs e)
         {
-         
+
         }
         private void tsmiCalProductionFoctor_Click(object sender, EventArgs e)
         {
             FormSettingSplitFactor formSplitFactor = new FormSettingSplitFactor();
             formSplitFactor.ShowDialog();
         }
-       
+
         private void tabControlMain_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.tbcMain.SelectedTab.Name == this.tbgWellHead.Name)
@@ -349,16 +364,10 @@ namespace DOGPlatform
                     cPublicMethodForm.read2DataGridViewByTextFile(cProjectManager.filePathInputLayerSeriers, dgvLayerSeriers);
                 }
             }
-           
+
         }
-       
-      
-        private void tsmiDebug_Click(object sender, EventArgs e)
-        {
-            FormConfig formConfig = new FormConfig();
-            formConfig.ShowDialog();
-        }
-        
+
+
         private void tsmiDeleteSelectedWellInPanel_Click(object sender, EventArgs e)
         {
             if (sJHselectedOnPanel != "")
@@ -368,7 +377,7 @@ namespace DOGPlatform
                 {
                     cIOinputWellHead fileWellHead = new cIOinputWellHead();
                     fileWellHead.deleteJHFromWellHead(sJHselectedOnPanel);
-                    cProjectData.ltStrProjectJH.Remove(sJHselectedOnPanel); 
+                    cProjectData.ltStrProjectJH.Remove(sJHselectedOnPanel);
                     WellNavitationInvalidate();
                     updateTreeView();
                 }
@@ -386,7 +395,7 @@ namespace DOGPlatform
             formAddWell.ShowDialog();
             updateTreeView();
             cProjectData.ltStrProjectJH.Clear();
-            cProjectData.ltStrProjectJH = cIOinputWellHead.getLtStrJH(); 
+            cProjectData.ltStrProjectJH = cIOinputWellHead.getLtStrJH();
             WellNavitationInvalidate();
         }
 
@@ -400,13 +409,7 @@ namespace DOGPlatform
             WaitWindow.Show(this.calMatchJsJlWorkerMethod);
         }
 
-        private void tsmiSectionSingleWell_Click(object sender, EventArgs e)
-        {
-            FormSingleWellLog formSingleWellLog = new FormSingleWellLog();
-            formSingleWellLog.Show();
-        }
-
-        private void tsmiCalLayerHeterogeneityInner_Click(object sender, EventArgs e)
+              private void tsmiCalLayerHeterogeneityInner_Click(object sender, EventArgs e)
         {
             WaitWindow.Show(this.calHeterogeneityInnerLayerWorkerMethod);
         }
@@ -416,7 +419,6 @@ namespace DOGPlatform
             FormDataTable formDatatable = new FormDataTable(cProjectManager.filePathInnerLayerHeterogeneity);
             formDatatable.Show();
         }
-
 
         private void tsmiShowLayerHeterogeneityInner1_Click(object sender, EventArgs e)
         {
@@ -434,11 +436,6 @@ namespace DOGPlatform
             newFormData.Show();
         }
 
-        private void tsmiWellPointDataPie_Click(object sender, EventArgs e)
-        {
-            FormDataAnalysis formRoseMap = new FormDataAnalysis();
-            formRoseMap.ShowDialog();
-        }
 
         private void tsmiLayerInjectProductSystem_Click(object sender, EventArgs e)
         {
@@ -446,12 +443,7 @@ namespace DOGPlatform
             formInjProSystemMap.Show();
         }
 
-        private void tsmiSectionStratum_Click(object sender, EventArgs e)
-        {
-            FormWellSectionGeology formReserviorSection = new FormWellSectionGeology();
-            formReserviorSection.ShowDialog();
-            updateWebSVG(); 
-        }
+    
 
 
         private void btnInputWellheaddelDgvLine_Click(object sender, EventArgs e)
@@ -514,42 +506,14 @@ namespace DOGPlatform
             }
         }
 
-        private void tvwProjectGraph_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            tvProjectGraph.ContextMenuStrip = cmsProject;
-            TreeNode selectNode = tvProjectGraph.SelectedNode;
-            cmsProject.Items.Clear();
-
-            switch (selectNode.Level)
-            {
-                case 0:
-                    break;
-                case 1:
-                    cContextMenuStripSVGGraph cTS = new cContextMenuStripSVGGraph(cmsProject, selectNode, selectNode.Text);
-                    cTS.setupTsmiOpenInInkscape();
-                    cTS.setupTsmiOpenIE();
-                    cTS.setupTsmiDeleteFile();
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                default:
-                    break;
-            }
-
-
-            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvProjectGraph.SelectedNode.Text);
-            updateWebSVG();  
-         
-        }
+      
 
 
         void updateWebSVG()
         {
             this.tbcMain.SelectedTab = tbgIE;
 
-             try
+            try
             {
 
                 if (filePathWebSVG.EndsWith(".svg"))
@@ -559,34 +523,17 @@ namespace DOGPlatform
                 }
                 else
                 {
-                    this.tbcMain.SelectedTab = tbgWellNavigation; 
+                    this.tbcMain.SelectedTab = tbgWellNavigation;
                 }
             }
             catch (System.UriFormatException)
             {
                 MessageBox.Show("error.");
             }
-            
+
         }
 
-        void createNewProject()
-        {
-            if (cProjectManager.creatProject())
-            {
-                showInputStaticGeologyTabpage();
-                this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirPathUserData;
-            }
-        }
-
-        private void tsBtnNewProject_Click(object sender, EventArgs e)
-        {
-            createNewProject();
-        }
-
-        private void tsBtnOpenProject_Click(object sender, EventArgs e)
-        {
-            openProject();
-        }
+     
 
         private void tsBtnZoonIn_Click(object sender, EventArgs e)
         {
@@ -596,7 +543,7 @@ namespace DOGPlatform
                 cbbScale.Text = (1000.0 / cProjectData.fMapScale).ToString("0");
                 WellNavitationInvalidate();
             }
-            if (tbcMain.SelectedIndex == 1) 
+            if (tbcMain.SelectedIndex == 1)
             {
                 webBrowserIE.Focus();
                 SendKeys.Send("^{+}");
@@ -626,7 +573,6 @@ namespace DOGPlatform
                 WellNavitationInvalidate();
             }
         }
-           
 
         private void tvProjectData_AfterSelect(object sender, TreeViewEventArgs e)
         {
@@ -641,30 +587,30 @@ namespace DOGPlatform
                         case "tnWells":
                             //右键菜单
                             cContextMenuStripInputWellsManager cCMSwells = new cContextMenuStripInputWellsManager(cmsProject, selectNode);
-                            cCMSwells .setupContextMenuWellMangager();
-                            cmsProject = cCMSwells .cms;
-                            
+                            cCMSwells.setupContextMenuWellMangager();
+                            cmsProject = cCMSwells.cms;
+
                             break;
                         case "tnWellTops":
                             cContextMenuStripInputLayer cmsWellTops = new cContextMenuStripInputLayer(cmsProject, selectNode, selectNode.Text);
                             cmsWellTops.setupTsmiImportLayers();
                             cmsProject = cmsWellTops.cms;
-                            break; 
+                            break;
                     }
                     break;
                 case 1://第2级菜单
                     if (selectNode.Parent.Text == "井" && selectNode.Index > 0) //index=0 是全局测井曲线
                     {
                         //右键快捷菜单配置
-                        string _sJH=selectNode.Text;
+                        string _sJH = selectNode.Text;
                         cContextMenuStripInputWell cCMSinputWell = new cContextMenuStripInputWell(cmsProject, selectNode, _sJH);
                         cCMSinputWell.setupTsmiDataView();
                         cCMSinputWell.setupTsmiDataImport();
                     }
-                    if (selectNode.Parent.Text == "井" && selectNode.Index == 0) 
+                    if (selectNode.Parent.Text == "井" && selectNode.Index == 0)
                     {
                         cContextMenuStripInputWellLog cTS = new cContextMenuStripInputWellLog(cmsProject, selectNode, selectNode.Parent.Text);
-                        cmsProject = cTS.cms; 
+                        cmsProject = cTS.cms;
                     }
                     if (selectNode.Parent.Name == "tnWellTops")
                     {
@@ -674,13 +620,13 @@ namespace DOGPlatform
                     }
                     break;
                 case 2://第3级菜单，右键快捷菜单配置
-                  
+
                     if (selectNode.Text == "well logs")
                     {
                         cContextMenuStripInputWellLog cTS = new cContextMenuStripInputWellLog(cmsProject, selectNode, selectNode.Parent.Text);
                         cTS.setupContextMenuStripWellLog();
                         cmsProject = cTS.cms;
-                    cTreeViewProjectData.setupTNWellLog(selectNode, selectNode.Parent.Text);
+                        cTreeViewProjectData.setupTNWellLog(selectNode, selectNode.Parent.Text);
                     }
                     break;
                 case 3://第4级菜单，右键快捷菜单配置
@@ -696,7 +642,6 @@ namespace DOGPlatform
                     break;
             }
         }
-      
 
         private void 动态地质分析ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -708,11 +653,8 @@ namespace DOGPlatform
         {
             cMenuStripMain mainMenuStrip = new cMenuStripMain(msMain);
             mainMenuStrip.setupTsmiPattern();
-            mainMenuStrip.setupTsmiDataAnalysis();
             mainMenuStrip.setupTsmiTools();
-            mainMenuStrip.setupTsmiConfig();
             mainMenuStrip.setupTsmiHelps();
-
         }
 
 
@@ -806,7 +748,6 @@ namespace DOGPlatform
         }
         void addGrid(PaintEventArgs e)
         {
-
             Graphics dc = e.Graphics;
             Font font = new Font("黑体", 8);
             Brush blueBrush = Brushes.Blue;
@@ -852,63 +793,37 @@ namespace DOGPlatform
                      currentWellPath[0].dbX, currentWellPath[0].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
                     dc.DrawEllipse(wellPen, headView.X, headView.Y, 6, 6);
 
-                    int iCount=currentWellPath.Count; 
-                    if (iCount > 2) 
+                    int iCount = currentWellPath.Count;
+                    if (iCount > 2)
                     {
-                        List<Point> points=new List<Point>();
+                        List<Point> points = new List<Point>();
                         for (int k = 0; k < iCount; k++)
                         {
                             Point tailView = cCordinationTransform.transRealPointF2ViewPoint(
                             currentWellPath[k].dbX, currentWellPath[k].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
                             points.Add(tailView);
-                           
+
                         }
-                     dc.DrawLines(blackPen, points.ToArray());
+                        dc.DrawLines(blackPen, points.ToArray());
                     }
                     Brush blackBrush = Brushes.Black;
                     dc.DrawString(itemWell.sJH, font, blackBrush,
-                                   headView.X+6, headView.Y+6);
+                                   headView.X + 6, headView.Y + 6);
                 }
-              
-                
 
             }
-     
+
             base.OnPaint(e);
         }
         private string getWellNameByScreenPoint(Point pScreen)
         {
-            string sJHReturn = "";
-            string[] split;
-            if (File.Exists(cProjectManager.filePathWellNavigation))
+            foreach(ItemWell item in cProjectData.listProjectWell)
             {
-                using (StreamReader sr = new StreamReader(cProjectManager.filePathWellNavigation))
-                {
-                    String line;
-                    int iLine = 0;
-                    bool bFind = false;
-                    while ((line = sr.ReadLine()) != null && bFind == false) //delete the line whose legth is 0
-                    {
-                        iLine++;
-                        split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        if (iLine > 1)//第一行存的是比例尺
-                        {
-                            string sWellName = split[0];
-                            int iXview = int.Parse(split[1]);
-                            int iYview = int.Parse(split[2]);
-                            if (Math.Abs(pScreen.X - iXview) <= 5
-                                && Math.Abs(pScreen.Y - iYview) <= 5)
-                            {
-                                sJHReturn = sWellName;
-                                bFind = true;
-                            }
-                        }
-
-                    }
-                }
+                Point  itemView = cCordinationTransform.transRealPointF2ViewPoint(
+                     item.dbX, item.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                if (Math.Abs(pScreen.X - itemView.X) <= 5 && Math.Abs(pScreen.Y - itemView.Y) <= 5) return item.sJH; 
             }
-            return sJHReturn;
-
+            return "";
         }
         void addLine(PaintEventArgs e, Point p1, Point p2)
         {
@@ -930,10 +845,6 @@ namespace DOGPlatform
             Pen BlackPen = new Pen(Color.Blue, 1);
             dc.DrawPolygon(BlackPen, listPoint.ToArray());
 
-            //Pen RedPen = new Pen(Color.Red, 1);
-            //int r = 4;
-            //dc.DrawEllipse(RedPen, p1.X - r / 2, p1.Y - r / 2, r, r);
-            //dc.DrawEllipse(RedPen, p2.X - r / 2, p2.Y - r / 2, r, r);
             base.OnPaint(e);
         }
 
@@ -950,12 +861,14 @@ namespace DOGPlatform
         {
 
             if (cProjectData.ltStrProjectJH.Count > 0)
-            { 
+            {
                 int _iSacleRuler = 500; //定义网格单位
 
-                if(cProjectData.fMapScale==0.1F){
-                cProjectData.dfMapXrealRefer = Math.Floor(cProjectData.listProjectWell.Min(p => p.dbX) / _iSacleRuler - 1) * _iSacleRuler;
-                cProjectData.dfMapYrealRefer = (Math.Ceiling(cProjectData.listProjectWell.Max(p => p.dbY) / _iSacleRuler) + 1) * _iSacleRuler;}
+                if (cProjectData.fMapScale == 0.1F)
+                {
+                    cProjectData.dfMapXrealRefer = Math.Floor(cProjectData.listProjectWell.Min(p => p.dbX) / _iSacleRuler - 1) * _iSacleRuler;
+                    cProjectData.dfMapYrealRefer = (Math.Ceiling(cProjectData.listProjectWell.Max(p => p.dbY) / _iSacleRuler) + 1) * _iSacleRuler;
+                }
 
                 double xMaxDistance = cProjectData.listProjectWell.Max(p => p.dbX) - cProjectData.listProjectWell.Min(p => p.dbX);
                 double yMaxDistance = cProjectData.listProjectWell.Max(p => p.dbY) - cProjectData.listProjectWell.Min(p => p.dbY);
@@ -968,8 +881,6 @@ namespace DOGPlatform
                 panelWellNavigation.Height = iPanelHeight;
                 panelWellNavigation.Location = new Point(3, 3);
 
-               
-              
                 this.panelWellNavigation.Invalidate();
                 this.panelWellNavigation.Focus();
             }
@@ -1078,17 +989,6 @@ namespace DOGPlatform
             }
         }
 
-               private void geomodelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            cIOgeomodel olGeomodel = new cIOgeomodel();
-            olGeomodel.writeText();
-        }
-
-        private void tsmiGridParaSetting_Click(object sender, EventArgs e)
-        {
-            FormGridDefine formgriddefined = new FormGridDefine();
-            formgriddefined.ShowDialog();
-        }
         private void AddTreeNode(XmlNode xmlNode, TreeNode treeNode)
         {
             XmlNode newNode;
@@ -1136,21 +1036,18 @@ namespace DOGPlatform
             }
         }
 
-             
-
-
         private void tvProjectData_AfterCheck(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Level == 0 && e.Node.Text == "井" )
-            {  
+            if (e.Node.Level == 0 && e.Node.Text == "井")
+            {
                 ltTV_SelectedJH.Clear();
                 if (e.Node.Checked == true)
                 {
-                    foreach (TreeNode _tn in e.Node.Nodes) 
+                    foreach (TreeNode _tn in e.Node.Nodes)
                     {
                         _tn.Checked = true;
-                        if(_tn.Index>0)
-                        ltTV_SelectedJH.Add(_tn.Text);  //0是global well log
+                        if (_tn.Index > 0)
+                            ltTV_SelectedJH.Add(_tn.Text);  //0是global well log
                     }
                 }
                 if (e.Node.Checked == false)
@@ -1160,7 +1057,7 @@ namespace DOGPlatform
                         _tn.Checked = false;
                     }
                 }
-               
+
             };
             if (e.Node.Level == 1 && e.Node.Parent.Text == "井" && e.Node.Index == 0)
             {
@@ -1170,7 +1067,7 @@ namespace DOGPlatform
                     foreach (TreeNode _tn in e.Node.Nodes)
                     {
                         _tn.Checked = true;
-                        ltTV_SelectedLogNames .Add(_tn.Text);  
+                        ltTV_SelectedLogNames.Add(_tn.Text);
                     }
                 }
                 if (e.Node.Checked == false)
@@ -1182,7 +1079,7 @@ namespace DOGPlatform
                 }
             }
             //选择的井号
-            if (e.Node.Level == 1&&e.Node.Parent.Text=="井"&& e.Node.Index > 0)
+            if (e.Node.Level == 1 && e.Node.Parent.Text == "井" && e.Node.Index > 0)
             {
                 string _sJH = e.Node.Text;
                 if (e.Node.Checked == true)
@@ -1193,7 +1090,7 @@ namespace DOGPlatform
                 else
                 { if (ltTV_SelectedJH.IndexOf(_sJH) >= 0) ltTV_SelectedJH.Remove(_sJH); }
             }
-            if (e.Node.Level == 2 && e.Node.Parent.Index == 0 && e.Node.Parent.Parent.Text == "井") 
+            if (e.Node.Level == 2 && e.Node.Parent.Index == 0 && e.Node.Parent.Parent.Text == "井")
             {
                 string _logName = e.Node.Text;
                 if (e.Node.Checked == true)
@@ -1203,8 +1100,37 @@ namespace DOGPlatform
                 }
                 else
                 { if (ltTV_SelectedLogNames.IndexOf(_logName) >= 0) ltTV_SelectedLogNames.Remove(_logName); }
-            
+
             }
+        }
+        private void tvwProjectGraph_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            tvProjectGraph.ContextMenuStrip = cmsProject;
+            TreeNode selectNode = tvProjectGraph.SelectedNode;
+            cmsProject.Items.Clear();
+
+            switch (selectNode.Level)
+            {
+                case 0:
+                    break;
+                case 1:
+                    cContextMenuStripSVGGraph cTS = new cContextMenuStripSVGGraph(cmsProject, selectNode, selectNode.Text);
+                    cTS.setupTsmiOpenInInkscape();
+                    cTS.setupTsmiOpenIE();
+                    cTS.setupTsmiDeleteFile();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+
+
+            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvProjectGraph.SelectedNode.Text);
+            updateWebSVG();
+
         }
 
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -1218,7 +1144,7 @@ namespace DOGPlatform
                     cProjectManager.saveProject();
                 }
             }
-            
+
         }
 
         private void tsmiWells_Click(object sender, EventArgs e)
@@ -1229,17 +1155,16 @@ namespace DOGPlatform
         private void tsmiSaveAnotherProject_Click(object sender, EventArgs e)
         {
             cProjectManager.saveProeject2otherDirectionary();
-
         }
 
         private void tsmiPetrelWellTops_Click(object sender, EventArgs e)
         {
-                cExportData4Petrel.exportWellTops();
+            cExportData4Petrel.exportWellTops();
         }
 
         private void tsmiWellTops_Click(object sender, EventArgs e)
         {
-            tbcMain.TabPages.Add(tbgLayerSeriers); 
+            tbcMain.TabPages.Add(tbgLayerSeriers);
         }
 
         private void tsmi4petrelproductLog_Click(object sender, EventArgs e)
@@ -1247,13 +1172,35 @@ namespace DOGPlatform
             cExportData4Petrel.exportWellInterpretation();
         }
 
-      
+        private void tsmiFence_Click(object sender, EventArgs e)
+        {
+            FormWellsGroup formFD = new FormWellsGroup();
+            formFD.Show();
+        }
 
-       
+        private void tsmiSection_Click(object sender, EventArgs e)
+        {
+            FormWellSectionGeology formReserviorSection = new FormWellSectionGeology();
+            formReserviorSection.ShowDialog();
+            updateWebSVG();
+        }
 
-        
+        private void tsmiWellpathSection_Click(object sender, EventArgs e)
+        {
+            FormWellSectionPath FormWellsGroup = new FormWellSectionPath();
+            FormWellsGroup.ShowDialog();
+            updateWebSVG();
+        }
 
-       
+     
+
+
+
+
+
+
+
+
 
 
 

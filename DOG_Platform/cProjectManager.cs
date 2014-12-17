@@ -59,7 +59,6 @@ namespace DOGPlatform
         public static string filePathWellPathDic = "";
         public static string filePathInterLayerHeterogeneity = "";
         public static string filePathInnerLayerHeterogeneity = "";
-        public static string filePathWellNavigation = "";
 
         public static string xmlProject = "";
         public static string xmlConfigLayerMap = "";

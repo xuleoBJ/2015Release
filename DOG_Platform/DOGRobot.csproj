@@ -457,12 +457,6 @@
     <Compile Include="FormMapLayer.Designer.cs">
       <DependentUpon>FormMapLayer.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormMapManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormMapManager.Designer.cs">
-      <DependentUpon>FormMapManager.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormWellSectionPath.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -563,10 +557,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMapLayer.resx">
       <DependentUpon>FormMapLayer.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormMapManager.resx">
-      <DependentUpon>FormMapManager.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormInjProMap.resx">

@@ -138,35 +138,6 @@ namespace DOGPlatform
 
         }
 
-        public void readNavigation2List()
-        {
-            string[] split;
-            if (File.Exists(cProjectManager.filePathWellNavigation))
-            {
-                using (StreamReader sr = new StreamReader(cProjectManager.filePathWellNavigation))
-                {
-                    String line;
-                    int iLine = 0;
-                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
-                    {
-                        iLine++;
-                        split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                        if (iLine > 1)//第一行存的是比例尺
-                        {
-                            //ltStrWellName_view.Add(split[0]);
-                            //iListX_view.Add(int.Parse(split[1]));
-                            //iListY_view.Add(int.Parse(split[2]));
-                        }
-                        else
-                        {
-                            cProjectData.fMapScale = float.Parse(split[1]);
-                            cProjectData.dfMapXrealRefer = double.Parse(split[3]);
-                            cProjectData.dfMapYrealRefer = double.Parse(split[5]);
-                        }
-
-                    }
-                }
-            }
-        }
+      
     }
 }

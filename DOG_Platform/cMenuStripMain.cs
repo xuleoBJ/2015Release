@@ -11,6 +11,7 @@ namespace DOGPlatform
         public cMenuStripMain(MenuStrip _menustrip)
             : base(_menustrip)
         { 
+
         }
         public void setupTsmiConfig()
         {
@@ -78,27 +79,52 @@ namespace DOGPlatform
         public void setupTsmiTools()
         {
             ToolStripMenuItem tsmiTools = new ToolStripMenuItem("工具");
-            tsmiTools.DropDownItems.Add(tsmiMapManager);
-            tsmiMapManager.Click += new System.EventHandler(tsmiMapManager_Click);
-            tsmiTools.DropDownItems.Add(tsmiDogIE);
-            tsmiDogIE.Click += new System.EventHandler(tsmiDogIE_Click);
-            tsmiTools.DropDownItems.Add(tsmiLogFileConvert);
             tsmiTools.DropDownItems.Add(tsmiErrLog);
             tsmiErrLog.Click += new System.EventHandler(tsmiErrLog_Click);
             menuStrip.Items.Add(tsmiTools);
         }
 
-        public ToolStripMenuItem tsmiLogFileConvert = new ToolStripMenuItem("测井数据格式转换");
+        public void setupTsmiWellSections()
+        {
+            ToolStripMenuItem tsmiTools = new ToolStripMenuItem("剖面分析");
+            tsmiTools.DropDownItems.Add(tsmiWellSection);
+            tsmiWellSection.Click += new System.EventHandler(tsmiWellSection_Click);
+            tsmiTools.DropDownItems.Add(tsmiWellPathSection);
+            tsmiWellPathSection.Click += new System.EventHandler(tsmiWellPathSection_Click);
+            menuStrip.Items.Add(tsmiTools);
+        }
+
+        public ToolStripMenuItem tsmiWellSection = new ToolStripMenuItem("剖面分析");
+        public void tsmiWellSection_Click(object sender, EventArgs e)
+        {
+
+        }
+        public ToolStripMenuItem tsmiWellPathSection = new ToolStripMenuItem("斜井剖面分析");
+        public void tsmiWellPathSection_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
         public ToolStripMenuItem tsmiErrLog = new ToolStripMenuItem("查看错误日志");
         public void tsmiErrLog_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathErrInfor);
         }
-        public ToolStripMenuItem tsmiMapManager = new ToolStripMenuItem("图形管理");
-        public void tsmiMapManager_Click(object sender, EventArgs e)
+
+        public void setupTsmiWellGroup()
         {
-            FormMapManager formOutcomeManager = new FormMapManager();
-            formOutcomeManager.ShowDialog();
+            ToolStripMenuItem tsmiTools = new ToolStripMenuItem("井组分析");
+            tsmiTools.DropDownItems.Add(tsmiWellGroupFence);
+            tsmiWellGroupFence.Click += new System.EventHandler(tsmiWellGroupFence_Click);
+            menuStrip.Items.Add(tsmiTools);
+        }
+
+        public ToolStripMenuItem tsmiWellGroupFence = new ToolStripMenuItem("井组栅状图");
+        public void tsmiWellGroupFence_Click(object sender, EventArgs e)
+        {
+            FormWellsGroup formFD = new FormWellsGroup();
+            formFD.Show();
         }
         public ToolStripMenuItem tsmiDogIE = new ToolStripMenuItem("浏览器");
         public void tsmiDogIE_Click(object sender, EventArgs e)

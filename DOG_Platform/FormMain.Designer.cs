@@ -106,9 +106,6 @@
             this.tsmiCal_JSJLMatch = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalWellDistance = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLayerGeology = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSectionStratum = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSectionReservior = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSectionWellPattern = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiResevior = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalWellTypeDictionary = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalPerforationDictionary = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,6 +114,9 @@
             this.tsmiCalWellInjectDictionary = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLayerInjectProductSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.动态地质分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiRes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWellsGroup = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiFence = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripDraw = new System.Windows.Forms.ToolStrip();
             this.tsBtnMove = new System.Windows.Forms.ToolStripButton();
             this.tsBtnDrawLine = new System.Windows.Forms.ToolStripButton();
@@ -136,6 +136,9 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
+            this.tsmiSection = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWellpathSection = new System.Windows.Forms.ToolStripMenuItem();
+            this.tlsCbbLayer = new System.Windows.Forms.ToolStripComboBox();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -632,6 +635,8 @@
             this.tsmiProject,
             this.tsmiData,
             this.tsmiGeology,
+            this.tsmiRes,
+            this.tsmiWellsGroup,
             this.tsmiResevior});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
@@ -713,7 +718,7 @@
             this.tsmiWells,
             this.tsmiWellTops});
             this.tsmiInsert.Name = "tsmiInsert";
-            this.tsmiInsert.Size = new System.Drawing.Size(152, 22);
+            this.tsmiInsert.Size = new System.Drawing.Size(124, 22);
             this.tsmiInsert.Text = "插入";
             // 
             // tsmiWells
@@ -737,7 +742,7 @@
             this.tsmiPetrelWellTops,
             this.tsmi4petrelproductLog});
             this.tsmiDataExport.Name = "tsmiDataExport";
-            this.tsmiDataExport.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDataExport.Size = new System.Drawing.Size(124, 22);
             this.tsmiDataExport.Text = "数据导出";
             // 
             // tsmiWellPosition4Petrel
@@ -767,13 +772,10 @@
             this.计算分析ToolStripMenuItem,
             this.非均质性tsmiCalLayerHeterogeneityInner,
             this.tsmiCalWellDistance,
-            this.tsmiLayerGeology,
-            this.tsmiSectionStratum,
-            this.tsmiSectionReservior,
-            this.tsmiSectionWellPattern});
+            this.tsmiLayerGeology});
             this.tsmiGeology.Name = "tsmiGeology";
             this.tsmiGeology.Size = new System.Drawing.Size(68, 21);
-            this.tsmiGeology.Text = "静态地质";
+            this.tsmiGeology.Text = "小层平面";
             // 
             // 计算分析ToolStripMenuItem
             // 
@@ -787,14 +789,14 @@
             // tsmiCalXCSJB
             // 
             this.tsmiCalXCSJB.Name = "tsmiCalXCSJB";
-            this.tsmiCalXCSJB.Size = new System.Drawing.Size(100, 22);
+            this.tsmiCalXCSJB.Size = new System.Drawing.Size(152, 22);
             this.tsmiCalXCSJB.Text = "计算";
             this.tsmiCalXCSJB.Click += new System.EventHandler(this.tsmsCalXCSJB_Click);
             // 
             // tsmiShowXCSJB
             // 
             this.tsmiShowXCSJB.Name = "tsmiShowXCSJB";
-            this.tsmiShowXCSJB.Size = new System.Drawing.Size(100, 22);
+            this.tsmiShowXCSJB.Size = new System.Drawing.Size(152, 22);
             this.tsmiShowXCSJB.Text = "查看";
             this.tsmiShowXCSJB.Click += new System.EventHandler(this.tsmiShowXCSJB_Click);
             // 
@@ -883,27 +885,6 @@
             this.tsmiLayerGeology.Text = "小层平面图分析";
             this.tsmiLayerGeology.Click += new System.EventHandler(this.tsmiLayerGeology_Click);
             // 
-            // tsmiSectionStratum
-            // 
-            this.tsmiSectionStratum.Name = "tsmiSectionStratum";
-            this.tsmiSectionStratum.Size = new System.Drawing.Size(160, 22);
-            this.tsmiSectionStratum.Text = "油藏剖面";
-            this.tsmiSectionStratum.Click += new System.EventHandler(this.tsmiSectionStratum_Click);
-            // 
-            // tsmiSectionReservior
-            // 
-            this.tsmiSectionReservior.Name = "tsmiSectionReservior";
-            this.tsmiSectionReservior.Size = new System.Drawing.Size(160, 22);
-            this.tsmiSectionReservior.Text = "斜井剖面";
-            this.tsmiSectionReservior.Click += new System.EventHandler(this.tsmiSectionReservior_Click);
-            // 
-            // tsmiSectionWellPattern
-            // 
-            this.tsmiSectionWellPattern.Name = "tsmiSectionWellPattern";
-            this.tsmiSectionWellPattern.Size = new System.Drawing.Size(160, 22);
-            this.tsmiSectionWellPattern.Text = "井组分析";
-            this.tsmiSectionWellPattern.Click += new System.EventHandler(this.tsmiSectionWellPattern_Click);
-            // 
             // tsmiResevior
             // 
             this.tsmiResevior.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -965,6 +946,30 @@
             this.动态地质分析ToolStripMenuItem.Text = "动态地质分析";
             this.动态地质分析ToolStripMenuItem.Click += new System.EventHandler(this.动态地质分析ToolStripMenuItem_Click);
             // 
+            // tsmiRes
+            // 
+            this.tsmiRes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSection,
+            this.tsmiWellpathSection});
+            this.tsmiRes.Name = "tsmiRes";
+            this.tsmiRes.Size = new System.Drawing.Size(68, 21);
+            this.tsmiRes.Text = "油藏剖面";
+            // 
+            // tsmiWellsGroup
+            // 
+            this.tsmiWellsGroup.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiFence});
+            this.tsmiWellsGroup.Name = "tsmiWellsGroup";
+            this.tsmiWellsGroup.Size = new System.Drawing.Size(68, 21);
+            this.tsmiWellsGroup.Text = "井组分析";
+            // 
+            // tsmiFence
+            // 
+            this.tsmiFence.Name = "tsmiFence";
+            this.tsmiFence.Size = new System.Drawing.Size(152, 22);
+            this.tsmiFence.Text = "栅状图";
+            this.tsmiFence.Click += new System.EventHandler(this.tsmiFence_Click);
+            // 
             // ToolStripDraw
             // 
             this.ToolStripDraw.Dock = System.Windows.Forms.DockStyle.None;
@@ -1018,10 +1023,11 @@
             this.tsBtnZoomOut,
             this.ToolStripLabel1,
             this.cbbScale,
-            this.ToolStripSeparator2});
+            this.ToolStripSeparator2,
+            this.tlsCbbLayer});
             this.ToolStripMain.Location = new System.Drawing.Point(84, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(279, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(435, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1129,6 +1135,25 @@
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
             // 
+            // tsmiSection
+            // 
+            this.tsmiSection.Name = "tsmiSection";
+            this.tsmiSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSection.Text = "油藏剖面图";
+            this.tsmiSection.Click += new System.EventHandler(this.tsmiSection_Click);
+            // 
+            // tsmiWellpathSection
+            // 
+            this.tsmiWellpathSection.Name = "tsmiWellpathSection";
+            this.tsmiWellpathSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWellpathSection.Text = "斜井剖面";
+            this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
+            // 
+            // tlsCbbLayer
+            // 
+            this.tlsCbbLayer.Name = "tlsCbbLayer";
+            this.tlsCbbLayer.Size = new System.Drawing.Size(121, 25);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1137,7 +1162,7 @@
             this.Controls.Add(this.ToolStripContainer1);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DogRobot2015";
+            this.Text = "DogRobot-2.5D小层地质分析软件";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -1221,9 +1246,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiCal_JSJLMatch;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalWellDistance;
         private System.Windows.Forms.ToolStripMenuItem tsmiLayerGeology;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSectionStratum;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSectionReservior;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSectionWellPattern;
         private System.Windows.Forms.ToolStripMenuItem tsmiResevior;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalWellTypeDictionary;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalPerforationDictionary;
@@ -1290,6 +1312,12 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tbgWindows;
         private System.Windows.Forms.TreeView tvwWindows;
+        private System.Windows.Forms.ToolStripMenuItem tsmiRes;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWellsGroup;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFence;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSection;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWellpathSection;
+        private System.Windows.Forms.ToolStripComboBox tlsCbbLayer;
     }
 }
 
