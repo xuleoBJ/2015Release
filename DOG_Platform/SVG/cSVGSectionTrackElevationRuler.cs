@@ -37,10 +37,10 @@ namespace DOGPlatform.SVG
             {
                 XmlElement gDepthTick = svgDoc.CreateElement("path");
                 gDepthTick.SetAttribute("stroke-width", "1");
-                string d = "M0 " + (-iCurrentDepth).ToString() + " h 5 ";
+                string d = "M 50 " + (-iCurrentDepth).ToString() + " h -8 ";
                 if  (iCurrentDepth % m_tickInveral_main != 0)
                 {
-                    d = "M0 " + (-iCurrentDepth).ToString() + " h 3 "; 
+                    d = "M 50 " + (-iCurrentDepth).ToString() + " h -4 "; 
                 }
                 gDepthTick.SetAttribute("stroke", "black");
                 gDepthTick.SetAttribute("d", d);
@@ -49,8 +49,8 @@ namespace DOGPlatform.SVG
                 if (iCurrentDepth % m_tickInveral_main == 0)
                 {
                     XmlElement gTickText = svgDoc.CreateElement("text");
-                    gTickText.SetAttribute("x", "5");
-                    gTickText.SetAttribute("y", (-iCurrentDepth + 5).ToString());
+                    gTickText.SetAttribute("x", "4");
+                    gTickText.SetAttribute("y", (-iCurrentDepth).ToString());
                     gTickText.SetAttribute("fill", "black");
                     gTickText.SetAttribute("font-size", "12");
                     gTickText.SetAttribute("strole-width", "0.5");
