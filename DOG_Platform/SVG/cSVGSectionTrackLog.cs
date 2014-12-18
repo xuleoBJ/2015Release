@@ -83,7 +83,11 @@ namespace DOGPlatform.SVG
             gLogTrack.SetAttribute("stroke-width", "0.5");
             if (sLogName == null || fListMD.Count == 0) return gLogTrack;
             string _points = "";
+            
             List<ItemWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
+            List<ItemWellPath> listWellPathHorzion = new List<ItemWellPath>();
+            List<float> fListMDHorizina=new List<float>();
+            List<float> fListValueHorizina=new List<float>();
             double x0 = listWellPath[0].f_dx;
             double y0 = -m_KB + listWellPath[0].f_TVD;
             for (int i = 0; i < fListMD.Count; i++)
@@ -91,7 +95,7 @@ namespace DOGPlatform.SVG
                 ItemWellPath currentWellPath = listWellPath[i];
                 double currentX = currentWellPath.f_dx;
                 double currentY = -m_KB + currentWellPath.f_TVD;
-                if (currentWellPath.f_incl <= 80)
+                if (currentWellPath.f_incl <= 70)
                 {
                     float _xView_f = 0.0f;
                     if (-500 <= fListValue[i] && fListValue[i] < 1000)
@@ -100,16 +104,12 @@ namespace DOGPlatform.SVG
                         _points = _points + (currentX + _xView_f).ToString() + ',' + currentY.ToString() + " ";
                     }
                 }
-                else if (currentWellPath.f_incl >= 85)
-                {
-                    float _yView_f = 0.0f;
-                    if (-500 <= fListValue[i] && fListValue[i] < 1000)
-                    {
-                        _yView_f = this.iTrackWidth * (fListValue[i] - fLeftValue) / (fRightValue - fLeftValue);
-                        _points = _points + currentX.ToString() + ',' + (currentY - _yView_f).ToString() + " ";
-                    }
-                
-                }
+                else if (currentWellPath.f_incl >= 85&&i%3==0)
+               {
+                   listWellPathHorzion.Add(currentWellPath);
+                   fListMDHorizina.Add(fListMD[i]);
+                   fListValueHorizina.Add(fListValue[i]); 
+                } 
                               
             }
             XmlElement gLogPolyline = svgDoc.CreateElement("polyline");
@@ -119,8 +119,28 @@ namespace DOGPlatform.SVG
             gLogPolyline.SetAttribute("points", _points);
             gLogTrack.AppendChild(gLogPolyline);
 
-            gLogTrack.AppendChild(gTrackLogHeadText(x0, y0, sLogName, sColorCurve));
+            string _pointsHorizon = "";
+            for (int i = 0; i < listWellPathHorzion.Count; i++)
+            {
+                ItemWellPath currentWellPath = listWellPathHorzion[i];
+                double currentDX = currentWellPath.f_dx;
+                double currentY = -m_KB + currentWellPath.f_TVD;
 
+                float _yView_f = 0.0f;
+                if (-500 <= fListValueHorizina[i] && fListValueHorizina[i] < 1000)
+                {
+                    _yView_f = this.iTrackWidth * (fListValueHorizina[i] - fLeftValue) / (fRightValue - fLeftValue);
+                    _pointsHorizon = _pointsHorizon + currentDX.ToString() + ',' + (currentY - _yView_f).ToString() + " ";
+                } 
+            }
+            XmlElement gLogPolylineHorizinal = svgDoc.CreateElement("polyline");
+            // gLogPolyline.SetAttribute("style", "stroke-width:1");
+            //   gLogPolyline.SetAttribute("stroke", sColorCurve);
+            gLogPolylineHorizinal.SetAttribute("fill", "none");
+            gLogPolylineHorizinal.SetAttribute("points", _pointsHorizon);
+            gLogTrack.AppendChild(gLogPolylineHorizinal);
+
+            gLogTrack.AppendChild(gTrackLogHeadText(x0, y0, sLogName, sColorCurve));
             gLogTrack.AppendChild(gTrackLogHeadRuler(x0, y0, sColorCurve)); 
 
             return gLogTrack;

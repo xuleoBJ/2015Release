@@ -599,7 +599,7 @@
             this.tbxBottomElevationInput.Name = "tbxBottomElevationInput";
             this.tbxBottomElevationInput.Size = new System.Drawing.Size(105, 21);
             this.tbxBottomElevationInput.TabIndex = 13;
-            this.tbxBottomElevationInput.Text = "-1000";
+            this.tbxBottomElevationInput.Text = "-1500";
             this.tbxBottomElevationInput.TextChanged += new System.EventHandler(this.tbxBottomInput_TextChanged);
             // 
             // tbxTopElevationInput
