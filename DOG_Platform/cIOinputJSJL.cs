@@ -51,6 +51,7 @@ namespace DOGPlatform
             ltStrHeadColoum.Add("渗透率");
             ltStrHeadColoum.Add("饱和度");
             ltStrHeadColoum.Add("解释结论");
+            ltStrHeadColoum.Add("小层名");
             string sFirstLine = sJH + "#JSJL";
             cIOGeoEarthText.creatFileGeoHeadText(filePath, sFirstLine, ltStrHeadColoum);
         }
@@ -207,7 +208,7 @@ namespace DOGPlatform
             return dataList;
         }
      
-        static public void codeReplaceJSJL(string filePath)
+       public static  void codeReplaceJSJL(string filePath)
         {
             string fileNameTempJSJL = cProjectManager.dirPathTemp + "JSJL.txt";
             StreamWriter swJSJL = new StreamWriter(fileNameTempJSJL, false, Encoding.UTF8);
@@ -229,6 +230,106 @@ namespace DOGPlatform
             swJSJL.Close();
             File.Copy(fileNameTempJSJL, filePath, true);
         }
+
+       //把解释结果归到小层
+       public static void matchJSJL2Layer(string _sJH) 
+       {
+           creatWellGeoHeadFile(_sJH);
+           List<ItemJSJL> listJSJLinput = readInputFile(_sJH);
+           List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
+           string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellJSJL);
+           List<string> ltStrLine = new List<string>();
+           foreach (ItemJSJL item in listJSJLinput) 
+           {
+               string _topXCM="";
+               string _botXCM = "";
+               int mark = 0;
+
+               for (int i = 0; i < listLayerDepth.Count; i++) 
+               {
+                   if (item.fDS1 >= listLayerDepth[i].fDS1 && item.fDS1 <= listLayerDepth[i].fDS2)
+                   { _topXCM = listLayerDepth[i].sXCM; mark = 1; }
+                   if (item.fDS2 >= listLayerDepth[i].fDS1 && item.fDS2 <= listLayerDepth[i].fDS2)
+                   { _botXCM = listLayerDepth[i].sXCM; mark = 2; break; }
+               }
+               string _xcm = "";
+               if (mark == 0) _xcm = "";
+               else if(mark==2)
+               {
+                   if (_topXCM == _botXCM) _xcm = _topXCM;
+                   else if (_topXCM == "" || _botXCM == "") _xcm = _topXCM + "_" + _botXCM;
+                   else
+                   {
+                       int _iStart = cProjectData.ltStrProjectXCM.IndexOf(_topXCM);
+                       int _count = cProjectData.ltStrProjectXCM.IndexOf(_botXCM) - _iStart + 1;
+                       _xcm = string.Join("+", cProjectData.ltStrProjectXCM.GetRange(_iStart, _count));
+                   }
+               }
+               else _xcm = _topXCM + "_" + _botXCM;
+
+               ltStrLine.Add(ItemJSJL.item2string(item) + " " + _xcm);
+           }
+
+           cIOGeoEarthText.addDataLines2GeoEarTxt(filePath, ltStrLine);  
+       }
+
+        //劈分解释结论
+       public static void splitJSJL2Layer(string _sJH)
+       {
+           List<ItemJSJL> listJSJLinput = readInputFile(_sJH);
+           List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
+           string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, "#jsjlSplit.txt");
+           List<string> ltStrHeadColoum = new List<string>();
+           ltStrHeadColoum.Add("井号");
+           ltStrHeadColoum.Add("顶深");
+           ltStrHeadColoum.Add("底深");
+           ltStrHeadColoum.Add("砂厚");
+           ltStrHeadColoum.Add("有效厚度");
+           ltStrHeadColoum.Add("孔隙度");
+           ltStrHeadColoum.Add("渗透率");
+           ltStrHeadColoum.Add("饱和度");
+           ltStrHeadColoum.Add("解释结论");
+           ltStrHeadColoum.Add("小层名");
+           string sFirstLine = _sJH + "#劈分解释结论";
+           cIOGeoEarthText.creatFileGeoHeadText(filePath, sFirstLine, ltStrHeadColoum);
+           List<string> ltStrLine = new List<string>();
+           foreach (ItemJSJL item in listJSJLinput)
+           {
+               string _topXCM = "";
+               string _botXCM = "";
+               int mark = 0;
+
+               for (int i = 0; i < listLayerDepth.Count; i++)
+               {
+                   if (item.fDS1 >= listLayerDepth[i].fDS1 && item.fDS1 <= listLayerDepth[i].fDS2)
+                   { _topXCM = listLayerDepth[i].sXCM; mark = 1; }
+                   if (item.fDS2 >= listLayerDepth[i].fDS1 && item.fDS2 <= listLayerDepth[i].fDS2)
+                   { _botXCM = listLayerDepth[i].sXCM; mark = 2; break; }
+               }
+               if (mark == 0) ltStrLine.Add(ItemJSJL.item2string(item) );
+               else if (mark == 2)
+               {
+                   if (_topXCM == _botXCM) ltStrLine.Add(ItemJSJL.item2string(item) + " " + _topXCM);
+                   else if (_topXCM == "" || _botXCM == "") ltStrLine.Add(ItemJSJL.item2string(item) + " " + _topXCM + "_" + _botXCM);
+                   else
+                   {
+                       
+                       int _iStart = cProjectData.ltStrProjectXCM.IndexOf(_topXCM);
+                       int _iEnd = cProjectData.ltStrProjectXCM.IndexOf(_botXCM);
+                       for (int k = _iStart; k < _iEnd; k++)
+                       {
+                           //需要改写。。。。
+                           ltStrLine.Add(ItemJSJL.item2string(item) + " " + _topXCM);
+                       }
+                   }
+               }
+               else  ltStrLine.Add(ItemJSJL.item2string(item) + " " + _topXCM);
+
+               ltStrLine.Add(ItemJSJL.item2string(item) + " " + _topXCM + "_" + _botXCM);
+           }
+
+           cIOGeoEarthText.addDataLines2GeoEarTxt(filePath, ltStrLine);
+       }
 
     }
 }

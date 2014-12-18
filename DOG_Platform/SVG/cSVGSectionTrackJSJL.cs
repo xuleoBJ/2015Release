@@ -41,9 +41,8 @@ namespace DOGPlatform.SVG
             List<ItemWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListBottomMD);
             for (int i = 0; i < fListTopMD.Count; i++)
             {
-             
                 float _jsjl = iListJSJL[i];
-                double x0 = listWellPathTop[0].f_dx;
+                double x0 = listWellPathTop[i].f_dx;
                 double y0 = -m_KB + listWellPathTop[i].f_TVD;
                 double height = listWellPathBase[i].f_TVD - listWellPathTop[i].f_TVD;
                 if (_jsjl == 1) gJSJLTrack.AppendChild(gPatternJSJLOil(x0, y0, height)); //oil

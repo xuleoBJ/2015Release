@@ -183,6 +183,7 @@ namespace DOGPlatform
                 listWellsSection.Add(_wellSection);
             }
             cXDocSection.generateSectionCssXML();
+            generateSectionDataDirectory();
         }
 
 
@@ -210,9 +211,10 @@ namespace DOGPlatform
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 cWellSectionSVG itemWell = listWellsSection[i];
-                if (iTypeFlatted == (int)typeFlatted.海拔深度) itemWell.fDepthFlatted = -itemWell.fKB;
-                if (iTypeFlatted == (int)typeFlatted.顶面拉平) itemWell.fDepthFlatted = -itemWell.fKB + itemWell.fShowedDepthTop;
-                if (iTypeFlatted == (int)typeFlatted.底面拉平) itemWell.fDepthFlatted = -itemWell.fKB + itemWell.fShowedDepthBase;
+                //传入的深度与绘制无关，传入的海拔就是正，绘制时海拔向下为正
+                if (iTypeFlatted == (int)typeFlatted.海拔深度) itemWell.fDepthFlatted = itemWell.fKB;
+                if (iTypeFlatted == (int)typeFlatted.顶面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthTop;
+                if (iTypeFlatted == (int)typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
 
                 if (i == 0)
                 {
@@ -234,19 +236,22 @@ namespace DOGPlatform
                 }
             }
 
-            cSVGDocSection cSection = new cSVGDocSection(2000, 5000,0,0);
+            cSVGDocSection cSection = new cSVGDocSection(5000, 5000,0,0);
             cSection.addSVGTitle(string.Join("-",listWellsSection.Select(p=>p.sJH).ToList())+ "剖面图",100, 100);
-
-            //增加海拔尺
             XmlElement returnElemment;
-            int upDepthElevationRuler =3000;
-            int downDepthElevationRuler = -10000;
-            int iScaleElevationRuler = 50;
-            cSVGSectionTrackElevationRuler cElevationRuler= new cSVGSectionTrackElevationRuler();
-            returnElemment = cElevationRuler.gElevationRuler(downDepthElevationRuler, upDepthElevationRuler, iScaleElevationRuler);
-            cSection.addgElement(returnElemment, 0);
 
-            //在井序列循环添加井剖面
+            //海拔深度时 增加海拔尺，拉平不要海拔尺
+            if (iTypeFlatted == (int)typeFlatted.海拔深度)
+            {
+                int upDepthElevationRuler = 0;
+                int downDepthElevationRuler = -5000;
+                int iScaleElevationRuler = 50;
+                cSVGSectionTrackElevationRuler cElevationRuler = new cSVGSectionTrackElevationRuler();
+                returnElemment = cElevationRuler.gElevationRuler(downDepthElevationRuler, upDepthElevationRuler, iScaleElevationRuler);
+                cSection.addgElement(returnElemment, 0);
+            }
+
+            //根据井序列循环添加井剖面
             for (int i = 0; i < listWellsSection.Count; i++)
             {
                 string sJH = listWellsSection[i].sJH;

@@ -22,14 +22,13 @@ namespace DOGPlatform
 
         void initializeForm() 
         {
-            dgvCurrent = this.dgvLayerDepth;
-            //filePathGoal = cProjectManager.filePathInputWellhead;
+            dgvCurrent = this.dgvWellDev;
             if (cProjectData.ltStrProjectJH.Count  > 0)
             {
                 foreach (string item in cProjectData.ltStrProjectJH) cbbJH.Items.Add(item);
                 cbbJH.SelectedIndex = 0;
             }
-
+            filePathGoal = Path.Combine(cProjectManager.dirPathWellDir, this.cbbJH.SelectedItem.ToString(), cProjectManager.fileNameInputWellPath);
             cPublicMethodForm.read2DataGridViewByTextFile(filePathGoal, dgvCurrent);
         }
 
@@ -99,6 +98,7 @@ namespace DOGPlatform
                     {
                         cIOinputLayerDepth.creatInputFile(_sjh, _listLines);
                         cIOinputLayerDepth.creatWellGeoFile(_sjh);
+                        cProjectData.setProjectWellsInfor();
                     }
                      if (dgvCurrent == this.dgvIntepretation)
                      {

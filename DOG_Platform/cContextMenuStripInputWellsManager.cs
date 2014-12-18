@@ -17,7 +17,7 @@ namespace DOGPlatform
  
         public void setupContextMenuWellMangager()
         {
-            setupTsmiImportWellHeadData();
+            setupTsmiImportProjectData();
             setupTsmiExportData();
             ToolStripMenuItem tsmiSelectAllWells = new ToolStripMenuItem();
             tsmiSelectAllWells.Text = "全选";
@@ -63,17 +63,17 @@ namespace DOGPlatform
                 tn.Checked = false;
             }
         }
-        public void setupTsmiImportWellHeadData()
+        public void setupTsmiImportProjectData()
         {
-            ToolStripMenuItem tsmiIMportWellHead = new ToolStripMenuItem();
-            tsmiIMportWellHead.Text = "导入井数据";
-            tsmiIMportWellHead.Click += new System.EventHandler(tsmiImportWellHead_Click);
-            cms.Items.Add(tsmiIMportWellHead);
+            ToolStripMenuItem tsmiIMportProject = new ToolStripMenuItem();
+            tsmiIMportProject.Text = "导入项目数据";
+            tsmiIMportProject.Click += new System.EventHandler(tsmiImportProject_Click);
+            cms.Items.Add(tsmiIMportProject);
         }
-        private void tsmiImportWellHead_Click(object sender, EventArgs e)
+        private void tsmiImportProject_Click(object sender, EventArgs e)
         {
-            FormImportProjectData frmImportWellHead = new FormImportProjectData();
-            frmImportWellHead.Show();
+            FormImportProjectData frmImportProject = new FormImportProjectData();
+            frmImportProject.ShowDialog();
         }
 
 

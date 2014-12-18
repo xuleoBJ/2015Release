@@ -106,9 +106,10 @@ namespace DOGPlatform
                 {
                     iLineIndex++;
                     split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (string sItem in split)
+                    
+                    for (int i=1;i<split.Length;i++) //去掉第一个深度列
                     {
-                        ltStrReturn.Add(sItem);
+                        ltStrReturn.Add(split[i]);
                     }
 
                 }
@@ -116,6 +117,73 @@ namespace DOGPlatform
             return ltStrReturn;
         }
 
+        public static List<string> getLogSerierNamesFromListLog(string filePathLogTXT)
+        {
+            List<string> ltStrReturn = new List<string>();
+            using (StreamReader sr = new StreamReader(filePathLogTXT, System.Text.Encoding.Default))
+            {
+                String line;
+                string[] split;
+                int iLineIndex = 0;
+                while ((line = sr.ReadLine()) != null && iLineIndex < 5) //delete the line whose legth is 0
+                {
+                    iLineIndex++;
+                    if (iLineIndex == 4)
+                    {
+                        split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        for (int i = 1; i < split.Length; i++) //去掉第一个深度列
+                        {
+                            ltStrReturn.Add(split[i]);
+                        }
+                        break;
+                    }
+
+                }
+            }
+            return ltStrReturn;
+        }
+
+        public static List<string> getLogSerierNamesFromLasLog(string filePathLogTXT)
+        {
+            List<string> ltStrReturn = new List<string>();
+            using (StreamReader sr = new StreamReader(filePathLogTXT, System.Text.Encoding.Default))
+            {
+                String line;
+                string[] split;
+                int iLineIndex = 0;
+                bool start = false;
+                while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                {
+                    iLineIndex++;
+                    split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (split[0].ToUpper()  == "~C") start = true;
+                    if (split[0].ToUpper() == "~A") break;
+                    if (start) ltStrReturn.Add(split[0]);
+                }
+            }
+            ltStrReturn.RemoveAt(0);//删除～C
+            ltStrReturn.RemoveAt(0);//删除深度
+            return ltStrReturn;
+        }
+
+        public static int getDataStartLineOfLasLog(string filePathLogTXT)
+        {
+            using (StreamReader sr = new StreamReader(filePathLogTXT, System.Text.Encoding.Default))
+            {
+                String line;
+                string[] split;
+                int iLineIndex = 0;
+                while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                {
+                    iLineIndex++;
+                    split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    if (split[0].ToUpper() == "~A") return iLineIndex+1;
+                }
+            }
+           
+            return 0;
+        }
         public static List<string> getLogSerierNamesFromDirTXTLog(string dirPathLogTXT)
         {
             List<string> ltStrLogNames = new List<string>();
@@ -372,10 +440,9 @@ namespace DOGPlatform
         }
 
 
-        //读取测井列,保留指数列和深度列，iDataStartLine是起始行
+        //读取测井列,保留指数列和深度列，iDataStartLine是起始行,为了保证起始行0-1的误差 舍去了一行数据
         public static List<string> readLogData(string filePathSourceLog, int iDataStartLine, int indexLog)
         {
-
             List<string> ltStrDataLine = new List<string>();
             using (StreamReader sr = new StreamReader(filePathSourceLog, Encoding.Default))
             {
@@ -388,9 +455,7 @@ namespace DOGPlatform
                     split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
                     if (iLineIndex > iDataStartLine )//忽略头数据，从起始行开始读数据值
                     {
-                       
                         float _value = float.Parse(split[indexLog]);
-
                         //根据value判断是否有效值，无效值 行舍去
                         if (_value > -500 && _value < 1000)
                         {

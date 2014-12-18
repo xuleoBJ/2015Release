@@ -182,43 +182,6 @@ namespace DOGPlatform
               }
           }
 
-          public void gLithoPatternSand(string filePath)//增加岩石类型
-          {
-              //根据岩石名称选pattern;
-              XmlDocument svgDoc = new XmlDocument();
-              svgDoc.Load(filePath);
-              XmlElement svgRoot = svgDoc.DocumentElement;
-             
-             XmlElement gLithoPattern = svgDoc.CreateElement("g");
-             gLithoPattern.SetAttribute("xmlns:svg", "http://www.w3.org/2000/svg");
-             gLithoPattern.SetAttribute("xmlns", "http://www.w3.org/2000/svg");
-              gLithoPattern.SetAttribute("id", "idLitho");
-
-              XmlElement gLithoPatternPath = svgDoc.CreateElement("path");
-              gLithoPatternPath.SetAttribute("d", "M5,5 c500,150 400,150 400,0  Z");
-              gLithoPatternPath.SetAttribute("style", "stroke-width:1");
-              gLithoPatternPath.SetAttribute("stroke", "black");
-              gLithoPatternPath.SetAttribute("fill", "red");
-
-              gLithoPattern.AppendChild(gLithoPatternPath);
-
-
-              XmlElement gRect = svgDoc.CreateElement("rect");
-              gRect.SetAttribute("id", "idText123");
-              gRect.SetAttribute("x", "0");
-              gRect.SetAttribute("y", "0");
-              gRect.SetAttribute("width", "100");
-              gRect.SetAttribute("height", "50");
-              gRect.SetAttribute("stroke", "black");
-              gRect.SetAttribute("fill-opacity", "0.5");
-              gRect.SetAttribute("fill", "rgb(255,255,0)");
-              gLithoPattern.AppendChild(gRect);
-
-              if (svgRoot != null)
-              {
-                  svgRoot.AppendChild(gLithoPattern);
-                  svgDoc.Save(filePath); }
-          }
 
           private void tsmiMove_Click(object sender, EventArgs e)
           {

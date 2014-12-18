@@ -247,6 +247,7 @@ namespace DOGPlatform
                 listWellsSection.Add(_wellSection);
             }
             cXDocSection.generateSectionCssXML();
+            generateSectionDataDirectory();
         }
 
         private void btnGenerateDataByInputDepth_Click(object sender, EventArgs e)
@@ -390,7 +391,7 @@ namespace DOGPlatform
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 cWellSectionSVG itemWell = listWellsSection[i];
-                itemWell.fDepthFlatted = -itemWell.fKB;
+                itemWell.fDepthFlatted = itemWell.fKB;
                 if (i == 0)
                 {
                     itemWell.fXview = 100F;

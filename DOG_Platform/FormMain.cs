@@ -24,7 +24,6 @@ namespace DOGPlatform
         string sJHselectedOnPanel = "";
 
 
-
         List<TabPage> listTabpageMain = new List<TabPage>(); //主面板
         List<ToolStripButton> listToolStripButtonsDraw = new List<ToolStripButton>();//动态添加菜单
 
@@ -84,22 +83,6 @@ namespace DOGPlatform
 
         }
 
-        bool openProject()
-        {
-            cProjectManager OpenProject = new cProjectManager();
-            if (OpenProject.loadProjectData())
-            {
-                this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirProject;
-                tlsCbbLayer.Items.Add("井口");
-                foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
-                tlsCbbLayer.SelectedIndex = 0;
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
 
         private void updateTreeView()
         {
@@ -143,7 +126,9 @@ namespace DOGPlatform
         {
             if (cProjectManager.creatProject())
             {
+                cProjectData.clearProjectData();
                 showInputStaticGeologyTabpage();
+                tbcMain.SelectedTab = tbgWellHead;
                 this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirPathUserData;
             }
         }
@@ -163,9 +148,23 @@ namespace DOGPlatform
             createNewProject();
             updateTreeView();
         }
+
+        void openProject()
+        {
+             if (cProjectManager.loadProjectData())
+            {
+                this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirProject;
+                tlsCbbLayer.Items.Add("井口");
+                foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
+                tlsCbbLayer.SelectedIndex = 0;
+                updateTreeView();
+                cbbScale.Text = ((int)(1000 / cProjectData.fMapScale)).ToString();
+                WellNavitationInvalidate();
+            } 
+        }
         private void tsmiOpenProject_Click(object sender, EventArgs e)
         {
-            if (openProject()) updateTreeView();
+            openProject();
         }
         private void tsmSaveProject_Click(object sender, EventArgs e)
         {
@@ -300,13 +299,11 @@ namespace DOGPlatform
         }
         private void calMatchJsJlWorkerMethod(object sender, WaitWindowEventArgs e)
         {
-            cCalProjectAnaFiles cCalTest = new cCalProjectAnaFiles();
-            cCalTest.matchJSJL2LayerDepth();
+            foreach (string _sJH in cProjectData.ltStrProjectJH) cIOinputJSJL.matchJSJL2Layer(_sJH);
         }
         private void calSplitJSJLWorkerMethod(object sender, WaitWindowEventArgs e)
         {
-            cCalProjectAnaFiles cCalTest = new cCalProjectAnaFiles();
-            cCalTest.splitJSJL2LayerDepth();
+            foreach (string _sJH in cProjectData.ltStrProjectJH) cIOinputJSJL.splitJSJL2Layer(_sJH);
         }
         #endregion
 
@@ -399,17 +396,7 @@ namespace DOGPlatform
             WellNavitationInvalidate();
         }
 
-        private void tsmiCalSplitJSJL_Click(object sender, EventArgs e)
-        {
-            WaitWindow.Show(this.calSplitJSJLWorkerMethod);
-        }
-
-        private void tsmiCal_JSJLMatch_Click(object sender, EventArgs e)
-        {
-            WaitWindow.Show(this.calMatchJsJlWorkerMethod);
-        }
-
-              private void tsmiCalLayerHeterogeneityInner_Click(object sender, EventArgs e)
+        private void tsmiCalLayerHeterogeneityInner_Click(object sender, EventArgs e)
         {
             WaitWindow.Show(this.calHeterogeneityInnerLayerWorkerMethod);
         }
@@ -519,7 +506,7 @@ namespace DOGPlatform
                 if (filePathWebSVG.EndsWith(".svg"))
                 {
                     this.webBrowserIE.Navigate(new Uri(filePathWebSVG));
-                    this.tbgIE.Text = filePathWebSVG;
+                    this.tbgIE.Text =Path.GetFileNameWithoutExtension(filePathWebSVG);
                 }
                 else
                 {
@@ -589,7 +576,7 @@ namespace DOGPlatform
                             cContextMenuStripInputWellsManager cCMSwells = new cContextMenuStripInputWellsManager(cmsProject, selectNode);
                             cCMSwells.setupContextMenuWellMangager();
                             cmsProject = cCMSwells.cms;
-
+                            WellNavitationInvalidate();
                             break;
                         case "tnWellTops":
                             cContextMenuStripInputLayer cmsWellTops = new cContextMenuStripInputLayer(cmsProject, selectNode, selectNode.Text);
@@ -641,6 +628,7 @@ namespace DOGPlatform
                 default:
                     break;
             }
+           
         }
 
         private void 动态地质分析ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1127,7 +1115,6 @@ namespace DOGPlatform
                     break;
             }
 
-
             filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvProjectGraph.SelectedNode.Text);
             updateWebSVG();
 
@@ -1190,6 +1177,16 @@ namespace DOGPlatform
             FormWellSectionPath FormWellsGroup = new FormWellSectionPath();
             FormWellsGroup.ShowDialog();
             updateWebSVG();
+        }
+
+        private void tsmiJSJLmatch_Click(object sender, EventArgs e)
+        {
+            WaitWindow.Show(this.calMatchJsJlWorkerMethod);
+        }
+
+        private void tsmiJSJLsplit_Click(object sender, EventArgs e)
+        {
+            WaitWindow.Show(this.calSplitJSJLWorkerMethod);
         }
 
      

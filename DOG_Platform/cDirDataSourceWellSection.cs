@@ -42,8 +42,9 @@ namespace DOGPlatform
             trackDataListJSJL.fListDS1 = new List<float>();
             trackDataListJSJL.fListDS2 = new List<float>();
             trackDataListJSJL.iListJSJL  = new List<int>();
-
+            if (!File.Exists(filePath)) return trackDataListJSJL;
             string sData = "";
+           
             using (StreamReader sr = new StreamReader(filePath, System.Text.Encoding.Default))
             {
                 sData = sr.ReadToEnd();

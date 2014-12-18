@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Xml;
 using DOGPlatform.SVG;
 using System.IO;
+using System.Xml.Linq;
 
 namespace DOGPlatform
 {
@@ -168,11 +169,11 @@ namespace DOGPlatform
         void generateSandLithoPattern(string sLithoName,int iWidthPattern,int iHeightPattern,string sBackColor ,string d)
         {
             string filePathSVGMap = Path.Combine(cProjectManager.dirPathMap, sLithoName + ".svg");
-          
-            cSVGDocPatternSand cLithoPattern = new cSVGDocPatternSand(20, 20);
-            XmlElement lithoElement = cLithoPattern.addLithoPatternSand(sLithoName, iWidthPattern, iHeightPattern, sBackColor, d);
-            cLithoPattern.addgElement(lithoElement, 0, 0);
+
+            cSVGBase cLithoPattern = new cSVGBase(20, 20);
+            cLithoPattern.addSVGTitle("hahaha",100,100);
             cLithoPattern.makeSVGfile(filePathSVGMap);
+            cSVGXEPatternLithoSand.addLithoPatternSand(filePathSVGMap);
 
             FormWebNavigation formSVGView = new FormWebNavigation(filePathSVGMap);
             formSVGView.Show();

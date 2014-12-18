@@ -41,13 +41,14 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImport = new System.Windows.Forms.Button();
             this.tbxView = new System.Windows.Forms.TextBox();
+            this.btnShowLogHead = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 44);
+            this.label1.Location = new System.Drawing.Point(25, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 0;
@@ -55,7 +56,7 @@
             // 
             // btnOpenEX
             // 
-            this.btnOpenEX.Location = new System.Drawing.Point(30, 12);
+            this.btnOpenEX.Location = new System.Drawing.Point(17, 12);
             this.btnOpenEX.Name = "btnOpenEX";
             this.btnOpenEX.Size = new System.Drawing.Size(75, 23);
             this.btnOpenEX.TabIndex = 1;
@@ -65,22 +66,23 @@
             // 
             // tbxUserFilePath
             // 
-            this.tbxUserFilePath.Location = new System.Drawing.Point(111, 14);
+            this.tbxUserFilePath.Location = new System.Drawing.Point(97, 14);
             this.tbxUserFilePath.Name = "tbxUserFilePath";
-            this.tbxUserFilePath.Size = new System.Drawing.Size(405, 21);
+            this.tbxUserFilePath.Size = new System.Drawing.Size(373, 21);
             this.tbxUserFilePath.TabIndex = 2;
             // 
             // cbbLogFormat
             // 
             this.cbbLogFormat.FormattingEnabled = true;
-            this.cbbLogFormat.Location = new System.Drawing.Point(111, 41);
+            this.cbbLogFormat.Location = new System.Drawing.Point(97, 41);
             this.cbbLogFormat.Name = "cbbLogFormat";
             this.cbbLogFormat.Size = new System.Drawing.Size(121, 20);
             this.cbbLogFormat.TabIndex = 3;
+            this.cbbLogFormat.SelectedIndexChanged += new System.EventHandler(this.cbbLogFormat_SelectedIndexChanged);
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(395, 95);
+            this.btnDelete.Location = new System.Drawing.Point(395, 100);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 4;
@@ -90,7 +92,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(395, 151);
+            this.button3.Location = new System.Drawing.Point(395, 157);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 5;
@@ -154,11 +156,22 @@
             this.tbxView.Size = new System.Drawing.Size(445, 472);
             this.tbxView.TabIndex = 8;
             // 
+            // btnShowLogHead
+            // 
+            this.btnShowLogHead.Location = new System.Drawing.Point(251, 41);
+            this.btnShowLogHead.Name = "btnShowLogHead";
+            this.btnShowLogHead.Size = new System.Drawing.Size(75, 23);
+            this.btnShowLogHead.TabIndex = 9;
+            this.btnShowLogHead.Text = "查看系列";
+            this.btnShowLogHead.UseVisualStyleBackColor = true;
+            this.btnShowLogHead.Click += new System.EventHandler(this.btnShowLogHead_Click);
+            // 
             // FormDataImportLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 524);
+            this.Controls.Add(this.btnShowLogHead);
             this.Controls.Add(this.tbxView);
             this.Controls.Add(this.btnImport);
             this.Controls.Add(this.dgvLog);
@@ -191,5 +204,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn logNameNew;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.TextBox tbxView;
+        private System.Windows.Forms.Button btnShowLogHead;
     }
 }

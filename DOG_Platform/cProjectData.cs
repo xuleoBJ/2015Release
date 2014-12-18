@@ -31,6 +31,24 @@ namespace DOGPlatform
         public static int INVALID = -999;
         public static string sTempTrackData = "";
 
+
+        public static void clearProjectData()
+        {
+            ltStrProjectJH.Clear();
+            ltStrLogSeriers.Clear();
+            ltStrProjectXCM.Clear();
+            ltStrProjectYM.Clear();
+            listProjectWell.Clear();
+            fMapScale = 0.1F;
+            dfMapXrealRefer = 0.0;
+            dfMapYrealRefer = 9000.0;
+
+            sErrLineInfor = "";
+            INVALID = -999;
+            sTempTrackData = ""; 
+
+        }
+       
        
         public static void loadProjectData()
         {

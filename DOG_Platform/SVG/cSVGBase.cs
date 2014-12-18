@@ -64,7 +64,7 @@ namespace DOGPlatform.SVG
 
             svgScript.SetAttribute("type", "application/ecmascript");
             XmlAttribute striptXL = svgDoc.CreateAttribute("xlink", "href", "http://www.w3.org/1999/xlink");
-            striptXL.Value = "xl.js";
+            //striptXL.Value = "xl.js";
             svgScript.Attributes.Append(striptXL);
             svgRoot.AppendChild(svgScript);
 

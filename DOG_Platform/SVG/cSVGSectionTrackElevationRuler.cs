@@ -13,6 +13,7 @@ namespace DOGPlatform.SVG
         }
         public  XmlElement gElevationRuler(int m_minElevationDepth, int m_maxElevationDepth, int m_tickInveral_main)
         {
+            int iWidth = 40;
             XmlElement gElevationRuler = svgDoc.CreateElement("g");
             gElevationRuler.SetAttribute("id", "idTrackElevationRuler");
             XmlElement gLine = svgDoc.CreateElement("line");
@@ -26,7 +27,7 @@ namespace DOGPlatform.SVG
             XmlElement gRect = svgDoc.CreateElement("rect");
             gRect.SetAttribute("x", "0");
             gRect.SetAttribute("y", (-m_maxElevationDepth).ToString());
-            gRect.SetAttribute("width", "50");
+            gRect.SetAttribute("width", iWidth.ToString());
             gRect.SetAttribute("height", (m_maxElevationDepth-m_minElevationDepth).ToString());
             gRect.SetAttribute("style", "stroke-width:0.5");
             gRect.SetAttribute("stroke", "black");
@@ -37,10 +38,10 @@ namespace DOGPlatform.SVG
             {
                 XmlElement gDepthTick = svgDoc.CreateElement("path");
                 gDepthTick.SetAttribute("stroke-width", "1");
-                string d = "M 50 " + (-iCurrentDepth).ToString() + " h -8 ";
+                string d = "M " + iWidth.ToString()+" " + (-iCurrentDepth).ToString() + " h -8 ";
                 if  (iCurrentDepth % m_tickInveral_main != 0)
                 {
-                    d = "M 50 " + (-iCurrentDepth).ToString() + " h -4 "; 
+                    d = "M" + iWidth.ToString() + " " + (-iCurrentDepth).ToString() + " h -4 "; 
                 }
                 gDepthTick.SetAttribute("stroke", "black");
                 gDepthTick.SetAttribute("d", d);

@@ -91,12 +91,24 @@ namespace DOGPlatform.SVG
                 ItemWellPath currentWellPath = listWellPath[i];
                 double currentX = currentWellPath.f_dx;
                 double currentY = -m_KB + currentWellPath.f_TVD;
-               
-                float _xView_f = 0.0f;
-                if (-500 <= fListValue[i] && fListValue[i] < 1000)
+                if (currentWellPath.f_incl <= 80)
                 {
-                    _xView_f = this.iTrackWidth * (fListValue[i] - fLeftValue) / (fRightValue - fLeftValue);
-                    _points = _points + (currentX + _xView_f).ToString() + ',' + currentY.ToString() + " ";
+                    float _xView_f = 0.0f;
+                    if (-500 <= fListValue[i] && fListValue[i] < 1000)
+                    {
+                        _xView_f = this.iTrackWidth * (fListValue[i] - fLeftValue) / (fRightValue - fLeftValue);
+                        _points = _points + (currentX + _xView_f).ToString() + ',' + currentY.ToString() + " ";
+                    }
+                }
+                else if (currentWellPath.f_incl >= 85)
+                {
+                    float _yView_f = 0.0f;
+                    if (-500 <= fListValue[i] && fListValue[i] < 1000)
+                    {
+                        _yView_f = this.iTrackWidth * (fListValue[i] - fLeftValue) / (fRightValue - fLeftValue);
+                        _points = _points + currentX.ToString() + ',' + (currentY - _yView_f).ToString() + " ";
+                    }
+                
                 }
                               
             }

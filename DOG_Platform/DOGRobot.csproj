@@ -357,7 +357,6 @@
     <Compile Include="cIOinputWellHead.cs" />
     <Compile Include="cDataQuanlityControl.cs" />
     <Compile Include="cFileOperateDicPerforation.cs" />
-    <Compile Include="cCalProjectAnaFiles.cs" />
     <Compile Include="XML\cXMLProject.cs" />
     <Compile Include="FormAddNewWell.cs">
       <SubType>Form</SubType>

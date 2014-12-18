@@ -9,6 +9,29 @@ namespace DOGPlatform.SVG
     class cSVGXEPatternLithoSand
     {
 
+        public static void addLithoPatternSand(string filePath) 
+        {
+            XDocument xDoc = XDocument.Load(filePath);
+            XElement xroot = xDoc.Root;
+            //XElement xdefs1 = xDoc.Element("svg:defs");
+            //string sLithoName = "砂岩";
+            //int iWidthUnit = 20;
+            //int iHeightUnit = 10;
+            //string sBackColor = "yellow";
+
+            //foreach (var tag in xroot.DescendantNodes()) MessageBox.Show(tag.ToString());
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("p123", 20, 10, 2, "yellow", "red", true));
+                xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
+
+                xDoc.Save(filePath);
+            }
+        
+        }
+
         public static XElement lithoPattern(string sURL)
         {
             XNamespace  xn= "http://www.w3.org/2000/svg";
@@ -27,7 +50,6 @@ namespace DOGPlatform.SVG
             pattern.Add(gPath);
             return pattern;
         }
-
 
         public static XElement lithoPatternDefsSand(string sURL, int iWidthUnit, int iHeightUnit, int rSand, string backColor, string circleInnerColor, bool hasSplitLine)
         {

@@ -88,9 +88,29 @@ namespace DOGPlatform.SVG
             gWellHead.SetAttribute("cx", "0");
             gWellHead.SetAttribute("cy", (-m_KB + m_minMesureDepth).ToString());
             gWellHead.SetAttribute("r", "3");
-            gWellHead.SetAttribute("fill", "red");
+            gWellHead.SetAttribute("fill", "black");
             gWellCone.AppendChild(gWellHead);
             return gWellCone;
+        }
+
+        public XmlElement gWellHead(double x0,double y0)
+        {
+         XmlElement gHead = svgDoc.CreateElement("g");
+        //XmlElement gWellBoleLine = svgDoc.CreateElement("line");
+        //    gWellBoleLine.SetAttribute("x1", x0);
+        //    gWellBoleLine.SetAttribute("y1", y0).ToString());
+        //    gWellBoleLine.SetAttribute("x2", );
+        //    gWellBoleLine.SetAttribute("y2", (-m_KB + m_maxMesureDepth).ToString());
+        //    gWellBoleLine.SetAttribute("stroke-width", "1");
+        //    gHead.AppendChild(gWellBoleLine);
+        //    XmlElement gWellCircle = svgDoc.CreateElement("circle");
+        //    gWellCircle.SetAttribute("cx", "0");
+        //    gWellCircle.SetAttribute("cy", (-m_KB + m_minMesureDepth).ToString());
+        //    gWellCircle.SetAttribute("r", "3");
+        //    gWellCircle.SetAttribute("fill", "black");
+        //    gHead.AppendChild(gWellCircle); 
+
+       return gHead; 
         }
 
 
@@ -120,19 +140,75 @@ namespace DOGPlatform.SVG
                 double _x0 = currentWellPath.f_dx;
                 double _y0 = -m_KB + currentWellPath.f_TVD;
                 _pointWellPath = _pointWellPath + _x0.ToString() + ',' + _y0.ToString() + " ";
+                if (currentWellPath.f_incl <= 60)
+                {
+                    XmlElement gDepthTick = svgDoc.CreateElement("path");
+                    string d = "M " + _x0.ToString() + " " + _y0.ToString() + " h 3 ";
+                    gDepthTick.SetAttribute("d", d);
+                    gWellCone.AppendChild(gDepthTick);
 
-                XmlElement gDepthTick = svgDoc.CreateElement("path");
-                string d = "M "+_x0.ToString() +" " + _y0.ToString() + " h 3 ";
-                gDepthTick.SetAttribute("d", d);
-                gWellCone.AppendChild(gDepthTick);
+                    XmlElement gTickText = svgDoc.CreateElement("text");
+                    gTickText.SetAttribute("x", (_x0 + 3).ToString());
+                    gTickText.SetAttribute("y", _y0.ToString());
+                    gTickText.SetAttribute("font-size", "3");
+                    gTickText.SetAttribute("stroke-width", "0.2");
+                    gTickText.InnerText = fListMD[i].ToString();
+                    gWellCone.AppendChild(gTickText);
+                }
+                else if (currentWellPath.f_incl <= 80)
+                {
+                    XmlElement gDepthTick = svgDoc.CreateElement("path");
+                    string d = "M " + _x0.ToString() + " " + _y0.ToString() + " h 3 ";
+                    gDepthTick.SetAttribute("d", d);
+                    gWellCone.AppendChild(gDepthTick);
 
-                XmlElement gTickText = svgDoc.CreateElement("text");
-                gTickText.SetAttribute("x", (_x0+3).ToString());
-                gTickText.SetAttribute("y", _y0.ToString());
-                gTickText.SetAttribute("font-size", "4");
-                 gTickText.SetAttribute("stroke-width", "0.5");
-                gTickText.InnerText = fListMD[i].ToString();
-                gWellCone.AppendChild(gTickText);
+                    XmlElement gTickText = svgDoc.CreateElement("text");
+                    gTickText.SetAttribute("x", (_x0 + 3).ToString());
+                    gTickText.SetAttribute("y", _y0.ToString());
+                    gTickText.SetAttribute("font-size", "2");
+                    gTickText.SetAttribute("stroke-width", "0.2");
+                    gTickText.InnerText = fListMD[i].ToString();
+                    gWellCone.AppendChild(gTickText);
+                }
+                else if (currentWellPath.f_incl >= 85 )
+                {
+                    XmlElement gDepthTick = svgDoc.CreateElement("path");
+                    string d = "M " + _x0.ToString() + " " + _y0.ToString() + " v 1 ";
+                    gDepthTick.SetAttribute("d", d);
+                    gWellCone.AppendChild(gDepthTick);
+
+                    XmlElement gTickText = svgDoc.CreateElement("text");
+                    gTickText.SetAttribute("x", _x0.ToString());
+                    gTickText.SetAttribute("y", (_y0+1).ToString());
+                    gTickText.SetAttribute("font-size", "2");
+                    gTickText.SetAttribute("stroke-width", "0.2");
+                    gTickText.SetAttribute("writing-mode", "tb");
+                    gTickText.SetAttribute("glyph-orientation-vertical", "90");
+                     gTickText.SetAttribute("letter-spacing", "-0.1");
+                    gTickText.InnerText = fListMD[i].ToString();
+                    gWellCone.AppendChild(gTickText);
+                
+                }
+                else
+                {
+                    XmlElement gDepthTick = svgDoc.CreateElement("path");
+                    string d = "M " + _x0.ToString() + " " + _y0.ToString() + " v 1 ";
+                    gDepthTick.SetAttribute("d", d);
+                    gWellCone.AppendChild(gDepthTick);
+
+                    XmlElement gTickText = svgDoc.CreateElement("text");
+                    gTickText.SetAttribute("x", _x0.ToString());
+                    gTickText.SetAttribute("y", (_y0 + 1).ToString());
+                    gTickText.SetAttribute("font-size", "2");
+                    gTickText.SetAttribute("stroke-width", "0.2");//transform="translate(200,100)rotate(180)"
+                    gTickText.SetAttribute("glyph-orientation-vertical", "90");
+                    //  string rotate = "translate(" + _x0.ToString() + " " + _y0.ToString() + ")rotate(90)";
+                    gTickText.SetAttribute("writing-mode", "tb");
+                     gTickText.SetAttribute("letter-spacing", "-0.1");
+                    gTickText.InnerText = fListMD[i].ToString();
+                    gWellCone.AppendChild(gTickText);
+
+                }
             }
             XmlElement gJHHeadLine = svgDoc.CreateElement("line");
             gJHHeadLine.SetAttribute("x1", (listWellPath[0].f_dx-50).ToString());
@@ -152,7 +228,7 @@ namespace DOGPlatform.SVG
             gWellHead.SetAttribute("cx", (listWellPath[0].f_dx).ToString());
             gWellHead.SetAttribute("cy", (-m_KB + listWellPath[0].f_TVD).ToString());
             gWellHead.SetAttribute("r", "3");
-            gWellHead.SetAttribute("fill", "red");
+            gWellHead.SetAttribute("fill", "black");
             gWellCone.AppendChild(gWellHead);
 
             XmlElement gWellPath = svgDoc.CreateElement("polyline");

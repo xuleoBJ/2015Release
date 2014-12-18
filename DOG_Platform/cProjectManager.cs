@@ -174,7 +174,7 @@ namespace DOGPlatform
             }
 
         }
-        public bool loadProjectData()
+        public static bool loadProjectData()
         {
             OpenFileDialog ofdProjectPath = new OpenFileDialog();
 

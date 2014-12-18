@@ -32,6 +32,7 @@
             this.tabPageData = new System.Windows.Forms.TabPage();
             this.tvwWellSectionCollection = new System.Windows.Forms.TreeView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnLogTrackAddLeft = new System.Windows.Forms.Button();
             this.nUDRightLogRightValue = new System.Windows.Forms.NumericUpDown();
             this.nUDRightLogLeftValue = new System.Windows.Forms.NumericUpDown();
             this.nUDLeftLogRightValue = new System.Windows.Forms.NumericUpDown();
@@ -187,7 +188,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.btnLogTrackAddLeft = new System.Windows.Forms.Button();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -306,6 +306,16 @@
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测井曲线";
+            // 
+            // btnLogTrackAddLeft
+            // 
+            this.btnLogTrackAddLeft.Location = new System.Drawing.Point(391, 17);
+            this.btnLogTrackAddLeft.Name = "btnLogTrackAddLeft";
+            this.btnLogTrackAddLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnLogTrackAddLeft.TabIndex = 29;
+            this.btnLogTrackAddLeft.Text = "生成曲线道";
+            this.btnLogTrackAddLeft.UseVisualStyleBackColor = true;
+            this.btnLogTrackAddLeft.Click += new System.EventHandler(this.btnLogTrackAddLeft_Click);
             // 
             // nUDRightLogRightValue
             // 
@@ -589,7 +599,7 @@
             this.tbxBottomElevationInput.Name = "tbxBottomElevationInput";
             this.tbxBottomElevationInput.Size = new System.Drawing.Size(105, 21);
             this.tbxBottomElevationInput.TabIndex = 13;
-            this.tbxBottomElevationInput.Text = "1000";
+            this.tbxBottomElevationInput.Text = "-1000";
             this.tbxBottomElevationInput.TextChanged += new System.EventHandler(this.tbxBottomInput_TextChanged);
             // 
             // tbxTopElevationInput
@@ -599,7 +609,7 @@
             this.tbxTopElevationInput.Name = "tbxTopElevationInput";
             this.tbxTopElevationInput.Size = new System.Drawing.Size(105, 21);
             this.tbxTopElevationInput.TabIndex = 12;
-            this.tbxTopElevationInput.Text = "100";
+            this.tbxTopElevationInput.Text = "-100";
             this.tbxTopElevationInput.TextChanged += new System.EventHandler(this.tbxTopInput_TextChanged);
             // 
             // btnGenerateDataByInputDepth
@@ -2478,24 +2488,14 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
-            // btnLogTrackAddLeft
-            // 
-            this.btnLogTrackAddLeft.Location = new System.Drawing.Point(391, 17);
-            this.btnLogTrackAddLeft.Name = "btnLogTrackAddLeft";
-            this.btnLogTrackAddLeft.Size = new System.Drawing.Size(75, 23);
-            this.btnLogTrackAddLeft.TabIndex = 29;
-            this.btnLogTrackAddLeft.Text = "生成曲线道";
-            this.btnLogTrackAddLeft.UseVisualStyleBackColor = true;
-            this.btnLogTrackAddLeft.Click += new System.EventHandler(this.btnLogTrackAddLeft_Click);
-            // 
-            // FormWellSectionReservior
+            // FormWellSectionPath
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 559);
             this.Controls.Add(this.tabControlSection);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FormWellSectionReservior";
+            this.Name = "FormWellSectionPath";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "井间油藏剖面图";
             this.Load += new System.EventHandler(this.FormWellSectionGraph_Load);
