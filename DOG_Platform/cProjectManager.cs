@@ -203,7 +203,7 @@ namespace DOGPlatform
             //save all staticData into project
             cXMLProject.setProjectRefPointNode();
             cXMLProject.setProjectJHNode();
-            cXMLProject.updateLogSeriersNode2XML();
+            cXMLProject.setProjectLogSeriersNode();
         }
         public static void createWellDir(string sJH)
         {

@@ -95,7 +95,7 @@ namespace DOGPlatform.SVG
                 ItemWellPath currentWellPath = listWellPath[i];
                 double currentX = currentWellPath.f_dx;
                 double currentY = -m_KB + currentWellPath.f_TVD;
-                if (currentWellPath.f_incl <= 70)
+                if (currentWellPath.f_incl <= 80)
                 {
                     float _xView_f = 0.0f;
                     if (-500 <= fListValue[i] && fListValue[i] < 1000)
@@ -111,6 +111,57 @@ namespace DOGPlatform.SVG
                    fListValueHorizina.Add(fListValue[i]); 
                 } 
                               
+            }
+            XmlElement gLogPolyline = svgDoc.CreateElement("polyline");
+            gLogPolyline.SetAttribute("fill", "none");
+            gLogPolyline.SetAttribute("points", _points);
+            gLogTrack.AppendChild(gLogPolyline);
+
+
+            gLogTrack.AppendChild(gTrackLogHeadText(x0, y0, sLogName, sColorCurve));
+            gLogTrack.AppendChild(gTrackLogHeadRuler(x0, y0, sColorCurve)); 
+
+            return gLogTrack;
+        }
+
+
+        public XmlElement gPathHorinzalTrackLog(string sJH, string sLogName, List<float> fListMD, List<float> fListValue,
+         float m_KB, float fLeftValue, float fRightValue, string sColorCurve)
+        {
+            XmlElement gLogTrack = svgDoc.CreateElement("g");
+            gLogTrack.SetAttribute("id", sJH + "#" + sLogName);
+            gLogTrack.SetAttribute("stroke", sColorCurve);
+            gLogTrack.SetAttribute("stroke-width", "0.5");
+            if (sLogName == null || fListMD.Count == 0) return gLogTrack;
+            string _points = "";
+
+            List<ItemWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
+            List<ItemWellPath> listWellPathHorzion = new List<ItemWellPath>();
+            List<float> fListMDHorizina = new List<float>();
+            List<float> fListValueHorizina = new List<float>();
+            double x0 = listWellPath[0].f_dx;
+            double y0 = -m_KB + listWellPath[0].f_TVD;
+            for (int i = 0; i < fListMD.Count; i++)
+            {
+                ItemWellPath currentWellPath = listWellPath[i];
+                double currentX = currentWellPath.f_dx;
+                double currentY = -m_KB + currentWellPath.f_TVD;
+                if (currentWellPath.f_incl <= 70)
+                {
+                    float _xView_f = 0.0f;
+                    if (-500 <= fListValue[i] && fListValue[i] < 1000)
+                    {
+                        _xView_f = this.iTrackWidth * (fListValue[i] - fLeftValue) / (fRightValue - fLeftValue);
+                        _points = _points + (currentX + _xView_f).ToString() + ',' + currentY.ToString() + " ";
+                    }
+                }
+                else if (currentWellPath.f_incl >= 85 && i % 3 == 0)
+                {
+                    listWellPathHorzion.Add(currentWellPath);
+                    fListMDHorizina.Add(fListMD[i]);
+                    fListValueHorizina.Add(fListValue[i]);
+                }
+
             }
             XmlElement gLogPolyline = svgDoc.CreateElement("polyline");
             // gLogPolyline.SetAttribute("style", "stroke-width:1");
@@ -131,7 +182,7 @@ namespace DOGPlatform.SVG
                 {
                     _yView_f = this.iTrackWidth * (fListValueHorizina[i] - fLeftValue) / (fRightValue - fLeftValue);
                     _pointsHorizon = _pointsHorizon + currentDX.ToString() + ',' + (currentY - _yView_f).ToString() + " ";
-                } 
+                }
             }
             XmlElement gLogPolylineHorizinal = svgDoc.CreateElement("polyline");
             // gLogPolyline.SetAttribute("style", "stroke-width:1");
@@ -141,11 +192,10 @@ namespace DOGPlatform.SVG
             gLogTrack.AppendChild(gLogPolylineHorizinal);
 
             gLogTrack.AppendChild(gTrackLogHeadText(x0, y0, sLogName, sColorCurve));
-            gLogTrack.AppendChild(gTrackLogHeadRuler(x0, y0, sColorCurve)); 
+            gLogTrack.AppendChild(gTrackLogHeadRuler(x0, y0, sColorCurve));
 
             return gLogTrack;
         }
-
          XmlElement gTrackLogHeadText(double x0,double y0,string sLogName,string sColor) 
         {
             //添加道头名，X位置取道宽一半偏左，Y位置去深度最小值对应的海拔更低一些##添加道头名，X位置取道宽一半偏左，Y位置去深度最小值对应的海拔更低一些

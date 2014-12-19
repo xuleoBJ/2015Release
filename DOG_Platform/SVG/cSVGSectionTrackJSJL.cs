@@ -105,7 +105,7 @@ namespace DOGPlatform.SVG
             gJSJLRect.SetAttribute("width", this.iTrackWidth.ToString());
             gJSJLRect.SetAttribute("height", height.ToString());
             gJSJLRect.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect.SetAttribute("stroke", "none");
+            gJSJLRect.SetAttribute("stroke", "black");
             gJSJLRect.SetAttribute("fill", "red");
             return gJSJLRect;
         }
@@ -118,7 +118,7 @@ namespace DOGPlatform.SVG
             gJSJLRect.SetAttribute("width", this.iTrackWidth.ToString());
             gJSJLRect.SetAttribute("height", height.ToString());
             gJSJLRect.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect.SetAttribute("stroke", "none");
+            gJSJLRect.SetAttribute("stroke", "black");
             gJSJLRect.SetAttribute("fill", "yellow");
             return gJSJLRect;
         }
@@ -131,7 +131,7 @@ namespace DOGPlatform.SVG
             gJSJLRect.SetAttribute("width", this.iTrackWidth.ToString());
             gJSJLRect.SetAttribute("height", height.ToString());
             gJSJLRect.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect.SetAttribute("stroke", "none");
+            gJSJLRect.SetAttribute("stroke", "black");
             gJSJLRect.SetAttribute("fill", "blue");
             return gJSJLRect;
         }
@@ -231,7 +231,7 @@ namespace DOGPlatform.SVG
             gJSJLRect2.SetAttribute("width", (this.iTrackWidth * 0.5).ToString());
             gJSJLRect2.SetAttribute("height", height.ToString());
             gJSJLRect2.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect2.SetAttribute("stroke", "red");
+            gJSJLRect2.SetAttribute("stroke", "black");
             gJSJLRect2.SetAttribute("fill", "red");
             gJSJL.AppendChild(gJSJLRect2);
             return gJSJL;
@@ -247,7 +247,7 @@ namespace DOGPlatform.SVG
             gJSJLRect.SetAttribute("width", (this.iTrackWidth * 0.5).ToString());
             gJSJLRect.SetAttribute("height", height.ToString());
             gJSJLRect.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect.SetAttribute("stroke", "yellow");
+            gJSJLRect.SetAttribute("stroke", "black");
             gJSJLRect.SetAttribute("fill", "none");
             gJSJL.AppendChild(gJSJLRect);
 
@@ -257,7 +257,7 @@ namespace DOGPlatform.SVG
             gJSJLRect2.SetAttribute("width", (this.iTrackWidth * 0.5).ToString());
             gJSJLRect2.SetAttribute("height", height.ToString());
             gJSJLRect2.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect2.SetAttribute("stroke", "yellow");
+            gJSJLRect2.SetAttribute("stroke", "black");
             gJSJLRect2.SetAttribute("fill", "yellow");
             gJSJL.AppendChild(gJSJLRect2);
             return gJSJL;
@@ -272,7 +272,7 @@ namespace DOGPlatform.SVG
             gJSJLRect.SetAttribute("width", this.iTrackWidth.ToString());
             gJSJLRect.SetAttribute("height", height.ToString());
             gJSJLRect.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect.SetAttribute("fill", "none");
+            gJSJLRect.SetAttribute("fill", "black");
             gJSJLRect.SetAttribute("stroke", "red");
             gJSJL.AppendChild(gJSJLRect);
 
@@ -299,7 +299,7 @@ namespace DOGPlatform.SVG
             gJSJLRect.SetAttribute("width", this.iTrackWidth.ToString());
             gJSJLRect.SetAttribute("height", height.ToString());
             gJSJLRect.SetAttribute("style", "stroke-width:0.1");
-            gJSJLRect.SetAttribute("stroke", "none");
+            gJSJLRect.SetAttribute("stroke", "black");
             gJSJLRect.SetAttribute("fill", "black");
             return gJSJLRect;
         }

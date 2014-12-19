@@ -1189,6 +1189,48 @@ namespace DOGPlatform
             WaitWindow.Show(this.calSplitJSJLWorkerMethod);
         }
 
+        private void tvProjectData_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+
+            string oldNoteText = e.Node.Text;  //原来的测井名
+            string sJH = e.Node.Parent.Parent.Text;
+            this.BeginInvoke(new Action(() => afterAfterEditLogName(sJH, oldNoteText, e.Node)));
+           
+        }
+        private void afterAfterEditLogName(string sJH,string oldNoteText, TreeNode node)
+        {
+            cIOinputLog.renameProjectLogFile(sJH, oldNoteText, node.Text);
+        }
+
+        private void tvProjectData_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            e.CancelEdit = true;
+            if (e.Node.Level == 3) e.CancelEdit = false;
+               
+        }
+
+        private void tvProjectGraph_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            e.CancelEdit = true;
+            if (e.Node.Level > 0) e.CancelEdit = false;
+        }
+
+        private void tvProjectGraph_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            string oldNoteText = e.Node.Text;  //原来的测井名
+            this.BeginInvoke(new Action(() => afterAfterEditGraphName( oldNoteText, e.Node)));
+        }
+
+        private void afterAfterEditGraphName( string oldNoteText, TreeNode node)
+        {
+            string oldfilepath = Path.Combine(cProjectManager.dirPathMap, oldNoteText);
+            string newfilepath = Path.Combine(cProjectManager.dirPathMap, node.Text);
+            File.Move(oldfilepath, newfilepath);
+            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvProjectGraph.SelectedNode.Text);
+            updateWebSVG();
+        }
+
+
      
 
 

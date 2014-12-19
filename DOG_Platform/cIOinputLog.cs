@@ -323,7 +323,6 @@ namespace DOGPlatform
      
 
 
-
         //更新全部曲线？还是只更新部分曲线？同名曲线是否合并？
         //列数不够的删除行，得判断文件是否合法；
         //第一列统统认为是深度列
@@ -539,8 +538,6 @@ namespace DOGPlatform
             Cursor.Current = Cursors.Default;
         }
 
-
-
         public static void extractTextLog2File(string sJH, string sLogName, string filePath)
         {
             Cursor.Current = Cursors.WaitCursor;
@@ -584,8 +581,12 @@ namespace DOGPlatform
 
         }
 
-             
+        public static void renameProjectLogFile(string sJH, string sLogName,string sLogNameNew) 
+        {
 
-
+            string oldfilepath=Path.Combine(cProjectManager.dirPathWellDir,sJH, sLogName + cProjectManager.fileExtensionWellLog) ;
+            string newfilepath = Path.Combine(cProjectManager.dirPathWellDir, sJH, sLogNameNew + cProjectManager.fileExtensionWellLog);
+            File.Move(oldfilepath, newfilepath);
+        }
     }
 }

@@ -204,9 +204,9 @@ namespace DOGPlatform.SVG
                     gTickText.SetAttribute("glyph-orientation-vertical", "90");
                     //  string rotate = "translate(" + _x0.ToString() + " " + _y0.ToString() + ")rotate(90)";
                     gTickText.SetAttribute("writing-mode", "tb");
-                     gTickText.SetAttribute("letter-spacing", "-0.1");
+                    gTickText.SetAttribute("letter-spacing", "-0.1");
                     gTickText.InnerText = fListMD[i].ToString();
-                    gWellCone.AppendChild(gTickText);
+                    gWellCone.AppendChild(gTickText); 
 
                 }
             }

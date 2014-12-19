@@ -9,7 +9,12 @@ using System.Windows.Forms;
 using System.IO;
 
 namespace DOGPlatform
-{
+{  ///
+   /// 加新导入的测井曲线格式需要以下几个部分的修改
+   /// 1. enum 类型加
+   /// 2. 下拉选择列表加
+   /// 3. 选择文件头inputLog类加
+    ///4  寻找到数据行，调用读取数据数据的方法，注意输入数据其实行
     public partial class FormDataImportLog : Form
     {
         public FormDataImportLog(string _sJH)

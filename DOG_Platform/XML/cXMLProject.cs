@@ -189,7 +189,7 @@ namespace DOGPlatform.XML
 
         }
 
-        public static void updateLogSeriersNode2XML()
+        public static void setProjectLogSeriersNode()
         {
              string sPath="/Project/ProjectLogSeriers";
               string _data = string.Join(" ", cProjectData.ltStrLogSeriers);
