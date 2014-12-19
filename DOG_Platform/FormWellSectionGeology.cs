@@ -207,7 +207,9 @@ namespace DOGPlatform
         void generateSectionGraph(int iTypeFlatted, string filenameSVGMap)
         {
             //xml存数据不合适 因为会有大量的井数据，但是可以存个样式，样式搭配数据，样式里可以有道宽，这样做到数据和样式的分离，成图解析器解析样式就OK。
-            
+
+            List<Point> PListWellPositon = new List<Point>();
+
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 cWellSectionSVG itemWell = listWellsSection[i];
@@ -215,24 +217,20 @@ namespace DOGPlatform
                 if (iTypeFlatted == (int)typeFlatted.海拔深度) itemWell.fDepthFlatted = itemWell.fKB;
                 if (iTypeFlatted == (int)typeFlatted.顶面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthTop;
                 if (iTypeFlatted == (int)typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
-
-                if (i == 0)
+             
+                if(rdbPlaceBywellPosition.Checked==true ) PListWellPositon.Add(cCordinationTransform.getPointViewByJH(listWellsSection[i].sJH));
+                if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+300*i,0));
+                if (rdbPlaceBYWellDistance.Checked == true)
                 {
-                    itemWell.fXview = 100F;
-                }
-                else
-                {
-                    if (rdbWellDistanceEqual.Checked == true)
-                    {
-                        itemWell.fXview = listWellsSection[i - 1].fXview + 200;
-                    }
-                    if (this.rdbWellDistanceReal.Checked == true)
-                    {
-                        Point pointConvert2View = cCordinationTransform.getPointViewByWellName(ltStrSelectedJH[i - 1]);
-                        Point pointWell0Convert2View = cCordinationTransform.getPointViewByWellName(ltStrSelectedJH[i]);
-                        int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(pointConvert2View, pointWell0Convert2View));
-                        itemWell.fXview = listWellsSection[i - 1].fXview + iDistance;
-                    }
+                    PListWellPositon.Add(new Point(100 + 300 * i, 0)); 
+                    //if (i == 0) PListWellPositon.Add(new Point(100, 0));
+                    //else
+                    //{
+                    //    Point pointConvert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i - 1]);
+                    //    Point pointWell0Convert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i]);
+                    //    int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(pointConvert2View, pointWell0Convert2View));
+                    //    PListWellPositon.Add(new Point(listWellsSection[i - 1].fXview + iDistance, 0));
+                    //}
                 }
             }
 
@@ -260,7 +258,7 @@ namespace DOGPlatform
                 float fTopShowed = listWellsSection[i].fShowedDepthTop;
                 float fBaseShowed = listWellsSection[i].fShowedDepthBase;
                 float fDepthFlatted = listWellsSection[i].fDepthFlatted;
-                int iCurrerntWellHorizonPotion = Convert.ToInt16(listWellsSection[i].fXview);
+                int iCurrerntWellHorizonPotion = PListWellPositon[i].X;
 
                 cSVGSectionWell currentWell = new cSVGSectionWell(sJH);
 
@@ -376,28 +374,13 @@ namespace DOGPlatform
         private void btnMakeSection_Click(object sender, EventArgs e)
         {
             string filenameSVGMap;
-            if (this.tbxTitle.Text == "")
-            {
-                filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "-section.svg";
-            }
-            else
-            {
-                filenameSVGMap = this.tbxTitle.Text + ".svg";
-            }
-            if (rdbFlattedByDepth.Checked == true)
-            {
-                generateSectionGraph((int)(typeFlatted.海拔深度), filenameSVGMap) ;
-            }
-            else if (rdbFlattedByTopDepth.Checked == true)
-            {
-                generateSectionGraph((int)(typeFlatted.顶面拉平), filenameSVGMap);
-            }
-            else if (rdbFlattedByBaseDepth.Checked == true)
-            {
-                generateSectionGraph((int)(typeFlatted.底面拉平), filenameSVGMap);
-            }
-           
 
+            if (this.tbxTitle.Text == "") filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "-section.svg"; 
+            else filenameSVGMap = this.tbxTitle.Text + ".svg";
+
+            if (rdbFlattedByDepth.Checked == true) generateSectionGraph((int)(typeFlatted.海拔深度), filenameSVGMap) ; 
+            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph((int)(typeFlatted.顶面拉平), filenameSVGMap);
+            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph((int)(typeFlatted.底面拉平), filenameSVGMap);
 
         }
 

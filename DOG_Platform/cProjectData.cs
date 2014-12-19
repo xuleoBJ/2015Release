@@ -23,7 +23,7 @@ namespace DOGPlatform
         
         
         public static cGridPara projectMesh = new cGridPara();
-        public static float fMapScale = 0.1F;
+        public static double dfMapScale = 0.0;
         public static double dfMapXrealRefer = 0.0;
         public static double dfMapYrealRefer = 9000.0;
 
@@ -39,7 +39,7 @@ namespace DOGPlatform
             ltStrProjectXCM.Clear();
             ltStrProjectYM.Clear();
             listProjectWell.Clear();
-            fMapScale = 0.1F;
+            dfMapScale = 0.1;
             dfMapXrealRefer = 0.0;
             dfMapYrealRefer = 9000.0;
 
@@ -58,11 +58,9 @@ namespace DOGPlatform
                 getProjectJHFromXML();
                 if (cProjectData.ltStrProjectJH.Count == 0)
                 {
-                    foreach (string _sJH in cIOinputWellHead.getLtStrJH())
-                        ltStrProjectJH.Add(_sJH);
+                    foreach (string _sJH in cIOinputWellHead.getLtStrJH()) ltStrProjectJH.Add(_sJH);
                     ltStrProjectJH.Sort();
                     setProjectWellsInfor();
-
                 }
                 getProjectLogSeriersFromXML();
                 if (cProjectData.ltStrLogSeriers.Count == 0) setProjectGlobalLogSeriers();

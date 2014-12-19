@@ -281,7 +281,7 @@ namespace DOGPlatform
                     _lineindex++;
                     split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
                     if (_lineindex < indexStartLine) sw.WriteLine(line);
-                    if (_lineindex >= indexStartLine && split[0] == sFirstWord) sw.WriteLine(line); ;
+                    if (_lineindex >= indexStartLine && split[0] != sFirstWord) sw.WriteLine(line); ;
                 }
             }
             sw.Close();
@@ -313,6 +313,11 @@ namespace DOGPlatform
 
         public static void replaceLineByFirstWord(string _filePath, string _sFirstWord, List<string> _ltStrLine)
         {
+            replaceLineByFirstWord(_filePath, _sFirstWord, string.Join("\r\n", _ltStrLine));                     
+        }
+
+        public static void replaceLineByFirstWord(string _filePath, string _sFirstWord, string _sLine)
+        {
             string _filePathTempWrited = Path.Combine(cProjectManager.dirPathTemp, "_tempt.txt");
             StreamWriter sw = new StreamWriter(_filePathTempWrited, false, Encoding.UTF8);
             int _lineindex = 0;
@@ -324,17 +329,16 @@ namespace DOGPlatform
                 {
                     _lineindex++;
                     split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (split[0] == _sFirstWord) sw.WriteLine(line); ;
+                    if (split[0] != _sFirstWord) sw.WriteLine(line); 
                 }
             }
-            foreach (string _line in _ltStrLine)
-            {
-                sw.WriteLine(_line.TrimEnd());
-            }
+            
+            sw.WriteLine(_sLine.TrimEnd());
             sw.Close();
             File.Copy(_filePathTempWrited, _filePath, true);
 
         }
+
      
 
         //按词列指数删除文件

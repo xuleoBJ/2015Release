@@ -163,13 +163,13 @@ namespace DOGPlatform
             List<int> iListYview = new List<int>();
             for(int i=0;i<ltStrSelectedOilJH.Count;i++)
             {
-                Point pWellView = cCordinationTransform.getPointViewByWellName(ltStrSelectedOilJH[i]);
+                Point pWellView = cCordinationTransform.getPointViewByJH(ltStrSelectedOilJH[i]);
                 iListXview.Add(pWellView.X);
                 iListYview.Add(pWellView.Y);
             }
-            float fScale = float.Parse(tbxPieR.Text);
+            float dfscale = float.Parse(tbxPieR.Text);
             XmlElement returnElemment = cLayerProductionMap.addgOilWellProductionPie(ltStrSelectedOilJH, iListXview, iListYview,
- fListOilValue, fListWaterValue, fScale);
+ fListOilValue, fListWaterValue, dfscale);
             cLayerProductionMap.addgElement(returnElemment, 0, 0); }
 
         void addWaterWellPieMap(cSelectProductData cSelectProductionData, int iValueWaterColumnIndex,
@@ -187,13 +187,13 @@ namespace DOGPlatform
             List<int> iListYview = new List<int>();
             for (int i = 0; i < ltStrSelectedWaterJH.Count; i++)
             {
-                Point pWellView = cCordinationTransform.getPointViewByWellName(ltStrSelectedWaterJH[i]);
+                Point pWellView = cCordinationTransform.getPointViewByJH(ltStrSelectedWaterJH[i]);
                 iListXview.Add(pWellView.X);
                 iListYview.Add(pWellView.Y);
             }
-            float fScale = float.Parse(tbxPieR.Text);
+            float dfscale = float.Parse(tbxPieR.Text);
             XmlElement returnElemment = cLayerProductionMap.addgWaterWellProductionPie(ltStrSelectedWaterJH,iListXview,
-                iListYview, fListWaterValue, fScale);
+                iListYview, fListWaterValue, dfscale);
             cLayerProductionMap.addgElement(returnElemment, 0, 0);
 
         }
@@ -217,7 +217,7 @@ namespace DOGPlatform
             List<int> iListYviewOilWell = new List<int>();
             for (int i = 0; i < ltStrSelectedOilJH.Count; i++)
             {
-                Point pWellView = cCordinationTransform.getPointViewByWellName(ltStrSelectedOilJH[i]);
+                Point pWellView = cCordinationTransform.getPointViewByJH(ltStrSelectedOilJH[i]);
                 iListXviewOilWell.Add(pWellView.X);
                 iListYviewOilWell.Add(pWellView.Y);
             }
@@ -243,7 +243,7 @@ namespace DOGPlatform
             List<int> iListYviewWaterWell = new List<int>();
             for (int i = 0; i < ltStrSelectedWaterJH.Count; i++)
             {
-                Point pWellView = cCordinationTransform.getPointViewByWellName(ltStrSelectedWaterJH[i]);
+                Point pWellView = cCordinationTransform.getPointViewByJH(ltStrSelectedWaterJH[i]);
                 iListXviewWaterWell.Add(pWellView.X);
                 iListYviewWaterWell.Add(pWellView.Y);
             }

@@ -13,6 +13,7 @@ namespace DOGPlatform
             public double dbY;
             public float fKB;
             public int iWellType;
+            public float fWellBase;
 
             public ItemWellHead(string _sJH) 
             {
@@ -21,6 +22,7 @@ namespace DOGPlatform
                 this.dbY = 0.0;
                 this.fKB = 0.0f;
                 this.iWellType = 0;
+                this.fWellBase = 0.0f;
                if (File.Exists(cProjectManager.filePathInputWellhead))
                 {
                     using (StreamReader sr = new StreamReader(cProjectManager.filePathInputWellhead, System.Text.Encoding.UTF8))
@@ -32,16 +34,16 @@ namespace DOGPlatform
                             if (split[0] == _sJH)
                             {
                                 sJH = split[0];
-                                dbX = double.Parse(split[1]);
-                                dbY = double.Parse(split[2]);
-                                fKB = float.Parse(split[3]);
-                                iWellType = int.Parse(split[4]);
+                                double.TryParse(split[1], out dbX);
+                                double.TryParse(split[2], out dbY);
+                                float.TryParse(split[3], out  fKB);
+                                int.TryParse(split[4], out iWellType);
+                                float.TryParse(split[5], out  fWellBase);
                                 break;
                             }
                         }
                     }
                 }
-
 
             }
 
@@ -53,6 +55,7 @@ namespace DOGPlatform
                 ltStrWrited.Add(item.dbY.ToString());
                 ltStrWrited.Add(item.fKB.ToString());
                 ltStrWrited.Add(item.iWellType.ToString());
+                ltStrWrited.Add(item.fWellBase.ToString());
                 return string.Join("\t", ltStrWrited.ToArray());
             }
 
@@ -60,7 +63,7 @@ namespace DOGPlatform
             {
                 if (_sJX.IndexOf("油井") >= 0 ||_sJX.ToUpper() =="OIL"|| _sJX == "3") _sJX = "3";
                 else if (_sJX.IndexOf("水井") >= 0|| _sJX == "15") _sJX = "15";
-                else if (_sJX.IndexOf("水井") >= 0 || _sJX == "5") _sJX = "5";
+                else if (_sJX.IndexOf("气井") >= 0 || _sJX == "5") _sJX = "5";
                 else _sJX = "0";
                 return _sJX;
             } 

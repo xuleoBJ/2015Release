@@ -18,7 +18,7 @@ namespace DOGPlatform
         }
 
         public static Point transRealPointF2ViewPoint
-    (double df_XReal, double df_YReal, double df_XRealRefer, double df_YRealRefer, int iWidth, float f_Xscale, int iheight, float f_Yscale)
+    (double df_XReal, double df_YReal, double df_XRealRefer, double df_YRealRefer, int iWidth, double f_Xscale, int iheight, double f_Yscale)
         {
             Point PointReturn = new Point();
             PointReturn.X = Convert.ToInt32((df_XReal - df_XRealRefer) * f_Xscale);
@@ -28,49 +28,37 @@ namespace DOGPlatform
         }
 
         public static Point transRealPointF2ViewPoint
-    (double df_XReal, double df_YReal, double df_XRealRefer, double df_YRealRefer, float fscale)
+    (double df_XReal, double df_YReal, double df_XRealRefer, double df_YRealRefer, double dfscale)
         {
             Point PointReturn = new Point();
-            PointReturn.X = Convert.ToInt32((df_XReal - df_XRealRefer) * fscale);
-            PointReturn.Y = Convert.ToInt32((df_YRealRefer - df_YReal) * fscale);
+            PointReturn.X = Convert.ToInt32((df_XReal - df_XRealRefer) * dfscale);
+            PointReturn.Y = Convert.ToInt32((df_YRealRefer - df_YReal) * dfscale);
             return PointReturn;
         }
 
         public static Point transRealPointF2ViewPointByCurrentSystemSetting(double df_XReal, double df_YReal)
         {
             Point PointReturn = new Point();
-            PointReturn.X = Convert.ToInt32((df_XReal - cProjectData.dfMapXrealRefer) *  cProjectData.fMapScale);
-            PointReturn.Y = Convert.ToInt32((cProjectData.dfMapYrealRefer - df_YReal) * cProjectData.fMapScale);
+            PointReturn.X = Convert.ToInt32((df_XReal - cProjectData.dfMapXrealRefer) *  cProjectData.dfMapScale);
+            PointReturn.Y = Convert.ToInt32((cProjectData.dfMapYrealRefer - df_YReal) * cProjectData.dfMapScale);
             return PointReturn;
         }
-        public static double transXview2Xreal(int iXscreen, double df_XrealRefer, float fscale)
+        public static double transXview2Xreal(int iXscreen, double df_XrealRefer, double dfscale)
         {
-            return iXscreen / fscale + df_XrealRefer;
+            return iXscreen / dfscale + df_XrealRefer;
         }
 
-        public static double transYview2Yreal(int iYscreen, double df_YrealRefer, float fscale)
+        public static double transYview2Yreal(int iYscreen, double df_YrealRefer, double dfscale)
         {
-            return df_YrealRefer - iYscreen / fscale;
+            return df_YrealRefer - iYscreen / dfscale;
         }
     
-        public static Point getPointViewByWellName(string sJH)
+        public static Point getPointViewByJH(string sJH)
         {
-            List<ItemWellHead> listWellHead = cIOinputWellHead.readWellHead2Struct();
-
-            double dbX = 0;
-            double dbY = 0;
-            for (int k = 0; k < listWellHead.Count; k++)
-            {
-                if (listWellHead[k].sJH == sJH)
-                {
-                    dbX = listWellHead[k].dbX;
-                    dbY = listWellHead[k].dbY;
-                    break;
-                }
-            }
-            Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(dbX, dbY,
-               cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
-            return pointConvert2View;
+            
+            ItemWellHead wellHead = new ItemWellHead(sJH);
+            return cCordinationTransform.transRealPointF2ViewPoint(wellHead.dbX, wellHead.dbY,
+               cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
         }
 
     }

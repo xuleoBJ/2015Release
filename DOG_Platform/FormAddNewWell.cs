@@ -50,10 +50,8 @@ namespace DOGPlatform
             sttNewWell.dbY = double.Parse(tbxDY.Text);
             sttNewWell.fKB = float.Parse(tbxKB.Text);
             sttNewWell.iWellType = cbbWellType.SelectedIndex;
-            cIOinputWellHead fileWellHead = new cIOinputWellHead();
-            fileWellHead.updateWellHead(sttNewWell);
-            cProjectManager.createWellDir(sttNewWell.sJH);
-            MessageBox.Show(sttNewWell.sJH+"添加成功。");
+            sttNewWell.fKB = float.Parse(tbxWellBase.Text);
+           cProjectManager.addWell2Project(sttNewWell);
             this.Close();
         }
 

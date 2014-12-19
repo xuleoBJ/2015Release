@@ -74,9 +74,8 @@ namespace DOGPlatform
         {
             FormImportProjectData frmImportProject = new FormImportProjectData();
             frmImportProject.ShowDialog();
+            cProjectData.setProjectWellsInfor();
         }
-
-
 
         public void setupTsmiExportData()
         {

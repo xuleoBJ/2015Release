@@ -14,7 +14,7 @@ namespace DOGPlatform.SVG
     {
         public double xRef = 0.0;
         public double yRef = 0.0;
-        public float fScale = 1.0f;
+        public float dfscale = 1.0f;
 
 
         public cBaseMapSVG( int iDX, int iDY)
@@ -163,7 +163,7 @@ namespace DOGPlatform.SVG
         public XmlElement gScaleRuler( int iDx, int iDY)
         {
 
-            float m_scale=this.fScale;
+            float m_scale=this.dfscale;
             XmlElement gScaleRuler = svgDoc.CreateElement("g");
             string sTranslate = "translate(" + iDx.ToString() + "," + iDY.ToString() + ")";
             gScaleRuler.SetAttribute("transform", sTranslate);
@@ -240,12 +240,12 @@ namespace DOGPlatform.SVG
             {
                 MessageBox.Show(e.ToString());
             }
-            float fScale = this.fScale;
+            float dfscale = this.dfscale;
             double xMax = dfListX.Max() - dfListX.Min();
             double yMax = dfListY.Max() - dfListY.Min();
             int _iSacleRuler = 500; //定义网格单位
-            int iPanelWidth = Convert.ToInt32(Math.Ceiling(xMax * fScale) + _iSacleRuler * 3 * fScale);//显示好看pannel比最大大3个网格
-            int iPanelHeight = Convert.ToInt32(Math.Ceiling(yMax * fScale) + _iSacleRuler * 3 * fScale);//显示好看pannel比最大大3个网格
+            int iPanelWidth = Convert.ToInt32(Math.Ceiling(xMax * dfscale) + _iSacleRuler * 3 * dfscale);//显示好看pannel比最大大3个网格
+            int iPanelHeight = Convert.ToInt32(Math.Ceiling(yMax * dfscale) + _iSacleRuler * 3 * dfscale);//显示好看pannel比最大大3个网格
             XmlElement gRectInner = svgDoc.CreateElement("rect");
             gRectInner.SetAttribute("x", "0");
             gRectInner.SetAttribute("y", "0");
@@ -286,9 +286,9 @@ namespace DOGPlatform.SVG
             gGridText2.SetAttribute("font-style", "normal");
             gGridText2.SetAttribute("fill", "black");
 
-            for (int i = 1; i * _iSacleRuler * cProjectData.fMapScale <= iPanelWidth; i++)
+            for (int i = 1; i * _iSacleRuler * cProjectData.dfMapScale <= iPanelWidth; i++)
             {
-                int iXCurrentView = Convert.ToInt32(i * 500 * cProjectData.fMapScale);
+                int iXCurrentView = Convert.ToInt32(i * 500 * cProjectData.dfMapScale);
                 Point point1 = new Point(iXCurrentView, 0);
                 Point point2;
                 if (bShowGrid == true) point2 = new Point(iXCurrentView, iPanelHeight);
@@ -318,9 +318,9 @@ namespace DOGPlatform.SVG
 
 
             //应该写的数值是 cProject.dfMapXrealRefer + i * 500
-            for (int i = 1; i * _iSacleRuler * cProjectData.fMapScale <= iPanelHeight; i++)
+            for (int i = 1; i * _iSacleRuler * cProjectData.dfMapScale <= iPanelHeight; i++)
             {
-                int iYCurrentView = Convert.ToInt32(i * 500 * cProjectData.fMapScale);
+                int iYCurrentView = Convert.ToInt32(i * 500 * cProjectData.dfMapScale);
                 Point point3 = new Point(0, iYCurrentView);
                 Point point4;
                 if (bShowGrid == true) point4 = new Point(iPanelWidth, iYCurrentView);
@@ -586,7 +586,7 @@ namespace DOGPlatform.SVG
 
             return gPie;
         }
-        public XmlElement addgPie(Point PViewWell, List<float> fListdata, List<string> ltStrColors,float fScale)
+        public XmlElement addgPie(Point PViewWell, List<float> fListdata, List<string> ltStrColors,float dfscale)
         {
 
             XmlElement gPie = svgDoc.CreateElement("g");
@@ -597,7 +597,7 @@ namespace DOGPlatform.SVG
             for (int i = 0; i < fListdata.Count; i++)
                 angles.Add(fListdata[i] / total * Math.PI * 2);
 
-            int r = Convert.ToInt16(Math.Sqrt(total / Math.PI) * fScale);
+            int r = Convert.ToInt16(Math.Sqrt(total / Math.PI) * dfscale);
             int cx = PViewWell.X;
             int cy = PViewWell.Y;
             // Loop through each slice of pie.
@@ -692,12 +692,12 @@ namespace DOGPlatform.SVG
             return gPie;
 
         }
-        public XmlElement gHistogram(Point PViewWell, float fValue, float fScale, string fillColor)
+        public XmlElement gHistogram(Point PViewWell, float fValue, float dfscale, string fillColor)
         {
             XmlElement gHistogram = svgDoc.CreateElement("g");
             gHistogram.SetAttribute("ID", "gHistogram");
             int width = 3;
-            float height =fScale* fValue / width;
+            float height =dfscale* fValue / width;
 
             XmlElement gRect = svgDoc.CreateElement("rect");
             gRect.SetAttribute("x", (PViewWell.X + 3).ToString());

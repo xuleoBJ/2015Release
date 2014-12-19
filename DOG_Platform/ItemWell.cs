@@ -18,23 +18,22 @@ namespace DOGPlatform
             this.dbY = currentItemWellHead.dbY;
             this.fKB = currentItemWellHead.fKB;
             this.iWellType = currentItemWellHead.iWellType;
+            this.fWellBase = currentItemWellHead.fWellBase;
             WellPathList = cIOinputWellPath.readWellPath2Struct(_sJH);
-            
         }
-        public ItemWell(string _sJH, double _x, double _y, float _kb):this(_sJH,_x,_y,_kb,0)
+        public ItemWell(string _sJH, double _x, double _y, float _kb):this(_sJH,_x,_y,_kb,0,0)
         {
-    
-           
             
         } 
  
-        public ItemWell(string _sJH, double _x, double _y, float _kb, int _iWellType)
+        public ItemWell(string _sJH, double _x, double _y, float _kb, int _iWellType,float _fWellBase)
         {
             this.sJH = _sJH;
             this.dbX = _x;
             this.dbY = _y;
             this.fKB = _kb;
             this.iWellType = _iWellType;
+            this.fWellBase = _fWellBase;
             WellPathList = cIOinputWellPath.readWellPath2Struct(_sJH);
             
         }
@@ -63,6 +62,12 @@ namespace DOGPlatform
             get;
             set;
         }
+        public float fWellBase
+        {
+            get;
+            set;
+        }
+
 
     }
 }

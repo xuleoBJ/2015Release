@@ -133,7 +133,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label31 = new System.Windows.Forms.Label();
-            this.nUDStaticDatafscale = new System.Windows.Forms.NumericUpDown();
+            this.nUDStaticDatadfscale = new System.Windows.Forms.NumericUpDown();
             this.label45 = new System.Windows.Forms.Label();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
             this.btnPinchLine = new System.Windows.Forms.Button();
@@ -288,7 +288,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDStaticDatafscale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDStaticDatadfscale)).BeginInit();
             this.groupBox28.SuspendLayout();
             this.groupBox27.SuspendLayout();
             this.tbgProduction.SuspendLayout();
@@ -1597,7 +1597,7 @@
             // 
             this.groupBox5.Controls.Add(this.numericUpDown2);
             this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Controls.Add(this.nUDStaticDatafscale);
+            this.groupBox5.Controls.Add(this.nUDStaticDatadfscale);
             this.groupBox5.Controls.Add(this.label45);
             this.groupBox5.Location = new System.Drawing.Point(21, 29);
             this.groupBox5.Name = "groupBox5";
@@ -1632,35 +1632,35 @@
             this.label31.TabIndex = 21;
             this.label31.Text = "属性值字号";
             // 
-            // nUDStaticDatafscale
+            // nUDStaticDatadfscale
             // 
-            this.nUDStaticDatafscale.AllowDrop = true;
-            this.nUDStaticDatafscale.DecimalPlaces = 1;
-            this.nUDStaticDatafscale.Increment = new decimal(new int[] {
+            this.nUDStaticDatadfscale.AllowDrop = true;
+            this.nUDStaticDatadfscale.DecimalPlaces = 1;
+            this.nUDStaticDatadfscale.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.nUDStaticDatafscale.Location = new System.Drawing.Point(87, 18);
-            this.nUDStaticDatafscale.Maximum = new decimal(new int[] {
+            this.nUDStaticDatadfscale.Location = new System.Drawing.Point(87, 18);
+            this.nUDStaticDatadfscale.Maximum = new decimal(new int[] {
             10,
             0,
             0,
             0});
-            this.nUDStaticDatafscale.Minimum = new decimal(new int[] {
+            this.nUDStaticDatadfscale.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             65536});
-            this.nUDStaticDatafscale.Name = "nUDStaticDatafscale";
-            this.nUDStaticDatafscale.Size = new System.Drawing.Size(51, 21);
-            this.nUDStaticDatafscale.TabIndex = 28;
-            this.nUDStaticDatafscale.Value = new decimal(new int[] {
+            this.nUDStaticDatadfscale.Name = "nUDStaticDatadfscale";
+            this.nUDStaticDatadfscale.Size = new System.Drawing.Size(51, 21);
+            this.nUDStaticDatadfscale.TabIndex = 28;
+            this.nUDStaticDatadfscale.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nUDStaticDatafscale.ValueChanged += new System.EventHandler(this.nUDStaticDatafscale_ValueChanged);
+            this.nUDStaticDatadfscale.ValueChanged += new System.EventHandler(this.nUDStaticDatadfscale_ValueChanged);
             // 
             // label45
             // 
@@ -3025,7 +3025,7 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDStaticDatafscale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDStaticDatadfscale)).EndInit();
             this.groupBox28.ResumeLayout(false);
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
@@ -3182,7 +3182,7 @@
         private System.Windows.Forms.ComboBox comboBox14;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.NumericUpDown nUDStaticDatafscale;
+        private System.Windows.Forms.NumericUpDown nUDStaticDatadfscale;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label31;

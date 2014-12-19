@@ -22,7 +22,7 @@ namespace DOGPlatform
             this.dbX = item.dbX;
             this.dbY = item.dbY;
             this.iWellType = item.iWellType; 
-            Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(item.dbX, item.dbY,cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+            Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(item.dbX, item.dbY,cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
             this.iXview = pointConvert2View.X;
             this.iYview = pointConvert2View.Y;
 

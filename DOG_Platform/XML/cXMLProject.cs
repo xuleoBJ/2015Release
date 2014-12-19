@@ -153,20 +153,19 @@ namespace DOGPlatform.XML
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-
             }
         }
         public static void setProjectRefPointNode() //更新参考点
         {   
             setNodeInnerText(cProjectManager.xmlProject, "/Project/refY", cProjectData.dfMapYrealRefer.ToString());
             setNodeInnerText(cProjectManager.xmlProject, "/Project/refX", cProjectData.dfMapXrealRefer.ToString());
-            setNodeInnerText(cProjectManager.xmlProject, "/Project/scale", cProjectData.fMapScale.ToString());
+            setNodeInnerText(cProjectManager.xmlProject, "/Project/scale", cProjectData.dfMapScale.ToString());
         }
         public static void getProjectRefPointNode() //更新参考点
         {
-          double.TryParse(getNodeInnerText(cProjectManager.xmlProject, "/Project/refY"),out  cProjectData.dfMapYrealRefer);
-           double.TryParse(getNodeInnerText(cProjectManager.xmlProject, "/Project/refX"),out  cProjectData.dfMapXrealRefer);
-           float.TryParse(getNodeInnerText(cProjectManager.xmlProject, "/Project/scale"),out  cProjectData.fMapScale);
+            double.TryParse(getNodeInnerText(cProjectManager.xmlProject, "/Project/refY"), out  cProjectData.dfMapYrealRefer);
+            double.TryParse(getNodeInnerText(cProjectManager.xmlProject, "/Project/refX"), out  cProjectData.dfMapXrealRefer);
+            double.TryParse(getNodeInnerText(cProjectManager.xmlProject, "/Project/scale"), out  cProjectData.dfMapScale); 
         }
         public static void setProjectJHNode() 
         {

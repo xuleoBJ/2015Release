@@ -42,8 +42,8 @@ namespace DOGPlatform.XML
             eleMent.InnerText = cProjectData.dfMapYrealRefer.ToString();
             node.AppendChild(eleMent);
 
-            eleMent = doc.CreateElement("fMapScale");
-            eleMent.InnerText = cProjectData.fMapScale.ToString();
+            eleMent = doc.CreateElement("dfMapScale");
+            eleMent.InnerText = cProjectData.dfMapScale.ToString();
             node.AppendChild(eleMent);
 
             eleMent = doc.CreateElement("width");
@@ -132,7 +132,7 @@ namespace DOGPlatform.XML
             eleMent = doc.CreateElement("IsShowText");
             eleMent.InnerText = "1";
             node.AppendChild(eleMent);
-            eleMent = doc.CreateElement("fScale");
+            eleMent = doc.CreateElement("dfscale");
             eleMent.InnerText = "2";
             node.AppendChild(eleMent);
             eleMent = doc.CreateElement("textFontSize");
@@ -252,7 +252,7 @@ namespace DOGPlatform.XML
         public static void setStaticDataVScale(string filePathxmlLayerMap, float fVScale)
         {
             XDocument xmlLayerMap = XDocument.Load(filePathxmlLayerMap);
-            xmlLayerMap.Element("LayerMapConfig").Element("StaticData").Element("fScale").Value = fVScale.ToString("0.0");
+            xmlLayerMap.Element("LayerMapConfig").Element("StaticData").Element("dfscale").Value = fVScale.ToString("0.0");
             xmlLayerMap.Save(filePathxmlLayerMap);
         }
 

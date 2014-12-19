@@ -158,7 +158,7 @@ namespace DOGPlatform
                 foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
                 tlsCbbLayer.SelectedIndex = 0;
                 updateTreeView();
-                cbbScale.Text = ((int)(1000 / cProjectData.fMapScale)).ToString();
+                cbbScale.Text = ((int)(1000 / cProjectData.dfMapScale)).ToString();
                 WellNavitationInvalidate();
             } 
         }
@@ -216,22 +216,16 @@ namespace DOGPlatform
             cIOinputWellHead.readInput2Project(this.dgvWellHead, cProjectManager.filePathInputWellhead);
             cIOinputWellHead.codeReplaceWellHead();
 
-            cDataQuanlityControl cTestControl = new cDataQuanlityControl();
-            bool DataOKwellHead = cTestControl.dataCheckInputWellHead();
-
-            if (DataOKwellHead == true)
+            cProjectData.ltStrProjectJH.Clear();
+            foreach (string _sJH in cIOinputWellHead.getLtStrJH())
             {
-                cProjectData.ltStrProjectJH.Clear();
-                foreach (string _sJH in cIOinputWellHead.getLtStrJH())
-                {
-                    cProjectData.ltStrProjectJH.Add(_sJH);
-                    cProjectManager.createWellDir(_sJH);
-                }
-                cProjectData.setProjectWellsInfor();
-                updateTreeView();
-                this.tbcMain.SelectedIndex = 0;
+                cProjectData.ltStrProjectJH.Add(_sJH);
+                cProjectManager.createWellDir(_sJH);
             }
-
+            cProjectData.setProjectWellsInfor();
+            updateTreeView();
+            this.tbcMain.SelectedIndex = 0;
+ 
         }
 
         private void btnOpenLayerSeriers_Click(object sender, EventArgs e)
@@ -364,36 +358,14 @@ namespace DOGPlatform
 
         }
 
-
         private void tsmiDeleteSelectedWellInPanel_Click(object sender, EventArgs e)
         {
             if (sJHselectedOnPanel != "")
             {
-                DialogResult dialogResult = MessageBox.Show("当前选中井为：" + sJHselectedOnPanel + "，确认删除？", "删除选中井", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    cIOinputWellHead fileWellHead = new cIOinputWellHead();
-                    fileWellHead.deleteJHFromWellHead(sJHselectedOnPanel);
-                    cProjectData.ltStrProjectJH.Remove(sJHselectedOnPanel);
-                    WellNavitationInvalidate();
-                    updateTreeView();
-                }
-                //else if (dialogResult == DialogResult.No)
-                //{
-                //    //do something else
-                //}
-
+                cProjectManager.delWellFromProject(sJHselectedOnPanel);
+                WellNavitationInvalidate();
+                updateTreeView(); 
             }
-        }
-
-        private void 部署井ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAddNewWell formAddWell = new FormAddNewWell();
-            formAddWell.ShowDialog();
-            updateTreeView();
-            cProjectData.ltStrProjectJH.Clear();
-            cProjectData.ltStrProjectJH = cIOinputWellHead.getLtStrJH();
-            WellNavitationInvalidate();
         }
 
         private void tsmiCalLayerHeterogeneityInner_Click(object sender, EventArgs e)
@@ -526,8 +498,8 @@ namespace DOGPlatform
         {
             if (tbcMain.SelectedIndex == 0)
             {
-                cProjectData.fMapScale = cProjectData.fMapScale * 1.2F;
-                cbbScale.Text = (1000.0 / cProjectData.fMapScale).ToString("0");
+                cProjectData.dfMapScale = cProjectData.dfMapScale * 1.2F;
+                cbbScale.Text = (1000.0 / cProjectData.dfMapScale).ToString("0");
                 WellNavitationInvalidate();
             }
             if (tbcMain.SelectedIndex == 1)
@@ -541,8 +513,8 @@ namespace DOGPlatform
         {
             if (tbcMain.SelectedIndex == 0)
             {
-                cProjectData.fMapScale = cProjectData.fMapScale * 0.8F;
-                cbbScale.Text = (1000.0 / cProjectData.fMapScale).ToString("0");
+                cProjectData.dfMapScale = cProjectData.dfMapScale * 0.8F;
+                cbbScale.Text = (1000.0 / cProjectData.dfMapScale).ToString("0");
                 WellNavitationInvalidate();
             }
             if (tbcMain.SelectedIndex == 1)
@@ -555,8 +527,8 @@ namespace DOGPlatform
         {
             if (cbbScale.SelectedIndex >= 0)
             {
-                float fScale = float.Parse(cbbScale.SelectedItem.ToString());
-                cProjectData.fMapScale = 1000 / fScale;
+                float dfscale = float.Parse(cbbScale.SelectedItem.ToString());
+                cProjectData.dfMapScale = 1000 / dfscale;
                 WellNavitationInvalidate();
             }
         }
@@ -571,14 +543,13 @@ namespace DOGPlatform
                 case 0: //第一级菜单
                     switch (selectNode.Name)
                     {
-                        case "tnWells":
+                          case "tnWells": // //当前井管理
                             //右键菜单
-                            cContextMenuStripInputWellsManager cCMSwells = new cContextMenuStripInputWellsManager(cmsProject, selectNode);
+                           cContextMenuStripInputWellsManager cCMSwells = new cContextMenuStripInputWellsManager(cmsProject, selectNode);
                             cCMSwells.setupContextMenuWellMangager();
                             cmsProject = cCMSwells.cms;
-                            WellNavitationInvalidate();
-                            break;
-                        case "tnWellTops":
+                            break; 
+                        case "tnWellTops": //当前选中小层管理
                             cContextMenuStripInputLayer cmsWellTops = new cContextMenuStripInputLayer(cmsProject, selectNode, selectNode.Text);
                             cmsWellTops.setupTsmiImportLayers();
                             cmsProject = cmsWellTops.cms;
@@ -586,15 +557,14 @@ namespace DOGPlatform
                     }
                     break;
                 case 1://第2级菜单
-                    if (selectNode.Parent.Text == "井" && selectNode.Index > 0) //index=0 是全局测井曲线
+                    if (selectNode.Parent.Text == "井" && selectNode.Index > 0) //当前选中井，index=0 是全局测井曲线
                     {
                         //右键快捷菜单配置
                         string _sJH = selectNode.Text;
                         cContextMenuStripInputWell cCMSinputWell = new cContextMenuStripInputWell(cmsProject, selectNode, _sJH);
-                        cCMSinputWell.setupTsmiDataView();
                         cCMSinputWell.setupTsmiDataImport();
                     }
-                    if (selectNode.Parent.Text == "井" && selectNode.Index == 0)
+                    if (selectNode.Parent.Text == "井" && selectNode.Index == 0)  //当前 全局测井曲线
                     {
                         cContextMenuStripInputWellLog cTS = new cContextMenuStripInputWellLog(cmsProject, selectNode, selectNode.Parent.Text);
                         cmsProject = cTS.cms;
@@ -628,6 +598,7 @@ namespace DOGPlatform
                 default:
                     break;
             }
+            WellNavitationInvalidate();
            
         }
 
@@ -740,18 +711,18 @@ namespace DOGPlatform
             Font font = new Font("黑体", 8);
             Brush blueBrush = Brushes.Blue;
             Pen pen = new Pen(Color.LightBlue, 0.5F);
-            for (int i = 1; i * 500 * cProjectData.fMapScale < this.panelWellNavigation.Width; i++)
+            for (int i = 1; i * 500 * cProjectData.dfMapScale < this.panelWellNavigation.Width; i++)
             {
-                int iXCurrentView = Convert.ToInt32(i * 500 * cProjectData.fMapScale);
+                int iXCurrentView = Convert.ToInt32(i * 500 * cProjectData.dfMapScale);
                 Point point1 = new Point(iXCurrentView, 0);
                 Point point2 = new Point(iXCurrentView, this.panelWellNavigation.Height);
                 dc.DrawLine(pen, point1, point2);
                 dc.DrawString((cProjectData.dfMapXrealRefer + i * 500).ToString(), font, blueBrush, iXCurrentView, 0);
             }
 
-            for (int i = 1; i * 500 * cProjectData.fMapScale < this.panelWellNavigation.Height; i++)
+            for (int i = 1; i * 500 * cProjectData.dfMapScale < this.panelWellNavigation.Height; i++)
             {
-                int iYCurrentView = Convert.ToInt32(i * 500 * cProjectData.fMapScale);
+                int iYCurrentView = Convert.ToInt32(i * 500 * cProjectData.dfMapScale);
                 Point point3 = new Point(0, iYCurrentView);
                 Point point4 = new Point(this.panelWellNavigation.Width, iYCurrentView);
                 dc.DrawLine(pen, point3, point4);
@@ -778,7 +749,7 @@ namespace DOGPlatform
                     Pen blackPen = new Pen(Color.Black, 1);
                     List<ItemWellPath> currentWellPath = itemWell.WellPathList;
                     Point headView = cCordinationTransform.transRealPointF2ViewPoint(
-                     currentWellPath[0].dbX, currentWellPath[0].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                     currentWellPath[0].dbX, currentWellPath[0].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                     dc.DrawEllipse(wellPen, headView.X, headView.Y, 6, 6);
 
                     int iCount = currentWellPath.Count;
@@ -788,7 +759,7 @@ namespace DOGPlatform
                         for (int k = 0; k < iCount; k++)
                         {
                             Point tailView = cCordinationTransform.transRealPointF2ViewPoint(
-                            currentWellPath[k].dbX, currentWellPath[k].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                            currentWellPath[k].dbX, currentWellPath[k].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                             points.Add(tailView);
 
                         }
@@ -808,7 +779,7 @@ namespace DOGPlatform
             foreach(ItemWell item in cProjectData.listProjectWell)
             {
                 Point  itemView = cCordinationTransform.transRealPointF2ViewPoint(
-                     item.dbX, item.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                     item.dbX, item.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                 if (Math.Abs(pScreen.X - itemView.X) <= 5 && Math.Abs(pScreen.Y - itemView.Y) <= 5) return item.sJH; 
             }
             return "";
@@ -852,7 +823,7 @@ namespace DOGPlatform
             {
                 int _iSacleRuler = 500; //定义网格单位
 
-                if (cProjectData.fMapScale == 0.1F)
+                if (cProjectData.dfMapScale == 0.1F)
                 {
                     cProjectData.dfMapXrealRefer = Math.Floor(cProjectData.listProjectWell.Min(p => p.dbX) / _iSacleRuler - 1) * _iSacleRuler;
                     cProjectData.dfMapYrealRefer = (Math.Ceiling(cProjectData.listProjectWell.Max(p => p.dbY) / _iSacleRuler) + 1) * _iSacleRuler;
@@ -861,8 +832,8 @@ namespace DOGPlatform
                 double xMaxDistance = cProjectData.listProjectWell.Max(p => p.dbX) - cProjectData.listProjectWell.Min(p => p.dbX);
                 double yMaxDistance = cProjectData.listProjectWell.Max(p => p.dbY) - cProjectData.listProjectWell.Min(p => p.dbY);
 
-                int iPanelWidth = Convert.ToInt32(Math.Ceiling(xMaxDistance * cProjectData.fMapScale) + _iSacleRuler * 3 * cProjectData.fMapScale);//显示好看pannel比最大大3个网格
-                int iPanelHeight = Convert.ToInt32(Math.Ceiling(yMaxDistance * cProjectData.fMapScale) + _iSacleRuler * 3 * cProjectData.fMapScale);//显示好看pannel比最大大3个网格
+                int iPanelWidth = Convert.ToInt32(Math.Ceiling(xMaxDistance * cProjectData.dfMapScale) + _iSacleRuler * 3 * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
+                int iPanelHeight = Convert.ToInt32(Math.Ceiling(yMaxDistance * cProjectData.dfMapScale) + _iSacleRuler * 3 * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
                 panelWellNavigation.Dock = System.Windows.Forms.DockStyle.None;
 
                 panelWellNavigation.Width = iPanelWidth;
@@ -885,8 +856,8 @@ namespace DOGPlatform
             switch (currentOpreateMode)
             {
                 case OpreateMode.Initial:
-                    double xReal = cCordinationTransform.transXview2Xreal(e.X, cProjectData.dfMapXrealRefer, cProjectData.fMapScale);
-                    double yReal = cCordinationTransform.transYview2Yreal(e.Y, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                    double xReal = cCordinationTransform.transXview2Xreal(e.X, cProjectData.dfMapXrealRefer, cProjectData.dfMapScale);
+                    double yReal = cCordinationTransform.transYview2Yreal(e.Y, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                     Point pScreen = new Point(e.X, e.Y);
                     sJHselectedOnPanel = getWellNameByScreenPoint(pScreen);
                     this.tssLabelPosition.Text = sJHselectedOnPanel + " X=" + xReal.ToString("0.0") + " Y=" + yReal.ToString("0.0");

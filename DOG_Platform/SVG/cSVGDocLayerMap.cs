@@ -25,7 +25,7 @@ namespace DOGPlatform.SVG
             xmlLayerMap.Load(xmlConfigPath);
             double.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/xRef").InnerText,out xRef);
             double.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/yRef").InnerText,out yRef);
-            float.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/fMapScale").InnerText, out fScale);
+            float.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/dfMapScale").InnerText, out dfscale);
         }
 
         public cSVGDocLayerMap(string _filePathXMLConfig, int width, int height, int iDX, int iDY)
@@ -68,7 +68,7 @@ namespace DOGPlatform.SVG
             {
                 string _data = xn.InnerText;
                 ItemWellMapLayer item=ItemWellMapLayer.parseLine(_data);
-                Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(item.dbX, item.dbY, xRef, yRef, this.fScale);
+                Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(item.dbX, item.dbY, xRef, yRef, this.dfscale);
    
                 gWellPositon.AppendChild(gWell(item.sJH, pointConvert2View.X, pointConvert2View.Y, item.iWellType, _JHFontSize, _radis, _iCirlceWidth, _DX_JHText)); 
               
@@ -194,7 +194,7 @@ namespace DOGPlatform.SVG
                 string _data = xn.InnerText;
                 string[] split=_data.Split();
                 Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(
-                        double.Parse(split[1]), double.Parse(split[2]), xRef, yRef, this.fScale);
+                        double.Parse(split[1]), double.Parse(split[2]), xRef, yRef, this.dfscale);
                 int iXview=pointConvert2View.X;
                 int iYview = pointConvert2View.Y; 
                 string sDCHD=split[3];

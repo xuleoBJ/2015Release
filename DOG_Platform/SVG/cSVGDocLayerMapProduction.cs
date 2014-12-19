@@ -268,7 +268,7 @@ namespace DOGPlatform.SVG
             return gWellPositon;
         }
         public XmlElement addgOilWellProductionPie(List<string> ltStrJH, List<int> iListXview, List<int> iListYview,
-            List<float> fListValue1,List<float> fListValue2,float fScaleR)
+            List<float> fListValue1,List<float> fListValue2,float dfscaleR)
         {
            
             XmlElement gWellProductionPie = svgDoc.CreateElement("g");
@@ -284,21 +284,21 @@ namespace DOGPlatform.SVG
                 List<string> ltStrColors=new List<string>();
                 ltStrColors.Add("red");
                 ltStrColors.Add("blue");
-                XmlElement gPie = addgPie(PViewWell, fListdata, ltStrColors, fScaleR);
+                XmlElement gPie = addgPie(PViewWell, fListdata, ltStrColors, dfscaleR);
                 gWellProductionPie.AppendChild(gPie);
             }
             return gWellProductionPie;
         }
 
         public XmlElement addgWaterWellProductionPie(List<string> ltStrJH, List<int> iListXview, List<int> iListYview,
-         List<float> fListValue,float fScale)
+         List<float> fListValue,float dfscale)
         {
             XmlElement gWellProductionPie = svgDoc.CreateElement("g");
             gWellProductionPie.SetAttribute("ID", "idWellInjectPie");
 
             for (int i = 0; i < ltStrJH.Count; i++)
             {
-                int r = Convert.ToInt16(Math.Sqrt(fListValue[i] / Math.PI) * fScale);
+                int r = Convert.ToInt16(Math.Sqrt(fListValue[i] / Math.PI) * dfscale);
                 XmlElement gCircle = svgDoc.CreateElement("circle");
                 gCircle.SetAttribute("cx", iListXview[i].ToString());
                 gCircle.SetAttribute("cy", iListYview[i].ToString());

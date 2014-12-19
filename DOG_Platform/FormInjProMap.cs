@@ -289,7 +289,7 @@ namespace DOGPlatform
         //            dbY = sttLayerDataDicItem.dbY;
 
         //            pointConvert2View = cPublicMethodCordinationTransform.transRealPointF2ViewPoint(dbX, dbY,
-        //cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+        //cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
         //            List<string> ltStrWrited = new List<string>();
         //            ltStrWrited.Add(sJH);
         //            ltStrWrited.Add(pointConvert2View.X.ToString());
@@ -422,7 +422,7 @@ namespace DOGPlatform
                     {
                         List<string> ltStrWrited = new List<string>();
                         ltStrWrited.Add(sCurrentJH);
-                        Point pointConvert2View =cCordinationTransform.getPointViewByWellName(sCurrentJH);
+                        Point pointConvert2View =cCordinationTransform.getPointViewByJH(sCurrentJH);
                         ltStrWrited.Add(pointConvert2View.X.ToString());
                         ltStrWrited.Add(pointConvert2View.Y.ToString());
                         ltStrWrited.Add(fValue.ToString());
@@ -464,7 +464,7 @@ namespace DOGPlatform
                     {
                         List<string> ltStrWrited = new List<string>();
                         ltStrWrited.Add(sCurrentJH);
-                        Point pointConvert2View =cCordinationTransform.getPointViewByWellName(sCurrentJH);
+                        Point pointConvert2View =cCordinationTransform.getPointViewByJH(sCurrentJH);
                         ltStrWrited.Add(pointConvert2View.X.ToString());
                         ltStrWrited.Add(pointConvert2View.Y.ToString());
                         ltStrWrited.Add(fValue.ToString());
@@ -555,9 +555,9 @@ namespace DOGPlatform
                         ItemWellHead WellHeadItemJH1 = fileWellHead.listWellHead.Find(p=>p.sJH==sWellInject);
                         ItemWellHead WellHeadItemJH2 = fileWellHead.listWellHead.Find(p => p.sJH == sWellProduct); 
                         Point point1Convert2View = cCordinationTransform.transRealPointF2ViewPoint(WellHeadItemJH1.dbX, WellHeadItemJH1.dbY,
-                            cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                            cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                         Point point2Convert2View = cCordinationTransform.transRealPointF2ViewPoint(WellHeadItemJH2.dbX, WellHeadItemJH2.dbY,
-                            cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                            cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                         returnElemment = cLayerProductionMap.addgConnectLine(point1Convert2View, point2Convert2View,
                            Color.RoyalBlue.Name, 2, Color.RoyalBlue.Name);
                         cLayerProductionMap.addgElement(returnElemment, 0, 0);

@@ -44,11 +44,13 @@
             this.rdbFlattedByTopDepth = new System.Windows.Forms.RadioButton();
             this.rdbFlattedByDepth = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.rdbWellDistanceReal = new System.Windows.Forms.RadioButton();
-            this.rdbWellDistanceEqual = new System.Windows.Forms.RadioButton();
+            this.rdbPlaceBYWellDistance = new System.Windows.Forms.RadioButton();
+            this.rdbPlaceByEqual = new System.Windows.Forms.RadioButton();
             this.tvwWellSectionCollection = new System.Windows.Forms.TreeView();
             this.btnAddLayerDepth = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rdbRight = new System.Windows.Forms.RadioButton();
+            this.rdbLeft = new System.Windows.Forms.RadioButton();
             this.btnDeleteLog = new System.Windows.Forms.Button();
             this.nUDLogRightValue = new System.Windows.Forms.NumericUpDown();
             this.nUDLogLeftValue = new System.Windows.Forms.NumericUpDown();
@@ -169,8 +171,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.rdbLeft = new System.Windows.Forms.RadioButton();
-            this.rdbRight = new System.Windows.Forms.RadioButton();
+            this.rdbPlaceBywellPosition = new System.Windows.Forms.RadioButton();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -266,7 +267,7 @@
             // 
             // btnAddProfile
             // 
-            this.btnAddProfile.Location = new System.Drawing.Point(608, 31);
+            this.btnAddProfile.Location = new System.Drawing.Point(609, 29);
             this.btnAddProfile.Name = "btnAddProfile";
             this.btnAddProfile.Size = new System.Drawing.Size(88, 25);
             this.btnAddProfile.TabIndex = 56;
@@ -409,8 +410,9 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.rdbWellDistanceReal);
-            this.groupBox6.Controls.Add(this.rdbWellDistanceEqual);
+            this.groupBox6.Controls.Add(this.rdbPlaceBywellPosition);
+            this.groupBox6.Controls.Add(this.rdbPlaceBYWellDistance);
+            this.groupBox6.Controls.Add(this.rdbPlaceByEqual);
             this.groupBox6.Location = new System.Drawing.Point(326, 230);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
@@ -420,33 +422,33 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "井排列方式";
             // 
-            // rdbWellDistanceReal
+            // rdbPlaceBYWellDistance
             // 
-            this.rdbWellDistanceReal.AutoSize = true;
-            this.rdbWellDistanceReal.Location = new System.Drawing.Point(113, 20);
-            this.rdbWellDistanceReal.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbWellDistanceReal.Name = "rdbWellDistanceReal";
-            this.rdbWellDistanceReal.Size = new System.Drawing.Size(71, 16);
-            this.rdbWellDistanceReal.TabIndex = 1;
-            this.rdbWellDistanceReal.Text = "井距等比";
-            this.rdbWellDistanceReal.UseVisualStyleBackColor = true;
+            this.rdbPlaceBYWellDistance.AutoSize = true;
+            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(113, 20);
+            this.rdbPlaceBYWellDistance.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbPlaceBYWellDistance.Name = "rdbPlaceBYWellDistance";
+            this.rdbPlaceBYWellDistance.Size = new System.Drawing.Size(71, 16);
+            this.rdbPlaceBYWellDistance.TabIndex = 1;
+            this.rdbPlaceBYWellDistance.Text = "井距等比";
+            this.rdbPlaceBYWellDistance.UseVisualStyleBackColor = true;
             // 
-            // rdbWellDistanceEqual
+            // rdbPlaceByEqual
             // 
-            this.rdbWellDistanceEqual.AutoSize = true;
-            this.rdbWellDistanceEqual.Checked = true;
-            this.rdbWellDistanceEqual.Location = new System.Drawing.Point(22, 20);
-            this.rdbWellDistanceEqual.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbWellDistanceEqual.Name = "rdbWellDistanceEqual";
-            this.rdbWellDistanceEqual.Size = new System.Drawing.Size(71, 16);
-            this.rdbWellDistanceEqual.TabIndex = 0;
-            this.rdbWellDistanceEqual.TabStop = true;
-            this.rdbWellDistanceEqual.Text = "等距排列";
-            this.rdbWellDistanceEqual.UseVisualStyleBackColor = true;
+            this.rdbPlaceByEqual.AutoSize = true;
+            this.rdbPlaceByEqual.Checked = true;
+            this.rdbPlaceByEqual.Location = new System.Drawing.Point(22, 20);
+            this.rdbPlaceByEqual.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbPlaceByEqual.Name = "rdbPlaceByEqual";
+            this.rdbPlaceByEqual.Size = new System.Drawing.Size(71, 16);
+            this.rdbPlaceByEqual.TabIndex = 0;
+            this.rdbPlaceByEqual.TabStop = true;
+            this.rdbPlaceByEqual.Text = "等距排列";
+            this.rdbPlaceByEqual.UseVisualStyleBackColor = true;
             // 
             // tvwWellSectionCollection
             // 
-            this.tvwWellSectionCollection.Location = new System.Drawing.Point(628, 167);
+            this.tvwWellSectionCollection.Location = new System.Drawing.Point(629, 167);
             this.tvwWellSectionCollection.Margin = new System.Windows.Forms.Padding(2);
             this.tvwWellSectionCollection.Name = "tvwWellSectionCollection";
             this.tvwWellSectionCollection.Size = new System.Drawing.Size(187, 392);
@@ -482,6 +484,30 @@
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测井曲线";
+            // 
+            // rdbRight
+            // 
+            this.rdbRight.AutoSize = true;
+            this.rdbRight.Location = new System.Drawing.Point(83, 52);
+            this.rdbRight.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbRight.Name = "rdbRight";
+            this.rdbRight.Size = new System.Drawing.Size(47, 16);
+            this.rdbRight.TabIndex = 31;
+            this.rdbRight.Text = "右侧";
+            this.rdbRight.UseVisualStyleBackColor = true;
+            // 
+            // rdbLeft
+            // 
+            this.rdbLeft.AutoSize = true;
+            this.rdbLeft.Checked = true;
+            this.rdbLeft.Location = new System.Drawing.Point(27, 52);
+            this.rdbLeft.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbLeft.Name = "rdbLeft";
+            this.rdbLeft.Size = new System.Drawing.Size(47, 16);
+            this.rdbLeft.TabIndex = 2;
+            this.rdbLeft.TabStop = true;
+            this.rdbLeft.Text = "左侧";
+            this.rdbLeft.UseVisualStyleBackColor = true;
             // 
             // btnDeleteLog
             // 
@@ -946,7 +972,7 @@
             this.tabPageSetting.Controls.Add(this.btnSaveSetting);
             this.tabPageSetting.Location = new System.Drawing.Point(4, 22);
             this.tabPageSetting.Name = "tabPageSetting";
-            this.tabPageSetting.Size = new System.Drawing.Size(906, 573);
+            this.tabPageSetting.Size = new System.Drawing.Size(852, 573);
             this.tabPageSetting.TabIndex = 2;
             this.tabPageSetting.Text = "页面设置";
             this.tabPageSetting.UseVisualStyleBackColor = true;
@@ -1109,7 +1135,7 @@
             this.tbgLayerColorSetting.Location = new System.Drawing.Point(4, 22);
             this.tbgLayerColorSetting.Name = "tbgLayerColorSetting";
             this.tbgLayerColorSetting.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgLayerColorSetting.Size = new System.Drawing.Size(906, 573);
+            this.tbgLayerColorSetting.Size = new System.Drawing.Size(852, 573);
             this.tbgLayerColorSetting.TabIndex = 3;
             this.tbgLayerColorSetting.Text = "地层颜色配置";
             this.tbgLayerColorSetting.UseVisualStyleBackColor = true;
@@ -1148,7 +1174,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(906, 573);
+            this.tabPage1.Size = new System.Drawing.Size(852, 573);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "图元设置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2182,28 +2208,16 @@
             this.label30.TabIndex = 8;
             this.label30.Text = "下";
             // 
-            // rdbLeft
+            // rdbPlaceBywellPosition
             // 
-            this.rdbLeft.AutoSize = true;
-            this.rdbLeft.Checked = true;
-            this.rdbLeft.Location = new System.Drawing.Point(27, 52);
-            this.rdbLeft.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbLeft.Name = "rdbLeft";
-            this.rdbLeft.Size = new System.Drawing.Size(47, 16);
-            this.rdbLeft.TabIndex = 2;
-            this.rdbLeft.Text = "左侧";
-            this.rdbLeft.UseVisualStyleBackColor = true;
-            // 
-            // rdbRight
-            // 
-            this.rdbRight.AutoSize = true;
-            this.rdbRight.Location = new System.Drawing.Point(83, 52);
-            this.rdbRight.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbRight.Name = "rdbRight";
-            this.rdbRight.Size = new System.Drawing.Size(47, 16);
-            this.rdbRight.TabIndex = 31;
-            this.rdbRight.Text = "右侧";
-            this.rdbRight.UseVisualStyleBackColor = true;
+            this.rdbPlaceBywellPosition.AutoSize = true;
+            this.rdbPlaceBywellPosition.Location = new System.Drawing.Point(199, 20);
+            this.rdbPlaceBywellPosition.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbPlaceBywellPosition.Name = "rdbPlaceBywellPosition";
+            this.rdbPlaceBywellPosition.Size = new System.Drawing.Size(71, 16);
+            this.rdbPlaceBywellPosition.TabIndex = 2;
+            this.rdbPlaceBywellPosition.Text = "井位放置";
+            this.rdbPlaceBywellPosition.UseVisualStyleBackColor = true;
             // 
             // FormWellSectionGeology
             // 
@@ -2354,8 +2368,8 @@
         private System.Windows.Forms.RadioButton rdbFlattedByTopDepth;
         private System.Windows.Forms.RadioButton rdbFlattedByDepth;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.RadioButton rdbWellDistanceReal;
-        private System.Windows.Forms.RadioButton rdbWellDistanceEqual;
+        private System.Windows.Forms.RadioButton rdbPlaceBYWellDistance;
+        private System.Windows.Forms.RadioButton rdbPlaceByEqual;
         private System.Windows.Forms.Button btnDeleteLog;
         private System.Windows.Forms.RadioButton rdbFlattedByBaseDepth;
         private System.Windows.Forms.Button btnAddPeforation;
@@ -2435,5 +2449,6 @@
         private System.Windows.Forms.Button btnAddProfile;
         private System.Windows.Forms.RadioButton rdbRight;
         private System.Windows.Forms.RadioButton rdbLeft;
+        private System.Windows.Forms.RadioButton rdbPlaceBywellPosition;
     }
 }

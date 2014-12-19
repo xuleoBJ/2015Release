@@ -19,7 +19,7 @@ namespace DOGPlatform
                 new XElement("ProductionMap",
                 new XElement("x0RealRefer", cProjectData.dfMapXrealRefer.ToString()),
                 new XElement("y0RealRefer", cProjectData.dfMapYrealRefer.ToString()),
-                new XElement("Scale", cProjectData.fMapScale.ToString()),
+                new XElement("Scale", cProjectData.dfMapScale.ToString()),
                 new XElement("SlectedYM", seletedYM),
                 new XElement("SlectedXCM", selectXCM),
                 new XElement("Title","ProductionMap"),

@@ -62,11 +62,6 @@
             this.btnOpenWellHead = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.dgvWellHead = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbgLayerSeriers = new System.Windows.Forms.TabPage();
             this.btnInputLayerSerieresdelDgvLine = new System.Windows.Forms.Button();
             this.btnCopyFromExcelLayerSeriers = new System.Windows.Forms.Button();
@@ -118,6 +113,8 @@
             this.tsmiCalWellInjectDictionary = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLayerInjectProductSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.动态地质分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.调剖决策ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripDraw = new System.Windows.Forms.ToolStrip();
             this.tsBtnMove = new System.Windows.Forms.ToolStripButton();
             this.tsBtnDrawLine = new System.Windows.Forms.ToolStripButton();
@@ -138,8 +135,12 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.调剖决策ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -185,7 +186,6 @@
             this.部署井ToolStripMenuItem.Name = "部署井ToolStripMenuItem";
             this.部署井ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
             this.部署井ToolStripMenuItem.Text = "添加新井";
-            this.部署井ToolStripMenuItem.Click += new System.EventHandler(this.部署井ToolStripMenuItem_Click);
             // 
             // tsmiDeleteSelectedWellInPanel
             // 
@@ -322,7 +322,7 @@
             this.tbgProjectGraph.Location = new System.Drawing.Point(4, 22);
             this.tbgProjectGraph.Name = "tbgProjectGraph";
             this.tbgProjectGraph.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgProjectGraph.Size = new System.Drawing.Size(158, 351);
+            this.tbgProjectGraph.Size = new System.Drawing.Size(158, 348);
             this.tbgProjectGraph.TabIndex = 2;
             this.tbgProjectGraph.Text = "图册";
             this.tbgProjectGraph.UseVisualStyleBackColor = true;
@@ -333,7 +333,7 @@
             this.tvProjectGraph.LabelEdit = true;
             this.tvProjectGraph.Location = new System.Drawing.Point(3, 3);
             this.tvProjectGraph.Name = "tvProjectGraph";
-            this.tvProjectGraph.Size = new System.Drawing.Size(152, 345);
+            this.tvProjectGraph.Size = new System.Drawing.Size(152, 342);
             this.tvProjectGraph.TabIndex = 2;
             this.tvProjectGraph.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_BeforeLabelEdit);
             this.tvProjectGraph.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_AfterLabelEdit);
@@ -468,7 +468,7 @@
             this.tbgWellHead.Location = new System.Drawing.Point(4, 22);
             this.tbgWellHead.Name = "tbgWellHead";
             this.tbgWellHead.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellHead.Size = new System.Drawing.Size(917, 606);
+            this.tbgWellHead.Size = new System.Drawing.Size(917, 610);
             this.tbgWellHead.TabIndex = 0;
             this.tbgWellHead.Text = "井位数据";
             this.tbgWellHead.UseVisualStyleBackColor = true;
@@ -519,7 +519,7 @@
             this.splitter2.Location = new System.Drawing.Point(3, 3);
             this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(2, 600);
+            this.splitter2.Size = new System.Drawing.Size(2, 604);
             this.splitter2.TabIndex = 15;
             this.splitter2.TabStop = false;
             // 
@@ -531,37 +531,13 @@
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column11});
+            this.Column11,
+            this.Column5});
             this.dgvWellHead.Location = new System.Drawing.Point(23, 39);
             this.dgvWellHead.Name = "dgvWellHead";
             this.dgvWellHead.RowTemplate.Height = 23;
             this.dgvWellHead.Size = new System.Drawing.Size(861, 568);
             this.dgvWellHead.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "井号";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "X";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Y";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "补心海拔";
-            this.Column4.Name = "Column4";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "井别";
-            this.Column11.Name = "Column11";
             // 
             // tbgLayerSeriers
             // 
@@ -984,6 +960,21 @@
             this.动态地质分析ToolStripMenuItem.Text = "动态地质分析";
             this.动态地质分析ToolStripMenuItem.Click += new System.EventHandler(this.动态地质分析ToolStripMenuItem_Click);
             // 
+            // 调剖决策ToolStripMenuItem
+            // 
+            this.调剖决策ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAdjustProfile});
+            this.调剖决策ToolStripMenuItem.Name = "调剖决策ToolStripMenuItem";
+            this.调剖决策ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.调剖决策ToolStripMenuItem.Text = "调剖决策";
+            // 
+            // tsmiAdjustProfile
+            // 
+            this.tsmiAdjustProfile.Name = "tsmiAdjustProfile";
+            this.tsmiAdjustProfile.Size = new System.Drawing.Size(100, 22);
+            this.tsmiAdjustProfile.Text = "选井";
+            this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
+            // 
             // ToolStripDraw
             // 
             this.ToolStripDraw.Dock = System.Windows.Forms.DockStyle.None;
@@ -1154,20 +1145,35 @@
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
             // 
-            // 调剖决策ToolStripMenuItem
+            // Column1
             // 
-            this.调剖决策ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAdjustProfile});
-            this.调剖决策ToolStripMenuItem.Name = "调剖决策ToolStripMenuItem";
-            this.调剖决策ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.调剖决策ToolStripMenuItem.Text = "调剖决策";
+            this.Column1.HeaderText = "井号";
+            this.Column1.Name = "Column1";
             // 
-            // tsmiAdjustProfile
+            // Column2
             // 
-            this.tsmiAdjustProfile.Name = "tsmiAdjustProfile";
-            this.tsmiAdjustProfile.Size = new System.Drawing.Size(152, 22);
-            this.tsmiAdjustProfile.Text = "选井";
-            this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
+            this.Column2.HeaderText = "X";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Y";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "补心海拔";
+            this.Column4.Name = "Column4";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "井别";
+            this.Column11.Name = "Column11";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "完钻井深(m)";
+            this.Column5.Name = "Column5";
             // 
             // FormMain
             // 
@@ -1310,11 +1316,6 @@
         private System.Windows.Forms.Button btnOpenWellHead;
         private System.Windows.Forms.Splitter splitter2;
         private System.Windows.Forms.DataGridView dgvWellHead;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.TabPage tbgLayerSeriers;
         private System.Windows.Forms.Button btnInputLayerSerieresdelDgvLine;
         private System.Windows.Forms.Button btnCopyFromExcelLayerSeriers;
@@ -1334,6 +1335,12 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiJSJLsplit;
         private System.Windows.Forms.ToolStripMenuItem 调剖决策ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiAdjustProfile;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
     }
 }
 

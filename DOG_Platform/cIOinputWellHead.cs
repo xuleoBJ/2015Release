@@ -109,40 +109,14 @@ namespace DOGPlatform
             return listWellHead;
         }
         
-        public  void deleteJHFromWellHead(string sJH)
+        public static  void deleteJHFromWellHead(string sJH)
         {
             cIOBase.deleteLinesByFirstWordFromText(cProjectManager.filePathInputWellhead, sJH, 0);
         }
 
-        public void updateWellHead(ItemWellHead sttNewWell)
+        public static void updateWellHead(ItemWellHead itemNewWellHead)
         {
-            string filePathWellHeadFileTemp = Path.Combine(cProjectManager.dirPathTemp, Path.GetFileName(cProjectManager.filePathInputWellhead));
-            StreamWriter swNewWellHeadFile = new StreamWriter(filePathWellHeadFileTemp, false, Encoding.UTF8);
-            List<string> ltStrWrited = new List<string>();
-            for (int i = 0; i < listWellHead.Count; i++)
-            {
-                if (listWellHead[i].sJH != sttNewWell.sJH)
-                {
-                    ltStrWrited.Clear();
-                    ltStrWrited.Add(listWellHead[i].sJH);
-                    ltStrWrited.Add(listWellHead[i].dbX.ToString());
-                    ltStrWrited.Add(listWellHead[i].dbY.ToString());
-                    ltStrWrited.Add(listWellHead[i].fKB.ToString());
-                    ltStrWrited.Add(listWellHead[i].iWellType.ToString());
-                    swNewWellHeadFile.WriteLine(string.Join("\t", ltStrWrited.ToArray()));
-                }
-
-            }
-            ltStrWrited.Clear();
-            ltStrWrited.Add(sttNewWell.sJH);
-            ltStrWrited.Add(sttNewWell.dbX.ToString());
-            ltStrWrited.Add(sttNewWell.dbY.ToString());
-            ltStrWrited.Add(sttNewWell.fKB.ToString());
-            ltStrWrited.Add(sttNewWell.iWellType.ToString());
-            swNewWellHeadFile.WriteLine(string.Join("\t", ltStrWrited.ToArray()));
-            swNewWellHeadFile.Close();
-            File.Copy(filePathWellHeadFileTemp, cProjectManager.filePathInputWellhead, true);
-            File.Delete(filePathWellHeadFileTemp);
+            cIOBase.replaceLineByFirstWord(cProjectManager.filePathInputWellhead, itemNewWellHead.sJH, ItemWellHead.item2string(itemNewWellHead));
         }
 
 

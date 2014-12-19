@@ -231,14 +231,14 @@ namespace DOGPlatform
         string generateSectionGraph(string filenameSVGMap)
         {
             //继续初始化值
-            float fScale = cProjectData.fMapScale;
+            double dfscale = cProjectData.dfMapScale;
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 cWellSectionSVG itemWell = listWellsSection[i];
              
                 Point pointConvert2View =
                    cCordinationTransform.transRealPointF2ViewPoint(itemWell.dbX, itemWell.dbY,
-                    cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, fScale);
+                    cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, dfscale);
                 itemWell.fXview = pointConvert2View.X;
                 itemWell.fYview = pointConvert2View.Y;
             }
@@ -528,9 +528,9 @@ namespace DOGPlatform
 
         private void btnScale_Click(object sender, EventArgs e)
         {
-            cProjectData.fMapScale =cProjectData.fMapScale* 1.5F;
+            cProjectData.dfMapScale =cProjectData.dfMapScale* 1.5F;
             //generateSectionDrawData();
-            MessageBox.Show("当前比例尺:" + cProjectData.fMapScale.ToString());
+            MessageBox.Show("当前比例尺:" + cProjectData.dfMapScale.ToString());
         }
 
         private void tabControlFenceDiagram_SelectedIndexChanged(object sender, EventArgs e)

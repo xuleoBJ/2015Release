@@ -22,11 +22,11 @@ namespace DOGPlatform.SVG
         int iTopDepth = 0;
         int iBottomDepth = 100;
         float fVScale = 1;
-        public void initializeBaseMapInfor(int iShowedTopDepth,int iShowedBottomDepth,float fScale)
+        public void initializeBaseMapInfor(int iShowedTopDepth,int iShowedBottomDepth,float dfscale)
         {
             iTopDepth = iShowedTopDepth;
             iBottomDepth = iShowedBottomDepth;
-            fVScale = fScale;
+            fVScale = dfscale;
         }
 
         public void addgElement(XmlElement gElement, int iDx)  //剖面图Y不能移动

@@ -398,8 +398,8 @@ namespace DOGPlatform
                 }
                 else
                 {
-                        Point pointConvert2View = cCordinationTransform.getPointViewByWellName(ltStrSelectedJH[i - 1]);
-                        Point pointWell0Convert2View = cCordinationTransform.getPointViewByWellName(ltStrSelectedJH[i]);
+                        Point pointConvert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i - 1]);
+                        Point pointWell0Convert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i]);
                         int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(pointConvert2View, pointWell0Convert2View));
                         itemWell.fXview = listWellsSection[i - 1].fXview + iDistance;
                 }

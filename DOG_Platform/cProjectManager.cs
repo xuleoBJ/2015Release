@@ -226,6 +226,29 @@ namespace DOGPlatform
             } 
           
         }
+
+        public static void delWellFromProject(string sJH) 
+        {
+            DialogResult dialogResult = MessageBox.Show("当前选中井为：" + sJH + "，确认删除？", "删除选中井", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                cIOinputWellHead.deleteJHFromWellHead(sJH);
+                cProjectData.ltStrProjectJH.Remove(sJH);
+                string dirPath = Path.Combine(cProjectManager.dirPathWellDir, sJH);
+                Directory.Delete(dirPath, true);
+                cProjectData.setProjectWellsInfor(); 
+            }
+           
+        }
+        public static void addWell2Project(ItemWellHead sttNewWell)
+        {
+            cIOinputWellHead.updateWellHead(sttNewWell);
+            cProjectManager.createWellDir(sttNewWell.sJH);
+            MessageBox.Show(sttNewWell.sJH + "添加成功。");
+            cProjectData.setProjectWellsInfor();
+            if (cProjectData.ltStrProjectJH.IndexOf(sttNewWell.sJH)<0) cProjectData.ltStrProjectJH.Add(sttNewWell.sJH);
+
+        }
         public static void createLayerDir()
         {
             if (!Directory.Exists(cProjectManager.dirPathLayerDir))

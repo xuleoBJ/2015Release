@@ -35,7 +35,7 @@ namespace DOGPlatform
         string sJHSelected;  //井号
         int iDS1Showed = 100;   //绘制的顶深
         int iDS2Showed = 1000;  //绘制的底深
-        float fScale = 2;
+        float dfscale = 2;
         int iIndexTrack = 0; //track0是深度道
         List<int> iListTrackWidth = new List<int>();
         string fileDrawSourceInfor = cProjectManager.dirPathTemp + "SW_singleWell.txt";
@@ -47,12 +47,12 @@ namespace DOGPlatform
             sJHSelected = cbbJH.SelectedItem.ToString();
             iDS1Showed = int.Parse(tbxTopInput.Text);
             iDS2Showed = int.Parse(tbxBottomInput.Text);
-            fScale=1000/Convert.ToSingle( nUDVScale.Value);
+            dfscale=1000/Convert.ToSingle( nUDVScale.Value);
             
             iListTrackWidth.Clear();
             iIndexTrack = 0;
             cXMLSingleWell.generateDataXMLmodel(filepathDataXML,sJHSelected);
-            cXMLSingleWell.generateStyleXMLModel(filepathStyleXML, iDS1Showed, iDS2Showed, fScale); 
+            cXMLSingleWell.generateStyleXMLModel(filepathStyleXML, iDS1Showed, iDS2Showed, dfscale); 
             StreamWriter sw = new StreamWriter(fileDrawSourceInfor, false, Encoding.UTF8);
             sw.Close();
         }

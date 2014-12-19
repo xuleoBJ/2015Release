@@ -106,6 +106,7 @@ namespace DOGPlatform
                     }
                     else  //最后一层处理
                     {
+                        if (_item.fDS1 <= -99999.0f) _item.fDS1 = ltLayerDepthWrite[i - 1].fDS1;
                         _item.fDS2 = ltLayerDepthWrite[i].fDS1; 
                     }
                     ltLayerDepthWrite[i] = _item; 

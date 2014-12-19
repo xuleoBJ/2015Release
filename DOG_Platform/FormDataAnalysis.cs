@@ -66,7 +66,7 @@ namespace DOGPlatform
                     if (i == 0) sJH = dgvDataTable.Rows[j].Cells[i].Value.ToString();
                     if (i > 0) fListData.Add(float.Parse(dgvDataTable.Rows[j].Cells[i].Value.ToString()));
                 }
-                Point pWell = cCordinationTransform.getPointViewByWellName(sJH);
+                Point pWell = cCordinationTransform.getPointViewByJH(sJH);
                 XmlElement returnXmlElement = cPieMap.gPieChart(fListData, pWell.X, pWell.Y, r, ltStrcolors, ltStrLable, 100, 100);
                 cPieMap.addgElement(returnXmlElement, 0, 0);
                 cSVGText svgText = new cSVGText();

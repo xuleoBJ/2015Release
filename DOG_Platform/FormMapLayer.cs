@@ -433,9 +433,9 @@ namespace DOGPlatform
             cXMLLayerMapLog.setLogFaceLineWidth(filePathXMLconfigLayerMap, Convert.ToSingle(nUDLogLineWidth.Value));
         }
 
-             private void nUDStaticDatafscale_ValueChanged(object sender, EventArgs e)
+             private void nUDStaticDatadfscale_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapBase.setStaticDataVScale(filePathXMLconfigLayerMap, Convert.ToSingle(nUDStaticDatafscale.Value));
+            cXMLLayerMapBase.setStaticDataVScale(filePathXMLconfigLayerMap, Convert.ToSingle(nUDStaticDatadfscale.Value));
         }
 
         private void btnSaveSetting_Click(object sender, EventArgs e)
@@ -474,11 +474,11 @@ namespace DOGPlatform
                            //     _ltStrData.Add(item.iYview.ToString());
 
                            //     Point headView =
-                           //cPublicMethodCordinationTransform.transRealPointF2ViewPoint(head.dbX, head.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                           //cPublicMethodCordinationTransform.transRealPointF2ViewPoint(head.dbX, head.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                            //     _ltStrData.Add(headView.X.ToString());
                            //     _ltStrData.Add(headView.Y.ToString());
                            //     Point tailView =
-                           //cPublicMethodCordinationTransform.transRealPointF2ViewPoint(tail.dbX, tail.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.fMapScale);
+                           //cPublicMethodCordinationTransform.transRealPointF2ViewPoint(tail.dbX, tail.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                            //     _ltStrData.Add(tailView.X.ToString());
                            //     _ltStrData.Add(tailView.Y.ToString());
                                 string _data = string.Join(" ", _ltStrData);
