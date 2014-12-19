@@ -237,6 +237,8 @@ namespace DOGPlatform
            creatWellGeoHeadFile(_sJH);
            List<ItemJSJL> listJSJLinput = readInputFile(_sJH);
            List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
+           List<ItemLayerDepthInput> listLayerDepthInput = new List<ItemLayerDepthInput>();
+           List<string> layerInput = listLayerDepthInput.Select(p => p.sXCM).ToList();
            string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellJSJL);
            List<string> ltStrLine = new List<string>();
            foreach (ItemJSJL item in listJSJLinput) 
@@ -260,9 +262,13 @@ namespace DOGPlatform
                    else if (_topXCM == "" || _botXCM == "") _xcm = _topXCM + "_" + _botXCM;
                    else
                    {
-                       int _iStart = cProjectData.ltStrProjectXCM.IndexOf(_topXCM);
-                       int _count = cProjectData.ltStrProjectXCM.IndexOf(_botXCM) - _iStart + 1;
-                       _xcm = string.Join("+", cProjectData.ltStrProjectXCM.GetRange(_iStart, _count));
+                       int _iStart = layerInput.IndexOf(_topXCM);
+                       if (_iStart < 0) { _iStart = 0; _xcm = ""; }
+                       else
+                       {
+                           int _count = layerInput.IndexOf(_botXCM) - _iStart + 1;
+                           _xcm = string.Join("+", cProjectData.ltStrProjectXCM.GetRange(_iStart, _count));
+                       }
                    }
                }
                else _xcm = _topXCM + "_" + _botXCM;

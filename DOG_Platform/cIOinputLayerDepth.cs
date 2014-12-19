@@ -9,7 +9,7 @@ namespace DOGPlatform
 {
     class cIOinputLayerDepth 
     {
-      
+       
         public static List<ItemLayerDepth> readLayerDepth2Struct(string _sJH)
         {
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellLayerDepth);
@@ -61,51 +61,48 @@ namespace DOGPlatform
             //ltStrHead.Add("测深m")
             //cIOBase.creatTextFile(ltStrHead, ltStrLine,filePath);
         }
-        public static void creatWellGeoFile(string _sJH,List<ItemLayerDepth> ltLayerDepthInput)
+        public static void creatWellGeoFile(string _sJH, List<ItemLayerDepthInput> ltLayerDepthInput)
         {
-               
+            Cursor.Current = Cursors.WaitCursor;
                 creatWellGeoHeadFile(_sJH);
               //增加layer循环
                 List<ItemLayerDepth> ltLayerDepthWrite = new List<ItemLayerDepth>();
                 int iCount=cProjectData.ltStrProjectXCM.Count;
-                for (int k = 0; k <iCount; k++) 
+                for (int i = 0; i <iCount; i++) 
                 {
                     ItemLayerDepth _item = new ItemLayerDepth();
                     _item.sJH = _sJH;
-                    _item.sXCM = cProjectData.ltStrProjectXCM[k];
+                    _item.sXCM = cProjectData.ltStrProjectXCM[i];
                     _item.fDS1 = -99999.0f;
                     _item.fDS2 = -99999.0f;
-                    foreach (ItemLayerDepth currentItem in ltLayerDepthInput)
+
+                    for (int k = 0; k < ltLayerDepthInput.Count; k++)
                     {
-                        if (_item.sJH == currentItem.sJH && _item.sXCM == currentItem.sXCM) 
+                        if (_item.sJH == ltLayerDepthInput[k].sJH && _item.sXCM == ltLayerDepthInput[k].sXCM)
                         {
-                            _item.fDS1 = currentItem.fDS1;
+                            _item.fDS1 = ltLayerDepthInput[k].fDS1;
+                            if (k < ltLayerDepthInput.Count - 1) _item.fDS2 = ltLayerDepthInput[k + 1].fDS1;
+                            else _item.fDS2 = _item.fDS1;
+                            break;
                         }
                     }
-
                   ltLayerDepthWrite.Add(_item);
                 }
 
-               for (int i = iCount- 1; i > 0; i--)
-                {
-                    ItemLayerDepth _item = ltLayerDepthWrite[i];
-                    if (_item.fDS1 <= -99999.0f) 
-                    {
-                        _item.fDS1 = ltLayerDepthWrite[i - 1].fDS1;
-                    }
-                    ltLayerDepthWrite[i] = _item; 
-                }
                 for (int i = 0; i < iCount; i++) 
                 {
                     ItemLayerDepth _item = ltLayerDepthWrite[i];
                     if (i < iCount - 1)
                     {
-                        if (_item.fDS1 <= -99999.0f)
+                        int k=i ;
+                        while (_item.fDS1 <= -99999.0f && k < iCount-1)
                         {
-                            _item.fDS1 = ltLayerDepthWrite[i + 1].fDS1;
+                            _item.fDS1 = ltLayerDepthWrite[k+1].fDS1;
                             _item.fDS2 = _item.fDS1;
+                            k++;
                         }
-                        else _item.fDS2 = ltLayerDepthWrite[i + 1].fDS1;
+                        //fd1全有值了
+                        if (_item.fDS2 <= -99999.0f) _item.fDS2 = ltLayerDepthWrite[i + 1].fDS1;
                     }
                     else  //最后一层处理
                     {
@@ -122,12 +119,13 @@ namespace DOGPlatform
                     ltStrLine.Add(ItemLayerDepth.item2string(_item));
                 }
                 cIOGeoEarthText.addDataLines2GeoEarTxt(filePath, ltStrLine);
+                Cursor.Current = Cursors.Default;
             
         }
 
-       static List<ItemLayerDepth > readInputFile(string _sJH) 
+       static List<ItemLayerDepthInput > readInputFile(string _sJH) 
         {
-            List<ItemLayerDepth> returnItem = new List<ItemLayerDepth>();
+            List<ItemLayerDepthInput> returnItem = new List<ItemLayerDepthInput>();
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameInputLayerDepth);
             if (File.Exists(filePath)) { 
             using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
@@ -139,7 +137,7 @@ namespace DOGPlatform
                     iLine++;
                     if (iLine > 0)
                     {
-                        ItemLayerDepth _item = new ItemLayerDepth();
+                        ItemLayerDepthInput _item = new ItemLayerDepthInput();
                         string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
                         _item.sJH = split[0];
                         _item.sXCM = split[1];

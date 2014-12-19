@@ -1230,6 +1230,12 @@ namespace DOGPlatform
             updateWebSVG();
         }
 
+        private void tsmiAdjustProfile_Click(object sender, EventArgs e)
+        {
+            FormAdjustProfile form = new FormAdjustProfile();
+            form.Show();
+        }
+
 
      
 

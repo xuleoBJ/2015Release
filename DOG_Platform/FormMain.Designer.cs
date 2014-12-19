@@ -138,6 +138,8 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
+            this.调剖决策ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -641,7 +643,8 @@
             this.tsmiData,
             this.tsmiGeology,
             this.tsmiRes,
-            this.tsmiResevior});
+            this.tsmiResevior,
+            this.调剖决策ToolStripMenuItem});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
             this.msMain.Size = new System.Drawing.Size(1093, 25);
@@ -1151,6 +1154,21 @@
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
             // 
+            // 调剖决策ToolStripMenuItem
+            // 
+            this.调剖决策ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAdjustProfile});
+            this.调剖决策ToolStripMenuItem.Name = "调剖决策ToolStripMenuItem";
+            this.调剖决策ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.调剖决策ToolStripMenuItem.Text = "调剖决策";
+            // 
+            // tsmiAdjustProfile
+            // 
+            this.tsmiAdjustProfile.Name = "tsmiAdjustProfile";
+            this.tsmiAdjustProfile.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAdjustProfile.Text = "选井";
+            this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1314,6 +1332,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiDataDeal;
         private System.Windows.Forms.ToolStripMenuItem tsmiJSJLmatch;
         private System.Windows.Forms.ToolStripMenuItem tsmiJSJLsplit;
+        private System.Windows.Forms.ToolStripMenuItem 调剖决策ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAdjustProfile;
     }
 }
 

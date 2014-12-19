@@ -5,6 +5,12 @@ using System.Text;
 
 namespace DOGPlatform
 {
+    struct ItemLayerDepthInput
+    {
+        public string sJH;
+        public string sXCM;
+        public float fDS1;
+    }
     struct ItemLayerDepth
     {
         public string sJH;

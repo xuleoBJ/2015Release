@@ -95,7 +95,7 @@ namespace DOGPlatform.SVG
                 ItemWellPath currentWellPath = listWellPath[i];
                 double currentX = currentWellPath.f_dx;
                 double currentY = -m_KB + currentWellPath.f_TVD;
-                if (currentWellPath.f_incl <= 80)
+                if (currentWellPath.f_incl <= 85)
                 {
                     float _xView_f = 0.0f;
                     if (-500 <= fListValue[i] && fListValue[i] < 1000)
@@ -110,13 +110,11 @@ namespace DOGPlatform.SVG
                    fListMDHorizina.Add(fListMD[i]);
                    fListValueHorizina.Add(fListValue[i]); 
                 } 
-                              
             }
             XmlElement gLogPolyline = svgDoc.CreateElement("polyline");
             gLogPolyline.SetAttribute("fill", "none");
             gLogPolyline.SetAttribute("points", _points);
             gLogTrack.AppendChild(gLogPolyline);
-
 
             gLogTrack.AppendChild(gTrackLogHeadText(x0, y0, sLogName, sColorCurve));
             gLogTrack.AppendChild(gTrackLogHeadRuler(x0, y0, sColorCurve)); 
@@ -124,7 +122,7 @@ namespace DOGPlatform.SVG
             return gLogTrack;
         }
 
-
+        //水平井显示模块差好多，需要调整
         public XmlElement gPathHorinzalTrackLog(string sJH, string sLogName, List<float> fListMD, List<float> fListValue,
          float m_KB, float fLeftValue, float fRightValue, string sColorCurve)
         {

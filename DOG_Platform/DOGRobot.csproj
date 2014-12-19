@@ -101,6 +101,12 @@
     <Compile Include="cIOinputInjectionProfile.cs" />
     <Compile Include="cIOinputLayerSerier.cs" />
     <Compile Include="cProjectData.cs" />
+    <Compile Include="FormAdjustProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdjustProfile.Designer.cs">
+      <DependentUpon>FormAdjustProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormDataImportLayer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -475,6 +481,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddSectionLog.resx">
       <DependentUpon>FormAddSectionLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdjustProfile.resx">
+      <DependentUpon>FormAdjustProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCalInterWell.resx">
       <DependentUpon>FormCalInterWell.cs</DependentUpon>

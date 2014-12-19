@@ -49,7 +49,6 @@ namespace DOGPlatform
 
         }
        
-       
         public static void loadProjectData()
         {
             //ltStrProjectJH应用井名列表赋值
@@ -77,7 +76,6 @@ namespace DOGPlatform
 
         }
        
-     
         public static void getProjectJHFromXML()
         {
             cProjectData.ltStrProjectJH.Clear();
