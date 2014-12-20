@@ -188,6 +188,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.btnGenerateDataByBaseDepth = new System.Windows.Forms.Button();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -253,7 +254,7 @@
             this.tabControlSection.Location = new System.Drawing.Point(0, 0);
             this.tabControlSection.Name = "tabControlSection";
             this.tabControlSection.SelectedIndex = 0;
-            this.tabControlSection.Size = new System.Drawing.Size(897, 559);
+            this.tabControlSection.Size = new System.Drawing.Size(897, 601);
             this.tabControlSection.TabIndex = 1;
             // 
             // tabPageData
@@ -267,7 +268,7 @@
             this.tabPageData.Location = new System.Drawing.Point(4, 22);
             this.tabPageData.Name = "tabPageData";
             this.tabPageData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageData.Size = new System.Drawing.Size(889, 533);
+            this.tabPageData.Size = new System.Drawing.Size(889, 575);
             this.tabPageData.TabIndex = 1;
             this.tabPageData.Text = "剖面图数据";
             this.tabPageData.UseVisualStyleBackColor = true;
@@ -558,6 +559,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGenerateDataByBaseDepth);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label3);
@@ -569,7 +571,7 @@
             this.groupBox2.Controls.Add(this.lbxJHSeclected);
             this.groupBox2.Location = new System.Drawing.Point(7, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 502);
+            this.groupBox2.Size = new System.Drawing.Size(290, 550);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "剖面图设置";
@@ -583,11 +585,11 @@
             this.groupBox5.Controls.Add(this.label11);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Location = new System.Drawing.Point(5, 351);
+            this.groupBox5.Location = new System.Drawing.Point(5, 336);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(251, 146);
+            this.groupBox5.Size = new System.Drawing.Size(251, 148);
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "海拔深度截取";
@@ -614,9 +616,9 @@
             // 
             // btnGenerateDataByInputDepth
             // 
-            this.btnGenerateDataByInputDepth.Location = new System.Drawing.Point(25, 98);
+            this.btnGenerateDataByInputDepth.Location = new System.Drawing.Point(25, 103);
             this.btnGenerateDataByInputDepth.Name = "btnGenerateDataByInputDepth";
-            this.btnGenerateDataByInputDepth.Size = new System.Drawing.Size(197, 29);
+            this.btnGenerateDataByInputDepth.Size = new System.Drawing.Size(188, 23);
             this.btnGenerateDataByInputDepth.TabIndex = 14;
             this.btnGenerateDataByInputDepth.Text = "设置绘制井段深度";
             this.btnGenerateDataByInputDepth.UseVisualStyleBackColor = true;
@@ -718,9 +720,9 @@
             // 
             // btnSectionData
             // 
-            this.btnSectionData.Location = new System.Drawing.Point(19, 90);
+            this.btnSectionData.Location = new System.Drawing.Point(20, 90);
             this.btnSectionData.Name = "btnSectionData";
-            this.btnSectionData.Size = new System.Drawing.Size(197, 29);
+            this.btnSectionData.Size = new System.Drawing.Size(188, 23);
             this.btnSectionData.TabIndex = 11;
             this.btnSectionData.Text = "根据层位设置绘制深度";
             this.btnSectionData.UseVisualStyleBackColor = true;
@@ -2488,11 +2490,21 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
+            // btnGenerateDataByBaseDepth
+            // 
+            this.btnGenerateDataByBaseDepth.Location = new System.Drawing.Point(31, 514);
+            this.btnGenerateDataByBaseDepth.Name = "btnGenerateDataByBaseDepth";
+            this.btnGenerateDataByBaseDepth.Size = new System.Drawing.Size(188, 23);
+            this.btnGenerateDataByBaseDepth.TabIndex = 18;
+            this.btnGenerateDataByBaseDepth.Text = "全井段绘制";
+            this.btnGenerateDataByBaseDepth.UseVisualStyleBackColor = true;
+            this.btnGenerateDataByBaseDepth.Click += new System.EventHandler(this.btnGenerateDataByBaseDepth_Click);
+            // 
             // FormWellSectionPath
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(897, 559);
+            this.ClientSize = new System.Drawing.Size(897, 601);
             this.Controls.Add(this.tabControlSection);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormWellSectionPath";
@@ -2735,5 +2747,6 @@
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.TreeView tvwWellSectionCollection;
         private System.Windows.Forms.Button btnLogTrackAddLeft;
+        private System.Windows.Forms.Button btnGenerateDataByBaseDepth;
     }
 }

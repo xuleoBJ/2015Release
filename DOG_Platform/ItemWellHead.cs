@@ -22,7 +22,7 @@ namespace DOGPlatform
                 this.dbY = 0.0;
                 this.fKB = 0.0f;
                 this.iWellType = 0;
-                this.fWellBase = 0.0f;
+                this.fWellBase = 10.0f;
                if (File.Exists(cProjectManager.filePathInputWellhead))
                 {
                     using (StreamReader sr = new StreamReader(cProjectManager.filePathInputWellhead, System.Text.Encoding.UTF8))

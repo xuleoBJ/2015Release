@@ -31,9 +31,9 @@ namespace DOGPlatform
             ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH);
             ItemWellPath wellPathTop = new ItemWellPath(wellHead);
             ItemWellPath wellPathBottom = new ItemWellPath(wellHead);
-            wellPathBottom.dfZ = wellPathTop.dfZ - 10;
-            wellPathBottom.f_md = wellPathTop.f_md + 10;
-            wellPathBottom.f_TVD = wellPathTop.f_TVD + 10;
+            wellPathBottom.dfZ = wellPathTop.dfZ - wellHead.fWellBase;
+            wellPathBottom.f_md = wellHead.fWellBase;
+            wellPathBottom.f_TVD = wellHead.fWellBase;
             List<ItemWellPath> listItem = new List<ItemWellPath>();
             listItem.Add(wellPathTop);
             listItem.Add(wellPathBottom);

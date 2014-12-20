@@ -253,6 +253,10 @@
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.comboBox13 = new System.Windows.Forms.ComboBox();
+            this.lbxJH = new System.Windows.Forms.ListBox();
+            this.btn_deleteWell = new System.Windows.Forms.Button();
+            this.btn_addWell = new System.Windows.Forms.Button();
+            this.lbxJHSeclected = new System.Windows.Forms.ListBox();
             this.tbgWellPosition.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDCirleLineWidth)).BeginInit();
@@ -1962,6 +1966,10 @@
             // 
             // tbgHorizonWell
             // 
+            this.tbgHorizonWell.Controls.Add(this.lbxJH);
+            this.tbgHorizonWell.Controls.Add(this.btn_deleteWell);
+            this.tbgHorizonWell.Controls.Add(this.btn_addWell);
+            this.tbgHorizonWell.Controls.Add(this.lbxJHSeclected);
             this.tbgHorizonWell.Controls.Add(this.btnAddHorizonalIntervel);
             this.tbgHorizonWell.Controls.Add(this.groupBox7);
             this.tbgHorizonWell.Controls.Add(this.cbxAddHorizonWell);
@@ -1975,7 +1983,7 @@
             // 
             // btnAddHorizonalIntervel
             // 
-            this.btnAddHorizonalIntervel.Location = new System.Drawing.Point(404, 21);
+            this.btnAddHorizonalIntervel.Location = new System.Drawing.Point(182, 231);
             this.btnAddHorizonalIntervel.Name = "btnAddHorizonalIntervel";
             this.btnAddHorizonalIntervel.Size = new System.Drawing.Size(99, 22);
             this.btnAddHorizonalIntervel.TabIndex = 32;
@@ -1991,9 +1999,9 @@
             this.groupBox7.Controls.Add(this.label47);
             this.groupBox7.Controls.Add(this.nUDLineWidthHorizonalInterval);
             this.groupBox7.Controls.Add(this.label51);
-            this.groupBox7.Location = new System.Drawing.Point(20, 65);
+            this.groupBox7.Location = new System.Drawing.Point(320, 20);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(366, 147);
+            this.groupBox7.Size = new System.Drawing.Size(237, 136);
             this.groupBox7.TabIndex = 31;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "标识设置";
@@ -2073,7 +2081,7 @@
             // cbxAddHorizonWell
             // 
             this.cbxAddHorizonWell.AutoSize = true;
-            this.cbxAddHorizonWell.Location = new System.Drawing.Point(20, 25);
+            this.cbxAddHorizonWell.Location = new System.Drawing.Point(61, 237);
             this.cbxAddHorizonWell.Name = "cbxAddHorizonWell";
             this.cbxAddHorizonWell.Size = new System.Drawing.Size(96, 16);
             this.cbxAddHorizonWell.TabIndex = 30;
@@ -2967,6 +2975,50 @@
             this.comboBox13.Size = new System.Drawing.Size(61, 20);
             this.comboBox13.TabIndex = 10;
             // 
+            // lbxJH
+            // 
+            this.lbxJH.FormattingEnabled = true;
+            this.lbxJH.ItemHeight = 12;
+            this.lbxJH.Location = new System.Drawing.Point(23, 17);
+            this.lbxJH.Margin = new System.Windows.Forms.Padding(2);
+            this.lbxJH.Name = "lbxJH";
+            this.lbxJH.Size = new System.Drawing.Size(102, 184);
+            this.lbxJH.TabIndex = 33;
+            // 
+            // btn_deleteWell
+            // 
+            this.btn_deleteWell.Font = new System.Drawing.Font("SimHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_deleteWell.Location = new System.Drawing.Point(135, 75);
+            this.btn_deleteWell.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_deleteWell.Name = "btn_deleteWell";
+            this.btn_deleteWell.Size = new System.Drawing.Size(28, 26);
+            this.btn_deleteWell.TabIndex = 35;
+            this.btn_deleteWell.Text = "←";
+            this.btn_deleteWell.UseVisualStyleBackColor = true;
+            this.btn_deleteWell.Click += new System.EventHandler(this.btn_deleteWell_Click);
+            // 
+            // btn_addWell
+            // 
+            this.btn_addWell.Font = new System.Drawing.Font("SimHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_addWell.Location = new System.Drawing.Point(135, 40);
+            this.btn_addWell.Margin = new System.Windows.Forms.Padding(2);
+            this.btn_addWell.Name = "btn_addWell";
+            this.btn_addWell.Size = new System.Drawing.Size(28, 24);
+            this.btn_addWell.TabIndex = 34;
+            this.btn_addWell.Text = "→";
+            this.btn_addWell.UseVisualStyleBackColor = true;
+            this.btn_addWell.Click += new System.EventHandler(this.btn_addWell_Click);
+            // 
+            // lbxJHSeclected
+            // 
+            this.lbxJHSeclected.FormattingEnabled = true;
+            this.lbxJHSeclected.ItemHeight = 12;
+            this.lbxJHSeclected.Location = new System.Drawing.Point(182, 19);
+            this.lbxJHSeclected.Margin = new System.Windows.Forms.Padding(2);
+            this.lbxJHSeclected.Name = "lbxJHSeclected";
+            this.lbxJHSeclected.Size = new System.Drawing.Size(102, 184);
+            this.lbxJHSeclected.TabIndex = 38;
+            // 
             // FormMapLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -3304,6 +3356,10 @@
         private System.Windows.Forms.Label label59;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.ListBox lbxJH;
+        private System.Windows.Forms.Button btn_deleteWell;
+        private System.Windows.Forms.Button btn_addWell;
+        private System.Windows.Forms.ListBox lbxJHSeclected;
 
     }
 }

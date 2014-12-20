@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.cmsNavigationPanel = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.部署井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiNewWell = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteSelectedWellInPanel = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStripInfor = new System.Windows.Forms.StatusStrip();
@@ -178,21 +178,22 @@
             // cmsNavigationPanel
             // 
             this.cmsNavigationPanel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.部署井ToolStripMenuItem,
+            this.tsmiNewWell,
             this.tsmiDeleteSelectedWellInPanel});
             this.cmsNavigationPanel.Name = "cMSPanel";
-            this.cmsNavigationPanel.Size = new System.Drawing.Size(137, 48);
+            this.cmsNavigationPanel.Size = new System.Drawing.Size(153, 70);
             // 
-            // 部署井ToolStripMenuItem
+            // tsmiNewWell
             // 
-            this.部署井ToolStripMenuItem.Name = "部署井ToolStripMenuItem";
-            this.部署井ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.部署井ToolStripMenuItem.Text = "添加新井";
+            this.tsmiNewWell.Name = "tsmiNewWell";
+            this.tsmiNewWell.Size = new System.Drawing.Size(152, 22);
+            this.tsmiNewWell.Text = "添加新井";
+            this.tsmiNewWell.Click += new System.EventHandler(this.tsmiNewWell_Click);
             // 
             // tsmiDeleteSelectedWellInPanel
             // 
             this.tsmiDeleteSelectedWellInPanel.Name = "tsmiDeleteSelectedWellInPanel";
-            this.tsmiDeleteSelectedWellInPanel.Size = new System.Drawing.Size(136, 22);
+            this.tsmiDeleteSelectedWellInPanel.Size = new System.Drawing.Size(152, 22);
             this.tsmiDeleteSelectedWellInPanel.Text = "删除选中井";
             this.tsmiDeleteSelectedWellInPanel.Click += new System.EventHandler(this.tsmiDeleteSelectedWellInPanel_Click);
             // 
@@ -470,7 +471,7 @@
             this.tbgWellHead.Location = new System.Drawing.Point(4, 22);
             this.tbgWellHead.Name = "tbgWellHead";
             this.tbgWellHead.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellHead.Size = new System.Drawing.Size(917, 610);
+            this.tbgWellHead.Size = new System.Drawing.Size(917, 606);
             this.tbgWellHead.TabIndex = 0;
             this.tbgWellHead.Text = "井位数据";
             this.tbgWellHead.UseVisualStyleBackColor = true;
@@ -521,7 +522,7 @@
             this.splitter2.Location = new System.Drawing.Point(3, 3);
             this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(2, 604);
+            this.splitter2.Size = new System.Drawing.Size(2, 600);
             this.splitter2.TabIndex = 15;
             this.splitter2.TabStop = false;
             // 
@@ -1249,7 +1250,7 @@
         #endregion
 
         private System.Windows.Forms.ContextMenuStrip cmsNavigationPanel;
-        private System.Windows.Forms.ToolStripMenuItem 部署井ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiNewWell;
         private System.Windows.Forms.ToolStripMenuItem tsmiDeleteSelectedWellInPanel;
         private System.Windows.Forms.ToolStripContainer ToolStripContainer1;
         private System.Windows.Forms.StatusStrip statusStripInfor;

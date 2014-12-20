@@ -1,6 +1,6 @@
 ﻿namespace DOGPlatform
 {
-    partial class FormAddNewWell
+    partial class FormWellInfor
     {
         /// <summary>
         /// Required designer variable.
@@ -139,7 +139,7 @@
             this.btnAddWell.Name = "btnAddWell";
             this.btnAddWell.Size = new System.Drawing.Size(75, 23);
             this.btnAddWell.TabIndex = 10;
-            this.btnAddWell.Text = "增加入库";
+            this.btnAddWell.Text = "入库";
             this.btnAddWell.UseVisualStyleBackColor = true;
             this.btnAddWell.Click += new System.EventHandler(this.btnAddWell_Click);
             // 

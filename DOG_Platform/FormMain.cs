@@ -1188,5 +1188,13 @@ namespace DOGPlatform
             updateTreeViewProjectGraph();
         }
 
+        private void tsmiNewWell_Click(object sender, EventArgs e)
+        {
+            FormWellInfor form = new FormWellInfor("newWell");
+            form.ShowDialog();
+        }
+
+       
+
     }
 }

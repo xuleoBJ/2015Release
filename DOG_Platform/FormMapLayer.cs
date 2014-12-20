@@ -53,6 +53,7 @@ namespace DOGPlatform
             cbbSelectedYM.DataSource = cProjectData.ltStrProjectYM;
             cbbLeftLogName.DataSource  = cProjectData.ltStrLogSeriers;
             cbbRightLogName.DataSource = cProjectData.ltStrLogSeriers;
+            cPublicMethodForm.inialListBox(lbxJH, cProjectData.ltStrProjectJH);
         } 
         private void cbbSelectedXCM_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -553,7 +554,19 @@ namespace DOGPlatform
             if (cbxAddGeologyProperty.Checked == true) addWellProperty();
         }
 
-       
+        private void btn_addWell_Click(object sender, EventArgs e)
+        {
+            cPublicMethodForm.transferItemFromleftListBox2rightListBox(lbxJH, lbxJHSeclected);
+        }
+
+        private void btn_deleteWell_Click(object sender, EventArgs e)
+        {
+            cPublicMethodForm.deleteSlectedItemFromListBox(lbxJHSeclected);
+        }
+
+      
+
+             
 
 
 

@@ -364,11 +364,11 @@
     <Compile Include="cDataQuanlityControl.cs" />
     <Compile Include="cFileOperateDicPerforation.cs" />
     <Compile Include="XML\cXMLProject.cs" />
-    <Compile Include="FormAddNewWell.cs">
+    <Compile Include="FormWellInfor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddNewWell.Designer.cs">
-      <DependentUpon>FormAddNewWell.cs</DependentUpon>
+    <Compile Include="FormWellInfor.Designer.cs">
+      <DependentUpon>FormWellInfor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormInjProMap.cs">
       <SubType>Form</SubType>
@@ -476,8 +476,8 @@
     <Compile Include="XML\cXETrackLog.cs" />
     <Compile Include="XML\cXETrackPerforation.cs" />
     <Compile Include="XML\cXETrackText.cs" />
-    <EmbeddedResource Include="FormAddNewWell.resx">
-      <DependentUpon>FormAddNewWell.cs</DependentUpon>
+    <EmbeddedResource Include="FormWellInfor.resx">
+      <DependentUpon>FormWellInfor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddSectionLog.resx">
       <DependentUpon>FormAddSectionLog.cs</DependentUpon>

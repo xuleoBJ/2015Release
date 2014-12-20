@@ -234,7 +234,6 @@ namespace DOGPlatform
                 cSection.addgElement(currentWell.gWell, currentPositon);
             }
 
-
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
             cSection.makeSVGfile(fileSVG);
             FormMain.filePathWebSVG = fileSVG;

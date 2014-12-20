@@ -240,11 +240,11 @@ namespace DOGPlatform
             }
            
         }
-        public static void addWell2Project(ItemWellHead sttNewWell)
+        public static void updateWellInfor2Project(ItemWellHead sttNewWell)
         {
             cIOinputWellHead.updateWellHead(sttNewWell);
             cProjectManager.createWellDir(sttNewWell.sJH);
-            MessageBox.Show(sttNewWell.sJH + "添加成功。");
+            MessageBox.Show(sttNewWell.sJH + "入库成功。");
             cProjectData.setProjectWellsInfor();
             if (cProjectData.ltStrProjectJH.IndexOf(sttNewWell.sJH)<0) cProjectData.ltStrProjectJH.Add(sttNewWell.sJH);
 

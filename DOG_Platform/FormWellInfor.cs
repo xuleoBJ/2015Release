@@ -9,15 +9,19 @@ using System.Windows.Forms;
 
 namespace DOGPlatform
 {
-    public partial class FormAddNewWell : Form
+    public partial class FormWellInfor : Form
     {
-        public FormAddNewWell()
+        public FormWellInfor(string _sJH)
         {
             InitializeComponent();
-            InitFormControl();
+            InitFormControl(_sJH);
         }
-        void InitFormControl() 
+        string sJH="";
+        void InitFormControl(string _sJH) 
         {
+            this.sJH = _sJH;
+           
+           
             List<string> ltStrWellType = new List<string>();
             ltStrWellType.Add("(0)Undefined");
             ltStrWellType.Add("(1)Proposed");
@@ -38,8 +42,15 @@ namespace DOGPlatform
             ltStrWellType.Add("(16)Inject gas");
             ltStrWellType.Add("(17)Shallow boreHole");
             ltStrWellType.Add("(18)Drilling well");
-
             cPublicMethodForm.inialComboBox(cbbWellType, ltStrWellType);
+
+            ItemWellHead itemnew = new ItemWellHead(sJH);
+            this.tbxWellName.Text = sJH;
+            this.tbxDX.Text = itemnew.dbX.ToString();
+            this.tbxDY.Text = itemnew.dbY.ToString();
+            this.tbxKB.Text = itemnew.fKB.ToString();
+            this.cbbWellType.SelectedIndex = itemnew.iWellType;
+            this.tbxWellBase.Text = itemnew.fWellBase.ToString();
         }
 
         private void btnAddWell_Click(object sender, EventArgs e)
@@ -50,8 +61,8 @@ namespace DOGPlatform
             sttNewWell.dbY = double.Parse(tbxDY.Text);
             sttNewWell.fKB = float.Parse(tbxKB.Text);
             sttNewWell.iWellType = cbbWellType.SelectedIndex;
-            sttNewWell.fKB = float.Parse(tbxWellBase.Text);
-           cProjectManager.addWell2Project(sttNewWell);
+            sttNewWell.fWellBase = float.Parse(tbxWellBase.Text);
+           cProjectManager.updateWellInfor2Project(sttNewWell);
             this.Close();
         }
 

@@ -9,7 +9,7 @@ namespace DOGPlatform
 {
     class cContextMenuStripInputWell : cContextMenuStripBaseWell
     {
-        ToolStripMenuItem tsmiImportWellDev = new ToolStripMenuItem();
+        ToolStripMenuItem tsmiImportWellInfor = new ToolStripMenuItem();
         ToolStripMenuItem tsmiDataView = new ToolStripMenuItem();
         ToolStripMenuItem tsmiImportDel = new ToolStripMenuItem();
         ToolStripMenuItem tsmiImportLog = new ToolStripMenuItem();
@@ -20,6 +20,8 @@ namespace DOGPlatform
         public cContextMenuStripInputWell(ContextMenuStrip _cms, TreeNode _tnSelected, string _sJH)
             : base(_cms, _tnSelected, _sJH)
         {
+            tsmiImportWellInfor.Text = "井信息";
+            tsmiImportWellInfor.Click += new System.EventHandler(tsmiImportWellInfor_Click);
             tsmiDataView.Text = "查看井数据";
             tsmiDataView.Click += new System.EventHandler(tsmiDataView_Click);
             tsmiImportLog.Text = "曲线导入";
@@ -29,6 +31,11 @@ namespace DOGPlatform
             tsmiDataImport.Text = "导入井数据";
             tsmiDataImport.DropDownItems.Add(tsmiImportLog);
         }
+        private void tsmiImportWellInfor_Click(object sender, EventArgs e)
+        {
+            FormWellInfor form = new FormWellInfor(this.sJH);
+            form.ShowDialog();
+        }
          private void tsmiDataView_Click(object sender, EventArgs e)
         {
             FormDataViewSingleWell formDataView = new FormDataViewSingleWell(this.sJH);
@@ -37,6 +44,7 @@ namespace DOGPlatform
 
         public void setupTsmi()
          {
+             cms.Items.Add(tsmiImportWellInfor);
              cms.Items.Add(tsmiDataView);
              cms.Items.Add(tsmiDataImport);
              cms.Items.Add(tsmiImportDel);

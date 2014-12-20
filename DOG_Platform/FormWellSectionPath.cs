@@ -876,8 +876,29 @@ namespace DOGPlatform
             tvwWellSectionCollection.ExpandAll();
         }
 
-       
+        private void btnGenerateDataByBaseDepth_Click(object sender, EventArgs e)
+        {
+            setDepthIntervalShowedBYBaseDepth();
+        }
 
+
+        private void setDepthIntervalShowedBYBaseDepth()
+        {
+            updateSelectedListJH();
+
+            initializeTreeViewWellCollection();
+            List<ItemWellHead> listWellHead = cIOinputWellHead.readWellHead2Struct();
+            for (int i = 0; i < ltStrSelectedJH.Count; i++)
+            {
+                cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                _wellSection.fShowedDepthTop = 0;
+                _wellSection.fShowedDepthBase = listWellHead.Find(p => p.sJH == ltStrSelectedJH[i]).fWellBase;
+                listWellsSection.Add(_wellSection);
+            }
+            cXDocSection.generateSectionCssXML();
+            generateSectionDataDirectory();
+
+        }
   
 
        
