@@ -157,10 +157,10 @@ namespace DOGPlatform
 
           private void tsmiSand_Click(object sender, EventArgs e)
           {
-             gLithoPatternSand2(this.filepathSVG);
+             gLithoPatternSand(this.filepathSVG);
           }
 
-          public void gLithoPatternSand2(string filePath)//增加岩石类型
+          public void gLithoPatternSand(string filePath)//增加岩石类型
           {
               XDocument xDoc = XDocument.Load(filePath);
               XElement xroot = xDoc.Root;
@@ -179,6 +179,7 @@ namespace DOGPlatform
                   xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
 
                   xDoc.Save(filePath);
+                  webBrowserSVG.Refresh();
               }
           }
 
@@ -208,6 +209,48 @@ namespace DOGPlatform
           private void tsmiDel_Click(object sender, EventArgs e)
           {
               
+          }
+
+          private void tsmiOilLayer_Click(object sender, EventArgs e)
+          {
+              XElement gPath = new XElement("{http://www.w3.org/2000/svg}path");
+              string dPath = "M10 10 H 90 V 90 H 10 L 10 10 z";
+              gPath.Add(new XAttribute("d", dPath));
+              gPath.Add(new XAttribute("stroke", "red"));
+              gPath.Add(new XAttribute("stroke-width", "1"));
+              gPath.Add(new XAttribute("fill", "red"));
+
+
+              XDocument XDoc = XDocument.Load(filepathSVG);
+              XElement Xroot = XDoc.Root;
+
+              XElement Xg = Xroot.Element("{http://www.w3.org/2000/svg}g");
+              Xg.Add(gPath);
+
+              XDoc.Save(filepathSVG);
+
+              webBrowserSVG.Refresh();
+
+          }
+
+          private void tsmiWaterLayer_Click(object sender, EventArgs e)
+          {
+              XElement gPath = new XElement("{http://www.w3.org/2000/svg}path");
+              string dPath = "M10 10 H 90 V 90 H 10 L 10 10 z";
+              gPath.Add(new XAttribute("d", dPath));
+              gPath.Add(new XAttribute("stroke", "blue"));
+              gPath.Add(new XAttribute("stroke-width", "1"));
+              gPath.Add(new XAttribute("fill", "blue"));
+
+
+              XDocument XDoc = XDocument.Load(filepathSVG);
+              XElement Xroot = XDoc.Root;
+
+              XElement Xg = Xroot.Element("{http://www.w3.org/2000/svg}g");
+              Xg.Add(gPath);
+
+              XDoc.Save(filepathSVG);
+              webBrowserSVG.Refresh();
           }
       
 

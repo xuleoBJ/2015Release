@@ -247,7 +247,8 @@ namespace DOGPlatform
             string filenameSVGMap;
             if (this.tbxTitle.Text == "")
             {
-                filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "_栅状图.svg";
+                if (ltStrSelectedJH.Count < 6) filenameSVGMap ="井组分析_"+ string.Join("-", ltStrSelectedJH.ToArray()) + ".svg";
+                else filenameSVGMap = "井组分析_" + string.Join("-", ltStrSelectedJH.GetRange(0, 5)) + ".svg";
             }
             else
             {

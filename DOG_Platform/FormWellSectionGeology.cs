@@ -222,15 +222,12 @@ namespace DOGPlatform
                 if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+300*i,0));
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {
-                    PListWellPositon.Add(new Point(100 + 300 * i, 0)); 
-                    //if (i == 0) PListWellPositon.Add(new Point(100, 0));
-                    //else
-                    //{
-                    //    Point pointConvert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i - 1]);
-                    //    Point pointWell0Convert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i]);
-                    //    int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(pointConvert2View, pointWell0Convert2View));
-                    //    PListWellPositon.Add(new Point(listWellsSection[i - 1].fXview + iDistance, 0));
-                    //}
+                    if (i == 0) PListWellPositon.Add(new Point(100, 0));
+                    else
+                    {
+                        int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX,listWellsSection[i].dbY, listWellsSection[0].dbX,listWellsSection[0].dbY));
+                        PListWellPositon.Add(new Point(iDistance, 0));
+                    }
                 }
             }
 
@@ -375,7 +372,12 @@ namespace DOGPlatform
         {
             string filenameSVGMap;
 
-            if (this.tbxTitle.Text == "") filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "-section.svg"; 
+            if (this.tbxTitle.Text == "")
+            {
+                if (ltStrSelectedJH.Count < 6) filenameSVGMap = "剖面图_"+string.Join("-", ltStrSelectedJH.ToArray()) + ".svg"; 
+                else filenameSVGMap = "剖面图_"+string.Join("-", ltStrSelectedJH.GetRange(0, 5)) + ".svg"; 
+            
+            }
             else filenameSVGMap = this.tbxTitle.Text + ".svg";
 
             if (rdbFlattedByDepth.Checked == true) generateSectionGraph((int)(typeFlatted.海拔深度), filenameSVGMap) ; 
@@ -517,8 +519,6 @@ namespace DOGPlatform
 
        
 
-     
-
         private void btnDeleteLeftLog_Click(object sender, EventArgs e)
         {
             if (ltStrSelectedJH.Count > 0 && cbbLogName.SelectedIndex >= 0)
@@ -625,17 +625,13 @@ namespace DOGPlatform
             }
         }
 
-    
-
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvLayerColorSetting.CurrentCell.ColumnIndex == 1)
             {
                 ColorDialog colorDialog1 = new ColorDialog();
                 if (colorDialog1.ShowDialog() == DialogResult.OK)
-                {
                     dgvLayerColorSetting.CurrentCell.Style.BackColor = colorDialog1.Color;
-                }
             }
         }
 
@@ -671,6 +667,29 @@ namespace DOGPlatform
             {
                 MessageBox.Show("请先确认深度段。");
             }
+        }
+
+        private void btnGenerateDataByBaseDepth_Click(object sender, EventArgs e)
+        {
+            setDepthIntervalShowedBYBaseDepth();
+        }
+
+        private void setDepthIntervalShowedBYBaseDepth()
+        {
+            updateSelectedListJH();
+
+            initializeTreeViewWellCollection();
+            List<ItemWellHead> listWellHead= cIOinputWellHead.readWellHead2Struct();
+           for (int i = 0; i < ltStrSelectedJH.Count; i++)
+            {
+                cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                _wellSection.fShowedDepthTop = 0;
+                _wellSection.fShowedDepthBase = listWellHead.Find(p => p.sJH == ltStrSelectedJH[i]).fWellBase;
+                listWellsSection.Add(_wellSection); 
+            }
+            cXDocSection.generateSectionCssXML();
+            generateSectionDataDirectory(); 
+           
         }
 
         

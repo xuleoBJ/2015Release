@@ -61,56 +61,68 @@ namespace DOGPlatform
             //ltStrHead.Add("测深m")
             //cIOBase.creatTextFile(ltStrHead, ltStrLine,filePath);
         }
-        public static void creatWellGeoFile(string _sJH, List<ItemLayerDepthInput> ltLayerDepthInput)
+        public static void creatWellGeoFile(string _sJH)
         {
-            Cursor.Current = Cursors.WaitCursor;
+             List<ItemLayerDepthInput> ltLayerDepthInput=readInputFile(_sJH);
                 creatWellGeoHeadFile(_sJH);
               //增加layer循环
                 List<ItemLayerDepth> ltLayerDepthWrite = new List<ItemLayerDepth>();
                 int iCount=cProjectData.ltStrProjectXCM.Count;
                 for (int i = 0; i <iCount; i++) 
                 {
+                    //先按每个井号、层位附上0值
                     ItemLayerDepth _item = new ItemLayerDepth();
                     _item.sJH = _sJH;
                     _item.sXCM = cProjectData.ltStrProjectXCM[i];
-                    _item.fDS1 = -99999.0f;
-                    _item.fDS2 = -99999.0f;
-
+                    _item.fDS1 = 0.0f;
+                    _item.fDS2 = 0.0f;
+                    //在输入的列表中查找，找到小层名的，把顶深和底深赋值，底深付下个顶深
+                    int _iFind=-1;  //设置没找到的标识
                     for (int k = 0; k < ltLayerDepthInput.Count; k++)
                     {
-                        if (_item.sJH == ltLayerDepthInput[k].sJH && _item.sXCM == ltLayerDepthInput[k].sXCM)
+                        if (_item.sXCM == ltLayerDepthInput[k].sXCM)
                         {
                             _item.fDS1 = ltLayerDepthInput[k].fDS1;
                             if (k < ltLayerDepthInput.Count - 1) _item.fDS2 = ltLayerDepthInput[k + 1].fDS1;
-                            else _item.fDS2 = _item.fDS1;
+                            if (k == ltLayerDepthInput.Count - 1) _item.fDS2 = _item.fDS1;//如果找到了 最后一行的处理，
+                            _iFind=1; //找到了
                             break;
                         }
                     }
+                    if(_iFind<0)//如何没找到
+                    {
+                      if(i==0){_item.fDS1=ltLayerDepthInput[0].fDS1;_item.fDS2=_item.fDS1;} 
+                      if(i>0){_item.fDS1=ltLayerDepthWrite[ltLayerDepthWrite.Count-1].fDS1;_item.fDS2=_item.fDS1;}
+                    }
                   ltLayerDepthWrite.Add(_item);
                 }
-
-                for (int i = 0; i < iCount; i++) 
-                {
-                    ItemLayerDepth _item = ltLayerDepthWrite[i];
-                    if (i < iCount - 1)
-                    {
-                        int k=i ;
-                        while (_item.fDS1 <= -99999.0f && k < iCount-1)
-                        {
-                            _item.fDS1 = ltLayerDepthWrite[k+1].fDS1;
-                            _item.fDS2 = _item.fDS1;
-                            k++;
-                        }
-                        //fd1全有值了
-                        if (_item.fDS2 <= -99999.0f) _item.fDS2 = ltLayerDepthWrite[i + 1].fDS1;
-                    }
-                    else  //最后一层处理
-                    {
-                        if (_item.fDS1 <= -99999.0f) _item.fDS1 = ltLayerDepthWrite[i - 1].fDS1;
-                        _item.fDS2 = ltLayerDepthWrite[i].fDS1; 
-                    }
-                    ltLayerDepthWrite[i] = _item; 
-                }
+                 //上个循环后 仍有一些fds1的值。
+                // //下个循环，处理这些fds1
+                //for (int i = 0; i < iCount; i++) 
+                //{
+                //    ItemLayerDepth _item = ltLayerDepthWrite[i];
+                //    //最后一行前的处理
+                //    if (i < iCount - 1)
+                //    {
+                //        int k=i ;
+                //        while (_item.fDS1 == 0.0f && k < iCount-1)
+                //        {
+                //            _item.fDS1 = ltLayerDepthWrite[k+1].fDS1;
+                //            _item.fDS2 = _item.fDS1;
+                //            k++;
+                //        }
+                //        //上个while循环 可能有底下一大段都是0的情况,fDs1还可能是0，这时判断向上找，直到所有的fds1全有值
+                         
+                //        if(_
+                //        if (_item.fDS2 == 0.0) _item.fDS2 = ltLayerDepthWrite[i + 1].fDS1;
+                //    }
+                //    else  //最后一层处理
+                //    {
+                //        if (_item.fDS1 <= 0.0) _item.fDS1 = ltLayerDepthWrite[i - 1].fDS1;
+                //        _item.fDS2 = ltLayerDepthWrite[i].fDS1; 
+                //    }
+                //    ltLayerDepthWrite[i] = _item; 
+                //}
 
                 string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellLayerDepth);
                
@@ -120,7 +132,6 @@ namespace DOGPlatform
                     ltStrLine.Add(ItemLayerDepth.item2string(_item));
                 }
                 cIOGeoEarthText.addDataLines2GeoEarTxt(filePath, ltStrLine);
-                Cursor.Current = Cursors.Default;
             
         }
 
@@ -154,10 +165,6 @@ namespace DOGPlatform
         
         }
 
-       public static void creatWellGeoFile(string _sJH)
-       {
-           creatWellGeoFile(_sJH, readInputFile(_sJH));
-       }
 
         public static void selectData2FileFromLayerDepthByJH(string sJH, string filePathWrited)
         {

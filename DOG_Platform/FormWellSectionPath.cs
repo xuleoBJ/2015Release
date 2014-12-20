@@ -324,14 +324,11 @@ namespace DOGPlatform
             string filenameSVGMap;
             if (this.tbxTitle.Text == "")
             {
-                filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "_Pathsection.svg";
+                if (ltStrSelectedJH.Count < 6) filenameSVGMap = "斜井剖面_" + string.Join("-", ltStrSelectedJH.ToArray()) + ".svg";
+                else filenameSVGMap = "斜井剖面_" + string.Join("-", ltStrSelectedJH.GetRange(0, 5)) + ".svg";
             }
-            else
-            {
-                filenameSVGMap = this.tbxTitle.Text + ".svg";
-            }
+            else filenameSVGMap = this.tbxTitle.Text + ".svg";
             generateSectionGraph(filenameSVGMap);
-          
         }
 
          void generateSectionGraph( string filenameSVGMap)

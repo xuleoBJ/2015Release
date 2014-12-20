@@ -16,11 +16,10 @@ namespace DOGPlatform
             trackDataListLayerDepth.ltStrXCM = new List<string>();
 
             string sData = "";
-            using (StreamReader sr = new StreamReader(filePath, System.Text.Encoding.Default))
+            if (filePath != "")
             {
-                sData = sr.ReadToEnd();
+                using (StreamReader sr = new StreamReader(filePath, System.Text.Encoding.Default)) sData = sr.ReadToEnd();
             }
-
             string[] split = sData.Trim().Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < split.Length; i = i + 3)
             {

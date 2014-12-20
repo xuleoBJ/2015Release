@@ -97,12 +97,16 @@ namespace DOGPlatform
                             sttWellHead.fWellBase = 0.0f;
 
                             string[] split = line.Trim().Split();
+                            
                             sttWellHead.sJH = split[0];
-                            double.TryParse(split[1], out  sttWellHead.dbX);
-                            double.TryParse(split[2], out sttWellHead.dbY);
-                            float.TryParse(split[3], out  sttWellHead.fKB);
-                            int.TryParse(split[4], out  sttWellHead.iWellType);
-                            float.TryParse(split[5], out   sttWellHead.fWellBase);
+                            if (split.Length >= 6)
+                            {
+                                double.TryParse(split[1], out  sttWellHead.dbX);
+                                double.TryParse(split[2], out sttWellHead.dbY);
+                                float.TryParse(split[3], out  sttWellHead.fKB);
+                                int.TryParse(split[4], out  sttWellHead.iWellType);
+                                float.TryParse(split[5], out   sttWellHead.fWellBase);
+                            }
                             listWellHead.Add(sttWellHead); 
                         }
                     }

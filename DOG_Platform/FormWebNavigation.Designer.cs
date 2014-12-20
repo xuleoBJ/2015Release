@@ -46,6 +46,9 @@
             this.tabControlSVGNavigation = new System.Windows.Forms.TabControl();
             this.tbgSVGView = new System.Windows.Forms.TabPage();
             this.webBrowserSVG = new System.Windows.Forms.WebBrowser();
+            this.连接层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOilLayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWaterLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -79,7 +82,7 @@
             // 打开文件ToolStripMenuItem1
             // 
             this.打开文件ToolStripMenuItem1.Name = "打开文件ToolStripMenuItem1";
-            this.打开文件ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.打开文件ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
             this.打开文件ToolStripMenuItem1.Text = "打开文件";
             this.打开文件ToolStripMenuItem1.Click += new System.EventHandler(this.openSVGfile_Click);
             // 
@@ -89,20 +92,20 @@
             this.inkscapeToolStripMenuItem,
             this.系统自动选择ToolStripMenuItem});
             this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(152, 22);
+            this.tsmiEdit.Size = new System.Drawing.Size(124, 22);
             this.tsmiEdit.Text = "编辑";
             // 
             // inkscapeToolStripMenuItem
             // 
             this.inkscapeToolStripMenuItem.Name = "inkscapeToolStripMenuItem";
-            this.inkscapeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.inkscapeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.inkscapeToolStripMenuItem.Text = "inkscape";
             this.inkscapeToolStripMenuItem.Click += new System.EventHandler(this.inkscapeToolStripMenuItem_Click);
             // 
             // 系统自动选择ToolStripMenuItem
             // 
             this.系统自动选择ToolStripMenuItem.Name = "系统自动选择ToolStripMenuItem";
-            this.系统自动选择ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.系统自动选择ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.系统自动选择ToolStripMenuItem.Text = "系统自动选择";
             this.系统自动选择ToolStripMenuItem.Click += new System.EventHandler(this.系统自动选择ToolStripMenuItem_Click);
             // 
@@ -140,7 +143,8 @@
             // 插入ToolStripMenuItem
             // 
             this.插入ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSand});
+            this.tsmiSand,
+            this.连接层ToolStripMenuItem});
             this.插入ToolStripMenuItem.Name = "插入ToolStripMenuItem";
             this.插入ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.插入ToolStripMenuItem.Text = "插入";
@@ -148,8 +152,8 @@
             // tsmiSand
             // 
             this.tsmiSand.Name = "tsmiSand";
-            this.tsmiSand.Size = new System.Drawing.Size(100, 22);
-            this.tsmiSand.Text = "砂体";
+            this.tsmiSand.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSand.Text = "油砂体";
             this.tsmiSand.Click += new System.EventHandler(this.tsmiSand_Click);
             // 
             // ToolStripLabel2
@@ -218,6 +222,29 @@
             this.webBrowserSVG.Size = new System.Drawing.Size(882, 568);
             this.webBrowserSVG.TabIndex = 1;
             // 
+            // 连接层ToolStripMenuItem
+            // 
+            this.连接层ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiOilLayer,
+            this.tsmiWaterLayer});
+            this.连接层ToolStripMenuItem.Name = "连接层ToolStripMenuItem";
+            this.连接层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.连接层ToolStripMenuItem.Text = "连接层";
+            // 
+            // tsmiOilLayer
+            // 
+            this.tsmiOilLayer.Name = "tsmiOilLayer";
+            this.tsmiOilLayer.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOilLayer.Text = "油层";
+            this.tsmiOilLayer.Click += new System.EventHandler(this.tsmiOilLayer_Click);
+            // 
+            // tsmiWaterLayer
+            // 
+            this.tsmiWaterLayer.Name = "tsmiWaterLayer";
+            this.tsmiWaterLayer.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWaterLayer.Text = "水层";
+            this.tsmiWaterLayer.Click += new System.EventHandler(this.tsmiWaterLayer_Click);
+            // 
             // FormWebNavigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -265,5 +292,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiSand;
         private System.Windows.Forms.ToolStripMenuItem tsmiMove;
         private System.Windows.Forms.ToolStripMenuItem tsmiDel;
+        private System.Windows.Forms.ToolStripMenuItem 连接层ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiOilLayer;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWaterLayer;
     }
 }

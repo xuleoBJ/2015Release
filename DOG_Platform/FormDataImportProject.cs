@@ -158,13 +158,14 @@ namespace DOGPlatform
             }
             if (isFull)
             {
-                DialogResult dialogResult = MessageBox.Show("确认修改数据？", "数据导入",
-                       MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("确认数据入库？", "数据导入", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
+                    Cursor.Current = Cursors.WaitCursor;
                     if (dataImported() == true) MessageBox.Show("数据导入成功");
                     else MessageBox.Show("数据有误");
-                }
+                    Cursor.Current = Cursors.Default;
+                } 
             }
 
         }

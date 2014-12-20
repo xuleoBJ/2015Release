@@ -171,6 +171,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
+            this.btnGenerateDataByBaseDepth = new System.Windows.Forms.Button();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -423,7 +424,7 @@
             // rdbPlaceBYWellDistance
             // 
             this.rdbPlaceBYWellDistance.AutoSize = true;
-            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(163, 20);
+            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(148, 20);
             this.rdbPlaceBYWellDistance.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPlaceBYWellDistance.Name = "rdbPlaceBYWellDistance";
             this.rdbPlaceBYWellDistance.Size = new System.Drawing.Size(71, 16);
@@ -636,6 +637,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnGenerateDataByBaseDepth);
             this.groupBox2.Controls.Add(this.groupBox5);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.label3);
@@ -647,7 +649,7 @@
             this.groupBox2.Controls.Add(this.lbxJHSeclected);
             this.groupBox2.Location = new System.Drawing.Point(7, 17);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 525);
+            this.groupBox2.Size = new System.Drawing.Size(290, 542);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "剖面图设置";
@@ -665,10 +667,10 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox5.Size = new System.Drawing.Size(251, 146);
+            this.groupBox5.Size = new System.Drawing.Size(272, 144);
             this.groupBox5.TabIndex = 18;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "绘制海拔深度";
+            this.groupBox5.Text = "海拔深度";
             // 
             // tbxBottomElevationInput
             // 
@@ -690,7 +692,7 @@
             // 
             // btnGenerateDataByInputDepth
             // 
-            this.btnGenerateDataByInputDepth.Location = new System.Drawing.Point(35, 103);
+            this.btnGenerateDataByInputDepth.Location = new System.Drawing.Point(25, 97);
             this.btnGenerateDataByInputDepth.Name = "btnGenerateDataByInputDepth";
             this.btnGenerateDataByInputDepth.Size = new System.Drawing.Size(188, 23);
             this.btnGenerateDataByInputDepth.TabIndex = 14;
@@ -2206,6 +2208,16 @@
             this.label30.TabIndex = 8;
             this.label30.Text = "下";
             // 
+            // btnGenerateDataByBaseDepth
+            // 
+            this.btnGenerateDataByBaseDepth.Location = new System.Drawing.Point(37, 506);
+            this.btnGenerateDataByBaseDepth.Name = "btnGenerateDataByBaseDepth";
+            this.btnGenerateDataByBaseDepth.Size = new System.Drawing.Size(188, 23);
+            this.btnGenerateDataByBaseDepth.TabIndex = 15;
+            this.btnGenerateDataByBaseDepth.Text = "全井段绘制";
+            this.btnGenerateDataByBaseDepth.UseVisualStyleBackColor = true;
+            this.btnGenerateDataByBaseDepth.Click += new System.EventHandler(this.btnGenerateDataByBaseDepth_Click);
+            // 
             // FormWellSectionGeology
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2436,5 +2448,6 @@
         private System.Windows.Forms.Button btnAddProfile;
         private System.Windows.Forms.RadioButton rdbRight;
         private System.Windows.Forms.RadioButton rdbLeft;
+        private System.Windows.Forms.Button btnGenerateDataByBaseDepth;
     }
 }

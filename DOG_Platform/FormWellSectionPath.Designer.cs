@@ -590,7 +590,7 @@
             this.groupBox5.Size = new System.Drawing.Size(251, 146);
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "绘制海拔深度";
+            this.groupBox5.Text = "海拔深度截取";
             // 
             // tbxBottomElevationInput
             // 

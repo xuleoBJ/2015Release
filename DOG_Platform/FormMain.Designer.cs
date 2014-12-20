@@ -119,6 +119,8 @@
             this.tsmiCalWellInjectDictionary = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLayerInjectProductSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.动态地质分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.井组分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
             this.调剖决策ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripDraw = new System.Windows.Forms.ToolStrip();
@@ -141,8 +143,6 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.井组分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -470,7 +470,7 @@
             this.tbgWellHead.Location = new System.Drawing.Point(4, 22);
             this.tbgWellHead.Name = "tbgWellHead";
             this.tbgWellHead.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellHead.Size = new System.Drawing.Size(917, 606);
+            this.tbgWellHead.Size = new System.Drawing.Size(917, 610);
             this.tbgWellHead.TabIndex = 0;
             this.tbgWellHead.Text = "井位数据";
             this.tbgWellHead.UseVisualStyleBackColor = true;
@@ -521,7 +521,7 @@
             this.splitter2.Location = new System.Drawing.Point(3, 3);
             this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(2, 600);
+            this.splitter2.Size = new System.Drawing.Size(2, 604);
             this.splitter2.TabIndex = 15;
             this.splitter2.TabStop = false;
             // 
@@ -921,14 +921,14 @@
             // tsmiSection
             // 
             this.tsmiSection.Name = "tsmiSection";
-            this.tsmiSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSection.Size = new System.Drawing.Size(136, 22);
             this.tsmiSection.Text = "油藏剖面图";
             this.tsmiSection.Click += new System.EventHandler(this.tsmiSection_Click);
             // 
             // tsmiWellpathSection
             // 
             this.tsmiWellpathSection.Name = "tsmiWellpathSection";
-            this.tsmiWellpathSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWellpathSection.Size = new System.Drawing.Size(136, 22);
             this.tsmiWellpathSection.Text = "斜井剖面";
             this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
             // 
@@ -992,6 +992,21 @@
             this.动态地质分析ToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.动态地质分析ToolStripMenuItem.Text = "动态地质分析";
             this.动态地质分析ToolStripMenuItem.Click += new System.EventHandler(this.动态地质分析ToolStripMenuItem_Click);
+            // 
+            // 井组分析ToolStripMenuItem
+            // 
+            this.井组分析ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSectionFence});
+            this.井组分析ToolStripMenuItem.Name = "井组分析ToolStripMenuItem";
+            this.井组分析ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.井组分析ToolStripMenuItem.Text = "井组分析";
+            // 
+            // tsmiSectionFence
+            // 
+            this.tsmiSectionFence.Name = "tsmiSectionFence";
+            this.tsmiSectionFence.Size = new System.Drawing.Size(124, 22);
+            this.tsmiSectionFence.Text = "井组地质";
+            this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
             // 调剖决策ToolStripMenuItem
             // 
@@ -1065,7 +1080,7 @@
             this.tlsCbbLayer});
             this.ToolStripMain.Location = new System.Drawing.Point(84, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(435, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(402, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1177,21 +1192,6 @@
             this.imageListMain.Images.SetKeyName(3, "Oil_well_icon16x16.png");
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
-            // 
-            // 井组分析ToolStripMenuItem
-            // 
-            this.井组分析ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSectionFence});
-            this.井组分析ToolStripMenuItem.Name = "井组分析ToolStripMenuItem";
-            this.井组分析ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.井组分析ToolStripMenuItem.Text = "井组分析";
-            // 
-            // tsmiSectionFence
-            // 
-            this.tsmiSectionFence.Name = "tsmiSectionFence";
-            this.tsmiSectionFence.Size = new System.Drawing.Size(152, 22);
-            this.tsmiSectionFence.Text = "栅状图分析";
-            this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
             // FormMain
             // 
