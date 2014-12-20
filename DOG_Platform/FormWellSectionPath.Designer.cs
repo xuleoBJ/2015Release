@@ -2497,7 +2497,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormWellSectionPath";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "井间油藏剖面图";
+            this.Text = "斜井剖面";
             this.Load += new System.EventHandler(this.FormWellSectionGraph_Load);
             this.tabControlSection.ResumeLayout(false);
             this.tabPageData.ResumeLayout(false);

@@ -17,7 +17,7 @@ namespace DOGPlatform
 
         public ItemWellView(string sJH)
         {
-            ItemWellHead item = new ItemWellHead(sJH);
+            ItemWellHead item = cIOinputWellHead.getWellHeadByJH(sJH);
             this.sJH = sJH;
             this.dbX = item.dbX;
             this.dbY = item.dbY;

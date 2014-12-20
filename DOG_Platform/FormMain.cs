@@ -74,12 +74,12 @@ namespace DOGPlatform
             listScale.Add("250");
             listScale.Add("200");
             listScale.Add("100000");
-            cbbScale.Items.Clear();
+            tscbbScale.Items.Clear();
             foreach (string sItem in listScale)
             {
-                cbbScale.Items.Add(sItem);
+                tscbbScale.Items.Add(sItem);
             }
-            cbbScale.SelectedIndex = 0;
+            tscbbScale.SelectedIndex = 0;
 
         }
 
@@ -158,7 +158,7 @@ namespace DOGPlatform
                 foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
                 tlsCbbLayer.SelectedIndex = 0;
                 updateTreeView();
-                cbbScale.Text = ((int)(1000 / cProjectData.dfMapScale)).ToString();
+                tscbbScale.Text = ((int)(1000 / cProjectData.dfMapScale)).ToString();
                 WellNavitationInvalidate();
             } 
         }
@@ -499,7 +499,7 @@ namespace DOGPlatform
             if (tbcMain.SelectedIndex == 0)
             {
                 cProjectData.dfMapScale = cProjectData.dfMapScale * 1.2F;
-                cbbScale.Text = (1000.0 / cProjectData.dfMapScale).ToString("0");
+                tscbbScale.Text = (1000.0 / cProjectData.dfMapScale).ToString("0");
                 WellNavitationInvalidate();
             }
             if (tbcMain.SelectedIndex == 1)
@@ -514,7 +514,7 @@ namespace DOGPlatform
             if (tbcMain.SelectedIndex == 0)
             {
                 cProjectData.dfMapScale = cProjectData.dfMapScale * 0.8F;
-                cbbScale.Text = (1000.0 / cProjectData.dfMapScale).ToString("0");
+                tscbbScale.Text = (1000.0 / cProjectData.dfMapScale).ToString("0");
                 WellNavitationInvalidate();
             }
             if (tbcMain.SelectedIndex == 1)
@@ -525,9 +525,9 @@ namespace DOGPlatform
         }
         private void tsCbbScale_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbbScale.SelectedIndex >= 0)
+            if (tscbbScale.SelectedIndex >= 0)
             {
-                float dfscale = float.Parse(cbbScale.SelectedItem.ToString());
+                float dfscale = float.Parse(tscbbScale.SelectedItem.ToString());
                 cProjectData.dfMapScale = 1000 / dfscale;
                 WellNavitationInvalidate();
             }
@@ -547,12 +547,10 @@ namespace DOGPlatform
                             //右键菜单
                            cContextMenuStripInputWellsManager cCMSwells = new cContextMenuStripInputWellsManager(cmsProject, selectNode);
                             cCMSwells.setupContextMenuWellMangager();
-                            cmsProject = cCMSwells.cms;
                             break; 
                         case "tnWellTops": //当前选中小层管理
                             cContextMenuStripInputLayer cmsWellTops = new cContextMenuStripInputLayer(cmsProject, selectNode, selectNode.Text);
-                            cmsWellTops.setupTsmiImportLayers();
-                            cmsProject = cmsWellTops.cms;
+                            cmsWellTops.setupTsmi();
                             break;
                     }
                     break;
@@ -562,7 +560,7 @@ namespace DOGPlatform
                         //右键快捷菜单配置
                         string _sJH = selectNode.Text;
                         cContextMenuStripInputWell cCMSinputWell = new cContextMenuStripInputWell(cmsProject, selectNode, _sJH);
-                        cCMSinputWell.setupTsmiDataImport();
+                        cCMSinputWell.setupTsmi();
                     }
                     if (selectNode.Parent.Text == "井" && selectNode.Index == 0)  //当前 全局测井曲线
                     {
@@ -572,8 +570,7 @@ namespace DOGPlatform
                     if (selectNode.Parent.Name == "tnWellTops")
                     {
                         cContextMenuStripInputLayer cCMSinputLayer = new cContextMenuStripInputLayer(cmsProject, selectNode, selectNode.Text);
-                        cCMSinputLayer.setupTsmiImportFaultLine();
-                        cCMSinputLayer.setupTsmiImportContour();
+                        cCMSinputLayer.setupTsmi();
                     }
                     break;
                 case 2://第3级菜单，右键快捷菜单配置
@@ -582,7 +579,6 @@ namespace DOGPlatform
                     {
                         cContextMenuStripInputWellLog cTS = new cContextMenuStripInputWellLog(cmsProject, selectNode, selectNode.Parent.Text);
                         cTS.setupContextMenuStripWellLog();
-                        cmsProject = cTS.cms;
                         cTreeViewProjectData.setupTNWellLog(selectNode, selectNode.Parent.Text);
                     }
                     break;
@@ -591,7 +587,6 @@ namespace DOGPlatform
                     {
                         cContextMenuStripLogItem cTS = new cContextMenuStripLogItem(cmsProject, selectNode, selectNode.Parent.Parent.Text);
                         cTS.setupLogItem();
-                        cmsProject = cTS.cms;
                     }
                     break;
 
@@ -1205,6 +1200,13 @@ namespace DOGPlatform
         {
             FormAdjustProfile form = new FormAdjustProfile();
             form.Show();
+        }
+
+        private void tsmiSectionFence_Click(object sender, EventArgs e)
+        {
+            FormWellsGroup _form = new FormWellsGroup();
+            _form.ShowDialog();
+            updateWebSVG();
         }
 
 

@@ -62,6 +62,12 @@
             this.btnOpenWellHead = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
             this.dgvWellHead = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbgLayerSeriers = new System.Windows.Forms.TabPage();
             this.btnInputLayerSerieresdelDgvLine = new System.Windows.Forms.Button();
             this.btnCopyFromExcelLayerSeriers = new System.Windows.Forms.Button();
@@ -127,7 +133,7 @@
             this.tsBtnZoonIn = new System.Windows.Forms.ToolStripButton();
             this.tsBtnZoomOut = new System.Windows.Forms.ToolStripButton();
             this.ToolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.cbbScale = new System.Windows.Forms.ToolStripComboBox();
+            this.tscbbScale = new System.Windows.Forms.ToolStripComboBox();
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tlsCbbLayer = new System.Windows.Forms.ToolStripComboBox();
             this.根据有效层段处理分层数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,12 +141,8 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.井组分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -468,7 +470,7 @@
             this.tbgWellHead.Location = new System.Drawing.Point(4, 22);
             this.tbgWellHead.Name = "tbgWellHead";
             this.tbgWellHead.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellHead.Size = new System.Drawing.Size(917, 610);
+            this.tbgWellHead.Size = new System.Drawing.Size(917, 606);
             this.tbgWellHead.TabIndex = 0;
             this.tbgWellHead.Text = "井位数据";
             this.tbgWellHead.UseVisualStyleBackColor = true;
@@ -519,7 +521,7 @@
             this.splitter2.Location = new System.Drawing.Point(3, 3);
             this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(2, 604);
+            this.splitter2.Size = new System.Drawing.Size(2, 600);
             this.splitter2.TabIndex = 15;
             this.splitter2.TabStop = false;
             // 
@@ -538,6 +540,36 @@
             this.dgvWellHead.RowTemplate.Height = 23;
             this.dgvWellHead.Size = new System.Drawing.Size(861, 568);
             this.dgvWellHead.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "井号";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "X";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Y";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "补心海拔";
+            this.Column4.Name = "Column4";
+            // 
+            // Column11
+            // 
+            this.Column11.HeaderText = "井别";
+            this.Column11.Name = "Column11";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "完钻井深(m)";
+            this.Column5.Name = "Column5";
             // 
             // tbgLayerSeriers
             // 
@@ -620,6 +652,7 @@
             this.tsmiGeology,
             this.tsmiRes,
             this.tsmiResevior,
+            this.井组分析ToolStripMenuItem,
             this.调剖决策ToolStripMenuItem});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
@@ -888,14 +921,14 @@
             // tsmiSection
             // 
             this.tsmiSection.Name = "tsmiSection";
-            this.tsmiSection.Size = new System.Drawing.Size(136, 22);
+            this.tsmiSection.Size = new System.Drawing.Size(152, 22);
             this.tsmiSection.Text = "油藏剖面图";
             this.tsmiSection.Click += new System.EventHandler(this.tsmiSection_Click);
             // 
             // tsmiWellpathSection
             // 
             this.tsmiWellpathSection.Name = "tsmiWellpathSection";
-            this.tsmiWellpathSection.Size = new System.Drawing.Size(136, 22);
+            this.tsmiWellpathSection.Size = new System.Drawing.Size(152, 22);
             this.tsmiWellpathSection.Text = "斜井剖面";
             this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
             // 
@@ -1027,12 +1060,12 @@
             this.tsBtnZoonIn,
             this.tsBtnZoomOut,
             this.ToolStripLabel1,
-            this.cbbScale,
+            this.tscbbScale,
             this.ToolStripSeparator2,
             this.tlsCbbLayer});
             this.ToolStripMain.Location = new System.Drawing.Point(84, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(402, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(435, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1096,11 +1129,11 @@
             this.ToolStripLabel1.Size = new System.Drawing.Size(58, 22);
             this.ToolStripLabel1.Text = "比例尺 1:";
             // 
-            // cbbScale
+            // tscbbScale
             // 
-            this.cbbScale.Name = "cbbScale";
-            this.cbbScale.Size = new System.Drawing.Size(80, 25);
-            this.cbbScale.SelectedIndexChanged += new System.EventHandler(this.tsCbbScale_SelectedIndexChanged);
+            this.tscbbScale.Name = "tscbbScale";
+            this.tscbbScale.Size = new System.Drawing.Size(80, 25);
+            this.tscbbScale.SelectedIndexChanged += new System.EventHandler(this.tsCbbScale_SelectedIndexChanged);
             // 
             // ToolStripSeparator2
             // 
@@ -1145,35 +1178,20 @@
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
             // 
-            // Column1
+            // 井组分析ToolStripMenuItem
             // 
-            this.Column1.HeaderText = "井号";
-            this.Column1.Name = "Column1";
+            this.井组分析ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSectionFence});
+            this.井组分析ToolStripMenuItem.Name = "井组分析ToolStripMenuItem";
+            this.井组分析ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
+            this.井组分析ToolStripMenuItem.Text = "井组分析";
             // 
-            // Column2
+            // tsmiSectionFence
             // 
-            this.Column2.HeaderText = "X";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Y";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "补心海拔";
-            this.Column4.Name = "Column4";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "井别";
-            this.Column11.Name = "Column11";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "完钻井深(m)";
-            this.Column5.Name = "Column5";
+            this.tsmiSectionFence.Name = "tsmiSectionFence";
+            this.tsmiSectionFence.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSectionFence.Text = "栅状图分析";
+            this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
             // FormMain
             // 
@@ -1286,7 +1304,7 @@
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsBtnZoonIn;
         private System.Windows.Forms.ToolStripButton tsBtnZoomOut;
-        private System.Windows.Forms.ToolStripComboBox cbbScale;
+        private System.Windows.Forms.ToolStripComboBox tscbbScale;
         private System.Windows.Forms.ToolStripLabel ToolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2;
         private System.Windows.Forms.SplitContainer splitContainer2;
@@ -1341,6 +1359,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.ToolStripMenuItem 井组分析ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSectionFence;
     }
 }
 

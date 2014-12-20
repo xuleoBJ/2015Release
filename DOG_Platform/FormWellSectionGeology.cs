@@ -218,7 +218,7 @@ namespace DOGPlatform
                 if (iTypeFlatted == (int)typeFlatted.顶面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthTop;
                 if (iTypeFlatted == (int)typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
              
-                if(rdbPlaceBywellPosition.Checked==true ) PListWellPositon.Add(cCordinationTransform.getPointViewByJH(listWellsSection[i].sJH));
+          
                 if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+300*i,0));
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {

@@ -32,6 +32,7 @@
             this.tclWellsGroup = new System.Windows.Forms.TabControl();
             this.tbgWellsGroupData = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnLogTrackAddLeft = new System.Windows.Forms.Button();
             this.nUDRightLogRightValue = new System.Windows.Forms.NumericUpDown();
             this.nUDRightLogLeftValue = new System.Windows.Forms.NumericUpDown();
             this.nUDLeftLogRightValue = new System.Windows.Forms.NumericUpDown();
@@ -40,15 +41,16 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.btnAddLogTrack = new System.Windows.Forms.Button();
+            this.btnLogTrackAddRight = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.iWellIntervalDistanceNameRight = new System.Windows.Forms.ComboBox();
-            this.iWellIntervalDistancecorlorRight = new System.Windows.Forms.ComboBox();
-            this.iWellIntervalDistancecorlorLeft = new System.Windows.Forms.ComboBox();
-            this.iWellIntervalDistanceNameLeft = new System.Windows.Forms.ComboBox();
+            this.cbbRightLogName = new System.Windows.Forms.ComboBox();
+            this.cbbColorRightLog = new System.Windows.Forms.ComboBox();
+            this.cbbColorLeftLog = new System.Windows.Forms.ComboBox();
+            this.cbbLeftLogName = new System.Windows.Forms.ComboBox();
+            this.tvwWellSectionCollection = new System.Windows.Forms.TreeView();
             this.btnMakeFDmap = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSelectAll = new System.Windows.Forms.Button();
@@ -70,10 +72,7 @@
             this.btn_deleteWell = new System.Windows.Forms.Button();
             this.btn_addWell = new System.Windows.Forms.Button();
             this.lbxJHSeclected = new System.Windows.Forms.ListBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tbxTitle = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lbxTracksCollection = new System.Windows.Forms.ListBox();
             this.btnAddLayerDepth = new System.Windows.Forms.Button();
@@ -84,8 +83,6 @@
             this.nUDJSJLTrackWidth = new System.Windows.Forms.NumericUpDown();
             this.label65 = new System.Windows.Forms.Label();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.nUMScaleVertical = new System.Windows.Forms.NumericUpDown();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.label61 = new System.Windows.Forms.Label();
             this.cbxShowTicks = new System.Windows.Forms.CheckBox();
@@ -140,6 +137,8 @@
             this.cbbCurveColor_leftLog = new System.Windows.Forms.ComboBox();
             this.btnMakeSectionByxmlConfig = new System.Windows.Forms.Button();
             this.btnSaveSetting = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnBig = new System.Windows.Forms.Button();
             this.tclWellsGroup.SuspendLayout();
             this.tbgWellsGroupData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -151,13 +150,10 @@
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDJSJLTrackWidth)).BeginInit();
-            this.groupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUMScaleVertical)).BeginInit();
             this.groupBox14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDWellConeJHFontSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDWellConeScale)).BeginInit();
@@ -194,10 +190,13 @@
             // 
             // tbgWellsGroupData
             // 
+            this.tbgWellsGroupData.Controls.Add(this.btnBig);
+            this.tbgWellsGroupData.Controls.Add(this.label10);
+            this.tbgWellsGroupData.Controls.Add(this.tbxTitle);
             this.tbgWellsGroupData.Controls.Add(this.groupBox4);
+            this.tbgWellsGroupData.Controls.Add(this.tvwWellSectionCollection);
             this.tbgWellsGroupData.Controls.Add(this.btnMakeFDmap);
             this.tbgWellsGroupData.Controls.Add(this.groupBox2);
-            this.tbgWellsGroupData.Controls.Add(this.groupBox1);
             this.tbgWellsGroupData.Controls.Add(this.groupBox7);
             this.tbgWellsGroupData.Location = new System.Drawing.Point(4, 22);
             this.tbgWellsGroupData.Name = "tbgWellsGroupData";
@@ -209,6 +208,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnLogTrackAddLeft);
             this.groupBox4.Controls.Add(this.nUDRightLogRightValue);
             this.groupBox4.Controls.Add(this.nUDRightLogLeftValue);
             this.groupBox4.Controls.Add(this.nUDLeftLogRightValue);
@@ -217,21 +217,31 @@
             this.groupBox4.Controls.Add(this.label23);
             this.groupBox4.Controls.Add(this.label22);
             this.groupBox4.Controls.Add(this.label21);
-            this.groupBox4.Controls.Add(this.btnAddLogTrack);
+            this.groupBox4.Controls.Add(this.btnLogTrackAddRight);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.iWellIntervalDistanceNameRight);
-            this.groupBox4.Controls.Add(this.iWellIntervalDistancecorlorRight);
-            this.groupBox4.Controls.Add(this.iWellIntervalDistancecorlorLeft);
-            this.groupBox4.Controls.Add(this.iWellIntervalDistanceNameLeft);
-            this.groupBox4.Location = new System.Drawing.Point(317, 344);
+            this.groupBox4.Controls.Add(this.cbbRightLogName);
+            this.groupBox4.Controls.Add(this.cbbColorRightLog);
+            this.groupBox4.Controls.Add(this.cbbColorLeftLog);
+            this.groupBox4.Controls.Add(this.cbbLeftLogName);
+            this.groupBox4.Location = new System.Drawing.Point(317, 350);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(382, 106);
-            this.groupBox4.TabIndex = 36;
+            this.groupBox4.Size = new System.Drawing.Size(492, 100);
+            this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测井曲线";
+            // 
+            // btnLogTrackAddLeft
+            // 
+            this.btnLogTrackAddLeft.Location = new System.Drawing.Point(391, 17);
+            this.btnLogTrackAddLeft.Name = "btnLogTrackAddLeft";
+            this.btnLogTrackAddLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnLogTrackAddLeft.TabIndex = 29;
+            this.btnLogTrackAddLeft.Text = "生成曲线道";
+            this.btnLogTrackAddLeft.UseVisualStyleBackColor = true;
+            this.btnLogTrackAddLeft.Click += new System.EventHandler(this.btnLogTrackAddLeft_Click);
             // 
             // nUDRightLogRightValue
             // 
@@ -241,7 +251,7 @@
             0,
             0,
             0});
-            this.nUDRightLogRightValue.Location = new System.Drawing.Point(330, 49);
+            this.nUDRightLogRightValue.Location = new System.Drawing.Point(337, 50);
             this.nUDRightLogRightValue.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -254,7 +264,7 @@
             -2147483648});
             this.nUDRightLogRightValue.Name = "nUDRightLogRightValue";
             this.nUDRightLogRightValue.Size = new System.Drawing.Size(40, 21);
-            this.nUDRightLogRightValue.TabIndex = 33;
+            this.nUDRightLogRightValue.TabIndex = 28;
             this.nUDRightLogRightValue.Value = new decimal(new int[] {
             100,
             0,
@@ -269,7 +279,7 @@
             0,
             0,
             0});
-            this.nUDRightLogLeftValue.Location = new System.Drawing.Point(254, 49);
+            this.nUDRightLogLeftValue.Location = new System.Drawing.Point(261, 50);
             this.nUDRightLogLeftValue.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -282,7 +292,7 @@
             -2147483648});
             this.nUDRightLogLeftValue.Name = "nUDRightLogLeftValue";
             this.nUDRightLogLeftValue.Size = new System.Drawing.Size(40, 21);
-            this.nUDRightLogLeftValue.TabIndex = 34;
+            this.nUDRightLogLeftValue.TabIndex = 28;
             // 
             // nUDLeftLogRightValue
             // 
@@ -292,7 +302,7 @@
             0,
             0,
             0});
-            this.nUDLeftLogRightValue.Location = new System.Drawing.Point(330, 20);
+            this.nUDLeftLogRightValue.Location = new System.Drawing.Point(337, 21);
             this.nUDLeftLogRightValue.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -305,7 +315,7 @@
             -2147483648});
             this.nUDLeftLogRightValue.Name = "nUDLeftLogRightValue";
             this.nUDLeftLogRightValue.Size = new System.Drawing.Size(40, 21);
-            this.nUDLeftLogRightValue.TabIndex = 35;
+            this.nUDLeftLogRightValue.TabIndex = 28;
             this.nUDLeftLogRightValue.Value = new decimal(new int[] {
             100,
             0,
@@ -315,10 +325,10 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(300, 54);
+            this.label24.Location = new System.Drawing.Point(307, 55);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(29, 12);
-            this.label24.TabIndex = 32;
+            this.label24.TabIndex = 27;
             this.label24.Text = "右值";
             // 
             // nUDLeftLogLeftValue
@@ -329,7 +339,7 @@
             0,
             0,
             0});
-            this.nUDLeftLogLeftValue.Location = new System.Drawing.Point(254, 20);
+            this.nUDLeftLogLeftValue.Location = new System.Drawing.Point(261, 21);
             this.nUDLeftLogLeftValue.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -342,44 +352,44 @@
             -2147483648});
             this.nUDLeftLogLeftValue.Name = "nUDLeftLogLeftValue";
             this.nUDLeftLogLeftValue.Size = new System.Drawing.Size(40, 21);
-            this.nUDLeftLogLeftValue.TabIndex = 36;
+            this.nUDLeftLogLeftValue.TabIndex = 28;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(224, 54);
+            this.label23.Location = new System.Drawing.Point(231, 55);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(29, 12);
-            this.label23.TabIndex = 30;
+            this.label23.TabIndex = 27;
             this.label23.Text = "左值";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(300, 25);
+            this.label22.Location = new System.Drawing.Point(307, 26);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(29, 12);
-            this.label22.TabIndex = 31;
+            this.label22.TabIndex = 27;
             this.label22.Text = "右值";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(224, 25);
+            this.label21.Location = new System.Drawing.Point(231, 26);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(29, 12);
-            this.label21.TabIndex = 29;
+            this.label21.TabIndex = 27;
             this.label21.Text = "左值";
             // 
-            // btnAddLogTrack
+            // btnLogTrackAddRight
             // 
-            this.btnAddLogTrack.Location = new System.Drawing.Point(19, 76);
-            this.btnAddLogTrack.Name = "btnAddLogTrack";
-            this.btnAddLogTrack.Size = new System.Drawing.Size(75, 23);
-            this.btnAddLogTrack.TabIndex = 13;
-            this.btnAddLogTrack.Text = "生成曲线道";
-            this.btnAddLogTrack.UseVisualStyleBackColor = true;
-            this.btnAddLogTrack.Click += new System.EventHandler(this.btnAddLogTrack_Click);
+            this.btnLogTrackAddRight.Location = new System.Drawing.Point(391, 49);
+            this.btnLogTrackAddRight.Name = "btnLogTrackAddRight";
+            this.btnLogTrackAddRight.Size = new System.Drawing.Size(75, 23);
+            this.btnLogTrackAddRight.TabIndex = 13;
+            this.btnLogTrackAddRight.Text = "生成曲线道";
+            this.btnLogTrackAddRight.UseVisualStyleBackColor = true;
+            this.btnLogTrackAddRight.Click += new System.EventHandler(this.btnLogTrackAddRight_Click);
             // 
             // label7
             // 
@@ -417,52 +427,62 @@
             this.label8.TabIndex = 12;
             this.label8.Text = "左侧";
             // 
-            // iWellIntervalDistanceNameRight
+            // cbbRightLogName
             // 
-            this.iWellIntervalDistanceNameRight.FormattingEnabled = true;
-            this.iWellIntervalDistanceNameRight.Items.AddRange(new object[] {
+            this.cbbRightLogName.FormattingEnabled = true;
+            this.cbbRightLogName.Items.AddRange(new object[] {
             "RT"});
-            this.iWellIntervalDistanceNameRight.Location = new System.Drawing.Point(51, 48);
-            this.iWellIntervalDistanceNameRight.Name = "iWellIntervalDistanceNameRight";
-            this.iWellIntervalDistanceNameRight.Size = new System.Drawing.Size(60, 20);
-            this.iWellIntervalDistanceNameRight.TabIndex = 10;
-            this.iWellIntervalDistanceNameRight.Text = "空白";
+            this.cbbRightLogName.Location = new System.Drawing.Point(51, 48);
+            this.cbbRightLogName.Name = "cbbRightLogName";
+            this.cbbRightLogName.Size = new System.Drawing.Size(60, 20);
+            this.cbbRightLogName.TabIndex = 20;
+            this.cbbRightLogName.Text = "空白";
             // 
-            // iWellIntervalDistancecorlorRight
+            // cbbColorRightLog
             // 
-            this.iWellIntervalDistancecorlorRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.iWellIntervalDistancecorlorRight.FormattingEnabled = true;
-            this.iWellIntervalDistancecorlorRight.Items.AddRange(new object[] {
+            this.cbbColorRightLog.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.cbbColorRightLog.FormattingEnabled = true;
+            this.cbbColorRightLog.Items.AddRange(new object[] {
             "black"});
-            this.iWellIntervalDistancecorlorRight.Location = new System.Drawing.Point(155, 49);
-            this.iWellIntervalDistancecorlorRight.Name = "iWellIntervalDistancecorlorRight";
-            this.iWellIntervalDistancecorlorRight.Size = new System.Drawing.Size(61, 20);
-            this.iWellIntervalDistancecorlorRight.TabIndex = 10;
+            this.cbbColorRightLog.Location = new System.Drawing.Point(155, 49);
+            this.cbbColorRightLog.Name = "cbbColorRightLog";
+            this.cbbColorRightLog.Size = new System.Drawing.Size(61, 20);
+            this.cbbColorRightLog.TabIndex = 10;
+            this.cbbColorRightLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbColorRightLog_MouseClick);
             // 
-            // iWellIntervalDistancecorlorLeft
+            // cbbColorLeftLog
             // 
-            this.iWellIntervalDistancecorlorLeft.BackColor = System.Drawing.Color.Blue;
-            this.iWellIntervalDistancecorlorLeft.FormattingEnabled = true;
-            this.iWellIntervalDistancecorlorLeft.Location = new System.Drawing.Point(155, 22);
-            this.iWellIntervalDistancecorlorLeft.Name = "iWellIntervalDistancecorlorLeft";
-            this.iWellIntervalDistancecorlorLeft.Size = new System.Drawing.Size(61, 20);
-            this.iWellIntervalDistancecorlorLeft.TabIndex = 10;
+            this.cbbColorLeftLog.BackColor = System.Drawing.Color.Blue;
+            this.cbbColorLeftLog.FormattingEnabled = true;
+            this.cbbColorLeftLog.Location = new System.Drawing.Point(155, 22);
+            this.cbbColorLeftLog.Name = "cbbColorLeftLog";
+            this.cbbColorLeftLog.Size = new System.Drawing.Size(61, 20);
+            this.cbbColorLeftLog.TabIndex = 10;
+            this.cbbColorLeftLog.MouseClick += new System.Windows.Forms.MouseEventHandler(this.cbbColorLeftLog_MouseClick);
             // 
-            // iWellIntervalDistanceNameLeft
+            // cbbLeftLogName
             // 
-            this.iWellIntervalDistanceNameLeft.FormattingEnabled = true;
-            this.iWellIntervalDistanceNameLeft.Items.AddRange(new object[] {
+            this.cbbLeftLogName.FormattingEnabled = true;
+            this.cbbLeftLogName.Items.AddRange(new object[] {
             "SP",
             "GR"});
-            this.iWellIntervalDistanceNameLeft.Location = new System.Drawing.Point(51, 22);
-            this.iWellIntervalDistanceNameLeft.Name = "iWellIntervalDistanceNameLeft";
-            this.iWellIntervalDistanceNameLeft.Size = new System.Drawing.Size(61, 20);
-            this.iWellIntervalDistanceNameLeft.TabIndex = 10;
-            this.iWellIntervalDistanceNameLeft.Text = "空白";
+            this.cbbLeftLogName.Location = new System.Drawing.Point(51, 22);
+            this.cbbLeftLogName.Name = "cbbLeftLogName";
+            this.cbbLeftLogName.Size = new System.Drawing.Size(61, 20);
+            this.cbbLeftLogName.TabIndex = 19;
+            this.cbbLeftLogName.Text = "空白";
+            // 
+            // tvwWellSectionCollection
+            // 
+            this.tvwWellSectionCollection.Location = new System.Drawing.Point(596, 37);
+            this.tvwWellSectionCollection.Margin = new System.Windows.Forms.Padding(2);
+            this.tvwWellSectionCollection.Name = "tvwWellSectionCollection";
+            this.tvwWellSectionCollection.Size = new System.Drawing.Size(276, 299);
+            this.tvwWellSectionCollection.TabIndex = 51;
             // 
             // btnMakeFDmap
             // 
-            this.btnMakeFDmap.Location = new System.Drawing.Point(744, 387);
+            this.btnMakeFDmap.Location = new System.Drawing.Point(626, 470);
             this.btnMakeFDmap.Name = "btnMakeFDmap";
             this.btnMakeFDmap.Size = new System.Drawing.Size(99, 30);
             this.btnMakeFDmap.TabIndex = 38;
@@ -543,11 +563,12 @@
             // nUDbottomDepthDown
             // 
             this.nUDbottomDepthDown.AllowDrop = true;
+            this.nUDbottomDepthDown.DecimalPlaces = 1;
             this.nUDbottomDepthDown.Increment = new decimal(new int[] {
             5,
             0,
             0,
-            0});
+            65536});
             this.nUDbottomDepthDown.Location = new System.Drawing.Point(200, 57);
             this.nUDbottomDepthDown.Name = "nUDbottomDepthDown";
             this.nUDbottomDepthDown.Size = new System.Drawing.Size(40, 21);
@@ -556,16 +577,17 @@
             5,
             0,
             0,
-            0});
+            65536});
             // 
             // nUDtopDepthUp
             // 
             this.nUDtopDepthUp.AllowDrop = true;
+            this.nUDtopDepthUp.DecimalPlaces = 1;
             this.nUDtopDepthUp.Increment = new decimal(new int[] {
             5,
             0,
             0,
-            0});
+            65536});
             this.nUDtopDepthUp.Location = new System.Drawing.Point(200, 27);
             this.nUDtopDepthUp.Name = "nUDtopDepthUp";
             this.nUDtopDepthUp.Size = new System.Drawing.Size(40, 21);
@@ -574,7 +596,7 @@
             5,
             0,
             0,
-            0});
+            65536});
             // 
             // btnMakeDepthByXCM
             // 
@@ -703,44 +725,12 @@
             this.lbxJHSeclected.TabIndex = 9;
             this.lbxJHSeclected.SelectedIndexChanged += new System.EventHandler(this.lbxJHSeclected_SelectedIndexChanged_1);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.tbxTitle);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Location = new System.Drawing.Point(317, 480);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(545, 97);
-            this.groupBox1.TabIndex = 34;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "栅状图信息";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(6, 33);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(48, 16);
-            this.checkBox3.TabIndex = 3;
-            this.checkBox3.Text = "图名";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
             // tbxTitle
             // 
-            this.tbxTitle.Location = new System.Drawing.Point(70, 31);
+            this.tbxTitle.Location = new System.Drawing.Point(210, 564);
             this.tbxTitle.Name = "tbxTitle";
             this.tbxTitle.Size = new System.Drawing.Size(443, 21);
             this.tbxTitle.TabIndex = 0;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(16, 100);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(72, 16);
-            this.checkBox2.TabIndex = 2;
-            this.checkBox2.Text = "绘制图框";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
@@ -748,9 +738,9 @@
             this.groupBox7.Controls.Add(this.btnAddLayerDepth);
             this.groupBox7.Controls.Add(this.btnAddPerforation);
             this.groupBox7.Controls.Add(this.btnAddJSJLTrack);
-            this.groupBox7.Location = new System.Drawing.Point(317, 27);
+            this.groupBox7.Location = new System.Drawing.Point(317, 23);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(246, 287);
+            this.groupBox7.Size = new System.Drawing.Size(246, 307);
             this.groupBox7.TabIndex = 40;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "曲线道";
@@ -864,51 +854,12 @@
             // 
             // groupBox15
             // 
-            this.groupBox15.Controls.Add(this.label43);
-            this.groupBox15.Controls.Add(this.nUMScaleVertical);
             this.groupBox15.Location = new System.Drawing.Point(26, 42);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(761, 78);
             this.groupBox15.TabIndex = 55;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "图型设置";
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(12, 24);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(71, 12);
-            this.label43.TabIndex = 54;
-            this.label43.Text = "放大尺度1：";
-            // 
-            // nUMScaleVertical
-            // 
-            this.nUMScaleVertical.AllowDrop = true;
-            this.nUMScaleVertical.Increment = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nUMScaleVertical.Location = new System.Drawing.Point(85, 20);
-            this.nUMScaleVertical.Maximum = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.nUMScaleVertical.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nUMScaleVertical.Name = "nUMScaleVertical";
-            this.nUMScaleVertical.Size = new System.Drawing.Size(73, 21);
-            this.nUMScaleVertical.TabIndex = 36;
-            this.nUMScaleVertical.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
             // 
             // groupBox14
             // 
@@ -1735,6 +1686,25 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(151, 567);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.TabIndex = 57;
+            this.label10.Text = "文件名";
+            // 
+            // btnBig
+            // 
+            this.btnBig.Location = new System.Drawing.Point(335, 470);
+            this.btnBig.Name = "btnBig";
+            this.btnBig.Size = new System.Drawing.Size(99, 30);
+            this.btnBig.TabIndex = 58;
+            this.btnBig.Text = "放大";
+            this.btnBig.UseVisualStyleBackColor = true;
+            this.btnBig.Click += new System.EventHandler(this.btnBig_Click);
+            // 
             // FormWellsGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1746,6 +1716,7 @@
             this.Load += new System.EventHandler(this.FormMapFence_Load);
             this.tclWellsGroup.ResumeLayout(false);
             this.tbgWellsGroupData.ResumeLayout(false);
+            this.tbgWellsGroupData.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightLogRightValue)).EndInit();
@@ -1758,16 +1729,11 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDJSJLTrackWidth)).EndInit();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUMScaleVertical)).EndInit();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDWellConeJHFontSize)).EndInit();
@@ -1800,24 +1766,6 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.TabControl tclWellsGroup;
         private System.Windows.Forms.TabPage tbgWellsGroupData;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.NumericUpDown nUDRightLogRightValue;
-        private System.Windows.Forms.NumericUpDown nUDRightLogLeftValue;
-        private System.Windows.Forms.NumericUpDown nUDLeftLogRightValue;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.NumericUpDown nUDLeftLogLeftValue;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button btnAddLogTrack;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox iWellIntervalDistanceNameRight;
-        private System.Windows.Forms.ComboBox iWellIntervalDistancecorlorRight;
-        private System.Windows.Forms.ComboBox iWellIntervalDistancecorlorLeft;
-        private System.Windows.Forms.ComboBox iWellIntervalDistanceNameLeft;
         private System.Windows.Forms.Button btnMakeFDmap;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label3;
@@ -1837,10 +1785,7 @@
         private System.Windows.Forms.Button btn_deleteWell;
         private System.Windows.Forms.Button btn_addWell;
         private System.Windows.Forms.ListBox lbxJHSeclected;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.TextBox tbxTitle;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.ListBox lbxTracksCollection;
         private System.Windows.Forms.Button btnAddLayerDepth;
@@ -1855,8 +1800,6 @@
         private System.Windows.Forms.NumericUpDown nUDJSJLTrackWidth;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.NumericUpDown nUMScaleVertical;
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.NumericUpDown nUDWellConeJHFontSize;
@@ -1909,5 +1852,27 @@
         private System.Windows.Forms.ComboBox cbbCurveColor_rightLog;
         private System.Windows.Forms.ComboBox cbbCurveColor_leftLog;
         private System.Windows.Forms.Button btnSelectAll;
+        private System.Windows.Forms.TreeView tvwWellSectionCollection;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnLogTrackAddLeft;
+        private System.Windows.Forms.NumericUpDown nUDRightLogRightValue;
+        private System.Windows.Forms.NumericUpDown nUDRightLogLeftValue;
+        private System.Windows.Forms.NumericUpDown nUDLeftLogRightValue;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.NumericUpDown nUDLeftLogLeftValue;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button btnLogTrackAddRight;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbbRightLogName;
+        private System.Windows.Forms.ComboBox cbbColorRightLog;
+        private System.Windows.Forms.ComboBox cbbColorLeftLog;
+        private System.Windows.Forms.ComboBox cbbLeftLogName;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnBig;
     }
 }

@@ -171,7 +171,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.rdbPlaceBywellPosition = new System.Windows.Forms.RadioButton();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -410,7 +409,6 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.rdbPlaceBywellPosition);
             this.groupBox6.Controls.Add(this.rdbPlaceBYWellDistance);
             this.groupBox6.Controls.Add(this.rdbPlaceByEqual);
             this.groupBox6.Location = new System.Drawing.Point(326, 230);
@@ -425,7 +423,7 @@
             // rdbPlaceBYWellDistance
             // 
             this.rdbPlaceBYWellDistance.AutoSize = true;
-            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(113, 20);
+            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(163, 20);
             this.rdbPlaceBYWellDistance.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPlaceBYWellDistance.Name = "rdbPlaceBYWellDistance";
             this.rdbPlaceBYWellDistance.Size = new System.Drawing.Size(71, 16);
@@ -2208,17 +2206,6 @@
             this.label30.TabIndex = 8;
             this.label30.Text = "下";
             // 
-            // rdbPlaceBywellPosition
-            // 
-            this.rdbPlaceBywellPosition.AutoSize = true;
-            this.rdbPlaceBywellPosition.Location = new System.Drawing.Point(199, 20);
-            this.rdbPlaceBywellPosition.Margin = new System.Windows.Forms.Padding(2);
-            this.rdbPlaceBywellPosition.Name = "rdbPlaceBywellPosition";
-            this.rdbPlaceBywellPosition.Size = new System.Drawing.Size(71, 16);
-            this.rdbPlaceBywellPosition.TabIndex = 2;
-            this.rdbPlaceBywellPosition.Text = "井位放置";
-            this.rdbPlaceBywellPosition.UseVisualStyleBackColor = true;
-            // 
             // FormWellSectionGeology
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2449,6 +2436,5 @@
         private System.Windows.Forms.Button btnAddProfile;
         private System.Windows.Forms.RadioButton rdbRight;
         private System.Windows.Forms.RadioButton rdbLeft;
-        private System.Windows.Forms.RadioButton rdbPlaceBywellPosition;
     }
 }

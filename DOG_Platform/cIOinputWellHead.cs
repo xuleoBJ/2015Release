@@ -90,13 +90,20 @@ namespace DOGPlatform
                         while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                         {
                             ItemWellHead sttWellHead = new ItemWellHead();
-                            string[] split = line.Trim().Split( );
+                            sttWellHead.dbX = 0.0;
+                            sttWellHead.dbY = 0.0;
+                            sttWellHead.fKB = 0.0f;
+                            sttWellHead.iWellType = 0;
+                            sttWellHead.fWellBase = 0.0f;
+
+                            string[] split = line.Trim().Split();
                             sttWellHead.sJH = split[0];
-                            sttWellHead.dbX = double.Parse(split[1]);
-                            sttWellHead.dbY = double.Parse(split[2]);
-                            sttWellHead.fKB = float.Parse(split[3]);
-                            sttWellHead.iWellType = int.Parse(split[4]);
-                            listWellHead.Add(sttWellHead);
+                            double.TryParse(split[1], out  sttWellHead.dbX);
+                            double.TryParse(split[2], out sttWellHead.dbY);
+                            float.TryParse(split[3], out  sttWellHead.fKB);
+                            int.TryParse(split[4], out  sttWellHead.iWellType);
+                            float.TryParse(split[5], out   sttWellHead.fWellBase);
+                            listWellHead.Add(sttWellHead); 
                         }
                     }
                 }
@@ -108,7 +115,34 @@ namespace DOGPlatform
             }
             return listWellHead;
         }
-        
+
+
+        public static ItemWellHead getWellHeadByJH(string _sJH)
+        {
+            ItemWellHead item = new ItemWellHead();
+            if (File.Exists(cProjectManager.filePathInputWellhead))
+            {
+                using (StreamReader sr = new StreamReader(cProjectManager.filePathInputWellhead, System.Text.Encoding.UTF8))
+                {
+                    String line;
+                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                    {
+                        string[] split = line.Trim().Split();
+                        if (split[0] == _sJH)
+                        {
+                            item.sJH = split[0];
+                            double.TryParse(split[1], out  item.dbX);
+                            double.TryParse(split[2], out item.dbY);
+                            float.TryParse(split[3], out  item.fKB);
+                            int.TryParse(split[4], out  item.iWellType);
+                            float.TryParse(split[5], out   item.fWellBase);
+                            return item;
+                        }
+                    }
+                }
+            }
+            return item;
+        }
         public static  void deleteJHFromWellHead(string sJH)
         {
             cIOBase.deleteLinesByFirstWordFromText(cProjectManager.filePathInputWellhead, sJH, 0);

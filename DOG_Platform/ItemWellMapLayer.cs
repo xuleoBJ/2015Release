@@ -31,7 +31,7 @@ namespace DOGPlatform
 
         public ItemWellMapLayer(string sJH)
         {
-            ItemWellHead item = new ItemWellHead(sJH);
+            ItemWellHead item = cIOinputWellHead.getWellHeadByJH(sJH); 
             this.sJH = sJH;
             this.sXCM = "0";
             this.dbX = item.dbX;

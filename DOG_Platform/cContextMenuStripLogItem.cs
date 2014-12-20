@@ -28,9 +28,9 @@ namespace DOGPlatform
         }
         public void tsmiSetting_Click(object sender, EventArgs e)
         {
-            FormLogSetting formLS = new FormLogSetting(this.sJH, this.tnSelected.Text);
-            formLS.ShowDialog();
-        }
+            string filePath=Path.Combine(cProjectManager.dirPathWellDir,sJH,tnSelected.Text+cProjectManager.fileExtensionWellLog);
+            System.Diagnostics.Process.Start("notepad.exe", filePath);
+         }
         public void tsmiDelete_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("当前曲线：" + tnSelected.Text + "，确认删除？", "提示", MessageBoxButtons.YesNo);

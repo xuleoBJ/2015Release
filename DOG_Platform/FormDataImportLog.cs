@@ -33,7 +33,6 @@ namespace DOGPlatform
         string sJH="";
         string filePathSourceLogFile = "";
         FormatLogFile currentFormat = FormatLogFile.forward1;
-       
 
         void initializeForm(string _sJH)
         {
@@ -94,10 +93,8 @@ namespace DOGPlatform
             this.Close();
             cProjectData.setProjectGlobalLogSeriers();
         }
-
         void importLog() 
         {
-
             if (currentFormat == FormatLogFile.forward1) importTextLogText(7); 
             if (currentFormat == FormatLogFile.ascii) importTextLogText(2);
             if (currentFormat == FormatLogFile.list) importTextLogText(4); 
@@ -121,16 +118,15 @@ namespace DOGPlatform
                 List<string> _ltLogFileHead = new List<string>();
                 _ltLogFileHead.Add("Depth");
                 _ltLogFileHead.Add(_logName);
-                string _firstLine = sJH + "此处加上测井曲线描述";
+                string _firstLine = sJH + " " + _logName + " source:" + this.filePathSourceLogFile + " columnNum:" + _indexLog.ToString() + " " + DateTime.Today.ToString(); 
                 cIOGeoEarthText.creatFileGeoHeadText(_logFilePath, _firstLine, _ltLogFileHead);
                 cIOGeoEarthText.addDataLines2GeoEarTxt(_logFilePath, cIOinputLog.readLogData(filePathSourceLogFile, _iDataStartLine, _indexLog));
             }
+
             //全局测井头更新
             foreach (string _s in ltStrLogHead)
-            {
                 if (cProjectData.ltStrLogSeriers.IndexOf(_s) < 0) cProjectData.ltStrLogSeriers.Add(_s);
-            }
-
+            
             //保留原输入测井数据,刚才导入时loghead删除了depth，保留文件时加上
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameInputWellLog);
             ltStrLogHead.Insert(0, "DEPTH");
@@ -140,43 +136,6 @@ namespace DOGPlatform
             MessageBox.Show("导入完成。");
         }
 
-
-        void importTextLogForWard1() 
-        {
-            List<string> ltStrLogHead = new List<string>();
-            List<int> ltIndexLog = new List<int>();
-            
-            for (int i = 0; i < dgvLog.Rows.Count-1; i++) 
-            {
-                ltStrLogHead.Add(dgvLog.Rows[i].Cells["logNameNew"].Value.ToString());
-                ltIndexLog.Add(Convert.ToInt16(dgvLog.Rows[i].Cells["logNum"].Value)-1); //指数比列多1
-            }
-            for (int i = 0; i < ltIndexLog.Count; i++) 
-            {
-                string _logName = ltStrLogHead[i];
-                int _indexLog = ltIndexLog[i];
-                string _logFilePath = Path.Combine(cProjectManager.dirPathWellDir, sJH, _logName +cProjectManager.fileExtensionWellLog);
-                List<string> _ltLogFileHead = new List<string>();
-                _ltLogFileHead.Add("Depth");
-                _ltLogFileHead.Add(_logName);
-                string _firstLine = sJH + "此处加上测井曲线描述";
-                cIOGeoEarthText.creatFileGeoHeadText(_logFilePath, _firstLine, _ltLogFileHead);
-                cIOGeoEarthText.addDataLines2GeoEarTxt(_logFilePath, cIOinputLog.readLogData(filePathSourceLogFile, 7, _indexLog)); 
-            }
-            //全局测井头更新
-            foreach (string _s in ltStrLogHead) 
-            {
-                if (cProjectData.ltStrLogSeriers.IndexOf(_s) < 0) cProjectData.ltStrLogSeriers.Add(_s);
-            }
-            
-            //保留原输入测井数据,刚才导入时loghead删除了depth，保留文件时加上
-            string filePath = Path.Combine(cProjectManager.dirPathWellDir, sJH,cProjectManager.fileNameInputWellLog);
-            ltStrLogHead.Insert(0, "DEPTH");
-            cIOGeoEarthText.creatFileGeoHeadText(filePath, sJH, ltStrLogHead);
-            ltIndexLog.Insert(0, 0);
-            cIOGeoEarthText.addDataLines2GeoEarTxt(filePath, cIOinputLog.readLogData(filePathSourceLogFile, 7, ltIndexLog));
-            MessageBox.Show("导入完成。");
-        }
 
         private void btnShowLogHead_Click(object sender, EventArgs e)
         {

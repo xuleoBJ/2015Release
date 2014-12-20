@@ -28,7 +28,7 @@ namespace DOGPlatform
 
         public static void creatVerticalWellPathGeoFile(string sJH)
         {
-            ItemWellHead wellHead = new ItemWellHead(sJH);
+            ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH);
             ItemWellPath wellPathTop = new ItemWellPath(wellHead);
             ItemWellPath wellPathBottom = new ItemWellPath(wellHead);
             wellPathBottom.dfZ = wellPathTop.dfZ - 10;
@@ -47,7 +47,7 @@ namespace DOGPlatform
             List<float> fListInc = new List<float>();
             List<float> fListAzimuth = new List<float>();
 
-            ItemWellHead wellHead = new ItemWellHead(_sJH);
+            ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(_sJH);
             string inputFilePath =
                        Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameInputWellPath);
             if (File.Exists(inputFilePath))
@@ -79,7 +79,7 @@ namespace DOGPlatform
 
         public static void creatWellGeoFile(string sJH, List<ItemWellPath> listWellPath)
         {
-            ItemWellHead wellHead = new ItemWellHead(sJH);
+            ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH);
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, wellHead.sJH, cProjectManager.fileNameWellPath);
             string sFirstLine = cProjectManager.fileNameWellPath + wellHead.sJH + " " + wellHead.dbX.ToString() + " " + wellHead.dbY.ToString() + " " + wellHead.fKB.ToString();
             creatWellGeoHeadFile(wellHead.sJH, filePath, sFirstLine);
@@ -161,7 +161,7 @@ namespace DOGPlatform
 
         public static List<ItemWellPath> phzqf2Struct(string sJH,  List<float> fListMD, List<float> fListInc, List<float> fListAzimuth) 
         {
-            ItemWellHead wellHead = new ItemWellHead(sJH);
+            ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH); 
             return phzqf2Struct(wellHead.sJH, wellHead.dbX, wellHead.dbY, wellHead.fKB, fListMD, fListInc, fListAzimuth);
         } 
         public static void updateWellgeoFile(string sJH, List<float> fListMD, List<float> fListInc, List<float> fListAzimuth)
@@ -180,8 +180,7 @@ namespace DOGPlatform
             List<float> fListInc=new List<float>();
             List<float> fListAzimuth=new List<float>();
 
-            ItemWellHead wellHead = new ItemWellHead(sJH);
-
+            ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH);
             string inputFilePath =
                        Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameInputWellPath);
             if (File.Exists(inputFilePath))

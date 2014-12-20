@@ -13,7 +13,7 @@ namespace DOGPlatform
         {
             this.sJH = _sJH;
            
-            ItemWellHead currentItemWellHead = new ItemWellHead(_sJH);
+            ItemWellHead currentItemWellHead = cIOinputWellHead.getWellHeadByJH(_sJH);
             this.dbX = currentItemWellHead.dbX;
             this.dbY = currentItemWellHead.dbY;
             this.fKB = currentItemWellHead.fKB;

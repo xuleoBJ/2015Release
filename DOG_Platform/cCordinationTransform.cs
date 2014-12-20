@@ -55,10 +55,10 @@ namespace DOGPlatform
     
         public static Point getPointViewByJH(string sJH)
         {
-            
-            ItemWellHead wellHead = new ItemWellHead(sJH);
-            return cCordinationTransform.transRealPointF2ViewPoint(wellHead.dbX, wellHead.dbY,
+            ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH); 
+            Point pointView=transRealPointF2ViewPoint(wellHead.dbX, wellHead.dbY,
                cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+            return pointView;
         }
 
     }

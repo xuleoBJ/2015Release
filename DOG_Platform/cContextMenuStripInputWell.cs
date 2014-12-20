@@ -26,9 +26,8 @@ namespace DOGPlatform
             tsmiImportLog.Click += new System.EventHandler(tsmiImportLog_Click);
             tsmiImportDel.Text = "删除井";
             tsmiImportDel.Click += new System.EventHandler(tsmiImportDel_Click);
-            cms.Items.Add(tsmiDataView);
-            cms.Items.Add(tsmiImportDel);
- 
+            tsmiDataImport.Text = "导入井数据";
+            tsmiDataImport.DropDownItems.Add(tsmiImportLog);
         }
          private void tsmiDataView_Click(object sender, EventArgs e)
         {
@@ -36,17 +35,14 @@ namespace DOGPlatform
             formDataView.Show();
         }
 
-        public void setupTsmiDataImport()
-        {
-            tsmiDataImport.Text = "导入井数据";
-            tsmiDataImport.DropDownItems.Add(tsmiImportLog);
-            cms.Items.Add(tsmiDataImport);
+        public void setupTsmi()
+         {
+             cms.Items.Add(tsmiDataView);
+             cms.Items.Add(tsmiDataImport);
+             cms.Items.Add(tsmiImportDel);
         }
 
-        public void setupTsmiImportLog()
-        {
-            cms.Items.Add(tsmiImportLog);
-        }
+
         private void tsmiImportLog_Click(object sender, EventArgs e)
         {
             FormDataImportLog frmImportLog = new FormDataImportLog(this.tnSelected.Text);

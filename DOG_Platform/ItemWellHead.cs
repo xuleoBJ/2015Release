@@ -17,7 +17,7 @@ namespace DOGPlatform
 
             public ItemWellHead(string _sJH) 
             {
-                sJH = _sJH;
+                this.sJH = _sJH;
                 this.dbX = 0.0;
                 this.dbY = 0.0;
                 this.fKB = 0.0f;

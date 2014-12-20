@@ -15,26 +15,10 @@ namespace DOGPlatform
 {
     public partial class FormWellsGroup : Form
     {
+        string dirSectionData = Path.Combine(cProjectManager.dirPathTemp, "sectionGroupTemp");
+        List<string> ltStrSelectedJH = new List<string>();  //联井剖面井号
+        //存储绘图剖面数据结构
         List<cWellSectionSVG> listWellsSection = new List<cWellSectionSVG>();
-        struct dirSection
-        {
-            public string sDirSectionData;
-        }
-        dirSection dirSectionTemp;
-        List<string> ltStrSelectedJH = new List<string>();  //栅状图井井号
-        List<float> fListDS1Showed = new List<float>();   //绘制的顶深
-        List<float> fListDS2Showed = new List<float>();  //绘制的底深
-        string fileDrawSourceInfor = cProjectManager.dirPathTemp + "FD_FDSectionInfor.txt";
-        string fileDrawSourceText = cProjectManager.dirPathTemp + "FD_textTrack.txt";
-        string fileDrawSourceLeftLog = cProjectManager.dirPathTemp + "FD_leftLogFile.txt";
-        string fileDrawSourceRightLog = cProjectManager.dirPathTemp + "FD_rightLogFile.txt";
-        string fileDrawSourceJSJL = cProjectManager.dirPathTemp + "FD_JSJLTrack.txt";
-        string fileDrawSourceLayerDepth = cProjectManager.dirPathTemp + "FD_layerDepthTrack.txt";
-        string fileDrawSourcePerforated = cProjectManager.dirPathTemp + "FD_PerforatedTrack.txt";
-        private void InitDataStruct()
-        {
-            dirSectionTemp.sDirSectionData = Path.Combine(cProjectManager.dirPathTemp, "fenceTemp");
-        } 
 
        
         public FormWellsGroup()
@@ -42,44 +26,16 @@ namespace DOGPlatform
             InitializeComponent();
             Control.CheckForIllegalCrossThreadCalls = false;
             InitFormWellsGroupControl();
-            InitDataStruct();
         }
         private void InitFormWellsGroupControl()
         {
-    
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.ltStrProjectJH);
             cPublicMethodForm.inialComboBox(cbbTopXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbBottomXCM, cProjectData.ltStrProjectXCM);
-            cPublicMethodForm.inialComboBox(iWellIntervalDistanceNameLeft, cProjectData.ltStrLogSeriers);
-            cPublicMethodForm.inialComboBox(iWellIntervalDistanceNameRight, cProjectData.ltStrLogSeriers);
+            cPublicMethodForm.inialComboBox(cbbLeftLogName, cProjectData.ltStrLogSeriers);
+            cPublicMethodForm.inialComboBox(cbbRightLogName, cProjectData.ltStrLogSeriers);
         }
-        void updateProjectDirection()
-        {
-            ltStrSelectedJH.Clear();
-            fListDS1Showed.Clear();
-            fListDS2Showed.Clear();
-            try
-            {
-                using (StreamReader sr = new StreamReader(fileDrawSourceInfor, System.Text.Encoding.Default))
-                {
-                    String line;
-                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
-                    {
-                        string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                        ltStrSelectedJH.Add(split[0]);
-                        fListDS1Showed.Add(float.Parse(split[1]));
-                        fListDS2Showed.Add(float.Parse(split[2]));
-
-                    }
-                }
-            }
-
-            catch (Exception e)
-            {
-                MessageBox.Show(e.ToString());
-            }
-
-        }
+      
 
         private void btn_addWell_Click(object sender, EventArgs e)
         {
@@ -104,19 +60,12 @@ namespace DOGPlatform
                 ltStrSelectedJH.Add(strItem);
             }
         }
-        //void initializeTreeViewWellCollection()
-        //{
-        //    this.tvwWellSectionCollection.Nodes.Clear();
-        //    for (int i = 0; i < ltStrSelectedJH.Count; i++)
-        //    {
-        //        TreeNode tnWell = new TreeNode();
-        //        tnWell.Text = ltStrSelectedJH[i];
-        //        tnWell.Name = ltStrSelectedJH[i];
-        //        tnWell.Nodes.Add("左侧曲线");
-        //        tnWell.Nodes.Add("右侧曲线");
-        //        tvwWellSectionCollection.Nodes.Add(tnWell);
-        //    }
-        //}
+        void initializeTreeViewWellCollection()
+        {
+            this.lbxTracksCollection.Items.Clear();
+            this.tvwWellSectionCollection.Nodes.Clear();
+            for (int i = 0; i < ltStrSelectedJH.Count; i++) tvwWellSectionCollection.Nodes.Add(ltStrSelectedJH[i]);
+        }
         private void setDepthIntervalShowedBYLayer()
         {
             updateSelectedListJH();
@@ -130,7 +79,7 @@ namespace DOGPlatform
             if (iBottomIndex - iTopIndex >= 0)
             {
                 ltStrSelectedXCM = cProjectData.ltStrProjectXCM.GetRange(iTopIndex, iBottomIndex - iTopIndex + 1);
-                //initializeTreeViewWellCollection();
+                initializeTreeViewWellCollection();
                 int _up = Convert.ToInt16(this.nUDtopDepthUp.Value);
                 int _down = Convert.ToInt16(this.nUDbottomDepthDown.Value);
 
@@ -148,7 +97,7 @@ namespace DOGPlatform
 
                     listWellsSection.Add(_wellSection);
                 }
-                generateSectionCssXML();
+                cXDocSection.generateSectionCssXML();
                 generateSectionDataDirectory();
             }
             else
@@ -156,13 +105,14 @@ namespace DOGPlatform
                 MessageBox.Show("上层应该比下层选择高，请重新选择。");
             }
         }
+
         void generateSectionDataDirectory()
         {
-            if (Directory.Exists(dirSectionTemp.sDirSectionData)) Directory.Delete(dirSectionTemp.sDirSectionData, true);
-            Directory.CreateDirectory(dirSectionTemp.sDirSectionData);
+            if (Directory.Exists(dirSectionData)) Directory.Delete(dirSectionData, true);
+            Directory.CreateDirectory(dirSectionData);
             foreach (cWellSectionSVG item in listWellsSection)
             {
-                string jhDir = Path.Combine(dirSectionTemp.sDirSectionData, item.sJH);
+                string jhDir = Path.Combine(dirSectionData, item.sJH);
                 Directory.CreateDirectory(jhDir);
                 Directory.CreateDirectory(jhDir + "\\left");
                 Directory.CreateDirectory(jhDir + "\\right");
@@ -176,47 +126,6 @@ namespace DOGPlatform
             }
             cXDocSection.generateXmlFile(cProjectManager.xmlSectionCSS);
         }
-        private void setDepthIntervalShowed(object sender, WaitWindowEventArgs e)
-        {
-            List<string> ltStrSelectedXCM = new List<string>();
-            string sTopXCM = this.cbbTopXCM.SelectedItem.ToString();
-            int iTopIndex = cProjectData.ltStrProjectXCM.IndexOf(sTopXCM);
-            string sBottomXCM = this.cbbBottomXCM.SelectedItem.ToString();
-            int iBottomIndex = cProjectData.ltStrProjectXCM.IndexOf(sBottomXCM);
-            if (iBottomIndex - iTopIndex >= 0)
-            {
-                fListDS1Showed.Clear();
-                fListDS2Showed.Clear();
-                ltStrSelectedXCM = cProjectData.ltStrProjectXCM.GetRange(iTopIndex, iBottomIndex - iTopIndex + 1);
-
-                int _up = Convert.ToInt16(this.nUDtopDepthUp.Value);
-                int _down = Convert.ToInt16(this.nUDbottomDepthDown.Value);
-
-                for (int i = 0; i < ltStrSelectedJH.Count; i++)
-                {
-                    cIOinputLayerDepth fileLayerDepth = new cIOinputLayerDepth();
-                    List<float> fListDS1Return = fileLayerDepth.selectDepthListFromLayerDepthByJHAndXCMList(ltStrSelectedJH[i], ltStrSelectedXCM);
-                    if (fListDS1Return.Count > 0)  //返回值为空 说明所选层段整个缺失！
-                    {
-                        fListDS1Showed.Add(fListDS1Return.Min() - _up);
-                        fListDS2Showed.Add(fListDS1Return.Max() + _down);
-                    }
-                    else
-                    {
-                        fListDS1Showed.Add(0);
-                        fListDS2Showed.Add(0);
-                    }
-                }
-
-                //generateSectionDrawData();
-            }
-            else
-            {
-                MessageBox.Show("上层应该比下层选择高，请重新选择。");
-            }
-            //获取层位深度上移深度
-
-        }
         
         private void lbxJHSeclected_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -227,136 +136,145 @@ namespace DOGPlatform
                 ltStrSelectedJH.Add(strItem);
             }
         }
-   
-        string generateSectionGraph(string filenameSVGMap)
-        {
-            //继续初始化值
-            double dfscale = cProjectData.dfMapScale;
-            for (int i = 0; i < this.listWellsSection.Count; i++)
-            {
-                cWellSectionSVG itemWell = listWellsSection[i];
-             
-                Point pointConvert2View =
-                   cCordinationTransform.transRealPointF2ViewPoint(itemWell.dbX, itemWell.dbY,
-                    cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, dfscale);
-                itemWell.fXview = pointConvert2View.X;
-                itemWell.fYview = pointConvert2View.Y;
-            }
 
-            int iWidth =  2000;
-            cSVGDocSection cSection = new cSVGDocSection( iWidth, 5000, 0, 50, "");
-            cSection.addSVGTitle(10, 10);
+
+        void generateSectionGraph(string filenameSVGMap)
+        {
+
+            cSVGDocSection cSection = new cSVGDocSection(4000, 4000, 0, 0);
+            cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "栅状图", 100, 100);
+
             XmlElement returnElemment;
             for (int i = 0; i < listWellsSection.Count; i++)
             {
                 string sJH = listWellsSection[i].sJH;
+                Point currentPositon = cCordinationTransform.getPointViewByJH(sJH);
+                List<ItemWellPath> currentWellPathList = cProjectData.listProjectWell.Find(p => p.sJH == sJH).WellPathList;
                 float fTopShowed = listWellsSection[i].fShowedDepthTop;
                 float fBaseShowed = listWellsSection[i].fShowedDepthBase;
-                float fDepthFlatted = 0;
-                float fCurrerntWellXView = listWellsSection[i].fXview;
-                float fCurrerntWellYView = listWellsSection[i].fYview;
-
-
-
-                //以下程序段画井柱子
+                float fDepthFlatted = listWellsSection[i].fShowedDepthTop;
                 cSVGSectionWell currentWell = new cSVGSectionWell(sJH);
-                returnElemment = currentWell.gWellCone(sJH, fTopShowed, fBaseShowed, fDepthFlatted, 10, 5);
+                if (currentWellPathList.Count <= 2)
+                    returnElemment = currentWell.gWellCone(sJH, fTopShowed, fBaseShowed, fDepthFlatted, 10, 5);
+                else
+                {
+                    returnElemment = currentWell.gPathWellCone(sJH, fTopShowed, fBaseShowed, fDepthFlatted, 10, 5);
+                }
                 currentWell.addTrack(returnElemment, 0);
 
                 //增加地层道
-                string filePathLayer = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\layerDepth.txt");
+                string filePathLayer = Path.Combine(dirSectionData, sJH + "\\layerDepth.txt");
                 trackLayerDepthDataList trackDataListLayerDepth =
                     cDirDataSourceWellSection.setupDataListTrackLayerDepth(filePathLayer, fTopShowed, fBaseShowed);
                 int iTrackWidth = 15;
                 cSVGSectionTrackLayer layerTrack = new cSVGSectionTrackLayer(iTrackWidth);
                 layerTrack.iTextSize = 6;
-                returnElemment = layerTrack.gTrackFenceLayerDepth(trackDataListLayerDepth, fDepthFlatted);
+                if (currentWellPathList.Count <= 2)
+                    returnElemment = layerTrack.gTrackLayerDepth(sJH, trackDataListLayerDepth, fDepthFlatted);
+                else returnElemment = layerTrack.gPathTrackLayerDepth(sJH, trackDataListLayerDepth, fDepthFlatted);
                 currentWell.addTrack(returnElemment, iTrackWidth);
 
                 //增加解释结论道
-                string filePathJSJL = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\jsjl.txt");
+                string filePathJSJL = Path.Combine(dirSectionData, sJH + "\\jsjl.txt");
                 trackJSJLDataList trackDataListJSJL = cDirDataSourceWellSection.setupDataListTrackJSJL(filePathJSJL, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackJSJL JSJLTrack = new cSVGSectionTrackJSJL(iTrackWidth);
-                returnElemment = JSJLTrack.gTrackJSJL(sJH,trackDataListJSJL, fDepthFlatted);
+                if (currentWellPathList.Count <= 2)
+                    returnElemment = JSJLTrack.gTrackJSJL(sJH, trackDataListJSJL, fDepthFlatted);
+                else returnElemment = JSJLTrack.gPathTrackJSJL(sJH, trackDataListJSJL, fDepthFlatted);
                 currentWell.addTrack(returnElemment, -iTrackWidth);
 
-                //增加射孔道
-                string filePathInputPerforation = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\inputPerforation.txt");
-                trackInputPerforationDataList trackDataListPerforation = cDirDataSourceWellSection.setupDataListTrackPerforation(filePathInputPerforation, fTopShowed, fBaseShowed);
-                iTrackWidth = 15;
-                cSVGSectionTrackPeforation perforationTrack = new cSVGSectionTrackPeforation(iTrackWidth);
-                returnElemment = perforationTrack.gTrackPerforation(sJH,trackDataListPerforation, fDepthFlatted);
-                currentWell.addTrack(returnElemment, -2 * iTrackWidth);
+                ////增加射孔道
+                //string filePathInputPerforation = Path.Combine(dirSectionData, sJH + "\\inputPerforation.txt");
+                //trackInputPerforationDataList trackDataListPerforation = cDirDataSourceWellSection.setupDataListTrackPerforation(filePathInputPerforation, fTopShowed, fBaseShowed);
+                //iTrackWidth = 15;
+                //cSVGSectionTrackPeforation perforationTrack = new cSVGSectionTrackPeforation(iTrackWidth);
+                //if (currentWellPathList.Count <= 2)
+                //    returnElemment = perforationTrack.gTrackPerforation(sJH, trackDataListPerforation, fDepthFlatted);
+                //else returnElemment = JSJLTrack.gXieTrackJSJL(sJH, trackDataListJSJL, fDepthFlatted);
+                //currentWell.addTrack(returnElemment, -2 * iTrackWidth);
 
                 //增加左边曲线
-                cFileOperateDicLogHeadProject fileDicLog = new cFileOperateDicLogHeadProject();
-
-                string fileLeftLogScrPath = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\left");
+                string fileLeftLogScrPath = Path.Combine(dirSectionData, sJH + "\\left");
                 string[] fileList = Directory.GetFileSystemEntries(fileLeftLogScrPath);
                 foreach (string fileLog in fileList)
                 {
                     trackLogDataList trackDataListLeftLog = cDirDataSourceWellSection.setupDataListTrackLog(fileLog, fTopShowed, fBaseShowed);
                     iTrackWidth = 15;
-                    ItemLogHeadInfor ItemLogHeadInforItem = fileDicLog.selectLogHeadItem(sJH, trackDataListLeftLog.sLogName);
+                    ItemLogHeadInfor itemHeadInfor = new ItemLogHeadInfor();
+                    itemHeadInfor.sJH = sJH;
+                    itemHeadInfor.sLogName = trackDataListLeftLog.sLogName;
+                    itemHeadInfor.sLogColor = cPublicMethodBase.getRGB(cbbColorLeftLog.BackColor);
+                    itemHeadInfor.fRightValue = Convert.ToSingle(nUDLeftLogRightValue.Value);
+                    itemHeadInfor.fLeftValue = Convert.ToSingle(this.nUDLeftLogLeftValue.Value);
                     cSVGSectionTrackLog logTrack = new cSVGSectionTrackLog(iTrackWidth);
-                    returnElemment = logTrack.gTrackLog(ItemLogHeadInforItem, trackDataListLeftLog, fDepthFlatted);
+                    if (currentWellPathList.Count <= 2)
+                        returnElemment = logTrack.gTrackLog(itemHeadInfor, trackDataListLeftLog, fDepthFlatted);
+                    else returnElemment = logTrack.gPathTrackLog(itemHeadInfor, trackDataListLeftLog, fDepthFlatted);
                     currentWell.addTrack(returnElemment, -30);
                 }
                 //增加右边曲线
-                string fileRightLogScrPath = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\right");
+                string fileRightLogScrPath = Path.Combine(dirSectionData, sJH + "\\right");
                 foreach (string fileLog in Directory.GetFileSystemEntries(fileRightLogScrPath))
                 {
                     trackLogDataList trackDataListRightLog = cDirDataSourceWellSection.setupDataListTrackLog(fileLog, fTopShowed, fBaseShowed);
                     iTrackWidth = 15;
-                    ItemLogHeadInfor ItemLogHeadInforItem = fileDicLog.selectLogHeadItem(sJH, trackDataListRightLog.sLogName);
+                    ItemLogHeadInfor itemHeadInfor = new ItemLogHeadInfor();
+                    itemHeadInfor.sJH = sJH;
+                    itemHeadInfor.sLogName = trackDataListRightLog.sLogName;
+                    itemHeadInfor.sLogColor = cPublicMethodBase.getRGB(cbbColorRightLog.BackColor);
+                    itemHeadInfor.fRightValue = Convert.ToSingle(this.nUDRightLogRightValue.Value);
+                    itemHeadInfor.fLeftValue = Convert.ToSingle(this.nUDRightLogLeftValue.Value);
                     cSVGSectionTrackLog logTrack = new cSVGSectionTrackLog(iTrackWidth);
-                    returnElemment = logTrack.gTrackLog(ItemLogHeadInforItem, trackDataListRightLog, fDepthFlatted);
+                    if (currentWellPathList.Count <= 2)
+                        returnElemment = logTrack.gTrackLog(itemHeadInfor, trackDataListRightLog, fDepthFlatted);
+                    else returnElemment = logTrack.gPathTrackLog(itemHeadInfor, trackDataListRightLog, fDepthFlatted);
                     currentWell.addTrack(returnElemment, iTrackWidth);
                 }
-                //画井柱子结束
-
-                //将井柱子增加到剖面图中
-                cSection.addgElement(currentWell.gWell, Convert.ToInt32(fCurrerntWellXView), Convert.ToInt32(fCurrerntWellYView));
-        
+                cSection.addgElement(currentWell.gWell, currentPositon);
             }
 
 
-
-            cSection.makeSVGfile(cProjectManager.dirPathMap + filenameSVGMap);
-            return cProjectManager.dirPathMap + filenameSVGMap;
+            string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
+            cSection.makeSVGfile(fileSVG);
+            FormMain.filePathWebSVG = fileSVG;
+            this.Close();
 
         }
+     
         private void btnMakeSection_Click(object sender, EventArgs e)
         {
-
             string filenameSVGMap;
             if (this.tbxTitle.Text == "")
             {
-                filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "_group.svg";
+                filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "_栅状图.svg";
             }
             else
             {
                 filenameSVGMap = this.tbxTitle.Text + ".svg";
             }
-            FormWebNavigation formSVGView;
-
-            formSVGView = new FormWebNavigation(generateSectionGraph(filenameSVGMap));
-            formSVGView.Show();
+            generateSectionGraph(filenameSVGMap);
         }
 
         private void btnAddJSJLTrack_Click(object sender, EventArgs e)
         {
-            if (listWellsSection.Count > 0)
+            if (this.listWellsSection.Count > 0)
             {
+                //提取所选井段数据存入绘图目录下保存
                 foreach (string sJH in ltStrSelectedJH)
                 {
                     //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\jsjl.txt");
+                    string filePath = Path.Combine(dirSectionData, sJH, "jsjl.txt");
                     cIOinputJSJL.selectSectionDrawData2File(sJH, filePath);
                 }
-
                 this.lbxTracksCollection.Items.Add("解释结论");
+                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+                {
+                    if (wellNote.Text != "深度尺")
+                        wellNote.Nodes.Add("解释结论");
+                }
+
+                tvwWellSectionCollection.ExpandAll();
             }
             else
             {
@@ -366,148 +284,43 @@ namespace DOGPlatform
 
         private void btnAddLayerDepth_Click(object sender, EventArgs e)
         {
-            if (ltStrSelectedJH.Count > 0)
+
+            if (this.listWellsSection.Count > 0)
             {
                 foreach (string sJH in ltStrSelectedJH)
                 {
                     //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\layerDepth.txt");
+                    string filePath = Path.Combine(dirSectionData, sJH + "\\layerDepth.txt");
                     cIOinputLayerDepth cSelectLayerDepth = new cIOinputLayerDepth();
                     cSelectLayerDepth.selectSectionDrawData2File(sJH, filePath);
                 }
+
                 this.lbxTracksCollection.Items.Add("地层");
+
+                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) wellNote.Nodes.Add("地层");
+
+                tvwWellSectionCollection.ExpandAll();
             }
-            else
-            {
-                MessageBox.Show("请先确认深度段。");
-            }
+            else MessageBox.Show("请先确认深度段。");
          
         }
 
         private void btnAddLogTrack_Click(object sender, EventArgs e)
         {
-            WaitWindow.Show(this.generateLogFile);
-            this.lbxTracksCollection.Items.Add("测井曲线道");
-        }
-        private void generateLogFile(object sender, WaitWindowEventArgs e)
-        {
-            cProjectData.sErrLineInfor= "";
-            generateDrawLogFile(fileDrawSourceLeftLog, this.iWellIntervalDistanceNameLeft.SelectedItem.ToString(), this.iWellIntervalDistancecorlorLeft.BackColor.Name);
-            generateDrawLogFile(fileDrawSourceRightLog, this.iWellIntervalDistanceNameRight.SelectedItem.ToString(), this.iWellIntervalDistancecorlorRight.BackColor.Name);
-            if (cProjectData.sErrLineInfor== "")
-            {
-                MessageBox.Show("完成曲线道");
-            }
-            else
-            {
-                MessageBox.Show("数据有一些缺失，请点击查看。");
-                cPublicMethodForm.outputErrInfor2Text(cProjectData.sErrLineInfor);
-            }
-        }
-        private void generateDrawLogFile(string sLogFile, string sLogName, string sCurveColor)
-        {
-            try
-            {
-                StreamWriter sw = new StreamWriter(sLogFile, false, Encoding.UTF8);
-                string sReturnLog = "JH" + "\t" + "MD" + "\t" + sLogName + "\r\n";
-                for (int i = 0; i < this.ltStrSelectedJH.Count; i++)
-                {
-
-                    string sItemJh = this.ltStrSelectedJH[i];
-                    float fItemDS1Showed = this.fListDS1Showed[i];
-                    float fItemDS2Showed = this.fListDS2Showed[i];
-
-                    string filePathLog = cProjectManager.dirPathLog + sItemJh + "_$#log";
-                    
-                    if (File.Exists(filePathLog) == true)
-                    {
-                        int iLogSeriersIndex = 0;
-                        
-                        using (StreamReader sr = new StreamReader(filePathLog, Encoding.Default))
-                        {
-                            string line;
-                            int iLine = 0;
-                            while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
-                            {
-                                iLine++;
-                                string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                                if (iLine == 1)
-                                {
-                                    iLogSeriersIndex = split.ToList().IndexOf(sLogName);
-                                }
-                                else if (iLine %2==0)
-                                {
-                                    float fCurrent = float.Parse(split[0]);
-                                    if (iLogSeriersIndex > 0)
-                                    {
-                                        if (fItemDS1Showed <= fCurrent && fCurrent <= fItemDS2Showed)
-                                        {
-                                            sReturnLog +=sItemJh+"\t"+split[0] + '\t' + split[iLogSeriersIndex] + "\r\n";
-                                        }
-                                    }
-
-                                }
-
-                            }
-                        }
-                        
-                    }
-                    else
-                    {
-                        cProjectData.sErrLineInfor+= sItemJh + "无测井数据";
-                    }
-
-                }
-                sw.Write(sReturnLog);
-                sw.Close();
-
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show(e1.ToString());
-            }
+           
 
         }
-        private void iWellIntervalDistancecorlorLeft_MouseClick(object sender, MouseEventArgs e)
-        {
-            ColorDialog CDG = new ColorDialog();
-   
-            if (CDG.ShowDialog() == DialogResult.OK)
-            {
-                this.iWellIntervalDistancecorlorLeft.BackColor = CDG.Color;
-            }  
-        }
-        private void iWellIntervalDistancecorlorRight_MouseClick(object sender, MouseEventArgs e)
-        {
-            ColorDialog CDG = new ColorDialog();
-            if (CDG.ShowDialog() == DialogResult.OK)
-            {
-                this.iWellIntervalDistancecorlorRight.BackColor = CDG.Color;
-            }
-            //MessageBox.Show(iWellIntervalDistancecorlorRight.BackColor.R.ToString());
-            //MessageBox.Show(iWellIntervalDistancecorlorRight.BackColor.G.ToString());
-            //MessageBox.Show(iWellIntervalDistancecorlorRight.BackColor.B.ToString());
-        }
+    
 
         private void btnAddPerforation_Click(object sender, EventArgs e)
         {
-       
-            if (ltStrSelectedJH.Count > 0)
+            if (this.listWellsSection.Count > 0)
             {
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionTemp.sDirSectionData, sJH + "\\inputPerforation.txt");
-                    cIOinputPerforation cSelectInputPerforation = new cIOinputPerforation();
-                    cSelectInputPerforation.selectSectionDraData2File(sJH, filePath);
-                }
                 this.lbxTracksCollection.Items.Add("射孔");
+                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) wellNote.Nodes.Add("射孔");
+                tvwWellSectionCollection.ExpandAll();
             }
-            else
-            {
-                MessageBox.Show("请先确认深度段。");
-            }
+            else MessageBox.Show("请先确认深度段。");
         }
        
         private void lbxJHSeclected_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -549,6 +362,74 @@ namespace DOGPlatform
         private void FormMapFence_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
+        }
+
+        private void btnLogTrackAddLeft_Click(object sender, EventArgs e)
+        {
+            if (ltStrSelectedJH.Count > 0 && cbbLeftLogName.SelectedIndex >= 0)
+            {
+                string sSelectedLogName = this.cbbLeftLogName.SelectedItem.ToString();
+                addLogData((int)LeftOrRight.left, sSelectedLogName);
+            }
+            else MessageBox.Show("请先确认深度段。");
+        }
+
+        private void btnLogTrackAddRight_Click(object sender, EventArgs e)
+        {
+            if (ltStrSelectedJH.Count > 0 && cbbRightLogName.SelectedIndex >= 0)
+            {
+                string sSelectedLogName = this.cbbRightLogName.SelectedItem.ToString();
+                addLogData((int)LeftOrRight.right, sSelectedLogName);
+            }
+            else
+            {
+                MessageBox.Show("请先确认深度段。");
+            }
+            this.lbxTracksCollection.Items.Add("测井曲线道");
+        }
+    
+        void addLogData(int iLeftOrRight, string sSelectedLogName)
+        {
+            foreach (string sJH in ltStrSelectedJH)
+            {
+                string filePath = Path.Combine(dirSectionData, sJH + "\\left\\" + sSelectedLogName + ".txt");
+                if (iLeftOrRight == (int)LeftOrRight.right)
+                {
+                    filePath = Path.Combine(dirSectionData, sJH + "\\right\\" + sSelectedLogName + ".txt");
+                }
+                cIOinputLog.extractTextLog2File(sJH, sSelectedLogName, filePath);
+            }
+            foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+            {
+                TreeNode tnLog = new TreeNode();
+                tnLog.Text = sSelectedLogName;
+                if (wellNote.Index > 0)
+                {
+                    wellNote.Nodes.Add(tnLog);
+                }
+
+            }
+            tvwWellSectionCollection.ExpandAll();
+        }
+
+        private void cbbColorLeftLog_MouseClick(object sender, MouseEventArgs e)
+        {
+            cPublicMethodForm.setComboBoxBackColorByColorDialog(cbbColorLeftLog);
+        }
+
+        private void cbbColorRightLog_MouseClick(object sender, MouseEventArgs e)
+        {
+            cPublicMethodForm.setComboBoxBackColorByColorDialog(cbbColorRightLog);
+        }
+
+        private void tsCbbScale_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBig_Click(object sender, EventArgs e)
+        {
+            cProjectData.dfMapScale = cProjectData.dfMapScale * 1.2F;
         }
 
     }

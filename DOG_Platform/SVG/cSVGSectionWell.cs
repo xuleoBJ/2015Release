@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using System.Drawing;
 
 namespace DOGPlatform.SVG
 {
@@ -26,7 +27,7 @@ namespace DOGPlatform.SVG
             XmlNode importNewsItem = svgDoc.ImportNode(gElement, true);
             gWell.AppendChild(importNewsItem);
         }
-
+       
         public XmlElement gWellCone(string sJH, float m_minMesureDepth, float m_maxMesureDepth,
             float m_KB, int m_tickInveral_main, int m_tickInveral_min)
         {

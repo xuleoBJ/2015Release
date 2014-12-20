@@ -26,7 +26,7 @@ namespace DOGPlatform
                         
                         string sCurrentJH = cProjectData.ltStrProjectJH[i].ToString();
                         string sCurrentXCM = cProjectData.ltStrProjectXCM[j].ToString();
-                        ItemWellHead currentWellHead = new ItemWellHead(sCurrentJH);
+                        ItemWellHead currentWellHead = cIOinputWellHead.getWellHeadByJH(sCurrentJH);
                         List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(sCurrentJH);
                         List<ItemJSJL> listJSJL = cIOinputJSJL.readJSJL2Struct(sCurrentJH);
 

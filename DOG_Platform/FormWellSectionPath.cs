@@ -21,12 +21,12 @@ namespace DOGPlatform
         List<string> ltStrSelectedJH = new List<string>();  //联井剖面井号
         //存储绘图剖面数据结构
         List<cWellSectionSVG> listWellsSection = new List<cWellSectionSVG>();
-     
-          public FormWellSectionPath()
+
+        public FormWellSectionPath()
         {
             InitializeComponent();
             InitFormWellsGroupControl();
-        }
+        } 
 
         private void InitFormWellsGroupControl()
         {
@@ -42,7 +42,6 @@ namespace DOGPlatform
         }
         private void btn_deleteWell_Click(object sender, EventArgs e)
         {
-
             if (lbxJHSeclected.SelectedItem != null)
             {
                 string sWellItem = lbxJHSeclected.SelectedItem.ToString();
@@ -50,8 +49,6 @@ namespace DOGPlatform
             }
             if (lbxJHSeclected.Items.Count>0)
             lbxJHSeclected.SetSelected(lbxJHSeclected.Items.Count - 1, true);
-
-
         }
 
         private void btn_addWell_Click(object sender, EventArgs e)
@@ -72,7 +69,6 @@ namespace DOGPlatform
 
         private void btn_upWell_Click(object sender, EventArgs e)
         {//若不是第一行则上移
-
             if (lbxJHSeclected.SelectedIndex > 0)
             {
                 int index = lbxJHSeclected.SelectedIndex;
@@ -95,53 +91,6 @@ namespace DOGPlatform
                 lbxJHSeclected.SelectedIndex = index + 1;
             }
         }
-
-        //private void setDepthIntervalShowed(object sender, WaitWindowEventArgs e)
-        //{
-        //    List<string> ltStrSelectedXCM = new List<string>();
-        //    this.lbxTracksCollection.Items.Clear();
-        //    updateSectionMapSourceFile();
-        //    this.tvwWellSectionCollection.Nodes.Clear();
-        //    //this.tvwWellSectionCollection.Nodes.Add("深度尺");
-        //    string sTopXCM = this.cbbTopXCM.SelectedItem.ToString();
-        //    int iTopIndex = cProjectManager.ltStrProjectXCM.IndexOf(sTopXCM);
-        //    string sBottomXCM = this.cbbBottomXCM.SelectedItem.ToString();
-        //    int iBottomIndex = cProjectManager.ltStrProjectXCM.IndexOf(sBottomXCM);
-        //    if (iBottomIndex - iTopIndex >= 0)
-        //    {
-        //        fListDS1Showed.Clear();
-        //        fListDS2Showed.Clear();
-        //        ltStrSelectedXCM = cProjectManager.ltStrProjectXCM.GetRange(iTopIndex, iBottomIndex - iTopIndex + 1);
-
-        //        int _up = Convert.ToInt16( this.nUDtopDepthUp.Value);
-        //        int _down = Convert.ToInt16( this.nUDbottomDepthDown.Value);
-
-        //        for (int i = 0; i < ltStrSelectedJH.Count; i++)
-        //        {
-        //            tvwWellSectionCollection.Nodes.Add(ltStrSelectedJH[i]);
-        //            cSelect4WellSection cSelectTest = new cSelect4WellSection();
-        //            List<float> fListDS1Return = cSelectTest.selectTopDepthListFromLayerDepthByJHAndXCMList(ltStrSelectedJH[i], ltStrSelectedXCM);
-        //            if (fListDS1Return.Count > 0)  //返回值为空 说明所选层段整个缺失！
-        //            {
-        //                fListDS1Showed.Add(fListDS1Return.Min() - _up);
-        //                fListDS2Showed.Add(fListDS1Return.Max() + _down);
-        //            }
-        //            else 
-        //            {
-        //                fListDS1Showed.Add(0);
-        //                fListDS2Showed.Add(0);
-        //            }
-        //        }
-        //        generateSectionDrawData();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("上层应该比下层选择高，请重新选择。");
-        //    }
-       
-         
-        //}
-
 
         void initializeTreeViewWellCollection()
         {
@@ -375,7 +324,7 @@ namespace DOGPlatform
             string filenameSVGMap;
             if (this.tbxTitle.Text == "")
             {
-                filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "-section.svg";
+                filenameSVGMap = string.Join("-", ltStrSelectedJH.ToArray()) + "_Pathsection.svg";
             }
             else
             {
@@ -901,13 +850,9 @@ namespace DOGPlatform
             if (ltStrSelectedJH.Count > 0 && cbbLeftLogName.SelectedIndex >= 0)
             {
                 string sSelectedLogName = this.cbbLeftLogName.SelectedItem.ToString();
-
                 addLogData((int)LeftOrRight.left, sSelectedLogName);
             }
-            else
-            {
-                MessageBox.Show("请先确认深度段。");
-            }
+            else MessageBox.Show("请先确认深度段。");
         }
 
         void addLogData(int iLeftOrRight, string sSelectedLogName)
@@ -933,6 +878,8 @@ namespace DOGPlatform
             }
             tvwWellSectionCollection.ExpandAll();
         }
+
+       
 
   
 

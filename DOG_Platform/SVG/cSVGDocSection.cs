@@ -68,6 +68,18 @@ namespace DOGPlatform.SVG
             this.gSVG.AppendChild(importNewsItem);
         }
 
+        public new  void addgElement(XmlElement gElement, int idx,int idy)  //剖面图Y不能移动
+        {
+            string sTranslate = "translate(" + idx.ToString() + "," + idy.ToString() + ")";
+            gElement.SetAttribute("transform", sTranslate);
+            XmlNode importNewsItem = svgDoc.ImportNode(gElement, true);
+            this.gSVG.AppendChild(importNewsItem);
+        }
+      
+        public void addgElement(XmlElement gElement, Point pt)
+        {
+            addgElement(gElement, pt.X, pt.Y);
+        }
 
         public XmlElement addgConnectLayerTrack
         (List<float> fListDS1, List<float> fListDS2, List<string> ltStrXCM, float m_KB, float f_distance,

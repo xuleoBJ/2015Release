@@ -12,25 +12,21 @@ namespace DOGPlatform
         public cContextMenuStripInputLayer(ContextMenuStrip _cms, TreeNode _tnSelected, string _sXCM)
             : base(_cms, _tnSelected, _sXCM)
         {
-
-        }
-        public void setupTsmiImportLayers()
-        {
-            ToolStripMenuItem tsmiImportLayers = new ToolStripMenuItem();
             tsmiImportLayers.Text = "导入分层数据";
             tsmiImportLayers.Click += new System.EventHandler(tsmiImportLayers_Click);
-            cms.Items.Add(tsmiImportLayers);
+            tsmiImportFaultLine.Text = "断层线导入";
+            tsmiImportFaultLine.Click += new System.EventHandler(tsmiImportFaultLine_Click);
         }
+        ToolStripMenuItem tsmiImportFaultLine = new ToolStripMenuItem();
+        ToolStripMenuItem tsmiImportLayers = new ToolStripMenuItem();
         private void tsmiImportLayers_Click(object sender, EventArgs e)
         {
             FormImportProjectData frmImportLayers = new FormImportProjectData();
             frmImportLayers.ShowDialog();
         }
-        public void setupTsmiImportFaultLine()
+        public void setupTsmi()
         {
-            ToolStripMenuItem tsmiImportFaultLine = new ToolStripMenuItem();
-            tsmiImportFaultLine.Text = "断层线导入";
-            tsmiImportFaultLine.Click += new System.EventHandler(tsmiImportFaultLine_Click);
+            cms.Items.Add(tsmiImportLayers);
             cms.Items.Add(tsmiImportFaultLine);
         }
         private void tsmiImportFaultLine_Click(object sender, EventArgs e)
