@@ -6,7 +6,7 @@ using System.Xml.Linq;
 
 namespace DOGPlatform.SVG
 {
-    class cSVGXEPatternLithoSand
+    class cSVGXEPatternLithoSand : cSVGXEPatternBase
     {
         public Dictionary<string, int> dictionaryPatternSand = new Dictionary<string, int>();
         void initializeDictionaryPatternSand()
@@ -38,14 +38,13 @@ namespace DOGPlatform.SVG
             {
                 // bool x=xroot.HasElements("defs");
                 XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("p123", 20, 10, 2, "yellow", "red", true));
+                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("helloworld","wwww", 20, 10, 2, "yellow", "red", true));
                 xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
 
                 xDoc.Save(filePath);
             }
         
         }
-
 
         //自定义样式就是自己把def文件加入inkscape里面
         public XElement addLithoPatternSand(string  filePath,string sLithoName, int iWidthUnit, int iHeightUnit, string backColor, int ix, int iy, int iWidth, int iheight)//增加岩石类型
@@ -63,7 +62,7 @@ namespace DOGPlatform.SVG
             {
                 // bool x=xroot.HasElements("defs");
                 XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("p123", 20, 10, 2, "yellow", "red", true));
+                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("test","p123", 20, 10, 2, "yellow", "red", true));
                 xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
 
                 xDoc.Save(filePath);
@@ -88,28 +87,10 @@ namespace DOGPlatform.SVG
             return gLithoPattern;
         }
 
-        public static XElement lithoPattern(string sURL)
-        {
-            XNamespace  xn= "http://www.w3.org/2000/svg";
-            
-            XElement pattern = new XElement(xn+"g",new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-
-            //pattern.SetAttributeValue("id", "idLithonSand");
-            pattern.SetAttributeValue("stroke", "black");
-
-            XElement gPath = new XElement(xn + "path");
-
-            gPath.SetAttributeValue("stroke", "black");
-            gPath.SetAttributeValue("d", "M5,5 c500,150 400,150 400,0  Z");
-            gPath.SetAttributeValue("style", "stroke-width:1");
-            gPath.SetAttributeValue("fill", "url(#"+sURL+")");
-            pattern.Add(gPath);
-            return pattern;
-        }
 
 
         //根据用户设置，形成pattern，存入ink的配置文件内。
-        public static XElement lithoPatternDefsSand(string sURL, int iWidthUnit, int iHeightUnit, int rSand, string backColor, string circleInnerColor, bool hasSplitLine)
+        public static XElement lithoPatternDefsSand(string stockId,string sURL, int iWidthUnit, int iHeightUnit, int rSand, string backColor, string circleInnerColor, bool hasSplitLine)
         {
             int numColumn = 0;
             int numRow = 0;
@@ -130,15 +111,18 @@ namespace DOGPlatform.SVG
             listPatternMark.Add(pattern3);
 
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement circleConglomerate = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            XElement lithoPattern = new XElement(xn + "pattern", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XNamespace inkscape = "http://www.inkscape.org/namespaces/inkscape";
+            XElement lithoPattern = new XElement(xn + "pattern");
+            XAttribute stockid = new XAttribute(inkscape + "stockid", stockId);
+            lithoPattern.Add(stockid);
+            XAttribute collect = new XAttribute(inkscape + "collect", "always");
+            lithoPattern.Add(collect);
             lithoPattern.SetAttributeValue("id", sURL);
             lithoPattern.SetAttributeValue("patternUnits", "userSpaceOnUse");
             lithoPattern.SetAttributeValue("x", "0");
             lithoPattern.SetAttributeValue("y", "0");
             lithoPattern.SetAttributeValue("width", (iWidthUnit * numColumn).ToString());
             lithoPattern.SetAttributeValue("height", (iHeightUnit * numRow).ToString());
-            lithoPattern.SetAttributeValue("viewBox", "0 0 " + (iWidthUnit * numColumn).ToString() + " " + (iHeightUnit * numRow).ToString());
 
             XElement gBackRect = backRect(backColor, iWidthUnit, iHeightUnit, numColumn, numRow);
             lithoPattern.Add(gBackRect);
@@ -157,26 +141,7 @@ namespace DOGPlatform.SVG
         }
 
 
-
-
-        //分隔线
-        public static XElement splitLine(int iWidthUnit, int iHeightUnit, int numColumn, int numRow)
-        {
-            XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement circleConglomerate = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            XElement gSplitLine = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            for (int i = 0; i < numRow; i++)
-            {
-                XElement gPath = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-                string dPath = "M 0 " + (iHeightUnit * i).ToString() + " h" + (iWidthUnit * numColumn).ToString();
-                gPath.SetAttributeValue("d", dPath);
-                gPath.SetAttributeValue("stroke-width", "0.5");
-                gPath.SetAttributeValue("stroke", "black");
-                gPath.SetAttributeValue("fill", "none");
-                gSplitLine.Add(gPath);
-            }
-            return gSplitLine;
-        }
+     
         //砂符号
         public static XElement patternElementSand(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
         {
@@ -201,19 +166,6 @@ namespace DOGPlatform.SVG
             return circleConglomerate;
         }
 
-        //背景rect
-        public static XElement backRect(string backColor, int iWidthUnit, int iHeightUnit, int numColumn, int numRow)
-        {
-            XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement gBackRect = new XElement(xn + "rect", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            gBackRect.SetAttributeValue("x", "0");
-            gBackRect.SetAttributeValue("y", "0");
-            gBackRect.SetAttributeValue("width", (iWidthUnit * numColumn).ToString());
-            gBackRect.SetAttributeValue("height", (iHeightUnit * numRow).ToString());
-            gBackRect.SetAttributeValue("stroke", backColor);
-            gBackRect.SetAttributeValue("stroke-width", "1");
-            gBackRect.SetAttributeValue("fill", backColor);
-            return gBackRect;
-        }
+       
     }
 }

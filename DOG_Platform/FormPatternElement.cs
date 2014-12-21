@@ -20,6 +20,17 @@ namespace DOGPlatform
             InitializeComponent();
         }
 
+            //dictionaryPatternSand.Add( "粗砂岩",101);
+            //dictionaryPatternSand.Add("中砂岩",102);
+            //dictionaryPatternSand.Add("细砂岩",103);
+            //dictionaryPatternSand.Add("粉砂岩",104);
+            //dictionaryPatternSand.Add("中细砂岩", 105);
+            //dictionaryPatternSand.Add("粉细砂岩", 106);
+            //dictionaryPatternSand.Add("石英砂岩", 107);
+            //dictionaryPatternSand.Add("铁质砂岩", 108);
+            //dictionaryPatternSand.Add("海绿石砂岩", 109);
+            //dictionaryPatternSand.Add("玄武质砂岩", 127);
+
         string dPath=  "M5,5 c0,150 400,150 400,0  Z";
         string svgFilePath = Path.Combine(cProjectManager.dirPathMap, "pattern.svg");
 
@@ -54,10 +65,25 @@ namespace DOGPlatform
         private void bthLitho_Click(object sender, EventArgs e)
         {
             string sLithoName = "粗砂岩";
+            string sID = "101";
             int iWidthPattern = Convert.ToInt16(nUDPatternSandWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
-            generateSandLithoPattern(sLithoName, iWidthPattern, iHeightPattern, sBackColor, dPath); 
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "pattern", "patterns.svg");
+            XDocument xDoc = XDocument.Load(filePath);
+            XElement xroot = xDoc.Root;
+
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null)
+                {
+                    xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand(sLithoName, sID, 20, 10, 3, "yellow", "red", true));
+                }
+
+                xDoc.Save(filePath);
+            }
         }
 
         private void btnSandBar_Click(object sender, EventArgs e)
@@ -80,22 +106,41 @@ namespace DOGPlatform
             cPublicMethodForm.setComboBoxBackColorByColorDialog(cbbPatternSandBackColor);
         }
 
-        private void btnLimestone_Click(object sender, EventArgs e)
+
+         void addDef4Limestone( string sLithoName ,int id)
         {
-            string sLithoName = "石灰岩";
             int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
-            generateLimesLithoPattern(sLithoName, iWidthPattern, iHeightPattern, sBackColor, dPath); 
+ 
+            string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
+            string filePath = Path.Combine(filePahtsvgPattern, "patterns.svg");
+            XDocument xDoc = XDocument.Load(filePath);
+            XElement xroot = xDoc.Root;
+
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null) xdefs.AddFirst(cSVGXEPatternCarbonatie.lithoPatternLimesDefs(sLithoName, id.ToString(), id, iWidthPattern, iHeightPattern, sBackColor));
+                xDoc.Save(filePath);
+                MessageBox.Show("图案添加完成");
+            } 
+        }
+
+
+        private void btnLimestone_Click(object sender, EventArgs e)
+        {
+            string sLithoName = "石灰岩";
+            int sID = 201;
+            addDef4Limestone(sLithoName, sID);
         }
 
         private void btnDolomite_Click(object sender, EventArgs e)
         {
             string sLithoName = "白云岩";
-            int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
-            int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
-            string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
-            generateLimesLithoPattern(sLithoName, iWidthPattern, iHeightPattern, sBackColor, dPath); 
+            int sID = 202;
+            addDef4Limestone(sLithoName, sID);
         }
 
         private void btnMud_Click(object sender, EventArgs e)
@@ -109,23 +154,31 @@ namespace DOGPlatform
 
         private void btnSandConfig_Click(object sender, EventArgs e)
         {
-            string sLithoName = "configSand";
+            string sLithoName =this.tbxPatternNameSand.Text;
+            string sID = sLithoName.GetHashCode().ToString();
             int iWidthPattern = Convert.ToInt16(nUDPatternSandWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
-            int r = Convert.ToInt16(nUDSandRadius.Value);
+            int iR = Convert.ToInt16(nUDSandRadius.Value);
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
-            string sCircleInnerColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
-            bool hasSplitLine=this.cbxHasSplitLine.Checked;
+            string sSandColor=cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor); 
+            string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
+            string filePath = Path.Combine(filePahtsvgPattern, "patterns.svg");
+            XDocument xDoc = XDocument.Load(filePath);
+            XElement xroot = xDoc.Root;
 
-            string filePathSVGMap =Path.Combine(cProjectManager.dirPathMap, sLithoName + ".svg");
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null)
+                {
+                    xdefs.AddFirst(cSVGXEPatternLithoSand.lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, 3, sBackColor, sSandColor, true));
+                }
 
-            cSVGDocPatternSand cLithoPattern = new cSVGDocPatternSand(20, 20);
-            XmlElement lithoElement = cLithoPattern.addLithoPatternSand(sLithoName, iWidthPattern, iHeightPattern, r,dPath, sBackColor, sCircleInnerColor,hasSplitLine);
-            cLithoPattern.addgElement(lithoElement, 0, 0);
-
-            cLithoPattern.makeSVGfile(filePathSVGMap);
-            FormWebNavigation formSVGView = new FormWebNavigation(filePathSVGMap);
-            formSVGView.Show();
+                xDoc.Save(filePath);
+                MessageBox.Show("图案添加完成");
+            }
+                 
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -182,17 +235,6 @@ namespace DOGPlatform
            
         }
 
-        void generateLimesLithoPattern(string sLithoName, int iWidthPattern, int iHeightPattern, string sBackColor, string d)
-        {
-            string filePathSVGMap = Path.Combine(cProjectManager.dirPathMap, sLithoName + ".svg");
-
-            cSVGDocPatternCarbonatite cLithoPattern = new cSVGDocPatternCarbonatite(20, 20);
-            XmlElement lithoElement = cLithoPattern.addLithoLimesPattern(sLithoName, iWidthPattern, iHeightPattern, sBackColor, d);
-            cLithoPattern.addgElement(lithoElement, 0, 0);
-
-            cLithoPattern.makeSVGfile(filePathSVGMap);
-            FormWebNavigation formSVGView = new FormWebNavigation(filePathSVGMap); formSVGView.Show();
-        }
 
         private void btnHLSSand_Click(object sender, EventArgs e)
         {
@@ -421,7 +463,7 @@ namespace DOGPlatform
             int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
-            generateLimesLithoPattern(sLithoName, iWidthPattern, iHeightPattern, sBackColor, dPath); 
+    //        generateLimesLithoPattern(sLithoName, iWidthPattern, iHeightPattern, sBackColor, dPath); 
         }
 
         private void btnChannel_Click(object sender, EventArgs e)
@@ -461,20 +503,21 @@ namespace DOGPlatform
            
         }
 
+            //先保存图片 再填充预览，最后生成配置存到inkscape的系统定义中去
         private void btnPatternView_Click(object sender, EventArgs e)
         {
-            string _sColor =cPublicMethodForm.getRGB( this.cbbPatternSandBackColor.BackColor);
-            //this.panelPatternView.Width =Convert.ToInt16( this.nUDPatternSandWidth.Value);
-            //this.panelPatternView.Height =Convert.ToInt16( this.nUDPatternShaleHeight.Value);
-            //先保存图片 再填充预览，最后存到inkscape的系统定义中去
-            int width = Convert.ToInt32(10);
-            int height = Convert.ToInt32(10);
+            SolidBrush backBrush = new SolidBrush(this.cbbPatternSandBackColor.BackColor);
+            int width = Convert.ToInt16( this.nUDPatternSandWidth.Value);
+            int height =Convert.ToInt16( this.nUDPatternShaleHeight.Value);
             Bitmap bmp = new Bitmap(width, height);
-            SolidBrush brush = new SolidBrush( Color.FromArgb(128, 0, 0, 0));
+            SolidBrush brush = new SolidBrush( this.cbbInnerColor.BackColor);
             using (Graphics g = Graphics.FromImage(bmp))
-                g.FillEllipse(brush, 0, 0, width, height);
+            {
+                g.FillRectangle(backBrush, 0, 0, width, height);
+                g.FillEllipse(brush, width/2, height/2,3,3);
+            }
            
-            string fileTempPng=@"c:\targetfile"+numfilePathTemp.ToString()+".png";
+            string fileTempPng=Path.Combine( cProjectManager.dirPathTemp,numfilePathTemp.ToString()+"pattern.png");
             if (File.Exists(fileTempPng)) File.Delete(fileTempPng);
             numfilePathTemp++;
             bmp.Save(fileTempPng, ImageFormat.Png);
@@ -482,11 +525,47 @@ namespace DOGPlatform
             TextureBrush myTextureBrush = new TextureBrush(myImage); 
 
             Graphics gPanel=this.panelPatternView.CreateGraphics();
-
-            gPanel.FillEllipse(myTextureBrush, 0, 0, 100, 100);
-
+            Rectangle rect = new Rectangle(0, 0, this.panelPatternView.Width, this.panelPatternView.Height);
+            gPanel.FillRectangle(myTextureBrush, rect);
+            //以上是gdi方式
 
         }
+
+       void  addDef(string _xmlFilePath)
+        {
+             XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(_xmlFilePath);
+            XmlNode currentNode = xmlDoc.SelectSingleNode("/svg/def");
+            if (currentNode!=null) MessageBox.Show("ok"); 
+        }
+
+       private void button4_Click(object sender, EventArgs e)
+       {
+           int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
+           int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
+           string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
+
+           string sLithoName = this.tbxPatternNamecal.Text;
+           string sID = sLithoName.GetHashCode().ToString();
+     
+           string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
+           string filePath = Path.Combine(filePahtsvgPattern, "patterns.svg");
+           XDocument xDoc = XDocument.Load(filePath);
+           XElement xroot = xDoc.Root;
+
+           if (xroot != null)
+           {
+               // bool x=xroot.HasElements("defs");
+               XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+               if (xdefs != null)  
+               {
+                   xdefs.AddFirst(cSVGXEPatternCarbonatie.lithoPatternLimesDefs(sLithoName, sID, 201,iWidthPattern, iHeightPattern, sBackColor));
+               }
+
+               xDoc.Save(filePath);
+               MessageBox.Show("图案添加完成");
+           }
+       }
 
      
 

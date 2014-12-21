@@ -12,8 +12,6 @@ namespace DOGPlatform
         解释结论,
         射孔数据,
         吸水剖面,
-        水平井轨迹,
-        
     }
     public enum TypeWell
     {

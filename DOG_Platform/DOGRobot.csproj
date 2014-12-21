@@ -164,6 +164,8 @@
     <Compile Include="cFileOperateDicLogHeadGlobe.cs" />
     <Compile Include="cMenuStripDog.cs" />
     <Compile Include="cPerforationList.cs" />
+    <Compile Include="SVG\cSVGXEPatternBase.cs" />
+    <Compile Include="SVG\cSVGXEPatternCarbonatie.cs" />
     <Compile Include="SVG\cSVGXEPatternLithoSand.cs" />
     <Compile Include="SVG\cSVGSectionTrackConnect.cs" />
     <Compile Include="SVG\cSVGSectionTrack.cs" />

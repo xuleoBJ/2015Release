@@ -35,7 +35,6 @@ namespace DOGPlatform
             ltCbbdataType.Add(TypeInputFile.解释结论.ToString());
             ltCbbdataType.Add(TypeInputFile.射孔数据.ToString());
             ltCbbdataType.Add(TypeInputFile.吸水剖面.ToString());
-            ltCbbdataType.Add(TypeInputFile.水平井轨迹.ToString());
             foreach (string item in ltCbbdataType)
             {
                 this.cbbDataType.Items.Add(item);
@@ -61,10 +60,6 @@ namespace DOGPlatform
                 if (cbbDataType.SelectedItem.ToString() == TypeInputFile.分层数据.ToString())
                 {
                     this.filePathOperation = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameWellLayerDepth);
-                }
-                if (cbbDataType.SelectedItem.ToString() == TypeInputFile.水平井轨迹.ToString())
-                {
-                    this.filePathOperation = cProjectManager.filePathInputHorizonalWellPath;
                 }
                 if (cbbDataType.SelectedItem.ToString() == TypeInputFile.射孔数据.ToString())
                 {

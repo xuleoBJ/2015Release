@@ -15,6 +15,21 @@ namespace DOGPlatform
 
         }
 
+        public void setupTsmiRename()
+        {
+            ToolStripMenuItem tsmiRename = new ToolStripMenuItem();
+            tsmiRename.Text = "重命名";
+            tsmiRename.Click += new System.EventHandler(tsmiRename_Click);
+            cms.Items.Add(tsmiRename);
+        }
+
+        private void tsmiRename_Click(object sender, EventArgs e)
+        {
+            if (!this.tnSelected.IsEditing)
+            {
+                tnSelected.BeginEdit();
+            } 
+        }
         public void setupTsmiOpenInInkscape()
         {
             ToolStripMenuItem tsmiImportOpenedInkscaple = new ToolStripMenuItem();

@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPatternElement));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbpPatternSand = new System.Windows.Forms.TabPage();
+            this.btnPatternView = new System.Windows.Forms.Button();
+            this.panelPatternView = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.btnTortSand = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbbPatternSandBackColor = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@
             this.nUDPatternSandHeight = new System.Windows.Forms.NumericUpDown();
             this.nUDPatternSandWidth = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblStockID = new System.Windows.Forms.Label();
+            this.tbxPatternNameSand = new System.Windows.Forms.TextBox();
             this.cbbInnerColor = new System.Windows.Forms.ComboBox();
             this.btn_SandConfig = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
@@ -137,13 +140,11 @@
             this.btnChannelSand = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btn_CalConfig = new System.Windows.Forms.Button();
             this.label29 = new System.Windows.Forms.Label();
-            this.panelPatternView = new System.Windows.Forms.Panel();
-            this.btnPatternView = new System.Windows.Forms.Button();
+            this.tbxPatternNamecal = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tbpPatternSand.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandWidth)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -187,7 +188,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(902, 610);
+            this.tabControl1.Size = new System.Drawing.Size(911, 506);
             this.tabControl1.TabIndex = 2;
             // 
             // tbpPatternSand
@@ -196,7 +197,6 @@
             this.tbpPatternSand.Controls.Add(this.panelPatternView);
             this.tbpPatternSand.Controls.Add(this.button3);
             this.tbpPatternSand.Controls.Add(this.btnTortSand);
-            this.tbpPatternSand.Controls.Add(this.groupBox2);
             this.tbpPatternSand.Controls.Add(this.groupBox1);
             this.tbpPatternSand.Controls.Add(this.btnFeSand);
             this.tbpPatternSand.Controls.Add(this.btnHLSSand);
@@ -209,16 +209,33 @@
             this.tbpPatternSand.Controls.Add(this.btnCuSand);
             this.tbpPatternSand.Location = new System.Drawing.Point(4, 22);
             this.tbpPatternSand.Name = "tbpPatternSand";
-            this.tbpPatternSand.Size = new System.Drawing.Size(894, 584);
+            this.tbpPatternSand.Size = new System.Drawing.Size(903, 480);
             this.tbpPatternSand.TabIndex = 2;
             this.tbpPatternSand.Text = "砂岩图元";
             this.tbpPatternSand.UseVisualStyleBackColor = true;
             // 
+            // btnPatternView
+            // 
+            this.btnPatternView.Location = new System.Drawing.Point(588, 12);
+            this.btnPatternView.Name = "btnPatternView";
+            this.btnPatternView.Size = new System.Drawing.Size(72, 32);
+            this.btnPatternView.TabIndex = 54;
+            this.btnPatternView.Text = "预览";
+            this.btnPatternView.UseVisualStyleBackColor = true;
+            this.btnPatternView.Click += new System.EventHandler(this.btnPatternView_Click);
+            // 
+            // panelPatternView
+            // 
+            this.panelPatternView.Location = new System.Drawing.Point(588, 54);
+            this.panelPatternView.Name = "panelPatternView";
+            this.panelPatternView.Size = new System.Drawing.Size(293, 404);
+            this.panelPatternView.TabIndex = 56;
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(36, 389);
+            this.button3.Location = new System.Drawing.Point(286, 344);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 39);
+            this.button3.Size = new System.Drawing.Size(108, 29);
             this.button3.TabIndex = 55;
             this.button3.Text = "测试连层图";
             this.button3.UseVisualStyleBackColor = true;
@@ -226,33 +243,18 @@
             // 
             // btnTortSand
             // 
-            this.btnTortSand.Location = new System.Drawing.Point(647, 368);
+            this.btnTortSand.Location = new System.Drawing.Point(153, 344);
             this.btnTortSand.Name = "btnTortSand";
-            this.btnTortSand.Size = new System.Drawing.Size(82, 42);
+            this.btnTortSand.Size = new System.Drawing.Size(108, 29);
             this.btnTortSand.TabIndex = 54;
             this.btnTortSand.Text = "玄武质砂岩";
             this.btnTortSand.UseVisualStyleBackColor = true;
             this.btnTortSand.Click += new System.EventHandler(this.btnTortSand_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.cbbPatternSandBackColor);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.nUDPatternSandHeight);
-            this.groupBox2.Controls.Add(this.nUDPatternSandWidth);
-            this.groupBox2.Location = new System.Drawing.Point(36, 28);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(253, 100);
-            this.groupBox2.TabIndex = 53;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "砂体属性设置";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(173, 33);
+            this.label1.Location = new System.Drawing.Point(282, 114);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 35;
@@ -262,7 +264,7 @@
             // 
             this.cbbPatternSandBackColor.BackColor = System.Drawing.Color.White;
             this.cbbPatternSandBackColor.FormattingEnabled = true;
-            this.cbbPatternSandBackColor.Location = new System.Drawing.Point(12, 52);
+            this.cbbPatternSandBackColor.Location = new System.Drawing.Point(97, 111);
             this.cbbPatternSandBackColor.Name = "cbbPatternSandBackColor";
             this.cbbPatternSandBackColor.Size = new System.Drawing.Size(70, 20);
             this.cbbPatternSandBackColor.TabIndex = 29;
@@ -271,7 +273,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 37);
+            this.label6.Location = new System.Drawing.Point(14, 114);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 12);
             this.label6.TabIndex = 31;
@@ -280,7 +282,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(101, 35);
+            this.label21.Location = new System.Drawing.Point(173, 112);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(41, 12);
             this.label21.TabIndex = 33;
@@ -294,7 +296,7 @@
             0,
             0,
             0});
-            this.nUDPatternSandHeight.Location = new System.Drawing.Point(101, 53);
+            this.nUDPatternSandHeight.Location = new System.Drawing.Point(230, 110);
             this.nUDPatternSandHeight.Minimum = new decimal(new int[] {
             4,
             0,
@@ -317,7 +319,7 @@
             0,
             0,
             0});
-            this.nUDPatternSandWidth.Location = new System.Drawing.Point(175, 52);
+            this.nUDPatternSandWidth.Location = new System.Drawing.Point(329, 110);
             this.nUDPatternSandWidth.Minimum = new decimal(new int[] {
             4,
             0,
@@ -334,26 +336,49 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label29);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblStockID);
+            this.groupBox1.Controls.Add(this.cbbPatternSandBackColor);
+            this.groupBox1.Controls.Add(this.tbxPatternNameSand);
+            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cbbInnerColor);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.nUDPatternSandHeight);
             this.groupBox1.Controls.Add(this.btn_SandConfig);
+            this.groupBox1.Controls.Add(this.nUDPatternSandWidth);
             this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.cbxHasSplitLine);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.nUDSandRadius);
-            this.groupBox1.Location = new System.Drawing.Point(319, 28);
+            this.groupBox1.Location = new System.Drawing.Point(6, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(481, 128);
+            this.groupBox1.Size = new System.Drawing.Size(524, 174);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "自定义绘制砂体";
+            // 
+            // lblStockID
+            // 
+            this.lblStockID.AutoSize = true;
+            this.lblStockID.Location = new System.Drawing.Point(32, 35);
+            this.lblStockID.Name = "lblStockID";
+            this.lblStockID.Size = new System.Drawing.Size(41, 12);
+            this.lblStockID.TabIndex = 53;
+            this.lblStockID.Text = "图案名";
+            // 
+            // tbxPatternNameSand
+            // 
+            this.tbxPatternNameSand.Location = new System.Drawing.Point(79, 35);
+            this.tbxPatternNameSand.Name = "tbxPatternNameSand";
+            this.tbxPatternNameSand.Size = new System.Drawing.Size(100, 21);
+            this.tbxPatternNameSand.TabIndex = 52;
+            this.tbxPatternNameSand.Text = "图案1";
             // 
             // cbbInnerColor
             // 
             this.cbbInnerColor.BackColor = System.Drawing.Color.DarkOrange;
             this.cbbInnerColor.FormattingEnabled = true;
-            this.cbbInnerColor.Location = new System.Drawing.Point(209, 44);
+            this.cbbInnerColor.Location = new System.Drawing.Point(265, 70);
             this.cbbInnerColor.Name = "cbbInnerColor";
             this.cbbInnerColor.Size = new System.Drawing.Size(70, 20);
             this.cbbInnerColor.TabIndex = 37;
@@ -361,7 +386,7 @@
             // 
             // btn_SandConfig
             // 
-            this.btn_SandConfig.Location = new System.Drawing.Point(384, 37);
+            this.btn_SandConfig.Location = new System.Drawing.Point(416, 110);
             this.btn_SandConfig.Name = "btn_SandConfig";
             this.btn_SandConfig.Size = new System.Drawing.Size(72, 32);
             this.btn_SandConfig.TabIndex = 45;
@@ -372,7 +397,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(126, 46);
+            this.label28.Location = new System.Drawing.Point(173, 73);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(77, 12);
             this.label28.TabIndex = 38;
@@ -381,7 +406,7 @@
             // cbxHasSplitLine
             // 
             this.cbxHasSplitLine.AutoSize = true;
-            this.cbxHasSplitLine.Location = new System.Drawing.Point(294, 46);
+            this.cbxHasSplitLine.Location = new System.Drawing.Point(352, 69);
             this.cbxHasSplitLine.Name = "cbxHasSplitLine";
             this.cbxHasSplitLine.Size = new System.Drawing.Size(84, 16);
             this.cbxHasSplitLine.TabIndex = 51;
@@ -391,7 +416,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(12, 46);
+            this.label27.Location = new System.Drawing.Point(32, 73);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(53, 12);
             this.label27.TabIndex = 49;
@@ -400,7 +425,7 @@
             // nUDSandRadius
             // 
             this.nUDSandRadius.AllowDrop = true;
-            this.nUDSandRadius.Location = new System.Drawing.Point(71, 43);
+            this.nUDSandRadius.Location = new System.Drawing.Point(97, 71);
             this.nUDSandRadius.Maximum = new decimal(new int[] {
             20,
             0,
@@ -422,9 +447,9 @@
             // 
             // btnFeSand
             // 
-            this.btnFeSand.Location = new System.Drawing.Point(545, 368);
+            this.btnFeSand.Location = new System.Drawing.Point(22, 344);
             this.btnFeSand.Name = "btnFeSand";
-            this.btnFeSand.Size = new System.Drawing.Size(82, 42);
+            this.btnFeSand.Size = new System.Drawing.Size(108, 29);
             this.btnFeSand.TabIndex = 48;
             this.btnFeSand.Text = "铁质砂岩";
             this.btnFeSand.UseVisualStyleBackColor = true;
@@ -432,9 +457,9 @@
             // 
             // btnHLSSand
             // 
-            this.btnHLSSand.Location = new System.Drawing.Point(447, 368);
+            this.btnHLSSand.Location = new System.Drawing.Point(424, 284);
             this.btnHLSSand.Name = "btnHLSSand";
-            this.btnHLSSand.Size = new System.Drawing.Size(75, 42);
+            this.btnHLSSand.Size = new System.Drawing.Size(108, 29);
             this.btnHLSSand.TabIndex = 47;
             this.btnHLSSand.Text = "海绿石砂岩";
             this.btnHLSSand.UseVisualStyleBackColor = true;
@@ -442,9 +467,9 @@
             // 
             // btnQuartzSand
             // 
-            this.btnQuartzSand.Location = new System.Drawing.Point(357, 368);
+            this.btnQuartzSand.Location = new System.Drawing.Point(286, 284);
             this.btnQuartzSand.Name = "btnQuartzSand";
-            this.btnQuartzSand.Size = new System.Drawing.Size(75, 42);
+            this.btnQuartzSand.Size = new System.Drawing.Size(108, 29);
             this.btnQuartzSand.TabIndex = 46;
             this.btnQuartzSand.Text = "石英砂岩";
             this.btnQuartzSand.UseVisualStyleBackColor = true;
@@ -452,9 +477,9 @@
             // 
             // btnFenXiSand
             // 
-            this.btnFenXiSand.Location = new System.Drawing.Point(266, 368);
+            this.btnFenXiSand.Location = new System.Drawing.Point(153, 284);
             this.btnFenXiSand.Name = "btnFenXiSand";
-            this.btnFenXiSand.Size = new System.Drawing.Size(75, 42);
+            this.btnFenXiSand.Size = new System.Drawing.Size(108, 29);
             this.btnFenXiSand.TabIndex = 44;
             this.btnFenXiSand.Text = "粉细砂岩";
             this.btnFenXiSand.UseVisualStyleBackColor = true;
@@ -462,9 +487,9 @@
             // 
             // btnZhongxiSand
             // 
-            this.btnZhongxiSand.Location = new System.Drawing.Point(177, 368);
+            this.btnZhongxiSand.Location = new System.Drawing.Point(22, 284);
             this.btnZhongxiSand.Name = "btnZhongxiSand";
-            this.btnZhongxiSand.Size = new System.Drawing.Size(75, 42);
+            this.btnZhongxiSand.Size = new System.Drawing.Size(108, 29);
             this.btnZhongxiSand.TabIndex = 43;
             this.btnZhongxiSand.Text = "中细砂岩";
             this.btnZhongxiSand.UseVisualStyleBackColor = true;
@@ -472,9 +497,9 @@
             // 
             // btnFenSand
             // 
-            this.btnFenSand.Location = new System.Drawing.Point(447, 308);
+            this.btnFenSand.Location = new System.Drawing.Point(422, 224);
             this.btnFenSand.Name = "btnFenSand";
-            this.btnFenSand.Size = new System.Drawing.Size(75, 42);
+            this.btnFenSand.Size = new System.Drawing.Size(108, 29);
             this.btnFenSand.TabIndex = 42;
             this.btnFenSand.Text = "粉砂岩";
             this.btnFenSand.UseVisualStyleBackColor = true;
@@ -482,9 +507,9 @@
             // 
             // btnXiSand
             // 
-            this.btnXiSand.Location = new System.Drawing.Point(357, 308);
+            this.btnXiSand.Location = new System.Drawing.Point(286, 224);
             this.btnXiSand.Name = "btnXiSand";
-            this.btnXiSand.Size = new System.Drawing.Size(75, 42);
+            this.btnXiSand.Size = new System.Drawing.Size(108, 29);
             this.btnXiSand.TabIndex = 41;
             this.btnXiSand.Text = "细砂岩";
             this.btnXiSand.UseVisualStyleBackColor = true;
@@ -492,9 +517,9 @@
             // 
             // btnZhongSand
             // 
-            this.btnZhongSand.Location = new System.Drawing.Point(266, 308);
+            this.btnZhongSand.Location = new System.Drawing.Point(153, 224);
             this.btnZhongSand.Name = "btnZhongSand";
-            this.btnZhongSand.Size = new System.Drawing.Size(75, 42);
+            this.btnZhongSand.Size = new System.Drawing.Size(108, 29);
             this.btnZhongSand.TabIndex = 40;
             this.btnZhongSand.Text = "中砂岩";
             this.btnZhongSand.UseVisualStyleBackColor = true;
@@ -502,9 +527,9 @@
             // 
             // btnCuSand
             // 
-            this.btnCuSand.Location = new System.Drawing.Point(177, 308);
+            this.btnCuSand.Location = new System.Drawing.Point(22, 224);
             this.btnCuSand.Name = "btnCuSand";
-            this.btnCuSand.Size = new System.Drawing.Size(75, 42);
+            this.btnCuSand.Size = new System.Drawing.Size(108, 29);
             this.btnCuSand.TabIndex = 3;
             this.btnCuSand.Text = "粗砂岩";
             this.btnCuSand.UseVisualStyleBackColor = true;
@@ -528,7 +553,7 @@
             this.tbpPatternGravel.Location = new System.Drawing.Point(4, 22);
             this.tbpPatternGravel.Name = "tbpPatternGravel";
             this.tbpPatternGravel.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternGravel.Size = new System.Drawing.Size(894, 584);
+            this.tbpPatternGravel.Size = new System.Drawing.Size(903, 480);
             this.tbpPatternGravel.TabIndex = 4;
             this.tbpPatternGravel.Text = "砾岩图元";
             this.tbpPatternGravel.UseVisualStyleBackColor = true;
@@ -703,7 +728,7 @@
             this.tbpPatternMud.Location = new System.Drawing.Point(4, 22);
             this.tbpPatternMud.Name = "tbpPatternMud";
             this.tbpPatternMud.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternMud.Size = new System.Drawing.Size(894, 584);
+            this.tbpPatternMud.Size = new System.Drawing.Size(903, 480);
             this.tbpPatternMud.TabIndex = 5;
             this.tbpPatternMud.Text = "泥岩图元";
             this.tbpPatternMud.UseVisualStyleBackColor = true;
@@ -855,7 +880,7 @@
             this.tbpPatternShale.Location = new System.Drawing.Point(4, 22);
             this.tbpPatternShale.Name = "tbpPatternShale";
             this.tbpPatternShale.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternShale.Size = new System.Drawing.Size(894, 584);
+            this.tbpPatternShale.Size = new System.Drawing.Size(903, 480);
             this.tbpPatternShale.TabIndex = 8;
             this.tbpPatternShale.Text = "页岩图元";
             this.tbpPatternShale.UseVisualStyleBackColor = true;
@@ -974,6 +999,9 @@
             // 
             // tbpPatternTSY
             // 
+            this.tbpPatternTSY.Controls.Add(this.label29);
+            this.tbpPatternTSY.Controls.Add(this.tbxPatternNamecal);
+            this.tbpPatternTSY.Controls.Add(this.btn_CalConfig);
             this.tbpPatternTSY.Controls.Add(this.btnOoliteLimes);
             this.tbpPatternTSY.Controls.Add(this.label26);
             this.tbpPatternTSY.Controls.Add(this.label25);
@@ -988,7 +1016,7 @@
             this.tbpPatternTSY.Location = new System.Drawing.Point(4, 22);
             this.tbpPatternTSY.Name = "tbpPatternTSY";
             this.tbpPatternTSY.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternTSY.Size = new System.Drawing.Size(894, 584);
+            this.tbpPatternTSY.Size = new System.Drawing.Size(903, 480);
             this.tbpPatternTSY.TabIndex = 6;
             this.tbpPatternTSY.Text = "石灰岩白云岩图元";
             this.tbpPatternTSY.UseVisualStyleBackColor = true;
@@ -1542,51 +1570,43 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // btn_CalConfig
             // 
-            this.textBox1.Location = new System.Drawing.Point(71, 84);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 52;
+            this.btn_CalConfig.Location = new System.Drawing.Point(418, 90);
+            this.btn_CalConfig.Name = "btn_CalConfig";
+            this.btn_CalConfig.Size = new System.Drawing.Size(122, 47);
+            this.btn_CalConfig.TabIndex = 48;
+            this.btn_CalConfig.Text = "配置生成";
+            this.btn_CalConfig.UseVisualStyleBackColor = true;
+            this.btn_CalConfig.Click += new System.EventHandler(this.button4_Click);
             // 
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(39, 87);
+            this.label29.Location = new System.Drawing.Point(283, 39);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(23, 12);
-            this.label29.TabIndex = 53;
-            this.label29.Text = "sID";
+            this.label29.Size = new System.Drawing.Size(41, 12);
+            this.label29.TabIndex = 55;
+            this.label29.Text = "图案名";
             // 
-            // panelPatternView
+            // tbxPatternNamecal
             // 
-            this.panelPatternView.Location = new System.Drawing.Point(164, 174);
-            this.panelPatternView.Name = "panelPatternView";
-            this.panelPatternView.Size = new System.Drawing.Size(401, 104);
-            this.panelPatternView.TabIndex = 56;
-            // 
-            // btnPatternView
-            // 
-            this.btnPatternView.Location = new System.Drawing.Point(592, 190);
-            this.btnPatternView.Name = "btnPatternView";
-            this.btnPatternView.Size = new System.Drawing.Size(72, 32);
-            this.btnPatternView.TabIndex = 54;
-            this.btnPatternView.Text = "预览";
-            this.btnPatternView.UseVisualStyleBackColor = true;
-            this.btnPatternView.Click += new System.EventHandler(this.btnPatternView_Click);
+            this.tbxPatternNamecal.Location = new System.Drawing.Point(330, 39);
+            this.tbxPatternNamecal.Name = "tbxPatternNamecal";
+            this.tbxPatternNamecal.Size = new System.Drawing.Size(100, 21);
+            this.tbxPatternNamecal.TabIndex = 54;
+            this.tbxPatternNamecal.Text = "图案1";
             // 
             // FormPatternElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 610);
+            this.ClientSize = new System.Drawing.Size(911, 506);
             this.Controls.Add(this.tabControl1);
             this.Name = "FormPatternElement";
             this.Text = "图元配置";
             this.tabControl1.ResumeLayout(false);
             this.tbpPatternSand.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandWidth)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -1716,7 +1736,6 @@
         private System.Windows.Forms.Button btnFSZMud;
         private System.Windows.Forms.CheckBox cbxHasSplitLine;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbbInnerColor;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Button button5;
@@ -1735,9 +1754,12 @@
         private System.Windows.Forms.Button btnAsphaltShale;
         private System.Windows.Forms.Button btnOoliteLimes;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblStockID;
+        private System.Windows.Forms.TextBox tbxPatternNameSand;
         private System.Windows.Forms.Panel panelPatternView;
         private System.Windows.Forms.Button btnPatternView;
+        private System.Windows.Forms.Button btn_CalConfig;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox tbxPatternNamecal;
     }
 }

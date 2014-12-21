@@ -306,7 +306,6 @@ namespace DOGPlatform
             forminjectProductAna.Show();
         }
 
-
         private void tsmiCalWellTypeDictionary_Click(object sender, EventArgs e)
         {
             cDicOperateFileWellType cCalTest = new cDicOperateFileWellType();
@@ -1049,6 +1048,7 @@ namespace DOGPlatform
                 case 1:
                     cContextMenuStripSVGGraph cTS = new cContextMenuStripSVGGraph(cmsProject, selectNode, selectNode.Text);
                     cTS.setupTsmiOpenInInkscape();
+                    cTS.setupTsmiRename();
                     cTS.setupTsmiOpenIE();
                     cTS.setupTsmiDeleteFile();
                     break;

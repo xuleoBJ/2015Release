@@ -30,10 +30,6 @@ namespace DOGPlatform
             {
                 this.sJH = _sJH;
 
-                if (_fileType == TypeInputFile.水平井轨迹)
-                {
-                    this.filePathGeoEarthText = cProjectManager.filePathInputHorizonalWellPath; 
-                }
                 if (_fileType == TypeInputFile.井轨迹) 
                 {
                     this.filePathGeoEarthText =

@@ -19,10 +19,42 @@ namespace DOGPlatform
             initializeForm();
         }
         string dirAdjustProfile = Path.Combine(cProjectManager.dirProject, "$AdjustProfile$");
+        string fileNamePI = "#injectPI#";
         void initializeForm() 
         {
             lbxJH.DataSource= cProjectData.ltStrProjectJH;
             cbbSelectedLayerName.DataSource = cProjectData.ltStrProjectXCM;
+        }
+
+        public static void  readPI()
+        {
+                //if (File.Exists(cProjectManager.filePathInputHorizonalWellPath))
+                //{
+                //    using (StreamReader sr = new StreamReader(cProjectManager.filePathInputHorizonalWellPath, System.Text.Encoding.UTF8))
+                //    {
+                //        String line;
+                //        int _indexLine = 0;
+                //        int _dataStartLine = 7;
+                //        while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                //        {
+                //            _indexLine++;
+                //            string[] split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                //            if (_indexLine >= _dataStartLine)
+                //            {
+                //                ItemHorizonalWellPath _item = new ItemHorizonalWellPath();
+                //                _item.sJH = split[0];
+                //                _item.dbX = double.Parse(split[1]);
+                //                _item.dbY = double.Parse(split[2]);
+                //                _item.md = float.Parse(split[3]);
+                //                listHorizonalWellPath.Add(_item);
+
+                //            }
+                //        }
+
+                //    }
+                //}
+
+           
         }
 
         private void btnDraw_Click(object sender, EventArgs e)

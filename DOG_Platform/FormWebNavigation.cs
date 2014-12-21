@@ -175,7 +175,7 @@ namespace DOGPlatform
               {
                  // bool x=xroot.HasElements("defs");
                   XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                  if(xdefs!=null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("p123", 20, 10, 2, "yellow", "red", true));
+                  if(xdefs!=null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("helloworld","p123", 20, 10, 2, "yellow", "red", true));
                   xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
 
                   xDoc.Save(filePath);

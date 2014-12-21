@@ -29,9 +29,6 @@ namespace DOGPlatform
 
         public static string filePathErrInfor = Path.Combine(dirPathUserData, "#err.txt");
 
-        public static string filePathInputHorizonalWellPath = Path.Combine(dirPathUserData, "$horizonalWellPath#.txt"); 
-
-
         public static string fileNameInputLayerDepth = "$inputLayerDepth#.txt";
         public static string fileNameInputJSJL = "$inputJSJL#.txt";
         public static string fileNameInputWellPath = "$inputWellPath#.txt";
@@ -82,7 +79,6 @@ namespace DOGPlatform
 
            filePathInputWellhead =Path.Combine(dirPathUserData ,  "$wellHead#.txt");
            filePathInputLayerSeriers =Path.Combine(dirPathUserData ,  "$layerSerier#.txt");
-           filePathInputHorizonalWellPath = Path.Combine(dirPathUserData, "$horizonalWellPath#.txt");
 
 
             filePathErrInfor =Path.Combine(dirPathUserData ,  "#err.txt");

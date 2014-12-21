@@ -9,7 +9,7 @@ namespace DOGPlatform
     class cIOinputInjectionProfile
     {
         /// <summary>
-        /// 吸水剖面数据格式采用 相对吸水量百分比，绝对量应该转为相对吸水
+        /// 
         /// </summary>
 
         public static List<ItemInjectionProfile> readInjectionProfile2Struct(string sJH)
@@ -18,17 +18,17 @@ namespace DOGPlatform
             string inputFilepath = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameWellProfile);
             if (File.Exists(inputFilepath))
             {
-                using (StreamReader sr = new StreamReader(cProjectManager.filePathInputHorizonalWellPath, System.Text.Encoding.UTF8))
-                {
-                    String line;
-                    int _indexLine = 0;
-                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
-                    {
-                        _indexLine++;
-                        ItemInjectionProfile item = ItemInjectionProfile.parseLine(line);
-                        listItems.Add(item);
-                    }
-                }
+                //using (StreamReader sr = new StreamReader(cProjectManager.fileNameInputWellProfile, System.Text.Encoding.UTF8))
+                //{
+                //    String line;
+                //    int _indexLine = 0;
+                //    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                //    {
+                //        _indexLine++;
+                //        ItemInjectionProfile item = ItemInjectionProfile.parseLine(line);
+                //        listItems.Add(item);
+                //    }
+                //}
 
             }
  

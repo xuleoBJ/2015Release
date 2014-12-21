@@ -8,6 +8,8 @@ namespace DOGPlatform.SVG
 {
     class cSVGDocPatternCarbonatite : cSVGBasePattern
     {
+
+      
         public Dictionary<string, int> dictionaryPatternCarbonatite = new Dictionary<string, int>();
         void initializeDictionaryPatternCarbonatite()
         {
@@ -115,7 +117,7 @@ namespace DOGPlatform.SVG
 
             //if (hasSplitLine == true)
             //{
-            //    XmlElement gSplitLine = splitLine(iWidthUnit, iHeightUnit, numColumn, numRow);
+            //    XElement gSplitLine = splitLine(iWidthUnit, iHeightUnit, numColumn, numRow);
             //    lithoPattern.AppendChild(gSplitLine);
             //}
 
