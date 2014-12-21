@@ -14,9 +14,14 @@ namespace DOGPlatform.XML
             string parentNodePath=@"/LayerMapConfig/HorizonalWell";
             string _tagName = "WellIntervel";
             delNodes(xmlLayerMap,parentNodePath,_tagName);
-     
         }
 
+        public static XmlNodeList getHorizonalWellIntervalNodeList(string filePathxmlLayerMap)
+        {
+            XmlDocument xmlLayerMap = new XmlDocument();
+            xmlLayerMap.Load(filePathxmlLayerMap);
+            return   xmlLayerMap.SelectNodes("/LayerMapConfig/HorizonalWell/WellIntervel");
+        }
         public static void addHorizonalWellIntervalNode2XML(string filePathxmlLayerMap, string strNode)
         {
             XmlDocument xmlLayerMap = new XmlDocument();

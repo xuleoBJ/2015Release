@@ -193,8 +193,6 @@ namespace DOGPlatform
             }
         }
 
-       
-
         public static List<ItemLayerDataDic> readDicLayerData2struct()
         {
             List<ItemLayerDataDic> ltStrReturn = new List<ItemLayerDataDic>();

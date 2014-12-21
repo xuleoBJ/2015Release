@@ -10,7 +10,6 @@ namespace DOGPlatform.XML
 {
     class cXMLLayerMapBase : cXMLbase
     {
-
         //config mapLayer xml , 1 section is style, 2 section is data,svg or gdi parse xml in different methond,but only one source. 
         public static void creatLayerMapConfigXML(string xmlConfigLayerMap,int iWidth,int iHeight)
         {
@@ -247,7 +246,6 @@ namespace DOGPlatform.XML
             updateNodeValue(xmlFilePath, nodePath, iOffset);
         }
     
-       
 
         public static void setStaticDataVScale(string filePathxmlLayerMap, float fVScale)
         {

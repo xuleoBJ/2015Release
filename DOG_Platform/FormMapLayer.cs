@@ -26,12 +26,10 @@ namespace DOGPlatform
         string selectedLayer;
        
         XmlElement returnElemment;
-       
 
         //set xml 4 store configure information and data
         string filePathXMLconfigLayerMap = "";
     
-
         public FormMapLayer()
         {
             InitializeComponent();
@@ -51,9 +49,8 @@ namespace DOGPlatform
             cbbSelectedXCMTop.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedXCMBot.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedYM.DataSource = cProjectData.ltStrProjectYM;
-            cbbLeftLogName.DataSource  = cProjectData.ltStrLogSeriers;
-            cbbRightLogName.DataSource = cProjectData.ltStrLogSeriers;
-            cPublicMethodForm.inialListBox(lbxJH, cProjectData.ltStrProjectJH);
+
+            cPublicMethodForm.inialListBox(lbxJH, cProjectData.listProjectWell.FindAll(p=>p.WellPathList.Count>3).Select(p=>p.sJH).ToList());
         } 
         private void cbbSelectedXCM_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -118,7 +115,6 @@ namespace DOGPlatform
         void reDrawSVGMap()
         {
             //从xml配置文件中解析数据
-           
 
             generateSVGfilemap();
 
@@ -141,7 +137,6 @@ namespace DOGPlatform
             if (File.Exists(filePathSVGLayerMap)) File.Delete(filePathSVGLayerMap);
 
             returnElemment = svgLayerMap.gWellsPosition();
-
             svgLayerMap.addgElement(returnElemment, 0, 0);
             if (this.cbxScaleRulerShowed.Checked == true)
             {
@@ -165,116 +160,24 @@ namespace DOGPlatform
             {
                 svgLayerMap.svgRoot.AppendChild(svgLayerMap.gCompass(300, 100));
             }
+            if (this.cbxAddHorizonWell.Checked == true)
+            {
+                XmlNodeList listHorinalNode = cXMLLayerMapHorizonalWell.getHorizonalWellIntervalNodeList(this.filePathXMLconfigLayerMap);
+                foreach (XmlNode xn in listHorinalNode)
+                {
+                    returnElemment = svgLayerMap.gHorizonalWellIntervelLine(xn);
+                    svgLayerMap.addgElement(returnElemment, 0, 0);
+                }
+            }
             svgLayerMap.makeSVGfile(filePathSVGLayerMap);
             FormMain.filePathWebSVG = filePathSVGLayerMap;
             this.Close();
         }
 
-        void openSVGInIE(string filePath)
-        {
-            Form f = Application.OpenForms["FormWebNavigation"];  //查找是否打开过Form窗体  
-            if (f == null)  //没打开过  
-            {
-
-            }
-            else
-            {
-                f.Close();
-            }
-            FormWebNavigation formSVGView = new FormWebNavigation(filePath);
-            formSVGView.Show();
-        }
+     
         private void btnMakeLayerMap_Click(object sender, EventArgs e)
         {
-           
             generateSVGfilemap();
-
-            /*       
-
-                    //增加左侧测井曲线
-                    if (cbxAddLeftLog.Checked == true)
-                    {
-                        foreach (string sJH in ltStrSelectedJHMapLayer)
-                        {
-                            int iIndexFound = cLayerMap.ltStrJHMapLayer_WellPositionSVG.IndexOf(sJH);
-                            string filepathWellLeftLog = cProjectManager.dirPathTemp + "mapLeftLog\\" + sJH + ".txt";
-                            if (File.Exists(filepathWellLeftLog))
-                            {
-                                string sLogName="";
-                                List<float> fListMD = new List<float>();
-                                List<float> fListLogValue = new List<float>();
-                                using (StreamReader sr = new StreamReader(filepathWellLeftLog, Encoding.Default))
-                                {
-                                    string line;
-                                    string[] split;
-                                    int iLineIndex = 0;
-                                    while ((line = sr.ReadLine()) != null)
-                                    {
-                                        iLineIndex++;
-
-                                        split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                                        if (iLineIndex == 1) sLogName = split[1];
-                                        else if (iLineIndex > 1)
-                                        {
-                                            fListMD.Add(float.Parse(split[0]));
-                                            fListLogValue.Add(float.Parse(split[1]));
-                                        }
-                                    }
-                                }
-                                int iLeftValue = Convert.ToInt16(nUDLeftLogLeftValue.Value);
-                                int iRightValue = Convert.ToInt16(nUDLeftLogRightValue.Value);
-                                string sLeftLogColor = filePathXMLconfigLayerMap.Element("LayerMapConfig").Element("LogFace").Element("leftLogColor").Value;
-                                returnElemment = cLayerMap.gTrackLog(sLogName, fListMD, fListLogValue, iLeftValue, iRightValue, sLeftLogColor);
-                                cLayerMap.addgElement(returnElemment, cLayerMap.iListX_WellPositionSVG[iIndexFound]-20, cLayerMap.iListY_WellPositionSVG[iIndexFound]);
-                            }
-                        }
-                    }
-
-                    //增加右侧测井曲线
-                    if (cbxAddRightLog.Checked == true)
-                    {
-                        foreach (string sJH in ltStrSelectedJHMapLayer)
-                        {
-                            int iIndexFound = cLayerMap.ltStrJHMapLayer_WellPositionSVG.IndexOf(sJH);
-                            string filepathWellRightLog = cProjectManager.dirPathTemp + "mapRightLog\\" + sJH + ".txt";
-                            if (File.Exists(filepathWellRightLog))
-                            {
-                                string sLogName = "";
-                                List<float> fListMD = new List<float>();
-                                List<float> fListLogValue = new List<float>();
-                                using (StreamReader sr = new StreamReader(filepathWellRightLog, Encoding.Default))
-                                {
-                                    string line;
-                                    string[] split;
-                                    int iLineIndex = 0;
-                                    while ((line = sr.ReadLine()) != null)
-                                    {
-                                        iLineIndex++;
-
-                                        split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                                        if (iLineIndex == 1) sLogName = split[1];
-                                        else if (iLineIndex > 1)
-                                        {
-                                            fListMD.Add(float.Parse(split[0]));
-                                            fListLogValue.Add(float.Parse(split[1]));
-                                        }
-
-                                    }
-
-                                }
-                                int iLeftValue = Convert.ToInt16(nUDRightLogLeftValue.Value);
-                                int iRightValue = Convert.ToInt16(nUDRightLogRightValue.Value);
-                                returnElemment = cLayerMap.gTrackLog(sLogName, fListMD, fListLogValue, iLeftValue, iRightValue, "red");
-                                cLayerMap.addgElement(returnElemment, cLayerMap.iListX_WellPositionSVG[iIndexFound], cLayerMap.iListY_WellPositionSVG[iIndexFound]);
-                            }
-                        }
-                    }
-
-                        
-           
-                    */
-
-
         }
         private void btnSelectAllJH_Click(object sender, EventArgs e)
         {
@@ -381,57 +284,12 @@ namespace DOGPlatform
             cXMLLayerMapGeoproperty.setLayerGeoglogyProperty_Dxoffset(filePathXMLconfigLayerMap, Convert.ToInt16(nUDLayerGeologyProperyDxOffset.Value));
         }
 
-        private void generateLogmapData(object sender, WaitWindowEventArgs e)
-        {
-                      //List<ItemLayerDepth> itemsLayerDepth = new List<ItemLayerDepth>();
-            //cIOinputLayerDepth fileLayerDepth = new cIOinputLayerDepth();
-            //for (int i = 0; i < ltStrSelectedJHMapLayer.Count; i++)
-            //{
-            //    ItemLayerDepth layerDepthItem = new ItemLayerDepth();
-            //    //去掉找不到井和层位信息的数据
-            //    if (layerDepthItem.sJH != null) itemsLayerDepth.Add(layerDepthItem);
+      
 
-            //}
-            //if (cbbLeftLogName.SelectedIndex >= 0)
-            //{
-            //    string sLeftLogName = cbbLeftLogName.SelectedItem.ToString();
-            //    string dirLeftMaplog = cProjectManager.dirPathTemp + "mapLeftLog";
-            //    generateLogFaceData(sLeftLogName, dirLeftMaplog, itemsLayerDepth);
-            //}
-            //if (cbbRightLogName.SelectedIndex >= 0)
-            //{
-            //    string sRightLogName = cbbRightLogName.SelectedItem.ToString();
-            //    string dirRightMaplog = cProjectManager.dirPathTemp + "mapRightLog";
-            //    generateLogFaceData(sRightLogName, dirRightMaplog, itemsLayerDepth);
-            //}
-        }
-
-
-
-        private void btnAddLogFaceData_Click(object sender, EventArgs e)
-        {
-            WaitWindow.Show(this.generateLogmapData);
-
-        }
 
         private void FormMapLayer_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-        }
-
-        private void nUDLogfVScale_ValueChanged(object sender, EventArgs e)
-        {
-            cXMLLayerMapLog.setLogFaceVScale(filePathXMLconfigLayerMap, Convert.ToSingle(nUDLogfVScale.Value));
-        }
-
-        private void nUDTrackWidth_ValueChanged(object sender, EventArgs e)
-        {
-            cXMLLayerMapLog.setLogFaceTrackWidth(filePathXMLconfigLayerMap, Convert.ToInt16(nUDTrackWidth.Value));
-        }
-
-        private void nUDLogLineWidth_ValueChanged(object sender, EventArgs e)
-        {
-            cXMLLayerMapLog.setLogFaceLineWidth(filePathXMLconfigLayerMap, Convert.ToSingle(nUDLogLineWidth.Value));
         }
 
              private void nUDStaticDatadfscale_ValueChanged(object sender, EventArgs e)
@@ -448,48 +306,49 @@ namespace DOGPlatform
         {
             if (cbxAddHorizonWell.Checked == true)
             {
+                List<string> llistHorizinalJH = new List<string>();
+                foreach (object selecteditem in lbxJHSeclected.Items)
+                {
+                    string strItem = selecteditem as String;
+                    llistHorizinalJH.Add(strItem);
+                }
                 //add svg文件中水平井段
                 if (File.Exists(filePathXMLconfigLayerMap))
                 {
                     cXMLLayerMapHorizonalWell.delHorizonalWellIntervalNode(this.filePathXMLconfigLayerMap);
-                    List<ItemHorizonalWellPath> ltHorizonalWellPath = cIOinputHorizionalWellPath.readHozironalWellPath2Struct();
-                    List<string> _ltStrJHMapLayer = ltHorizonalWellPath.Select(x => x.sJH).Distinct().ToList();
-                    List<string> _ltStrJHNOWellHead = new List<string>();
-                    foreach (string _sjh in _ltStrJHMapLayer)
+
+                    foreach (string _sjh in llistHorizinalJH)
                     {
+                        List<ItemWellPath> currentWellPath = cIOinputWellPath.readWellPath2Struct(_sjh);
                         //井必须在project井范围内
                         if (cProjectData.ltStrProjectJH.IndexOf(_sjh) >= 0)
                         {
-                            ItemHorizonalWellPath head = ltHorizonalWellPath.Find(x => x.sJH == _sjh);
-                            ItemHorizonalWellPath tail = ltHorizonalWellPath.FindLast(x => x.sJH == _sjh);
+                            ItemWellPath top = currentWellPath.Find(x => x.f_incl>80);
+                            ItemWellPath tail = currentWellPath.FindLast(x => x.f_incl > 80);
                             // 井号+ 井型 + 井口view坐标 + head view 坐标 + tail view 坐标 
 
                             List<string> _ltStrData = new List<string>();
                             _ltStrData.Add(_sjh);
 
                             ItemWellMapLayer item = this.listWellsMapLayer.Find(x => x.sJH == _sjh);
-                            if (item != null)
+                            if (item != null && top.sJH != null && top.sJH != null)
                             {
-                           //     _ltStrData.Add(item.iWellType.ToString());
-                           //     _ltStrData.Add(item.iXview.ToString());
-                           //     _ltStrData.Add(item.iYview.ToString());
+                                _ltStrData.Add(item.iWellType.ToString());
+                                Point headView = cCordinationTransform.transRealPointF2ViewPoint(item.dbX, item.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                                _ltStrData.Add(headView.X.ToString());
+                                _ltStrData.Add(headView.Y.ToString());
 
-                           //     Point headView =
-                           //cPublicMethodCordinationTransform.transRealPointF2ViewPoint(head.dbX, head.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
-                           //     _ltStrData.Add(headView.X.ToString());
-                           //     _ltStrData.Add(headView.Y.ToString());
-                           //     Point tailView =
-                           //cPublicMethodCordinationTransform.transRealPointF2ViewPoint(tail.dbX, tail.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
-                           //     _ltStrData.Add(tailView.X.ToString());
-                           //     _ltStrData.Add(tailView.Y.ToString());
+                                Point topView =cCordinationTransform.transRealPointF2ViewPoint(top.dbX, top.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                                _ltStrData.Add(topView.X.ToString());
+                                _ltStrData.Add(topView.Y.ToString());
+                                Point tailView = cCordinationTransform.transRealPointF2ViewPoint(tail.dbX, tail.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                                _ltStrData.Add(tailView.X.ToString());
+                                _ltStrData.Add(tailView.Y.ToString());
                                 string _data = string.Join(" ", _ltStrData);
                                 cXMLLayerMapHorizonalWell.addHorizonalWellIntervalNode2XML(this.filePathXMLconfigLayerMap, _data);
                             }
-                            else _ltStrJHNOWellHead.Add(_sjh);
                         }
                     }
-                    if (_ltStrJHNOWellHead.Count > 0)
-                        MessageBox.Show(string.Join(" ", _ltStrJHNOWellHead) + " 没有找到对应井位，不参加绘制。");
                 }
                 else MessageBox.Show("请先创建原始图件。");
             }
@@ -517,8 +376,8 @@ namespace DOGPlatform
         private void cbbColorHorizonalInterval_MouseClick(object sender, MouseEventArgs e)
         {
             cPublicMethodForm.setComboBoxBackColorByColorDialog(this.cbbColorHorizonalInterval);
-            cXMLLayerMapHorizonalWell.setColorHorionalInterval(this.filePathXMLconfigLayerMap, this.cbbColorLeftLog.BackColor.Name.ToString());
-   //         MessageBox.Show(this.cbbColorLeftLog.BackColor.Name.ToString());
+            string rgbColor = cPublicMethodForm.getRGB(this.cbbColorHorizonalInterval.BackColor);
+            cXMLLayerMapHorizonalWell.setColorHorionalInterval(this.filePathXMLconfigLayerMap, rgbColor);
         }
 
         private void btnSelectOK_Click(object sender, EventArgs e)
@@ -528,23 +387,14 @@ namespace DOGPlatform
 
             filePathXMLconfigLayerMap = Path.Combine(cProjectManager.dirPathMap, fileName + ".xml");
 
-
             List<ItemLayerDataDic> listLayerDataSelected = cIODicLayerData.readDicLayerData2struct().FindAll(p=>p.sXCM==selectedLayer);
             listWellsMapLayer.Clear();
             if (listLayerDataSelected.Count > 0)
             {
                 foreach (ItemLayerDataDic item in listLayerDataSelected) listWellsMapLayer.Add(new ItemWellMapLayer(item));
-
                 if (!File.Exists(filePathXMLconfigLayerMap))
-                {
                     cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, 1000, 1000);
-                }
-                else
-                {
-
-                }
-
-                addWells();
+                addWells(); 
             }
            
         }
@@ -564,7 +414,6 @@ namespace DOGPlatform
             cPublicMethodForm.deleteSlectedItemFromListBox(lbxJHSeclected);
         }
 
-      
 
              
 

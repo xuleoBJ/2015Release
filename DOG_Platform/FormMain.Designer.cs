@@ -181,19 +181,19 @@
             this.tsmiNewWell,
             this.tsmiDeleteSelectedWellInPanel});
             this.cmsNavigationPanel.Name = "cMSPanel";
-            this.cmsNavigationPanel.Size = new System.Drawing.Size(153, 70);
+            this.cmsNavigationPanel.Size = new System.Drawing.Size(137, 48);
             // 
             // tsmiNewWell
             // 
             this.tsmiNewWell.Name = "tsmiNewWell";
-            this.tsmiNewWell.Size = new System.Drawing.Size(152, 22);
+            this.tsmiNewWell.Size = new System.Drawing.Size(136, 22);
             this.tsmiNewWell.Text = "添加新井";
             this.tsmiNewWell.Click += new System.EventHandler(this.tsmiNewWell_Click);
             // 
             // tsmiDeleteSelectedWellInPanel
             // 
             this.tsmiDeleteSelectedWellInPanel.Name = "tsmiDeleteSelectedWellInPanel";
-            this.tsmiDeleteSelectedWellInPanel.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDeleteSelectedWellInPanel.Size = new System.Drawing.Size(136, 22);
             this.tsmiDeleteSelectedWellInPanel.Text = "删除选中井";
             this.tsmiDeleteSelectedWellInPanel.Click += new System.EventHandler(this.tsmiDeleteSelectedWellInPanel_Click);
             // 
@@ -471,7 +471,7 @@
             this.tbgWellHead.Location = new System.Drawing.Point(4, 22);
             this.tbgWellHead.Name = "tbgWellHead";
             this.tbgWellHead.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellHead.Size = new System.Drawing.Size(917, 606);
+            this.tbgWellHead.Size = new System.Drawing.Size(917, 610);
             this.tbgWellHead.TabIndex = 0;
             this.tbgWellHead.Text = "井位数据";
             this.tbgWellHead.UseVisualStyleBackColor = true;
@@ -522,7 +522,7 @@
             this.splitter2.Location = new System.Drawing.Point(3, 3);
             this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(2, 600);
+            this.splitter2.Size = new System.Drawing.Size(2, 604);
             this.splitter2.TabIndex = 15;
             this.splitter2.TabStop = false;
             // 

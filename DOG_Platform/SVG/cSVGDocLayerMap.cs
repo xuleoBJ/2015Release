@@ -182,7 +182,6 @@ namespace DOGPlatform.SVG
         {
             delNodeByID("/svg/g/g[@id='idGeoproperty']");
            
-
             XmlElement gWellsProperty = svgDoc.CreateElement("g");
             gWellsProperty.SetAttribute("id", "idGeoproperty");
 
@@ -285,30 +284,33 @@ namespace DOGPlatform.SVG
         /// <returns></returns>
         public XmlElement gHorizonalWellIntervelLine(Point p0, Point p1, Point p2)
         {
-            XDocument xmlLayerMap = XDocument.Load(this.xmlConfigPath);
-            string _sLineWidth = xmlLayerMap.Element("LayerMapConfig").Element("HorizonalWell").Element("lineWidth").Value;
-            string _sLineColor = xmlLayerMap.Element("LayerMapConfig").Element("HorizonalWell").Element("lineColor").Value;
+            XDocument xeLayerMap = XDocument.Load(this.xmlConfigPath);
+            string _sLineWidth = xeLayerMap.Element("LayerMapConfig").Element("HorizonalWell").Element("lineWidth").Value;
+            string _sLineColor = xeLayerMap.Element("LayerMapConfig").Element("HorizonalWell").Element("lineColor").Value;
+            if (_sLineColor == "") _sLineColor = "black";
             int _iNoteFontSize = 8;
 
             XmlElement gHorizonWellIntervel = svgDoc.CreateElement("g");
             gHorizonWellIntervel.SetAttribute("id", "idHorizonWellLine");
-            XmlElement gLine = svgDoc.CreateElement("line");
-            gLine.SetAttribute("x1", p0.X.ToString());
-            gLine.SetAttribute("y1", p0.Y.ToString());
-            gLine.SetAttribute("x2", p1.X.ToString());
-            gLine.SetAttribute("y2", p1.Y.ToString());
-            gLine.SetAttribute("stroke-dasharray", "1");
-            gLine.SetAttribute("stroke-width", _sLineWidth);
-            gHorizonWellIntervel.AppendChild(gLine);
-
-            gLine.SetAttribute("x1", p1.X.ToString());
-            gLine.SetAttribute("y1", p1.Y.ToString());
-            gLine.SetAttribute("x2", p2.X.ToString());
-            gLine.SetAttribute("y2", p2.Y.ToString());
-            gLine.SetAttribute("stroke-dasharray", "0");
-            gLine.SetAttribute("stroke", _sLineColor);
-            gLine.SetAttribute("stroke-width", _sLineWidth);
-            gHorizonWellIntervel.AppendChild(gLine);
+            gHorizonWellIntervel.SetAttribute("stroke", _sLineColor);
+            XmlElement gLine1 = svgDoc.CreateElement("line");
+            gLine1.SetAttribute("x1", p0.X.ToString());
+            gLine1.SetAttribute("y1", p0.Y.ToString());
+            gLine1.SetAttribute("x2", p1.X.ToString());
+            gLine1.SetAttribute("y2", p1.Y.ToString());
+            gLine1.SetAttribute("stroke-dasharray", "3");
+            gLine1.SetAttribute("stroke-width", _sLineWidth);
+            gHorizonWellIntervel.AppendChild(gLine1);
+          
+            XmlElement gLine2 = svgDoc.CreateElement("line");
+            gLine2.SetAttribute("x1", p1.X.ToString());
+            gLine2.SetAttribute("y1", p1.Y.ToString());
+            gLine2.SetAttribute("x2", p2.X.ToString());
+            gLine2.SetAttribute("y2", p2.Y.ToString());
+            gLine2.SetAttribute("stroke-dasharray", "0");
+            gLine2.SetAttribute("stroke", _sLineColor);
+            gLine2.SetAttribute("stroke-width", _sLineWidth);
+            gHorizonWellIntervel.AppendChild(gLine2);
 
             XmlElement gA = svgDoc.CreateElement("text");
             gA.SetAttribute("x", (p1.X + 2).ToString());
@@ -328,6 +330,17 @@ namespace DOGPlatform.SVG
 
             return gHorizonWellIntervel;
         }
+
+        public XmlElement gHorizonalWellIntervelLine(XmlNode horizinalNode)
+        {
+            string[] splitInnerText = horizinalNode.InnerText.Split();
+            Point p0 = new Point(int.Parse(splitInnerText[2]), int.Parse(splitInnerText[3]));
+            Point p1 = new Point(int.Parse(splitInnerText[4]), int.Parse(splitInnerText[5]));
+            Point p2 = new Point(int.Parse(splitInnerText[6]), int.Parse(splitInnerText[7]));
+            return  gHorizonalWellIntervelLine(p0, p1, p2);
+        }
+
+
         public XmlElement gTrackLog(string sLogName, List<float> fListTVD, List<float> fListValue,
     int m_iLeftValue, int m_iRightValue, string m_sColorCurve)
         {
