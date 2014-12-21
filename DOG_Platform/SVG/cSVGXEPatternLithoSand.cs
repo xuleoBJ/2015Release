@@ -8,6 +8,20 @@ namespace DOGPlatform.SVG
 {
     class cSVGXEPatternLithoSand
     {
+        public Dictionary<string, int> dictionaryPatternSand = new Dictionary<string, int>();
+        void initializeDictionaryPatternSand()
+        {
+            dictionaryPatternSand.Add("粗砂岩", 101);
+            dictionaryPatternSand.Add("中砂岩", 102);
+            dictionaryPatternSand.Add("细砂岩", 103);
+            dictionaryPatternSand.Add("粉砂岩", 104);
+            dictionaryPatternSand.Add("中细砂岩", 105);
+            dictionaryPatternSand.Add("粉细砂岩", 106);
+            dictionaryPatternSand.Add("石英砂岩", 107);
+            dictionaryPatternSand.Add("铁质砂岩", 108);
+            dictionaryPatternSand.Add("海绿石砂岩", 109);
+            dictionaryPatternSand.Add("玄武质砂岩", 127);
+        }
 
         public static void addLithoPatternSand(string filePath) 
         {
@@ -32,6 +46,48 @@ namespace DOGPlatform.SVG
         
         }
 
+
+        //自定义样式就是自己把def文件加入inkscape里面
+        public XElement addLithoPatternSand(string  filePath,string sLithoName, int iWidthUnit, int iHeightUnit, string backColor, int ix, int iy, int iWidth, int iheight)//增加岩石类型
+        {
+            XDocument xDoc = XDocument.Load(filePath);
+            XElement xroot = xDoc.Root;
+            //XElement xdefs1 = xDoc.Element("svg:defs");
+            //string sLithoName = "砂岩";
+            //int iWidthUnit = 20;
+            //int iHeightUnit = 10;
+            //string sBackColor = "yellow";
+
+            //foreach (var tag in xroot.DescendantNodes()) MessageBox.Show(tag.ToString());
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("p123", 20, 10, 2, "yellow", "red", true));
+                xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
+
+                xDoc.Save(filePath);
+            }
+            int idLitho = 0;
+            //根据岩石名称选pattern;
+            if (dictionaryPatternSand.ContainsKey(sLithoName)) idLitho = dictionaryPatternSand[sLithoName];
+            string sURL = "#123456";
+            XNamespace xn = "http://www.w3.org/2000/svg";
+            //string sURL = "url(#" + lithoPatternDefsSand(idLitho, iWidthUnit, iHeightUnit, backColor) + ")";
+            XElement gLithoPattern = new XElement(xn + "defs", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            gLithoPattern.SetAttributeValue("id", "idLitho");
+            XElement gLithoPatternRect = new XElement(xn + "rect", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            gLithoPatternRect.SetAttributeValue("x", ix.ToString());
+            gLithoPatternRect.SetAttributeValue("y", iy.ToString());
+            gLithoPatternRect.SetAttributeValue("height", iheight.ToString());
+            gLithoPatternRect.SetAttributeValue("width", iWidth.ToString());
+            gLithoPatternRect.SetAttributeValue("style", "stroke-width:1");
+            gLithoPatternRect.SetAttributeValue("stroke", "black");
+            gLithoPatternRect.SetAttributeValue("fill", sURL);
+            gLithoPattern.Add(gLithoPatternRect);
+            return gLithoPattern;
+        }
+
         public static XElement lithoPattern(string sURL)
         {
             XNamespace  xn= "http://www.w3.org/2000/svg";
@@ -51,6 +107,8 @@ namespace DOGPlatform.SVG
             return pattern;
         }
 
+
+        //根据用户设置，形成pattern，存入ink的配置文件内。
         public static XElement lithoPatternDefsSand(string sURL, int iWidthUnit, int iHeightUnit, int rSand, string backColor, string circleInnerColor, bool hasSplitLine)
         {
             int numColumn = 0;
@@ -97,6 +155,8 @@ namespace DOGPlatform.SVG
 
             return lithoPattern;
         }
+
+
 
 
         //分隔线

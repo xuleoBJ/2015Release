@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.IO;
 
 namespace DOGPlatform
 {
@@ -17,6 +18,7 @@ namespace DOGPlatform
             InitializeComponent();
             initializeForm();
         }
+        string dirAdjustProfile = Path.Combine(cProjectManager.dirProject, "$AdjustProfile$");
         void initializeForm() 
         {
             lbxJH.DataSource= cProjectData.ltStrProjectJH;
@@ -42,12 +44,23 @@ namespace DOGPlatform
 
             // Set title.
             this.chart1.Titles.Add("压力下降分析曲线");
-
-         
         }
 
-   
+        private void btnImportPI_Click(object sender, EventArgs e)
+        {
+            if (!Directory.Exists(dirAdjustProfile)) System.IO.Directory.CreateDirectory(dirAdjustProfile);
 
+        }
+
+        private void btnCopyFromExcelPI_Click(object sender, EventArgs e)
+        {
+            cPublicMethodForm.DataGridViewCellPaste(dgvPI);
+        }
+
+        private void btnDelDgvLinePI_Click(object sender, EventArgs e)
+        {
+            cPublicMethodForm.DataGridViewCellPaste(dgvPI);
+        }
       
     }
 }

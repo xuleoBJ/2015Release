@@ -137,6 +137,10 @@
             this.btnChannelSand = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.panelPatternView = new System.Windows.Forms.Panel();
+            this.btnPatternView = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tbpPatternSand.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -188,6 +192,8 @@
             // 
             // tbpPatternSand
             // 
+            this.tbpPatternSand.Controls.Add(this.btnPatternView);
+            this.tbpPatternSand.Controls.Add(this.panelPatternView);
             this.tbpPatternSand.Controls.Add(this.button3);
             this.tbpPatternSand.Controls.Add(this.btnTortSand);
             this.tbpPatternSand.Controls.Add(this.groupBox2);
@@ -210,7 +216,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(27, 450);
+            this.button3.Location = new System.Drawing.Point(36, 389);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(108, 39);
             this.button3.TabIndex = 55;
@@ -220,7 +226,7 @@
             // 
             // btnTortSand
             // 
-            this.btnTortSand.Location = new System.Drawing.Point(506, 239);
+            this.btnTortSand.Location = new System.Drawing.Point(647, 368);
             this.btnTortSand.Name = "btnTortSand";
             this.btnTortSand.Size = new System.Drawing.Size(82, 42);
             this.btnTortSand.TabIndex = 54;
@@ -328,6 +334,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.cbbInnerColor);
             this.groupBox1.Controls.Add(this.btn_SandConfig);
             this.groupBox1.Controls.Add(this.label28);
@@ -336,7 +344,7 @@
             this.groupBox1.Controls.Add(this.nUDSandRadius);
             this.groupBox1.Location = new System.Drawing.Point(319, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(481, 85);
+            this.groupBox1.Size = new System.Drawing.Size(481, 128);
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "自定义绘制砂体";
@@ -414,7 +422,7 @@
             // 
             // btnFeSand
             // 
-            this.btnFeSand.Location = new System.Drawing.Point(404, 239);
+            this.btnFeSand.Location = new System.Drawing.Point(545, 368);
             this.btnFeSand.Name = "btnFeSand";
             this.btnFeSand.Size = new System.Drawing.Size(82, 42);
             this.btnFeSand.TabIndex = 48;
@@ -424,7 +432,7 @@
             // 
             // btnHLSSand
             // 
-            this.btnHLSSand.Location = new System.Drawing.Point(306, 239);
+            this.btnHLSSand.Location = new System.Drawing.Point(447, 368);
             this.btnHLSSand.Name = "btnHLSSand";
             this.btnHLSSand.Size = new System.Drawing.Size(75, 42);
             this.btnHLSSand.TabIndex = 47;
@@ -434,7 +442,7 @@
             // 
             // btnQuartzSand
             // 
-            this.btnQuartzSand.Location = new System.Drawing.Point(216, 239);
+            this.btnQuartzSand.Location = new System.Drawing.Point(357, 368);
             this.btnQuartzSand.Name = "btnQuartzSand";
             this.btnQuartzSand.Size = new System.Drawing.Size(75, 42);
             this.btnQuartzSand.TabIndex = 46;
@@ -444,7 +452,7 @@
             // 
             // btnFenXiSand
             // 
-            this.btnFenXiSand.Location = new System.Drawing.Point(125, 239);
+            this.btnFenXiSand.Location = new System.Drawing.Point(266, 368);
             this.btnFenXiSand.Name = "btnFenXiSand";
             this.btnFenXiSand.Size = new System.Drawing.Size(75, 42);
             this.btnFenXiSand.TabIndex = 44;
@@ -454,7 +462,7 @@
             // 
             // btnZhongxiSand
             // 
-            this.btnZhongxiSand.Location = new System.Drawing.Point(36, 239);
+            this.btnZhongxiSand.Location = new System.Drawing.Point(177, 368);
             this.btnZhongxiSand.Name = "btnZhongxiSand";
             this.btnZhongxiSand.Size = new System.Drawing.Size(75, 42);
             this.btnZhongxiSand.TabIndex = 43;
@@ -464,7 +472,7 @@
             // 
             // btnFenSand
             // 
-            this.btnFenSand.Location = new System.Drawing.Point(306, 179);
+            this.btnFenSand.Location = new System.Drawing.Point(447, 308);
             this.btnFenSand.Name = "btnFenSand";
             this.btnFenSand.Size = new System.Drawing.Size(75, 42);
             this.btnFenSand.TabIndex = 42;
@@ -474,7 +482,7 @@
             // 
             // btnXiSand
             // 
-            this.btnXiSand.Location = new System.Drawing.Point(216, 179);
+            this.btnXiSand.Location = new System.Drawing.Point(357, 308);
             this.btnXiSand.Name = "btnXiSand";
             this.btnXiSand.Size = new System.Drawing.Size(75, 42);
             this.btnXiSand.TabIndex = 41;
@@ -484,7 +492,7 @@
             // 
             // btnZhongSand
             // 
-            this.btnZhongSand.Location = new System.Drawing.Point(125, 179);
+            this.btnZhongSand.Location = new System.Drawing.Point(266, 308);
             this.btnZhongSand.Name = "btnZhongSand";
             this.btnZhongSand.Size = new System.Drawing.Size(75, 42);
             this.btnZhongSand.TabIndex = 40;
@@ -494,7 +502,7 @@
             // 
             // btnCuSand
             // 
-            this.btnCuSand.Location = new System.Drawing.Point(36, 179);
+            this.btnCuSand.Location = new System.Drawing.Point(177, 308);
             this.btnCuSand.Name = "btnCuSand";
             this.btnCuSand.Size = new System.Drawing.Size(75, 42);
             this.btnCuSand.TabIndex = 3;
@@ -1534,6 +1542,39 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(71, 84);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 52;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(39, 87);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(23, 12);
+            this.label29.TabIndex = 53;
+            this.label29.Text = "sID";
+            // 
+            // panelPatternView
+            // 
+            this.panelPatternView.Location = new System.Drawing.Point(164, 174);
+            this.panelPatternView.Name = "panelPatternView";
+            this.panelPatternView.Size = new System.Drawing.Size(401, 104);
+            this.panelPatternView.TabIndex = 56;
+            // 
+            // btnPatternView
+            // 
+            this.btnPatternView.Location = new System.Drawing.Point(592, 190);
+            this.btnPatternView.Name = "btnPatternView";
+            this.btnPatternView.Size = new System.Drawing.Size(72, 32);
+            this.btnPatternView.TabIndex = 54;
+            this.btnPatternView.Text = "预览";
+            this.btnPatternView.UseVisualStyleBackColor = true;
+            this.btnPatternView.Click += new System.EventHandler(this.btnPatternView_Click);
+            // 
             // FormPatternElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1694,5 +1735,9 @@
         private System.Windows.Forms.Button btnAsphaltShale;
         private System.Windows.Forms.Button btnOoliteLimes;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panelPatternView;
+        private System.Windows.Forms.Button btnPatternView;
     }
 }

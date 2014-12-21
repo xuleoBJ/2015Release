@@ -207,23 +207,13 @@ namespace DOGPlatform
         }
         public static void createWellDir(string sJH)
         {
-            if (!Directory.Exists(cProjectManager.dirPathWellDir))
-            {
-                System.IO.Directory.CreateDirectory(cProjectManager.dirPathWellDir);
-            }
+            if (!Directory.Exists(cProjectManager.dirPathWellDir)) System.IO.Directory.CreateDirectory(cProjectManager.dirPathWellDir);
 
             string dirJH = Path.Combine(cProjectManager.dirPathWellDir, sJH);
-            if (!Directory.Exists(dirJH))
-            {
-                Directory.CreateDirectory(dirJH);
-            }
-
+            if (!Directory.Exists(dirJH)) Directory.CreateDirectory(dirJH); 
          
             string _fileWellPath = Path.Combine(dirPathWellDir, "#wellPath#");
-            if (!File.Exists(_fileWellPath))
-            {
-                cIOinputWellPath.creatVerticalWellPathGeoFile(sJH);
-            } 
+            if (!File.Exists(_fileWellPath)) cIOinputWellPath.creatVerticalWellPathGeoFile(sJH);
           
         }
 

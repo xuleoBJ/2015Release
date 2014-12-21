@@ -456,7 +456,6 @@ namespace DOGPlatform
             }
 
             tvwWellSectionCollection.ExpandAll();
-
            
             string sLogName=this.cbbLogName.SelectedItem.ToString();
             string sLogColor=cPublicMethodBase.getRGB(cbbLogColor.BackColor);

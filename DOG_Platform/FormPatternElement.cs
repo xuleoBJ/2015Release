@@ -10,7 +10,7 @@ using System.Xml;
 using DOGPlatform.SVG;
 using System.IO;
 using System.Xml.Linq;
-
+using System.Drawing.Imaging;
 namespace DOGPlatform
 {
     public partial class FormPatternElement : Form
@@ -22,6 +22,8 @@ namespace DOGPlatform
 
         string dPath=  "M5,5 c0,150 400,150 400,0  Z";
         string svgFilePath = Path.Combine(cProjectManager.dirPathMap, "pattern.svg");
+
+        int numfilePathTemp = 0;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -457,6 +459,33 @@ namespace DOGPlatform
             FormWebNavigation formSVGView = new FormWebNavigation(filePathSVGMap);
             formSVGView.Show();
            
+        }
+
+        private void btnPatternView_Click(object sender, EventArgs e)
+        {
+            string _sColor =cPublicMethodForm.getRGB( this.cbbPatternSandBackColor.BackColor);
+            //this.panelPatternView.Width =Convert.ToInt16( this.nUDPatternSandWidth.Value);
+            //this.panelPatternView.Height =Convert.ToInt16( this.nUDPatternShaleHeight.Value);
+            //先保存图片 再填充预览，最后存到inkscape的系统定义中去
+            int width = Convert.ToInt32(10);
+            int height = Convert.ToInt32(10);
+            Bitmap bmp = new Bitmap(width, height);
+            SolidBrush brush = new SolidBrush( Color.FromArgb(128, 0, 0, 0));
+            using (Graphics g = Graphics.FromImage(bmp))
+                g.FillEllipse(brush, 0, 0, width, height);
+           
+            string fileTempPng=@"c:\targetfile"+numfilePathTemp.ToString()+".png";
+            if (File.Exists(fileTempPng)) File.Delete(fileTempPng);
+            numfilePathTemp++;
+            bmp.Save(fileTempPng, ImageFormat.Png);
+            Image myImage = Image.FromFile(fileTempPng);
+            TextureBrush myTextureBrush = new TextureBrush(myImage); 
+
+            Graphics gPanel=this.panelPatternView.CreateGraphics();
+
+            gPanel.FillEllipse(myTextureBrush, 0, 0, 100, 100);
+
+
         }
 
      

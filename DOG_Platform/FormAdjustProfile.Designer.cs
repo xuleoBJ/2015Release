@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -336,16 +336,16 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
             this.chart1.Location = new System.Drawing.Point(389, 67);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart1.Series.Add(series4);
             this.chart1.Size = new System.Drawing.Size(411, 331);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "压降分析曲线";
@@ -450,6 +450,7 @@
             this.btnDelDgvLinePI.TabIndex = 28;
             this.btnDelDgvLinePI.Text = "删除选中行";
             this.btnDelDgvLinePI.UseVisualStyleBackColor = true;
+            this.btnDelDgvLinePI.Click += new System.EventHandler(this.btnDelDgvLinePI_Click);
             // 
             // btnCopyFromExcelPI
             // 
@@ -459,6 +460,7 @@
             this.btnCopyFromExcelPI.TabIndex = 27;
             this.btnCopyFromExcelPI.Text = "从Excel粘贴";
             this.btnCopyFromExcelPI.UseVisualStyleBackColor = true;
+            this.btnCopyFromExcelPI.Click += new System.EventHandler(this.btnCopyFromExcelPI_Click);
             // 
             // btnImportPI
             // 
@@ -468,6 +470,7 @@
             this.btnImportPI.TabIndex = 26;
             this.btnImportPI.Text = "入库";
             this.btnImportPI.UseVisualStyleBackColor = true;
+            this.btnImportPI.Click += new System.EventHandler(this.btnImportPI_Click);
             // 
             // FormAdjustProfile
             // 
