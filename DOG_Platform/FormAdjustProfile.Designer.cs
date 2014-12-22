@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -42,7 +42,7 @@
             this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbcAdjustProfile = new System.Windows.Forms.TabControl();
             this.tbgJHWQBefore = new System.Windows.Forms.TabPage();
             this.label7 = new System.Windows.Forms.Label();
             this.cbbSlectedYM = new System.Windows.Forms.ComboBox();
@@ -55,14 +55,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbgPI = new System.Windows.Forms.TabPage();
-            this.btnDraw = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tbgResult = new System.Windows.Forms.TabPage();
-            this.dgvResult = new System.Windows.Forms.DataGridView();
+            this.btnDelDgvLinePI = new System.Windows.Forms.Button();
+            this.btnCopyFromExcelPI = new System.Windows.Forms.Button();
+            this.btnImportPI = new System.Windows.Forms.Button();
             this.dgvPI = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDraw = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tbgResult = new System.Windows.Forms.TabPage();
+            this.dgvResult = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,23 +73,20 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDelDgvLinePI = new System.Windows.Forms.Button();
-            this.btnCopyFromExcelPI = new System.Windows.Forms.Button();
-            this.btnImportPI = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tbcAdjustProfile.SuspendLayout();
             this.tbgJHWQBefore.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tbgPI.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tbgResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPI)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -176,17 +176,18 @@
             this.numericUpDown6.Size = new System.Drawing.Size(68, 21);
             this.numericUpDown6.TabIndex = 10;
             // 
-            // tabControl1
+            // tbcAdjustProfile
             // 
-            this.tabControl1.Controls.Add(this.tbgJHWQBefore);
-            this.tabControl1.Controls.Add(this.tbgPI);
-            this.tabControl1.Controls.Add(this.tbgResult);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(890, 552);
-            this.tabControl1.TabIndex = 11;
+            this.tbcAdjustProfile.Controls.Add(this.tbgJHWQBefore);
+            this.tbcAdjustProfile.Controls.Add(this.tbgPI);
+            this.tbcAdjustProfile.Controls.Add(this.tbgResult);
+            this.tbcAdjustProfile.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbcAdjustProfile.Location = new System.Drawing.Point(0, 0);
+            this.tbcAdjustProfile.Name = "tbcAdjustProfile";
+            this.tbcAdjustProfile.SelectedIndex = 0;
+            this.tbcAdjustProfile.Size = new System.Drawing.Size(890, 552);
+            this.tbcAdjustProfile.TabIndex = 11;
+            this.tbcAdjustProfile.SelectedIndexChanged += new System.EventHandler(this.tbcAdjustProfile_SelectedIndexChanged);
             // 
             // tbgJHWQBefore
             // 
@@ -324,9 +325,68 @@
             this.tbgPI.Text = "压降曲线";
             this.tbgPI.UseVisualStyleBackColor = true;
             // 
+            // btnDelDgvLinePI
+            // 
+            this.btnDelDgvLinePI.Location = new System.Drawing.Point(131, 16);
+            this.btnDelDgvLinePI.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelDgvLinePI.Name = "btnDelDgvLinePI";
+            this.btnDelDgvLinePI.Size = new System.Drawing.Size(90, 23);
+            this.btnDelDgvLinePI.TabIndex = 28;
+            this.btnDelDgvLinePI.Text = "删除选中行";
+            this.btnDelDgvLinePI.UseVisualStyleBackColor = true;
+            this.btnDelDgvLinePI.Click += new System.EventHandler(this.btnDelDgvLinePI_Click);
+            // 
+            // btnCopyFromExcelPI
+            // 
+            this.btnCopyFromExcelPI.Location = new System.Drawing.Point(22, 16);
+            this.btnCopyFromExcelPI.Name = "btnCopyFromExcelPI";
+            this.btnCopyFromExcelPI.Size = new System.Drawing.Size(90, 23);
+            this.btnCopyFromExcelPI.TabIndex = 27;
+            this.btnCopyFromExcelPI.Text = "从Excel粘贴";
+            this.btnCopyFromExcelPI.UseVisualStyleBackColor = true;
+            this.btnCopyFromExcelPI.Click += new System.EventHandler(this.btnCopyFromExcelPI_Click);
+            // 
+            // btnImportPI
+            // 
+            this.btnImportPI.Location = new System.Drawing.Point(238, 16);
+            this.btnImportPI.Name = "btnImportPI";
+            this.btnImportPI.Size = new System.Drawing.Size(90, 23);
+            this.btnImportPI.TabIndex = 26;
+            this.btnImportPI.Text = "入库";
+            this.btnImportPI.UseVisualStyleBackColor = true;
+            this.btnImportPI.Click += new System.EventHandler(this.btnImportPI_Click);
+            // 
+            // dgvPI
+            // 
+            this.dgvPI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPI.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dgvPI.Location = new System.Drawing.Point(8, 44);
+            this.dgvPI.Name = "dgvPI";
+            this.dgvPI.RowTemplate.Height = 23;
+            this.dgvPI.Size = new System.Drawing.Size(396, 421);
+            this.dgvPI.TabIndex = 25;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "井号";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "时间(分)";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "测压(Mpa)";
+            this.Column3.Name = "Column3";
+            // 
             // btnDraw
             // 
-            this.btnDraw.Location = new System.Drawing.Point(389, 22);
+            this.btnDraw.Location = new System.Drawing.Point(484, 16);
             this.btnDraw.Name = "btnDraw";
             this.btnDraw.Size = new System.Drawing.Size(154, 23);
             this.btnDraw.TabIndex = 24;
@@ -336,17 +396,17 @@
             // 
             // chart1
             // 
-            chartArea4.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart1.Legends.Add(legend4);
-            this.chart1.Location = new System.Drawing.Point(389, 67);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
+            this.chart1.Location = new System.Drawing.Point(421, 65);
             this.chart1.Name = "chart1";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(411, 331);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart1.Series.Add(series1);
+            this.chart1.Size = new System.Drawing.Size(439, 400);
             this.chart1.TabIndex = 23;
             this.chart1.Text = "压降分析曲线";
             // 
@@ -377,34 +437,6 @@
             this.dgvResult.RowTemplate.Height = 23;
             this.dgvResult.Size = new System.Drawing.Size(807, 376);
             this.dgvResult.TabIndex = 0;
-            // 
-            // dgvPI
-            // 
-            this.dgvPI.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPI.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.dgvPI.Location = new System.Drawing.Point(8, 44);
-            this.dgvPI.Name = "dgvPI";
-            this.dgvPI.RowTemplate.Height = 23;
-            this.dgvPI.Size = new System.Drawing.Size(343, 421);
-            this.dgvPI.TabIndex = 25;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "井号";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "时间(分)";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "测压(Mpa)";
-            this.Column3.Name = "Column3";
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -441,43 +473,12 @@
             this.Column7.HeaderText = "对应油井含水率";
             this.Column7.Name = "Column7";
             // 
-            // btnDelDgvLinePI
-            // 
-            this.btnDelDgvLinePI.Location = new System.Drawing.Point(131, 16);
-            this.btnDelDgvLinePI.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelDgvLinePI.Name = "btnDelDgvLinePI";
-            this.btnDelDgvLinePI.Size = new System.Drawing.Size(90, 23);
-            this.btnDelDgvLinePI.TabIndex = 28;
-            this.btnDelDgvLinePI.Text = "删除选中行";
-            this.btnDelDgvLinePI.UseVisualStyleBackColor = true;
-            this.btnDelDgvLinePI.Click += new System.EventHandler(this.btnDelDgvLinePI_Click);
-            // 
-            // btnCopyFromExcelPI
-            // 
-            this.btnCopyFromExcelPI.Location = new System.Drawing.Point(22, 16);
-            this.btnCopyFromExcelPI.Name = "btnCopyFromExcelPI";
-            this.btnCopyFromExcelPI.Size = new System.Drawing.Size(90, 23);
-            this.btnCopyFromExcelPI.TabIndex = 27;
-            this.btnCopyFromExcelPI.Text = "从Excel粘贴";
-            this.btnCopyFromExcelPI.UseVisualStyleBackColor = true;
-            this.btnCopyFromExcelPI.Click += new System.EventHandler(this.btnCopyFromExcelPI_Click);
-            // 
-            // btnImportPI
-            // 
-            this.btnImportPI.Location = new System.Drawing.Point(238, 16);
-            this.btnImportPI.Name = "btnImportPI";
-            this.btnImportPI.Size = new System.Drawing.Size(90, 23);
-            this.btnImportPI.TabIndex = 26;
-            this.btnImportPI.Text = "入库";
-            this.btnImportPI.UseVisualStyleBackColor = true;
-            this.btnImportPI.Click += new System.EventHandler(this.btnImportPI_Click);
-            // 
             // FormAdjustProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(890, 552);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbcAdjustProfile);
             this.Name = "FormAdjustProfile";
             this.Text = "调剖决策";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
@@ -486,16 +487,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tbcAdjustProfile.ResumeLayout(false);
             this.tbgJHWQBefore.ResumeLayout(false);
             this.tbgJHWQBefore.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tbgPI.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tbgResult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPI)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -513,7 +514,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown numericUpDown6;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tbcAdjustProfile;
         private System.Windows.Forms.TabPage tbgJHWQBefore;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;

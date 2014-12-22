@@ -20,6 +20,19 @@ namespace DOGPlatform
             treeView.Nodes.Add(CreateDirectoryNode(rootDirectoryInfo));
         }
 
+        public static  List<string> getLtStrOfdgvColoum(DataGridView dgv, int indexCol)
+        {
+            List<string> listStr = new List<string>();
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                if(dgv.Rows[i].Cells[indexCol].Value!=null)
+                listStr.Add(dgv.Rows[i].Cells[indexCol].Value.ToString());
+            }
+            return listStr;
+        }
+       
+
+
         public static void loadDgvByGeoText(DataGridView dgv, string geoFilePath)
         {
 

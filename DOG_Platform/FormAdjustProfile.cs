@@ -26,53 +26,51 @@ namespace DOGPlatform
             cbbSelectedLayerName.DataSource = cProjectData.ltStrProjectXCM;
         }
 
-        public static void  readPI()
+        public  void  readPI()
         {
-                //if (File.Exists(cProjectManager.filePathInputHorizonalWellPath))
-                //{
-                //    using (StreamReader sr = new StreamReader(cProjectManager.filePathInputHorizonalWellPath, System.Text.Encoding.UTF8))
-                //    {
-                //        String line;
-                //        int _indexLine = 0;
-                //        int _dataStartLine = 7;
-                //        while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
-                //        {
-                //            _indexLine++;
-                //            string[] split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                //            if (_indexLine >= _dataStartLine)
-                //            {
-                //                ItemHorizonalWellPath _item = new ItemHorizonalWellPath();
-                //                _item.sJH = split[0];
-                //                _item.dbX = double.Parse(split[1]);
-                //                _item.dbY = double.Parse(split[2]);
-                //                _item.md = float.Parse(split[3]);
-                //                listHorizonalWellPath.Add(_item);
-
-                //            }
-                //        }
-
-                //    }
-                //}
-
-           
+            //string filePath = Path.Combine(dirAdjustProfile, fileNamePI);
+            //if (File.Exists(filePath)) { cIOBase.}
         }
 
         private void btnDraw_Click(object sender, EventArgs e)
         {
-        
-            this.chart1.ChartAreas[0].AxisX.Title = "时间";
-            this.chart1.ChartAreas[0].AxisY.Title = "压降";
+            this.chart1.ChartAreas[0].AxisX.Title = "时间(min)";
+            this.chart1.ChartAreas[0].AxisY.Title = "压降(mp)";
 
-            Series series = this.chart1.Series.Add("aaaa");
+            this.chart1.ChartAreas[0].AxisX.Minimum = 0.0;
+            Color[] colorSet = new Color[4] { Color.Red, Color.Blue, Color.Green, Color.Purple };
+            this.chart1.PaletteCustomColors = colorSet;
 
-            for (int i = 0; i < 100; i++)
+            List<string> listJH = cPublicMethodForm.getLtStrOfdgvColoum(this.dgvPI, 0).Distinct().ToList();
+            foreach (string sJH in listJH) 
             {
-                chart1.Series["aaaa"].Points.AddXY(i * 10, i * 10);
-            } 
+                Series series = this.chart1.Series.Add(sJH);
+                //series.Color;
 
-            chart1.Series["aaaa"].ChartType = SeriesChartType.Line;
+                List<float> listSJ = new List<float>();
+                List<float> listValue = new List<float>();
+
+                for (int i = 0; i < dgvPI.Rows.Count; i++)
+                {
+                    if (dgvPI.Rows[i].Cells[1].Value != null)
+                        listSJ.Add(float.Parse(dgvPI.Rows[i].Cells[1].Value.ToString()));
+                    else listSJ.Add(0.0f);
+                    if (dgvPI.Rows[i].Cells[2].Value != null)
+                        listValue.Add(float.Parse(dgvPI.Rows[i].Cells[2].Value.ToString()));
+                    else listValue.Add(0.0f);
+                }
+
+                for (int i = 0; i<listSJ.Count; i++)
+                {
+                    chart1.Series[sJH].Points.AddXY(listSJ[i], listValue[i]);
+                }
+
+                chart1.Series[sJH].ChartType = SeriesChartType.Line;
+            
+            }
+           
             // Set palette.
-            this.chart1.Palette = ChartColorPalette.SeaGreen;
+           
 
             // Set title.
             this.chart1.Titles.Add("压力下降分析曲线");
@@ -81,7 +79,9 @@ namespace DOGPlatform
         private void btnImportPI_Click(object sender, EventArgs e)
         {
             if (!Directory.Exists(dirAdjustProfile)) System.IO.Directory.CreateDirectory(dirAdjustProfile);
-
+            string filePath=Path.Combine(dirAdjustProfile,fileNamePI);
+            cPublicMethodForm.readDataGridView2TXTFile(this.dgvPI, filePath);
+            MessageBox.Show("数据导入完成。");
         }
 
         private void btnCopyFromExcelPI_Click(object sender, EventArgs e)
@@ -91,8 +91,19 @@ namespace DOGPlatform
 
         private void btnDelDgvLinePI_Click(object sender, EventArgs e)
         {
-            cPublicMethodForm.DataGridViewCellPaste(dgvPI);
+            cPublicMethodForm.deleteSelectedRowInDataGridView(dgvPI);
         }
+
+        private void tbcAdjustProfile_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tbcAdjustProfile.SelectedTab == this.tbgPI) 
+            {
+                string filePath = Path.Combine(dirAdjustProfile, fileNamePI);
+                if(File.Exists(filePath)) cPublicMethodForm.read2DataGridViewByTextFile( filePath,this.dgvPI); 
+            }
+        }
+
+       
       
     }
 }
