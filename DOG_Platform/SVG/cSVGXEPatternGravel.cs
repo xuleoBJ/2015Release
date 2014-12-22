@@ -139,7 +139,7 @@ namespace DOGPlatform.SVG
             XAttribute stockid = new XAttribute(inkscape + "stockid", stockId);
             lithoPattern.Add(stockid);
             XAttribute collect = new XAttribute(inkscape + "collect", "always");
-            lithoPattern.SetAttributeValue("id", stockId.GetHashCode().ToString());
+            lithoPattern.SetAttributeValue("id", stockId.GetHashCode().ToString().Remove(0,1));
             lithoPattern.SetAttributeValue("patternUnits", "userSpaceOnUse");
             lithoPattern.SetAttributeValue("x", "0");
             lithoPattern.SetAttributeValue("y", "0");

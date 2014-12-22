@@ -106,7 +106,7 @@ namespace DOGPlatform.SVG
             lithoPattern.Add(stockid);
             XAttribute collect = new XAttribute(inkscape + "collect", "always");
             lithoPattern.Add(collect);
-            lithoPattern.SetAttributeValue("id", sID.GetHashCode().ToString());
+            lithoPattern.SetAttributeValue("id", sID.GetHashCode().ToString().Remove(0,1));
             lithoPattern.SetAttributeValue("patternUnits", "userSpaceOnUse");
             lithoPattern.SetAttributeValue("x", "0");
             lithoPattern.SetAttributeValue("y", "0");

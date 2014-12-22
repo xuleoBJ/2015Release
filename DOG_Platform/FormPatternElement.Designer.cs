@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tbpPatternSand = new System.Windows.Forms.TabPage();
+            this.tbcPattern = new System.Windows.Forms.TabControl();
+            this.tbgPatternSand = new System.Windows.Forms.TabPage();
             this.btnTortSand = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@
             this.btnXiSand = new System.Windows.Forms.Button();
             this.btnZhongSand = new System.Windows.Forms.Button();
             this.btnCuSand = new System.Windows.Forms.Button();
-            this.tbpPatternGravel = new System.Windows.Forms.TabPage();
+            this.tbgPatternGravel = new System.Windows.Forms.TabPage();
             this.label26 = new System.Windows.Forms.Label();
             this.tbxPatternNameGravel = new System.Windows.Forms.TextBox();
             this.btnTuffTriGravel = new System.Windows.Forms.Button();
@@ -70,7 +70,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbbGravelBackcolor = new System.Windows.Forms.ComboBox();
-            this.tbpPatternMud = new System.Windows.Forms.TabPage();
+            this.tbgPatternMud = new System.Windows.Forms.TabPage();
             this.label29 = new System.Windows.Forms.Label();
             this.tbxPatternNameMud = new System.Windows.Forms.TextBox();
             this.btnGypsumMud = new System.Windows.Forms.Button();
@@ -84,7 +84,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbbPatternMudBackColor = new System.Windows.Forms.ComboBox();
-            this.tbpPatternShale = new System.Windows.Forms.TabPage();
+            this.tbgPatternShale = new System.Windows.Forms.TabPage();
             this.label25 = new System.Windows.Forms.Label();
             this.tbxPatternNameShale = new System.Windows.Forms.TextBox();
             this.btnAsphaltShale = new System.Windows.Forms.Button();
@@ -96,7 +96,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.cbbPatternShaleBackColor = new System.Windows.Forms.ComboBox();
-            this.tbpPatternTSY = new System.Windows.Forms.TabPage();
+            this.tbgPatternTSY = new System.Windows.Forms.TabPage();
             this.label30 = new System.Windows.Forms.Label();
             this.tbxPatternNameHuiyan = new System.Windows.Forms.TextBox();
             this.btnOoliteLimes = new System.Windows.Forms.Button();
@@ -116,7 +116,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.tbpPatternLayer = new System.Windows.Forms.TabPage();
+            this.tbgPatternLayer = new System.Windows.Forms.TabPage();
             this.panelPatternView = new System.Windows.Forms.Panel();
             this.btnView = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -134,69 +134,72 @@
             this.label24 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.btnAddDef = new System.Windows.Forms.Button();
-            this.tabControl1.SuspendLayout();
-            this.tbpPatternSand.SuspendLayout();
+            this.webBrowserPatternView = new System.Windows.Forms.WebBrowser();
+            this.btnAdd2Ink = new System.Windows.Forms.Button();
+            this.lblPatternName = new System.Windows.Forms.Label();
+            this.tbcPattern.SuspendLayout();
+            this.tbgPatternSand.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDSandRadius)).BeginInit();
-            this.tbpPatternGravel.SuspendLayout();
+            this.tbgPatternGravel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelHeight)).BeginInit();
-            this.tbpPatternMud.SuspendLayout();
+            this.tbgPatternMud.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudHeight)).BeginInit();
-            this.tbpPatternShale.SuspendLayout();
+            this.tbgPatternShale.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleHeight)).BeginInit();
-            this.tbpPatternTSY.SuspendLayout();
+            this.tbgPatternTSY.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesHeight)).BeginInit();
             this.tbgPatternVolcanicRock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).BeginInit();
-            this.tbpPatternLayer.SuspendLayout();
+            this.tbgPatternLayer.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tbcPattern
             // 
-            this.tabControl1.Controls.Add(this.tbpPatternSand);
-            this.tabControl1.Controls.Add(this.tbpPatternGravel);
-            this.tabControl1.Controls.Add(this.tbpPatternMud);
-            this.tabControl1.Controls.Add(this.tbpPatternShale);
-            this.tabControl1.Controls.Add(this.tbpPatternTSY);
-            this.tabControl1.Controls.Add(this.tbgPatternVolcanicRock);
-            this.tabControl1.Controls.Add(this.tbpPatternLayer);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 0);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(581, 506);
-            this.tabControl1.TabIndex = 2;
+            this.tbcPattern.Controls.Add(this.tbgPatternSand);
+            this.tbcPattern.Controls.Add(this.tbgPatternGravel);
+            this.tbcPattern.Controls.Add(this.tbgPatternMud);
+            this.tbcPattern.Controls.Add(this.tbgPatternShale);
+            this.tbcPattern.Controls.Add(this.tbgPatternTSY);
+            this.tbcPattern.Controls.Add(this.tbgPatternVolcanicRock);
+            this.tbcPattern.Controls.Add(this.tbgPatternLayer);
+            this.tbcPattern.Dock = System.Windows.Forms.DockStyle.Left;
+            this.tbcPattern.Location = new System.Drawing.Point(0, 0);
+            this.tbcPattern.Name = "tbcPattern";
+            this.tbcPattern.SelectedIndex = 0;
+            this.tbcPattern.Size = new System.Drawing.Size(558, 562);
+            this.tbcPattern.TabIndex = 2;
             // 
-            // tbpPatternSand
+            // tbgPatternSand
             // 
-            this.tbpPatternSand.Controls.Add(this.btnTortSand);
-            this.tbpPatternSand.Controls.Add(this.groupBox1);
-            this.tbpPatternSand.Controls.Add(this.btnFeSand);
-            this.tbpPatternSand.Controls.Add(this.btnHLSSand);
-            this.tbpPatternSand.Controls.Add(this.btnQuartzSand);
-            this.tbpPatternSand.Controls.Add(this.btnFenXiSand);
-            this.tbpPatternSand.Controls.Add(this.btnZhongxiSand);
-            this.tbpPatternSand.Controls.Add(this.btnFenSand);
-            this.tbpPatternSand.Controls.Add(this.btnXiSand);
-            this.tbpPatternSand.Controls.Add(this.btnZhongSand);
-            this.tbpPatternSand.Controls.Add(this.btnCuSand);
-            this.tbpPatternSand.Location = new System.Drawing.Point(4, 22);
-            this.tbpPatternSand.Name = "tbpPatternSand";
-            this.tbpPatternSand.Size = new System.Drawing.Size(573, 480);
-            this.tbpPatternSand.TabIndex = 2;
-            this.tbpPatternSand.Text = "砂岩图元";
-            this.tbpPatternSand.UseVisualStyleBackColor = true;
+            this.tbgPatternSand.Controls.Add(this.btnTortSand);
+            this.tbgPatternSand.Controls.Add(this.groupBox1);
+            this.tbgPatternSand.Controls.Add(this.btnFeSand);
+            this.tbgPatternSand.Controls.Add(this.btnHLSSand);
+            this.tbgPatternSand.Controls.Add(this.btnQuartzSand);
+            this.tbgPatternSand.Controls.Add(this.btnFenXiSand);
+            this.tbgPatternSand.Controls.Add(this.btnZhongxiSand);
+            this.tbgPatternSand.Controls.Add(this.btnFenSand);
+            this.tbgPatternSand.Controls.Add(this.btnXiSand);
+            this.tbgPatternSand.Controls.Add(this.btnZhongSand);
+            this.tbgPatternSand.Controls.Add(this.btnCuSand);
+            this.tbgPatternSand.Location = new System.Drawing.Point(4, 22);
+            this.tbgPatternSand.Name = "tbgPatternSand";
+            this.tbgPatternSand.Size = new System.Drawing.Size(550, 536);
+            this.tbgPatternSand.TabIndex = 2;
+            this.tbgPatternSand.Text = "砂岩图元";
+            this.tbgPatternSand.UseVisualStyleBackColor = true;
             // 
             // btnTortSand
             // 
@@ -223,7 +226,7 @@
             this.groupBox1.Controls.Add(this.cbxHasSplitLine);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.nUDSandRadius);
-            this.groupBox1.Location = new System.Drawing.Point(8, 50);
+            this.groupBox1.Location = new System.Drawing.Point(8, 29);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(531, 131);
             this.groupBox1.TabIndex = 52;
@@ -481,30 +484,30 @@
             this.btnCuSand.UseVisualStyleBackColor = true;
             this.btnCuSand.Click += new System.EventHandler(this.bthLitho_Click);
             // 
-            // tbpPatternGravel
+            // tbgPatternGravel
             // 
-            this.tbpPatternGravel.Controls.Add(this.label26);
-            this.tbpPatternGravel.Controls.Add(this.tbxPatternNameGravel);
-            this.tbpPatternGravel.Controls.Add(this.btnTuffTriGravel);
-            this.tbpPatternGravel.Controls.Add(this.btnTriGravel);
-            this.tbpPatternGravel.Controls.Add(this.btnCuGravel);
-            this.tbpPatternGravel.Controls.Add(this.btnMudGravel);
-            this.tbpPatternGravel.Controls.Add(this.btnXiGravel);
-            this.tbpPatternGravel.Controls.Add(this.btnMidGravel);
-            this.tbpPatternGravel.Controls.Add(this.btnHugeGravel);
-            this.tbpPatternGravel.Controls.Add(this.nUDPatternGravelWidth);
-            this.tbpPatternGravel.Controls.Add(this.label2);
-            this.tbpPatternGravel.Controls.Add(this.nUDPatternGravelHeight);
-            this.tbpPatternGravel.Controls.Add(this.label3);
-            this.tbpPatternGravel.Controls.Add(this.label4);
-            this.tbpPatternGravel.Controls.Add(this.cbbGravelBackcolor);
-            this.tbpPatternGravel.Location = new System.Drawing.Point(4, 22);
-            this.tbpPatternGravel.Name = "tbpPatternGravel";
-            this.tbpPatternGravel.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternGravel.Size = new System.Drawing.Size(573, 480);
-            this.tbpPatternGravel.TabIndex = 4;
-            this.tbpPatternGravel.Text = "砾岩图元";
-            this.tbpPatternGravel.UseVisualStyleBackColor = true;
+            this.tbgPatternGravel.Controls.Add(this.label26);
+            this.tbgPatternGravel.Controls.Add(this.tbxPatternNameGravel);
+            this.tbgPatternGravel.Controls.Add(this.btnTuffTriGravel);
+            this.tbgPatternGravel.Controls.Add(this.btnTriGravel);
+            this.tbgPatternGravel.Controls.Add(this.btnCuGravel);
+            this.tbgPatternGravel.Controls.Add(this.btnMudGravel);
+            this.tbgPatternGravel.Controls.Add(this.btnXiGravel);
+            this.tbgPatternGravel.Controls.Add(this.btnMidGravel);
+            this.tbgPatternGravel.Controls.Add(this.btnHugeGravel);
+            this.tbgPatternGravel.Controls.Add(this.nUDPatternGravelWidth);
+            this.tbgPatternGravel.Controls.Add(this.label2);
+            this.tbgPatternGravel.Controls.Add(this.nUDPatternGravelHeight);
+            this.tbgPatternGravel.Controls.Add(this.label3);
+            this.tbgPatternGravel.Controls.Add(this.label4);
+            this.tbgPatternGravel.Controls.Add(this.cbbGravelBackcolor);
+            this.tbgPatternGravel.Location = new System.Drawing.Point(4, 22);
+            this.tbgPatternGravel.Name = "tbgPatternGravel";
+            this.tbgPatternGravel.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgPatternGravel.Size = new System.Drawing.Size(550, 536);
+            this.tbgPatternGravel.TabIndex = 4;
+            this.tbgPatternGravel.Text = "砾岩图元";
+            this.tbgPatternGravel.UseVisualStyleBackColor = true;
             // 
             // label26
             // 
@@ -675,28 +678,28 @@
             this.cbbGravelBackcolor.TabIndex = 37;
             this.cbbGravelBackcolor.Click += new System.EventHandler(this.cbbGravelBackcolor_Click);
             // 
-            // tbpPatternMud
+            // tbgPatternMud
             // 
-            this.tbpPatternMud.Controls.Add(this.label29);
-            this.tbpPatternMud.Controls.Add(this.tbxPatternNameMud);
-            this.tbpPatternMud.Controls.Add(this.btnGypsumMud);
-            this.tbpPatternMud.Controls.Add(this.btnHZmud);
-            this.tbpPatternMud.Controls.Add(this.btnSZmud);
-            this.tbpPatternMud.Controls.Add(this.btnFSZMud);
-            this.tbpPatternMud.Controls.Add(this.btnMud);
-            this.tbpPatternMud.Controls.Add(this.nUDPatternMudWidth);
-            this.tbpPatternMud.Controls.Add(this.label5);
-            this.tbpPatternMud.Controls.Add(this.nUDPatternMudHeight);
-            this.tbpPatternMud.Controls.Add(this.label7);
-            this.tbpPatternMud.Controls.Add(this.label8);
-            this.tbpPatternMud.Controls.Add(this.cbbPatternMudBackColor);
-            this.tbpPatternMud.Location = new System.Drawing.Point(4, 22);
-            this.tbpPatternMud.Name = "tbpPatternMud";
-            this.tbpPatternMud.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternMud.Size = new System.Drawing.Size(573, 480);
-            this.tbpPatternMud.TabIndex = 5;
-            this.tbpPatternMud.Text = "泥岩图元";
-            this.tbpPatternMud.UseVisualStyleBackColor = true;
+            this.tbgPatternMud.Controls.Add(this.label29);
+            this.tbgPatternMud.Controls.Add(this.tbxPatternNameMud);
+            this.tbgPatternMud.Controls.Add(this.btnGypsumMud);
+            this.tbgPatternMud.Controls.Add(this.btnHZmud);
+            this.tbgPatternMud.Controls.Add(this.btnSZmud);
+            this.tbgPatternMud.Controls.Add(this.btnFSZMud);
+            this.tbgPatternMud.Controls.Add(this.btnMud);
+            this.tbgPatternMud.Controls.Add(this.nUDPatternMudWidth);
+            this.tbgPatternMud.Controls.Add(this.label5);
+            this.tbgPatternMud.Controls.Add(this.nUDPatternMudHeight);
+            this.tbgPatternMud.Controls.Add(this.label7);
+            this.tbgPatternMud.Controls.Add(this.label8);
+            this.tbgPatternMud.Controls.Add(this.cbbPatternMudBackColor);
+            this.tbgPatternMud.Location = new System.Drawing.Point(4, 22);
+            this.tbgPatternMud.Name = "tbgPatternMud";
+            this.tbgPatternMud.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgPatternMud.Size = new System.Drawing.Size(550, 536);
+            this.tbgPatternMud.TabIndex = 5;
+            this.tbgPatternMud.Text = "泥岩图元";
+            this.tbgPatternMud.UseVisualStyleBackColor = true;
             // 
             // label29
             // 
@@ -847,26 +850,26 @@
             this.cbbPatternMudBackColor.TabIndex = 37;
             this.cbbPatternMudBackColor.Click += new System.EventHandler(this.cbbPatternMudBackColor_Click);
             // 
-            // tbpPatternShale
+            // tbgPatternShale
             // 
-            this.tbpPatternShale.Controls.Add(this.label25);
-            this.tbpPatternShale.Controls.Add(this.tbxPatternNameShale);
-            this.tbpPatternShale.Controls.Add(this.btnAsphaltShale);
-            this.tbpPatternShale.Controls.Add(this.btnSandShale);
-            this.tbpPatternShale.Controls.Add(this.btnShale);
-            this.tbpPatternShale.Controls.Add(this.nUDPatternShaleWidth);
-            this.tbpPatternShale.Controls.Add(this.label15);
-            this.tbpPatternShale.Controls.Add(this.nUDPatternShaleHeight);
-            this.tbpPatternShale.Controls.Add(this.label16);
-            this.tbpPatternShale.Controls.Add(this.label17);
-            this.tbpPatternShale.Controls.Add(this.cbbPatternShaleBackColor);
-            this.tbpPatternShale.Location = new System.Drawing.Point(4, 22);
-            this.tbpPatternShale.Name = "tbpPatternShale";
-            this.tbpPatternShale.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternShale.Size = new System.Drawing.Size(573, 480);
-            this.tbpPatternShale.TabIndex = 8;
-            this.tbpPatternShale.Text = "页岩图元";
-            this.tbpPatternShale.UseVisualStyleBackColor = true;
+            this.tbgPatternShale.Controls.Add(this.label25);
+            this.tbgPatternShale.Controls.Add(this.tbxPatternNameShale);
+            this.tbgPatternShale.Controls.Add(this.btnAsphaltShale);
+            this.tbgPatternShale.Controls.Add(this.btnSandShale);
+            this.tbgPatternShale.Controls.Add(this.btnShale);
+            this.tbgPatternShale.Controls.Add(this.nUDPatternShaleWidth);
+            this.tbgPatternShale.Controls.Add(this.label15);
+            this.tbgPatternShale.Controls.Add(this.nUDPatternShaleHeight);
+            this.tbgPatternShale.Controls.Add(this.label16);
+            this.tbgPatternShale.Controls.Add(this.label17);
+            this.tbgPatternShale.Controls.Add(this.cbbPatternShaleBackColor);
+            this.tbgPatternShale.Location = new System.Drawing.Point(4, 22);
+            this.tbgPatternShale.Name = "tbgPatternShale";
+            this.tbgPatternShale.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgPatternShale.Size = new System.Drawing.Size(550, 536);
+            this.tbgPatternShale.TabIndex = 8;
+            this.tbgPatternShale.Text = "页岩图元";
+            this.tbgPatternShale.UseVisualStyleBackColor = true;
             // 
             // label25
             // 
@@ -997,26 +1000,26 @@
             this.cbbPatternShaleBackColor.TabIndex = 37;
             this.cbbPatternShaleBackColor.Click += new System.EventHandler(this.cbbPatternShaleBackColor_Click);
             // 
-            // tbpPatternTSY
+            // tbgPatternTSY
             // 
-            this.tbpPatternTSY.Controls.Add(this.label30);
-            this.tbpPatternTSY.Controls.Add(this.tbxPatternNameHuiyan);
-            this.tbpPatternTSY.Controls.Add(this.btnOoliteLimes);
-            this.tbpPatternTSY.Controls.Add(this.btnDolomite);
-            this.tbpPatternTSY.Controls.Add(this.btnLimestone);
-            this.tbpPatternTSY.Controls.Add(this.nUDPatternLimesWidth);
-            this.tbpPatternTSY.Controls.Add(this.label9);
-            this.tbpPatternTSY.Controls.Add(this.nUDPatternLimesHeight);
-            this.tbpPatternTSY.Controls.Add(this.label10);
-            this.tbpPatternTSY.Controls.Add(this.label11);
-            this.tbpPatternTSY.Controls.Add(this.cbbPatternLimesBackColor);
-            this.tbpPatternTSY.Location = new System.Drawing.Point(4, 22);
-            this.tbpPatternTSY.Name = "tbpPatternTSY";
-            this.tbpPatternTSY.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpPatternTSY.Size = new System.Drawing.Size(573, 480);
-            this.tbpPatternTSY.TabIndex = 6;
-            this.tbpPatternTSY.Text = "石灰岩白云岩图元";
-            this.tbpPatternTSY.UseVisualStyleBackColor = true;
+            this.tbgPatternTSY.Controls.Add(this.label30);
+            this.tbgPatternTSY.Controls.Add(this.tbxPatternNameHuiyan);
+            this.tbgPatternTSY.Controls.Add(this.btnOoliteLimes);
+            this.tbgPatternTSY.Controls.Add(this.btnDolomite);
+            this.tbgPatternTSY.Controls.Add(this.btnLimestone);
+            this.tbgPatternTSY.Controls.Add(this.nUDPatternLimesWidth);
+            this.tbgPatternTSY.Controls.Add(this.label9);
+            this.tbgPatternTSY.Controls.Add(this.nUDPatternLimesHeight);
+            this.tbgPatternTSY.Controls.Add(this.label10);
+            this.tbgPatternTSY.Controls.Add(this.label11);
+            this.tbgPatternTSY.Controls.Add(this.cbbPatternLimesBackColor);
+            this.tbgPatternTSY.Location = new System.Drawing.Point(4, 22);
+            this.tbgPatternTSY.Name = "tbgPatternTSY";
+            this.tbgPatternTSY.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgPatternTSY.Size = new System.Drawing.Size(550, 536);
+            this.tbgPatternTSY.TabIndex = 6;
+            this.tbgPatternTSY.Text = "灰岩图元";
+            this.tbgPatternTSY.UseVisualStyleBackColor = true;
             // 
             // label30
             // 
@@ -1159,7 +1162,7 @@
             this.tbgPatternVolcanicRock.Location = new System.Drawing.Point(4, 22);
             this.tbgPatternVolcanicRock.Name = "tbgPatternVolcanicRock";
             this.tbgPatternVolcanicRock.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgPatternVolcanicRock.Size = new System.Drawing.Size(573, 480);
+            this.tbgPatternVolcanicRock.Size = new System.Drawing.Size(550, 536);
             this.tbgPatternVolcanicRock.TabIndex = 7;
             this.tbgPatternVolcanicRock.Text = "火山岩岩性";
             this.tbgPatternVolcanicRock.UseVisualStyleBackColor = true;
@@ -1255,18 +1258,18 @@
             this.comboBox4.Size = new System.Drawing.Size(70, 20);
             this.comboBox4.TabIndex = 37;
             // 
-            // tbpPatternLayer
+            // tbgPatternLayer
             // 
-            this.tbpPatternLayer.Controls.Add(this.panelPatternView);
-            this.tbpPatternLayer.Controls.Add(this.btnView);
-            this.tbpPatternLayer.Controls.Add(this.groupBox2);
-            this.tbpPatternLayer.Controls.Add(this.btnAddDef);
-            this.tbpPatternLayer.Location = new System.Drawing.Point(4, 22);
-            this.tbpPatternLayer.Name = "tbpPatternLayer";
-            this.tbpPatternLayer.Size = new System.Drawing.Size(573, 480);
-            this.tbpPatternLayer.TabIndex = 3;
-            this.tbpPatternLayer.Text = "自定义图元";
-            this.tbpPatternLayer.UseVisualStyleBackColor = true;
+            this.tbgPatternLayer.Controls.Add(this.panelPatternView);
+            this.tbgPatternLayer.Controls.Add(this.btnView);
+            this.tbgPatternLayer.Controls.Add(this.groupBox2);
+            this.tbgPatternLayer.Controls.Add(this.btnAddDef);
+            this.tbgPatternLayer.Location = new System.Drawing.Point(4, 22);
+            this.tbgPatternLayer.Name = "tbgPatternLayer";
+            this.tbgPatternLayer.Size = new System.Drawing.Size(550, 536);
+            this.tbgPatternLayer.TabIndex = 3;
+            this.tbgPatternLayer.Text = "自定义图元";
+            this.tbgPatternLayer.UseVisualStyleBackColor = true;
             // 
             // panelPatternView
             // 
@@ -1475,56 +1478,87 @@
             this.btnAddDef.Text = "配置生成";
             this.btnAddDef.UseVisualStyleBackColor = true;
             // 
+            // webBrowserPatternView
+            // 
+            this.webBrowserPatternView.Location = new System.Drawing.Point(564, 66);
+            this.webBrowserPatternView.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserPatternView.Name = "webBrowserPatternView";
+            this.webBrowserPatternView.Size = new System.Drawing.Size(200, 300);
+            this.webBrowserPatternView.TabIndex = 4;
+            // 
+            // btnAdd2Ink
+            // 
+            this.btnAdd2Ink.Location = new System.Drawing.Point(583, 394);
+            this.btnAdd2Ink.Name = "btnAdd2Ink";
+            this.btnAdd2Ink.Size = new System.Drawing.Size(122, 30);
+            this.btnAdd2Ink.TabIndex = 5;
+            this.btnAdd2Ink.Text = "配置";
+            this.btnAdd2Ink.UseVisualStyleBackColor = true;
+            this.btnAdd2Ink.Click += new System.EventHandler(this.btnAdd2Ink_Click);
+            // 
+            // lblPatternName
+            // 
+            this.lblPatternName.AutoSize = true;
+            this.lblPatternName.Location = new System.Drawing.Point(564, 39);
+            this.lblPatternName.Name = "lblPatternName";
+            this.lblPatternName.Size = new System.Drawing.Size(41, 12);
+            this.lblPatternName.TabIndex = 6;
+            this.lblPatternName.Text = "图案名";
+            // 
             // FormPatternElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 506);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(767, 562);
+            this.Controls.Add(this.lblPatternName);
+            this.Controls.Add(this.btnAdd2Ink);
+            this.Controls.Add(this.webBrowserPatternView);
+            this.Controls.Add(this.tbcPattern);
             this.Name = "FormPatternElement";
             this.Text = "图元配置";
-            this.tabControl1.ResumeLayout(false);
-            this.tbpPatternSand.ResumeLayout(false);
+            this.tbcPattern.ResumeLayout(false);
+            this.tbgPatternSand.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDSandRadius)).EndInit();
-            this.tbpPatternGravel.ResumeLayout(false);
-            this.tbpPatternGravel.PerformLayout();
+            this.tbgPatternGravel.ResumeLayout(false);
+            this.tbgPatternGravel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelHeight)).EndInit();
-            this.tbpPatternMud.ResumeLayout(false);
-            this.tbpPatternMud.PerformLayout();
+            this.tbgPatternMud.ResumeLayout(false);
+            this.tbgPatternMud.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudHeight)).EndInit();
-            this.tbpPatternShale.ResumeLayout(false);
-            this.tbpPatternShale.PerformLayout();
+            this.tbgPatternShale.ResumeLayout(false);
+            this.tbgPatternShale.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleHeight)).EndInit();
-            this.tbpPatternTSY.ResumeLayout(false);
-            this.tbpPatternTSY.PerformLayout();
+            this.tbgPatternTSY.ResumeLayout(false);
+            this.tbgPatternTSY.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesHeight)).EndInit();
             this.tbgPatternVolcanicRock.ResumeLayout(false);
             this.tbgPatternVolcanicRock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown8)).EndInit();
-            this.tbpPatternLayer.ResumeLayout(false);
+            this.tbgPatternLayer.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tbpPatternSand;
-        private System.Windows.Forms.TabPage tbpPatternLayer;
+        private System.Windows.Forms.TabControl tbcPattern;
+        private System.Windows.Forms.TabPage tbgPatternSand;
+        private System.Windows.Forms.TabPage tbgPatternLayer;
         private System.Windows.Forms.Button btnCuSand;
         private System.Windows.Forms.NumericUpDown nUDPatternSandHeight;
         private System.Windows.Forms.Label label21;
@@ -1532,11 +1566,11 @@
         private System.Windows.Forms.ComboBox cbbPatternSandBackColor;
         private System.Windows.Forms.NumericUpDown nUDPatternSandWidth;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tbpPatternGravel;
-        private System.Windows.Forms.TabPage tbpPatternMud;
-        private System.Windows.Forms.TabPage tbpPatternTSY;
+        private System.Windows.Forms.TabPage tbgPatternGravel;
+        private System.Windows.Forms.TabPage tbgPatternMud;
+        private System.Windows.Forms.TabPage tbgPatternTSY;
         private System.Windows.Forms.TabPage tbgPatternVolcanicRock;
-        private System.Windows.Forms.TabPage tbpPatternShale;
+        private System.Windows.Forms.TabPage tbgPatternShale;
         private System.Windows.Forms.Button btnFenSand;
         private System.Windows.Forms.Button btnXiSand;
         private System.Windows.Forms.Button btnZhongSand;
@@ -1628,5 +1662,8 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox tbxPatternNameHuiyan;
         private System.Windows.Forms.Panel panelPatternView;
+        private System.Windows.Forms.WebBrowser webBrowserPatternView;
+        private System.Windows.Forms.Button btnAdd2Ink;
+        private System.Windows.Forms.Label lblPatternName;
     }
 }

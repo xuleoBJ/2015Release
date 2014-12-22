@@ -20,20 +20,37 @@ namespace DOGPlatform
             InitializeComponent();
         }
 
-
-        string dPath=  "M5,5 c0,150 400,150 400,0  Z";
-        string svgFilePath = Path.Combine(cProjectManager.dirPathMap, "pattern.svg");
+        string sLithoName = "粗砂岩";
+        string sID = "101";
 
         int numfilePathTemp = 0;//生成预览图的编号
 
         private void bthLitho_Click(object sender, EventArgs e)
         {
-            string sLithoName = "粗砂岩";
+           sLithoName = "粗砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text;
-            string sID = "101";
-            addDef4SandStone(sLithoName, sID);
+            sID = "101";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
+        }
+         XElement getDef4SandStone(string sLithoName, string sID)
+        {
+            int iWidthPattern = Convert.ToInt16(nUDPatternSandWidth.Value);
+            int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
+            string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
+            string sCircleColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
+           return cSVGXEPatternLithoSand.lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, true);
         }
 
+
+         XElement getDef4MudStone(string sLithoName, string sID)
+         {
+             int iWidthPattern = Convert.ToInt16(this.nUDPatternMudWidth.Value);
+             int iHeightPattern = Convert.ToInt16(this.nUDPatternMudHeight.Value);
+             string sBackColor = cPublicMethodBase.getRGB(this.cbbPatternMudBackColor.BackColor);
+             return cSVGXEPatternMud.lithoPatternDefsMud(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+         }
+
+         
 
         private void cbbPatternBackColor_Click(object sender, EventArgs e)
         {
@@ -46,17 +63,24 @@ namespace DOGPlatform
             int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
-
             cSVGXEPatternCarbonatie.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
         }
+
+         XElement getDef4Limestone(string sLithoName, string sID)
+         {
+             int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
+             int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
+             string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
+             return  cSVGXEPatternCarbonatie.lithoPatternLimesDefs(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+         }
 
          void addDef4SandStone(string sLithoName, string sID)
          {
              int iWidthPattern = Convert.ToInt16(nUDPatternSandWidth.Value);
              int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
              string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
-             string sCirleColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
-             cSVGXEPatternLithoSand.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCirleColor, true);
+             string sCircleColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
+             cSVGXEPatternLithoSand.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, true);
          }
 
 
@@ -77,26 +101,26 @@ namespace DOGPlatform
          }
         private void btnLimestone_Click(object sender, EventArgs e)
         {
-            string sLithoName = "石灰岩";
+             sLithoName = "石灰岩";
             if (this.tbxPatternNameHuiyan.Text.Trim() != "") sLithoName = tbxPatternNameHuiyan.Text; 
-            string sID = "201";
-            addDef4Limestone(sLithoName, sID);
+             sID = "201";
+             viewPattern(sLithoName, getDef4Limestone(sLithoName, sID));
         }
 
         private void btnDolomite_Click(object sender, EventArgs e)
         {
-            string sLithoName = "白云岩";
+             sLithoName = "白云岩";
             if (this.tbxPatternNameHuiyan.Text.Trim() != "") sLithoName = tbxPatternNameHuiyan.Text; 
-            string sID = "202";
-            addDef4Limestone(sLithoName, sID);
+            sID = "202";
+            viewPattern(sLithoName, getDef4Limestone(sLithoName, sID));
         }
 
         private void btnMud_Click(object sender, EventArgs e)
         {
-            string sLithoName = "泥岩";
+            sLithoName = "泥岩";
             if (this.tbxPatternNameMud.Text.Trim() != "") sLithoName = this.tbxPatternNameMud.Text;
-            string sID = "401";
-            addDef4MudStone(sLithoName, sID);
+            sID = "401";
+            viewPattern(sLithoName, getDef4MudStone(sLithoName, sID));
         }
 
         private void button9_Click(object sender, EventArgs e)
@@ -104,42 +128,39 @@ namespace DOGPlatform
             string sLithoName = "细砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
             string sID = "103";
-            addDef4SandStone(sLithoName, sID); 
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void btnQuartzSand_Click(object sender, EventArgs e)
         {
-            string sLithoName = "石英砂岩";
+            sLithoName = "石英砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "107";
-            addDef4SandStone(sLithoName, sID); 
+            sID = "107";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string sLithoName = "中砂岩";
+            sLithoName = "中砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "102";
-           addDef4SandStone( sLithoName, sID);
+            sID = "102";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
-
-      
-       
 
         private void btnHLSSand_Click(object sender, EventArgs e)
         {
-            string sLithoName = "海绿石砂岩";
+            sLithoName = "海绿石砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "109";
-            addDef4SandStone(sLithoName, sID); 
+            sID = "109";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void btnFeSand_Click(object sender, EventArgs e)
         {
-            string sLithoName = "铁质砂岩";
+            sLithoName = "铁质砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "108";
-            addDef4SandStone(sLithoName, sID); 
+            sID = "108";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void cbbPatternLimesBackColor_Click(object sender, EventArgs e)
@@ -149,34 +170,34 @@ namespace DOGPlatform
 
         private void btnFenSand_Click(object sender, EventArgs e)
         {
-            string sLithoName = "粉砂岩";
+            sLithoName = "粉砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "104";
-            addDef4SandStone(sLithoName, sID); 
+            sID = "104";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void btnZhongxiSand_Click(object sender, EventArgs e)
         {
-            string sLithoName = "中细砂岩";
+            sLithoName = "中细砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "105";
-            addDef4SandStone(sLithoName, sID); 
+            sID = "105";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void btnFenXiSand_Click(object sender, EventArgs e)
         {
-            string sLithoName = "粉细砂岩";
+            sLithoName = "粉细砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "106";
-            addDef4SandStone(sLithoName, sID); 
+            sID = "106";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void btnFSZMud_Click(object sender, EventArgs e)
         {
-            string sLithoName = "粉砂质泥岩";
+            sLithoName = "粉砂质泥岩";
             if (this.tbxPatternNameMud.Text.Trim() != "") sLithoName = this.tbxPatternNameMud.Text;
-            string sID = "402";
-            addDef4MudStone(sLithoName, sID);
+            sID = "402";
+            viewPattern(sLithoName, getDef4MudStone(sLithoName, sID));
         }
 
         private void cbbPatternMudBackColor_Click(object sender, EventArgs e)
@@ -191,25 +212,35 @@ namespace DOGPlatform
 
         private void btnShale_Click(object sender, EventArgs e)
         {
-        
-            string sLithoName = "页岩";
+             sLithoName = "页岩";
             if (tbxPatternNameShale.Text.Trim() != "") sLithoName = tbxPatternNameShale.Text;
-            int iWidthPattern = Convert.ToInt16(nUDPatternShaleWidth.Value);
-            int iHeightPattern = Convert.ToInt16(nUDPatternShaleHeight.Value);
-            string sBackColor = cPublicMethodBase.getRGB(cbbPatternShaleBackColor.BackColor);
-            cSVGXEPatternShale.addDef2Ink(sLithoName, "301", iWidthPattern, iHeightPattern, sBackColor);
+            sID = "301";
+            viewPattern(sLithoName, getDef4ShaleStone(sLithoName, sID));
         }
 
 
-        private void btnSandShale_Click(object sender, EventArgs e)
+        void addDefShaleStone(string sLithoName, string sID)
         {
-            string sLithoName = "砂质页岩";
-            if (tbxPatternNameShale.Text.Trim() != "") sLithoName = tbxPatternNameShale.Text;
             int iWidthPattern = Convert.ToInt16(nUDPatternShaleWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternShaleHeight.Value);
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternShaleBackColor.BackColor);
-            cSVGXEPatternShale.addDef2Ink(sLithoName, "302", iWidthPattern, iHeightPattern, sBackColor);
-    
+            cSVGXEPatternShale.addDef2Ink(sLithoName,sID, iWidthPattern, iHeightPattern, sBackColor);
+        }
+
+        XElement getDef4ShaleStone(string sLithoName, string sID)
+        {
+            int iWidthPattern = Convert.ToInt16(this.nUDPatternMudWidth.Value);
+            int iHeightPattern = Convert.ToInt16(this.nUDPatternMudHeight.Value);
+            string sBackColor = cPublicMethodBase.getRGB(this.cbbPatternMudBackColor.BackColor);
+            return cSVGXEPatternShale.lithoPatternShaleDefs(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+        }
+
+        private void btnSandShale_Click(object sender, EventArgs e)
+        {
+            sLithoName = "砂质页岩";
+            if (tbxPatternNameShale.Text.Trim() != "") sLithoName = tbxPatternNameShale.Text;
+            sID = "302";
+            viewPattern(sLithoName, getDef4ShaleStone(sLithoName, sID));
         }
 
         private void btnSZmud_Click(object sender, EventArgs e)
@@ -217,7 +248,7 @@ namespace DOGPlatform
             string sLithoName = "砂质泥岩";
             if (this.tbxPatternNameMud.Text.Trim() != "") sLithoName = this.tbxPatternNameMud.Text;
             string sID = "403";
-            addDef4MudStone(sLithoName, sID);
+            viewPattern(sLithoName, getDef4MudStone(sLithoName, sID));
         }
 
         private void btnHZmud_Click(object sender, EventArgs e)
@@ -225,7 +256,7 @@ namespace DOGPlatform
             string sLithoName = "灰质泥岩";
             if (this.tbxPatternNameMud.Text.Trim() != "") sLithoName = this.tbxPatternNameMud.Text;
             string sID = "404";
-            addDef4MudStone(sLithoName, sID);
+            viewPattern(sLithoName, getDef4MudStone(sLithoName, sID));
         }
 
         private void cbbGravelBackcolor_Click(object sender, EventArgs e)
@@ -235,91 +266,98 @@ namespace DOGPlatform
 
         private void btnMidGravel_Click(object sender, EventArgs e)
         {
-            string sLithoName = "中砾岩";
+            sLithoName = "中砾岩";
             if (this.tbxPatternNameGravel.Text.Trim() != "") sLithoName = tbxPatternNameGravel.Text;
-            string sID = "503";
-            addDefGravelStone(sLithoName, sID);
+            sID = "503";
+            viewPattern(sLithoName, getDef4GravelStone(sLithoName, sID));
         }
         private void btnHugeGravel_Click(object sender, EventArgs e)
         {
-            string sLithoName = "巨砾岩";
+             sLithoName = "巨砾岩";
             if (this.tbxPatternNameGravel.Text.Trim() != "") sLithoName = tbxPatternNameGravel.Text;
-            string sID="501";
-            addDefGravelStone(sLithoName, sID);
+            sID="501";
+            viewPattern(sLithoName, getDef4GravelStone(sLithoName, sID));
+        }
+
+        XElement getDef4GravelStone(string sLithoName, string sID)
+        {
+            int iWidthPattern = Convert.ToInt16(nUDPatternGravelWidth.Value);
+            int iHeightPattern = Convert.ToInt16(nUDPatternGravelHeight.Value);
+            string sBackColor = cPublicMethodBase.getRGB(this.cbbGravelBackcolor.BackColor);
+            return cSVGXEPatternGravel.lithoPatternDefsGravel(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
         }
 
         private void btnCuGravel_Click(object sender, EventArgs e)
         {
-            string sLithoName = "粗砾岩";
+           sLithoName = "粗砾岩";
             if (this.tbxPatternNameGravel.Text.Trim() != "") sLithoName = tbxPatternNameGravel.Text;
-            string sID = "502";
-            addDefGravelStone(sLithoName, sID);
+            sID = "502";
+            viewPattern(sLithoName, getDef4GravelStone(sLithoName, sID));
         }
 
         private void btnXiGravel_Click(object sender, EventArgs e)
         {
-            string sLithoName = "细砾岩";
+            sLithoName = "细砾岩";
             if (this.tbxPatternNameGravel.Text.Trim() != "") sLithoName = tbxPatternNameGravel.Text;
-            string sID = "504";
-            addDefGravelStone(sLithoName, sID);
+            sID = "504";
+            viewPattern(sLithoName, getDef4GravelStone(sLithoName, sID));
         }
 
         private void btnMudGravel_Click(object sender, EventArgs e)
         {
-            string sLithoName = "泥砾岩";
+            sLithoName = "泥砾岩";
             if (this.tbxPatternNameGravel.Text.Trim() != "") sLithoName = tbxPatternNameGravel.Text;
-            string sID = "506";
-            addDefGravelStone(sLithoName, sID);
+            sID = "506";
+            viewPattern(sLithoName, getDef4GravelStone(sLithoName, sID));
         }
 
         private void btnTriGravel_Click(object sender, EventArgs e)
         {
-            string sLithoName = "角砾岩";
+            sLithoName = "角砾岩";
             if (this.tbxPatternNameGravel.Text.Trim() != "") sLithoName = tbxPatternNameGravel.Text;
-            string sID = "507";
-            addDefGravelStone(sLithoName, sID);
+            sID = "507";
+            viewPattern(sLithoName, getDef4GravelStone(sLithoName, sID));
         }
 
         private void btnTuffTriGravel_Click(object sender, EventArgs e)
         {
-            string sLithoName = "凝灰质角砾岩";
+            sLithoName = "凝灰质角砾岩";
             if (this.tbxPatternNameGravel.Text.Trim() != "") sLithoName = tbxPatternNameGravel.Text;
-            string sID = "513";
-            addDefGravelStone(sLithoName, sID);
+            sID = "513";
+            viewPattern(sLithoName, getDef4GravelStone(sLithoName, sID));
         }
 
         private void btnTortSand_Click(object sender, EventArgs e)
         {
-            string sLithoName = "玄武质砂岩";
+           sLithoName = "玄武质砂岩";
             if (this.tbxPatternNameSand.Text.Trim() != "") sLithoName = tbxPatternNameSand.Text; 
-            string sID = "127";
-            addDef4SandStone(sLithoName, sID); 
+            sID = "127";
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
         }
 
         private void btnGypsumMud_Click(object sender, EventArgs e)
         {
-            string sLithoName = "石膏质泥岩";
+            sLithoName = "石膏质泥岩";
             if (this.tbxPatternNameMud.Text.Trim() != "") sLithoName = this.tbxPatternNameMud.Text;
-            string sID = "409";
-            addDef4MudStone(sLithoName, sID);
+            sID = "409";
+            viewPattern(sLithoName, getDef4MudStone(sLithoName, sID));
         }
 
         private void btnAsphaltShale_Click(object sender, EventArgs e)
         {
-            string sLithoName = "沥青质页岩";
-            if (tbxPatternNameShale.Text.Trim() != "") sLithoName = tbxPatternNameShale.Text; 
-            int iWidthPattern = Convert.ToInt16(nUDPatternShaleWidth.Value);
-            int iHeightPattern = Convert.ToInt16(nUDPatternShaleHeight.Value);
-            string sBackColor = cPublicMethodBase.getRGB(cbbPatternShaleBackColor.BackColor);
-            cSVGXEPatternShale.addDef2Ink(sLithoName, "305", iWidthPattern, iHeightPattern, sBackColor);
+            sLithoName = "沥青质页岩";
+            if (tbxPatternNameShale.Text.Trim() != "") sLithoName = tbxPatternNameShale.Text;
+            sID = "305";
+            viewPattern(sLithoName, getDef4ShaleStone(sLithoName, sID));
         }
 
         private void btnOoliteLimes_Click(object sender, EventArgs e)
         {
-            string sLithoName = "鲕粒灰岩";
+           sLithoName = "鲕粒灰岩";
             if (this.tbxPatternNameHuiyan.Text.Trim() != "") sLithoName = tbxPatternNameHuiyan.Text; 
-            string sID = "224";
-            addDef4Limestone(sLithoName, sID);
+            sID = "224";
+            viewPattern(sLithoName, getDef4Limestone(sLithoName, sID));
+          
         }
 
       private void button3_Click(object sender, EventArgs e)
@@ -412,6 +450,61 @@ namespace DOGPlatform
             Rectangle rect = new Rectangle(0, 0, this.panelPatternView.Width, this.panelPatternView.Height);
             gPanel.FillRectangle(myTextureBrush, rect);
         }
+
+        void viewPattern(string sLithoName,XElement def) 
+        {
+            this.lblPatternName.Text = sLithoName;
+            string filepatternTemp = Path.Combine(cProjectManager.dirPathTemp, "patternView.svg");
+            if (File.Exists(filepatternTemp)) File.Delete(filepatternTemp);
+            cBaseMapSVG svgPattern = new cBaseMapSVG(200, 300, 0, 0);
+            XmlElement gRect = svgPattern.svgDoc.CreateElement("rect");
+            gRect.SetAttribute("x", "0");
+            gRect.SetAttribute("y", "0");
+            gRect.SetAttribute("width", webBrowserPatternView.Width.ToString());
+            gRect.SetAttribute("height", webBrowserPatternView.Height.ToString());
+            string sURL = "url(#" + sLithoName.GetHashCode().ToString().Remove(0, 1) + ")";
+            gRect.SetAttribute("fill", sURL);
+            gRect.SetAttribute("stroke-width", "0.1");
+            gRect.SetAttribute("stroke", "black");
+            svgPattern.svgRoot.AppendChild(gRect);
+            svgPattern.makeSVGfile(filepatternTemp);
+
+            XDocument xDoc = XDocument.Load(filepatternTemp);
+            XElement xroot = xDoc.Root;
+
+            XNamespace xn = "http://www.w3.org/2000/svg";
+            XElement textXE = new XElement(xn + "text", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null) xdefs.Add(def);
+             
+                xDoc.Save(filepatternTemp);
+            }
+            this.webBrowserPatternView.Navigate(new Uri(filepatternTemp));
+        
+        }
+
+
+        private void btn_PatternView_Click(object sender, EventArgs e)
+        {
+            viewPattern(sLithoName, getDef4SandStone(sLithoName, sID));
+        }
+
+        private void btnAdd2Ink_Click(object sender, EventArgs e)
+        {
+            if(tbcPattern.SelectedTab==tbgPatternSand) addDef4SandStone(sLithoName, sID);
+            if (tbcPattern.SelectedTab ==tbgPatternGravel) addDefGravelStone(sLithoName, sID);
+            if (tbcPattern.SelectedTab == tbgPatternMud) addDef4MudStone(sLithoName, sID);
+            if (tbcPattern.SelectedTab == tbgPatternShale) addDefShaleStone(sLithoName, sID);
+            if (tbcPattern.SelectedTab == tbgPatternTSY)  addDef4Limestone(sLithoName, sID);
+        }
+
+          
+
+      
 
       
 

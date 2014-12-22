@@ -38,6 +38,17 @@ namespace DOGPlatform
             _tv.Nodes.Add(tnWells);
         }
 
+        public static void updateTN_GlobeWellLog(TreeView _tv)
+        {
+            TreeNode tnGlobeWellLogs = _tv.Nodes[0].Nodes.Cast<TreeNode>().First(r => r.Name == "tnGlobalLogs" || r.Text == "global well logs");
+            tnGlobeWellLogs.Nodes.Clear();
+            foreach (string item in cProjectData.ltStrLogSeriers)
+            {
+                TreeNode _tn = new TreeNode(item, 5, 5);
+                tnGlobeWellLogs.Nodes.Add(_tn);
+            }
+        }
+
         public static void setupTNGlobeWellLog(TreeView _tv,TreeNode td)
         {
             TreeNode tnGlobeWellLogs = new TreeNode("global well logs");

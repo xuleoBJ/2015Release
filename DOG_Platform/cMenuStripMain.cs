@@ -17,7 +17,6 @@ namespace DOGPlatform
         {
             ToolStripMenuItem tsmiConfig = new ToolStripMenuItem("配置");
             tsmiConfig.DropDownItems.Add(tsmiDebug);
-            tsmiDebug.Click += new System.EventHandler(tsmiDebug_Click);
             ToolStripMenuItem tsmiDataManager = new ToolStripMenuItem("数据管理");
             tsmiConfig.DropDownItems.Add(tsmiDataManager);
             tsmiDataManager.Click += new System.EventHandler(tsmiDataManager_Click);
@@ -28,11 +27,7 @@ namespace DOGPlatform
             FormWellManager formDI = new FormWellManager();
             formDI.ShowDialog();
         }
-        public void tsmiDebug_Click(object sender, EventArgs e)
-        {
-            FormConfig formConfig = new FormConfig();
-            formConfig.ShowDialog();
-        }
+      
         public ToolStripMenuItem tsmiDebug = new ToolStripMenuItem("配置调试");
 
         public void setupTsmiPattern()

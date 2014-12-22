@@ -418,17 +418,18 @@ namespace DOGPlatform
         private void tabControlProject_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (tbcProject.SelectedTab == tbgProjectGraph) //选择了图形tbg
+            if (tbcProject.SelectedTab == tbgProjectGraph && cProjectManager.dirProject != Path.GetTempPath()) //选择了图形tbg
             {
                 updateTreeViewProjectGraph();
                 string[] filenames = Directory.GetFiles(cProjectManager.dirPathMap, "*.svg");
             }
-            if (tbcProject.SelectedTab == this.tbgProjectMapPattern)
+            if (tbcProject.SelectedTab == this.tbgProjectMapPattern )
             {
+                //通过同名xml修改svg
                 try
                 {
-                    string _filePathSVGOpened = Path.Combine(cProjectManager.dirPathMap, tvProjectGraph.SelectedNode.Text);
-                    LoadTreeViewFromXmlFile(_filePathSVGOpened, tvMapPattern);
+                    string _filePathSVGOpened = filePathWebSVG.Replace(".svg", ".xml");
+                    if(File.Exists(_filePathSVGOpened)) LoadTreeViewFromXmlFile(_filePathSVGOpened, tvMapPattern);
                 }
                 catch (XmlException xmlEx)
                 {
@@ -569,7 +570,7 @@ namespace DOGPlatform
                 default:
                     break;
             }
-            WellNavitationInvalidate();
+         
            
         }
 
@@ -1156,6 +1157,31 @@ namespace DOGPlatform
             FormWellInfor form = new FormWellInfor("newWell");
             form.ShowDialog();
         }
+
+        private void tsBtnReflush_Click(object sender, EventArgs e)
+        {
+            if (cProjectManager.dirProject != Path.GetTempPath())
+            {
+                if (tbcMain.SelectedTab == tbgWellNavigation)
+                {
+                    WellNavitationInvalidate();
+                    cTreeViewProjectData.updateTN_GlobeWellLog(this.tvProjectData);
+                }
+                if (tbcMain.SelectedTab == tbgIE) this.webBrowserIE.Refresh();
+            }
+        }
+
+        private void tsBtnDataManager_Click(object sender, EventArgs e)
+        {
+            if (cProjectManager.dirProject != Path.GetTempPath())
+            {
+            FormImportProjectData frmImportProject = new FormImportProjectData();
+            frmImportProject.ShowDialog();
+            cProjectData.setProjectWellsInfor();
+            }
+        }
+
+       
 
       
        

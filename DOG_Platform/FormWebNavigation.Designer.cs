@@ -40,15 +40,15 @@
             this.tsmiDel = new System.Windows.Forms.ToolStripMenuItem();
             this.插入ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSand = new System.Windows.Forms.ToolStripMenuItem();
+            this.连接层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiOilLayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWaterLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.ToolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControlSVGNavigation = new System.Windows.Forms.TabControl();
             this.tbgSVGView = new System.Windows.Forms.TabPage();
             this.webBrowserSVG = new System.Windows.Forms.WebBrowser();
-            this.连接层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiOilLayer = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWaterLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -156,6 +156,29 @@
             this.tsmiSand.Text = "油砂体";
             this.tsmiSand.Click += new System.EventHandler(this.tsmiSand_Click);
             // 
+            // 连接层ToolStripMenuItem
+            // 
+            this.连接层ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiOilLayer,
+            this.tsmiWaterLayer});
+            this.连接层ToolStripMenuItem.Name = "连接层ToolStripMenuItem";
+            this.连接层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.连接层ToolStripMenuItem.Text = "连接层";
+            // 
+            // tsmiOilLayer
+            // 
+            this.tsmiOilLayer.Name = "tsmiOilLayer";
+            this.tsmiOilLayer.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOilLayer.Text = "油层";
+            this.tsmiOilLayer.Click += new System.EventHandler(this.tsmiOilLayer_Click);
+            // 
+            // tsmiWaterLayer
+            // 
+            this.tsmiWaterLayer.Name = "tsmiWaterLayer";
+            this.tsmiWaterLayer.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWaterLayer.Text = "水层";
+            this.tsmiWaterLayer.Click += new System.EventHandler(this.tsmiWaterLayer_Click);
+            // 
             // ToolStripLabel2
             // 
             this.ToolStripLabel2.Name = "ToolStripLabel2";
@@ -221,29 +244,6 @@
             this.webBrowserSVG.Name = "webBrowserSVG";
             this.webBrowserSVG.Size = new System.Drawing.Size(882, 568);
             this.webBrowserSVG.TabIndex = 1;
-            // 
-            // 连接层ToolStripMenuItem
-            // 
-            this.连接层ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiOilLayer,
-            this.tsmiWaterLayer});
-            this.连接层ToolStripMenuItem.Name = "连接层ToolStripMenuItem";
-            this.连接层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.连接层ToolStripMenuItem.Text = "连接层";
-            // 
-            // tsmiOilLayer
-            // 
-            this.tsmiOilLayer.Name = "tsmiOilLayer";
-            this.tsmiOilLayer.Size = new System.Drawing.Size(152, 22);
-            this.tsmiOilLayer.Text = "油层";
-            this.tsmiOilLayer.Click += new System.EventHandler(this.tsmiOilLayer_Click);
-            // 
-            // tsmiWaterLayer
-            // 
-            this.tsmiWaterLayer.Name = "tsmiWaterLayer";
-            this.tsmiWaterLayer.Size = new System.Drawing.Size(152, 22);
-            this.tsmiWaterLayer.Text = "水层";
-            this.tsmiWaterLayer.Click += new System.EventHandler(this.tsmiWaterLayer_Click);
             // 
             // FormWebNavigation
             // 

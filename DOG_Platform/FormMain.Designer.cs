@@ -127,9 +127,12 @@
             this.tsBtnNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnOpenProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnSaveProject = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnDataManager = new System.Windows.Forms.ToolStripButton();
             this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBtnZoonIn = new System.Windows.Forms.ToolStripButton();
             this.tsBtnZoomOut = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnReflush = new System.Windows.Forms.ToolStripButton();
+            this.tsmiMove = new System.Windows.Forms.ToolStripButton();
             this.ToolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tscbbScale = new System.Windows.Forms.ToolStripComboBox();
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -138,7 +141,6 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.tsmiMove = new System.Windows.Forms.ToolStripButton();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -342,7 +344,7 @@
             this.tbgProjectMapPattern.Location = new System.Drawing.Point(4, 22);
             this.tbgProjectMapPattern.Name = "tbgProjectMapPattern";
             this.tbgProjectMapPattern.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgProjectMapPattern.Size = new System.Drawing.Size(158, 348);
+            this.tbgProjectMapPattern.Size = new System.Drawing.Size(158, 351);
             this.tbgProjectMapPattern.TabIndex = 0;
             this.tbgProjectMapPattern.Text = "图元";
             this.tbgProjectMapPattern.UseVisualStyleBackColor = true;
@@ -352,7 +354,7 @@
             this.tvMapPattern.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvMapPattern.Location = new System.Drawing.Point(3, 3);
             this.tvMapPattern.Name = "tvMapPattern";
-            this.tvMapPattern.Size = new System.Drawing.Size(152, 342);
+            this.tvMapPattern.Size = new System.Drawing.Size(152, 345);
             this.tvMapPattern.TabIndex = 1;
             // 
             // tabControl1
@@ -1025,16 +1027,18 @@
             this.tsBtnNewProject,
             this.tsBtnOpenProject,
             this.tsBtnSaveProject,
+            this.tsBtnDataManager,
             this.ToolStripSeparator1,
             this.tsBtnZoonIn,
             this.tsBtnZoomOut,
+            this.tsBtnReflush,
             this.tsmiMove,
             this.ToolStripLabel1,
             this.tscbbScale,
             this.ToolStripSeparator2});
             this.ToolStripMain.Location = new System.Drawing.Point(3, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(335, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(348, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1067,6 +1071,16 @@
             this.tsBtnSaveProject.Text = "保存项目";
             this.tsBtnSaveProject.Click += new System.EventHandler(this.tsBtnSaveProject_Click);
             // 
+            // tsBtnDataManager
+            // 
+            this.tsBtnDataManager.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBtnDataManager.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnDataManager.Image")));
+            this.tsBtnDataManager.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnDataManager.Name = "tsBtnDataManager";
+            this.tsBtnDataManager.Size = new System.Drawing.Size(23, 22);
+            this.tsBtnDataManager.Text = "数据管理";
+            this.tsBtnDataManager.Click += new System.EventHandler(this.tsBtnDataManager_Click);
+            // 
             // ToolStripSeparator1
             // 
             this.ToolStripSeparator1.Name = "ToolStripSeparator1";
@@ -1091,6 +1105,25 @@
             this.tsBtnZoomOut.Size = new System.Drawing.Size(23, 22);
             this.tsBtnZoomOut.Text = "缩小";
             this.tsBtnZoomOut.Click += new System.EventHandler(this.tsBtnZoomOut_Click);
+            // 
+            // tsBtnReflush
+            // 
+            this.tsBtnReflush.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBtnReflush.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnReflush.Image")));
+            this.tsBtnReflush.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnReflush.Name = "tsBtnReflush";
+            this.tsBtnReflush.Size = new System.Drawing.Size(23, 22);
+            this.tsBtnReflush.Text = "刷新";
+            this.tsBtnReflush.Click += new System.EventHandler(this.tsBtnReflush_Click);
+            // 
+            // tsmiMove
+            // 
+            this.tsmiMove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmiMove.Image = global::DOGPlatform.Properties.Resources.hand;
+            this.tsmiMove.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsmiMove.Name = "tsmiMove";
+            this.tsmiMove.Size = new System.Drawing.Size(23, 22);
+            this.tsmiMove.Text = "移动";
             // 
             // ToolStripLabel1
             // 
@@ -1142,21 +1175,13 @@
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
             // 
-            // tsmiMove
-            // 
-            this.tsmiMove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsmiMove.Image = global::DOGPlatform.Properties.Resources.hand;
-            this.tsmiMove.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsmiMove.Name = "tsmiMove";
-            this.tsmiMove.Size = new System.Drawing.Size(23, 22);
-            this.tsmiMove.Text = "移动";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 708);
             this.Controls.Add(this.ToolStripContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DogRobot-2.5D小层地质分析软件";
@@ -1313,6 +1338,8 @@
         private System.Windows.Forms.ToolStripMenuItem 井组分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiSectionFence;
         private System.Windows.Forms.ToolStripButton tsmiMove;
+        private System.Windows.Forms.ToolStripButton tsBtnReflush;
+        private System.Windows.Forms.ToolStripButton tsBtnDataManager;
     }
 }
 

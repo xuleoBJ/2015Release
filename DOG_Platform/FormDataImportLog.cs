@@ -89,9 +89,8 @@ namespace DOGPlatform
 
         private void btnImport_Click(object sender, EventArgs e)
         {
-            importLog();
+            importLog(); //导入时更新了全局测井曲线，然后主界面刷新
             this.Close();
-            cProjectData.setProjectGlobalLogSeriers();
         }
         void importLog() 
         {

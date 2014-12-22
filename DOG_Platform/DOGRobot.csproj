@@ -192,7 +192,6 @@
     <Compile Include="cCordinationTransform.cs" />
     <Compile Include="cSelectProductData.cs" />
     <Compile Include="cSoftwareLimited.cs" />
-    <Compile Include="SVG\cSVGDocPatternFace.cs" />
     <Compile Include="SVG\cSVGXEPatternGravel.cs" />
     <Compile Include="SVG\cSVGDocPatternSand.cs" />
     <Compile Include="SVG\cSVGXEPatternShale.cs" />
@@ -439,12 +438,6 @@
     <Compile Include="FormInjProAna.Designer.cs">
       <DependentUpon>FormInjProAna.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormConfig.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormConfig.Designer.cs">
-      <DependentUpon>FormConfig.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormCopyRight.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -540,10 +533,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormInjProAna.resx">
       <DependentUpon>FormInjProAna.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormConfig.resx">
-      <DependentUpon>FormConfig.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCopyRight.resx">

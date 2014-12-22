@@ -572,7 +572,6 @@ E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormLogSe
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormPatternElement.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellsGroup.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormInjProAna.resources
-E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormConfig.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormCopyRight.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellSectionGeology.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormProductAnalisys.resources
