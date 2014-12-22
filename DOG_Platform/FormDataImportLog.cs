@@ -118,7 +118,8 @@ namespace DOGPlatform
                 List<string> _ltLogFileHead = new List<string>();
                 _ltLogFileHead.Add("Depth");
                 _ltLogFileHead.Add(_logName);
-                string _firstLine = sJH + " " + _logName + " source:" + this.filePathSourceLogFile + " columnNum:" + _indexLog.ToString() + " " + DateTime.Today.ToString(); 
+                string _firstLine = sJH + " " + _logName + " source:" + this.filePathSourceLogFile 
+                    + " columnNum:" + (_indexLog+1).ToString() + " " + DateTime.Now.ToString(); 
                 cIOGeoEarthText.creatFileGeoHeadText(_logFilePath, _firstLine, _ltLogFileHead);
                 cIOGeoEarthText.addDataLines2GeoEarTxt(_logFilePath, cIOinputLog.readLogData(filePathSourceLogFile, _iDataStartLine, _indexLog));
             }

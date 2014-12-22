@@ -96,33 +96,6 @@ namespace DOGPlatform
                     }
                   ltLayerDepthWrite.Add(_item);
                 }
-                 //上个循环后 仍有一些fds1的值。
-                // //下个循环，处理这些fds1
-                //for (int i = 0; i < iCount; i++) 
-                //{
-                //    ItemLayerDepth _item = ltLayerDepthWrite[i];
-                //    //最后一行前的处理
-                //    if (i < iCount - 1)
-                //    {
-                //        int k=i ;
-                //        while (_item.fDS1 == 0.0f && k < iCount-1)
-                //        {
-                //            _item.fDS1 = ltLayerDepthWrite[k+1].fDS1;
-                //            _item.fDS2 = _item.fDS1;
-                //            k++;
-                //        }
-                //        //上个while循环 可能有底下一大段都是0的情况,fDs1还可能是0，这时判断向上找，直到所有的fds1全有值
-                         
-                //        if(_
-                //        if (_item.fDS2 == 0.0) _item.fDS2 = ltLayerDepthWrite[i + 1].fDS1;
-                //    }
-                //    else  //最后一层处理
-                //    {
-                //        if (_item.fDS1 <= 0.0) _item.fDS1 = ltLayerDepthWrite[i - 1].fDS1;
-                //        _item.fDS2 = ltLayerDepthWrite[i].fDS1; 
-                //    }
-                //    ltLayerDepthWrite[i] = _item; 
-                //}
 
                 string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellLayerDepth);
                
@@ -135,7 +108,7 @@ namespace DOGPlatform
             
         }
 
-       static List<ItemLayerDepthInput > readInputFile(string _sJH) 
+       public static List<ItemLayerDepthInput > readInputFile(string _sJH) 
         {
             List<ItemLayerDepthInput> returnItem = new List<ItemLayerDepthInput>();
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameInputLayerDepth);

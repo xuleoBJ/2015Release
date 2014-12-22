@@ -123,10 +123,6 @@
             this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
             this.调剖决策ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripDraw = new System.Windows.Forms.ToolStrip();
-            this.tsBtnMove = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnDrawLine = new System.Windows.Forms.ToolStripButton();
-            this.tsBtnDrawPolyGon = new System.Windows.Forms.ToolStripButton();
             this.ToolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsBtnNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnOpenProject = new System.Windows.Forms.ToolStripButton();
@@ -137,12 +133,12 @@
             this.ToolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tscbbScale = new System.Windows.Forms.ToolStripComboBox();
             this.ToolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tlsCbbLayer = new System.Windows.Forms.ToolStripComboBox();
             this.根据有效层段处理分层数据ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSelecDataInproject = new System.Windows.Forms.ToolStripMenuItem();
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
+            this.tsmiMove = new System.Windows.Forms.ToolStripButton();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -171,7 +167,6 @@
             this.tbgLayerSeriers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayerSeriers)).BeginInit();
             this.msMain.SuspendLayout();
-            this.ToolStripDraw.SuspendLayout();
             this.ToolStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -218,7 +213,6 @@
             // ToolStripContainer1.TopToolStripPanel
             // 
             this.ToolStripContainer1.TopToolStripPanel.Controls.Add(this.msMain);
-            this.ToolStripContainer1.TopToolStripPanel.Controls.Add(this.ToolStripDraw);
             this.ToolStripContainer1.TopToolStripPanel.Controls.Add(this.ToolStripMain);
             // 
             // statusStripInfor
@@ -471,7 +465,7 @@
             this.tbgWellHead.Location = new System.Drawing.Point(4, 22);
             this.tbgWellHead.Name = "tbgWellHead";
             this.tbgWellHead.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellHead.Size = new System.Drawing.Size(917, 610);
+            this.tbgWellHead.Size = new System.Drawing.Size(917, 606);
             this.tbgWellHead.TabIndex = 0;
             this.tbgWellHead.Text = "井位数据";
             this.tbgWellHead.UseVisualStyleBackColor = true;
@@ -522,7 +516,7 @@
             this.splitter2.Location = new System.Drawing.Point(3, 3);
             this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(2, 604);
+            this.splitter2.Size = new System.Drawing.Size(2, 600);
             this.splitter2.TabIndex = 15;
             this.splitter2.TabStop = false;
             // 
@@ -1024,47 +1018,6 @@
             this.tsmiAdjustProfile.Text = "选井";
             this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
             // 
-            // ToolStripDraw
-            // 
-            this.ToolStripDraw.Dock = System.Windows.Forms.DockStyle.None;
-            this.ToolStripDraw.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsBtnMove,
-            this.tsBtnDrawLine,
-            this.tsBtnDrawPolyGon});
-            this.ToolStripDraw.Location = new System.Drawing.Point(3, 25);
-            this.ToolStripDraw.Name = "ToolStripDraw";
-            this.ToolStripDraw.Size = new System.Drawing.Size(81, 25);
-            this.ToolStripDraw.TabIndex = 4;
-            // 
-            // tsBtnMove
-            // 
-            this.tsBtnMove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsBtnMove.Image = global::DOGPlatform.Properties.Resources.hand;
-            this.tsBtnMove.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnMove.Name = "tsBtnMove";
-            this.tsBtnMove.Size = new System.Drawing.Size(23, 22);
-            this.tsBtnMove.Text = "移动";
-            // 
-            // tsBtnDrawLine
-            // 
-            this.tsBtnDrawLine.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsBtnDrawLine.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnDrawLine.Image")));
-            this.tsBtnDrawLine.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnDrawLine.Name = "tsBtnDrawLine";
-            this.tsBtnDrawLine.Size = new System.Drawing.Size(23, 22);
-            this.tsBtnDrawLine.Text = "直线";
-            this.tsBtnDrawLine.Click += new System.EventHandler(this.tsBtnDrawLine_Click);
-            // 
-            // tsBtnDrawPolyGon
-            // 
-            this.tsBtnDrawPolyGon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsBtnDrawPolyGon.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnDrawPolyGon.Image")));
-            this.tsBtnDrawPolyGon.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnDrawPolyGon.Name = "tsBtnDrawPolyGon";
-            this.tsBtnDrawPolyGon.Size = new System.Drawing.Size(23, 22);
-            this.tsBtnDrawPolyGon.Text = "多边形";
-            this.tsBtnDrawPolyGon.Click += new System.EventHandler(this.tsBtnDrawPolyGon_Click);
-            // 
             // ToolStripMain
             // 
             this.ToolStripMain.Dock = System.Windows.Forms.DockStyle.None;
@@ -1075,13 +1028,13 @@
             this.ToolStripSeparator1,
             this.tsBtnZoonIn,
             this.tsBtnZoomOut,
+            this.tsmiMove,
             this.ToolStripLabel1,
             this.tscbbScale,
-            this.ToolStripSeparator2,
-            this.tlsCbbLayer});
-            this.ToolStripMain.Location = new System.Drawing.Point(84, 25);
+            this.ToolStripSeparator2});
+            this.ToolStripMain.Location = new System.Drawing.Point(3, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(402, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(335, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1156,11 +1109,6 @@
             this.ToolStripSeparator2.Name = "ToolStripSeparator2";
             this.ToolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // tlsCbbLayer
-            // 
-            this.tlsCbbLayer.Name = "tlsCbbLayer";
-            this.tlsCbbLayer.Size = new System.Drawing.Size(121, 25);
-            // 
             // 根据有效层段处理分层数据ToolStripMenuItem
             // 
             this.根据有效层段处理分层数据ToolStripMenuItem.Name = "根据有效层段处理分层数据ToolStripMenuItem";
@@ -1193,6 +1141,15 @@
             this.imageListMain.Images.SetKeyName(3, "Oil_well_icon16x16.png");
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
+            // 
+            // tsmiMove
+            // 
+            this.tsmiMove.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsmiMove.Image = global::DOGPlatform.Properties.Resources.hand;
+            this.tsmiMove.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsmiMove.Name = "tsmiMove";
+            this.tsmiMove.Size = new System.Drawing.Size(23, 22);
+            this.tsmiMove.Text = "移动";
             // 
             // FormMain
             // 
@@ -1239,8 +1196,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayerSeriers)).EndInit();
             this.msMain.ResumeLayout(false);
             this.msMain.PerformLayout();
-            this.ToolStripDraw.ResumeLayout(false);
-            this.ToolStripDraw.PerformLayout();
             this.ToolStripMain.ResumeLayout(false);
             this.ToolStripMain.PerformLayout();
             this.ResumeLayout(false);
@@ -1313,10 +1268,6 @@
         private System.Windows.Forms.ToolStripMenuItem 动态地质分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataExport;
         private System.Windows.Forms.ToolStripMenuItem tsmiWellPosition4Petrel;
-        private System.Windows.Forms.ToolStrip ToolStripDraw;
-        private System.Windows.Forms.ToolStripButton tsBtnDrawLine;
-        private System.Windows.Forms.ToolStripButton tsBtnMove;
-        private System.Windows.Forms.ToolStripButton tsBtnDrawPolyGon;
         private System.Windows.Forms.ToolStripMenuItem tsmi4petrelproductLog;
         private System.Windows.Forms.ImageList imageListMain;
         private System.Windows.Forms.ToolStripMenuItem tsmiInsert;
@@ -1348,7 +1299,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiRes;
         private System.Windows.Forms.ToolStripMenuItem tsmiSection;
         private System.Windows.Forms.ToolStripMenuItem tsmiWellpathSection;
-        private System.Windows.Forms.ToolStripComboBox tlsCbbLayer;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataDeal;
         private System.Windows.Forms.ToolStripMenuItem tsmiJSJLmatch;
         private System.Windows.Forms.ToolStripMenuItem tsmiJSJLsplit;
@@ -1362,6 +1312,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.ToolStripMenuItem 井组分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiSectionFence;
+        private System.Windows.Forms.ToolStripButton tsmiMove;
     }
 }
 

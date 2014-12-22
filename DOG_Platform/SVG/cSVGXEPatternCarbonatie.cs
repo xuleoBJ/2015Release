@@ -3,14 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using System.IO;
+using System.Windows.Forms;
 
 namespace DOGPlatform.SVG
 {
     class cSVGXEPatternCarbonatie : cSVGXEPatternBase
     {
-
-        public  static XElement lithoPatternLimesDefs(string stockId, string sURL, int idLitho, int iWidthUnit, int iHeightUnit, string backColor)
+        public Dictionary<string, int> dictionaryPatternCarbonatite = new Dictionary<string, int>();
+        void initializeDictionaryPatternCarbonatite()
         {
+            dictionaryPatternCarbonatite.Add("石灰岩", 201);
+            dictionaryPatternCarbonatite.Add("白云岩", 202);
+            dictionaryPatternCarbonatite.Add("鲕粒灰岩", 224);
+        }
+
+        public static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern, string sBackColor)
+        {
+
+            string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
+            string filePath = Path.Combine(filePahtsvgPattern, "patterns.svg");
+            XDocument xDoc = XDocument.Load(filePath);
+            XElement xroot = xDoc.Root;
+
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null) xdefs.AddFirst(lithoPatternLimesDefs(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor));
+                xDoc.Save(filePath);
+                MessageBox.Show("图案添加完成");
+            }
+        }
+
+
+        public  static XElement lithoPatternLimesDefs(string stockId, string sID,  int iWidthUnit, int iHeightUnit, string backColor)
+        {  
             int numColumn = 0;
             int numRow = 0;
             string fillColor = backColor;
@@ -21,7 +49,7 @@ namespace DOGPlatform.SVG
             XNamespace inkscape = "http://www.inkscape.org/namespaces/inkscape";
             //首先确定格式 单元格数和是否显示 分割线  
             List<XElement> listPatternMark = new List<XElement>();
-            if (idLitho == 201)
+            if (sID  == "201")
             {
                 listPatternMark.Clear();
                 numColumn = 4;
@@ -35,7 +63,7 @@ namespace DOGPlatform.SVG
                 XElement pattern4 = patternElementLimes(iWidthUnit, iHeightUnit, 1, 3);
                 listPatternMark.Add(pattern4);
             }
-            if (idLitho == 202)
+            if (sID  == "202")
             {
                 listPatternMark.Clear();
                 numColumn = 4;
@@ -50,7 +78,7 @@ namespace DOGPlatform.SVG
                 listPatternMark.Add(pattern4);
             }
 
-            if (idLitho == 224)
+            if (sID  == "224")
             {
                 listPatternMark.Clear();
                 numColumn = 4;
@@ -78,25 +106,16 @@ namespace DOGPlatform.SVG
             lithoPattern.Add(stockid);
             XAttribute collect = new XAttribute(inkscape + "collect", "always");
             lithoPattern.Add(collect);
-            lithoPattern.SetAttributeValue("id", sURL);
-            lithoPattern.SetAttributeValue("id", idLitho.ToString());
+            lithoPattern.SetAttributeValue("id", sID.GetHashCode().ToString());
             lithoPattern.SetAttributeValue("patternUnits", "userSpaceOnUse");
             lithoPattern.SetAttributeValue("x", "0");
             lithoPattern.SetAttributeValue("y", "0");
             lithoPattern.SetAttributeValue("width", (iWidthUnit * numColumn).ToString());
             lithoPattern.SetAttributeValue("height", (iHeightUnit * numRow).ToString());
 
-            XElement gBackRect = backRect(backColor, iWidthUnit, iHeightUnit, numColumn, numRow);
-            lithoPattern.Add(gBackRect);
-
+            lithoPattern.Add(backRect(backColor, iWidthUnit, iHeightUnit, numColumn, numRow));
             if (hasSplitLine == true) lithoPattern.Add(splitLine(iWidthUnit, iHeightUnit, numColumn, numRow));
-
-    
-
-            for (int i = 0; i < listPatternMark.Count; i++)
-            {
-                lithoPattern.Add(listPatternMark[i]);
-            }
+            for (int i = 0; i < listPatternMark.Count; i++) lithoPattern.Add(listPatternMark[i]);
 
             return lithoPattern;
           

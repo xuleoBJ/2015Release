@@ -2,6 +2,24 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink" width="744.094" height="1052.362" id="svg2385" sodipodi:version="0.32" inkscape:version="0.46dev+devel">
   <defs id="defs2387">
+    <pattern inkscape:stockid="页岩" id="301" patternUnits="userSpaceOnUse" x="0" y="0" width="20" height="10">
+      <rect xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="20" height="10" stroke="rgb(255,255,255)" stroke-width="1" fill="rgb(255,255,255)" />
+      <g xmlns="http://www.w3.org/2000/svg">
+        <path xmlns="http://www.w3.org/2000/svg" d="M 0 0 h20" stroke-width="0.5" stroke="black" fill="none" />
+      </g>
+    </pattern>
+    <pattern inkscape:stockid="页岩" id="301" patternUnits="userSpaceOnUse" x="0" y="0" width="20" height="10">
+      <rect xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="20" height="10" stroke="rgb(255,255,255)" stroke-width="1" fill="rgb(255,255,255)" />
+      <g xmlns="http://www.w3.org/2000/svg">
+        <path xmlns="http://www.w3.org/2000/svg" d="M 0 0 h20" stroke-width="0.5" stroke="black" fill="none" />
+      </g>
+    </pattern>
+    <pattern inkscape:stockid="页岩" id="301" patternUnits="userSpaceOnUse" x="0" y="0" width="20" height="10">
+      <rect xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="20" height="10" stroke="rgb(255,255,255)" stroke-width="1" fill="rgb(255,255,255)" />
+      <g xmlns="http://www.w3.org/2000/svg">
+        <path xmlns="http://www.w3.org/2000/svg" d="M 0 0 h20" stroke-width="0.5" stroke="black" fill="none" />
+      </g>
+    </pattern>
     <pattern inkscape:collect="always" patternUnits="userSpaceOnUse" width="2" height="1" patternTransform="translate(0,0) scale(10,10)" id="Strips1_1" inkscape:stockid="Stripes 1:1">
       <rect style="fill:black;stroke:none" x="0" y="-0.5" width="1" height="2" />
     </pattern>
@@ -482,6 +500,24 @@
       </g>
       <circle xmlns="http://www.w3.org/2000/svg" cx="10" cy="5" r="2" stroke="black" stroke-width="0.5" fill="red" />
       <circle xmlns="http://www.w3.org/2000/svg" cx="30" cy="15" r="2" stroke="black" stroke-width="0.5" fill="red" />
+    </pattern>
+    <pattern inkscape:stockid="粗砂岩" inkscape:collect="always" id="101" patternUnits="userSpaceOnUse" x="0" y="0" width="40" height="20">
+      <rect xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="40" height="20" stroke="yellow" stroke-width="1" fill="yellow" />
+      <g xmlns="http://www.w3.org/2000/svg">
+        <path xmlns="http://www.w3.org/2000/svg" d="M 0 0 h40" stroke-width="0.5" stroke="black" fill="none" />
+        <path xmlns="http://www.w3.org/2000/svg" d="M 0 10 h40" stroke-width="0.5" stroke="black" fill="none" />
+      </g>
+      <circle xmlns="http://www.w3.org/2000/svg" cx="10" cy="5" r="3" stroke="black" stroke-width="0.5" fill="red" />
+      <circle xmlns="http://www.w3.org/2000/svg" cx="30" cy="15" r="3" stroke="black" stroke-width="0.5" fill="red" />
+    </pattern>
+    <pattern inkscape:stockid="粗砂岩" inkscape:collect="always" id="101" patternUnits="userSpaceOnUse" x="0" y="0" width="40" height="20">
+      <rect xmlns="http://www.w3.org/2000/svg" x="0" y="0" width="40" height="20" stroke="yellow" stroke-width="1" fill="yellow" />
+      <g xmlns="http://www.w3.org/2000/svg">
+        <path xmlns="http://www.w3.org/2000/svg" d="M 0 0 h40" stroke-width="0.5" stroke="black" fill="none" />
+        <path xmlns="http://www.w3.org/2000/svg" d="M 0 10 h40" stroke-width="0.5" stroke="black" fill="none" />
+      </g>
+      <circle xmlns="http://www.w3.org/2000/svg" cx="10" cy="5" r="3" stroke="black" stroke-width="0.5" fill="red" />
+      <circle xmlns="http://www.w3.org/2000/svg" cx="30" cy="15" r="3" stroke="black" stroke-width="0.5" fill="red" />
     </pattern>
   </defs>
 </svg>

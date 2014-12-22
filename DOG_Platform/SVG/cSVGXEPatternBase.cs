@@ -20,18 +20,7 @@ namespace DOGPlatform.SVG
             circleConglomerate.SetAttributeValue("fill", "none");
             return circleConglomerate;
         }
-        public static XElement circleSand(int cx, int cy, float r, string fillColor)//砂岩圈，不填充
-        {
-            XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement circleSand = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            circleSand.SetAttributeValue("cx", cx.ToString());
-            circleSand.SetAttributeValue("cy", cy.ToString());
-            circleSand.SetAttributeValue("r", r.ToString());
-            circleSand.SetAttributeValue("stroke", "black");
-            circleSand.SetAttributeValue("stroke-width", "0.5");
-            circleSand.SetAttributeValue("fill", fillColor);
-            return circleSand;
-        }
+       
         public XElement textPattern(string sText, int x, int y, int fontSize)//文本元素
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
@@ -45,7 +34,7 @@ namespace DOGPlatform.SVG
         }
 
         //砾石符号
-        public XElement patternElementGravel(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus)
+        public static XElement patternElementGravel(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
             XElement textXE = new XElement(xn + "text", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
@@ -54,14 +43,7 @@ namespace DOGPlatform.SVG
             XElement patternElement = circleGravel(ix, iy, fRadus);
             return patternElement;
         }
-        //砂符号
-        public static XElement patternElementSand(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
-        {
-            int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
-            int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
-            XElement patternElement = circleSand(ix, iy, fRadus, fillColor);
-            return patternElement;
-        }
+       
         //灰质符号
         public static XElement patternElementLimes( int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
@@ -91,31 +73,34 @@ namespace DOGPlatform.SVG
             return gPatternElement;
         }
 
-     
-        ////砂符号
-        //public XElement patternElementSand(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
-        //{
-        //    int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
-        //    int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
-        //    XElement patternElement = circleSand(ix, iy, fRadus, fillColor);
-        //    return patternElement;
-        //}
 
-        //鲕粒符号
-        public XElement patternElementOolite(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        //砂符号
+        public static XElement patternElementSand(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
         {
-            XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement gPatternElement = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
-            XElement patternElementOuter = circleGravel(ix, iy, 3);
-            gPatternElement.Add(patternElementOuter);
-            XElement patternElementInner = circleSand(ix, iy, 1, "black");
-            gPatternElement.Add(patternElementInner);
-            return gPatternElement;
+            XElement patternElement = circleSand(ix, iy, fRadus, fillColor);
+            return patternElement;
         }
+
+        public static XElement circleSand(int cx, int cy, float r, string fillColor)//砂岩圈，不填充
+        {
+
+            XNamespace xn = "http://www.w3.org/2000/svg";
+            XElement circleConglomerate = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+
+            circleConglomerate.SetAttributeValue("cx", cx.ToString());
+            circleConglomerate.SetAttributeValue("cy", cy.ToString());
+            circleConglomerate.SetAttributeValue("r", r.ToString());
+            circleConglomerate.SetAttributeValue("stroke", "black");
+            circleConglomerate.SetAttributeValue("stroke-width", "0.5");
+            circleConglomerate.SetAttributeValue("fill", fillColor);
+            return circleConglomerate;
+        }
+
+       
         //粉沙符号
-        public XElement patternElementSiltSand(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
+        public static XElement patternElementSiltSand(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
             XElement gPatternSiltSand = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
@@ -180,7 +165,7 @@ namespace DOGPlatform.SVG
         }
 
         //石膏符号
-        public XElement patternElementGypsum(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementGypsum( int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
             XElement gPatternElement = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
@@ -199,7 +184,7 @@ namespace DOGPlatform.SVG
         }
 
         //角砾石符号
-        public XElement patternElementTriGravel(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementTriGravel( int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             
             XNamespace xn = "http://www.w3.org/2000/svg";
@@ -216,7 +201,7 @@ namespace DOGPlatform.SVG
         }
 
         //沥青符号
-        public XElement patternElementAsphalt(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementAsphalt(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
            
             XNamespace xn = "http://www.w3.org/2000/svg";
@@ -233,7 +218,7 @@ namespace DOGPlatform.SVG
         }
 
         //凝灰符号
-        public XElement patternElementTuff(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementTuff(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             
             XNamespace xn = "http://www.w3.org/2000/svg";
@@ -250,7 +235,7 @@ namespace DOGPlatform.SVG
         }
 
         //玄武符号
-        public XElement patternElemenTortoise(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElemenTortoise(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
             XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
@@ -266,7 +251,7 @@ namespace DOGPlatform.SVG
 
 
         //页岩符号
-        public XElement patternElementShale(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementShale( int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
           
             XNamespace xn = "http://www.w3.org/2000/svg";
@@ -286,8 +271,9 @@ namespace DOGPlatform.SVG
             }
             return gPatternElement;
         }
+
         //泥质符号
-        public static XElement patternElementMud(string filepath, int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementMud( int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
          
             XNamespace xn = "http://www.w3.org/2000/svg";
@@ -348,52 +334,52 @@ namespace DOGPlatform.SVG
             return textXE;
         }
         //Fe符号
-        public XElement patternElementFe(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementFe(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "Fe");
         }
         //Si符号
-        public XElement patternElementSi(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementSi(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "Si");
         }
         //磷符号
-        public XElement patternElementP(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementP(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "P");
         }
         //碳符号
-        public XElement patternElementC(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementC(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "C");
         }
         //铝符号
-        public XElement patternElementAl(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementAl(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "Al");
         }
         //花岗岩
-        public XElement patternElementGranite(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementGranite(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "+");
         }
         //高岭土符号
-        public XElement patternElementKaoline(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementKaoline(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "±");
         }
         //长石符号
-        public XElement patternElementN(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementN(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "N");
         }
         //海绿石符号
-        public XElement patternElementGlauconite(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementGlauconite(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "#");
         }
         //石英符号
-        public XElement patternElementQuartz(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
+        public static XElement patternElementQuartz(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             return textPatternElement(iWidthUnit, iHeightUnit, orderColumn, orderRow, "∴");
         }

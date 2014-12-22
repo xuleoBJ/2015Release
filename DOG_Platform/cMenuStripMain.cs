@@ -41,8 +41,6 @@ namespace DOGPlatform
             ToolStripMenuItem tsmiLithoPattern = new ToolStripMenuItem("岩相图元");
             tsmiPattern.DropDownItems.Add(tsmiLithoPattern);
             tsmiLithoPattern.Click += new System.EventHandler(tsmiLithoPattern_Click);
-            ToolStripMenuItem tsmiFacePattern = new ToolStripMenuItem("相图元");
-            tsmiPattern.DropDownItems.Add(tsmiFacePattern);
             menuStrip.Items.Add(tsmiPattern);
         }
 

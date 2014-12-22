@@ -45,7 +45,6 @@ namespace DOGPlatform
 
             foreach (var directory in directoryInfo.GetDirectories())
             {
-      
                 directoryNode.Nodes.Add(CreateDirectoryNode(directory));
             }
             foreach (var file in directoryInfo.GetFiles())

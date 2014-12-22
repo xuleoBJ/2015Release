@@ -215,7 +215,7 @@ namespace DOGPlatform
 
         public static void delWellFromProject(string sJH) 
         {
-            DialogResult dialogResult = MessageBox.Show("当前选中井为：" + sJH + "，确认删除？", "删除选中井", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show("当前选中井为：" + sJH + "，确认删除且不可恢复？", "删除选中井", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 cIOinputWellHead.deleteJHFromWellHead(sJH);

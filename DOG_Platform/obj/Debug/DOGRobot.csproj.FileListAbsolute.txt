@@ -599,7 +599,6 @@ E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.pdb
 E:\ProjectPlatform\2015Release\DOG_Platform\bin\Debug\DOGPlatform.exe
 E:\ProjectPlatform\2015Release\DOG_Platform\bin\Debug\DOGPlatform.pdb
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGRobot.csprojResolveAssemblyReference.cache
-E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormAddNewWell.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormAddSectionLog.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormCalInterWell.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormCalReservor.resources
@@ -642,3 +641,4 @@ E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGRobot.csproj.GenerateRe
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormAdjustProfile.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormAdjustProfile.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellInfor.resources
+E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellInfor.resources

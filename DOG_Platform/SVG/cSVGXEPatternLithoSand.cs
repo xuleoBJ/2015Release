@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
+using System.Windows.Forms;
+using System.IO;
 
 namespace DOGPlatform.SVG
 {
     class cSVGXEPatternLithoSand : cSVGXEPatternBase
     {
         public Dictionary<string, int> dictionaryPatternSand = new Dictionary<string, int>();
+
         void initializeDictionaryPatternSand()
         {
             dictionaryPatternSand.Add("粗砂岩", 101);
@@ -23,74 +26,27 @@ namespace DOGPlatform.SVG
             dictionaryPatternSand.Add("玄武质砂岩", 127);
         }
 
-        public static void addLithoPatternSand(string filePath) 
-        {
-            XDocument xDoc = XDocument.Load(filePath);
-            XElement xroot = xDoc.Root;
-            //XElement xdefs1 = xDoc.Element("svg:defs");
-            //string sLithoName = "砂岩";
-            //int iWidthUnit = 20;
-            //int iHeightUnit = 10;
-            //string sBackColor = "yellow";
-
-            //foreach (var tag in xroot.DescendantNodes()) MessageBox.Show(tag.ToString());
-            if (xroot != null)
-            {
-                // bool x=xroot.HasElements("defs");
-                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("helloworld","wwww", 20, 10, 2, "yellow", "red", true));
-                xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
-
-                xDoc.Save(filePath);
-            }
-        
-        }
-
-        //自定义样式就是自己把def文件加入inkscape里面
-        public XElement addLithoPatternSand(string  filePath,string sLithoName, int iWidthUnit, int iHeightUnit, string backColor, int ix, int iy, int iWidth, int iheight)//增加岩石类型
-        {
-            XDocument xDoc = XDocument.Load(filePath);
-            XElement xroot = xDoc.Root;
-            //XElement xdefs1 = xDoc.Element("svg:defs");
-            //string sLithoName = "砂岩";
-            //int iWidthUnit = 20;
-            //int iHeightUnit = 10;
-            //string sBackColor = "yellow";
-
-            //foreach (var tag in xroot.DescendantNodes()) MessageBox.Show(tag.ToString());
-            if (xroot != null)
-            {
-                // bool x=xroot.HasElements("defs");
-                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("test","p123", 20, 10, 2, "yellow", "red", true));
-                xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
-
-                xDoc.Save(filePath);
-            }
-            int idLitho = 0;
-            //根据岩石名称选pattern;
-            if (dictionaryPatternSand.ContainsKey(sLithoName)) idLitho = dictionaryPatternSand[sLithoName];
-            string sURL = "#123456";
-            XNamespace xn = "http://www.w3.org/2000/svg";
-            //string sURL = "url(#" + lithoPatternDefsSand(idLitho, iWidthUnit, iHeightUnit, backColor) + ")";
-            XElement gLithoPattern = new XElement(xn + "defs", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            gLithoPattern.SetAttributeValue("id", "idLitho");
-            XElement gLithoPatternRect = new XElement(xn + "rect", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            gLithoPatternRect.SetAttributeValue("x", ix.ToString());
-            gLithoPatternRect.SetAttributeValue("y", iy.ToString());
-            gLithoPatternRect.SetAttributeValue("height", iheight.ToString());
-            gLithoPatternRect.SetAttributeValue("width", iWidth.ToString());
-            gLithoPatternRect.SetAttributeValue("style", "stroke-width:1");
-            gLithoPatternRect.SetAttributeValue("stroke", "black");
-            gLithoPatternRect.SetAttributeValue("fill", sURL);
-            gLithoPattern.Add(gLithoPatternRect);
-            return gLithoPattern;
-        }
-
-
-
         //根据用户设置，形成pattern，存入ink的配置文件内。
-        public static XElement lithoPatternDefsSand(string stockId,string sURL, int iWidthUnit, int iHeightUnit, int rSand, string backColor, string circleInnerColor, bool hasSplitLine)
+        public static void addDef2Ink(string sLithoName, string sURL, int iWidthPattern, int iHeightPattern,int rCircle,
+            string sBackColor,string sCircleColor,bool bSplitline)
+        {
+            string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
+            //  string filePath = Path.Combine(Application.StartupPath,"..", "pattern","patterns.svg");
+            string filePathInk = Path.Combine(filePahtsvgPattern, "patterns.svg");
+            XDocument xDoc = XDocument.Load(filePathInk);
+            XElement xroot = xDoc.Root;
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsSand(sLithoName, sURL, iWidthPattern, iHeightPattern, rCircle,
+                    sBackColor, sCircleColor, bSplitline));
+                xDoc.Save(filePathInk);
+                MessageBox.Show("图案添加完成");
+            }
+        }
+      
+        public static XElement lithoPatternDefsSand(string stockId, string sURL, int iWidthUnit, int iHeightUnit, int rSand, string backColor, string circleInnerColor, bool hasSplitLine)
         {
             int numColumn = 0;
             int numRow = 0;
@@ -141,30 +97,205 @@ namespace DOGPlatform.SVG
         }
 
 
-     
-        //砂符号
-        public static XElement patternElementSand(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
+        //根据系统定义，形成pattern，存入ink的配置文件内。
+
+        public static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern,    string sBackColor, string sCircleColor, bool bSplitline)
         {
-            int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
-            int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
-            XElement patternElement = circleSand(ix, iy, fRadus, fillColor);
-            return patternElement;
+            string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
+            //  string filePath = Path.Combine(Application.StartupPath,"..", "pattern","patterns.svg");
+            string filePathInk = Path.Combine(filePahtsvgPattern, "patterns.svg");
+            XDocument xDoc = XDocument.Load(filePathInk);
+            XElement xroot = xDoc.Root;
+            if (xroot != null)
+            {
+                // bool x=xroot.HasElements("defs");
+                XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
+                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, bSplitline));
+                xDoc.Save(filePathInk);
+                MessageBox.Show("图案添加完成");
+            }
         }
 
-        public static XElement circleSand(int cx, int cy, float r, string fillColor)//砂岩圈，不填充
+        public static XElement lithoPatternDefsSand(string stockId, string sID, int iWidthUnit, int iHeightUnit,  string _sBackColor, string _cirleColor, bool bSplitLine)
         {
+            
+            int numColumn = 0;
+            int numRow = 0;
+            string sBackColor = _sBackColor;
+            string cirleColor = _cirleColor;
 
+
+            float size = 5.0F;
+            bool hasSplitLine = bSplitLine;
+
+
+            //首先确定格式 单元格数和是否显示 分割线  
+            List<XElement> listPatternMark = new List<XElement>();
+            if (sID  == "101")
+            {
+                numColumn = 2;
+                numRow = 2;
+                size = 3;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern3);
+            }
+            if (sID  == "102")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 2;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern3);
+            }
+            if (sID  == "103")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 1;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern3);
+            }
+            if (sID  == "104")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 0.5F;
+                XElement pattern1 = patternElementSiltSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern3 = patternElementSiltSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern3);
+            }
+            if (sID  == "105")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 2.0F;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern2 = patternElementSand(iWidthUnit, iHeightUnit, 0, 1, size / 2, cirleColor);
+                listPatternMark.Add(pattern2);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 1, 0, size / 2, cirleColor);
+                listPatternMark.Add(pattern3);
+                XElement pattern4 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern4);
+            }
+            if (sID  == "106")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 1.0F;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern2 = patternElementSiltSand(iWidthUnit, iHeightUnit, 0, 1, size / 2, cirleColor);
+                listPatternMark.Add(pattern2);
+                XElement pattern3 = patternElementSiltSand(iWidthUnit, iHeightUnit, 1, 0, size / 2, cirleColor);
+                listPatternMark.Add(pattern3);
+                XElement pattern4 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern4);
+            }
+
+            if (sID  == "107")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 3;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern2 = patternElementQuartz(iWidthUnit, iHeightUnit, 0, 1);
+                listPatternMark.Add(pattern2);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern3);
+                XElement pattern4 = patternElementQuartz(iWidthUnit, iHeightUnit, 1, 0);
+                listPatternMark.Add(pattern4);
+            }
+            if (sID  == "108")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 3;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern2 = patternElementFe(iWidthUnit, iHeightUnit, 0, 1);
+                listPatternMark.Add(pattern2);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern3);
+                XElement pattern4 = patternElementFe(iWidthUnit, iHeightUnit, 1, 0);
+                listPatternMark.Add(pattern4);
+            }
+            if (sID  == "109")
+            {
+                numColumn = 2;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 3;
+                XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
+                listPatternMark.Add(pattern1);
+                XElement pattern2 = patternElementGlauconite(iWidthUnit, iHeightUnit, 0, 1);
+                listPatternMark.Add(pattern2);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern3);
+                XElement pattern4 = patternElementGlauconite(iWidthUnit, iHeightUnit, 1, 0);
+                listPatternMark.Add(pattern4);
+            }
+            if (sID  == "127")
+            {
+                numColumn = 3;
+                numRow = 2;
+                hasSplitLine = true;
+                size = 2;
+                XElement pattern1 = patternElemenTortoise(iWidthUnit, iHeightUnit, 0, 0);
+                listPatternMark.Add(pattern1);
+                XElement pattern2 = patternElementSand(iWidthUnit, iHeightUnit, 0, 1, size, cirleColor);
+                listPatternMark.Add(pattern2);
+                XElement pattern3 = patternElementSand(iWidthUnit, iHeightUnit, 0, 2, size, cirleColor);
+                listPatternMark.Add(pattern3);
+                XElement pattern4 = patternElementSand(iWidthUnit, iHeightUnit, 1, 0, size, cirleColor);
+                listPatternMark.Add(pattern4);
+                XElement pattern5 = patternElementSand(iWidthUnit, iHeightUnit, 1, 1, size, cirleColor);
+                listPatternMark.Add(pattern5);
+                XElement pattern6 = patternElemenTortoise(iWidthUnit, iHeightUnit, 1, 2);
+                listPatternMark.Add(pattern6);
+            }
+
+ 
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement circleConglomerate = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XNamespace inkscape = "http://www.inkscape.org/namespaces/inkscape";
+            XElement lithoPattern = new XElement(xn + "pattern");
+            XAttribute stockid = new XAttribute(inkscape + "stockid", stockId);
+            lithoPattern.Add(stockid);
+            lithoPattern.SetAttributeValue("id", stockid.GetHashCode().ToString());
+            lithoPattern.SetAttributeValue("patternUnits", "userSpaceOnUse");
+            lithoPattern.SetAttributeValue("x", "0");
+            lithoPattern.SetAttributeValue("y", "0");
+            lithoPattern.SetAttributeValue("width", (iWidthUnit * numColumn).ToString());
+            lithoPattern.SetAttributeValue("height", (iHeightUnit * numRow).ToString());
 
-            circleConglomerate.SetAttributeValue("cx", cx.ToString());
-            circleConglomerate.SetAttributeValue("cy", cy.ToString());
-            circleConglomerate.SetAttributeValue("r", r.ToString());
-            circleConglomerate.SetAttributeValue("stroke", "black");
-            circleConglomerate.SetAttributeValue("stroke-width", "0.5");
-            circleConglomerate.SetAttributeValue("fill", fillColor);
-            return circleConglomerate;
+
+            lithoPattern.Add(backRect(sBackColor, iWidthUnit, iHeightUnit, numColumn, numRow));
+
+            if (hasSplitLine == true) lithoPattern.Add(splitLine(iWidthUnit, iHeightUnit, numColumn, numRow));
+            for (int i = 0; i < listPatternMark.Count; i++) lithoPattern.Add(listPatternMark[i]);
+
+            return lithoPattern;
         }
+
+       
+
+     
+       
 
        
     }

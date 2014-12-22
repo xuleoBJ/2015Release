@@ -139,7 +139,7 @@ namespace DOGPlatform.SVG
         {
 
             XmlElement drillingSymble = svgDoc.CreateElement("pattern");
-            drillingSymble.SetAttribute("id", "id123");
+            drillingSymble.SetAttribute("id", "idDrillingPattern");
             drillingSymble.SetAttribute("patternUnits", "userSpaceOnUse");
             drillingSymble.SetAttribute("x", "0");
             drillingSymble.SetAttribute("y", "0");

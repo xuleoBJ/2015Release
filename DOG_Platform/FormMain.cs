@@ -41,7 +41,6 @@ namespace DOGPlatform
         }
         private void intializeMyForm()
         {
-
             tvProjectData.ImageList = this.imageListMain;
             listTabpageMain.Add(tbgWellNavigation);
             listTabpageMain.Add(tbgIE);
@@ -51,12 +50,7 @@ namespace DOGPlatform
             {
                 this.tbcMain.TabPages.Remove(tbcMain.TabPages[i]);
             }
-
-            listToolStripButtonsDraw.Add(tsBtnDrawLine);
-            listToolStripButtonsDraw.Add(tsBtnMove);
-            listToolStripButtonsDraw.Add(tsBtnDrawPolyGon);
             initialCbbScale();
-         
         }
 
         //初始化控件当新建工程或者打开工程时
@@ -147,9 +141,9 @@ namespace DOGPlatform
              if (cProjectManager.loadProjectData())
             {
                 this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirProject;
-                tlsCbbLayer.Items.Add("井口");
-                foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
-                tlsCbbLayer.SelectedIndex = 0;
+                //tlsCbbLayer.Items.Add("井口");
+                //foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
+                //tlsCbbLayer.SelectedIndex = 0;
                 updateMainForm();
                 tscbbScale.Text = ((int)(1000 / cProjectData.dfMapScale)).ToString();
                 WellNavitationInvalidate();
@@ -547,7 +541,7 @@ namespace DOGPlatform
                     if (selectNode.Parent.Text == "井" && selectNode.Index == 0)  //当前 全局测井曲线
                     {
                         cContextMenuStripInputWellLog cTS = new cContextMenuStripInputWellLog(cmsProject, selectNode, selectNode.Parent.Text);
-                        cmsProject = cTS.cms;
+                        cTS.setupTsmiExportManyWellsLog();
                     }
                     if (selectNode.Parent.Name == "tnWellTops")
                     {
@@ -622,42 +616,9 @@ namespace DOGPlatform
         Point pLinePoint2 = new Point(-1, -1);
         List<Point> listPointPolygon = new List<Point>();
         bool bEndDrawPolygon = true;
-        void setCurrentOperationMode(object sender)
-        {
-            foreach (ToolStripButton currentItem in listToolStripButtonsDraw)
-            {
-                if (currentItem == sender) currentItem.Checked = true;
-                else currentItem.Checked = false;
-            }
-            currentOpreateMode = OpreateMode.Initial;
-            if (tsBtnDrawLine.Checked == true)
-            {
-                currentOpreateMode = OpreateMode.DrawLine;
-                iNumClickLineDraw = 0;
-            }
+       
 
-            if (tsBtnDrawPolyGon.Checked == true)
-            {
-                currentOpreateMode = OpreateMode.DrawPolygon;
-                listPointPolygon.Clear();
-                bEndDrawPolygon = false;
-            }
-        }
-
-
-        private void tsBtnDrawLine_Click(object sender, EventArgs e)
-        {
-            tsBtnDrawLine.Checked = !tsBtnDrawLine.Checked;
-            setCurrentOperationMode(sender);
-        }
-
-        private void tsBtnDrawPolyGon_Click(object sender, EventArgs e)
-        {
-            tsBtnDrawPolyGon.Checked = !tsBtnDrawPolyGon.Checked;
-            setCurrentOperationMode(sender);
-        }
-
-        Point Opoint = new Point(0, 0);
+      Point Opoint = new Point(0, 0);
 
         private void panelWellNavigation_Paint(object sender, PaintEventArgs e)
         {
@@ -1129,11 +1090,13 @@ namespace DOGPlatform
         private void tsmiJSJLmatch_Click(object sender, EventArgs e)
         {
             WaitWindow.Show(this.calMatchJsJlWorkerMethod);
+            MessageBox.Show("计算完成。");
         }
 
         private void tsmiJSJLsplit_Click(object sender, EventArgs e)
         {
             WaitWindow.Show(this.calSplitJSJLWorkerMethod);
+            MessageBox.Show("计算完成。");
         }
 
         private void tvProjectData_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
@@ -1194,6 +1157,7 @@ namespace DOGPlatform
             form.ShowDialog();
         }
 
+      
        
 
     }

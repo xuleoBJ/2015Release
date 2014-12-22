@@ -192,12 +192,10 @@
     <Compile Include="cCordinationTransform.cs" />
     <Compile Include="cSelectProductData.cs" />
     <Compile Include="cSoftwareLimited.cs" />
-    <Compile Include="SVG\cSVGDocPatternCarbonatite.cs" />
     <Compile Include="SVG\cSVGDocPatternFace.cs" />
-    <Compile Include="SVG\cSVGDocPatternGravel.cs" />
-    <Compile Include="SVG\cSVGDocPatternMud.cs" />
+    <Compile Include="SVG\cSVGXEPatternGravel.cs" />
     <Compile Include="SVG\cSVGDocPatternSand.cs" />
-    <Compile Include="SVG\cSVGDocPatternShale.cs" />
+    <Compile Include="SVG\cSVGXEPatternShale.cs" />
     <Compile Include="SVG\cSVGscript.cs" />
     <Compile Include="cMenuStripMain.cs" />
     <Compile Include="cContextMenuStripInputWell.cs" />
@@ -248,6 +246,7 @@
     <Compile Include="ItemWellProduction.cs" />
     <Compile Include="ItemWellView.cs" />
     <Compile Include="SVG\cSVGSectionTrackProfile.cs" />
+    <Compile Include="SVG\cSVGXEPatternMud.cs" />
     <Compile Include="Track.cs">
       <SubType>Component</SubType>
     </Compile>

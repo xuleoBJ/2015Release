@@ -149,11 +149,11 @@
             // 
             // tbxView
             // 
-            this.tbxView.Location = new System.Drawing.Point(552, 14);
+            this.tbxView.Location = new System.Drawing.Point(476, 14);
             this.tbxView.Multiline = true;
             this.tbxView.Name = "tbxView";
             this.tbxView.ReadOnly = true;
-            this.tbxView.Size = new System.Drawing.Size(445, 472);
+            this.tbxView.Size = new System.Drawing.Size(546, 480);
             this.tbxView.TabIndex = 8;
             // 
             // btnShowLogHead
