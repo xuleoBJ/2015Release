@@ -1180,8 +1180,12 @@ namespace DOGPlatform
 
         private void tsBtnDataView_Click(object sender, EventArgs e)
         {
-            FormDataViewSingleWell formDataView = new FormDataViewSingleWell(cProjectData.ltStrProjectJH[0]);
-            formDataView.Show();
+            if (cProjectManager.dirProject != Path.GetTempPath())
+            {
+                FormDataViewSingleWell formDataView = new FormDataViewSingleWell(cProjectData.ltStrProjectJH[0]);
+                formDataView.Show();
+            }
+     
         }
 
       

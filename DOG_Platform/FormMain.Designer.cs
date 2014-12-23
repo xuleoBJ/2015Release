@@ -127,7 +127,9 @@
             this.tsBtnNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnOpenProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnSaveProject = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBtnDataManager = new System.Windows.Forms.ToolStripButton();
+            this.tsBtnDataView = new System.Windows.Forms.ToolStripButton();
             this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsBtnZoonIn = new System.Windows.Forms.ToolStripButton();
             this.tsBtnZoomOut = new System.Windows.Forms.ToolStripButton();
@@ -141,8 +143,6 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.tsBtnDataView = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -1042,7 +1042,7 @@
             this.ToolStripSeparator2});
             this.ToolStripMain.Location = new System.Drawing.Point(3, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(408, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(410, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1075,6 +1075,11 @@
             this.tsBtnSaveProject.Text = "保存项目";
             this.tsBtnSaveProject.Click += new System.EventHandler(this.tsBtnSaveProject_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // tsBtnDataManager
             // 
             this.tsBtnDataManager.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -1084,6 +1089,16 @@
             this.tsBtnDataManager.Size = new System.Drawing.Size(23, 22);
             this.tsBtnDataManager.Text = "数据管理";
             this.tsBtnDataManager.Click += new System.EventHandler(this.tsBtnDataManager_Click);
+            // 
+            // tsBtnDataView
+            // 
+            this.tsBtnDataView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBtnDataView.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnDataView.Image")));
+            this.tsBtnDataView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnDataView.Name = "tsBtnDataView";
+            this.tsBtnDataView.Size = new System.Drawing.Size(23, 22);
+            this.tsBtnDataView.Text = "井数据查看";
+            this.tsBtnDataView.Click += new System.EventHandler(this.tsBtnDataView_Click);
             // 
             // ToolStripSeparator1
             // 
@@ -1178,21 +1193,6 @@
             this.imageListMain.Images.SetKeyName(3, "Oil_well_icon16x16.png");
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
-            // 
-            // tsBtnDataView
-            // 
-            this.tsBtnDataView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsBtnDataView.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnDataView.Image")));
-            this.tsBtnDataView.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsBtnDataView.Name = "tsBtnDataView";
-            this.tsBtnDataView.Size = new System.Drawing.Size(23, 22);
-            this.tsBtnDataView.Text = "井数据查看";
-            this.tsBtnDataView.Click += new System.EventHandler(this.tsBtnDataView_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // FormMain
             // 
