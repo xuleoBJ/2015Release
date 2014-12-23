@@ -205,6 +205,18 @@ namespace DOGPlatform
             return fReturn;
 
         }
+
+        public static double calPI(List<double> dfListSJ, List<double> dfListValue)
+        {
+            double sum = 0.0f;
+            for (int i = 0; i < dfListSJ.Count - 2; i++) 
+            {
+                sum = sum + (dfListValue[i] + dfListValue[i + 1]) * (dfListSJ[i + 1] - dfListSJ[i]) * 0.5;
+            }
+
+            return sum / dfListSJ[dfListSJ.Count - 1];
+
+        }
  
 
     }

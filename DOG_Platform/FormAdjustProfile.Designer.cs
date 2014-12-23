@@ -185,7 +185,7 @@
             this.tbcAdjustProfile.Location = new System.Drawing.Point(0, 0);
             this.tbcAdjustProfile.Name = "tbcAdjustProfile";
             this.tbcAdjustProfile.SelectedIndex = 0;
-            this.tbcAdjustProfile.Size = new System.Drawing.Size(890, 552);
+            this.tbcAdjustProfile.Size = new System.Drawing.Size(880, 552);
             this.tbcAdjustProfile.TabIndex = 11;
             this.tbcAdjustProfile.SelectedIndexChanged += new System.EventHandler(this.tbcAdjustProfile_SelectedIndexChanged);
             // 
@@ -320,7 +320,7 @@
             this.tbgPI.Location = new System.Drawing.Point(4, 22);
             this.tbgPI.Name = "tbgPI";
             this.tbgPI.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgPI.Size = new System.Drawing.Size(882, 526);
+            this.tbgPI.Size = new System.Drawing.Size(872, 526);
             this.tbgPI.TabIndex = 1;
             this.tbgPI.Text = "压降曲线";
             this.tbgPI.UseVisualStyleBackColor = true;
@@ -386,7 +386,7 @@
             // 
             // btnDraw
             // 
-            this.btnDraw.Location = new System.Drawing.Point(484, 16);
+            this.btnDraw.Location = new System.Drawing.Point(455, 16);
             this.btnDraw.Name = "btnDraw";
             this.btnDraw.Size = new System.Drawing.Size(154, 23);
             this.btnDraw.TabIndex = 24;
@@ -400,7 +400,7 @@
             this.chartPI.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartPI.Legends.Add(legend1);
-            this.chartPI.Location = new System.Drawing.Point(421, 65);
+            this.chartPI.Location = new System.Drawing.Point(435, 55);
             this.chartPI.Name = "chartPI";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -416,7 +416,7 @@
             this.tbgResult.Location = new System.Drawing.Point(4, 22);
             this.tbgResult.Name = "tbgResult";
             this.tbgResult.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgResult.Size = new System.Drawing.Size(882, 526);
+            this.tbgResult.Size = new System.Drawing.Size(872, 526);
             this.tbgResult.TabIndex = 2;
             this.tbgResult.Text = "分析结果";
             this.tbgResult.UseVisualStyleBackColor = true;
@@ -477,7 +477,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(890, 552);
+            this.ClientSize = new System.Drawing.Size(880, 552);
             this.Controls.Add(this.tbcAdjustProfile);
             this.Name = "FormAdjustProfile";
             this.Text = "调剖决策";
