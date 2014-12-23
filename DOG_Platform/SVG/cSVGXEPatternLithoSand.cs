@@ -99,7 +99,7 @@ namespace DOGPlatform.SVG
 
         //根据系统定义，形成pattern，存入ink的配置文件内。
 
-        public static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern,    string sBackColor, string sCircleColor, bool bSplitline)
+        public static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern, string sBackColor, string sCircleColor, bool hasSplitLine)
         {
             string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
             //  string filePath = Path.Combine(Application.StartupPath,"..", "pattern","patterns.svg");
@@ -110,13 +110,13 @@ namespace DOGPlatform.SVG
             {
                 // bool x=xroot.HasElements("defs");
                 XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, bSplitline));
+                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, hasSplitLine));
                 xDoc.Save(filePathInk);
                 MessageBox.Show("图案添加完成");
             }
         }
 
-        public static XElement lithoPatternDefsSand(string stockId, string sID, int iWidthUnit, int iHeightUnit,  string _sBackColor, string _cirleColor, bool bSplitLine)
+        public static XElement lithoPatternDefsSand(string stockId, string sID, int iWidthUnit, int iHeightUnit, string _sBackColor, string _cirleColor, bool hasSplitLine)
         {
             
             int numColumn = 0;
@@ -124,10 +124,7 @@ namespace DOGPlatform.SVG
             string sBackColor = _sBackColor;
             string cirleColor = _cirleColor;
 
-
             float size = 5.0F;
-            bool hasSplitLine = bSplitLine;
-
 
             //首先确定格式 单元格数和是否显示 分割线  
             List<XElement> listPatternMark = new List<XElement>();
@@ -145,7 +142,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 2;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 2;
                 XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
                 listPatternMark.Add(pattern1);
@@ -156,7 +152,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 2;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 1;
                 XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
                 listPatternMark.Add(pattern1);
@@ -167,7 +162,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 2;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 0.5F;
                 XElement pattern1 = patternElementSiltSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
                 listPatternMark.Add(pattern1);
@@ -193,7 +187,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 2;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 1.0F;
                 XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
                 listPatternMark.Add(pattern1);
@@ -209,7 +202,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 2;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 3;
                 XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
                 listPatternMark.Add(pattern1);
@@ -224,7 +216,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 2;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 3;
                 XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
                 listPatternMark.Add(pattern1);
@@ -239,7 +230,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 2;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 3;
                 XElement pattern1 = patternElementSand(iWidthUnit, iHeightUnit, 0, 0, size, cirleColor);
                 listPatternMark.Add(pattern1);
@@ -254,7 +244,6 @@ namespace DOGPlatform.SVG
             {
                 numColumn = 3;
                 numRow = 2;
-                hasSplitLine = true;
                 size = 2;
                 XElement pattern1 = patternElemenTortoise(iWidthUnit, iHeightUnit, 0, 0);
                 listPatternMark.Add(pattern1);
@@ -282,7 +271,6 @@ namespace DOGPlatform.SVG
             lithoPattern.SetAttributeValue("y", "0");
             lithoPattern.SetAttributeValue("width", (iWidthUnit * numColumn).ToString());
             lithoPattern.SetAttributeValue("height", (iHeightUnit * numRow).ToString());
-
 
             lithoPattern.Add(backRect(sBackColor, iWidthUnit, iHeightUnit, numColumn, numRow));
 

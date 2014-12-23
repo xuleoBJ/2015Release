@@ -60,8 +60,6 @@ namespace DOGPlatform
                                     }
                                 }
                             }
-
-
                             ltStrWrited.Add(iWellType.ToString());
                             sw.WriteLine(string.Join("\t", ltStrWrited.ToArray()));
                         }

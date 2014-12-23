@@ -91,14 +91,9 @@
             this.lbxJHSeclected = new System.Windows.Forms.ListBox();
             this.btnAddJSJLTrack = new System.Windows.Forms.Button();
             this.tabPageSetting = new System.Windows.Forms.TabPage();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.nUMScaleVertical = new System.Windows.Forms.NumericUpDown();
-            this.label63 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
             this.label67 = new System.Windows.Forms.Label();
-            this.nUDPerforateTrack = new System.Windows.Forms.NumericUpDown();
             this.label48 = new System.Windows.Forms.Label();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.tbgLayerColorSetting = new System.Windows.Forms.TabPage();
@@ -160,17 +155,18 @@
             this.nUDLayerTrackWidth = new System.Windows.Forms.NumericUpDown();
             this.label45 = new System.Windows.Forms.Label();
             this.cbxFillLayer = new System.Windows.Forms.CheckBox();
+            this.btnView = new System.Windows.Forms.Button();
+            this.trackBarWellDistance = new System.Windows.Forms.TrackBar();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.nUDElevationRulerBottom = new System.Windows.Forms.NumericUpDown();
             this.nUDElevationRulerTop = new System.Windows.Forms.NumericUpDown();
-            this.nUDElevationFontSize = new System.Windows.Forms.NumericUpDown();
-            this.label50 = new System.Windows.Forms.Label();
             this.nUDElevationScale = new System.Windows.Forms.NumericUpDown();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
+            this.lblRulerBase = new System.Windows.Forms.Label();
+            this.nUDPageHeight = new System.Windows.Forms.NumericUpDown();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -185,11 +181,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).BeginInit();
             this.tabPageSetting.SuspendLayout();
-            this.groupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUMScaleVertical)).BeginInit();
             this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPerforateTrack)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).BeginInit();
             this.tbgLayerColorSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayerColorSetting)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -219,11 +212,12 @@
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackFontSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).BeginInit();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerBottom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationFontSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDElevationScale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlSection
@@ -241,6 +235,7 @@
             // 
             // tabPageData
             // 
+            this.tabPageData.Controls.Add(this.btnView);
             this.tabPageData.Controls.Add(this.btnAddProfile);
             this.tabPageData.Controls.Add(this.groupBox1);
             this.tabPageData.Controls.Add(this.btnAddPeforation);
@@ -323,7 +318,7 @@
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(328, 404);
+            this.checkBox3.Location = new System.Drawing.Point(328, 472);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(48, 16);
             this.checkBox3.TabIndex = 3;
@@ -332,7 +327,7 @@
             // 
             // tbxTitle
             // 
-            this.tbxTitle.Location = new System.Drawing.Point(381, 401);
+            this.tbxTitle.Location = new System.Drawing.Point(381, 469);
             this.tbxTitle.Name = "tbxTitle";
             this.tbxTitle.Size = new System.Drawing.Size(237, 21);
             this.tbxTitle.TabIndex = 0;
@@ -340,7 +335,7 @@
             // cbxConnectSameLayerName
             // 
             this.cbxConnectSameLayerName.AutoSize = true;
-            this.cbxConnectSameLayerName.Location = new System.Drawing.Point(328, 369);
+            this.cbxConnectSameLayerName.Location = new System.Drawing.Point(328, 437);
             this.cbxConnectSameLayerName.Name = "cbxConnectSameLayerName";
             this.cbxConnectSameLayerName.Size = new System.Drawing.Size(108, 16);
             this.cbxConnectSameLayerName.TabIndex = 21;
@@ -352,7 +347,7 @@
             this.groupBox7.Controls.Add(this.rdbFlattedByBaseDepth);
             this.groupBox7.Controls.Add(this.rdbFlattedByTopDepth);
             this.groupBox7.Controls.Add(this.rdbFlattedByDepth);
-            this.groupBox7.Location = new System.Drawing.Point(326, 293);
+            this.groupBox7.Location = new System.Drawing.Point(326, 361);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
@@ -398,13 +393,14 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.trackBarWellDistance);
             this.groupBox6.Controls.Add(this.rdbPlaceBYWellDistance);
             this.groupBox6.Controls.Add(this.rdbPlaceByEqual);
             this.groupBox6.Location = new System.Drawing.Point(326, 230);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox6.Size = new System.Drawing.Size(292, 53);
+            this.groupBox6.Size = new System.Drawing.Size(292, 110);
             this.groupBox6.TabIndex = 53;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "井排列方式";
@@ -615,7 +611,7 @@
             // 
             // btnMakeSection
             // 
-            this.btnMakeSection.Location = new System.Drawing.Point(326, 465);
+            this.btnMakeSection.Location = new System.Drawing.Point(495, 512);
             this.btnMakeSection.Name = "btnMakeSection";
             this.btnMakeSection.Size = new System.Drawing.Size(123, 34);
             this.btnMakeSection.TabIndex = 14;
@@ -965,7 +961,7 @@
             // 
             // tabPageSetting
             // 
-            this.tabPageSetting.Controls.Add(this.groupBox15);
+            this.tabPageSetting.Controls.Add(this.groupBox8);
             this.tabPageSetting.Controls.Add(this.groupBox12);
             this.tabPageSetting.Controls.Add(this.btnSaveSetting);
             this.tabPageSetting.Location = new System.Drawing.Point(4, 22);
@@ -975,101 +971,44 @@
             this.tabPageSetting.Text = "页面设置";
             this.tabPageSetting.UseVisualStyleBackColor = true;
             // 
-            // groupBox15
+            // groupBox12
             // 
-            this.groupBox15.Controls.Add(this.label43);
-            this.groupBox15.Controls.Add(this.nUMScaleVertical);
-            this.groupBox15.Controls.Add(this.label63);
-            this.groupBox15.Location = new System.Drawing.Point(20, 23);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(235, 77);
-            this.groupBox15.TabIndex = 46;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "图型设置";
+            this.groupBox12.Controls.Add(this.nUDPageHeight);
+            this.groupBox12.Controls.Add(this.nUDPageWidth);
+            this.groupBox12.Controls.Add(this.label67);
+            this.groupBox12.Controls.Add(this.label48);
+            this.groupBox12.Location = new System.Drawing.Point(20, 33);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Size = new System.Drawing.Size(282, 68);
+            this.groupBox12.TabIndex = 29;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "页面大小设置";
             // 
-            // label43
+            // nUDPageWidth
             // 
-            this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(13, 25);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(41, 12);
-            this.label43.TabIndex = 54;
-            this.label43.Text = "比例尺";
-            // 
-            // nUMScaleVertical
-            // 
-            this.nUMScaleVertical.AllowDrop = true;
-            this.nUMScaleVertical.Increment = new decimal(new int[] {
-            50,
+            this.nUDPageWidth.AllowDrop = true;
+            this.nUDPageWidth.Location = new System.Drawing.Point(66, 23);
+            this.nUDPageWidth.Maximum = new decimal(new int[] {
+            20000,
             0,
             0,
             0});
-            this.nUMScaleVertical.Location = new System.Drawing.Point(83, 20);
-            this.nUMScaleVertical.Maximum = new decimal(new int[] {
+            this.nUDPageWidth.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nUDPageWidth.Name = "nUDPageWidth";
+            this.nUDPageWidth.Size = new System.Drawing.Size(50, 21);
+            this.nUDPageWidth.TabIndex = 38;
+            this.nUDPageWidth.Value = new decimal(new int[] {
             2000,
             0,
             0,
             0});
-            this.nUMScaleVertical.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nUMScaleVertical.Name = "nUMScaleVertical";
-            this.nUMScaleVertical.Size = new System.Drawing.Size(50, 21);
-            this.nUMScaleVertical.TabIndex = 36;
-            this.nUMScaleVertical.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(63, 23);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(17, 12);
-            this.label63.TabIndex = 35;
-            this.label63.Text = "1:";
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.numericUpDown2);
-            this.groupBox12.Controls.Add(this.label67);
-            this.groupBox12.Controls.Add(this.nUDPerforateTrack);
-            this.groupBox12.Controls.Add(this.label48);
-            this.groupBox12.Location = new System.Drawing.Point(20, 168);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Size = new System.Drawing.Size(311, 52);
-            this.groupBox12.TabIndex = 29;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "设置井距";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.AllowDrop = true;
-            this.numericUpDown2.Location = new System.Drawing.Point(66, 23);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(50, 21);
-            this.numericUpDown2.TabIndex = 38;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
+            this.nUDPageWidth.ValueChanged += new System.EventHandler(this.nUDPageWidth_ValueChanged);
             // 
             // label67
             // 
@@ -1078,44 +1017,16 @@
             this.label67.Name = "label67";
             this.label67.Size = new System.Drawing.Size(41, 12);
             this.label67.TabIndex = 37;
-            this.label67.Text = "井距值";
-            // 
-            // nUDPerforateTrack
-            // 
-            this.nUDPerforateTrack.AllowDrop = true;
-            this.nUDPerforateTrack.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.nUDPerforateTrack.Location = new System.Drawing.Point(214, 23);
-            this.nUDPerforateTrack.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nUDPerforateTrack.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.nUDPerforateTrack.Name = "nUDPerforateTrack";
-            this.nUDPerforateTrack.Size = new System.Drawing.Size(34, 21);
-            this.nUDPerforateTrack.TabIndex = 28;
-            this.nUDPerforateTrack.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
+            this.label67.Text = "页面宽";
             // 
             // label48
             // 
             this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(131, 26);
+            this.label48.Location = new System.Drawing.Point(133, 26);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(77, 12);
+            this.label48.Size = new System.Drawing.Size(41, 12);
             this.label48.TabIndex = 27;
-            this.label48.Text = "井距缩放倍数";
+            this.label48.Text = "页面高";
             // 
             // btnSaveSetting
             // 
@@ -1168,7 +1079,6 @@
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Controls.Add(this.groupBox14);
             this.tabPage1.Controls.Add(this.groupBox11);
-            this.tabPage1.Controls.Add(this.groupBox8);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -2029,24 +1939,42 @@
             this.cbxFillLayer.Text = "自动填充颜色";
             this.cbxFillLayer.UseVisualStyleBackColor = true;
             // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(319, 512);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(123, 34);
+            this.btnView.TabIndex = 57;
+            this.btnView.Text = "预览";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
+            // trackBarWellDistance
+            // 
+            this.trackBarWellDistance.LargeChange = 1;
+            this.trackBarWellDistance.Location = new System.Drawing.Point(22, 57);
+            this.trackBarWellDistance.Minimum = 1;
+            this.trackBarWellDistance.Name = "trackBarWellDistance";
+            this.trackBarWellDistance.Size = new System.Drawing.Size(254, 45);
+            this.trackBarWellDistance.TabIndex = 28;
+            this.trackBarWellDistance.Value = 1;
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.nUDElevationRulerBottom);
             this.groupBox8.Controls.Add(this.nUDElevationRulerTop);
-            this.groupBox8.Controls.Add(this.nUDElevationFontSize);
-            this.groupBox8.Controls.Add(this.label50);
             this.groupBox8.Controls.Add(this.nUDElevationScale);
             this.groupBox8.Controls.Add(this.label26);
             this.groupBox8.Controls.Add(this.label27);
             this.groupBox8.Controls.Add(this.label28);
             this.groupBox8.Controls.Add(this.label29);
-            this.groupBox8.Controls.Add(this.label30);
-            this.groupBox8.Location = new System.Drawing.Point(50, 49);
+            this.groupBox8.Controls.Add(this.lblRulerBase);
+            this.groupBox8.Location = new System.Drawing.Point(20, 142);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(453, 60);
-            this.groupBox8.TabIndex = 26;
+            this.groupBox8.Size = new System.Drawing.Size(327, 124);
+            this.groupBox8.TabIndex = 47;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "设置海拔尺";
             // 
@@ -2058,7 +1986,7 @@
             0,
             0,
             0});
-            this.nUDElevationRulerBottom.Location = new System.Drawing.Point(127, 31);
+            this.nUDElevationRulerBottom.Location = new System.Drawing.Point(73, 66);
             this.nUDElevationRulerBottom.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2073,10 +2001,11 @@
             this.nUDElevationRulerBottom.Size = new System.Drawing.Size(57, 21);
             this.nUDElevationRulerBottom.TabIndex = 34;
             this.nUDElevationRulerBottom.Value = new decimal(new int[] {
-            1000,
+            3000,
             0,
             0,
             -2147483648});
+            this.nUDElevationRulerBottom.ValueChanged += new System.EventHandler(this.nUDElevationRulerBottom_ValueChanged);
             // 
             // nUDElevationRulerTop
             // 
@@ -2086,7 +2015,7 @@
             0,
             0,
             0});
-            this.nUDElevationRulerTop.Location = new System.Drawing.Point(32, 30);
+            this.nUDElevationRulerTop.Location = new System.Drawing.Point(73, 33);
             this.nUDElevationRulerTop.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2100,43 +2029,7 @@
             this.nUDElevationRulerTop.Name = "nUDElevationRulerTop";
             this.nUDElevationRulerTop.Size = new System.Drawing.Size(58, 21);
             this.nUDElevationRulerTop.TabIndex = 33;
-            this.nUDElevationRulerTop.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            // 
-            // nUDElevationFontSize
-            // 
-            this.nUDElevationFontSize.AllowDrop = true;
-            this.nUDElevationFontSize.Location = new System.Drawing.Point(341, 30);
-            this.nUDElevationFontSize.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nUDElevationFontSize.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nUDElevationFontSize.Name = "nUDElevationFontSize";
-            this.nUDElevationFontSize.Size = new System.Drawing.Size(50, 21);
-            this.nUDElevationFontSize.TabIndex = 32;
-            this.nUDElevationFontSize.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(308, 34);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(29, 12);
-            this.label50.TabIndex = 31;
-            this.label50.Text = "字号";
+            this.nUDElevationRulerTop.ValueChanged += new System.EventHandler(this.nUDElevationRulerTop_ValueChanged);
             // 
             // nUDElevationScale
             // 
@@ -2146,7 +2039,7 @@
             0,
             0,
             0});
-            this.nUDElevationScale.Location = new System.Drawing.Point(247, 30);
+            this.nUDElevationScale.Location = new System.Drawing.Point(232, 33);
             this.nUDElevationScale.Minimum = new decimal(new int[] {
             10,
             0,
@@ -2164,16 +2057,16 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(216, 35);
+            this.label26.Location = new System.Drawing.Point(175, 39);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(29, 12);
+            this.label26.Size = new System.Drawing.Size(41, 12);
             this.label26.TabIndex = 17;
-            this.label26.Text = "刻度";
+            this.label26.Text = "主刻度";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(187, 34);
+            this.label27.Location = new System.Drawing.Point(133, 69);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(17, 12);
             this.label27.TabIndex = 14;
@@ -2182,7 +2075,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(89, 33);
+            this.label28.Location = new System.Drawing.Point(137, 42);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(17, 12);
             this.label28.TabIndex = 14;
@@ -2193,18 +2086,42 @@
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(14, 33);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(17, 12);
+            this.label29.Size = new System.Drawing.Size(53, 12);
             this.label29.TabIndex = 8;
-            this.label29.Text = "上";
+            this.label29.Text = "顶部尺度";
             // 
-            // label30
+            // lblRulerBase
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(106, 33);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(17, 12);
-            this.label30.TabIndex = 8;
-            this.label30.Text = "下";
+            this.lblRulerBase.AutoSize = true;
+            this.lblRulerBase.Location = new System.Drawing.Point(12, 68);
+            this.lblRulerBase.Name = "lblRulerBase";
+            this.lblRulerBase.Size = new System.Drawing.Size(53, 12);
+            this.lblRulerBase.TabIndex = 8;
+            this.lblRulerBase.Text = "底部深度";
+            // 
+            // nUDPageHeight
+            // 
+            this.nUDPageHeight.AllowDrop = true;
+            this.nUDPageHeight.Location = new System.Drawing.Point(180, 23);
+            this.nUDPageHeight.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.Name = "nUDPageHeight";
+            this.nUDPageHeight.Size = new System.Drawing.Size(50, 21);
+            this.nUDPageHeight.TabIndex = 39;
+            this.nUDPageHeight.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.ValueChanged += new System.EventHandler(this.nUDPageHeight_ValueChanged);
             // 
             // FormWellSectionGeology
             // 
@@ -2238,13 +2155,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).EndInit();
             this.tabPageSetting.ResumeLayout(false);
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUMScaleVertical)).EndInit();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPerforateTrack)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).EndInit();
             this.tbgLayerColorSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayerColorSetting)).EndInit();
             this.tabPage1.ResumeLayout(false);
@@ -2281,12 +2194,13 @@
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackFontSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerBottom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerTop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationFontSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDElevationScale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2330,13 +2244,9 @@
         private System.Windows.Forms.Button btnAddLayerDepth;
         private System.Windows.Forms.Button btnAddJSJLTrack;
         private System.Windows.Forms.TabPage tabPageSetting;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.NumericUpDown nUMScaleVertical;
-        private System.Windows.Forms.Label label63;
         private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nUDPageWidth;
         private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.NumericUpDown nUDPerforateTrack;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Button btnSaveSetting;
         private System.Windows.Forms.Label label2;
@@ -2349,7 +2259,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.RadioButton rdbFlattedByTopDepth;
         private System.Windows.Forms.RadioButton rdbFlattedByDepth;
@@ -2384,17 +2293,6 @@
         private System.Windows.Forms.NumericUpDown nUDLayerTrackWidth;
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.CheckBox cbxFillLayer;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.NumericUpDown nUDElevationRulerBottom;
-        private System.Windows.Forms.NumericUpDown nUDElevationRulerTop;
-        private System.Windows.Forms.NumericUpDown nUDElevationFontSize;
-        private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.NumericUpDown nUDElevationScale;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
@@ -2436,5 +2334,17 @@
         private System.Windows.Forms.RadioButton rdbRight;
         private System.Windows.Forms.RadioButton rdbLeft;
         private System.Windows.Forms.Button btnGenerateDataByBaseDepth;
+        private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.TrackBar trackBarWellDistance;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.NumericUpDown nUDElevationRulerBottom;
+        private System.Windows.Forms.NumericUpDown nUDElevationRulerTop;
+        private System.Windows.Forms.NumericUpDown nUDElevationScale;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label lblRulerBase;
+        private System.Windows.Forms.NumericUpDown nUDPageHeight;
     }
 }

@@ -26,6 +26,11 @@ namespace DOGPlatform
         string fileNameSectionJSJL = "jsjl.txt";
         string fileNameSectionPerforation = "inputPerforation.txt";
 
+        int ElevationRulerTop = 0;
+        int ElevationRulerBase = -5000;
+        int PageWidth = 3000;
+        int PageHeight = 5000;
+
         public FormWellSectionPath()
         {
             InitializeComponent();
@@ -39,10 +44,6 @@ namespace DOGPlatform
             cPublicMethodForm.inialComboBox(cbbBottomXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbLeftLogName, cProjectData.ltStrLogSeriers);
             cPublicMethodForm.inialComboBox(cbbRightLogName, cProjectData.ltStrLogSeriers);
-            List<string> ltStrWellArrageItem = new List<string>();
-            ltStrWellArrageItem.Add("等距排列");
-            ltStrWellArrageItem.Add("按实际间距");
-            cPublicMethodForm.inialComboBox(cbbWellArrangeMode, ltStrWellArrageItem);
         }
         private void btn_deleteWell_Click(object sender, EventArgs e)
         {
@@ -343,40 +344,38 @@ namespace DOGPlatform
                 else filenameSVGMap = "斜井剖面_" + string.Join("-", ltStrSelectedJH.GetRange(0, 5)) + ".svg";
             }
             else filenameSVGMap = this.tbxTitle.Text + ".svg";
-            generateSectionGraph(filenameSVGMap);
+            generateSectionGraph(filenameSVGMap,false);
         }
 
-         void generateSectionGraph( string filenameSVGMap)
+         void generateSectionGraph( string filenameSVGMap,bool bView)
         {
             //继续初始化值
+            List<Point> PListWellPositon = new List<Point>();
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 cWellSectionSVG itemWell = listWellsSection[i];
                 itemWell.fDepthFlatted = itemWell.fKB;
-                if (i == 0)
+                if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100 + 200 * i * trackBarWellDistance.Value, 0));
+                if (rdbPlaceBYWellDistance.Checked == true)
                 {
-                    itemWell.fXview = 100F;
-                }
-                else
-                {
-                        Point pointConvert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i - 1]);
-                        Point pointWell0Convert2View = cCordinationTransform.getPointViewByJH(ltStrSelectedJH[i]);
-                        int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(pointConvert2View, pointWell0Convert2View));
-                        itemWell.fXview = listWellsSection[i - 1].fXview + iDistance;
+                    if (i == 0) PListWellPositon.Add(new Point(100, 0));
+                    else
+                    {
+                        int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX, listWellsSection[i].dbY, listWellsSection[0].dbX, listWellsSection[0].dbY));
+                        PListWellPositon.Add(new Point(iDistance * trackBarWellDistance.Value, 0));
+                    }
                 }
             }
 
-            cSVGDocSection cSection = new cSVGDocSection(2000, 5000, 0, 0);
+            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
             cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图", 100, 100);
 
             XmlElement returnElemment;
 
             //增加海拔尺
-            int upDepthElevationRuler = 3000;
-            int downDepthElevationRuler = -10000;
             int iScaleElevationRuler = 50;
             cSVGSectionTrackElevationRuler cElevationRuler = new cSVGSectionTrackElevationRuler();
-            returnElemment = cElevationRuler.gElevationRuler(downDepthElevationRuler, upDepthElevationRuler, iScaleElevationRuler);
+            returnElemment = cElevationRuler.gElevationRuler(ElevationRulerTop, ElevationRulerBase, iScaleElevationRuler);
             cSection.addgElement(returnElemment, 0);
  
             for (int i = 0; i < listWellsSection.Count; i++)
@@ -387,7 +386,7 @@ namespace DOGPlatform
                 float fTopShowed = listWellsSection[i].fShowedDepthTop;
                 float fBaseShowed = listWellsSection[i].fShowedDepthBase;
                 float fDepthFlatted = listWellsSection[i].fDepthFlatted;
-                int iCurrerntWellHorizonPotion = Convert.ToInt16(listWellsSection[i].fXview);
+                int iCurrerntWellHorizonPotion = PListWellPositon[i].X;
                 cSVGSectionWell currentWell = new cSVGSectionWell(sJH);
                 if (currentWellPathList.Count <= 2)
                     returnElemment = currentWell.gWellCone(sJH, fTopShowed, fBaseShowed, fDepthFlatted, 10, 5);
@@ -502,8 +501,11 @@ namespace DOGPlatform
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
             cSection.makeSVGfile(fileSVG);
-            FormMain.filePathWebSVG = fileSVG;
-            this.Close(); 
+            if (bView == false)
+            {
+                FormMain.filePathWebSVG = fileSVG;
+                this.Close();
+            }
 
         }
 
@@ -925,6 +927,46 @@ namespace DOGPlatform
             generateSectionDataDirectory();
 
         }
+
+        private void nUDPageWidth_ValueChanged(object sender, EventArgs e)
+        {
+            PageWidth = Convert.ToInt16(nUDPageWidth.Value);
+        }
+
+        private void nUDPageHeight_ValueChanged(object sender, EventArgs e)
+        {
+            PageHeight = Convert.ToInt16(nUDPageHeight.Value);
+        }
+
+        private void numericUpDown5_ValueChanged(object sender, EventArgs e)
+        {
+            ElevationRulerTop = Convert.ToInt16(nUDElevationRulerTop.Value);
+        }
+
+        private void numericUpDown4_ValueChanged(object sender, EventArgs e)
+        {
+            ElevationRulerBase = Convert.ToInt16(nUDElevationRulerBottom.Value);
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string tempSVGViewfilepath = Path.Combine(cProjectManager.dirPathTemp, "#view.svg");
+            generateSectionGraph(tempSVGViewfilepath, true); 
+            FormWebNavigation formSVGView = new FormWebNavigation(tempSVGViewfilepath);
+            formSVGView.ShowDialog();
+        }
+
+        private void nUDElevationRulerTop_ValueChanged_1(object sender, EventArgs e)
+        {
+            ElevationRulerTop = Convert.ToInt16(nUDElevationRulerTop.Value);
+        }
+
+        private void nUDElevationRulerBottom_ValueChanged_1(object sender, EventArgs e)
+        {
+            ElevationRulerBase = Convert.ToInt16(nUDElevationRulerBottom.Value);
+        }
+
+       
   
 
        

@@ -39,6 +39,16 @@ namespace DOGPlatform
                 System.Environment.Exit(0);
             }
         }
+
+        void enableMenu() 
+        {
+            tsmiData.Enabled = true;
+            tsmiGeologyLayer.Enabled = true;
+            tsmiGeologySection.Enabled = true;
+            tsmiWellGroup.Enabled = true;
+        
+        }
+
         private void intializeMyForm()
         {
             tvProjectData.ImageList = this.imageListMain;
@@ -106,35 +116,38 @@ namespace DOGPlatform
         }
 
         #region 工程管理
-        void createNewProject()
+        bool createNewProject()
         {
+            bool bCreated = false;
             if (cProjectManager.creatProject())
             {
                 cProjectData.clearProjectData();
                 showInputStaticGeologyTabpage();
                 tbcMain.SelectedTab = tbgWellHead;
                 this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirPathUserData;
+                bCreated = true;
             }
+            return bCreated;
         }
 
         private void tsBtnNewProject_Click(object sender, EventArgs e)
         {
-            createNewProject();
+            if (createNewProject()) { enableMenu(); updateMainForm(); }
         }
 
         private void tsBtnOpenProject_Click(object sender, EventArgs e)
         {
-            openProject();
+            if (openProject()) enableMenu(); 
         }
        
         private void tsmiNewProject_Click(object sender, EventArgs e)
         {
-            createNewProject();
-            updateMainForm();
+            if (createNewProject()) { enableMenu(); updateMainForm(); }
         }
 
-        void openProject()
+        bool openProject()
         {
+            bool opened = false;
              if (cProjectManager.loadProjectData())
             {
                 this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirProject;
@@ -144,11 +157,13 @@ namespace DOGPlatform
                 updateMainForm();
                 tscbbScale.Text = ((int)(1000 / cProjectData.dfMapScale)).ToString();
                 WellNavitationInvalidate();
-            } 
+                opened = true;
+            }
+             return opened;
         }
         private void tsmiOpenProject_Click(object sender, EventArgs e)
         {
-            openProject();
+            if (openProject()) enableMenu(); 
         }
         private void tsmSaveProject_Click(object sender, EventArgs e)
         {

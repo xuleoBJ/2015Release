@@ -223,7 +223,6 @@
             this.groupBox1.Controls.Add(this.nUDPatternSandHeight);
             this.groupBox1.Controls.Add(this.nUDPatternSandWidth);
             this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Controls.Add(this.cbxHasSplitLine);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.nUDSandRadius);
             this.groupBox1.Location = new System.Drawing.Point(8, 29);
@@ -354,12 +353,13 @@
             // cbxHasSplitLine
             // 
             this.cbxHasSplitLine.AutoSize = true;
-            this.cbxHasSplitLine.Location = new System.Drawing.Point(416, 76);
+            this.cbxHasSplitLine.Location = new System.Drawing.Point(636, 39);
             this.cbxHasSplitLine.Name = "cbxHasSplitLine";
             this.cbxHasSplitLine.Size = new System.Drawing.Size(84, 16);
             this.cbxHasSplitLine.TabIndex = 51;
             this.cbxHasSplitLine.Text = "岩性分割线";
             this.cbxHasSplitLine.UseVisualStyleBackColor = true;
+            this.cbxHasSplitLine.CheckedChanged += new System.EventHandler(this.cbxHasSplitLine_CheckedChanged);
             // 
             // label27
             // 
@@ -1492,7 +1492,7 @@
             this.btnAdd2Ink.Name = "btnAdd2Ink";
             this.btnAdd2Ink.Size = new System.Drawing.Size(122, 30);
             this.btnAdd2Ink.TabIndex = 5;
-            this.btnAdd2Ink.Text = "配置";
+            this.btnAdd2Ink.Text = "生成配置";
             this.btnAdd2Ink.UseVisualStyleBackColor = true;
             this.btnAdd2Ink.Click += new System.EventHandler(this.btnAdd2Ink_Click);
             // 
@@ -1514,6 +1514,7 @@
             this.Controls.Add(this.btnAdd2Ink);
             this.Controls.Add(this.webBrowserPatternView);
             this.Controls.Add(this.tbcPattern);
+            this.Controls.Add(this.cbxHasSplitLine);
             this.Name = "FormPatternElement";
             this.Text = "图元配置";
             this.tbcPattern.ResumeLayout(false);

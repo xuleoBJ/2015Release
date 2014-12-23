@@ -22,7 +22,7 @@ namespace DOGPlatform.SVG
             dictionaryPatternGravel.Add("凝灰质角砾岩", 513);
         }
 
-        public static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern, string sBackColor)
+        public static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern, string sBackColor, bool hasSplitLine)
         {
 
             string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
@@ -34,19 +34,17 @@ namespace DOGPlatform.SVG
             {
                 // bool x=xroot.HasElements("defs");
                 XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsGravel(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor));
+                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsGravel(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, hasSplitLine));
                 xDoc.Save(filePath);
                 MessageBox.Show("图案添加完成");
             }
         }
-           public  static XElement lithoPatternDefsGravel(string stockId, string sID, int iWidthUnit, int iHeightUnit, string backColor)
+        public static XElement lithoPatternDefsGravel(string stockId, string sID, int iWidthUnit, int iHeightUnit, string backColor, bool hasSplitLine)
         {
             int numColumn = 0;
             int numRow = 0;
             string fillColor = backColor;
             string strokeColor = backColor;
-
-            bool hasSplitLine = true;
 
             //首先确定格式 单元格数和是否显示 分割线  
             List<XElement> listPatternMark = new List<XElement>();

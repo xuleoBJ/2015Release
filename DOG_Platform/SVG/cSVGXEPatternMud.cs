@@ -21,7 +21,7 @@ namespace DOGPlatform.SVG
         }
 
         //根据用户设置，形成pattern，存入ink的配置文件内。
-        public static void addDef2Ink(string sLithoName, string sURL, int iWidthPattern, int iHeightPattern, string sBackColor )
+        public static void addDef2Ink(string sLithoName, string sURL, int iWidthPattern, int iHeightPattern, string sBackColor, bool hasSplitLine)
         {
             string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
             //  string filePath = Path.Combine(Application.StartupPath,"..", "pattern","patterns.svg");
@@ -32,13 +32,13 @@ namespace DOGPlatform.SVG
             {
                 // bool x=xroot.HasElements("defs");
                 XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsMud(sLithoName, sURL, iWidthPattern, iHeightPattern, sBackColor));
+                if (xdefs != null) xdefs.AddFirst(lithoPatternDefsMud(sLithoName, sURL, iWidthPattern, iHeightPattern, sBackColor, hasSplitLine));
                 xDoc.Save(filePathInk);
                 MessageBox.Show("图案添加完成");
             }
         }
 
-        public static XElement lithoPatternDefsMud(string stockId, string sID, int iWidthUnit, int iHeightUnit, string backColor)
+        public static XElement lithoPatternDefsMud(string stockId, string sID, int iWidthUnit, int iHeightUnit, string backColor, bool hasSplitLine)
         {
 
             int numColumn = 0;
@@ -121,7 +121,7 @@ namespace DOGPlatform.SVG
           
             string fillColor = backColor;
             string strokeColor = backColor;
-            bool hasSplitLine = true;
+            
             XNamespace xn = "http://www.w3.org/2000/svg";
             XNamespace inkscape = "http://www.inkscape.org/namespaces/inkscape";
             XElement lithoPattern = new XElement(xn + "pattern");

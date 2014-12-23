@@ -22,6 +22,7 @@ namespace DOGPlatform
 
         string sLithoName = "粗砂岩";
         string sID = "101";
+        bool hasSplit = false;
 
         int numfilePathTemp = 0;//生成预览图的编号
 
@@ -38,7 +39,7 @@ namespace DOGPlatform
             int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
             string sCircleColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
-           return cSVGXEPatternLithoSand.lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, true);
+           return cSVGXEPatternLithoSand.lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, hasSplit);
         }
 
 
@@ -47,7 +48,7 @@ namespace DOGPlatform
              int iWidthPattern = Convert.ToInt16(this.nUDPatternMudWidth.Value);
              int iHeightPattern = Convert.ToInt16(this.nUDPatternMudHeight.Value);
              string sBackColor = cPublicMethodBase.getRGB(this.cbbPatternMudBackColor.BackColor);
-             return cSVGXEPatternMud.lithoPatternDefsMud(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+             return cSVGXEPatternMud.lithoPatternDefsMud(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, hasSplit);
          }
 
          
@@ -80,7 +81,7 @@ namespace DOGPlatform
              int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
              string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
              string sCircleColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
-             cSVGXEPatternLithoSand.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, true);
+             cSVGXEPatternLithoSand.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, hasSplit);
          }
 
 
@@ -89,7 +90,7 @@ namespace DOGPlatform
              int iWidthPattern = Convert.ToInt16(this.nUDPatternMudWidth.Value);
              int iHeightPattern = Convert.ToInt16(this.nUDPatternMudHeight.Value);
              string sBackColor = cPublicMethodBase.getRGB(this.cbbPatternMudBackColor.BackColor);
-             cSVGXEPatternMud.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+             cSVGXEPatternMud.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor,hasSplit);
          }
 
          void addDefGravelStone(string sLithoName, string sID)
@@ -97,7 +98,7 @@ namespace DOGPlatform
              int iWidthPattern = Convert.ToInt16(nUDPatternGravelWidth.Value);
              int iHeightPattern = Convert.ToInt16(nUDPatternGravelHeight.Value);
              string sBackColor = cPublicMethodBase.getRGB(this.cbbGravelBackcolor.BackColor);
-             cSVGXEPatternGravel.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+             cSVGXEPatternGravel.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor,hasSplit);
          }
         private void btnLimestone_Click(object sender, EventArgs e)
         {
@@ -284,7 +285,7 @@ namespace DOGPlatform
             int iWidthPattern = Convert.ToInt16(nUDPatternGravelWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternGravelHeight.Value);
             string sBackColor = cPublicMethodBase.getRGB(this.cbbGravelBackcolor.BackColor);
-            return cSVGXEPatternGravel.lithoPatternDefsGravel(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+            return cSVGXEPatternGravel.lithoPatternDefsGravel(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor,hasSplit);
         }
 
         private void btnCuGravel_Click(object sender, EventArgs e)
@@ -500,6 +501,12 @@ namespace DOGPlatform
             if (tbcPattern.SelectedTab == tbgPatternMud) addDef4MudStone(sLithoName, sID);
             if (tbcPattern.SelectedTab == tbgPatternShale) addDefShaleStone(sLithoName, sID);
             if (tbcPattern.SelectedTab == tbgPatternTSY)  addDef4Limestone(sLithoName, sID);
+        }
+
+        private void cbxHasSplitLine_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbxHasSplitLine.Checked == true) hasSplit = true;
+            else hasSplit = false;
         }
 
           

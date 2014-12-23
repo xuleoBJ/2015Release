@@ -157,11 +157,12 @@ namespace DOGPlatform
             }
         }
 
-
-        void generateSectionGraph(string filenameSVGMap)
+        int PageWidth = 3000;
+        int PageHeight = 5000;
+        void generateSectionGraph(string filenameSVGMap,bool bView)
         {
 
-            cSVGDocSection cSection = new cSVGDocSection(4000, 4000, 0, 0);
+            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
             cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "井组分析图", 100, 100);
 
             XmlElement returnElemment;
@@ -267,21 +268,24 @@ namespace DOGPlatform
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
             cSection.makeSVGfile(fileSVG);
-            FormMain.filePathWebSVG = fileSVG;
-            this.Close();
-
+            if (bView == false)
+            {
+                FormMain.filePathWebSVG = fileSVG;
+                this.Close();
+            }
         }
      
         private void btnMakeSection_Click(object sender, EventArgs e)
         {
-            string filenameSVGMap;
+            string _filenameSVG;
             if (this.tbxTitle.Text == "")
             {
-                if (ltStrSelectedJH.Count < 6) filenameSVGMap ="井组分析_"+ string.Join("-", ltStrSelectedJH.ToArray()) + ".svg";
-                else filenameSVGMap = "井组分析_" + string.Join("-", ltStrSelectedJH.GetRange(0, 5)) + ".svg";
+                if (ltStrSelectedJH.Count < 6) _filenameSVG ="井组分析_"+ string.Join("-", ltStrSelectedJH.ToArray()) + ".svg";
+                else _filenameSVG = "井组分析_" + string.Join("-", ltStrSelectedJH.GetRange(0, 5)) + ".svg";
             }
-            else filenameSVGMap = this.tbxTitle.Text + ".svg";
-            generateSectionGraph(filenameSVGMap);
+            else _filenameSVG = this.tbxTitle.Text + ".svg";
+            generateSectionGraph(_filenameSVG,false);
+           
         }
 
         private void btnAddJSJLTrack_Click(object sender, EventArgs e)
@@ -494,6 +498,24 @@ namespace DOGPlatform
                 float dfscale = float.Parse(cbbSacle.SelectedItem.ToString());
                 cProjectData.dfMapScale = 1000 / dfscale;
             }
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string tempSVGViewfilepath = Path.Combine(cProjectManager.dirPathTemp, "#view.svg");
+            generateSectionGraph(tempSVGViewfilepath,true);
+            FormWebNavigation formSVGView = new FormWebNavigation(tempSVGViewfilepath);
+            formSVGView.ShowDialog();
+        }
+
+        private void nUDPageWidth_ValueChanged(object sender, EventArgs e)
+        {
+            PageWidth = Convert.ToInt16(nUDPageWidth.Value);
+        }
+
+        private void nUDPageHeight_ValueChanged(object sender, EventArgs e)
+        {
+            PageHeight = Convert.ToInt16(nUDPageHeight.Value);
         }
 
       

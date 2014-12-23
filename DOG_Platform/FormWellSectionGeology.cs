@@ -204,7 +204,12 @@ namespace DOGPlatform
             }
         }
 
-        void generateSectionGraph(int iTypeFlatted, string filenameSVGMap)
+
+        int ElevationRulerTop = 0;
+        int ElevationRulerBase = -5000;
+        int PageWidth = 3000;
+        int PageHeight = 5000;
+        void generateSectionGraph(int iTypeFlatted, string filenameSVGMap,bool bView)
         {
             //xml存数据不合适 因为会有大量的井数据，但是可以存个样式，样式搭配数据，样式里可以有道宽，这样做到数据和样式的分离，成图解析器解析样式就OK。
 
@@ -219,30 +224,28 @@ namespace DOGPlatform
                 if (iTypeFlatted == (int)typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
              
           
-                if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+300*i,0));
+                if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+200*i*trackBarWellDistance.Value,0));
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {
                     if (i == 0) PListWellPositon.Add(new Point(100, 0));
                     else
                     {
                         int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX,listWellsSection[i].dbY, listWellsSection[0].dbX,listWellsSection[0].dbY));
-                        PListWellPositon.Add(new Point(iDistance, 0));
+                        PListWellPositon.Add(new Point(iDistance * trackBarWellDistance.Value, 0));
                     }
                 }
             }
 
-            cSVGDocSection cSection = new cSVGDocSection(5000, 5000,0,0);
+            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageWidth,0,0);
             cSection.addSVGTitle(string.Join("-",listWellsSection.Select(p=>p.sJH).ToList())+ "剖面图",100, 100);
             XmlElement returnElemment;
 
             //海拔深度时 增加海拔尺，拉平不要海拔尺
             if (iTypeFlatted == (int)typeFlatted.海拔深度)
             {
-                int upDepthElevationRuler = 0;
-                int downDepthElevationRuler = -5000;
                 int iScaleElevationRuler = 50;
                 cSVGSectionTrackElevationRuler cElevationRuler = new cSVGSectionTrackElevationRuler();
-                returnElemment = cElevationRuler.gElevationRuler(downDepthElevationRuler, upDepthElevationRuler, iScaleElevationRuler);
+                returnElemment = cElevationRuler.gElevationRuler(ElevationRulerTop, ElevationRulerBase, iScaleElevationRuler);
                 cSection.addgElement(returnElemment, 0);
             }
 
@@ -362,8 +365,11 @@ namespace DOGPlatform
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
             cSection.makeSVGfile(fileSVG);
-            FormMain.filePathWebSVG = fileSVG;
-            this.Close(); 
+            if (bView == false)
+            {
+                FormMain.filePathWebSVG = fileSVG;
+                this.Close();
+            }
 
         }
 
@@ -381,9 +387,9 @@ namespace DOGPlatform
             }
             else filenameSVGMap = this.tbxTitle.Text + ".svg";
 
-            if (rdbFlattedByDepth.Checked == true) generateSectionGraph((int)(typeFlatted.海拔深度), filenameSVGMap) ; 
-            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph((int)(typeFlatted.顶面拉平), filenameSVGMap);
-            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph((int)(typeFlatted.底面拉平), filenameSVGMap);
+            if (rdbFlattedByDepth.Checked == true) generateSectionGraph((int)(typeFlatted.海拔深度), filenameSVGMap,false ) ; 
+            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph((int)(typeFlatted.顶面拉平), filenameSVGMap,false );
+            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph((int)(typeFlatted.底面拉平), filenameSVGMap,false);
 
         }
 
@@ -687,6 +693,36 @@ namespace DOGPlatform
             cXDocSection.generateSectionCssXML();
             generateSectionDataDirectory(); 
            
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string tempSVGViewfilepath = Path.Combine(cProjectManager.dirPathTemp, "#view.svg");
+            if (rdbFlattedByDepth.Checked == true) generateSectionGraph((int)(typeFlatted.海拔深度), tempSVGViewfilepath, true);
+            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph((int)(typeFlatted.顶面拉平), tempSVGViewfilepath, true);
+            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph((int)(typeFlatted.底面拉平), tempSVGViewfilepath, true);
+            FormWebNavigation formSVGView = new FormWebNavigation(tempSVGViewfilepath);
+            formSVGView.ShowDialog();
+        }
+
+        private void nUDElevationRulerTop_ValueChanged(object sender, EventArgs e)
+        {
+            ElevationRulerTop = Convert.ToInt16(nUDElevationRulerTop.Value);
+        }
+
+        private void nUDElevationRulerBottom_ValueChanged(object sender, EventArgs e)
+        {
+            ElevationRulerBase = Convert.ToInt16(nUDElevationRulerBottom.Value);
+        }
+
+        private void nUDPageWidth_ValueChanged(object sender, EventArgs e)
+        {
+            PageWidth = Convert.ToInt16(nUDPageWidth.Value);
+        }
+
+        private void nUDPageHeight_ValueChanged(object sender, EventArgs e)
+        {
+            PageHeight = Convert.ToInt16(nUDPageHeight.Value);
         }
 
         
