@@ -164,7 +164,7 @@ namespace DOGPlatform
             return ltStrReturn;
         }
 
-        public static List<string> selecFromStringListByFisrtWord(List<string> listString, string sFirstWord)
+        public static List<string> getListStrFromStringListByFirstWord(List<string> listString, string sFirstWord)
         {
             List<string> ltStrReturn = new List<string>();
            
@@ -183,7 +183,7 @@ namespace DOGPlatform
             return ltStrReturn;
         }
 
-        public static List<string> selecFromTextByFirstWord2StringList(string filepath, int iStartLine, string sFirstWord)
+        public static List<string> getListStrFromTextByFirstWord(string filepath, int iStartLine, string sFirstWord)
         {
             List<string> ltStrReturn = new List<string>();
             int lineindex = 0;
@@ -209,9 +209,9 @@ namespace DOGPlatform
 
             return ltStrReturn;
         }
-        public static List<string> selecFromTextByFirstWord2StringList(string filepath, string sFirstWord)
+        public static List<string> getListStrFromTextByFirstWord(string filepath, string sFirstWord)
         {
-            return selecFromTextByFirstWord2StringList(filepath, 0, sFirstWord);
+            return getListStrFromTextByFirstWord(filepath, 0, sFirstWord);
         }
 
         public static void write2file(string strText, string filePath)

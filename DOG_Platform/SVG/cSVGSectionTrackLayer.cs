@@ -79,8 +79,8 @@ namespace DOGPlatform.SVG
             XmlElement gLayer = svgDoc.CreateElement("g");
             XmlElement gLayerDepthRect = svgDoc.CreateElement("rect");
             gLayerDepthRect.SetAttribute("id", "idLayer#" + _sXCM);
-            gLayerDepthRect.SetAttribute("onmouseover", "this.style.stroke = '#ff0000'; this.style['stroke-width'] = 0.5;");
-            gLayerDepthRect.SetAttribute("onmouseout", "this.style.stroke = 'black'; this.style['stroke-width'] = 0.1;");
+            //gLayerDepthRect.SetAttribute("onmouseover", "this.style.stroke = '#ff0000'; this.style['stroke-width'] = 0.5;");
+            //gLayerDepthRect.SetAttribute("onmouseout", "this.style.stroke = 'black'; this.style['stroke-width'] = 0.1;");
             gLayerDepthRect.SetAttribute("x", x0.ToString());
             gLayerDepthRect.SetAttribute("y", y0.ToString());
             gLayerDepthRect.SetAttribute("width", this.iTrackWidth.ToString());
@@ -102,7 +102,7 @@ namespace DOGPlatform.SVG
             //gLayerDepthRect.SetAttribute("onmouseout", "this.style.fill = 'blue'; this.style.font-size= '6'; ");
             textLayer.SetAttribute("x", (x0+3).ToString());
             textLayer.SetAttribute("y", (y0 + 0.5 * height).ToString());
-            textLayer.SetAttribute("fill", "blue");
+            textLayer.SetAttribute("fill", "black");
             textLayer.SetAttribute("font-size", iTextSize.ToString());
             textLayer.SetAttribute("style", "stroke-width:1");
             textLayer.InnerText = _sXCM;
@@ -143,44 +143,6 @@ namespace DOGPlatform.SVG
         {
             return gTrackLayerDepth(sJH,layerDepthDataList.fListDS1, layerDepthDataList.fListDS2, layerDepthDataList.ltStrXCM, m_KB);
         }
-        public XmlElement gTrackFenceLayerDepth(trackLayerDepthDataList layerDepthDataList, float m_KB)
-        {
-            return gTrackFenceLayerDepth(layerDepthDataList.fListDS1, layerDepthDataList.fListDS2, layerDepthDataList.ltStrXCM, m_KB);
-        }
-        public XmlElement gTrackFenceLayerDepth(List<float> fListDS1, List<float> fListDS2, List<string> ltStrXCM, float m_KB)
-        {
-            XmlElement gLayerDepthTrack = svgDoc.CreateElement("g");
-            gLayerDepthTrack.SetAttribute("id", "idLayerTrack");
-
-            for (int i = 0; i < ltStrXCM.Count; i++)
-            {
-                float _top = fListDS1[i];
-                float _bottom = fListDS2[i];
-                string sXCM = ltStrXCM[i];
-
-                XmlElement gLayerDepthRect = svgDoc.CreateElement("rect");
-                gLayerDepthRect.SetAttribute("id", "idLayerRect");
-                gLayerDepthRect.SetAttribute("x", "0");
-                gLayerDepthRect.SetAttribute("y", (-m_KB + _top).ToString());
-                gLayerDepthRect.SetAttribute("width", (this.iTrackWidth).ToString());
-                gLayerDepthRect.SetAttribute("height", (_bottom - _top).ToString());
-                gLayerDepthRect.SetAttribute("style", "stroke:black;stroke-width:0.1");
         
-                gLayerDepthRect.SetAttribute("fill", "none");
-              
-                gLayerDepthTrack.AppendChild(gLayerDepthRect);
-                XmlElement textLayer = svgDoc.CreateElement("text");
-                gLayerDepthRect.SetAttribute("id", "idLayerRectText");
-                textLayer.SetAttribute("x", "3");
-                textLayer.SetAttribute("y", (-m_KB + _top * 0.5 + _bottom * 0.5).ToString());
-                textLayer.SetAttribute("fill", "blue");
-                textLayer.SetAttribute("font-size", iTextSize.ToString());
-                textLayer.SetAttribute("style", "stroke-width:1");
-                textLayer.InnerText = sXCM;
-                gLayerDepthTrack.AppendChild(textLayer);
-            }
-
-            return gLayerDepthTrack;
-        }
     }
 }

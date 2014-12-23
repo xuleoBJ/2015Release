@@ -36,7 +36,6 @@
             this.rdbDepthModelMD = new System.Windows.Forms.RadioButton();
             this.btnAddPeforation = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.cbElevationRule = new System.Windows.Forms.CheckBox();
             this.tbxTitle = new System.Windows.Forms.TextBox();
             this.cbxConnectSameLayerName = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -62,6 +61,7 @@
             this.cbbLogName = new System.Windows.Forms.ComboBox();
             this.btnMakeSection = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGenerateDataByBaseDepth = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tbxBottomElevationInput = new System.Windows.Forms.TextBox();
             this.tbxTopElevationInput = new System.Windows.Forms.TextBox();
@@ -171,7 +171,6 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.btnGenerateDataByBaseDepth = new System.Windows.Forms.Button();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -246,7 +245,6 @@
             this.tabPageData.Controls.Add(this.groupBox1);
             this.tabPageData.Controls.Add(this.btnAddPeforation);
             this.tabPageData.Controls.Add(this.checkBox3);
-            this.tabPageData.Controls.Add(this.cbElevationRule);
             this.tabPageData.Controls.Add(this.tbxTitle);
             this.tabPageData.Controls.Add(this.cbxConnectSameLayerName);
             this.tabPageData.Controls.Add(this.groupBox7);
@@ -271,7 +269,7 @@
             this.btnAddProfile.Name = "btnAddProfile";
             this.btnAddProfile.Size = new System.Drawing.Size(88, 25);
             this.btnAddProfile.TabIndex = 56;
-            this.btnAddProfile.Text = "增加吸水剖面";
+            this.btnAddProfile.Text = "吸水剖面";
             this.btnAddProfile.UseVisualStyleBackColor = true;
             this.btnAddProfile.Click += new System.EventHandler(this.btnAddProfile_Click);
             // 
@@ -318,7 +316,7 @@
             this.btnAddPeforation.Name = "btnAddPeforation";
             this.btnAddPeforation.Size = new System.Drawing.Size(88, 25);
             this.btnAddPeforation.TabIndex = 55;
-            this.btnAddPeforation.Text = "增加射孔道";
+            this.btnAddPeforation.Text = "射孔道";
             this.btnAddPeforation.UseVisualStyleBackColor = true;
             this.btnAddPeforation.Click += new System.EventHandler(this.btnAddPeforation_Click);
             // 
@@ -331,16 +329,6 @@
             this.checkBox3.TabIndex = 3;
             this.checkBox3.Text = "图名";
             this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // cbElevationRule
-            // 
-            this.cbElevationRule.AutoSize = true;
-            this.cbElevationRule.Location = new System.Drawing.Point(458, 369);
-            this.cbElevationRule.Name = "cbElevationRule";
-            this.cbElevationRule.Size = new System.Drawing.Size(60, 16);
-            this.cbElevationRule.TabIndex = 20;
-            this.cbElevationRule.Text = "海拔尺";
-            this.cbElevationRule.UseVisualStyleBackColor = true;
             // 
             // tbxTitle
             // 
@@ -460,7 +448,7 @@
             this.btnAddLayerDepth.Name = "btnAddLayerDepth";
             this.btnAddLayerDepth.Size = new System.Drawing.Size(88, 25);
             this.btnAddLayerDepth.TabIndex = 19;
-            this.btnAddLayerDepth.Text = "增加地层道";
+            this.btnAddLayerDepth.Text = "地层道";
             this.btnAddLayerDepth.UseVisualStyleBackColor = true;
             this.btnAddLayerDepth.Click += new System.EventHandler(this.btnAddLayerDepth_Click);
             // 
@@ -653,6 +641,16 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "剖面图设置";
+            // 
+            // btnGenerateDataByBaseDepth
+            // 
+            this.btnGenerateDataByBaseDepth.Location = new System.Drawing.Point(37, 506);
+            this.btnGenerateDataByBaseDepth.Name = "btnGenerateDataByBaseDepth";
+            this.btnGenerateDataByBaseDepth.Size = new System.Drawing.Size(188, 23);
+            this.btnGenerateDataByBaseDepth.TabIndex = 15;
+            this.btnGenerateDataByBaseDepth.Text = "全井段绘制";
+            this.btnGenerateDataByBaseDepth.UseVisualStyleBackColor = true;
+            this.btnGenerateDataByBaseDepth.Click += new System.EventHandler(this.btnGenerateDataByBaseDepth_Click);
             // 
             // groupBox5
             // 
@@ -961,7 +959,7 @@
             this.btnAddJSJLTrack.Name = "btnAddJSJLTrack";
             this.btnAddJSJLTrack.Size = new System.Drawing.Size(88, 25);
             this.btnAddJSJLTrack.TabIndex = 21;
-            this.btnAddJSJLTrack.Text = "增加解释结论";
+            this.btnAddJSJLTrack.Text = "解释结论";
             this.btnAddJSJLTrack.UseVisualStyleBackColor = true;
             this.btnAddJSJLTrack.Click += new System.EventHandler(this.btnAddJSJLTrack_Click);
             // 
@@ -2208,16 +2206,6 @@
             this.label30.TabIndex = 8;
             this.label30.Text = "下";
             // 
-            // btnGenerateDataByBaseDepth
-            // 
-            this.btnGenerateDataByBaseDepth.Location = new System.Drawing.Point(37, 506);
-            this.btnGenerateDataByBaseDepth.Name = "btnGenerateDataByBaseDepth";
-            this.btnGenerateDataByBaseDepth.Size = new System.Drawing.Size(188, 23);
-            this.btnGenerateDataByBaseDepth.TabIndex = 15;
-            this.btnGenerateDataByBaseDepth.Text = "全井段绘制";
-            this.btnGenerateDataByBaseDepth.UseVisualStyleBackColor = true;
-            this.btnGenerateDataByBaseDepth.Click += new System.EventHandler(this.btnGenerateDataByBaseDepth_Click);
-            // 
             // FormWellSectionGeology
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2337,7 +2325,6 @@
         private System.Windows.Forms.Button btn_addWell;
         private System.Windows.Forms.ListBox lbxJHSeclected;
         private System.Windows.Forms.CheckBox cbxConnectSameLayerName;
-        private System.Windows.Forms.CheckBox cbElevationRule;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.TextBox tbxTitle;
         private System.Windows.Forms.Button btnAddLayerDepth;

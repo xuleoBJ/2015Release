@@ -31,6 +31,8 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tclWellsGroup = new System.Windows.Forms.TabControl();
             this.tbgWellsGroupData = new System.Windows.Forms.TabPage();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbxTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnLogTrackAddLeft = new System.Windows.Forms.Button();
             this.nUDRightLogRightValue = new System.Windows.Forms.NumericUpDown();
@@ -72,12 +74,16 @@
             this.btn_deleteWell = new System.Windows.Forms.Button();
             this.btn_addWell = new System.Windows.Forms.Button();
             this.lbxJHSeclected = new System.Windows.Forms.ListBox();
-            this.tbxTitle = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.lbxTracksCollection = new System.Windows.Forms.ListBox();
+            this.btnAddTrackProfile = new System.Windows.Forms.Button();
             this.btnAddLayerDepth = new System.Windows.Forms.Button();
             this.btnAddPerforation = new System.Windows.Forms.Button();
             this.btnAddJSJLTrack = new System.Windows.Forms.Button();
+            this.设置半径 = new System.Windows.Forms.GroupBox();
+            this.cbbSacle = new System.Windows.Forms.ComboBox();
+            this.btnSacleSmaller = new System.Windows.Forms.Button();
+            this.btnSacleBigger = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.nUDJSJLTrackWidth = new System.Windows.Forms.NumericUpDown();
@@ -137,8 +143,6 @@
             this.cbbCurveColor_leftLog = new System.Windows.Forms.ComboBox();
             this.btnMakeSectionByxmlConfig = new System.Windows.Forms.Button();
             this.btnSaveSetting = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnBig = new System.Windows.Forms.Button();
             this.tclWellsGroup.SuspendLayout();
             this.tbgWellsGroupData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -151,6 +155,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).BeginInit();
             this.groupBox7.SuspendLayout();
+            this.设置半径.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDJSJLTrackWidth)).BeginInit();
@@ -184,13 +189,12 @@
             this.tclWellsGroup.Location = new System.Drawing.Point(0, 0);
             this.tclWellsGroup.Name = "tclWellsGroup";
             this.tclWellsGroup.SelectedIndex = 0;
-            this.tclWellsGroup.Size = new System.Drawing.Size(920, 649);
+            this.tclWellsGroup.Size = new System.Drawing.Size(871, 563);
             this.tclWellsGroup.TabIndex = 0;
             this.tclWellsGroup.SelectedIndexChanged += new System.EventHandler(this.tabControlFenceDiagram_SelectedIndexChanged);
             // 
             // tbgWellsGroupData
             // 
-            this.tbgWellsGroupData.Controls.Add(this.btnBig);
             this.tbgWellsGroupData.Controls.Add(this.label10);
             this.tbgWellsGroupData.Controls.Add(this.tbxTitle);
             this.tbgWellsGroupData.Controls.Add(this.groupBox4);
@@ -198,13 +202,30 @@
             this.tbgWellsGroupData.Controls.Add(this.btnMakeFDmap);
             this.tbgWellsGroupData.Controls.Add(this.groupBox2);
             this.tbgWellsGroupData.Controls.Add(this.groupBox7);
+            this.tbgWellsGroupData.Controls.Add(this.设置半径);
             this.tbgWellsGroupData.Location = new System.Drawing.Point(4, 22);
             this.tbgWellsGroupData.Name = "tbgWellsGroupData";
             this.tbgWellsGroupData.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellsGroupData.Size = new System.Drawing.Size(912, 623);
+            this.tbgWellsGroupData.Size = new System.Drawing.Size(863, 537);
             this.tbgWellsGroupData.TabIndex = 0;
             this.tbgWellsGroupData.Text = "数据";
             this.tbgWellsGroupData.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(577, 359);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 12);
+            this.label10.TabIndex = 57;
+            this.label10.Text = "文件名";
+            // 
+            // tbxTitle
+            // 
+            this.tbxTitle.Location = new System.Drawing.Point(624, 359);
+            this.tbxTitle.Name = "tbxTitle";
+            this.tbxTitle.Size = new System.Drawing.Size(201, 21);
+            this.tbxTitle.TabIndex = 0;
             // 
             // groupBox4
             // 
@@ -226,9 +247,9 @@
             this.groupBox4.Controls.Add(this.cbbColorRightLog);
             this.groupBox4.Controls.Add(this.cbbColorLeftLog);
             this.groupBox4.Controls.Add(this.cbbLeftLogName);
-            this.groupBox4.Location = new System.Drawing.Point(317, 350);
+            this.groupBox4.Location = new System.Drawing.Point(317, 90);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(492, 100);
+            this.groupBox4.Size = new System.Drawing.Size(507, 92);
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测井曲线";
@@ -474,15 +495,15 @@
             // 
             // tvwWellSectionCollection
             // 
-            this.tvwWellSectionCollection.Location = new System.Drawing.Point(596, 37);
+            this.tvwWellSectionCollection.Location = new System.Drawing.Point(317, 202);
             this.tvwWellSectionCollection.Margin = new System.Windows.Forms.Padding(2);
             this.tvwWellSectionCollection.Name = "tvwWellSectionCollection";
-            this.tvwWellSectionCollection.Size = new System.Drawing.Size(276, 299);
+            this.tvwWellSectionCollection.Size = new System.Drawing.Size(249, 312);
             this.tvwWellSectionCollection.TabIndex = 51;
             // 
             // btnMakeFDmap
             // 
-            this.btnMakeFDmap.Location = new System.Drawing.Point(626, 470);
+            this.btnMakeFDmap.Location = new System.Drawing.Point(642, 434);
             this.btnMakeFDmap.Name = "btnMakeFDmap";
             this.btnMakeFDmap.Size = new System.Drawing.Size(99, 30);
             this.btnMakeFDmap.TabIndex = 38;
@@ -615,6 +636,7 @@
             this.cbbTopXCM.Name = "cbbTopXCM";
             this.cbbTopXCM.Size = new System.Drawing.Size(122, 20);
             this.cbbTopXCM.TabIndex = 7;
+            this.cbbTopXCM.SelectedIndexChanged += new System.EventHandler(this.cbbTopXCM_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -725,65 +747,113 @@
             this.lbxJHSeclected.TabIndex = 9;
             this.lbxJHSeclected.SelectedIndexChanged += new System.EventHandler(this.lbxJHSeclected_SelectedIndexChanged_1);
             // 
-            // tbxTitle
-            // 
-            this.tbxTitle.Location = new System.Drawing.Point(210, 564);
-            this.tbxTitle.Name = "tbxTitle";
-            this.tbxTitle.Size = new System.Drawing.Size(443, 21);
-            this.tbxTitle.TabIndex = 0;
-            // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.lbxTracksCollection);
+            this.groupBox7.Controls.Add(this.btnAddTrackProfile);
             this.groupBox7.Controls.Add(this.btnAddLayerDepth);
             this.groupBox7.Controls.Add(this.btnAddPerforation);
             this.groupBox7.Controls.Add(this.btnAddJSJLTrack);
-            this.groupBox7.Location = new System.Drawing.Point(317, 23);
+            this.groupBox7.Location = new System.Drawing.Point(317, 21);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(246, 307);
+            this.groupBox7.Size = new System.Drawing.Size(507, 63);
             this.groupBox7.TabIndex = 40;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "曲线道";
             // 
-            // lbxTracksCollection
+            // btnAddTrackProfile
             // 
-            this.lbxTracksCollection.FormattingEnabled = true;
-            this.lbxTracksCollection.ItemHeight = 12;
-            this.lbxTracksCollection.Location = new System.Drawing.Point(102, 19);
-            this.lbxTracksCollection.Margin = new System.Windows.Forms.Padding(2);
-            this.lbxTracksCollection.Name = "lbxTracksCollection";
-            this.lbxTracksCollection.Size = new System.Drawing.Size(114, 244);
-            this.lbxTracksCollection.TabIndex = 18;
+            this.btnAddTrackProfile.Location = new System.Drawing.Point(336, 20);
+            this.btnAddTrackProfile.Name = "btnAddTrackProfile";
+            this.btnAddTrackProfile.Size = new System.Drawing.Size(88, 25);
+            this.btnAddTrackProfile.TabIndex = 23;
+            this.btnAddTrackProfile.Text = "吸水剖面";
+            this.btnAddTrackProfile.UseVisualStyleBackColor = true;
+            this.btnAddTrackProfile.Click += new System.EventHandler(this.btnAddTrackProfile_Click);
             // 
             // btnAddLayerDepth
             // 
-            this.btnAddLayerDepth.Location = new System.Drawing.Point(6, 31);
+            this.btnAddLayerDepth.Location = new System.Drawing.Point(18, 20);
             this.btnAddLayerDepth.Name = "btnAddLayerDepth";
             this.btnAddLayerDepth.Size = new System.Drawing.Size(88, 25);
             this.btnAddLayerDepth.TabIndex = 19;
-            this.btnAddLayerDepth.Text = "增加地层道";
+            this.btnAddLayerDepth.Text = "地层道";
             this.btnAddLayerDepth.UseVisualStyleBackColor = true;
             this.btnAddLayerDepth.Click += new System.EventHandler(this.btnAddLayerDepth_Click);
             // 
             // btnAddPerforation
             // 
-            this.btnAddPerforation.Location = new System.Drawing.Point(6, 111);
+            this.btnAddPerforation.Location = new System.Drawing.Point(230, 20);
             this.btnAddPerforation.Name = "btnAddPerforation";
             this.btnAddPerforation.Size = new System.Drawing.Size(88, 25);
             this.btnAddPerforation.TabIndex = 22;
-            this.btnAddPerforation.Text = "增加射孔道";
+            this.btnAddPerforation.Text = "射孔道";
             this.btnAddPerforation.UseVisualStyleBackColor = true;
             this.btnAddPerforation.Click += new System.EventHandler(this.btnAddPerforation_Click);
             // 
             // btnAddJSJLTrack
             // 
-            this.btnAddJSJLTrack.Location = new System.Drawing.Point(6, 71);
+            this.btnAddJSJLTrack.Location = new System.Drawing.Point(124, 20);
             this.btnAddJSJLTrack.Name = "btnAddJSJLTrack";
             this.btnAddJSJLTrack.Size = new System.Drawing.Size(88, 25);
             this.btnAddJSJLTrack.TabIndex = 21;
-            this.btnAddJSJLTrack.Text = "增加解释结论";
+            this.btnAddJSJLTrack.Text = "解释结论";
             this.btnAddJSJLTrack.UseVisualStyleBackColor = true;
             this.btnAddJSJLTrack.Click += new System.EventHandler(this.btnAddJSJLTrack_Click);
+            // 
+            // 设置半径
+            // 
+            this.设置半径.Controls.Add(this.cbbSacle);
+            this.设置半径.Controls.Add(this.btnSacleSmaller);
+            this.设置半径.Controls.Add(this.btnSacleBigger);
+            this.设置半径.Controls.Add(this.label11);
+            this.设置半径.Location = new System.Drawing.Point(578, 261);
+            this.设置半径.Name = "设置半径";
+            this.设置半径.Size = new System.Drawing.Size(263, 78);
+            this.设置半径.TabIndex = 59;
+            this.设置半径.TabStop = false;
+            this.设置半径.Text = "缩放平面比例尺";
+            // 
+            // cbbSacle
+            // 
+            this.cbbSacle.FormattingEnabled = true;
+            this.cbbSacle.Location = new System.Drawing.Point(112, 32);
+            this.cbbSacle.Name = "cbbSacle";
+            this.cbbSacle.Size = new System.Drawing.Size(89, 20);
+            this.cbbSacle.TabIndex = 31;
+            this.cbbSacle.SelectedIndexChanged += new System.EventHandler(this.cbbSacle_SelectedIndexChanged);
+            // 
+            // btnSacleSmaller
+            // 
+            this.btnSacleSmaller.Font = new System.Drawing.Font("SimHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSacleSmaller.Location = new System.Drawing.Point(17, 27);
+            this.btnSacleSmaller.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSacleSmaller.Name = "btnSacleSmaller";
+            this.btnSacleSmaller.Size = new System.Drawing.Size(28, 26);
+            this.btnSacleSmaller.TabIndex = 30;
+            this.btnSacleSmaller.Text = "←";
+            this.btnSacleSmaller.UseVisualStyleBackColor = true;
+            this.btnSacleSmaller.Click += new System.EventHandler(this.btnSacleSmaller_Click);
+            // 
+            // btnSacleBigger
+            // 
+            this.btnSacleBigger.Font = new System.Drawing.Font("SimHei", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnSacleBigger.Location = new System.Drawing.Point(219, 29);
+            this.btnSacleBigger.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSacleBigger.Name = "btnSacleBigger";
+            this.btnSacleBigger.Size = new System.Drawing.Size(28, 24);
+            this.btnSacleBigger.TabIndex = 29;
+            this.btnSacleBigger.Text = "→";
+            this.btnSacleBigger.UseVisualStyleBackColor = true;
+            this.btnSacleBigger.Click += new System.EventHandler(this.btnSacleBigger_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(50, 35);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(59, 12);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "比例尺1：";
             // 
             // tabPage2
             // 
@@ -797,7 +867,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(912, 623);
+            this.tabPage2.Size = new System.Drawing.Size(899, 623);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "配置";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1686,30 +1756,11 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(151, 567);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 12);
-            this.label10.TabIndex = 57;
-            this.label10.Text = "文件名";
-            // 
-            // btnBig
-            // 
-            this.btnBig.Location = new System.Drawing.Point(335, 470);
-            this.btnBig.Name = "btnBig";
-            this.btnBig.Size = new System.Drawing.Size(99, 30);
-            this.btnBig.TabIndex = 58;
-            this.btnBig.Text = "放大";
-            this.btnBig.UseVisualStyleBackColor = true;
-            this.btnBig.Click += new System.EventHandler(this.btnBig_Click);
-            // 
             // FormWellsGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 649);
+            this.ClientSize = new System.Drawing.Size(871, 563);
             this.Controls.Add(this.tclWellsGroup);
             this.Name = "FormWellsGroup";
             this.Text = "井组分析";
@@ -1730,6 +1781,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).EndInit();
             this.groupBox7.ResumeLayout(false);
+            this.设置半径.ResumeLayout(false);
+            this.设置半径.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
@@ -1787,7 +1840,6 @@
         private System.Windows.Forms.ListBox lbxJHSeclected;
         private System.Windows.Forms.TextBox tbxTitle;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.ListBox lbxTracksCollection;
         private System.Windows.Forms.Button btnAddLayerDepth;
         private System.Windows.Forms.Button btnAddPerforation;
         private System.Windows.Forms.Button btnAddJSJLTrack;
@@ -1873,6 +1925,11 @@
         private System.Windows.Forms.ComboBox cbbColorLeftLog;
         private System.Windows.Forms.ComboBox cbbLeftLogName;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnBig;
+        private System.Windows.Forms.Button btnAddTrackProfile;
+        private System.Windows.Forms.GroupBox 设置半径;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnSacleSmaller;
+        private System.Windows.Forms.Button btnSacleBigger;
+        private System.Windows.Forms.ComboBox cbbSacle;
     }
 }

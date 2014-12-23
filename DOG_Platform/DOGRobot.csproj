@@ -98,7 +98,7 @@
     <Compile Include="cIOgeomodel.cs" />
     <Compile Include="cGridPara.cs" />
     <Compile Include="cIOinputHorizionalWellPath.cs" />
-    <Compile Include="cIOinputInjectionProfile.cs" />
+    <Compile Include="cIOinputInjectProfile.cs" />
     <Compile Include="cIOinputLayerSerier.cs" />
     <Compile Include="cProjectData.cs" />
     <Compile Include="FormAdjustProfile.cs">
@@ -148,11 +148,10 @@
     <Compile Include="ItemLogHeadInfor.cs" />
     <Compile Include="ItemPerforationInput.cs" />
     <Compile Include="ItemWellHead.cs" />
-    <Compile Include="ItemInjectionProfile.cs" />
+    <Compile Include="ItemInjectProfile.cs" />
     <Compile Include="ItemHorizonalWellPath.cs" />
     <Compile Include="ItemWellInjection.cs" />
     <Compile Include="ItemWellPath.cs" />
-    <Compile Include="cDirDataSourceWellSection.cs" />
     <Compile Include="cDogTrack.cs" />
     <Compile Include="cDogTrackEvationRuler.cs" />
     <Compile Include="cDogTrackJSJL.cs" />
@@ -268,7 +267,8 @@
     <Compile Include="TrackPerforation.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="trackPerforationDataList.cs" />
+    <Compile Include="trackInputPerforationDataList.cs" />
+    <Compile Include="trackProfileDataList.cs" />
     <Compile Include="trackScatterDataList.cs" />
     <Compile Include="TrackText.cs">
       <SubType>Component</SubType>

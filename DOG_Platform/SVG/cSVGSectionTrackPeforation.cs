@@ -30,7 +30,7 @@ namespace DOGPlatform.SVG
                 double x0 = 0;
                 double y0 = -m_KB + _top;
                 double height = _bottom - _top;
-                gPeforationTrack.AppendChild( gPatternPerforation(0,  y0,  height));
+                gPeforationTrack.AppendChild( gPatternPerforation(x0,  y0,  height));
             }
 
             return gPeforationTrack;
@@ -58,6 +58,31 @@ namespace DOGPlatform.SVG
             List<float> fListTVD1 = listWellPathDS1.Select(p => p.f_TVD).ToList();
             List<float> fListTVD2 = listWellPathDS2.Select(p => p.f_TVD).ToList();
             return gTrackPerforation(sJH, fListTVD1,fListTVD2, m_KB);
+        }
+
+        public XmlElement gPathTrackPerforation(string sJH, trackInputPerforationDataList perforationDataList, float m_KB)
+        {
+            return gPathTrackPerforation(sJH, perforationDataList.fListDS1, perforationDataList.fListDS2, m_KB);
+        }
+
+        public XmlElement gPathTrackPerforation(string sJH, List<float> fListDS1, List<float> fListDS2, float m_KB)
+        {
+           
+            List<ItemWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
+            List<ItemWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
+
+            XmlElement gPeforationTrack = svgDoc.CreateElement("g");
+            gPeforationTrack.SetAttribute("id", sJH + "#TrackPeforation");
+            for (int i = 0; i < fListDS1.Count; i++)
+            {
+                double x0 = listWellPathTop[0].f_dx;
+                double y0 = -m_KB + listWellPathTop[i].f_TVD;
+                double height = listWellPathBase[i].f_TVD - listWellPathTop[i].f_TVD;
+                gPeforationTrack.AppendChild(gPatternPerforation(x0, y0, height));
+            }
+
+            return gPeforationTrack;
+
         }
     }
 }

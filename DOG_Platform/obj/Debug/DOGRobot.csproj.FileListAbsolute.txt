@@ -616,7 +616,6 @@ E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormLogSetting
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormPatternElement.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellsGroup.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormInjProAna.resources
-E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormConfig.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormCopyRight.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellSectionGeology.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormProductAnalisys.resources

@@ -141,6 +141,8 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
+            this.tsBtnDataView = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -344,7 +346,7 @@
             this.tbgProjectMapPattern.Location = new System.Drawing.Point(4, 22);
             this.tbgProjectMapPattern.Name = "tbgProjectMapPattern";
             this.tbgProjectMapPattern.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgProjectMapPattern.Size = new System.Drawing.Size(158, 351);
+            this.tbgProjectMapPattern.Size = new System.Drawing.Size(158, 348);
             this.tbgProjectMapPattern.TabIndex = 0;
             this.tbgProjectMapPattern.Text = "图元";
             this.tbgProjectMapPattern.UseVisualStyleBackColor = true;
@@ -354,7 +356,7 @@
             this.tvMapPattern.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tvMapPattern.Location = new System.Drawing.Point(3, 3);
             this.tvMapPattern.Name = "tvMapPattern";
-            this.tvMapPattern.Size = new System.Drawing.Size(152, 345);
+            this.tvMapPattern.Size = new System.Drawing.Size(152, 342);
             this.tvMapPattern.TabIndex = 1;
             // 
             // tabControl1
@@ -1027,7 +1029,9 @@
             this.tsBtnNewProject,
             this.tsBtnOpenProject,
             this.tsBtnSaveProject,
+            this.toolStripSeparator3,
             this.tsBtnDataManager,
+            this.tsBtnDataView,
             this.ToolStripSeparator1,
             this.tsBtnZoonIn,
             this.tsBtnZoomOut,
@@ -1038,7 +1042,7 @@
             this.ToolStripSeparator2});
             this.ToolStripMain.Location = new System.Drawing.Point(3, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(348, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(408, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1175,6 +1179,21 @@
             this.imageListMain.Images.SetKeyName(4, "layer.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
             // 
+            // tsBtnDataView
+            // 
+            this.tsBtnDataView.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsBtnDataView.Image = ((System.Drawing.Image)(resources.GetObject("tsBtnDataView.Image")));
+            this.tsBtnDataView.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsBtnDataView.Name = "tsBtnDataView";
+            this.tsBtnDataView.Size = new System.Drawing.Size(23, 22);
+            this.tsBtnDataView.Text = "井数据查看";
+            this.tsBtnDataView.Click += new System.EventHandler(this.tsBtnDataView_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1184,7 +1203,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DogRobot-2.5D小层地质分析软件";
+            this.Text = "DogRobot地质分析机器人";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -1340,6 +1359,8 @@
         private System.Windows.Forms.ToolStripButton tsmiMove;
         private System.Windows.Forms.ToolStripButton tsBtnReflush;
         private System.Windows.Forms.ToolStripButton tsBtnDataManager;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton tsBtnDataView;
     }
 }
 

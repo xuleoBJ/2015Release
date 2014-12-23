@@ -34,46 +34,47 @@ namespace DOGPlatform
 
         private void btnDraw_Click(object sender, EventArgs e)
         {
-            this.chart1.ChartAreas[0].AxisX.Title = "时间(min)";
-            this.chart1.ChartAreas[0].AxisY.Title = "压降(mp)";
+            this.chartPI.ChartAreas[0].AxisX.Title = "时间(min)";
+            this.chartPI.ChartAreas[0].AxisY.Title = "压降(mp)";
 
-            this.chart1.ChartAreas[0].AxisX.Minimum = 0.0;
-            Color[] colorSet = new Color[4] { Color.Red, Color.Blue, Color.Green, Color.Purple };
-            this.chart1.PaletteCustomColors = colorSet;
+            this.chartPI.ChartAreas[0].AxisX.Minimum = 0.0;
+            chartPI.Series.Clear();
 
+            List<string> ltStrline= cPublicMethodForm.readDataGridView2ListLine(this.dgvPI);
             List<string> listJH = cPublicMethodForm.getLtStrOfdgvColoum(this.dgvPI, 0).Distinct().ToList();
             foreach (string sJH in listJH) 
             {
-                Series series = this.chart1.Series.Add(sJH);
-                //series.Color;
+                List<string> ltStrLinecurrentJH = cIOBase.getListStrFromStringListByFirstWord(ltStrline, sJH);
 
+                Series series = this.chartPI.Series.Add(sJH);
+           
                 List<float> listSJ = new List<float>();
                 List<float> listValue = new List<float>();
 
-                for (int i = 0; i < dgvPI.Rows.Count; i++)
+                foreach (string sLine in ltStrLinecurrentJH) 
                 {
-                    if (dgvPI.Rows[i].Cells[1].Value != null)
-                        listSJ.Add(float.Parse(dgvPI.Rows[i].Cells[1].Value.ToString()));
-                    else listSJ.Add(0.0f);
-                    if (dgvPI.Rows[i].Cells[2].Value != null)
-                        listValue.Add(float.Parse(dgvPI.Rows[i].Cells[2].Value.ToString()));
-                    else listValue.Add(0.0f);
+                    string[] split = sLine.Split();
+
+                    listSJ.Add(float.Parse(split[1]));
+                    listValue.Add(float.Parse(split[2])); 
                 }
+
 
                 for (int i = 0; i<listSJ.Count; i++)
                 {
-                    chart1.Series[sJH].Points.AddXY(listSJ[i], listValue[i]);
+                    chartPI.Series[sJH].Points.AddXY(listSJ[i], listValue[i]);
                 }
 
-                chart1.Series[sJH].ChartType = SeriesChartType.Line;
+                chartPI.Series[sJH].ChartType = SeriesChartType.Line;
             
             }
-           
+
+            chartPI.Palette = ChartColorPalette.Bright;
             // Set palette.
            
 
             // Set title.
-            this.chart1.Titles.Add("压力下降分析曲线");
+            this.chartPI.Titles.Add("压力下降分析曲线");
         }
 
         private void btnImportPI_Click(object sender, EventArgs e)
@@ -99,7 +100,11 @@ namespace DOGPlatform
             if (tbcAdjustProfile.SelectedTab == this.tbgPI) 
             {
                 string filePath = Path.Combine(dirAdjustProfile, fileNamePI);
-                if(File.Exists(filePath)) cPublicMethodForm.read2DataGridViewByTextFile( filePath,this.dgvPI); 
+                if(File.Exists(filePath)) cPublicMethodForm.read2DataGridViewByTextFile( filePath,this.dgvPI);
+                this.chartPI.ChartAreas[0].AxisX.Title = "时间(min)";
+                this.chartPI.ChartAreas[0].AxisY.Title = "压降(mp)";
+                this.chartPI.ChartAreas[0].AxisX.Minimum = 0.0;
+                chartPI.Series.Clear();
             }
         }
 

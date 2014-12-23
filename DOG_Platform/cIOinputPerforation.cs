@@ -121,7 +121,7 @@ namespace DOGPlatform
         }
        
 
-        public void selectSectionDraData2File(string sJH, string filePath)
+        public void selectSectionDrawData2File(string sJH, string filePath)
         {
             StreamWriter sw = new StreamWriter(filePath, false, Encoding.UTF8);
             string sReturn = "";

@@ -11,7 +11,7 @@ namespace DOGPlatform.SVG
         public static XElement circleGravel(int cx, int cy, float r)//砾岩圈，不填充
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement circleConglomerate = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement circleConglomerate = new XElement(xn + "circle");
             circleConglomerate.SetAttributeValue("cx", cx.ToString());
             circleConglomerate.SetAttributeValue("cy", cy.ToString());
             circleConglomerate.SetAttributeValue("r", r.ToString());
@@ -24,7 +24,7 @@ namespace DOGPlatform.SVG
         public XElement textPattern(string sText, int x, int y, int fontSize)//文本元素
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement textXE = new XElement(xn + "text", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement textXE = new XElement(xn + "text");
             textXE.SetAttributeValue("x", x.ToString());
             textXE.SetAttributeValue("y", (y + fontSize / 2).ToString());
             textXE.SetAttributeValue("font-size", fontSize.ToString());
@@ -37,7 +37,7 @@ namespace DOGPlatform.SVG
         public static XElement patternElementGravel(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement textXE = new XElement(xn + "text", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement textXE = new XElement(xn + "text");
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
             XElement patternElement = circleGravel(ix, iy, fRadus);
@@ -48,13 +48,13 @@ namespace DOGPlatform.SVG
         public static XElement patternElementLimes( int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement patternElement = new XElement(xn + "path");
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
            
             string d = "M " + ix.ToString() + " " + (iHeightUnit * orderRow).ToString() + "v" + iHeightUnit.ToString();
             patternElement.SetAttributeValue("d", d);
             patternElement.SetAttributeValue("stroke", "gray");
-            patternElement.SetAttributeValue("stroke-width", "0.5");
+            patternElement.SetAttributeValue("stroke-width", "1");
             patternElement.SetAttributeValue("fill", "none");
             return patternElement;
         }
@@ -63,7 +63,7 @@ namespace DOGPlatform.SVG
         public static XElement patternElementOolite(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement gPatternElement = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement gPatternElement = new XElement(xn + "g");
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
             XElement patternElementOuter = circleGravel(ix, iy, 3);
@@ -87,7 +87,7 @@ namespace DOGPlatform.SVG
         {
 
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement circleConglomerate = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement circleConglomerate = new XElement(xn + "circle");
 
             circleConglomerate.SetAttributeValue("cx", cx.ToString());
             circleConglomerate.SetAttributeValue("cy", cy.ToString());
@@ -103,7 +103,7 @@ namespace DOGPlatform.SVG
         public static XElement patternElementSiltSand(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, float fRadus, string fillColor)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement gPatternSiltSand = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement gPatternSiltSand = new XElement(xn + "g");
             int ix = iWidthUnit * orderColumn + iWidthUnit * 4 / 10; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
             gPatternSiltSand.Add(circleSand(ix, iy, fRadus, fillColor));
@@ -117,11 +117,11 @@ namespace DOGPlatform.SVG
         public static XElement splitLine(int iWidthUnit, int iHeightUnit, int numColumn, int numRow)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement circleConglomerate = new XElement(xn + "circle", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
-            XElement gSplitLine = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement circleConglomerate = new XElement(xn + "circle");
+            XElement gSplitLine = new XElement(xn + "g");
             for (int i = 0; i < numRow; i++)
             {
-                XElement gPath = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+                XElement gPath = new XElement(xn + "path");
                 string dPath = "M 0 " + (iHeightUnit * i).ToString() + " h" + (iWidthUnit * numColumn).ToString();
                 gPath.SetAttributeValue("d", dPath);
                 gPath.SetAttributeValue("stroke-width", "0.5");
@@ -136,7 +136,7 @@ namespace DOGPlatform.SVG
         public static XElement backRect(string backColor, int iWidthUnit, int iHeightUnit, int numColumn, int numRow)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement gBackRect = new XElement(xn + "rect", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement gBackRect = new XElement(xn + "rect");
             gBackRect.SetAttributeValue("x", "0");
             gBackRect.SetAttributeValue("y", "0");
             gBackRect.SetAttributeValue("width", (iWidthUnit * numColumn).ToString());
@@ -150,7 +150,7 @@ namespace DOGPlatform.SVG
         public static XElement lithoPattern(string sURL)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement pattern = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement pattern = new XElement(xn + "g");
 
             //pattern.SetAttributeValue("id", "idLithonSand");
             pattern.SetAttributeValue("stroke", "black");
@@ -168,11 +168,11 @@ namespace DOGPlatform.SVG
         public static XElement patternElementGypsum( int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement gPatternElement = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement gPatternElement = new XElement(xn + "g");
             for (int i = 1; i < 4; i++)
             {
                 int ix = iWidthUnit * orderColumn + iWidthUnit * i / 5; //元素X位置
-                XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+                XElement patternElement = new XElement(xn + "path");
                 string d = "M " + ix.ToString() + " " + (iHeightUnit * orderRow).ToString() + "v" + iHeightUnit.ToString();
                 patternElement.SetAttributeValue("d", d);
                 patternElement.SetAttributeValue("stroke", "gray");
@@ -188,7 +188,7 @@ namespace DOGPlatform.SVG
         {
             
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement patternElement = new XElement(xn + "path");
 
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
@@ -205,7 +205,7 @@ namespace DOGPlatform.SVG
         {
            
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement patternElement = new XElement(xn + "path");
 
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
@@ -222,7 +222,7 @@ namespace DOGPlatform.SVG
         {
             
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement patternElement = new XElement(xn + "path");
 
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
@@ -238,7 +238,7 @@ namespace DOGPlatform.SVG
         public static XElement patternElemenTortoise(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement patternElement = new XElement(xn + "path");
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素Y位置
             string d = "M " + (ix - 2).ToString() + " " + (iy + 2).ToString() + "v -4 h 4";
@@ -257,11 +257,11 @@ namespace DOGPlatform.SVG
             XNamespace xn = "http://www.w3.org/2000/svg";
 
             int ix = iWidthUnit * orderColumn; //元素X位置
-            XElement gPatternElement = new XElement(xn + "g", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement gPatternElement = new XElement(xn + "g");
             for (int i = 1; i < 2; i++)
             {
                 int iy = iHeightUnit * orderRow + iHeightUnit * i / 2; //元素X位置
-            XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement patternElement = new XElement(xn + "path");
                 string d = "M " + ix.ToString() + " " + iy.ToString() + "h" + iWidthUnit.ToString();
                 patternElement.SetAttributeValue("d", d);
                 patternElement.SetAttributeValue("stroke", "black");
@@ -277,7 +277,7 @@ namespace DOGPlatform.SVG
         {
          
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement patternElement = new XElement(xn + "path", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement patternElement = new XElement(xn + "path");
 
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit / 2; //元素X位置
@@ -315,7 +315,7 @@ namespace DOGPlatform.SVG
         public static XElement textPatternElement(int iWidthUnit, int iHeightUnit, int orderRow, int orderColumn, string sText)
         {
             XNamespace xn = "http://www.w3.org/2000/svg";
-            XElement textXE = new XElement(xn + "text", new XAttribute("xmlns", "http://www.w3.org/2000/svg"));
+            XElement textXE = new XElement(xn + "text");
 
             int ix = iWidthUnit * orderColumn + iWidthUnit / 2; //元素X位置
             int iy = iHeightUnit * orderRow + iHeightUnit * 7 / 10; //元素Y位置

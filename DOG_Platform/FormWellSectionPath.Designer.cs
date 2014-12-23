@@ -52,6 +52,7 @@
             this.cbbLeftLogName = new System.Windows.Forms.ComboBox();
             this.btnMakeSection = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnGenerateDataByBaseDepth = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tbxBottomElevationInput = new System.Windows.Forms.TextBox();
             this.tbxTopElevationInput = new System.Windows.Forms.TextBox();
@@ -88,9 +89,8 @@
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lbxTracksCollection = new System.Windows.Forms.ListBox();
-            this.btnAddLithoTrack = new System.Windows.Forms.Button();
             this.btnAddLayerDepth = new System.Windows.Forms.Button();
-            this.btnAddTextTrack = new System.Windows.Forms.Button();
+            this.btnAddTrackProfile = new System.Windows.Forms.Button();
             this.btnPerforatedTrack = new System.Windows.Forms.Button();
             this.btnAddJSJLTrack = new System.Windows.Forms.Button();
             this.tabPageWellData = new System.Windows.Forms.TabPage();
@@ -188,7 +188,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.btnGenerateDataByBaseDepth = new System.Windows.Forms.Button();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -314,7 +313,7 @@
             this.btnLogTrackAddLeft.Name = "btnLogTrackAddLeft";
             this.btnLogTrackAddLeft.Size = new System.Drawing.Size(75, 23);
             this.btnLogTrackAddLeft.TabIndex = 29;
-            this.btnLogTrackAddLeft.Text = "生成曲线道";
+            this.btnLogTrackAddLeft.Text = "左侧曲线道";
             this.btnLogTrackAddLeft.UseVisualStyleBackColor = true;
             this.btnLogTrackAddLeft.Click += new System.EventHandler(this.btnLogTrackAddLeft_Click);
             // 
@@ -462,7 +461,7 @@
             this.btnLogTrackAddRight.Name = "btnLogTrackAddRight";
             this.btnLogTrackAddRight.Size = new System.Drawing.Size(75, 23);
             this.btnLogTrackAddRight.TabIndex = 13;
-            this.btnLogTrackAddRight.Text = "生成曲线道";
+            this.btnLogTrackAddRight.Text = "右侧曲线道";
             this.btnLogTrackAddRight.UseVisualStyleBackColor = true;
             this.btnLogTrackAddRight.Click += new System.EventHandler(this.btnAddLogTrack_Click);
             // 
@@ -575,6 +574,16 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "剖面图设置";
+            // 
+            // btnGenerateDataByBaseDepth
+            // 
+            this.btnGenerateDataByBaseDepth.Location = new System.Drawing.Point(31, 514);
+            this.btnGenerateDataByBaseDepth.Name = "btnGenerateDataByBaseDepth";
+            this.btnGenerateDataByBaseDepth.Size = new System.Drawing.Size(188, 23);
+            this.btnGenerateDataByBaseDepth.TabIndex = 18;
+            this.btnGenerateDataByBaseDepth.Text = "全井段绘制";
+            this.btnGenerateDataByBaseDepth.UseVisualStyleBackColor = true;
+            this.btnGenerateDataByBaseDepth.Click += new System.EventHandler(this.btnGenerateDataByBaseDepth_Click);
             // 
             // groupBox5
             // 
@@ -950,9 +959,8 @@
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.lbxTracksCollection);
-            this.groupBox7.Controls.Add(this.btnAddLithoTrack);
             this.groupBox7.Controls.Add(this.btnAddLayerDepth);
-            this.groupBox7.Controls.Add(this.btnAddTextTrack);
+            this.groupBox7.Controls.Add(this.btnAddTrackProfile);
             this.groupBox7.Controls.Add(this.btnPerforatedTrack);
             this.groupBox7.Controls.Add(this.btnAddJSJLTrack);
             this.groupBox7.Location = new System.Drawing.Point(310, 17);
@@ -972,55 +980,43 @@
             this.lbxTracksCollection.Size = new System.Drawing.Size(130, 196);
             this.lbxTracksCollection.TabIndex = 18;
             // 
-            // btnAddLithoTrack
-            // 
-            this.btnAddLithoTrack.Enabled = false;
-            this.btnAddLithoTrack.Location = new System.Drawing.Point(6, 175);
-            this.btnAddLithoTrack.Name = "btnAddLithoTrack";
-            this.btnAddLithoTrack.Size = new System.Drawing.Size(88, 25);
-            this.btnAddLithoTrack.TabIndex = 23;
-            this.btnAddLithoTrack.Text = "增加岩性道";
-            this.btnAddLithoTrack.UseVisualStyleBackColor = true;
-            this.btnAddLithoTrack.Click += new System.EventHandler(this.btnAddLithoTrack_Click);
-            // 
             // btnAddLayerDepth
             // 
             this.btnAddLayerDepth.Location = new System.Drawing.Point(6, 31);
             this.btnAddLayerDepth.Name = "btnAddLayerDepth";
             this.btnAddLayerDepth.Size = new System.Drawing.Size(88, 25);
             this.btnAddLayerDepth.TabIndex = 19;
-            this.btnAddLayerDepth.Text = "增加地层道";
+            this.btnAddLayerDepth.Text = "地层道";
             this.btnAddLayerDepth.UseVisualStyleBackColor = true;
             this.btnAddLayerDepth.Click += new System.EventHandler(this.btnAddLayerDepth_Click);
             // 
-            // btnAddTextTrack
+            // btnAddTrackProfile
             // 
-            this.btnAddTextTrack.Enabled = false;
-            this.btnAddTextTrack.Location = new System.Drawing.Point(6, 139);
-            this.btnAddTextTrack.Name = "btnAddTextTrack";
-            this.btnAddTextTrack.Size = new System.Drawing.Size(88, 25);
-            this.btnAddTextTrack.TabIndex = 19;
-            this.btnAddTextTrack.Text = "增加文本道";
-            this.btnAddTextTrack.UseVisualStyleBackColor = true;
-            this.btnAddTextTrack.Click += new System.EventHandler(this.btnAddTextTrack_Click);
+            this.btnAddTrackProfile.Location = new System.Drawing.Point(6, 163);
+            this.btnAddTrackProfile.Name = "btnAddTrackProfile";
+            this.btnAddTrackProfile.Size = new System.Drawing.Size(88, 25);
+            this.btnAddTrackProfile.TabIndex = 19;
+            this.btnAddTrackProfile.Text = "吸水剖面";
+            this.btnAddTrackProfile.UseVisualStyleBackColor = true;
+            this.btnAddTrackProfile.Click += new System.EventHandler(this.btnAddTextTrack_Click);
             // 
             // btnPerforatedTrack
             // 
-            this.btnPerforatedTrack.Location = new System.Drawing.Point(6, 103);
+            this.btnPerforatedTrack.Location = new System.Drawing.Point(6, 119);
             this.btnPerforatedTrack.Name = "btnPerforatedTrack";
             this.btnPerforatedTrack.Size = new System.Drawing.Size(88, 25);
             this.btnPerforatedTrack.TabIndex = 22;
-            this.btnPerforatedTrack.Text = "增加射孔道";
+            this.btnPerforatedTrack.Text = "射孔道";
             this.btnPerforatedTrack.UseVisualStyleBackColor = true;
             this.btnPerforatedTrack.Click += new System.EventHandler(this.btnAddPerforatedTrack_Click);
             // 
             // btnAddJSJLTrack
             // 
-            this.btnAddJSJLTrack.Location = new System.Drawing.Point(6, 67);
+            this.btnAddJSJLTrack.Location = new System.Drawing.Point(6, 75);
             this.btnAddJSJLTrack.Name = "btnAddJSJLTrack";
             this.btnAddJSJLTrack.Size = new System.Drawing.Size(88, 25);
             this.btnAddJSJLTrack.TabIndex = 21;
-            this.btnAddJSJLTrack.Text = "增加解释结论";
+            this.btnAddJSJLTrack.Text = "解释结论";
             this.btnAddJSJLTrack.UseVisualStyleBackColor = true;
             this.btnAddJSJLTrack.Click += new System.EventHandler(this.btnAddJSJLTrack_Click);
             // 
@@ -1039,7 +1035,7 @@
             this.tabPageWellData.Controls.Add(this.btnSaveSetting);
             this.tabPageWellData.Location = new System.Drawing.Point(4, 22);
             this.tabPageWellData.Name = "tabPageWellData";
-            this.tabPageWellData.Size = new System.Drawing.Size(889, 533);
+            this.tabPageWellData.Size = new System.Drawing.Size(889, 575);
             this.tabPageWellData.TabIndex = 2;
             this.tabPageWellData.Text = "图形设置";
             this.tabPageWellData.UseVisualStyleBackColor = true;
@@ -2490,16 +2486,6 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
-            // btnGenerateDataByBaseDepth
-            // 
-            this.btnGenerateDataByBaseDepth.Location = new System.Drawing.Point(31, 514);
-            this.btnGenerateDataByBaseDepth.Name = "btnGenerateDataByBaseDepth";
-            this.btnGenerateDataByBaseDepth.Size = new System.Drawing.Size(188, 23);
-            this.btnGenerateDataByBaseDepth.TabIndex = 18;
-            this.btnGenerateDataByBaseDepth.Text = "全井段绘制";
-            this.btnGenerateDataByBaseDepth.UseVisualStyleBackColor = true;
-            this.btnGenerateDataByBaseDepth.Click += new System.EventHandler(this.btnGenerateDataByBaseDepth_Click);
-            // 
             // FormWellSectionPath
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2631,8 +2617,7 @@
         private System.Windows.Forms.ListBox lbxTracksCollection;
         private System.Windows.Forms.Button btnPerforatedTrack;
         private System.Windows.Forms.Button btnAddJSJLTrack;
-        private System.Windows.Forms.Button btnAddTextTrack;
-        private System.Windows.Forms.Button btnAddLithoTrack;
+        private System.Windows.Forms.Button btnAddTrackProfile;
         private System.Windows.Forms.Button btnAddLayerDepth;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Button btnLogTrackAddRight;

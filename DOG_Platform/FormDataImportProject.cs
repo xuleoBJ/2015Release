@@ -93,7 +93,7 @@ namespace DOGPlatform
             {
                 if (cProjectData.ltStrProjectJH.IndexOf(_sjh) >= 0)
                 {
-                    List<string> _listLines = cIOBase.selecFromStringListByFisrtWord(ltStrLinegdv, _sjh);
+                    List<string> _listLines = cIOBase.getListStrFromStringListByFirstWord(ltStrLinegdv, _sjh);
                     if (dgvCurrent == this.dgvLayerDepth)
                     {
                         cIOinputLayerDepth.creatInputFile(_sjh, _listLines);
@@ -112,8 +112,8 @@ namespace DOGPlatform
                      }
                      if (dgvCurrent == this.dgvProfile)
                      {
-                         cIOinputInjectionProfile.creatInputFile(_sjh, _listLines);
-                         cIOinputInjectionProfile.creatWellGeoFile(_sjh);
+                         cIOinputInjectProfile.creatInputFile(_sjh, _listLines);
+                         cIOinputInjectProfile.creatWellGeoFile(_sjh);
                      }
                      if (dgvCurrent == this.dgvPerforation)
                      {

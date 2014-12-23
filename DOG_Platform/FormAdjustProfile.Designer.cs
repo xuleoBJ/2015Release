@@ -63,7 +63,7 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDraw = new System.Windows.Forms.Button();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chartPI = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tbgResult = new System.Windows.Forms.TabPage();
             this.dgvResult = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,7 +84,7 @@
             this.groupBox1.SuspendLayout();
             this.tbgPI.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPI)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPI)).BeginInit();
             this.tbgResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
             this.SuspendLayout();
@@ -316,7 +316,7 @@
             this.tbgPI.Controls.Add(this.btnImportPI);
             this.tbgPI.Controls.Add(this.dgvPI);
             this.tbgPI.Controls.Add(this.btnDraw);
-            this.tbgPI.Controls.Add(this.chart1);
+            this.tbgPI.Controls.Add(this.chartPI);
             this.tbgPI.Location = new System.Drawing.Point(4, 22);
             this.tbgPI.Name = "tbgPI";
             this.tbgPI.Padding = new System.Windows.Forms.Padding(3);
@@ -394,21 +394,21 @@
             this.btnDraw.UseVisualStyleBackColor = true;
             this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
-            // chart1
+            // chartPI
             // 
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.chartPI.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(421, 65);
-            this.chart1.Name = "chart1";
+            this.chartPI.Legends.Add(legend1);
+            this.chartPI.Location = new System.Drawing.Point(421, 65);
+            this.chartPI.Name = "chartPI";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(439, 400);
-            this.chart1.TabIndex = 23;
-            this.chart1.Text = "压降分析曲线";
+            this.chartPI.Series.Add(series1);
+            this.chartPI.Size = new System.Drawing.Size(439, 400);
+            this.chartPI.TabIndex = 23;
+            this.chartPI.Text = "压降分析曲线";
             // 
             // tbgResult
             // 
@@ -494,7 +494,7 @@
             this.groupBox1.PerformLayout();
             this.tbgPI.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPI)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartPI)).EndInit();
             this.tbgResult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
             this.ResumeLayout(false);
@@ -527,7 +527,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbbSelectedLayerName;
         private System.Windows.Forms.TabPage tbgPI;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPI;
         private System.Windows.Forms.Button btnDraw;
         private System.Windows.Forms.TabPage tbgResult;
         private System.Windows.Forms.DataGridView dgvResult;

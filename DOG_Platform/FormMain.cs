@@ -69,10 +69,7 @@ namespace DOGPlatform
             listScale.Add("200");
             listScale.Add("100000");
             tscbbScale.Items.Clear();
-            foreach (string sItem in listScale)
-            {
-                tscbbScale.Items.Add(sItem);
-            }
+            foreach (string sItem in listScale) tscbbScale.Items.Add(sItem);
             tscbbScale.SelectedIndex = 0;
         }
 
@@ -1180,6 +1177,14 @@ namespace DOGPlatform
             cProjectData.setProjectWellsInfor();
             }
         }
+
+        private void tsBtnDataView_Click(object sender, EventArgs e)
+        {
+            FormDataViewSingleWell formDataView = new FormDataViewSingleWell(cProjectData.ltStrProjectJH[0]);
+            formDataView.Show();
+        }
+
+      
 
        
 

@@ -131,7 +131,7 @@ namespace DOGPlatform
         public static void selectData2FileFromJSJLByJH(string sJH, string filePathWrited)
         {
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameWellJSJL);
-            cIOBase.write2file(cIOBase.selecFromTextByFirstWord2StringList(filePath, sJH), filePathWrited);
+            cIOBase.write2file(cIOBase.getListStrFromTextByFirstWord(filePath, sJH), filePathWrited);
 
         }
         public static string selectIntervalDataFromJSJLByJHAndDepth(string sJH, float fDS1, float fDS2)

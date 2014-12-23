@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DOGPlatform
 {
-    struct ItemInjectionProfile
+    struct ItemInjectProfile
     {
        
             public string sJH;
@@ -17,7 +17,7 @@ namespace DOGPlatform
             public float fXSHD; //吸水厚度
             public float FXSQD; //吸水强度
 
-            public static string item2string(ItemInjectionProfile item)
+            public static string item2string(ItemInjectProfile item)
             {
                 List<string> ltStrWrited = new List<string>();
                 ltStrWrited.Add(item.sJH);
@@ -31,26 +31,26 @@ namespace DOGPlatform
                 return string.Join("\t", ltStrWrited.ToArray());
             }
 
-            public static ItemInjectionProfile parseLine(string line)
+            public static ItemInjectProfile parseLine(string line)
             {
                 string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-                ItemInjectionProfile item = new ItemInjectionProfile();
+                ItemInjectProfile item = new ItemInjectProfile();
                 if (split.Length >=8 )
                 {
                     item.sJH = split[0];
                     item.sYM = split[1];
                     item.fDS1 = 0.0f;
-                    float.TryParse(split[1], out item.fDS1);
+                    float.TryParse(split[2], out item.fDS1);
                     item.fDS2 = 0.0f;
-                    float.TryParse(split[2], out item.fDS2);
+                    float.TryParse(split[3], out item.fDS2);
                     item.fZRL = 0.0f;
-                    float.TryParse(split[3], out item.fZRL);
+                    float.TryParse(split[4], out item.fZRL);
                     item.fPercentZR = 0.0f;
-                    float.TryParse(split[4], out item.fPercentZR);
+                    float.TryParse(split[5], out item.fPercentZR);
                     item.fXSHD = 0.0f;
-                    float.TryParse(split[5], out item.fXSHD);
+                    float.TryParse(split[6], out item.fXSHD);
                     item.FXSQD = 0.0f;
-                    float.TryParse(split[6], out item.FXSQD);
+                    float.TryParse(split[7], out item.FXSQD);
                 }
                 return item;
             }

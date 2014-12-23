@@ -142,7 +142,7 @@ namespace DOGPlatform
         public static void selectData2FileFromLayerDepthByJH(string sJH, string filePathWrited)
         {
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameWellLayerDepth);
-            cIOBase.write2file(cIOBase.selecFromTextByFirstWord2StringList(filePath, sJH), filePathWrited);
+            cIOBase.write2file(cIOBase.getListStrFromTextByFirstWord(filePath, sJH), filePathWrited);
 
         }
         public static void deleteItemFromLayerDepth(string sJH)

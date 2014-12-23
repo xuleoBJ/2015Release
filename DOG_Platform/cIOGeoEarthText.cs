@@ -62,7 +62,7 @@ namespace DOGPlatform
         public static List<string> selectStringListFromGeoText(string filepath, string sFirstWord)
         {
             //起始行设为3
-            return selecFromTextByFirstWord2StringList(filepath, 3, sFirstWord);
+            return getListStrFromTextByFirstWord(filepath, 3, sFirstWord);
         }
 
         public static void deleteLinesByFirstWordFromGeoEarTxt(string filePath, List<string> ltStr)
