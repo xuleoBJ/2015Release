@@ -75,7 +75,7 @@
             this.cbbDataType.Text = "选择数据";
             this.cbbDataType.SelectedIndexChanged += new System.EventHandler(this.cbbDataType_SelectedIndexChanged);
             // 
-            // FormDataSingleWellView
+            // FormDataViewSingleWell
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,8 +84,8 @@
             this.Controls.Add(this.cbbJH);
             this.Controls.Add(this.dgvDataTable);
             this.Controls.Add(this.menuStrip1);
-            this.Name = "FormDataSingleWellView";
-            this.Text = "FormDataViewSingleWell";
+            this.Name = "FormDataViewSingleWell";
+            this.Text = "井数据分析";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataTable)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

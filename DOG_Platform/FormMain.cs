@@ -46,7 +46,8 @@ namespace DOGPlatform
             tsmiGeologyLayer.Enabled = true;
             tsmiGeologySection.Enabled = true;
             tsmiWellGroup.Enabled = true;
-        
+            tsmiSaveAnotherProject.Enabled = true;
+            tsmiSaveProject.Enabled = true; 
         }
 
         private void intializeMyForm()
@@ -99,19 +100,15 @@ namespace DOGPlatform
 
         void updateTreeViewWindows()
         {
-
-            tvwWindows.CheckBoxes = true;
-            tvwWindows.Nodes.Clear();
+            tvWindows.CheckBoxes = true;
+            tvWindows.Nodes.Clear();
             foreach (TabPage tbg in listTabpageMain)
             {
                 TreeNode tabNote = new TreeNode();
                 tabNote.Name = tbg.Name;
                 tabNote.Text = tbg.Text;
-                tvwWindows.Nodes.Add(tabNote);
-                if (tbcMain.TabPages.Contains(tbg))
-                {
-                    tabNote.Checked = true;
-                }
+                tvWindows.Nodes.Add(tabNote);
+                if (tbcMain.TabPages.Contains(tbg)) tabNote.Checked = true;
             }
         }
 
@@ -151,9 +148,6 @@ namespace DOGPlatform
              if (cProjectManager.loadProjectData())
             {
                 this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirProject;
-                //tlsCbbLayer.Items.Add("井口");
-                //foreach (string sXCM in cProjectData.ltStrProjectXCM) tlsCbbLayer.Items.Add(sXCM);
-                //tlsCbbLayer.SelectedIndex = 0;
                 updateMainForm();
                 tscbbScale.Text = ((int)(1000 / cProjectData.dfMapScale)).ToString();
                 WellNavitationInvalidate();
@@ -347,8 +341,7 @@ namespace DOGPlatform
             {
                 this.dgvLayerSeriers.Height = this.tbcMain.Height - 100;
                 if (File.Exists(cProjectManager.filePathInputLayerSeriers))
-                    cPublicMethodForm.read2DataGridViewByTextFile(cProjectManager.filePathInputLayerSeriers, dgvLayerSeriers);
-                
+                    cPublicMethodForm.read2DataGridViewByTextFile(cProjectManager.filePathInputLayerSeriers, dgvLayerSeriers); 
             }
 
         }
@@ -422,26 +415,26 @@ namespace DOGPlatform
         void updateTreeViewProjectGraph()
         {
             string dir = cProjectManager.dirPathMap;
-            tvProjectGraph.ImageList = this.imageListMain;
-            cPublicMethodForm.ListDirectory(tvProjectGraph, dir);
-            tvProjectGraph.ExpandAll();
+            tvResultGraph.ImageList = this.imageListMain;
+            cPublicMethodForm.ListDirectory(tvResultGraph, dir);
+            tvResultGraph.ExpandAll();
         }
 
         private void tabControlProject_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (tbcProject.SelectedTab == tbgProjectGraph && cProjectManager.dirProject != Path.GetTempPath()) //选择了图形tbg
+            if (tbcProject.SelectedTab == tbgResultGraph && cProjectManager.dirProject != Path.GetTempPath()) //选择了图形tbg
             {
                 updateTreeViewProjectGraph();
                 string[] filenames = Directory.GetFiles(cProjectManager.dirPathMap, "*.svg");
             }
-            if (tbcProject.SelectedTab == this.tbgProjectMapPattern )
+            if (tbcProject.SelectedTab == this.tbgResultTable )
             {
                 //通过同名xml修改svg
                 try
                 {
                     string _filePathSVGOpened = filePathWebSVG.Replace(".svg", ".xml");
-                    if(File.Exists(_filePathSVGOpened)) LoadTreeViewFromXmlFile(_filePathSVGOpened, tvMapPattern);
+                    if(File.Exists(_filePathSVGOpened)) LoadTreeViewFromXmlFile(_filePathSVGOpened, tvResultTable);
                 }
                 catch (XmlException xmlEx)
                 {
@@ -463,7 +456,6 @@ namespace DOGPlatform
 
             try
             {
-
                 if (filePathWebSVG.EndsWith(".svg"))
                 {
                     this.webBrowserIE.Navigate(new Uri(filePathWebSVG));
@@ -476,7 +468,7 @@ namespace DOGPlatform
             }
             catch (System.UriFormatException)
             {
-                MessageBox.Show("error.");
+                MessageBox.Show("UriFormatException error.");
             }
 
         }
@@ -852,7 +844,6 @@ namespace DOGPlatform
         }
         private void panelWellNavigation_MouseMove(object sender, MouseEventArgs e)
         {
-
             switch (currentOpreateMode)
             {
                 case OpreateMode.Initial:
@@ -912,10 +903,7 @@ namespace DOGPlatform
                     AddTreeNode(newNode, tNode);
                 }
             }
-            else
-            {
-                treeNode.Text = (xmlNode.OuterXml).Trim();
-            }
+            else treeNode.Text = (xmlNode.OuterXml).Trim();
         }
         private void LoadTreeViewFromXmlFile(string filename, TreeView trv)
         {
@@ -952,16 +940,12 @@ namespace DOGPlatform
                     foreach (TreeNode _tn in e.Node.Nodes)
                     {
                         _tn.Checked = true;
-                        if (_tn.Index > 0)
-                            ltTV_SelectedJH.Add(_tn.Text);  //0是global well log
+                        if (_tn.Index > 0) ltTV_SelectedJH.Add(_tn.Text);  //0是global well log
                     }
                 }
                 if (e.Node.Checked == false)
                 {
-                    foreach (TreeNode _tn in e.Node.Nodes)
-                    {
-                        _tn.Checked = false;
-                    }
+                    foreach (TreeNode _tn in e.Node.Nodes) _tn.Checked = false;
                 }
 
             };
@@ -978,10 +962,7 @@ namespace DOGPlatform
                 }
                 if (e.Node.Checked == false)
                 {
-                    foreach (TreeNode _tn in e.Node.Nodes)
-                    {
-                        _tn.Checked = false;
-                    }
+                    foreach (TreeNode _tn in e.Node.Nodes) _tn.Checked = false;
                 }
             }
             //选择的井号
@@ -991,7 +972,6 @@ namespace DOGPlatform
                 if (e.Node.Checked == true)
                 {
                     if (ltTV_SelectedJH.IndexOf(_sJH) < 0) ltTV_SelectedJH.Add(_sJH);
-
                 }
                 else
                 { if (ltTV_SelectedJH.IndexOf(_sJH) >= 0) ltTV_SelectedJH.Remove(_sJH); }
@@ -1002,7 +982,6 @@ namespace DOGPlatform
                 if (e.Node.Checked == true)
                 {
                     if (ltTV_SelectedLogNames.IndexOf(_logName) < 0) ltTV_SelectedLogNames.Add(_logName);
-
                 }
                 else
                 { if (ltTV_SelectedLogNames.IndexOf(_logName) >= 0) ltTV_SelectedLogNames.Remove(_logName); }
@@ -1011,8 +990,8 @@ namespace DOGPlatform
         }
         private void tvwProjectGraph_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            tvProjectGraph.ContextMenuStrip = cmsProject;
-            TreeNode selectNode = tvProjectGraph.SelectedNode;
+            tvResultGraph.ContextMenuStrip = cmsProject;
+            TreeNode selectNode = tvResultGraph.SelectedNode;
             cmsProject.Items.Clear();
 
             switch (selectNode.Level)
@@ -1034,7 +1013,7 @@ namespace DOGPlatform
                     break;
             }
 
-            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvProjectGraph.SelectedNode.Text);
+            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvResultGraph.SelectedNode.Text);
             updateWebSVG();
 
         }
@@ -1043,12 +1022,8 @@ namespace DOGPlatform
         {
             if (cProjectData.ltStrProjectJH.Count > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Yes 保存项目，No 放弃修改", "关闭工程",
-                          MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    cProjectManager.saveProject();
-                }
+                DialogResult dialogResult = MessageBox.Show("Yes 保存项目，No 放弃修改", "关闭工程", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes) cProjectManager.saveProject();
             }
 
         }
@@ -1146,7 +1121,7 @@ namespace DOGPlatform
             string oldfilepath = Path.Combine(cProjectManager.dirPathMap, oldNoteText);
             string newfilepath = Path.Combine(cProjectManager.dirPathMap, node.Text);
             File.Move(oldfilepath, newfilepath);
-            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvProjectGraph.SelectedNode.Text);
+            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvResultGraph.SelectedNode.Text);
             updateWebSVG();
         }
 
@@ -1201,6 +1176,21 @@ namespace DOGPlatform
                 formDataView.Show();
             }
      
+        }
+
+
+        private void tvWindows_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            TreeNode tn = e.Node;
+            if (tn.Checked == false && tn.Index >= 2)
+            {
+                foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Remove(tbg);
+            }
+            if (tn.Checked == true && tn.Index >= 2)
+            {
+                foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Add(tbg);
+            }
+
         }
 
       

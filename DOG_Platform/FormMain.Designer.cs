@@ -42,13 +42,13 @@
             this.tbcProject = new System.Windows.Forms.TabControl();
             this.tbgProjectData = new System.Windows.Forms.TabPage();
             this.tvProjectData = new System.Windows.Forms.TreeView();
-            this.tbgProjectGraph = new System.Windows.Forms.TabPage();
-            this.tvProjectGraph = new System.Windows.Forms.TreeView();
-            this.tbgProjectMapPattern = new System.Windows.Forms.TabPage();
-            this.tvMapPattern = new System.Windows.Forms.TreeView();
+            this.tbgResultGraph = new System.Windows.Forms.TabPage();
+            this.tvResultGraph = new System.Windows.Forms.TreeView();
+            this.tbgResultTable = new System.Windows.Forms.TabPage();
+            this.tvResultTable = new System.Windows.Forms.TreeView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbgWindows = new System.Windows.Forms.TabPage();
-            this.tvwWindows = new System.Windows.Forms.TreeView();
+            this.tvWindows = new System.Windows.Forms.TreeView();
             this.cmsProject = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tbcMain = new System.Windows.Forms.TabControl();
             this.tbgWellNavigation = new System.Windows.Forms.TabPage();
@@ -79,7 +79,7 @@
             this.tsmiProject = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiNewProject = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOpenProject = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmSaveProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSaveProject = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiSaveAnotherProject = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
@@ -159,8 +159,8 @@
             this.splitContainer2.SuspendLayout();
             this.tbcProject.SuspendLayout();
             this.tbgProjectData.SuspendLayout();
-            this.tbgProjectGraph.SuspendLayout();
-            this.tbgProjectMapPattern.SuspendLayout();
+            this.tbgResultGraph.SuspendLayout();
+            this.tbgResultTable.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tbgWindows.SuspendLayout();
             this.tbcMain.SuspendLayout();
@@ -283,8 +283,8 @@
             // tbcProject
             // 
             this.tbcProject.Controls.Add(this.tbgProjectData);
-            this.tbcProject.Controls.Add(this.tbgProjectGraph);
-            this.tbcProject.Controls.Add(this.tbgProjectMapPattern);
+            this.tbcProject.Controls.Add(this.tbgResultGraph);
+            this.tbcProject.Controls.Add(this.tbgResultTable);
             this.tbcProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcProject.Location = new System.Drawing.Point(0, 0);
             this.tbcProject.Name = "tbcProject";
@@ -317,47 +317,47 @@
             this.tvProjectData.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvProjectData_AfterCheck);
             this.tvProjectData.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvProjectData_AfterSelect);
             // 
-            // tbgProjectGraph
+            // tbgResultGraph
             // 
-            this.tbgProjectGraph.Controls.Add(this.tvProjectGraph);
-            this.tbgProjectGraph.Location = new System.Drawing.Point(4, 22);
-            this.tbgProjectGraph.Name = "tbgProjectGraph";
-            this.tbgProjectGraph.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgProjectGraph.Size = new System.Drawing.Size(158, 348);
-            this.tbgProjectGraph.TabIndex = 2;
-            this.tbgProjectGraph.Text = "图册";
-            this.tbgProjectGraph.UseVisualStyleBackColor = true;
+            this.tbgResultGraph.Controls.Add(this.tvResultGraph);
+            this.tbgResultGraph.Location = new System.Drawing.Point(4, 22);
+            this.tbgResultGraph.Name = "tbgResultGraph";
+            this.tbgResultGraph.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgResultGraph.Size = new System.Drawing.Size(158, 351);
+            this.tbgResultGraph.TabIndex = 2;
+            this.tbgResultGraph.Text = "成果图";
+            this.tbgResultGraph.UseVisualStyleBackColor = true;
             // 
-            // tvProjectGraph
+            // tvResultGraph
             // 
-            this.tvProjectGraph.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvProjectGraph.LabelEdit = true;
-            this.tvProjectGraph.Location = new System.Drawing.Point(3, 3);
-            this.tvProjectGraph.Name = "tvProjectGraph";
-            this.tvProjectGraph.Size = new System.Drawing.Size(152, 342);
-            this.tvProjectGraph.TabIndex = 2;
-            this.tvProjectGraph.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_BeforeLabelEdit);
-            this.tvProjectGraph.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_AfterLabelEdit);
-            this.tvProjectGraph.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvwProjectGraph_AfterSelect);
+            this.tvResultGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvResultGraph.LabelEdit = true;
+            this.tvResultGraph.Location = new System.Drawing.Point(3, 3);
+            this.tvResultGraph.Name = "tvResultGraph";
+            this.tvResultGraph.Size = new System.Drawing.Size(152, 345);
+            this.tvResultGraph.TabIndex = 2;
+            this.tvResultGraph.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_BeforeLabelEdit);
+            this.tvResultGraph.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_AfterLabelEdit);
+            this.tvResultGraph.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvwProjectGraph_AfterSelect);
             // 
-            // tbgProjectMapPattern
+            // tbgResultTable
             // 
-            this.tbgProjectMapPattern.Controls.Add(this.tvMapPattern);
-            this.tbgProjectMapPattern.Location = new System.Drawing.Point(4, 22);
-            this.tbgProjectMapPattern.Name = "tbgProjectMapPattern";
-            this.tbgProjectMapPattern.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgProjectMapPattern.Size = new System.Drawing.Size(158, 348);
-            this.tbgProjectMapPattern.TabIndex = 0;
-            this.tbgProjectMapPattern.Text = "图元";
-            this.tbgProjectMapPattern.UseVisualStyleBackColor = true;
+            this.tbgResultTable.Controls.Add(this.tvResultTable);
+            this.tbgResultTable.Location = new System.Drawing.Point(4, 22);
+            this.tbgResultTable.Name = "tbgResultTable";
+            this.tbgResultTable.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgResultTable.Size = new System.Drawing.Size(158, 351);
+            this.tbgResultTable.TabIndex = 0;
+            this.tbgResultTable.Text = "成果表";
+            this.tbgResultTable.UseVisualStyleBackColor = true;
             // 
-            // tvMapPattern
+            // tvResultTable
             // 
-            this.tvMapPattern.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvMapPattern.Location = new System.Drawing.Point(3, 3);
-            this.tvMapPattern.Name = "tvMapPattern";
-            this.tvMapPattern.Size = new System.Drawing.Size(152, 342);
-            this.tvMapPattern.TabIndex = 1;
+            this.tvResultTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvResultTable.Location = new System.Drawing.Point(3, 3);
+            this.tvResultTable.Name = "tvResultTable";
+            this.tvResultTable.Size = new System.Drawing.Size(152, 345);
+            this.tvResultTable.TabIndex = 1;
             // 
             // tabControl1
             // 
@@ -371,7 +371,7 @@
             // 
             // tbgWindows
             // 
-            this.tbgWindows.Controls.Add(this.tvwWindows);
+            this.tbgWindows.Controls.Add(this.tvWindows);
             this.tbgWindows.Location = new System.Drawing.Point(4, 22);
             this.tbgWindows.Name = "tbgWindows";
             this.tbgWindows.Padding = new System.Windows.Forms.Padding(3);
@@ -380,14 +380,15 @@
             this.tbgWindows.Text = "窗口";
             this.tbgWindows.UseVisualStyleBackColor = true;
             // 
-            // tvwWindows
+            // tvWindows
             // 
-            this.tvwWindows.ContextMenuStrip = this.cmsProject;
-            this.tvwWindows.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tvwWindows.Location = new System.Drawing.Point(3, 3);
-            this.tvwWindows.Name = "tvwWindows";
-            this.tvwWindows.Size = new System.Drawing.Size(152, 223);
-            this.tvwWindows.TabIndex = 0;
+            this.tvWindows.ContextMenuStrip = this.cmsProject;
+            this.tvWindows.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvWindows.Location = new System.Drawing.Point(3, 3);
+            this.tvWindows.Name = "tvWindows";
+            this.tvWindows.Size = new System.Drawing.Size(152, 223);
+            this.tvWindows.TabIndex = 0;
+            this.tvWindows.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.tvWindows_AfterCheck);
             // 
             // cmsProject
             // 
@@ -664,7 +665,7 @@
             this.tsmiProject.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiNewProject,
             this.tsmiOpenProject,
-            this.tsmSaveProject,
+            this.tsmiSaveProject,
             this.ToolStripMenuItem1,
             this.tsmiSaveAnotherProject,
             this.ToolStripMenuItem2,
@@ -687,12 +688,13 @@
             this.tsmiOpenProject.Text = "打开项目";
             this.tsmiOpenProject.Click += new System.EventHandler(this.tsmiOpenProject_Click);
             // 
-            // tsmSaveProject
+            // tsmiSaveProject
             // 
-            this.tsmSaveProject.Name = "tsmSaveProject";
-            this.tsmSaveProject.Size = new System.Drawing.Size(152, 22);
-            this.tsmSaveProject.Text = "保存项目";
-            this.tsmSaveProject.Click += new System.EventHandler(this.tsmSaveProject_Click);
+            this.tsmiSaveProject.Enabled = false;
+            this.tsmiSaveProject.Name = "tsmiSaveProject";
+            this.tsmiSaveProject.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSaveProject.Text = "保存项目";
+            this.tsmiSaveProject.Click += new System.EventHandler(this.tsmSaveProject_Click);
             // 
             // ToolStripMenuItem1
             // 
@@ -701,6 +703,7 @@
             // 
             // tsmiSaveAnotherProject
             // 
+            this.tsmiSaveAnotherProject.Enabled = false;
             this.tsmiSaveAnotherProject.Name = "tsmiSaveAnotherProject";
             this.tsmiSaveAnotherProject.Size = new System.Drawing.Size(152, 22);
             this.tsmiSaveAnotherProject.Text = "项目另存...";
@@ -735,20 +738,20 @@
             this.tsmiWells,
             this.tsmiWellTops});
             this.tsmiInsert.Name = "tsmiInsert";
-            this.tsmiInsert.Size = new System.Drawing.Size(152, 22);
+            this.tsmiInsert.Size = new System.Drawing.Size(124, 22);
             this.tsmiInsert.Text = "基础数据";
             // 
             // tsmiWells
             // 
             this.tsmiWells.Name = "tsmiWells";
-            this.tsmiWells.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWells.Size = new System.Drawing.Size(112, 22);
             this.tsmiWells.Text = "井文件";
             this.tsmiWells.Click += new System.EventHandler(this.tsmiWells_Click);
             // 
             // tsmiWellTops
             // 
             this.tsmiWellTops.Name = "tsmiWellTops";
-            this.tsmiWellTops.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWellTops.Size = new System.Drawing.Size(112, 22);
             this.tsmiWellTops.Text = "层序";
             this.tsmiWellTops.Click += new System.EventHandler(this.tsmiWellTops_Click);
             // 
@@ -758,7 +761,7 @@
             this.tsmiJSJLmatch,
             this.tsmiJSJLsplit});
             this.tsmiDataDeal.Name = "tsmiDataDeal";
-            this.tsmiDataDeal.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDataDeal.Size = new System.Drawing.Size(124, 22);
             this.tsmiDataDeal.Text = "数据处理";
             // 
             // tsmiJSJLmatch
@@ -782,7 +785,7 @@
             this.tsmiPetrelWellTops,
             this.tsmi4petrelproductLog});
             this.tsmiDataExport.Name = "tsmiDataExport";
-            this.tsmiDataExport.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDataExport.Size = new System.Drawing.Size(124, 22);
             this.tsmiDataExport.Text = "数据导出";
             // 
             // tsmiWellPosition4Petrel
@@ -923,14 +926,14 @@
             // tsmiSection
             // 
             this.tsmiSection.Name = "tsmiSection";
-            this.tsmiSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSection.Size = new System.Drawing.Size(136, 22);
             this.tsmiSection.Text = "油藏剖面图";
             this.tsmiSection.Click += new System.EventHandler(this.tsmiSection_Click);
             // 
             // tsmiWellpathSection
             // 
             this.tsmiWellpathSection.Name = "tsmiWellpathSection";
-            this.tsmiWellpathSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWellpathSection.Size = new System.Drawing.Size(136, 22);
             this.tsmiWellpathSection.Text = "斜井剖面";
             this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
             // 
@@ -1008,7 +1011,7 @@
             // tsmiSectionFence
             // 
             this.tsmiSectionFence.Name = "tsmiSectionFence";
-            this.tsmiSectionFence.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSectionFence.Size = new System.Drawing.Size(124, 22);
             this.tsmiSectionFence.Text = "井组地质";
             this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
@@ -1024,7 +1027,7 @@
             // tsmiAdjustProfile
             // 
             this.tsmiAdjustProfile.Name = "tsmiAdjustProfile";
-            this.tsmiAdjustProfile.Size = new System.Drawing.Size(152, 22);
+            this.tsmiAdjustProfile.Size = new System.Drawing.Size(100, 22);
             this.tsmiAdjustProfile.Text = "选井";
             this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
             // 
@@ -1048,7 +1051,7 @@
             this.ToolStripSeparator2});
             this.ToolStripMain.Location = new System.Drawing.Point(3, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(410, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(377, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1233,8 +1236,8 @@
             this.splitContainer2.ResumeLayout(false);
             this.tbcProject.ResumeLayout(false);
             this.tbgProjectData.ResumeLayout(false);
-            this.tbgProjectGraph.ResumeLayout(false);
-            this.tbgProjectMapPattern.ResumeLayout(false);
+            this.tbgResultGraph.ResumeLayout(false);
+            this.tbgResultTable.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tbgWindows.ResumeLayout(false);
             this.tbcMain.ResumeLayout(false);
@@ -1266,7 +1269,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiProject;
         private System.Windows.Forms.ToolStripMenuItem tsmiNewProject;
         private System.Windows.Forms.ToolStripMenuItem tsmiOpenProject;
-        private System.Windows.Forms.ToolStripMenuItem tsmSaveProject;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSaveProject;
         private System.Windows.Forms.ToolStripSeparator ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiSaveAnotherProject;
         private System.Windows.Forms.ToolStripSeparator ToolStripMenuItem2;
@@ -1297,12 +1300,12 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiCalWellInjectDictionary;
         private System.Windows.Forms.ToolStripMenuItem tsmiLayerInjectProductSystem;
         private System.Windows.Forms.TabControl tbcProject;
-        private System.Windows.Forms.TabPage tbgProjectMapPattern;
+        private System.Windows.Forms.TabPage tbgResultTable;
         private System.Windows.Forms.TabPage tbgProjectData;
-        private System.Windows.Forms.TreeView tvMapPattern;
+        private System.Windows.Forms.TreeView tvResultTable;
         private System.Windows.Forms.TreeView tvProjectData;
-        private System.Windows.Forms.TabPage tbgProjectGraph;
-        private System.Windows.Forms.TreeView tvProjectGraph;
+        private System.Windows.Forms.TabPage tbgResultGraph;
+        private System.Windows.Forms.TreeView tvResultGraph;
         private System.Windows.Forms.ToolStrip ToolStripMain;
         private System.Windows.Forms.ToolStripButton tsBtnNewProject;
         private System.Windows.Forms.ToolStripButton tsBtnOpenProject;
@@ -1345,7 +1348,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tbgWindows;
-        private System.Windows.Forms.TreeView tvwWindows;
+        private System.Windows.Forms.TreeView tvWindows;
         private System.Windows.Forms.ToolStripMenuItem tsmiGeologySection;
         private System.Windows.Forms.ToolStripMenuItem tsmiSection;
         private System.Windows.Forms.ToolStripMenuItem tsmiWellpathSection;

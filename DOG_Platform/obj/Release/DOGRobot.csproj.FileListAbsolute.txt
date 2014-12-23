@@ -117,3 +117,4 @@ E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.Propert
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.TrackLog.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.WaitWindowGUI.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGRobot.csproj.GenerateResource.Cache
+E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGRobot.csprojResolveAssemblyReference.cache
