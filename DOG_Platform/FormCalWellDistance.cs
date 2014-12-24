@@ -38,13 +38,13 @@ namespace DOGPlatform
             string sJH = cbbJH.SelectedItem.ToString();
 
 
-            List<ItemLayerDataDic> listCurrentLayerData = cIODicLayerData.readDicLayerData2struct().FindAll(p => p.sXCM == sXCM);
-            ItemLayerDataDic currentItem = listCurrentLayerData.Find(p => p.sJH==sJH);
+            List<ItemDicLayerData> listCurrentLayerData = cIODicLayerData.readDicLayerData2struct().FindAll(p => p.sXCM == sXCM);
+            ItemDicLayerData currentItem = listCurrentLayerData.Find(p => p.sJH==sJH);
 
             StreamWriter sw = new StreamWriter(fileName, false, Encoding.UTF8);
             if (listCurrentLayerData.Count > 0)
             {
-                foreach (ItemLayerDataDic goalItem in listCurrentLayerData.FindAll(p=>ltSelectedJH.Contains(p.sJH)))
+                foreach (ItemDicLayerData goalItem in listCurrentLayerData.FindAll(p=>ltSelectedJH.Contains(p.sJH)))
                 {
                     List<string> ltStrWrited = new List<string>();
                     double distance = cCalDistance.calDistance2D(currentItem.dbX, currentItem.dbY, goalItem.dbX, goalItem.dbY);

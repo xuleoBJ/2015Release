@@ -42,7 +42,7 @@ namespace DOGPlatform.XML
             }
             if (sTrackType ==  TypeTrack.射孔道.ToString())
             {
-                sData = cIOinputPerforation.selectPerforation2String(sSelectedJH);
+                sData = cIOinputWellPerforation.selectPerforation2String(sSelectedJH);
       
             }
             if (sTrackType ==  TypeTrack.文本道.ToString())
@@ -264,7 +264,7 @@ namespace DOGPlatform.XML
         {
             XElement XsingleWellRoot = XElement.Load(filePathSingleWellData);
             XElement XNode = XsingleWellRoot.Element("TrackCollect");
-            string sData = cIOinputPerforation.selectPerforation2String(sJHSelected);
+            string sData = cIOinputWellPerforation.selectPerforation2String(sJHSelected);
       
             XElement newNode = new XElement("Track", new XAttribute("id", "Track" + iIndexTrack.ToString()),
                  new XElement("trackType", TypeTrack.射孔道.ToString()),

@@ -170,7 +170,7 @@ namespace DOGPlatform
             {
                 string sJH = listWellsSection[i].sJH;
                 Point currentPositon = cCordinationTransform.getPointViewByJH(sJH);
-                List<ItemWellPath> currentWellPathList = cProjectData.listProjectWell.Find(p => p.sJH == sJH).WellPathList;
+                List<ItemDicWellPath> currentWellPathList = cProjectData.listProjectWell.Find(p => p.sJH == sJH).WellPathList;
                 float fTopShowed = listWellsSection[i].fShowedDepthTop;
                 float fBaseShowed = listWellsSection[i].fShowedDepthBase;
                 float fDepthFlatted = listWellsSection[i].fShowedDepthTop;
@@ -337,7 +337,7 @@ namespace DOGPlatform
                 {
                     //提取所选井段数据存入绘图目录下保存
                     string filePath = Path.Combine(dirSectionData, sJH, fileNameSectionPerforation);
-                    cIOinputPerforation cSelectInputPerforation = new cIOinputPerforation();
+                    cIOinputWellPerforation cSelectInputPerforation = new cIOinputWellPerforation();
                     cSelectInputPerforation.selectSectionDrawData2File(sJH, filePath);
                 }
                 foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) wellNote.Nodes.Add("射孔");

@@ -58,7 +58,7 @@ namespace DOGPlatform
         //层内非均质计算
         public void calHeterogeneityInnerLayer()
         {
-            List<ItemLayerDataDic> listXCSJB = cIODicLayerData.readDicLayerData2struct();
+            List<ItemDicLayerData> listXCSJB = cIODicLayerData.readDicLayerData2struct();
             StreamWriter sw = new StreamWriter(cProjectManager.filePathInnerLayerHeterogeneity, false, Encoding.UTF8);
             List<string> ltStrHeadColoum = new List<string>();
             //中文表头
@@ -93,7 +93,7 @@ namespace DOGPlatform
             foreach (string sCurrentXCM in cProjectData.ltStrProjectXCM) 
             {
 
-                List<ItemLayerDataDic> listXCSJB_currentLayer = listXCSJB.FindAll(p => p.sXCM == sCurrentXCM);
+                List<ItemDicLayerData> listXCSJB_currentLayer = listXCSJB.FindAll(p => p.sXCM == sCurrentXCM);
                 int zyjs = listXCSJB_currentLayer.Count(p =>  p.fDCHD > 0);
                  
                 List<string> ltStrWrited = new List<string>();
@@ -237,7 +237,7 @@ namespace DOGPlatform
 
                         string sCurrentJH = cProjectData.ltStrProjectJH[i].ToString();
                         string sCurrentXCM = cProjectData.ltStrProjectXCM[j].ToString();
-                        List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(sCurrentJH);
+                        List<ItemDicLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(sCurrentJH);
                         List<ItemJSJL> listJSJL = cIOinputJSJL.readJSJL2Struct(sCurrentJH);
 
                         float fCurrentLayerDS1 = 0;//当前层位的顶面测深
@@ -267,7 +267,7 @@ namespace DOGPlatform
       
                         ////读取层位顶底深，获取fCurrentLayerDS1，fCurrentLayerDS2
                         bool bFoundInLayerDepth = false;
-                        ItemLayerDepth currentLayerDepth = listLayerDepth.FirstOrDefault(p => p.sXCM == sCurrentXCM);
+                        ItemDicLayerDepth currentLayerDepth = listLayerDepth.FirstOrDefault(p => p.sXCM == sCurrentXCM);
 
                         if (currentLayerDepth.sJH != null)
                         {

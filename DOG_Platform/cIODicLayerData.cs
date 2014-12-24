@@ -15,7 +15,7 @@ namespace DOGPlatform
             cProjectData.sErrLineInfor= "";
 
 
-            List<ItemLayerDataDic> listLayerDataDic = new List<ItemLayerDataDic>();
+            List<ItemDicLayerData> listLayerDataDic = new List<ItemDicLayerData>();
 
             if (cProjectData.ltStrProjectJH.Count > 0 && cProjectData.ltStrProjectXCM.Count > 0)
             {
@@ -27,7 +27,7 @@ namespace DOGPlatform
                         string sCurrentJH = cProjectData.ltStrProjectJH[i].ToString();
                         string sCurrentXCM = cProjectData.ltStrProjectXCM[j].ToString();
                         ItemWellHead currentWellHead = cIOinputWellHead.getWellHeadByJH(sCurrentJH);
-                        List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(sCurrentJH);
+                        List<ItemDicLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(sCurrentJH);
                         List<ItemJSJL> listJSJL = cIOinputJSJL.readJSJL2Struct(sCurrentJH);
 
                         double dfCurrentLayerX = 0;
@@ -50,13 +50,13 @@ namespace DOGPlatform
                         //读取层位顶底深，获取fCurrentLayerDS1，fCurrentLayerDS2
                         //没找到的情况要重新考虑下！
                        bool bFoundInLayerDepth = false;
-                       ItemLayerDepth currentLayerDepth = listLayerDepth.Find(p => p.sJH == sCurrentJH && p.sXCM == sCurrentXCM);
+                       ItemDicLayerDepth currentLayerDepth = listLayerDepth.Find(p => p.sJH == sCurrentJH && p.sXCM == sCurrentXCM);
 
                        if (currentLayerDepth.sJH != null && currentLayerDepth.fDS1 <= currentLayerDepth.fDS2)
                        {
                             fCurrentLayerDS1 = currentLayerDepth.fDS1;
-                            ItemWellPath currentDS1WellPathItem = cIOinputWellPath.getWellPathItemByJHAndMD(sCurrentJH, fCurrentLayerDS1);
-                            ItemWellPath currentDS2WellPathItem = cIOinputWellPath.getWellPathItemByJHAndMD(sCurrentJH, fCurrentLayerDS2); 
+                            ItemDicWellPath currentDS1WellPathItem = cIOinputWellPath.getWellPathItemByJHAndMD(sCurrentJH, fCurrentLayerDS1);
+                            ItemDicWellPath currentDS2WellPathItem = cIOinputWellPath.getWellPathItemByJHAndMD(sCurrentJH, fCurrentLayerDS2); 
                             fCurrentLayerDS2 = currentLayerDepth.fDS2;
                             dfCurrentLayerX = currentDS1WellPathItem.dbX;
                             dfCurrentLayerY = currentDS1WellPathItem.dbY;
@@ -101,7 +101,7 @@ namespace DOGPlatform
 
                         //写小层数据表
 
-                        ItemLayerDataDic itemLayerData = new ItemLayerDataDic();
+                        ItemDicLayerData itemLayerData = new ItemDicLayerData();
                         itemLayerData.sJH = sCurrentJH;
                         itemLayerData.sXCM = sCurrentXCM;
                        
@@ -147,10 +147,10 @@ namespace DOGPlatform
 
             for (int i = 0; i < listLayerDataDic.Count-1; i++) 
             {
-                ItemLayerDataDic currentItem = listLayerDataDic[i];
+                ItemDicLayerData currentItem = listLayerDataDic[i];
                 if (currentItem.fDCHD < 0&&currentItem.sJH==listLayerDataDic[i+1].sJH) 
                 {
-                    ItemLayerDataDic nextItem=listLayerDataDic[i+1];
+                    ItemDicLayerData nextItem=listLayerDataDic[i+1];
                     currentItem.dbX = nextItem.dbX;
                     currentItem.dbY = nextItem.dbY;
                     currentItem.dfZ = nextItem.dfZ+nextItem.fDCHD;
@@ -164,10 +164,10 @@ namespace DOGPlatform
             }
             for (int i = listLayerDataDic.Count - 1; i >0 ; i--)
             {
-                ItemLayerDataDic currentItem = listLayerDataDic[i];
+                ItemDicLayerData currentItem = listLayerDataDic[i];
                 if (currentItem.fDCHD < 0 && currentItem.sJH == listLayerDataDic[i - 1].sJH)
                 {
-                    ItemLayerDataDic nextItem = listLayerDataDic[i - 1];
+                    ItemDicLayerData nextItem = listLayerDataDic[i - 1];
                     currentItem.dbX = nextItem.dbX;
                     currentItem.dbY = nextItem.dbY;
                     currentItem.dfZ = nextItem.dfZ -nextItem.fDCHD;
@@ -193,9 +193,9 @@ namespace DOGPlatform
             }
         }
 
-        public static List<ItemLayerDataDic> readDicLayerData2struct()
+        public static List<ItemDicLayerData> readDicLayerData2struct()
         {
-            List<ItemLayerDataDic> ltStrReturn = new List<ItemLayerDataDic>();
+            List<ItemDicLayerData> ltStrReturn = new List<ItemDicLayerData>();
             int iLineIndex = 0;
             if(File.Exists(cProjectManager.filePathLayerDataDic)){
                 using (StreamReader sr = new StreamReader(cProjectManager.filePathLayerDataDic))
@@ -205,7 +205,7 @@ namespace DOGPlatform
                     while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                     {
                         iLineIndex++;
-                        if (iLineIndex > 1) ltStrReturn.Add(ItemLayerDataDic.parseLine(line));
+                        if (iLineIndex > 1) ltStrReturn.Add(ItemDicLayerData.parseLine(line));
 
                     }
                 }
@@ -218,9 +218,9 @@ namespace DOGPlatform
             return ltStrReturn;
         }
 
-        public static List<ItemLayerDataDic> getListLayerDataDicItemFromLayerDataDicByXCM(string sXCM)
+        public static List<ItemDicLayerData> getListLayerDataDicItemFromLayerDataDicByXCM(string sXCM)
         {
-            List<ItemLayerDataDic> ltStrReturn = new List<ItemLayerDataDic>();
+            List<ItemDicLayerData> ltStrReturn = new List<ItemDicLayerData>();
             string[] split;
             int iLineIndex = 0;
 
@@ -231,7 +231,7 @@ namespace DOGPlatform
                 while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                 {
                     iLineIndex++;
-                    ItemLayerDataDic sttLayerDataDicItem = new ItemLayerDataDic();
+                    ItemDicLayerData sttLayerDataDicItem = new ItemDicLayerData();
                     split = line.Trim().Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
                     if (iLineIndex > 1 && split.Count() >= 12 && split[1] == sXCM)
                     {
@@ -263,9 +263,9 @@ namespace DOGPlatform
             return ltStrReturn;
         }
 
-        public static ItemLayerDataDic getLayerDataDicItemFromLayerDataDicByXCMAndJH(string sJH,string sXCM)
+        public static ItemDicLayerData getLayerDataDicItemFromLayerDataDicByXCMAndJH(string sJH,string sXCM)
         {
-            ItemLayerDataDic sttLayerDataDicItem = new ItemLayerDataDic();
+            ItemDicLayerData sttLayerDataDicItem = new ItemDicLayerData();
             string[] split;
             int iLineIndex = 0;
 
@@ -314,8 +314,8 @@ namespace DOGPlatform
         /// <param name="filePathWrited">文件路径</param>
         public void selectDataFromDicLayerDataByXCMAndJH(string sXCM, List<string> ltStrsJH, string filePathWrited)
         {
-            List<ItemLayerDataDic> listDicLayerData = readDicLayerData2struct();
-            List<ItemLayerDataDic> listDicLayerDataSelected = listDicLayerData.Where(p => p.sXCM == sXCM
+            List<ItemDicLayerData> listDicLayerData = readDicLayerData2struct();
+            List<ItemDicLayerData> listDicLayerDataSelected = listDicLayerData.Where(p => p.sXCM == sXCM
                 && ltStrsJH.Contains(p.sJH)).ToList();
             write2File(filePathWrited, listDicLayerDataSelected);
             
@@ -327,16 +327,16 @@ namespace DOGPlatform
         /// <param name="sJH">井号</param>
         /// <param name="sXCM">小层名</param>
         /// <returns></returns>
-        public List<ItemLayerDataDic> selectSingleWellDataFromDicLayerDataByJHAndXCM(string sJH, string sXCM)
+        public List<ItemDicLayerData> selectSingleWellDataFromDicLayerDataByJHAndXCM(string sJH, string sXCM)
         {
-            List<ItemLayerDataDic> listDicLayerData = readDicLayerData2struct();
-            List<ItemLayerDataDic> listDicLayerDataSelected = listDicLayerData.Where(p => p.sXCM == sXCM
+            List<ItemDicLayerData> listDicLayerData = readDicLayerData2struct();
+            List<ItemDicLayerData> listDicLayerDataSelected = listDicLayerData.Where(p => p.sXCM == sXCM
                 && p.sJH == sJH).ToList();
             return listDicLayerDataSelected;
 
         }
 
-        public void write2File(string filePath,List<ItemLayerDataDic> listLayerDataDic)
+        public void write2File(string filePath,List<ItemDicLayerData> listLayerDataDic)
         {
             StreamWriter sw = new StreamWriter(filePath, false, Encoding.UTF8);
               List<string> ltStrHeadColoum = new List<string>();  //小层数据表头
@@ -355,7 +355,7 @@ namespace DOGPlatform
             ltStrHeadColoum.Add("底深md(m)");
             ltStrHeadColoum.Add("顶深TVD(m)");
             sw.WriteLine(string.Join("\t", ltStrHeadColoum.ToArray()));
-            foreach (ItemLayerDataDic item in listLayerDataDic)
+            foreach (ItemDicLayerData item in listLayerDataDic)
             {
                 List<string> ltStrWrited = new List<string>();
                 ltStrWrited.Add(item.sJH);

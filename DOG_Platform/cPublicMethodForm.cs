@@ -612,8 +612,12 @@ namespace DOGPlatform
         }
         public static  void deleteSelectedRowInDataGridView(DataGridView dgv)
         {
-            int idRow =dgv.SelectedCells[0].RowIndex;
-             dgv.Rows.RemoveAt(idRow);
+            if (dgv.RowCount > 1)
+            {
+                int idRow = dgv.SelectedCells[0].RowIndex;
+                if (idRow != dgv.RowCount - 1) dgv.Rows.RemoveAt(idRow);
+            }
+           
         }
 
         

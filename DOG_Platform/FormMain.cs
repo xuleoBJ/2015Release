@@ -47,12 +47,17 @@ namespace DOGPlatform
             tsmiGeologySection.Enabled = true;
             tsmiWellGroup.Enabled = true;
             tsmiSaveAnotherProject.Enabled = true;
-            tsmiSaveProject.Enabled = true; 
+            tsmiSaveProject.Enabled = true;
+
+            //tsmiProfileDecision.Enabled = true;
+            //tsmiDynamicCal.Enabled = true;
         }
 
         private void intializeMyForm()
         {
             tvProjectData.ImageList = this.imageListMain;
+            tvResultGraph.ImageList = this.imageListMain;
+            tvResultTable.ImageList = this.imageListMain;
             listTabpageMain.Add(tbgWellNavigation);
             listTabpageMain.Add(tbgIE);
             listTabpageMain.Add(tbgWellHead);
@@ -206,7 +211,7 @@ namespace DOGPlatform
         }
         private void btnImportWellHead_Click(object sender, EventArgs e)
         {
-            cIOinputWellHead.readInput2Project(this.dgvWellHead, cProjectManager.filePathInputWellhead);
+            cIOinputWellHead.readWellHead2Project(this.dgvWellHead, cProjectManager.filePathInputWellhead);
             cIOinputWellHead.codeReplaceWellHead();
 
             cProjectData.ltStrProjectJH.Clear();
@@ -308,10 +313,14 @@ namespace DOGPlatform
 
         private void tsmiCalWellTypeDictionary_Click(object sender, EventArgs e)
         {
-            cDicOperateFileWellType cCalTest = new cDicOperateFileWellType();
-            cCalTest.generateWellTypeDic();
+            cIODicWellType.updateWellTypeDic();
+            MessageBox.Show("计算完成。");
         }
 
+        private void tsmiCalPerforationDictionary_Click(object sender, EventArgs e)
+        {
+
+        }
         private void tsmiSectionWellPattern_Click(object sender, EventArgs e)
         {
             FormWellsGroup formFD = new FormWellsGroup();
@@ -415,7 +424,6 @@ namespace DOGPlatform
         void updateTreeViewProjectGraph()
         {
             string dir = cProjectManager.dirPathMap;
-            tvResultGraph.ImageList = this.imageListMain;
             cPublicMethodForm.ListDirectory(tvResultGraph, dir);
             tvResultGraph.ExpandAll();
         }
@@ -424,30 +432,21 @@ namespace DOGPlatform
         {
 
             if (tbcProject.SelectedTab == tbgResultGraph && cProjectManager.dirProject != Path.GetTempPath()) //选择了图形tbg
-            {
+            {  
                 updateTreeViewProjectGraph();
-                string[] filenames = Directory.GetFiles(cProjectManager.dirPathMap, "*.svg");
             }
             if (tbcProject.SelectedTab == this.tbgResultTable )
             {
-                //通过同名xml修改svg
-                try
+                List<string> filenames = Directory.GetFiles(cProjectManager.dirPathUsedProjectData, "*.txt").ToList();
+                this.tvResultTable.Nodes.Clear();
+                foreach (string item in filenames)
                 {
-                    string _filePathSVGOpened = filePathWebSVG.Replace(".svg", ".xml");
-                    if(File.Exists(_filePathSVGOpened)) LoadTreeViewFromXmlFile(_filePathSVGOpened, tvResultTable);
-                }
-                catch (XmlException xmlEx)
-                {
-                    MessageBox.Show(xmlEx.Message);
-                }
-                catch (System.Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
+                    TreeNode _tn = new TreeNode(Path.GetFileNameWithoutExtension(item), 6, 6);
+                    this.tvResultTable.Nodes.Add(_tn);
                 }
             }
         }
 
-      
 
 
         void updateWebSVG()
@@ -690,7 +689,7 @@ namespace DOGPlatform
                     else if (itemWell.iWellType == 15) wellPen = new Pen(Color.Blue, 2);
 
                     Pen blackPen = new Pen(Color.Black, 1);
-                    List<ItemWellPath> currentWellPath = itemWell.WellPathList;
+                    List<ItemDicWellPath> currentWellPath = itemWell.WellPathList;
                     Point headView = cCordinationTransform.transRealPointF2ViewPoint(
                      currentWellPath[0].dbX, currentWellPath[0].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                     dc.DrawEllipse(wellPen, headView.X, headView.Y, 6, 6);
@@ -886,49 +885,7 @@ namespace DOGPlatform
             }
         }
 
-        private void AddTreeNode(XmlNode xmlNode, TreeNode treeNode)
-        {
-            XmlNode newNode;
-            TreeNode tNode;
-            XmlNodeList nodeList;
-            int i;
-            if (xmlNode.HasChildNodes)
-            {
-                nodeList = xmlNode.ChildNodes;
-                for (i = 0; i <= nodeList.Count - 1; i++)
-                {
-                    newNode = xmlNode.ChildNodes[i];
-                    treeNode.Nodes.Add(new TreeNode(newNode.Name));
-                    tNode = treeNode.Nodes[i];
-                    AddTreeNode(newNode, tNode);
-                }
-            }
-            else treeNode.Text = (xmlNode.OuterXml).Trim();
-        }
-        private void LoadTreeViewFromXmlFile(string filename, TreeView trv)
-        {
-            // Load the XML document.
-            XmlDocument xml_doc = new XmlDocument();
-            xml_doc.Load(filename);
-            // Add the root node's children to the TreeView.
-            trv.Nodes.Clear();
-            AddTreeViewChildNodes(trv.Nodes, xml_doc.DocumentElement);
-            trv.CollapseAll();
-        }
-        private void AddTreeViewChildNodes(TreeNodeCollection parent_nodes, XmlNode xml_node)
-        {
-            foreach (XmlNode child_node in xml_node.ChildNodes)
-            {
-                // Make the new TreeView node.
-                TreeNode new_node = parent_nodes.Add(child_node.Name);
-
-                // Recursively make this node's descendants.
-                AddTreeViewChildNodes(new_node.Nodes, child_node);
-
-                // If this is a leaf node, make sure it's visible.
-                if (new_node.Nodes.Count == 0) new_node.EnsureVisible();
-            }
-        }
+       
 
         private void tvProjectData_AfterCheck(object sender, TreeViewEventArgs e)
         {
@@ -1127,8 +1084,8 @@ namespace DOGPlatform
 
         private void tsmiAdjustProfile_Click(object sender, EventArgs e)
         {
-            FormAdjustProfile form = new FormAdjustProfile();
-            form.Show();
+            FormProfileSelectWells _form = new FormProfileSelectWells();
+            _form.Show();
         }
 
         private void tsmiSectionFence_Click(object sender, EventArgs e)
@@ -1192,6 +1149,20 @@ namespace DOGPlatform
             }
 
         }
+
+        private void tsmiPIcal_Click(object sender, EventArgs e)
+        {
+            FormProfilePIcal form = new FormProfilePIcal();
+            form.Show();
+        }
+
+        private void tsmiInjProConnect_Click(object sender, EventArgs e)
+        {
+            FormInjProAna form = new FormInjProAna();
+            form.Show();
+        }
+
+    
 
       
 

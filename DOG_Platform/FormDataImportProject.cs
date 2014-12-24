@@ -65,11 +65,11 @@ namespace DOGPlatform
                     break;
                 case "tbgProductWellData":
                     filePathGoal = Path.Combine(cProjectManager.dirPathWellDir, this.cbbJH.SelectedItem.ToString(), cProjectManager.fileNameInputWellProduct);
-                    dgvCurrent = dgvPerforation;
+                    dgvCurrent = this.dgvOilProductionData;
                     break;
                 case "tbgInjectWellData":
                     filePathGoal = Path.Combine(cProjectManager.dirPathWellDir, this.cbbJH.SelectedItem.ToString(), cProjectManager.fileNameInputWellInject);
-                    dgvCurrent = dgvPerforation; 
+                    dgvCurrent = this.dgvWaterInjectionData; 
                     break;
                 default:
                     break;
@@ -117,23 +117,23 @@ namespace DOGPlatform
                      }
                      if (dgvCurrent == this.dgvPerforation)
                      {
-                         cIOinputPerforation.creatInputFile(_sjh, _listLines);
-                         cIOinputPerforation.creatWellGeoFile(_sjh);
+                         cIOinputWellPerforation.creatInputFile(_sjh, _listLines);
+                         cIOinputWellPerforation.creatWellGeoFile(_sjh);
                      }
                      if (dgvCurrent == this.dgvOilProductionData)
                      {
-                         cIOinputOilWellProductData.creatInputFile(_sjh, _listLines); 
+                         cIOinputWellProduct.creatInputFile(_sjh, _listLines); 
                         // cIOinputOilWellProductData.creatWellGeoFile(_sjh);
                      }
                      if (dgvCurrent == this.dgvWaterInjectionData)
                      {
-                         cIOInputWaterProductData.creatInputFile(_sjh, _listLines);
+                         cIOInputWellInject.creatInputFile(_sjh, _listLines);
                          //cIOInputWaterProductData.creatWellGeoFile(_sjh);
                      } 
                 }
                 else _ltJHnotINproject.Add(_sjh); 
             }
-            if (_ltJHnotINproject.Count > 0) MessageBox.Show(string.Join("\t", _ltJHnotINproject) + "请先添加井号。");
+            if (_ltJHnotINproject.Count > 0) MessageBox.Show(string.Join("\t", _ltJHnotINproject) + "缺失井信息，请加入井信息后重新加载。");
         
             return true;
         

@@ -8,7 +8,7 @@ namespace DOGPlatform
     class ItemWell
     {
 
-        public List<ItemWellPath> WellPathList = new List<ItemWellPath>();
+        public List<ItemDicWellPath> WellPathList = new List<ItemDicWellPath>();
         public ItemWell(string _sJH) 
         {
             this.sJH = _sJH;

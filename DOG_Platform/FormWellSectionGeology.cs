@@ -254,7 +254,7 @@ namespace DOGPlatform
             {
                 string sJH = listWellsSection[i].sJH;
 
-                List<ItemWellPath> currentWellPathList = cProjectData.listProjectWell.Find(p => p.sJH == sJH).WellPathList;
+                List<ItemDicWellPath> currentWellPathList = cProjectData.listProjectWell.Find(p => p.sJH == sJH).WellPathList;
                 float fTopShowed = listWellsSection[i].fShowedDepthTop;
                 float fBaseShowed = listWellsSection[i].fShowedDepthBase;
                 float fDepthFlatted = listWellsSection[i].fDepthFlatted;
@@ -264,8 +264,8 @@ namespace DOGPlatform
 
                 if (rdbDepthModelTVD.Checked == true && currentWellPathList.Count > 2)
                 {
-                    ItemWellPath wellPathTop = cIOinputWellPath.getWellPathItemByJHAndMD(sJH, fTopShowed);
-                    ItemWellPath wellPathBase = cIOinputWellPath.getWellPathItemByJHAndMD(sJH, fBaseShowed);
+                    ItemDicWellPath wellPathTop = cIOinputWellPath.getWellPathItemByJHAndMD(sJH, fTopShowed);
+                    ItemDicWellPath wellPathBase = cIOinputWellPath.getWellPathItemByJHAndMD(sJH, fBaseShowed);
                     returnElemment = currentWell.gWellCone(sJH, wellPathTop.f_TVD ,wellPathBase.f_TVD, fDepthFlatted, 10, 5);
                 }
                 else returnElemment = currentWell.gWellCone(sJH, fTopShowed, fBaseShowed, fDepthFlatted, 10, 5);
@@ -615,7 +615,7 @@ namespace DOGPlatform
                 {
                     //提取所选井段数据存入绘图目录下保存
                     string filePath = Path.Combine(dirSectionData, sJH ,fileNameSectionPerforation);
-                    cIOinputPerforation cSelectInputPerforation = new cIOinputPerforation();
+                    cIOinputWellPerforation cSelectInputPerforation = new cIOinputWellPerforation();
                     cSelectInputPerforation.selectSectionDrawData2File(sJH, filePath);
                 }
                 foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)

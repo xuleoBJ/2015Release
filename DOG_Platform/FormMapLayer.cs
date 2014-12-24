@@ -319,12 +319,12 @@ namespace DOGPlatform
 
                     foreach (string _sjh in llistHorizinalJH)
                     {
-                        List<ItemWellPath> currentWellPath = cIOinputWellPath.readWellPath2Struct(_sjh);
+                        List<ItemDicWellPath> currentWellPath = cIOinputWellPath.readWellPath2Struct(_sjh);
                         //井必须在project井范围内
                         if (cProjectData.ltStrProjectJH.IndexOf(_sjh) >= 0)
                         {
-                            ItemWellPath top = currentWellPath.Find(x => x.f_incl>80);
-                            ItemWellPath tail = currentWellPath.FindLast(x => x.f_incl > 80);
+                            ItemDicWellPath top = currentWellPath.Find(x => x.f_incl>80);
+                            ItemDicWellPath tail = currentWellPath.FindLast(x => x.f_incl > 80);
                             // 井号+ 井型 + 井口view坐标 + head view 坐标 + tail view 坐标 
 
                             List<string> _ltStrData = new List<string>();
@@ -387,11 +387,11 @@ namespace DOGPlatform
 
             filePathXMLconfigLayerMap = Path.Combine(cProjectManager.dirPathMap, fileName + ".xml");
 
-            List<ItemLayerDataDic> listLayerDataSelected = cIODicLayerData.readDicLayerData2struct().FindAll(p=>p.sXCM==selectedLayer);
+            List<ItemDicLayerData> listLayerDataSelected = cIODicLayerData.readDicLayerData2struct().FindAll(p=>p.sXCM==selectedLayer);
             listWellsMapLayer.Clear();
             if (listLayerDataSelected.Count > 0)
             {
-                foreach (ItemLayerDataDic item in listLayerDataSelected) listWellsMapLayer.Add(new ItemWellMapLayer(item));
+                foreach (ItemDicLayerData item in listLayerDataSelected) listWellsMapLayer.Add(new ItemWellMapLayer(item));
                 if (!File.Exists(filePathXMLconfigLayerMap))
                     cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, 1000, 1000);
                 addWells(); 

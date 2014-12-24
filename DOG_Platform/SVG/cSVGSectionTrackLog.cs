@@ -64,7 +64,7 @@ namespace DOGPlatform.SVG
 
         public XmlElement gXieTrack2VerticalLog(ItemLogHeadInfor ItemLogHeadInfor, trackLogDataList logDataList, float m_KB)
         {
-            List<ItemWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(ItemLogHeadInfor.sJH, logDataList.fListMD);
+            List<ItemDicWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(ItemLogHeadInfor.sJH, logDataList.fListMD);
             List<float> fListTVD =listWellPath.Select(p=>p.f_TVD).ToList();
             return gTrackLog(ItemLogHeadInfor.sJH, ItemLogHeadInfor.sLogName,fListTVD, logDataList.fListValue, m_KB, ItemLogHeadInfor.fLeftValue, ItemLogHeadInfor.fRightValue, ItemLogHeadInfor.sLogColor);
         }
@@ -84,15 +84,15 @@ namespace DOGPlatform.SVG
             if (sLogName == null || fListMD.Count == 0) return gLogTrack;
             string _points = "";
             
-            List<ItemWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
-            List<ItemWellPath> listWellPathHorzion = new List<ItemWellPath>();
+            List<ItemDicWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
+            List<ItemDicWellPath> listWellPathHorzion = new List<ItemDicWellPath>();
             List<float> fListMDHorizina=new List<float>();
             List<float> fListValueHorizina=new List<float>();
             double x0 = listWellPath[0].f_dx;
             double y0 = -m_KB + listWellPath[0].f_TVD;
             for (int i = 0; i < fListMD.Count; i++)
             {
-                ItemWellPath currentWellPath = listWellPath[i];
+                ItemDicWellPath currentWellPath = listWellPath[i];
                 double currentX = currentWellPath.f_dx;
                 double currentY = -m_KB + currentWellPath.f_TVD;
                 if (currentWellPath.f_incl <= 85)
@@ -133,15 +133,15 @@ namespace DOGPlatform.SVG
             if (sLogName == null || fListMD.Count == 0) return gLogTrack;
             string _points = "";
 
-            List<ItemWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
-            List<ItemWellPath> listWellPathHorzion = new List<ItemWellPath>();
+            List<ItemDicWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
+            List<ItemDicWellPath> listWellPathHorzion = new List<ItemDicWellPath>();
             List<float> fListMDHorizina = new List<float>();
             List<float> fListValueHorizina = new List<float>();
             double x0 = listWellPath[0].f_dx;
             double y0 = -m_KB + listWellPath[0].f_TVD;
             for (int i = 0; i < fListMD.Count; i++)
             {
-                ItemWellPath currentWellPath = listWellPath[i];
+                ItemDicWellPath currentWellPath = listWellPath[i];
                 double currentX = currentWellPath.f_dx;
                 double currentY = -m_KB + currentWellPath.f_TVD;
                 if (currentWellPath.f_incl <= 70)
@@ -171,7 +171,7 @@ namespace DOGPlatform.SVG
             string _pointsHorizon = "";
             for (int i = 0; i < listWellPathHorzion.Count; i++)
             {
-                ItemWellPath currentWellPath = listWellPathHorzion[i];
+                ItemDicWellPath currentWellPath = listWellPathHorzion[i];
                 double currentDX = currentWellPath.f_dx;
                 double currentY = -m_KB + currentWellPath.f_TVD;
 

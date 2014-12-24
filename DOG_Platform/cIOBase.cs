@@ -141,7 +141,12 @@ namespace DOGPlatform
                 return reader.ReadLine().Split().ToList();
             }
         }
-
+        /// <summary>
+        /// read text file 2 ListString firstlineIndex=1
+        /// </summary>
+        /// <param name="filepath">text file path</param>
+        /// <param name="iStartLine">startline</param>
+        /// <returns></returns>
         public static List<string> readText2StringList(string filepath, int iStartLine)
         {
             List<string> ltStrReturn = new List<string>();
@@ -150,7 +155,6 @@ namespace DOGPlatform
             string[] split;
             using (StreamReader sr = new StreamReader(filepath, Encoding.Default))
             {
-
                 String line;
                 while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                 {

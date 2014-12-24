@@ -34,14 +34,14 @@ namespace DOGPlatform
             cPublicMethodForm.inialComboBox(cbbSelectedTopXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbSelectedBottomXCM, cProjectData.ltStrProjectXCM);
 
-            List<string> ltStrInjectWell = new List<string>();
+            List<string> ltJHInjectWell = new List<string>();
             List<string> ltStrInfluencedWell = new List<string>();
             
 
             for (int i = 0; i < this.ltStrWellName.Count; i++)
             {
                 if (this.iListWellType[i] == 15)
-                    ltStrInjectWell.Add(ltStrWellName[i]);
+                    ltJHInjectWell.Add(ltStrWellName[i]);
                 else
                     ltStrInfluencedWell.Add(ltStrWellName[i]);
             }
@@ -94,8 +94,6 @@ namespace DOGPlatform
         {
             sSelectedXCM = cbbSelectedXCM.SelectedItem.ToString();
             updateSelectedYM();
-            filePathOilProduct = Path.Combine(cProjectManager.dirPathWellProductionDic, sSelectedYYYYMM + sSelectedXCM + ".txt");
-            filePathWaterProduct = Path.Combine(cProjectManager.dirPathWellInjectionDic, sSelectedYYYYMM + sSelectedXCM + ".txt");
         }
 
         

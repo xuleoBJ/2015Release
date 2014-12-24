@@ -27,7 +27,7 @@ namespace DOGPlatform
             List<string> ltJH = listWellHead.Select(p => p.sJH).ToList();
             return ltJH;
         }
-        public static void readInput2Project(DataGridView dataGridView, string sProjectInputText)
+        public static void readWellHead2Project(DataGridView dataGridView, string sProjectInputText)
         {
             bool IsDataOK = true; //数据未校验
             //数据校验过程
@@ -47,10 +47,9 @@ namespace DOGPlatform
                             IsDataOK = false;
                         }
                         else 
-                        {  //错误信息写入，但仍旧可以导入数据
-                            line = "文件第" + (j + 1).ToString() + "行" + "第" + (i + 1).ToString() + "列数据可能缺失或者有错误，请查看。" + "\r\n";
-                            cProjectData.sErrLineInfor += line;
-                            dataGridView.Rows[j].Cells[i].Value = "0"; 
+                        {  
+                            if(i==3||i==4) dataGridView.Rows[j].Cells[i].Value = "0"; //井型设置为0和海拔
+                            if(i==5) dataGridView.Rows[j].Cells[i].Value = "10"; //井底深度设为0
                         }
                     }
                 }

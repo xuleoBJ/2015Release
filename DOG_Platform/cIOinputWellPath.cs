@@ -29,12 +29,12 @@ namespace DOGPlatform
         public static void creatVerticalWellPathGeoFile(string sJH)
         {
             ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH);
-            ItemWellPath wellPathTop = new ItemWellPath(wellHead);
-            ItemWellPath wellPathBottom = new ItemWellPath(wellHead);
+            ItemDicWellPath wellPathTop = new ItemDicWellPath(wellHead);
+            ItemDicWellPath wellPathBottom = new ItemDicWellPath(wellHead);
             wellPathBottom.dfZ = wellPathTop.dfZ - wellHead.fWellBase;
             wellPathBottom.f_md = wellHead.fWellBase;
             wellPathBottom.f_TVD = wellHead.fWellBase;
-            List<ItemWellPath> listItem = new List<ItemWellPath>();
+            List<ItemDicWellPath> listItem = new List<ItemDicWellPath>();
             listItem.Add(wellPathTop);
             listItem.Add(wellPathBottom);
             creatWellGeoFile(sJH, listItem);
@@ -71,22 +71,22 @@ namespace DOGPlatform
             }
             if (fListMD.Count > 2)
             {
-                List<ItemWellPath> itemsWellPath = phzqf2Struct(_sJH, fListMD, fListInc, fListAzimuth);
+                List<ItemDicWellPath> itemsWellPath = phzqf2Struct(_sJH, fListMD, fListInc, fListAzimuth);
                 creatWellGeoFile(_sJH, itemsWellPath);
             }
           
         }
 
-        public static void creatWellGeoFile(string sJH, List<ItemWellPath> listWellPath)
+        public static void creatWellGeoFile(string sJH, List<ItemDicWellPath> listWellPath)
         {
             ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH);
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, wellHead.sJH, cProjectManager.fileNameWellPath);
             string sFirstLine = cProjectManager.fileNameWellPath + wellHead.sJH + " " + wellHead.dbX.ToString() + " " + wellHead.dbY.ToString() + " " + wellHead.fKB.ToString();
             creatWellGeoHeadFile(wellHead.sJH, filePath, sFirstLine);
             List<string> ltStrLine = new List<string>();
-            foreach (ItemWellPath _item in listWellPath)
+            foreach (ItemDicWellPath _item in listWellPath)
             {
-                ltStrLine.Add(ItemWellPath.item2string(_item));
+                ltStrLine.Add(ItemDicWellPath.item2string(_item));
             }
             cIOGeoEarthText.addDataLines2GeoEarTxt(filePath, ltStrLine);
         }
@@ -113,9 +113,9 @@ namespace DOGPlatform
       
 
         //平衡正切法计算井斜 输入必须是角度格式flist 和petrel对过 最后一个值 狗腿度没有计算。
-        public static List<ItemWellPath> phzqf2Struct(string sJH, double dbX, double dbY, float fKB, List<float> fListMD, List<float> fListInc, List<float> fListAzimuth)
+        public static List<ItemDicWellPath> phzqf2Struct(string sJH, double dbX, double dbY, float fKB, List<float> fListMD, List<float> fListInc, List<float> fListAzimuth)
         { 
-            List<ItemWellPath> returnListWellPathItem = new List<ItemWellPath>();
+            List<ItemDicWellPath> returnListWellPathItem = new List<ItemDicWellPath>();
 
             if (fListMD.Count > 0)
             {
@@ -139,7 +139,7 @@ namespace DOGPlatform
                         _x = _x + 0.5 * fLength * (Math.Sin(a1) * Math.Sin(b1) + Math.Sin(a2) * Math.Sin(b2));
 
                     }
-                    ItemWellPath sttWellPathItem = new ItemWellPath();
+                    ItemDicWellPath sttWellPathItem = new ItemDicWellPath();
                     sttWellPathItem.sJH = sJH;
                     sttWellPathItem.dbX = dbX + _x;
                     sttWellPathItem.dbY = dbY + _y;
@@ -159,14 +159,14 @@ namespace DOGPlatform
             return returnListWellPathItem;
         }
 
-        public static List<ItemWellPath> phzqf2Struct(string sJH,  List<float> fListMD, List<float> fListInc, List<float> fListAzimuth) 
+        public static List<ItemDicWellPath> phzqf2Struct(string sJH,  List<float> fListMD, List<float> fListInc, List<float> fListAzimuth) 
         {
             ItemWellHead wellHead = cIOinputWellHead.getWellHeadByJH(sJH); 
             return phzqf2Struct(wellHead.sJH, wellHead.dbX, wellHead.dbY, wellHead.fKB, fListMD, fListInc, fListAzimuth);
         } 
         public static void updateWellgeoFile(string sJH, List<float> fListMD, List<float> fListInc, List<float> fListAzimuth)
         {
-            List<ItemWellPath> itemsWellPath = phzqf2Struct(sJH, fListMD, fListInc, fListAzimuth);
+            List<ItemDicWellPath> itemsWellPath = phzqf2Struct(sJH, fListMD, fListInc, fListAzimuth);
             creatWellGeoFile(sJH, itemsWellPath); 
         }
 
@@ -207,7 +207,7 @@ namespace DOGPlatform
             }
             if (fListMD.Count > 2)
             {
-                List<ItemWellPath> itemsWellPath = phzqf2Struct(sJH, fListMD, fListInc, fListAzimuth);
+                List<ItemDicWellPath> itemsWellPath = phzqf2Struct(sJH, fListMD, fListInc, fListAzimuth);
                 creatWellGeoFile(sJH, itemsWellPath);
             }
         }
@@ -219,9 +219,9 @@ namespace DOGPlatform
 
         }
 
-        public static List<ItemWellPath> readWellPath2Struct(string sJH)
+        public static List<ItemDicWellPath> readWellPath2Struct(string sJH)
         {
-            List<ItemWellPath> returnListWellPathItem = new List<ItemWellPath>();
+            List<ItemDicWellPath> returnListWellPathItem = new List<ItemDicWellPath>();
 
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameWellPath);
             if (File.Exists(filePath))
@@ -229,7 +229,7 @@ namespace DOGPlatform
                 using (StreamReader sr = new StreamReader(filePath))
                 {
                     String line;
-                    ItemWellPath sttWellPathItem = new ItemWellPath();
+                    ItemDicWellPath sttWellPathItem = new ItemDicWellPath();
                     int iStartLine = 4;
                     int _indexLine = 0;
                     while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
@@ -263,13 +263,13 @@ namespace DOGPlatform
 
         }
 
-        public static ItemWellPath getWellPathItemByJHAndMD(string sJH, float fMD) //算法需要验证和改进
+        public static ItemDicWellPath getWellPathItemByJHAndMD(string sJH, float fMD) //算法需要验证和改进
         {
             return getWellPathItemByJHAndMD(readWellPath2Struct(sJH), fMD) ;
         }
 
 
-        public static ItemWellPath getWellPathItemByJHAndMD(List<ItemWellPath> listWellPathItem, float fMD) 
+        public static ItemDicWellPath getWellPathItemByJHAndMD(List<ItemDicWellPath> listWellPathItem, float fMD) 
         {
             List<float> ltFloatMd = listWellPathItem.Select(p => p.f_md).ToList();
             int _iUp = 1;
@@ -295,10 +295,10 @@ namespace DOGPlatform
                     }
                 }
             }
-            ItemWellPath itemDown = listWellPathItem[_iDown];
-            ItemWellPath itemUp = listWellPathItem[_iUp];
+            ItemDicWellPath itemDown = listWellPathItem[_iDown];
+            ItemDicWellPath itemUp = listWellPathItem[_iUp];
 
-            ItemWellPath returnWellPathItem = new ItemWellPath();
+            ItemDicWellPath returnWellPathItem = new ItemDicWellPath();
 
             returnWellPathItem.dbX = cInterpolation.linear(fMD, itemUp.f_md, itemUp.dbX, itemDown.f_md, itemDown.dbX);
             returnWellPathItem.dbY = cInterpolation.linear(fMD, itemUp.f_md, itemUp.dbY, itemDown.f_md, itemDown.dbY);
@@ -314,15 +314,15 @@ namespace DOGPlatform
         
         }
 
-        public static List<ItemWellPath> getWellPathItemListByJHAndMDList(string sJH, List<float> fListMD)
+        public static List<ItemDicWellPath> getWellPathItemListByJHAndMDList(string sJH, List<float> fListMD)
         {
-            List<ItemWellPath> listReturnWellPath = new List<ItemWellPath>();
+            List<ItemDicWellPath> listReturnWellPath = new List<ItemDicWellPath>();
 
-            List<ItemWellPath> listWellPath = readWellPath2Struct(sJH);
+            List<ItemDicWellPath> listWellPath = readWellPath2Struct(sJH);
            
             foreach (float _fMD in fListMD)
             {
-                ItemWellPath currentWellPath = getWellPathItemByJHAndMD(listWellPath, _fMD);
+                ItemDicWellPath currentWellPath = getWellPathItemByJHAndMD(listWellPath, _fMD);
                 listReturnWellPath.Add(currentWellPath);
             }
             return listReturnWellPath;
@@ -334,7 +334,7 @@ namespace DOGPlatform
             return getTVDByJHAndMD( sJH,  fMD, readWellPath2Struct(sJH));
         }
   
-        public static float getTVDByJHAndMD(string sJH, float fMD, List<ItemWellPath> listWellPathItem) //算法需要验证和改进
+        public static float getTVDByJHAndMD(string sJH, float fMD, List<ItemDicWellPath> listWellPathItem) //算法需要验证和改进
         {
             List<float> ltFloatMd = listWellPathItem.Select(p => p.f_md).ToList();
             List<float> ltFloatTVD = listWellPathItem.Select(p => p.f_TVD).ToList();

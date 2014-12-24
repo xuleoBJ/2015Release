@@ -5,11 +5,11 @@ using System.Text;
 using System.Drawing;
 namespace DOGPlatform
 {
-    class ItemWellMapLayer : ItemLayerDataDic
+    class ItemWellMapLayer : ItemDicLayerData
     {
         public int iWellType;
         public ItemWellMapLayer() { }
-        public ItemWellMapLayer(ItemLayerDataDic item)
+        public ItemWellMapLayer(ItemDicLayerData item)
         {
             this.sJH = item.sJH;
             this.sXCM = item.sXCM;

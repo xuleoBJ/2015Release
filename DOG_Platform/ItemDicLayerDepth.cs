@@ -9,9 +9,9 @@ namespace DOGPlatform
     {
         public string sJH;
         public string sXCM;
-        public float fDS1;
+        public float fTop;
     }
-    struct ItemLayerDepth
+    struct ItemDicLayerDepth
     {
         public string sJH;
         public string sXCM;
@@ -21,7 +21,7 @@ namespace DOGPlatform
         public float fTVD_DS2;
   
 
-        public ItemLayerDepth(string _sJH,string _xcm) 
+        public ItemDicLayerDepth(string _sJH,string _xcm) 
             {
                 sJH = _sJH;
                 this.sXCM = _xcm;
@@ -32,7 +32,7 @@ namespace DOGPlatform
                            
             }
 
-        public static string item2string(ItemLayerDepth item)
+        public static string item2string(ItemDicLayerDepth item)
         {
             List<string> ltStrWrited = new List<string>();
             ltStrWrited.Add(item.sJH);
@@ -44,10 +44,10 @@ namespace DOGPlatform
             return string.Join("\t", ltStrWrited.ToArray());
         }
 
-        public static ItemLayerDepth parseLine(string line)
+        public static ItemDicLayerDepth parseLine(string line)
         {
             string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            ItemLayerDepth item = new ItemLayerDepth();
+            ItemDicLayerDepth item = new ItemDicLayerDepth();
             if (split.Length >= 4)
             {
                 item.sJH = split[0];

@@ -101,11 +101,11 @@
     <Compile Include="cIOinputInjectProfile.cs" />
     <Compile Include="cIOinputLayerSerier.cs" />
     <Compile Include="cProjectData.cs" />
-    <Compile Include="FormAdjustProfile.cs">
+    <Compile Include="FormProfilePIcal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAdjustProfile.Designer.cs">
-      <DependentUpon>FormAdjustProfile.cs</DependentUpon>
+    <Compile Include="FormProfilePIcal.Designer.cs">
+      <DependentUpon>FormProfilePIcal.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDataImportLayer.cs">
       <SubType>Form</SubType>
@@ -143,15 +143,19 @@
     <Compile Include="FormDataImportProject.Designer.cs">
       <DependentUpon>FormDataImportProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemPerforationDic.cs" />
+    <Compile Include="FormProfileSelectWells.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProfileSelectWells.Designer.cs">
+      <DependentUpon>FormProfileSelectWells.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDicPerforation.cs" />
     <Compile Include="ItemJSJL.cs" />
     <Compile Include="ItemLogHeadInfor.cs" />
-    <Compile Include="ItemPerforationInput.cs" />
     <Compile Include="ItemWellHead.cs" />
-    <Compile Include="ItemInjectProfile.cs" />
+    <Compile Include="ItemDicInjectProfile.cs" />
     <Compile Include="ItemHorizonalWellPath.cs" />
-    <Compile Include="ItemWellInjection.cs" />
-    <Compile Include="ItemWellPath.cs" />
+    <Compile Include="ItemDicWellPath.cs" />
     <Compile Include="cDogTrack.cs" />
     <Compile Include="cDogTrackEvationRuler.cs" />
     <Compile Include="cDogTrackJSJL.cs" />
@@ -186,8 +190,8 @@
     <Compile Include="SVG\cSVGAddElement.cs" />
     <Compile Include="SVG\cSVGcss.cs" />
     <Compile Include="cIOBase.cs" />
-    <Compile Include="cIOInputWaterProductData.cs" />
-    <Compile Include="cIOinputOilWellProductData.cs" />
+    <Compile Include="cIOInputWellInject.cs" />
+    <Compile Include="cIOinputWellProduct.cs" />
     <Compile Include="cCordinationTransform.cs" />
     <Compile Include="cSelectProductData.cs" />
     <Compile Include="cSoftwareLimited.cs" />
@@ -238,10 +242,9 @@
     <Compile Include="FormWebNavigation.Designer.cs">
       <DependentUpon>FormWebNavigation.cs</DependentUpon>
     </Compile>
-    <Compile Include="ItemLayerDataDic.cs" />
-    <Compile Include="ItemLayerDepth.cs" />
+    <Compile Include="ItemDicLayerData.cs" />
+    <Compile Include="ItemDicLayerDepth.cs" />
     <Compile Include="ItemLayerSplitFactor.cs" />
-    <Compile Include="ItemWellProduction.cs" />
     <Compile Include="ItemWellView.cs" />
     <Compile Include="SVG\cSVGSectionTrackProfile.cs" />
     <Compile Include="SVG\cSVGXEPatternMud.cs" />
@@ -275,13 +278,13 @@
     </Compile>
     <Compile Include="trackTextDataList.cs" />
     <Compile Include="TreeViewExtensions.cs" />
-    <Compile Include="ItemWellInjectionDic.cs" />
+    <Compile Include="ItemDicWellInjection.cs" />
     <Compile Include="ItemWellLayerGeologyProperty.cs" />
     <Compile Include="ItemWellLayerYMValue.cs" />
     <Compile Include="WellNavigation.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ItemWellProductionDic.cs" />
+    <Compile Include="ItemDicWellProduct.cs" />
     <Compile Include="ItemWellValue.cs" />
     <Compile Include="XML\cXMLbase.cs" />
     <Compile Include="XML\cXMLLayerMapGeoproperty.cs" />
@@ -348,21 +351,19 @@
       <DependentUpon>FormTrackLog.cs</DependentUpon>
     </Compile>
     <Compile Include="cIODicLayerData.cs" />
-    <Compile Include="cIOinputPerforation.cs" />
+    <Compile Include="cIOinputWellPerforation.cs" />
     <Compile Include="cIOProject.cs" />
     <Compile Include="cCalConnectionInject2Production.cs" />
     <Compile Include="cCalGeologyStatistics.cs" />
     <Compile Include="cIOinputJSJL.cs" />
     <Compile Include="cIOinputLog.cs" />
-    <Compile Include="cFileOperateDicProduction.cs" />
     <Compile Include="cIOinputWellPath.cs" />
-    <Compile Include="cDicOperateFileWellType.cs" />
+    <Compile Include="cIODicWellType.cs" />
     <Compile Include="cInterpolation.cs" />
     <Compile Include="cPublicMethodBase.cs" />
     <Compile Include="cIOinputLayerDepth.cs" />
     <Compile Include="cIOinputWellHead.cs" />
     <Compile Include="cDataQuanlityControl.cs" />
-    <Compile Include="cFileOperateDicPerforation.cs" />
     <Compile Include="XML\cXMLProject.cs" />
     <Compile Include="FormWellInfor.cs">
       <SubType>Form</SubType>
@@ -470,14 +471,17 @@
     <Compile Include="XML\cXETrackLog.cs" />
     <Compile Include="XML\cXETrackPerforation.cs" />
     <Compile Include="XML\cXETrackText.cs" />
+    <EmbeddedResource Include="FormProfileSelectWells.resx">
+      <DependentUpon>FormProfileSelectWells.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormWellInfor.resx">
       <DependentUpon>FormWellInfor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAddSectionLog.resx">
       <DependentUpon>FormAddSectionLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAdjustProfile.resx">
-      <DependentUpon>FormAdjustProfile.cs</DependentUpon>
+    <EmbeddedResource Include="FormProfilePIcal.resx">
+      <DependentUpon>FormProfilePIcal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCalInterWell.resx">
       <DependentUpon>FormCalInterWell.cs</DependentUpon>

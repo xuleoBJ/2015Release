@@ -46,16 +46,16 @@ namespace DOGPlatform
             return listLayerSplitFactorDic;
 
         }
-        public static List<ItemWellProductionDic> readProductionWellDic2Struct(string filePath)
+        public static List<ItemDicWellProduct> readProductionWellDic2Struct(string filePath)
         {
-            List<ItemWellProductionDic> listWellProductionDicItem = new List<ItemWellProductionDic>();
+            List<ItemDicWellProduct> listWellProductionDicItem = new List<ItemDicWellProduct>();
             try
             {
                 using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
                 {
                     String line;
                     int iLine = 0;
-                    ItemWellProductionDic sttWellProductionDicItem = new ItemWellProductionDic();
+                    ItemDicWellProduct sttWellProductionDicItem = new ItemDicWellProduct();
                     while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                     {
                         iLine++;
@@ -96,16 +96,16 @@ namespace DOGPlatform
             return listWellProductionDicItem;
 
         }
-        public static List<ItemWellInjectionDic> readInjectionWellDic2Struct(string filePath)
+        public static List<ItemDicWellInjection> readInjectionWellDic2Struct(string filePath)
         {
-            List<ItemWellInjectionDic> listWellInjectionItem = new List<ItemWellInjectionDic>();
+            List<ItemDicWellInjection> listWellInjectionItem = new List<ItemDicWellInjection>();
             try
             {
                 using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
                 {
                     String line;
                     int iLine = 0;
-                    ItemWellInjectionDic sttWellInjectionItem = new ItemWellInjectionDic();
+                    ItemDicWellInjection sttWellInjectionItem = new ItemDicWellInjection();
                     while ((line = sr.ReadLine()) != null)  //delete the line whose legth is 0
                     {
                         iLine++;

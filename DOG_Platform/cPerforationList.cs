@@ -6,7 +6,7 @@ using System.IO;
 
 namespace DOGPlatform
 {
-    class cPerforationList : cIOinputPerforation
+    class cPerforationList : cIOinputWellPerforation
     {
         public List<string> ltStrWellName_perforation = new List<string>();
         public List<string> ltStrYearMonth_perforation = new List<string>();

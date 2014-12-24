@@ -70,8 +70,8 @@ namespace DOGPlatform.SVG
 
         public XmlElement gXieTrack2VerticalProfile(string sJH, trackProfileDataList trackDataList, float m_KB)
         {
-            List<ItemWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, trackDataList.fListDS1);
-            List<ItemWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, trackDataList.fListDS2);
+            List<ItemDicWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, trackDataList.fListDS1);
+            List<ItemDicWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, trackDataList.fListDS2);
             List<float> fListTVD1 = listWellPathDS1.Select(p => p.f_TVD).ToList();
             List<float> fListTVD2 = listWellPathDS2.Select(p => p.f_TVD).ToList();
             return gTrackProfile(sJH, fListTVD1, fListTVD2, trackDataList.fListPercent, trackDataList.fListZRL, m_KB);
@@ -85,8 +85,8 @@ namespace DOGPlatform.SVG
         public XmlElement gPathTrackProfile(string sJH, List<float> fListDS1, List<float> fListDS2, List<float> fListPercentZRL, List<float> fListZRL, float m_KB)
         {
 
-            List<ItemWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
-            List<ItemWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
+            List<ItemDicWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
+            List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
 
             XmlElement gProfileTrack = svgDoc.CreateElement("g");
             gProfileTrack.SetAttribute("id", sJH + "#TrackProfile");

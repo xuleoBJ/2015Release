@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DOGPlatform
 {
-    class ItemLayerDataDic
+    class ItemDicLayerData
     {
         public string sJH;
         public string sXCM;
@@ -22,7 +22,7 @@ namespace DOGPlatform
         public float fDS2_md;
         public float fDS1_TVD;
 
-      public  static string item2string(ItemLayerDataDic item)
+      public  static string item2string(ItemDicLayerData item)
         {
             List<string> ltStrWrited = new List<string>();
             ltStrWrited.Add(item.sJH);
@@ -42,10 +42,10 @@ namespace DOGPlatform
             return string.Join("\t", ltStrWrited.ToArray());
         }
 
-       public  static ItemLayerDataDic parseLine(string line)
+       public  static ItemDicLayerData parseLine(string line)
       {
           string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-          ItemLayerDataDic item = new ItemLayerDataDic();
+          ItemDicLayerData item = new ItemDicLayerData();
           if (split.Count() >= 12)
           {
 

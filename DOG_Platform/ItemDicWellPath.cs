@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DOGPlatform
 {
-    struct ItemWellPath
+    struct ItemDicWellPath
     {
             public string sJH;
             public double dbX;
@@ -19,7 +19,7 @@ namespace DOGPlatform
             public float f_TVD;
             public float f_CalcDLS;
 
-            public static string item2string(ItemWellPath _item)
+            public static string item2string(ItemDicWellPath _item)
             {
                 List<string> _ltStr = new List<string>();
                 _ltStr.Add(_item.sJH);
@@ -36,7 +36,7 @@ namespace DOGPlatform
                 return string.Join(" ", _ltStr);
             }
 
-            public ItemWellPath(string _sJH) 
+            public ItemDicWellPath(string _sJH) 
             {
                 sJH = _sJH;
                 dbX = 0.0;
@@ -50,7 +50,7 @@ namespace DOGPlatform
                 f_TVD = 0.0f;
                 f_CalcDLS = 0.0f;  
             }
-            public ItemWellPath(ItemWellHead wellHead)
+            public ItemDicWellPath(ItemWellHead wellHead)
             {
                 sJH = wellHead.sJH ;
                 dbX = wellHead.dbX ;

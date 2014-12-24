@@ -111,8 +111,8 @@ namespace DOGPlatform.SVG
         }
         public XmlElement gXieTrack2VerticalLayerDepth(string sJH, trackLayerDepthDataList layerDepthDataList, float m_KB)
         {
-            List<ItemWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS1);
-            List<ItemWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS2);
+            List<ItemDicWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS1);
+            List<ItemDicWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS2);
             List<float> fListTVD1 = listWellPathDS1.Select(p => p.f_TVD).ToList();
             List<float> fListTVD2 = listWellPathDS2.Select(p => p.f_TVD).ToList();
             return gTrackLayerDepth(sJH, fListTVD1, fListTVD2, layerDepthDataList.ltStrXCM, m_KB);
@@ -122,8 +122,8 @@ namespace DOGPlatform.SVG
             XmlElement gLayerDepthTrack = svgDoc.CreateElement("g");
             gLayerDepthTrack.SetAttribute("id", sJH + "#LayerTrack");
             setLayerColor();
-            List<ItemWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
-             List<ItemWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
+            List<ItemDicWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
+             List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
             for (int i = 0; i < ltStrXCM.Count; i++)
             {
                 string sXCM = ltStrXCM[i];

@@ -133,11 +133,11 @@ namespace DOGPlatform.SVG
                 fListMD.Add(_fCurrentMD);
                 _fCurrentMD = (int)m_minMesureDepth / 10 * 10+_iStep*m_tickInveral_main; 
             }
-            List<ItemWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
+            List<ItemDicWellPath> listWellPath = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListMD);
             string _pointWellPath = "";
             for (int i = 0; i < fListMD.Count; i++)
             {
-                ItemWellPath currentWellPath = listWellPath[i];
+                ItemDicWellPath currentWellPath = listWellPath[i];
                 double _x0 = currentWellPath.f_dx;
                 double _y0 = -m_KB + currentWellPath.f_TVD;
                 _pointWellPath = _pointWellPath + _x0.ToString() + ',' + _y0.ToString() + " ";

@@ -53,8 +53,8 @@ namespace DOGPlatform.SVG
         }
         public XmlElement gXieTrack2VerticalPerforation(string sJH, trackInputPerforationDataList perforationDataList, float m_KB)
         {
-            List<ItemWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, perforationDataList.fListDS1);
-            List<ItemWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, perforationDataList.fListDS2);
+            List<ItemDicWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, perforationDataList.fListDS1);
+            List<ItemDicWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, perforationDataList.fListDS2);
             List<float> fListTVD1 = listWellPathDS1.Select(p => p.f_TVD).ToList();
             List<float> fListTVD2 = listWellPathDS2.Select(p => p.f_TVD).ToList();
             return gTrackPerforation(sJH, fListTVD1,fListTVD2, m_KB);
@@ -68,8 +68,8 @@ namespace DOGPlatform.SVG
         public XmlElement gPathTrackPerforation(string sJH, List<float> fListDS1, List<float> fListDS2, float m_KB)
         {
            
-            List<ItemWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
-            List<ItemWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
+            List<ItemDicWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
+            List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
 
             XmlElement gPeforationTrack = svgDoc.CreateElement("g");
             gPeforationTrack.SetAttribute("id", sJH + "#TrackPeforation");

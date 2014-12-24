@@ -636,7 +636,8 @@ E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.Properties.Res
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.TrackLog.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.WaitWindowGUI.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGRobot.csproj.GenerateResource.Cache
-E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormAdjustProfile.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormAdjustProfile.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellInfor.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormWellInfor.resources
+E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormProfileSelectWells.resources
+E:\ProjectPlatform\2015Release\DOG_Platform\obj\Debug\DOGPlatform.FormProfilePIcal.resources

@@ -189,7 +189,7 @@ namespace DOGPlatform
             updateSelectedXCMList();
             updateSelectedYM(); 
 
-            cIOinputPerforation cTest = new cIOinputPerforation();
+            cIOinputWellPerforation cTest = new cIOinputWellPerforation();
             if(File.Exists(cProjectManager.filePathPerforationDic))
             {
                 
@@ -396,7 +396,7 @@ namespace DOGPlatform
 
             StreamWriter swDynamicData = new StreamWriter(fileDrawMapSourceDynamicData, false, Encoding.UTF8);
 
-            string fileNameOilProduct = Path.Combine(cProjectManager.dirPathWellProductionDic, sSelectedYYYYMM + sXCM + ".txt");
+            string fileNameOilProduct = Path.Combine(cProjectManager.fileNameInputWellProduct, sSelectedYYYYMM + sXCM + ".txt");
             if (File.Exists(fileNameOilProduct))
             {
                 int iIndex = 3;
@@ -436,7 +436,7 @@ namespace DOGPlatform
                 MessageBox.Show("请先计算油井生产字典表。");
             }
 
-            string fileNameWaterInject = Path.Combine(cProjectManager.dirPathWellInjectionDic, sSelectedYYYYMM + ".txt");
+            string fileNameWaterInject = Path.Combine(cProjectManager.fileNameInputWellInject, sSelectedYYYYMM + ".txt");
             if (File.Exists(fileNameWaterInject))
             {
                 int iIndex = 3;

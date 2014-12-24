@@ -44,16 +44,14 @@ namespace DOGPlatform
         public static string fileNameWellJSJL = "#JSJL#";
         public static string fileNameWellLayerDepth = "#layerDepth#";
         public static string fileNameWellProfile = "#injectProfile#";
-        public static string fileExtensionWellLog = ".log"; 
+        public static string fileExtensionWellLog = ".log";
+
+        public static string filePathWellTypeDic = "$WellTypeDic$.txt";
 
         public static string filePathLogHeadDicProject = "";
         public static string filePathLayerDataDic = "";
         public static string filePathPerforationDic = "";
-        public static string filePathWellTypeDic = "";
-        public static string filePathLayerSplitFactorDic = "";
-        public static string dirPathWellProductionDic = "";
-        public static string dirPathWellInjectionDic = "";
-        public static string filePathWellPathDic = "";
+        public static string filePathLayerSplitFactorDic = "$LayerSplitFactorDic$.txt";
         public static string filePathInterLayerHeterogeneity = "";
         public static string filePathInnerLayerHeterogeneity = "";
 
@@ -84,14 +82,7 @@ namespace DOGPlatform
             filePathErrInfor =Path.Combine(dirPathUserData ,  "#err.txt");
 
             filePathLayerDataDic = Path.Combine( dirPathUsedProjectData , "$LayerDataDic$.txt");
-            filePathWellTypeDic = Path.Combine(dirPathUsedProjectData , "$WellTypeDic$.txt");
-            filePathPerforationDic =Path.Combine( dirPathUsedProjectData , "$PerforationDic$.txt");
-            filePathWellPathDic = Path.Combine(dirPathUsedProjectData , "$WellPathDic$.txt");
            filePathLayerSplitFactorDic = Path.Combine(dirPathUsedProjectData ,"$LayerSplitFactorDic$.txt");
-
-            dirPathWellProductionDic = Path.Combine(dirPathUsedProjectData , "$WellProductionDic$");
-            dirPathWellInjectionDic = Path.Combine(dirPathUsedProjectData , "$WellInjectionDic$");
-
             filePathInterLayerHeterogeneity =Path.Combine( dirPathUsedProjectData ,"$InterLayerHeterogeneity$.txt");
             filePathInnerLayerHeterogeneity =Path.Combine( dirPathUsedProjectData , "$InnerLayerHeterogeneity$.txt");
  

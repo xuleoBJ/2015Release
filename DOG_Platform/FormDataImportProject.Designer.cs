@@ -144,7 +144,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(981, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(1120, 25);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -234,7 +234,7 @@
             this.tbcProjectDataInput.Location = new System.Drawing.Point(0, 25);
             this.tbcProjectDataInput.Name = "tbcProjectDataInput";
             this.tbcProjectDataInput.SelectedIndex = 0;
-            this.tbcProjectDataInput.Size = new System.Drawing.Size(981, 490);
+            this.tbcProjectDataInput.Size = new System.Drawing.Size(1120, 572);
             this.tbcProjectDataInput.TabIndex = 14;
             this.tbcProjectDataInput.SelectedIndexChanged += new System.EventHandler(this.tbcProjectDataInput_SelectedIndexChanged);
             // 
@@ -244,7 +244,7 @@
             this.tbgWellPath.Location = new System.Drawing.Point(4, 22);
             this.tbgWellPath.Name = "tbgWellPath";
             this.tbgWellPath.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellPath.Size = new System.Drawing.Size(973, 464);
+            this.tbgWellPath.Size = new System.Drawing.Size(975, 515);
             this.tbgWellPath.TabIndex = 9;
             this.tbgWellPath.Text = "井斜数据";
             this.tbgWellPath.UseVisualStyleBackColor = true;
@@ -261,7 +261,7 @@
             this.dgvWellDev.Location = new System.Drawing.Point(3, 3);
             this.dgvWellDev.Name = "dgvWellDev";
             this.dgvWellDev.RowTemplate.Height = 23;
-            this.dgvWellDev.Size = new System.Drawing.Size(967, 458);
+            this.dgvWellDev.Size = new System.Drawing.Size(969, 509);
             this.dgvWellDev.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -528,7 +528,7 @@
             this.tbgProductWellData.Controls.Add(this.dgvOilProductionData);
             this.tbgProductWellData.Location = new System.Drawing.Point(4, 22);
             this.tbgProductWellData.Name = "tbgProductWellData";
-            this.tbgProductWellData.Size = new System.Drawing.Size(973, 464);
+            this.tbgProductWellData.Size = new System.Drawing.Size(1112, 546);
             this.tbgProductWellData.TabIndex = 7;
             this.tbgProductWellData.Text = "油井生产数据";
             this.tbgProductWellData.UseVisualStyleBackColor = true;
@@ -553,7 +553,7 @@
             this.dgvOilProductionData.Location = new System.Drawing.Point(0, 0);
             this.dgvOilProductionData.Name = "dgvOilProductionData";
             this.dgvOilProductionData.RowTemplate.Height = 23;
-            this.dgvOilProductionData.Size = new System.Drawing.Size(973, 464);
+            this.dgvOilProductionData.Size = new System.Drawing.Size(1112, 546);
             this.dgvOilProductionData.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn22
@@ -773,7 +773,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 515);
+            this.ClientSize = new System.Drawing.Size(1120, 597);
             this.Controls.Add(this.cbbJH);
             this.Controls.Add(this.tbcProjectDataInput);
             this.Controls.Add(this.menuStrip1);

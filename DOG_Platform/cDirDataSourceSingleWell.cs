@@ -80,7 +80,7 @@ namespace DOGPlatform
 
         public static int addPerforation(string sJHSelected, int iDS1Showed, int iDS2Showed, int iIndexTrack, string filePath)
         {
-            string sContent = cIOinputPerforation.selectPerforation2String(sJHSelected);
+            string sContent = cIOinputWellPerforation.selectPerforation2String(sJHSelected);
              write2File(iIndexTrack, sContent, filePath, sPerforationFileMark);
              return iIndexTrack++;
         }

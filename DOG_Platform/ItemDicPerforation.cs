@@ -5,17 +5,37 @@ using System.Text;
 
 namespace DOGPlatform
 {
-    struct  ItemPerforationInput
+    struct ItemDicPerforation
+    {
+        public string sJH;
+        public string sXCM;
+        public string YMstart; //射孔开始时间
+        public string YMend;  //堵孔时间
+        public float fSKHD; //射开厚度
+
+        public static string item2string(ItemDicPerforation item)
+        {
+            List<string> ltStrWrited = new List<string>();
+            ltStrWrited.Add(item.sJH);
+            ltStrWrited.Add(item.sXCM);
+            ltStrWrited.Add(item.YMstart);
+            ltStrWrited.Add(item.YMend);
+            ltStrWrited.Add(item.fSKHD.ToString());
+            return string.Join("\t", ltStrWrited.ToArray());
+        }
+    }
+
+    struct ItemInputPerforate
     {
         public string sJH;
         public string sYM;
         public float fDS1;
         public float fDS2;
 
-        public static ItemPerforationInput parseLine(string line)
+        public static ItemInputPerforate parseLine(string line)
         {
             string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
-            ItemPerforationInput item = new ItemPerforationInput();
+            ItemInputPerforate item = new ItemInputPerforate();
             if (split.Length >= 4)
             {
                 item.sJH = split[0];
@@ -29,7 +49,7 @@ namespace DOGPlatform
             return item;
         }
 
-        public static string item2string(ItemPerforationInput item)
+        public static string item2string(ItemInputPerforate item)
         {
             List<string> ltStrWrited = new List<string>();
             ltStrWrited.Add(item.sJH);
@@ -38,7 +58,6 @@ namespace DOGPlatform
             ltStrWrited.Add(item.fDS2.ToString());
             return string.Join("\t", ltStrWrited.ToArray());
         }
-
 
     }
 }

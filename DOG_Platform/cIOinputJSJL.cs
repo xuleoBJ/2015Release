@@ -236,7 +236,7 @@ namespace DOGPlatform
        {
            creatWellGeoHeadFile(_sJH);
            List<ItemJSJL> listJSJLinput = readInputFile(_sJH);
-           List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
+           List<ItemDicLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
            List<ItemLayerDepthInput> listLayerDepthInput = cIOinputLayerDepth.readInputFile(_sJH);
            List<string> layerInput = listLayerDepthInput.Select(p => p.sXCM).ToList();
            string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellJSJL);
@@ -283,7 +283,7 @@ namespace DOGPlatform
        public static void splitJSJL2Layer(string _sJH)
        {
            List<ItemJSJL> listJSJLinput = readInputFile(_sJH);
-           List<ItemLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
+           List<ItemDicLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
            string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, "#jsjlSplit.txt");
            List<string> ltStrHeadColoum = new List<string>();
            ltStrHeadColoum.Add("井号");

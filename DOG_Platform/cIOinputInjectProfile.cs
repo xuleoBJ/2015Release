@@ -12,9 +12,9 @@ namespace DOGPlatform
         /// 
         /// </summary>
 
-        public static List<ItemInjectProfile> readInjectionProfile2Struct(string sJH)
+        public static List<ItemDicInjectProfile> readInjectionProfile2Struct(string sJH)
         {
-            List<ItemInjectProfile> listItems = new List<ItemInjectProfile>();
+            List<ItemDicInjectProfile> listItems = new List<ItemDicInjectProfile>();
             string inputFilePath = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameWellProfile);
             if (File.Exists(inputFilePath))
             {
@@ -24,7 +24,7 @@ namespace DOGPlatform
                 {
                     if (line.TrimEnd() != "")
                     {
-                        ItemInjectProfile item = ItemInjectProfile.parseLine(line);
+                        ItemDicInjectProfile item = ItemDicInjectProfile.parseLine(line);
                         listItems.Add(item);
                     }
                 } 
@@ -99,7 +99,7 @@ namespace DOGPlatform
         public static void creatWellGeoFile(string _sJH)
         {
             creatWellGeoHeadFile(_sJH);
-            List<ItemInjectProfile> listInjectionProfile = new List<ItemInjectProfile>();
+            List<ItemDicInjectProfile> listInjectionProfile = new List<ItemDicInjectProfile>();
             List<itemInputProfile> listInputProfile = readInputFile(_sJH);
             foreach (string _YM in listInputProfile.Select(p=>p.sYM).Distinct()) 
             {
@@ -107,7 +107,7 @@ namespace DOGPlatform
                 float fZZRL = listInputCurrentYM.Sum(p => p.fZRL); ; //当前年月总注入量
                 foreach (itemInputProfile _item in listInputCurrentYM) 
                 { 
-                    ItemInjectProfile itemOut = new ItemInjectProfile();
+                    ItemDicInjectProfile itemOut = new ItemDicInjectProfile();
                     itemOut.sJH = _item.sJH;
                     itemOut.sYM = _item.sYM;
                     itemOut.fDS1 = _item.fDS1;
@@ -116,14 +116,15 @@ namespace DOGPlatform
                     itemOut.fPercentZR = (_item.fZRL / fZZRL)*100;
                     itemOut.fXSHD = _item.fDS2 - _item.fDS1;
                     itemOut.FXSQD = _item.fZRL / itemOut.fXSHD;
+                    itemOut.xcm=cIOinputLayerDepth.getXCMByJHAndDepthInterval(_sJH,_item.fDS1,_item.fDS2);
                     listInjectionProfile.Add(itemOut);
                 }
 
             }
             List<string> ltStrLine = new List<string>();
-            foreach (ItemInjectProfile _item in listInjectionProfile)
+            foreach (ItemDicInjectProfile _item in listInjectionProfile)
             {
-                ltStrLine.Add(ItemInjectProfile.item2string(_item));
+                ltStrLine.Add(ItemDicInjectProfile.item2string(_item));
             }
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellProfile);
             cIOGeoEarthText.addDataLines2GeoEarTxt(filePath, ltStrLine); 
@@ -140,6 +141,7 @@ namespace DOGPlatform
             ltStrHeadColoum.Add("相对注入%");
             ltStrHeadColoum.Add("吸水厚度");
             ltStrHeadColoum.Add("吸水强度");
+            ltStrHeadColoum.Add("小层");
             string sFirstLine = DateTime.Today.ToString()+"$WellProfile";
             cIOGeoEarthText.creatFileGeoHeadText(inputFilepath, sFirstLine, ltStrHeadColoum);
         }
@@ -149,7 +151,7 @@ namespace DOGPlatform
             StreamWriter sw = new StreamWriter(filePath, false, Encoding.UTF8);
             string sReturn = "";
             foreach (var item in readInjectionProfile2Struct(sJH))
-                sReturn += ItemInjectProfile.item2string(item) + "\t";
+                sReturn += ItemDicInjectProfile.item2string(item) + "\t";
             sw.Write(sReturn);
             sw.Close();
         }
@@ -161,7 +163,7 @@ namespace DOGPlatform
             string sReturn = ""; 
               foreach (var item in readInjectionProfile2Struct(sJH))
              {
-                 sReturn = sReturn +" "+ ItemInjectProfile.item2string(item);
+                 sReturn = sReturn +" "+ ItemDicInjectProfile.item2string(item);
              }
 
               sw.Write(sReturn);

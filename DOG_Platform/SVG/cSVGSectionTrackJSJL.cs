@@ -20,8 +20,8 @@ namespace DOGPlatform.SVG
         }
         public XmlElement gXieTrack2VerticalJSJL(string sJH, trackJSJLDataList JSJLDataList, float m_KB)
         {
-            List<ItemWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, JSJLDataList.fListDS1);
-            List<ItemWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, JSJLDataList.fListDS2);
+            List<ItemDicWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, JSJLDataList.fListDS1);
+            List<ItemDicWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, JSJLDataList.fListDS2);
             List<float> fListTVD1 = listWellPathDS1.Select(p => p.f_TVD).ToList();
             List<float> fListTVD2 = listWellPathDS2.Select(p => p.f_TVD).ToList();
             return gTrackJSJL(sJH, fListTVD1, fListTVD2, JSJLDataList.iListJSJL,m_KB);
@@ -37,8 +37,8 @@ namespace DOGPlatform.SVG
             XmlElement gJSJLTrack = svgDoc.CreateElement("g");
             gJSJLTrack.SetAttribute("id", sJH + "#TrackJSJL");
           
-            List<ItemWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListTopMD);
-            List<ItemWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListBottomMD);
+            List<ItemDicWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListTopMD);
+            List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListBottomMD);
             for (int i = 0; i < fListTopMD.Count; i++)
             {
                 float _jsjl = iListJSJL[i];
