@@ -160,15 +160,15 @@ namespace DOGPlatform
                { _botXCM = listLayerDepth[i].sXCM; mark = 2; break; }
            }
            string _xcm = "";
-           if (mark == 0) _xcm = "";
+           if (mark == 0) _xcm = "-";
            else if (mark == 2)
            {
                if (_topXCM == _botXCM) _xcm = _topXCM;
-               else if (_topXCM == "" || _botXCM == "") _xcm = _topXCM + "_" + _botXCM;
+               else if (_topXCM == "" || _botXCM == "") _xcm = _topXCM + "-" + _botXCM;
                else
                {
                    int _iStart = layerInput.IndexOf(_topXCM);
-                   if (_iStart < 0) { _iStart = 0; _xcm = ""; }
+                   if (_iStart < 0) { _iStart = 0; _xcm = "-"; }
                    else
                    {
                        int _count = layerInput.IndexOf(_botXCM) - _iStart + 1;
@@ -176,7 +176,7 @@ namespace DOGPlatform
                    }
                }
            }
-           else _xcm = _topXCM + "_" + _botXCM; //这个等于1的问题需要分析
+           else _xcm = _topXCM + "-" + _botXCM; //这个等于1的问题需要分析
 
            return _xcm; 
 

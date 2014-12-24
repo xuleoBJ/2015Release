@@ -31,6 +31,7 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tclWellsGroup = new System.Windows.Forms.TabControl();
             this.tbgWellsGroupData = new System.Windows.Forms.TabPage();
+            this.btnView = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.tbxTitle = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -142,13 +143,15 @@
             this.cbbCurveColor_leftLog = new System.Windows.Forms.ComboBox();
             this.btnMakeSectionByxmlConfig = new System.Windows.Forms.Button();
             this.btnSaveSetting = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
             this.tbgPageSetting = new System.Windows.Forms.TabPage();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.nUDPageHeight = new System.Windows.Forms.NumericUpDown();
             this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
             this.label67 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
+            this.cbxConnectSameLayerName = new System.Windows.Forms.CheckBox();
+            this.cbbConnectWell = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.tclWellsGroup.SuspendLayout();
             this.tbgWellsGroupData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -206,6 +209,9 @@
             // 
             // tbgWellsGroupData
             // 
+            this.tbgWellsGroupData.Controls.Add(this.cbbConnectWell);
+            this.tbgWellsGroupData.Controls.Add(this.label12);
+            this.tbgWellsGroupData.Controls.Add(this.cbxConnectSameLayerName);
             this.tbgWellsGroupData.Controls.Add(this.btnView);
             this.tbgWellsGroupData.Controls.Add(this.label10);
             this.tbgWellsGroupData.Controls.Add(this.tbxTitle);
@@ -222,6 +228,16 @@
             this.tbgWellsGroupData.TabIndex = 0;
             this.tbgWellsGroupData.Text = "数据";
             this.tbgWellsGroupData.UseVisualStyleBackColor = true;
+            // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(579, 484);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(99, 30);
+            this.btnView.TabIndex = 60;
+            this.btnView.Text = "预览";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // label10
             // 
@@ -515,7 +531,7 @@
             // 
             // btnMakeFDmap
             // 
-            this.btnMakeFDmap.Location = new System.Drawing.Point(726, 399);
+            this.btnMakeFDmap.Location = new System.Drawing.Point(725, 484);
             this.btnMakeFDmap.Name = "btnMakeFDmap";
             this.btnMakeFDmap.Size = new System.Drawing.Size(99, 30);
             this.btnMakeFDmap.TabIndex = 38;
@@ -1758,16 +1774,6 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
-            // btnView
-            // 
-            this.btnView.Location = new System.Drawing.Point(588, 400);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(99, 30);
-            this.btnView.TabIndex = 60;
-            this.btnView.Text = "预览";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-            // 
             // tbgPageSetting
             // 
             this.tbgPageSetting.Controls.Add(this.groupBox12);
@@ -1859,6 +1865,33 @@
             this.label48.Size = new System.Drawing.Size(41, 12);
             this.label48.TabIndex = 27;
             this.label48.Text = "页面高";
+            // 
+            // cbxConnectSameLayerName
+            // 
+            this.cbxConnectSameLayerName.AutoSize = true;
+            this.cbxConnectSameLayerName.Location = new System.Drawing.Point(749, 369);
+            this.cbxConnectSameLayerName.Name = "cbxConnectSameLayerName";
+            this.cbxConnectSameLayerName.Size = new System.Drawing.Size(108, 16);
+            this.cbxConnectSameLayerName.TabIndex = 61;
+            this.cbxConnectSameLayerName.Text = "自动连接同名层";
+            this.cbxConnectSameLayerName.UseVisualStyleBackColor = true;
+            // 
+            // cbbConnectWell
+            // 
+            this.cbbConnectWell.FormattingEnabled = true;
+            this.cbbConnectWell.Location = new System.Drawing.Point(619, 367);
+            this.cbbConnectWell.Name = "cbbConnectWell";
+            this.cbbConnectWell.Size = new System.Drawing.Size(122, 20);
+            this.cbbConnectWell.TabIndex = 27;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(571, 369);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(41, 12);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "中心井";
             // 
             // FormWellsGroup
             // 
@@ -2046,5 +2079,8 @@
         private System.Windows.Forms.NumericUpDown nUDPageWidth;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.CheckBox cbxConnectSameLayerName;
+        private System.Windows.Forms.ComboBox cbbConnectWell;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -209,12 +209,13 @@ namespace DOGPlatform
         int ElevationRulerBase = -5000;
         int PageWidth = 3000;
         int PageHeight = 5000;
+       
         void generateSectionGraph(int iTypeFlatted, string filenameSVGMap,bool bView)
         {
             //xml存数据不合适 因为会有大量的井数据，但是可以存个样式，样式搭配数据，样式里可以有道宽，这样做到数据和样式的分离，成图解析器解析样式就OK。
 
             List<Point> PListWellPositon = new List<Point>();
-
+            List<List<cSVGSectionTrackConnect.itemViewLayerDepth>> listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth>>();
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 cWellSectionSVG itemWell = listWellsSection[i];
@@ -283,6 +284,12 @@ namespace DOGPlatform
                 else returnElemment = layerTrack.gTrackLayerDepth(sJH,trackDataListLayerDepth, fDepthFlatted);
                 currentWell.addTrack(returnElemment, iTrackWidth);
 
+
+                //增加联井的view
+                if (rdbDepthModelTVD.Checked == true && currentWellPathList.Count > 2)
+                    listConnectView.Add(cSVGSectionTrackConnect.getListViewXieTrack2VerticalLayerConnect(sJH, iCurrerntWellHorizonPotion, trackDataListLayerDepth, fDepthFlatted));
+                else listConnectView.Add(cSVGSectionTrackConnect.getListViewLayerConnect(sJH,iCurrerntWellHorizonPotion, trackDataListLayerDepth, fDepthFlatted));
+
                 //增加解释结论道
                 string filePathJSJL = Path.Combine(dirSectionData, sJH ,fileNameSectionJSJL);
                 trackJSJLDataList trackDataListJSJL = trackJSJLDataList.setupDataListTrack(filePathJSJL, fTopShowed, fBaseShowed);
@@ -349,18 +356,15 @@ namespace DOGPlatform
 
             if (bConnect == true)
             {
-                for (int i = 0; i < listWellsSection.Count - 1; i++)
+                List<string> listXCM = listConnectView[0].Select(p => p.sXCM).ToList();
+                foreach (string xcm in listXCM)
                 {
-                    string filePathLayer = Path.Combine(dirSectionData, listWellsSection[i].sJH,fileNameSectionLayerDepth);
-                    trackLayerDepthDataList well1LayerDepthDataList = trackLayerDepthDataList.setupDataListTrackLayerDepth(filePathLayer, listWellsSection[i].fShowedDepthTop, listWellsSection[i].fShowedDepthBase);
-                    string file2PathLayer = Path.Combine(dirSectionData, listWellsSection[i + 1].sJH ,fileNameSectionLayerDepth);
-                    trackLayerDepthDataList well2LayerDepthDataList = trackLayerDepthDataList.setupDataListTrackLayerDepth(file2PathLayer, listWellsSection[i + 1].fShowedDepthTop, listWellsSection[i + 1].fShowedDepthBase);
+                    List<cSVGSectionTrackConnect.itemViewLayerDepth> ListLayerViewLayerDepth = new List<cSVGSectionTrackConnect.itemViewLayerDepth>();
+                    for (int i = 0; i < listConnectView.Count; i++) ListLayerViewLayerDepth.Add(listConnectView[i].Find(p => p.sXCM == xcm));
                     cSVGSectionTrackConnect layerConnect = new cSVGSectionTrackConnect();
-                    returnElemment = layerConnect.addgConnectLayerTrack
-                     (listWellsSection[i], well1LayerDepthDataList, listWellsSection[i + 1], well2LayerDepthDataList);
+                    returnElemment = layerConnect.gConnectPath(ListLayerViewLayerDepth);
                     cSection.addgElement(returnElemment, 0);
                 }
-
             }
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);

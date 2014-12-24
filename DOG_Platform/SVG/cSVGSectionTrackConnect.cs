@@ -4,16 +4,70 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Windows.Forms;
+using System.Drawing;
+
 namespace DOGPlatform.SVG
 {
     class cSVGSectionTrackConnect : cSVGSectionTrackLayer
     {
+        public static List<itemViewLayerDepth> getListViewLayerConnect(string sJH, int dx,List<float> fListDS1, List<float> fListDS2, List<string> ltStrXCM, float m_KB)
+        {
+            List<itemViewLayerDepth> listReturn = new List<itemViewLayerDepth>();
+            for (int i = 0; i < ltStrXCM.Count; i++)
+            {
+                itemViewLayerDepth newItem = new itemViewLayerDepth();
+                float _top = fListDS1[i];
+                float _bottom = fListDS2[i];
+                string sXCM = ltStrXCM[i];
+                float y0 = -m_KB + _top;
+                float height = _bottom - _top;
+                newItem.sJH = sJH;
+                newItem.sXCM = sXCM;
+                newItem.fViewX = dx;
+                newItem.fViewY = y0;
+                newItem.fViewHeight = height;
+                listReturn.Add(newItem);
+            }
+            return listReturn;
+        }
+
+        public static List<itemViewLayerDepth> getListViewLayerConnect(string sJH,int dx, trackLayerDepthDataList layerDepthDataList, float m_KB)
+        {
+            return getListViewLayerConnect(sJH, dx,layerDepthDataList.fListDS1, layerDepthDataList.fListDS2, layerDepthDataList.ltStrXCM, m_KB);
+        }
+
+        public static List<itemViewLayerDepth> getListViewXieTrack2VerticalLayerConnect(string sJH, int dx, trackLayerDepthDataList layerDepthDataList, float m_KB)
+        {
+            List<ItemDicWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS1);
+            List<ItemDicWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS2);
+            List<float> fListTVD1 = listWellPathDS1.Select(p => p.f_TVD).ToList();
+            List<float> fListTVD2 = listWellPathDS2.Select(p => p.f_TVD).ToList();
+            return getListViewLayerConnect(sJH, dx, fListTVD1, fListTVD2, layerDepthDataList.ltStrXCM, m_KB);
+        }
         public struct itemViewLayerDepth
         {
+            public string sJH;
             public float fViewX;
             public float fViewY;
             public float fViewHeight;
             public string sXCM;
+        }
+
+        public  XmlElement gConnectPath( List<itemViewLayerDepth> listView)
+        {
+            XmlElement gConnectLayer = svgDoc.CreateElement("polyline");
+            string _points = "";
+            foreach (itemViewLayerDepth item in listView)
+            {
+                _points = _points + item.fViewX.ToString() + ',' + item.fViewY.ToString() + " " + (item.fViewX+30).ToString() + ',' + item.fViewY.ToString()+" ";
+            }
+            gConnectLayer.SetAttribute("style", "stroke-width:0.2");
+            gConnectLayer.SetAttribute("stroke", "black");
+            gConnectLayer.SetAttribute("fill-opacity", "1");
+            gConnectLayer.SetAttribute("fill", "none");
+            gConnectLayer.SetAttribute("points", _points);
+           
+            return gConnectLayer;
         }
        
         public XmlElement gConnectPath(itemViewLayerDepth well1LayerDepthItem, itemViewLayerDepth well2LayerDepthItem)
@@ -45,38 +99,7 @@ namespace DOGPlatform.SVG
             return gConnectLayer;
         }
 
-        public XmlElement addgConnectLayerTrack
-          (cWellSectionSVG well1, trackLayerDepthDataList well1LayerDepthDataList,
-            cWellSectionSVG well2, trackLayerDepthDataList well2LayerDepthDataList)
-        {
-            Cursor.Current = Cursors.WaitCursor;
-            XmlElement gConnectTrack = svgDoc.CreateElement("g");
-            gConnectTrack.SetAttribute("id", "idConnectLayer");
-            setLayerColor();
-            for (int i = 0; i < well1LayerDepthDataList.ltStrXCM.Count; i++)
-            {
-                itemViewLayerDepth well1LayerItem;
-                well1LayerItem.fViewX = well1.fXview;
-                well1LayerItem.fViewY = -well1.fDepthFlatted + well1LayerDepthDataList.fListDS1[i];
-                well1LayerItem.sXCM = well1LayerDepthDataList.ltStrXCM[i];
-                well1LayerItem.fViewHeight = well1LayerDepthDataList.fListDS2[i] - well1LayerDepthDataList.fListDS1[i];
-
-                //在上一口井找到了同名层
-                int iIndex = well2LayerDepthDataList.ltStrXCM.IndexOf(well1LayerDepthDataList.ltStrXCM[i]);
-                if (iIndex >= 0)
-                {
-                    itemViewLayerDepth well_last_LayerItem;
-                    well_last_LayerItem.fViewX = well2.fXview;
-                    well_last_LayerItem.fViewY = -well2.fDepthFlatted + well2LayerDepthDataList.fListDS1[iIndex];
-                    well_last_LayerItem.sXCM = well2LayerDepthDataList.ltStrXCM[iIndex];
-                    well_last_LayerItem.fViewHeight = well2LayerDepthDataList.fListDS2[iIndex] - well2LayerDepthDataList.fListDS1[iIndex];
-                    gConnectTrack.AppendChild(gConnectPath(well1LayerItem, well_last_LayerItem));
-                }
-
-            }
-            Cursor.Current = Cursors.Default;
-            return gConnectTrack;
-        }
+       
 
         
     }

@@ -30,13 +30,13 @@
         {
             this.tabControlSection = new System.Windows.Forms.TabControl();
             this.tabPageData = new System.Windows.Forms.TabPage();
-            this.btnView = new System.Windows.Forms.Button();
-            this.tvwWellSectionCollection = new System.Windows.Forms.TreeView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.trackBarWellDistance = new System.Windows.Forms.TrackBar();
             this.rdbPlaceBYWellDistance = new System.Windows.Forms.RadioButton();
             this.rdbPlaceByEqual = new System.Windows.Forms.RadioButton();
+            this.btnView = new System.Windows.Forms.Button();
+            this.tvwWellSectionCollection = new System.Windows.Forms.TreeView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnLogTrackAddLeft = new System.Windows.Forms.Button();
             this.nUDRightLogRightValue = new System.Windows.Forms.NumericUpDown();
             this.nUDRightLogLeftValue = new System.Windows.Forms.NumericUpDown();
@@ -86,7 +86,6 @@
             this.btn_addWell = new System.Windows.Forms.Button();
             this.lbxJHSeclected = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbxConnectSameLayerName = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tbxTitle = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -198,9 +197,9 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).BeginInit();
+            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightLogRightValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightLogLeftValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLeftLogRightValue)).BeginInit();
@@ -289,51 +288,6 @@
             this.tabPageData.Text = "剖面图数据";
             this.tabPageData.UseVisualStyleBackColor = true;
             // 
-            // btnView
-            // 
-            this.btnView.Location = new System.Drawing.Point(690, 388);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(112, 34);
-            this.btnView.TabIndex = 51;
-            this.btnView.Text = "预览";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-            // 
-            // tvwWellSectionCollection
-            // 
-            this.tvwWellSectionCollection.Location = new System.Drawing.Point(571, 28);
-            this.tvwWellSectionCollection.Margin = new System.Windows.Forms.Padding(2);
-            this.tvwWellSectionCollection.Name = "tvwWellSectionCollection";
-            this.tvwWellSectionCollection.Size = new System.Drawing.Size(231, 215);
-            this.tvwWellSectionCollection.TabIndex = 50;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.btnLogTrackAddLeft);
-            this.groupBox4.Controls.Add(this.nUDRightLogRightValue);
-            this.groupBox4.Controls.Add(this.nUDRightLogLeftValue);
-            this.groupBox4.Controls.Add(this.nUDLeftLogRightValue);
-            this.groupBox4.Controls.Add(this.label24);
-            this.groupBox4.Controls.Add(this.nUDLeftLogLeftValue);
-            this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.label22);
-            this.groupBox4.Controls.Add(this.label21);
-            this.groupBox4.Controls.Add(this.btnLogTrackAddRight);
-            this.groupBox4.Controls.Add(this.label7);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.label6);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.cbbRightLogName);
-            this.groupBox4.Controls.Add(this.cbbColorRightLog);
-            this.groupBox4.Controls.Add(this.cbbColorLeftLog);
-            this.groupBox4.Controls.Add(this.cbbLeftLogName);
-            this.groupBox4.Location = new System.Drawing.Point(310, 252);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(492, 97);
-            this.groupBox4.TabIndex = 5;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "测井曲线";
-            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.trackBarWellDistance);
@@ -381,6 +335,51 @@
             this.rdbPlaceByEqual.TabStop = true;
             this.rdbPlaceByEqual.Text = "等距排列";
             this.rdbPlaceByEqual.UseVisualStyleBackColor = true;
+            // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(690, 388);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(112, 34);
+            this.btnView.TabIndex = 51;
+            this.btnView.Text = "预览";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            // 
+            // tvwWellSectionCollection
+            // 
+            this.tvwWellSectionCollection.Location = new System.Drawing.Point(571, 28);
+            this.tvwWellSectionCollection.Margin = new System.Windows.Forms.Padding(2);
+            this.tvwWellSectionCollection.Name = "tvwWellSectionCollection";
+            this.tvwWellSectionCollection.Size = new System.Drawing.Size(231, 215);
+            this.tvwWellSectionCollection.TabIndex = 50;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnLogTrackAddLeft);
+            this.groupBox4.Controls.Add(this.nUDRightLogRightValue);
+            this.groupBox4.Controls.Add(this.nUDRightLogLeftValue);
+            this.groupBox4.Controls.Add(this.nUDLeftLogRightValue);
+            this.groupBox4.Controls.Add(this.label24);
+            this.groupBox4.Controls.Add(this.nUDLeftLogLeftValue);
+            this.groupBox4.Controls.Add(this.label23);
+            this.groupBox4.Controls.Add(this.label22);
+            this.groupBox4.Controls.Add(this.label21);
+            this.groupBox4.Controls.Add(this.btnLogTrackAddRight);
+            this.groupBox4.Controls.Add(this.label7);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label6);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.cbbRightLogName);
+            this.groupBox4.Controls.Add(this.cbbColorRightLog);
+            this.groupBox4.Controls.Add(this.cbbColorLeftLog);
+            this.groupBox4.Controls.Add(this.cbbLeftLogName);
+            this.groupBox4.Location = new System.Drawing.Point(310, 252);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(492, 97);
+            this.groupBox4.TabIndex = 5;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "测井曲线";
             // 
             // btnLogTrackAddLeft
             // 
@@ -964,7 +963,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbxConnectSameLayerName);
             this.groupBox1.Controls.Add(this.checkBox3);
             this.groupBox1.Controls.Add(this.tbxTitle);
             this.groupBox1.Location = new System.Drawing.Point(310, 481);
@@ -973,16 +971,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "剖面图信息";
-            // 
-            // cbxConnectSameLayerName
-            // 
-            this.cbxConnectSameLayerName.AutoSize = true;
-            this.cbxConnectSameLayerName.Location = new System.Drawing.Point(16, 64);
-            this.cbxConnectSameLayerName.Name = "cbxConnectSameLayerName";
-            this.cbxConnectSameLayerName.Size = new System.Drawing.Size(108, 16);
-            this.cbxConnectSameLayerName.TabIndex = 21;
-            this.cbxConnectSameLayerName.Text = "自动连接同名层";
-            this.cbxConnectSameLayerName.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
@@ -2629,11 +2617,11 @@
             this.Load += new System.EventHandler(this.FormWellSectionGraph_Load);
             this.tabControlSection.ResumeLayout(false);
             this.tabPageData.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightLogRightValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightLogLeftValue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLeftLogRightValue)).EndInit();
@@ -2845,7 +2833,6 @@
         private System.Windows.Forms.NumericUpDown nUDJSJLTrackWidth;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.CheckBox cbxConnectSameLayerName;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.NumericUpDown numericUpDown2;

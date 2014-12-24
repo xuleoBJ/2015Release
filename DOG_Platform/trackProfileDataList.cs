@@ -30,7 +30,7 @@ namespace DOGPlatform
                 }
 
                 string[] split = sData.Trim().Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
-                for (int i = 0; i < split.Length; i = i + 8)
+                for (int i = 0; i < split.Length; i = i + 9)
                 {
                     string sJH = split[i];
                     float fCurrentTop = float.Parse(split[i + 2]);

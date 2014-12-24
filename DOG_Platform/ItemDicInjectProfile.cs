@@ -37,7 +37,7 @@ namespace DOGPlatform
             {
                 string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
                 ItemDicInjectProfile item = new ItemDicInjectProfile();
-                if (split.Length >=8 )
+                if (split.Length >=9 )
                 {
                     item.sJH = split[0];
                     item.sYM = split[1];

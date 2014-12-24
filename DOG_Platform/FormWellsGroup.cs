@@ -69,6 +69,7 @@ namespace DOGPlatform
 
         private void btnSectionData_Click(object sender, EventArgs e)
         {
+
             setDepthIntervalShowedBYLayer();
         }
         void updateSelectedListJH()
@@ -80,6 +81,7 @@ namespace DOGPlatform
                 string strItem = selecteditem as String;
                 ltStrSelectedJH.Add(strItem);
             }
+            cbbConnectWell.DataSource = ltStrSelectedJH;
         }
         void initializeTreeViewWellCollection()
         {
@@ -161,7 +163,7 @@ namespace DOGPlatform
         int PageHeight = 5000;
         void generateSectionGraph(string filenameSVGMap,bool bView)
         {
-
+            List<List<cSVGSectionTrackConnect.itemViewLayerDepth>> listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth>>();
             cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
             cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "井组分析图", 100, 100);
 
@@ -195,6 +197,11 @@ namespace DOGPlatform
                 else returnElemment = layerTrack.gPathTrackLayerDepth(sJH, trackDataListLayerDepth, fDepthFlatted);
                 currentWell.addTrack(returnElemment, iTrackWidth);
 
+                //增加联井的view
+                if (currentWellPathList.Count > 2)
+                    listConnectView.Add(cSVGSectionTrackConnect.getListViewXieTrack2VerticalLayerConnect(sJH, currentPositon.X, trackDataListLayerDepth, fDepthFlatted));
+                else listConnectView.Add(cSVGSectionTrackConnect.getListViewLayerConnect(sJH, currentPositon.X, trackDataListLayerDepth, fDepthFlatted));
+
                 //增加解释结论道
                 string filePathJSJL = Path.Combine(dirSectionData, sJH ,fileNameSectionJSJL);
                 trackJSJLDataList trackDataListJSJL = trackJSJLDataList.setupDataListTrack(filePathJSJL, fTopShowed, fBaseShowed);
@@ -210,9 +217,12 @@ namespace DOGPlatform
                 trackInputPerforationDataList trackDataListPerforation = trackInputPerforationDataList.setupDataListTrack(filePathInputPerforation, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackPeforation perforationTrack = new cSVGSectionTrackPeforation(iTrackWidth);
-                if (currentWellPathList.Count > 2)
+                if (currentWellPathList.Count <= 2)
                     returnElemment = perforationTrack.gXieTrack2VerticalPerforation(sJH, trackDataListPerforation, fDepthFlatted);
                 else returnElemment = perforationTrack.gTrackPerforation(sJH, trackDataListPerforation, fDepthFlatted);
+                //if (currentWellPathList.Count > 2)
+                //    returnElemment = perforationTrack.gXieTrack2VerticalPerforation(sJH, trackDataListPerforation, fDepthFlatted);
+                //else returnElemment = perforationTrack.perforationTrack(sJH, trackDataListPerforation, fDepthFlatted);
                 currentWell.addTrack(returnElemment, -2 * iTrackWidth);
 
                 //增加吸水剖面
@@ -221,9 +231,12 @@ namespace DOGPlatform
                 iTrackWidth = 15;
                 cSVGSectionTrackProfile profileTrack = new cSVGSectionTrackProfile(iTrackWidth);
                 returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
-                if (currentWellPathList.Count > 2)
+                if (currentWellPathList.Count <= 2)
                     returnElemment = profileTrack.gXieTrack2VerticalProfile(sJH, trackDataListProfile, fDepthFlatted);
                 else returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
+                //if (currentWellPathList.Count > 2)
+                //    returnElemment = profileTrack.gXieTrack2VerticalProfile(sJH, trackDataListProfile, fDepthFlatted);
+                //else returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
                 currentWell.addTrack(returnElemment, 15);
 
                 //增加左边曲线
@@ -264,6 +277,19 @@ namespace DOGPlatform
                     currentWell.addTrack(returnElemment, iTrackWidth);
                 }
                 cSection.addgElement(currentWell.gWell, currentPositon);
+            }
+
+            if ( cbxConnectSameLayerName.Checked== true)
+            {
+                List<string> listXCM = listConnectView[0].Select(p => p.sXCM).ToList();
+                foreach (string xcm in listXCM)
+                {
+                    List<cSVGSectionTrackConnect.itemViewLayerDepth> ListLayerViewLayerDepth = new List<cSVGSectionTrackConnect.itemViewLayerDepth>();
+                    for (int i = 0; i < listConnectView.Count; i++) ListLayerViewLayerDepth.Add(listConnectView[i].Find(p => p.sXCM == xcm));
+                    cSVGSectionTrackConnect layerConnect = new cSVGSectionTrackConnect();
+                    returnElemment = layerConnect.gConnectPath(ListLayerViewLayerDepth);
+                    cSection.addgElement(returnElemment, 0,0);
+                }
             }
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
