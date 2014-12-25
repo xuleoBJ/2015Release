@@ -224,7 +224,6 @@ namespace DOGPlatform
                 if (iTypeFlatted == (int)typeFlatted.顶面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthTop;
                 if (iTypeFlatted == (int)typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
              
-          
                 if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+200*i*trackBarWellDistance.Value,0));
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {
@@ -351,7 +350,7 @@ namespace DOGPlatform
                 } 
                 cSection.addgElement(currentWell.gWell, iCurrerntWellHorizonPotion);
             }
-
+            //同名小层连线的实现 在绘制小层layertrack的时候，把小层的顶底深的绘制点记录，然后此处当做polyline绘制
             bool bConnect = this.cbxConnectSameLayerName.Checked;
 
             if (bConnect == true)

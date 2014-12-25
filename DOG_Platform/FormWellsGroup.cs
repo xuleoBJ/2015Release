@@ -81,7 +81,6 @@ namespace DOGPlatform
                 string strItem = selecteditem as String;
                 ltStrSelectedJH.Add(strItem);
             }
-            cbbConnectWell.DataSource = ltStrSelectedJH;
         }
         void initializeTreeViewWellCollection()
         {
@@ -272,18 +271,18 @@ namespace DOGPlatform
                 cSection.addgElement(currentWell.gWell, currentPositon);
             }
 
-            if ( cbxConnectSameLayerName.Checked== true)
-            {
-                List<string> listXCM = listConnectView[0].Select(p => p.sXCM).ToList();
-                foreach (string xcm in listXCM)
-                {
-                    List<cSVGSectionTrackConnect.itemViewLayerDepth> ListLayerViewLayerDepth = new List<cSVGSectionTrackConnect.itemViewLayerDepth>();
-                    for (int i = 0; i < listConnectView.Count; i++) ListLayerViewLayerDepth.Add(listConnectView[i].Find(p => p.sXCM == xcm));
-                    cSVGSectionTrackConnect layerConnect = new cSVGSectionTrackConnect();
-                    returnElemment = layerConnect.gConnectPath(ListLayerViewLayerDepth);
-                    cSection.addgElement(returnElemment, 0,0);
-                }
-            }
+            //if ( cbxConnectSameLayerName.Checked== true)
+            //{
+            //    List<string> listXCM = listConnectView[0].Select(p => p.sXCM).ToList();
+            //    foreach (string xcm in listXCM)
+            //    {
+            //        List<cSVGSectionTrackConnect.itemViewLayerDepth> ListLayerViewLayerDepth = new List<cSVGSectionTrackConnect.itemViewLayerDepth>();
+            //        for (int i = 0; i < listConnectView.Count; i++) ListLayerViewLayerDepth.Add(listConnectView[i].Find(p => p.sXCM == xcm));
+            //        cSVGSectionTrackConnect layerConnect = new cSVGSectionTrackConnect();
+            //        returnElemment = layerConnect.gConnectPath(ListLayerViewLayerDepth);
+            //        cSection.addgElement(returnElemment, 0,0);
+            //    }
+            //}
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
             cSection.makeSVGfile(fileSVG);

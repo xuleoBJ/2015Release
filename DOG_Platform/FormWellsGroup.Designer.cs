@@ -149,9 +149,6 @@
             this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
             this.label67 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.cbxConnectSameLayerName = new System.Windows.Forms.CheckBox();
-            this.cbbConnectWell = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.tclWellsGroup.SuspendLayout();
             this.tbgWellsGroupData.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -209,9 +206,6 @@
             // 
             // tbgWellsGroupData
             // 
-            this.tbgWellsGroupData.Controls.Add(this.cbbConnectWell);
-            this.tbgWellsGroupData.Controls.Add(this.label12);
-            this.tbgWellsGroupData.Controls.Add(this.cbxConnectSameLayerName);
             this.tbgWellsGroupData.Controls.Add(this.btnView);
             this.tbgWellsGroupData.Controls.Add(this.label10);
             this.tbgWellsGroupData.Controls.Add(this.tbxTitle);
@@ -1866,33 +1860,6 @@
             this.label48.TabIndex = 27;
             this.label48.Text = "页面高";
             // 
-            // cbxConnectSameLayerName
-            // 
-            this.cbxConnectSameLayerName.AutoSize = true;
-            this.cbxConnectSameLayerName.Location = new System.Drawing.Point(749, 369);
-            this.cbxConnectSameLayerName.Name = "cbxConnectSameLayerName";
-            this.cbxConnectSameLayerName.Size = new System.Drawing.Size(108, 16);
-            this.cbxConnectSameLayerName.TabIndex = 61;
-            this.cbxConnectSameLayerName.Text = "自动连接同名层";
-            this.cbxConnectSameLayerName.UseVisualStyleBackColor = true;
-            // 
-            // cbbConnectWell
-            // 
-            this.cbbConnectWell.FormattingEnabled = true;
-            this.cbbConnectWell.Location = new System.Drawing.Point(619, 367);
-            this.cbbConnectWell.Name = "cbbConnectWell";
-            this.cbbConnectWell.Size = new System.Drawing.Size(122, 20);
-            this.cbbConnectWell.TabIndex = 27;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(571, 369);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 12);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "中心井";
-            // 
             // FormWellsGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2079,8 +2046,5 @@
         private System.Windows.Forms.NumericUpDown nUDPageWidth;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.CheckBox cbxConnectSameLayerName;
-        private System.Windows.Forms.ComboBox cbbConnectWell;
-        private System.Windows.Forms.Label label12;
     }
 }
