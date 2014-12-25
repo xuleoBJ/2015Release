@@ -82,7 +82,7 @@
             // 打开文件ToolStripMenuItem1
             // 
             this.打开文件ToolStripMenuItem1.Name = "打开文件ToolStripMenuItem1";
-            this.打开文件ToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.打开文件ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.打开文件ToolStripMenuItem1.Text = "打开文件";
             this.打开文件ToolStripMenuItem1.Click += new System.EventHandler(this.openSVGfile_Click);
             // 
@@ -92,20 +92,20 @@
             this.inkscapeToolStripMenuItem,
             this.系统自动选择ToolStripMenuItem});
             this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(124, 22);
+            this.tsmiEdit.Size = new System.Drawing.Size(152, 22);
             this.tsmiEdit.Text = "编辑";
             // 
             // inkscapeToolStripMenuItem
             // 
             this.inkscapeToolStripMenuItem.Name = "inkscapeToolStripMenuItem";
-            this.inkscapeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.inkscapeToolStripMenuItem.Text = "inkscape";
+            this.inkscapeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.inkscapeToolStripMenuItem.Text = "编辑";
             this.inkscapeToolStripMenuItem.Click += new System.EventHandler(this.inkscapeToolStripMenuItem_Click);
             // 
             // 系统自动选择ToolStripMenuItem
             // 
             this.系统自动选择ToolStripMenuItem.Name = "系统自动选择ToolStripMenuItem";
-            this.系统自动选择ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.系统自动选择ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.系统自动选择ToolStripMenuItem.Text = "系统自动选择";
             this.系统自动选择ToolStripMenuItem.Click += new System.EventHandler(this.系统自动选择ToolStripMenuItem_Click);
             // 
@@ -122,21 +122,21 @@
             // 画线ToolStripMenuItem
             // 
             this.画线ToolStripMenuItem.Name = "画线ToolStripMenuItem";
-            this.画线ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.画线ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.画线ToolStripMenuItem.Text = "画线";
             this.画线ToolStripMenuItem.Click += new System.EventHandler(this.画线ToolStripMenuItem_Click);
             // 
             // tsmiMove
             // 
             this.tsmiMove.Name = "tsmiMove";
-            this.tsmiMove.Size = new System.Drawing.Size(100, 22);
+            this.tsmiMove.Size = new System.Drawing.Size(152, 22);
             this.tsmiMove.Text = "移动";
             this.tsmiMove.Click += new System.EventHandler(this.tsmiMove_Click);
             // 
             // tsmiDel
             // 
             this.tsmiDel.Name = "tsmiDel";
-            this.tsmiDel.Size = new System.Drawing.Size(100, 22);
+            this.tsmiDel.Size = new System.Drawing.Size(152, 22);
             this.tsmiDel.Text = "删除";
             this.tsmiDel.Click += new System.EventHandler(this.tsmiDel_Click);
             // 
@@ -168,14 +168,14 @@
             // tsmiOilLayer
             // 
             this.tsmiOilLayer.Name = "tsmiOilLayer";
-            this.tsmiOilLayer.Size = new System.Drawing.Size(152, 22);
+            this.tsmiOilLayer.Size = new System.Drawing.Size(100, 22);
             this.tsmiOilLayer.Text = "油层";
             this.tsmiOilLayer.Click += new System.EventHandler(this.tsmiOilLayer_Click);
             // 
             // tsmiWaterLayer
             // 
             this.tsmiWaterLayer.Name = "tsmiWaterLayer";
-            this.tsmiWaterLayer.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWaterLayer.Size = new System.Drawing.Size(100, 22);
             this.tsmiWaterLayer.Text = "水层";
             this.tsmiWaterLayer.Click += new System.EventHandler(this.tsmiWaterLayer_Click);
             // 
@@ -194,7 +194,7 @@
             // ToolStripContainer1.ContentPanel
             // 
             this.ToolStripContainer1.ContentPanel.Controls.Add(this.tabControlSVGNavigation);
-            this.ToolStripContainer1.ContentPanel.Size = new System.Drawing.Size(894, 598);
+            this.ToolStripContainer1.ContentPanel.Size = new System.Drawing.Size(894, 623);
             this.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolStripContainer1.Location = new System.Drawing.Point(0, 25);
             this.ToolStripContainer1.Name = "ToolStripContainer1";
@@ -219,7 +219,7 @@
             this.tabControlSVGNavigation.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlSVGNavigation.Name = "tabControlSVGNavigation";
             this.tabControlSVGNavigation.SelectedIndex = 0;
-            this.tabControlSVGNavigation.Size = new System.Drawing.Size(894, 598);
+            this.tabControlSVGNavigation.Size = new System.Drawing.Size(894, 623);
             this.tabControlSVGNavigation.TabIndex = 1;
             this.tabControlSVGNavigation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControlSVGNavigation_MouseClick);
             // 
@@ -230,7 +230,7 @@
             this.tbgSVGView.Margin = new System.Windows.Forms.Padding(2);
             this.tbgSVGView.Name = "tbgSVGView";
             this.tbgSVGView.Padding = new System.Windows.Forms.Padding(2);
-            this.tbgSVGView.Size = new System.Drawing.Size(886, 572);
+            this.tbgSVGView.Size = new System.Drawing.Size(886, 597);
             this.tbgSVGView.TabIndex = 1;
             this.tbgSVGView.Text = "View1";
             this.tbgSVGView.UseVisualStyleBackColor = true;
@@ -242,7 +242,7 @@
             this.webBrowserSVG.Margin = new System.Windows.Forms.Padding(2);
             this.webBrowserSVG.MinimumSize = new System.Drawing.Size(15, 16);
             this.webBrowserSVG.Name = "webBrowserSVG";
-            this.webBrowserSVG.Size = new System.Drawing.Size(882, 568);
+            this.webBrowserSVG.Size = new System.Drawing.Size(882, 593);
             this.webBrowserSVG.TabIndex = 1;
             // 
             // FormWebNavigation

@@ -49,8 +49,8 @@ namespace DOGPlatform
             tsmiSaveAnotherProject.Enabled = true;
             tsmiSaveProject.Enabled = true;
 
-            //tsmiProfileDecision.Enabled = true;
-            //tsmiDynamicCal.Enabled = true;
+            tsmiProfileDecision.Enabled = true;
+            tsmiDynamicCal.Enabled = true;
         }
 
         private void intializeMyForm()
@@ -98,6 +98,8 @@ namespace DOGPlatform
             cTreeViewProjectData.setupTNLayer(tvProjectData);
 
             foreach (TreeNode tn in tvProjectData.Nodes) if (tn.Level == 0) tn.Expand();
+            this.tbcMain.SelectedIndex = 0;
+            this.tbcProject.SelectedIndex = 0;
 
             WellNavitationInvalidate();
             updateTreeViewWindows();
@@ -157,6 +159,8 @@ namespace DOGPlatform
                 tscbbScale.Text = ((int)(1000 / cProjectData.dfMapScale)).ToString();
                 WellNavitationInvalidate();
                 opened = true;
+                this.webBrowserIE.Navigate("about:blank");
+                filePathWebSVG = "";
             }
              return opened;
         }

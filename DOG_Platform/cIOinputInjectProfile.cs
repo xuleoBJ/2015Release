@@ -116,7 +116,7 @@ namespace DOGPlatform
                     itemOut.fPercentZR = (_item.fZRL / fZZRL)*100;
                     itemOut.fXSHD = _item.fDS2 - _item.fDS1;
                     itemOut.FXSQD = _item.fZRL / itemOut.fXSHD;
-                    itemOut.xcm=cIOinputLayerDepth.getXCMByJHAndDepthInterval(_sJH,_item.fDS1,_item.fDS2);
+                    itemOut.sXCM = cIOinputLayerDepth.getXCMByJHAndDepthInterval(_sJH, _item.fDS1, _item.fDS2);
                     listInjectionProfile.Add(itemOut);
                 }
 

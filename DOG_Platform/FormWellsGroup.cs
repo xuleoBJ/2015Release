@@ -199,8 +199,8 @@ namespace DOGPlatform
 
                 //增加联井的view
                 if (currentWellPathList.Count > 2)
-                    listConnectView.Add(cSVGSectionTrackConnect.getListViewXieTrack2VerticalLayerConnect(sJH, currentPositon.X, trackDataListLayerDepth, fDepthFlatted));
-                else listConnectView.Add(cSVGSectionTrackConnect.getListViewLayerConnect(sJH, currentPositon.X, trackDataListLayerDepth, fDepthFlatted));
+                    listConnectView.Add(cSVGSectionTrackConnect.getListViewPathLayerConnect(sJH, currentPositon, trackDataListLayerDepth, fDepthFlatted));
+                else listConnectView.Add(cSVGSectionTrackConnect.getListViewLayerConnect(sJH, currentPositon, trackDataListLayerDepth, fDepthFlatted));
 
                 //增加解释结论道
                 string filePathJSJL = Path.Combine(dirSectionData, sJH ,fileNameSectionJSJL);
@@ -218,11 +218,8 @@ namespace DOGPlatform
                 iTrackWidth = 15;
                 cSVGSectionTrackPeforation perforationTrack = new cSVGSectionTrackPeforation(iTrackWidth);
                 if (currentWellPathList.Count <= 2)
-                    returnElemment = perforationTrack.gXieTrack2VerticalPerforation(sJH, trackDataListPerforation, fDepthFlatted);
-                else returnElemment = perforationTrack.gTrackPerforation(sJH, trackDataListPerforation, fDepthFlatted);
-                //if (currentWellPathList.Count > 2)
-                //    returnElemment = perforationTrack.gXieTrack2VerticalPerforation(sJH, trackDataListPerforation, fDepthFlatted);
-                //else returnElemment = perforationTrack.perforationTrack(sJH, trackDataListPerforation, fDepthFlatted);
+                    returnElemment = perforationTrack.gTrackPerforation(sJH, trackDataListPerforation, fDepthFlatted);
+                else returnElemment = perforationTrack.gPathTrackPerforation(sJH, trackDataListPerforation, fDepthFlatted);
                 currentWell.addTrack(returnElemment, -2 * iTrackWidth);
 
                 //增加吸水剖面
@@ -231,12 +228,8 @@ namespace DOGPlatform
                 iTrackWidth = 15;
                 cSVGSectionTrackProfile profileTrack = new cSVGSectionTrackProfile(iTrackWidth);
                 returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
-                if (currentWellPathList.Count <= 2)
-                    returnElemment = profileTrack.gXieTrack2VerticalProfile(sJH, trackDataListProfile, fDepthFlatted);
-                else returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
-                //if (currentWellPathList.Count > 2)
-                //    returnElemment = profileTrack.gXieTrack2VerticalProfile(sJH, trackDataListProfile, fDepthFlatted);
-                //else returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
+                if (currentWellPathList.Count <= 2) returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
+                else returnElemment = profileTrack.gPathTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
                 currentWell.addTrack(returnElemment, 15);
 
                 //增加左边曲线

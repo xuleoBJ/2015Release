@@ -31,11 +31,75 @@ namespace DOGPlatform.SVG
             return listReturn;
         }
 
+        public static List<itemViewLayerDepth> getListViewLayerConnect(string sJH, Point pView, List<float> fListDS1, List<float> fListDS2, List<string> ltStrXCM, float m_KB)
+        {
+            List<itemViewLayerDepth> listReturn = new List<itemViewLayerDepth>();
+            for (int i = 0; i < ltStrXCM.Count; i++)
+            {
+                itemViewLayerDepth newItem = new itemViewLayerDepth();
+                float _top = fListDS1[i];
+                float _bottom = fListDS2[i];
+                string sXCM = ltStrXCM[i];
+                float y0 = -m_KB + _top;
+                float height = _bottom - _top;
+                newItem.sJH = sJH;
+                newItem.sXCM = sXCM;
+                newItem.fViewX = pView.X;
+                newItem.fViewY = y0+pView.Y;
+                newItem.fViewHeight = height;
+                listReturn.Add(newItem);
+            }
+            return listReturn;
+        }
+        public static List<itemViewLayerDepth> getListViewLayerConnect(string sJH, Point pView, trackLayerDepthDataList layerDepthDataList, float m_KB)
+        {
+            return getListViewLayerConnect(sJH, pView, layerDepthDataList.fListDS1, layerDepthDataList.fListDS2, layerDepthDataList.ltStrXCM, m_KB);
+        }
+
         public static List<itemViewLayerDepth> getListViewLayerConnect(string sJH,int dx, trackLayerDepthDataList layerDepthDataList, float m_KB)
         {
             return getListViewLayerConnect(sJH, dx,layerDepthDataList.fListDS1, layerDepthDataList.fListDS2, layerDepthDataList.ltStrXCM, m_KB);
         }
+        public static List<itemViewLayerDepth> getListViewXieTrack2VerticalLayerConnect(string sJH, Point pView, trackLayerDepthDataList layerDepthDataList, float m_KB)
+        {
+            List<ItemDicWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS1);
+            List<ItemDicWellPath> listWellPathDS2 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS2);
+            List<float> fListTVD1 = listWellPathDS1.Select(p => p.f_TVD).ToList();
+            List<float> fListTVD2 = listWellPathDS2.Select(p => p.f_TVD).ToList();
+            return getListViewLayerConnect(sJH, pView, fListTVD1, fListTVD2, layerDepthDataList.ltStrXCM, m_KB);
+        }
 
+        public static List<itemViewLayerDepth> getListViewPathLayerConnect(string sJH, Point pView, trackLayerDepthDataList trackDataList, float m_KB)
+        {
+            return getListViewPathLayerConnect(sJH, pView, trackDataList.fListDS1, trackDataList.fListDS2, trackDataList.ltStrXCM,m_KB);
+        }
+        public static List<itemViewLayerDepth> getListViewPathLayerConnect(string sJH, Point pView, List<float> fListDS1, List<float> fListDS2,List<string> ltStrXCM, float m_KB)
+        {
+
+            List<ItemDicWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
+            List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
+
+            List<itemViewLayerDepth> listReturn = new List<itemViewLayerDepth>();
+            for (int i = 0; i < ltStrXCM.Count; i++)
+            {
+                itemViewLayerDepth newItem = new itemViewLayerDepth();
+                float _top = fListDS1[i];
+                float _bottom = fListDS2[i];
+                string sXCM = ltStrXCM[i];
+                float x0 = listWellPathTop[0].f_dx;
+                float y0 = -m_KB + listWellPathTop[i].f_TVD; ;
+                float height = _bottom - _top;
+                newItem.sJH = sJH;
+                newItem.sXCM = sXCM;
+                newItem.fViewX = pView.X;
+                newItem.fViewY = y0 + pView.Y;
+                newItem.fViewHeight = height;
+                listReturn.Add(newItem);
+            }
+            return listReturn; 
+           
+
+        }
         public static List<itemViewLayerDepth> getListViewXieTrack2VerticalLayerConnect(string sJH, int dx, trackLayerDepthDataList layerDepthDataList, float m_KB)
         {
             List<ItemDicWellPath> listWellPathDS1 = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, layerDepthDataList.fListDS1);

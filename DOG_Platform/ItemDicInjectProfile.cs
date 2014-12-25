@@ -16,7 +16,7 @@ namespace DOGPlatform
             public float fPercentZR;//相对注入量%
             public float fXSHD; //吸水厚度
             public float FXSQD; //吸水强度
-            public string xcm;
+            public string sXCM;
 
             public static string item2string(ItemDicInjectProfile item)
             {
@@ -29,7 +29,7 @@ namespace DOGPlatform
                 ltStrWrited.Add(item.fPercentZR.ToString("0.0"));
                 ltStrWrited.Add(item.fXSHD.ToString("0.0"));
                 ltStrWrited.Add(item.FXSQD.ToString("0.0"));
-                ltStrWrited.Add(item.xcm);
+                ltStrWrited.Add(item.sXCM);
                 return string.Join("\t", ltStrWrited.ToArray());
             }
 
@@ -53,7 +53,7 @@ namespace DOGPlatform
                     float.TryParse(split[6], out item.fXSHD);
                     item.FXSQD = 0.0f;
                     float.TryParse(split[7], out item.FXSQD);
-                    item.sYM = split[8];
+                    item.sXCM = split[8];
                 }
                 return item;
             }
