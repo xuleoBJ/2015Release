@@ -30,6 +30,7 @@
         {
             this.tabControlSection = new System.Windows.Forms.TabControl();
             this.tabPageData = new System.Windows.Forms.TabPage();
+            this.btnView = new System.Windows.Forms.Button();
             this.btnAddProfile = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rdbDepthModelTVD = new System.Windows.Forms.RadioButton();
@@ -43,9 +44,10 @@
             this.rdbFlattedByTopDepth = new System.Windows.Forms.RadioButton();
             this.rdbFlattedByDepth = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.trackBarWellDistance = new System.Windows.Forms.TrackBar();
             this.rdbPlaceBYWellDistance = new System.Windows.Forms.RadioButton();
             this.rdbPlaceByEqual = new System.Windows.Forms.RadioButton();
-            this.tvwWellSectionCollection = new System.Windows.Forms.TreeView();
+            this.tvWellSectionCollection = new System.Windows.Forms.TreeView();
             this.btnAddLayerDepth = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rdbRight = new System.Windows.Forms.RadioButton();
@@ -91,7 +93,17 @@
             this.lbxJHSeclected = new System.Windows.Forms.ListBox();
             this.btnAddJSJLTrack = new System.Windows.Forms.Button();
             this.tabPageSetting = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.nUDElevationRulerBottom = new System.Windows.Forms.NumericUpDown();
+            this.nUDElevationRulerTop = new System.Windows.Forms.NumericUpDown();
+            this.nUDElevationScale = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.lblRulerBase = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.nUDPageHeight = new System.Windows.Forms.NumericUpDown();
             this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
             this.label67 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
@@ -155,23 +167,12 @@
             this.nUDLayerTrackWidth = new System.Windows.Forms.NumericUpDown();
             this.label45 = new System.Windows.Forms.Label();
             this.cbxFillLayer = new System.Windows.Forms.CheckBox();
-            this.btnView = new System.Windows.Forms.Button();
-            this.trackBarWellDistance = new System.Windows.Forms.TrackBar();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.nUDElevationRulerBottom = new System.Windows.Forms.NumericUpDown();
-            this.nUDElevationRulerTop = new System.Windows.Forms.NumericUpDown();
-            this.nUDElevationScale = new System.Windows.Forms.NumericUpDown();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.lblRulerBase = new System.Windows.Forms.Label();
-            this.nUDPageHeight = new System.Windows.Forms.NumericUpDown();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLogRightValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLogLeftValue)).BeginInit();
@@ -181,7 +182,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).BeginInit();
             this.tabPageSetting.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerBottom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerTop)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationScale)).BeginInit();
             this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).BeginInit();
             this.tbgLayerColorSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayerColorSetting)).BeginInit();
@@ -212,12 +218,6 @@
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackFontSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerBottom)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerTop)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationScale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlSection
@@ -244,7 +244,7 @@
             this.tabPageData.Controls.Add(this.cbxConnectSameLayerName);
             this.tabPageData.Controls.Add(this.groupBox7);
             this.tabPageData.Controls.Add(this.groupBox6);
-            this.tabPageData.Controls.Add(this.tvwWellSectionCollection);
+            this.tabPageData.Controls.Add(this.tvWellSectionCollection);
             this.tabPageData.Controls.Add(this.btnAddLayerDepth);
             this.tabPageData.Controls.Add(this.groupBox4);
             this.tabPageData.Controls.Add(this.btnMakeSection);
@@ -257,6 +257,16 @@
             this.tabPageData.TabIndex = 1;
             this.tabPageData.Text = "剖面图数据";
             this.tabPageData.UseVisualStyleBackColor = true;
+            // 
+            // btnView
+            // 
+            this.btnView.Location = new System.Drawing.Point(319, 512);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(123, 34);
+            this.btnView.TabIndex = 57;
+            this.btnView.Text = "预览";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // btnAddProfile
             // 
@@ -405,38 +415,48 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "井排列方式";
             // 
+            // trackBarWellDistance
+            // 
+            this.trackBarWellDistance.LargeChange = 1;
+            this.trackBarWellDistance.Location = new System.Drawing.Point(22, 57);
+            this.trackBarWellDistance.Minimum = 1;
+            this.trackBarWellDistance.Name = "trackBarWellDistance";
+            this.trackBarWellDistance.Size = new System.Drawing.Size(254, 45);
+            this.trackBarWellDistance.TabIndex = 28;
+            this.trackBarWellDistance.Value = 1;
+            // 
             // rdbPlaceBYWellDistance
             // 
             this.rdbPlaceBYWellDistance.AutoSize = true;
-            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(148, 20);
+            this.rdbPlaceBYWellDistance.Checked = true;
+            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(22, 30);
             this.rdbPlaceBYWellDistance.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPlaceBYWellDistance.Name = "rdbPlaceBYWellDistance";
             this.rdbPlaceBYWellDistance.Size = new System.Drawing.Size(71, 16);
             this.rdbPlaceBYWellDistance.TabIndex = 1;
+            this.rdbPlaceBYWellDistance.TabStop = true;
             this.rdbPlaceBYWellDistance.Text = "井距等比";
             this.rdbPlaceBYWellDistance.UseVisualStyleBackColor = true;
             // 
             // rdbPlaceByEqual
             // 
             this.rdbPlaceByEqual.AutoSize = true;
-            this.rdbPlaceByEqual.Checked = true;
-            this.rdbPlaceByEqual.Location = new System.Drawing.Point(22, 20);
+            this.rdbPlaceByEqual.Location = new System.Drawing.Point(122, 31);
             this.rdbPlaceByEqual.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPlaceByEqual.Name = "rdbPlaceByEqual";
             this.rdbPlaceByEqual.Size = new System.Drawing.Size(71, 16);
             this.rdbPlaceByEqual.TabIndex = 0;
-            this.rdbPlaceByEqual.TabStop = true;
             this.rdbPlaceByEqual.Text = "等距排列";
             this.rdbPlaceByEqual.UseVisualStyleBackColor = true;
             // 
-            // tvwWellSectionCollection
+            // tvWellSectionCollection
             // 
-            this.tvwWellSectionCollection.Location = new System.Drawing.Point(629, 167);
-            this.tvwWellSectionCollection.Margin = new System.Windows.Forms.Padding(2);
-            this.tvwWellSectionCollection.Name = "tvwWellSectionCollection";
-            this.tvwWellSectionCollection.Size = new System.Drawing.Size(187, 392);
-            this.tvwWellSectionCollection.TabIndex = 50;
-            this.tvwWellSectionCollection.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvwWellSectionCollection_AfterSelect);
+            this.tvWellSectionCollection.Location = new System.Drawing.Point(629, 167);
+            this.tvWellSectionCollection.Margin = new System.Windows.Forms.Padding(2);
+            this.tvWellSectionCollection.Name = "tvWellSectionCollection";
+            this.tvWellSectionCollection.Size = new System.Drawing.Size(187, 392);
+            this.tvWellSectionCollection.TabIndex = 50;
+            this.tvWellSectionCollection.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvwWellSectionCollection_AfterSelect);
             // 
             // btnAddLayerDepth
             // 
@@ -971,6 +991,146 @@
             this.tabPageSetting.Text = "页面设置";
             this.tabPageSetting.UseVisualStyleBackColor = true;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.nUDElevationRulerBottom);
+            this.groupBox8.Controls.Add(this.nUDElevationRulerTop);
+            this.groupBox8.Controls.Add(this.nUDElevationScale);
+            this.groupBox8.Controls.Add(this.label26);
+            this.groupBox8.Controls.Add(this.label27);
+            this.groupBox8.Controls.Add(this.label28);
+            this.groupBox8.Controls.Add(this.label29);
+            this.groupBox8.Controls.Add(this.lblRulerBase);
+            this.groupBox8.Location = new System.Drawing.Point(20, 142);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox8.Size = new System.Drawing.Size(327, 124);
+            this.groupBox8.TabIndex = 47;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "设置海拔尺";
+            // 
+            // nUDElevationRulerBottom
+            // 
+            this.nUDElevationRulerBottom.AllowDrop = true;
+            this.nUDElevationRulerBottom.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nUDElevationRulerBottom.Location = new System.Drawing.Point(73, 66);
+            this.nUDElevationRulerBottom.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nUDElevationRulerBottom.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.nUDElevationRulerBottom.Name = "nUDElevationRulerBottom";
+            this.nUDElevationRulerBottom.Size = new System.Drawing.Size(57, 21);
+            this.nUDElevationRulerBottom.TabIndex = 34;
+            this.nUDElevationRulerBottom.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            -2147483648});
+            this.nUDElevationRulerBottom.ValueChanged += new System.EventHandler(this.nUDElevationRulerBottom_ValueChanged);
+            // 
+            // nUDElevationRulerTop
+            // 
+            this.nUDElevationRulerTop.AllowDrop = true;
+            this.nUDElevationRulerTop.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.nUDElevationRulerTop.Location = new System.Drawing.Point(73, 33);
+            this.nUDElevationRulerTop.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.nUDElevationRulerTop.Minimum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            -2147483648});
+            this.nUDElevationRulerTop.Name = "nUDElevationRulerTop";
+            this.nUDElevationRulerTop.Size = new System.Drawing.Size(58, 21);
+            this.nUDElevationRulerTop.TabIndex = 33;
+            this.nUDElevationRulerTop.ValueChanged += new System.EventHandler(this.nUDElevationRulerTop_ValueChanged);
+            // 
+            // nUDElevationScale
+            // 
+            this.nUDElevationScale.AllowDrop = true;
+            this.nUDElevationScale.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nUDElevationScale.Location = new System.Drawing.Point(232, 33);
+            this.nUDElevationScale.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nUDElevationScale.Name = "nUDElevationScale";
+            this.nUDElevationScale.Size = new System.Drawing.Size(50, 21);
+            this.nUDElevationScale.TabIndex = 17;
+            this.nUDElevationScale.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(175, 39);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(41, 12);
+            this.label26.TabIndex = 17;
+            this.label26.Text = "主刻度";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(133, 69);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(17, 12);
+            this.label27.TabIndex = 14;
+            this.label27.Text = "米";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(137, 42);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(17, 12);
+            this.label28.TabIndex = 14;
+            this.label28.Text = "米";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(14, 33);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(53, 12);
+            this.label29.TabIndex = 8;
+            this.label29.Text = "顶部尺度";
+            // 
+            // lblRulerBase
+            // 
+            this.lblRulerBase.AutoSize = true;
+            this.lblRulerBase.Location = new System.Drawing.Point(12, 68);
+            this.lblRulerBase.Name = "lblRulerBase";
+            this.lblRulerBase.Size = new System.Drawing.Size(53, 12);
+            this.lblRulerBase.TabIndex = 8;
+            this.lblRulerBase.Text = "底部深度";
+            // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.nUDPageHeight);
@@ -985,6 +1145,30 @@
             this.groupBox12.TabIndex = 29;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "页面大小设置";
+            // 
+            // nUDPageHeight
+            // 
+            this.nUDPageHeight.AllowDrop = true;
+            this.nUDPageHeight.Location = new System.Drawing.Point(180, 23);
+            this.nUDPageHeight.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.Name = "nUDPageHeight";
+            this.nUDPageHeight.Size = new System.Drawing.Size(50, 21);
+            this.nUDPageHeight.TabIndex = 39;
+            this.nUDPageHeight.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.ValueChanged += new System.EventHandler(this.nUDPageHeight_ValueChanged);
             // 
             // nUDPageWidth
             // 
@@ -1939,190 +2123,6 @@
             this.cbxFillLayer.Text = "自动填充颜色";
             this.cbxFillLayer.UseVisualStyleBackColor = true;
             // 
-            // btnView
-            // 
-            this.btnView.Location = new System.Drawing.Point(319, 512);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(123, 34);
-            this.btnView.TabIndex = 57;
-            this.btnView.Text = "预览";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-            // 
-            // trackBarWellDistance
-            // 
-            this.trackBarWellDistance.LargeChange = 1;
-            this.trackBarWellDistance.Location = new System.Drawing.Point(22, 57);
-            this.trackBarWellDistance.Minimum = 1;
-            this.trackBarWellDistance.Name = "trackBarWellDistance";
-            this.trackBarWellDistance.Size = new System.Drawing.Size(254, 45);
-            this.trackBarWellDistance.TabIndex = 28;
-            this.trackBarWellDistance.Value = 1;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.nUDElevationRulerBottom);
-            this.groupBox8.Controls.Add(this.nUDElevationRulerTop);
-            this.groupBox8.Controls.Add(this.nUDElevationScale);
-            this.groupBox8.Controls.Add(this.label26);
-            this.groupBox8.Controls.Add(this.label27);
-            this.groupBox8.Controls.Add(this.label28);
-            this.groupBox8.Controls.Add(this.label29);
-            this.groupBox8.Controls.Add(this.lblRulerBase);
-            this.groupBox8.Location = new System.Drawing.Point(20, 142);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox8.Size = new System.Drawing.Size(327, 124);
-            this.groupBox8.TabIndex = 47;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "设置海拔尺";
-            // 
-            // nUDElevationRulerBottom
-            // 
-            this.nUDElevationRulerBottom.AllowDrop = true;
-            this.nUDElevationRulerBottom.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.nUDElevationRulerBottom.Location = new System.Drawing.Point(73, 66);
-            this.nUDElevationRulerBottom.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nUDElevationRulerBottom.Minimum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            -2147483648});
-            this.nUDElevationRulerBottom.Name = "nUDElevationRulerBottom";
-            this.nUDElevationRulerBottom.Size = new System.Drawing.Size(57, 21);
-            this.nUDElevationRulerBottom.TabIndex = 34;
-            this.nUDElevationRulerBottom.Value = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            -2147483648});
-            this.nUDElevationRulerBottom.ValueChanged += new System.EventHandler(this.nUDElevationRulerBottom_ValueChanged);
-            // 
-            // nUDElevationRulerTop
-            // 
-            this.nUDElevationRulerTop.AllowDrop = true;
-            this.nUDElevationRulerTop.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.nUDElevationRulerTop.Location = new System.Drawing.Point(73, 33);
-            this.nUDElevationRulerTop.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.nUDElevationRulerTop.Minimum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            -2147483648});
-            this.nUDElevationRulerTop.Name = "nUDElevationRulerTop";
-            this.nUDElevationRulerTop.Size = new System.Drawing.Size(58, 21);
-            this.nUDElevationRulerTop.TabIndex = 33;
-            this.nUDElevationRulerTop.ValueChanged += new System.EventHandler(this.nUDElevationRulerTop_ValueChanged);
-            // 
-            // nUDElevationScale
-            // 
-            this.nUDElevationScale.AllowDrop = true;
-            this.nUDElevationScale.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nUDElevationScale.Location = new System.Drawing.Point(232, 33);
-            this.nUDElevationScale.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nUDElevationScale.Name = "nUDElevationScale";
-            this.nUDElevationScale.Size = new System.Drawing.Size(50, 21);
-            this.nUDElevationScale.TabIndex = 17;
-            this.nUDElevationScale.Value = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(175, 39);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(41, 12);
-            this.label26.TabIndex = 17;
-            this.label26.Text = "主刻度";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(133, 69);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(17, 12);
-            this.label27.TabIndex = 14;
-            this.label27.Text = "米";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(137, 42);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(17, 12);
-            this.label28.TabIndex = 14;
-            this.label28.Text = "米";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(14, 33);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(53, 12);
-            this.label29.TabIndex = 8;
-            this.label29.Text = "顶部尺度";
-            // 
-            // lblRulerBase
-            // 
-            this.lblRulerBase.AutoSize = true;
-            this.lblRulerBase.Location = new System.Drawing.Point(12, 68);
-            this.lblRulerBase.Name = "lblRulerBase";
-            this.lblRulerBase.Size = new System.Drawing.Size(53, 12);
-            this.lblRulerBase.TabIndex = 8;
-            this.lblRulerBase.Text = "底部深度";
-            // 
-            // nUDPageHeight
-            // 
-            this.nUDPageHeight.AllowDrop = true;
-            this.nUDPageHeight.Location = new System.Drawing.Point(180, 23);
-            this.nUDPageHeight.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.nUDPageHeight.Minimum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nUDPageHeight.Name = "nUDPageHeight";
-            this.nUDPageHeight.Size = new System.Drawing.Size(50, 21);
-            this.nUDPageHeight.TabIndex = 39;
-            this.nUDPageHeight.Value = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
-            this.nUDPageHeight.ValueChanged += new System.EventHandler(this.nUDPageHeight_ValueChanged);
-            // 
             // FormWellSectionGeology
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2142,6 +2142,7 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLogRightValue)).EndInit();
@@ -2155,8 +2156,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDbottomDepthDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).EndInit();
             this.tabPageSetting.ResumeLayout(false);
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerBottom)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerTop)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationScale)).EndInit();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).EndInit();
             this.tbgLayerColorSetting.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLayerColorSetting)).EndInit();
@@ -2194,13 +2201,6 @@
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackFontSize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerTrackWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarWellDistance)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerBottom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationRulerTop)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDElevationScale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2209,7 +2209,7 @@
 
         private System.Windows.Forms.TabControl tabControlSection;
         private System.Windows.Forms.TabPage tabPageData;
-        private System.Windows.Forms.TreeView tvwWellSectionCollection;
+        private System.Windows.Forms.TreeView tvWellSectionCollection;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.NumericUpDown nUDLogRightValue;
         private System.Windows.Forms.NumericUpDown nUDLogLeftValue;

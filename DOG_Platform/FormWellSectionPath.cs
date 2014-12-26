@@ -359,11 +359,18 @@ namespace DOGPlatform
                 if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100 + 200 * i * trackBarWellDistance.Value, 0));
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {
-                    if (i == 0) PListWellPositon.Add(new Point(100, 0));
-                    else
+                    if (rdbPlaceBYWellDistance.Checked == true)
                     {
-                        int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX, listWellsSection[i].dbY, listWellsSection[0].dbX, listWellsSection[0].dbY));
-                        PListWellPositon.Add(new Point(iDistance * trackBarWellDistance.Value, 0));
+                        //第一口井Xview从100开始
+                        if (i == 0) PListWellPositon.Add(new Point(100, 0));
+                        else
+                        {
+                            //这块距离是和地一口基准井的具体
+                            int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX, listWellsSection[i].dbY, listWellsSection[0].dbX, listWellsSection[0].dbY));
+                            //注意加上基准点的100
+                            PListWellPositon.Add(new Point(100 + iDistance * trackBarWellDistance.Value, 0));
+                        }
+
                     }
                 }
             }

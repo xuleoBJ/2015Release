@@ -120,14 +120,21 @@ namespace DOGPlatform.SVG
         public  XmlElement gConnectPath( List<itemViewLayerDepth> listView)
         {
             XmlElement gConnectLayer = svgDoc.CreateElement("polyline");
-            string _points = "";
+           
+            List<string> listPoints = new List<string>();
             foreach (itemViewLayerDepth item in listView)
             {
-                _points = _points + item.fViewX.ToString() + ',' + item.fViewY.ToString() + " " + (item.fViewX+30).ToString() + ',' + item.fViewY.ToString()+" ";
+                string _frontPoint = (item.fViewX - 50).ToString() + ',' + item.fViewY.ToString();
+                string _currenPoint = item.fViewX.ToString() + ',' + item.fViewY.ToString();
+                string _backPoint = (item.fViewX + 50).ToString() + ',' + item.fViewY.ToString();
+                listPoints.Add(_frontPoint);
+                listPoints.Add(_currenPoint);
+                listPoints.Add(_backPoint);
             }
-            gConnectLayer.SetAttribute("style", "stroke-width:0.2");
+            string _points = "";
+            if (listPoints.Count > 0) _points = string.Join(" ", listPoints);
+            gConnectLayer.SetAttribute("style", "stroke-width:0.5");
             gConnectLayer.SetAttribute("stroke", "black");
-            gConnectLayer.SetAttribute("fill-opacity", "1");
             gConnectLayer.SetAttribute("fill", "none");
             gConnectLayer.SetAttribute("points", _points);
            

@@ -9,7 +9,11 @@ namespace DOGPlatform
 {
     class cIOinputLayerDepth 
     {
-       
+       /// <summary>
+       /// 读入项目小层文件，包括4列，井号，小层名，顶深，底深，这个文件小层与系统小层层序一致且完整，小层断失标识是定底深相等
+       /// </summary>
+       /// <param name="_sJH"></param>
+       /// <returns></returns>
         public static List<ItemDicLayerDepth> readLayerDepth2Struct(string _sJH)
         {
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellLayerDepth);
@@ -32,11 +36,15 @@ namespace DOGPlatform
                 }
                 
             }
-
-            
             return listLayerDepth;
         }
 
+
+        /// <summary>
+        /// 创建项目LayerDepth的文件头
+        ///
+        /// </summary>
+        /// <param name="sJH"></param>
         public static void creatWellGeoHeadFile(string sJH)
         {
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, sJH, cProjectManager.fileNameWellLayerDepth);
@@ -49,6 +57,12 @@ namespace DOGPlatform
             cIOGeoEarthText.creatFileGeoHeadText(filePath, sFirstLine, ltStrHeadColoum);
         }
 
+
+        /// <summary>
+        /// 创建输入小层深度文件
+        /// </summary>
+        /// <param name="_sJH">井号</param>
+        /// <param name="listLinesInput">listDataStringLine</param>
         public static void creatInputFile(string _sJH, List<string> listLinesInput)
         {
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameInputLayerDepth);
@@ -108,6 +122,11 @@ namespace DOGPlatform
             
         }
 
+       /// <summary>
+       ///读入LayerDepth输入文件，只有三列 井号 小层名 顶深，顶深默认0
+       /// </summary>
+       /// <param name="_sJH"></param>
+       /// <returns></returns>
        public static List<ItemLayerDepthInput > readInputFile(string _sJH) 
         {
             List<ItemLayerDepthInput> returnItem = new List<ItemLayerDepthInput>();
@@ -130,7 +149,6 @@ namespace DOGPlatform
                         float.TryParse(split[2],out _item.fTop);
                         returnItem.Add(_item); 
                     }
-
                 }
             }
             }
@@ -138,20 +156,33 @@ namespace DOGPlatform
         
         }
 
-
+    /// <summary>
+    /// 按井号，顶底深度得到顶底段跨越的小层名，在测井解释结果，射孔结果，吸水剖面结果串层归位有用
+    /// 提前小层的时候 从输入的小层系列中提 为了避免断失层被提取的问题
+    /// 未找到的填充“-”，不允许留空字符，会给后续的读写造成麻烦
+    /// </summary>
+    /// <param name="_sJH"></param>
+    /// <param name="fTop"></param>
+    /// <param name="fBase"></param>
+    /// <returns></returns>
        public static string getXCMByJHAndDepthInterval(string _sJH, float fTop,float fBase)
        {
+           //定义返回小层名List
            List<string> listXCM = new List<string>();
+           //根据井号读取系统小层文件带顶底
            List<ItemDicLayerDepth> listLayerDepth = cIOinputLayerDepth.readLayerDepth2Struct(_sJH);
+           //根据井号读取输入小层文件，获得输入的小层系列名list
            List<ItemLayerDepthInput> listLayerDepthInput = cIOinputLayerDepth.readInputFile(_sJH);
            List<string> layerInput = listLayerDepthInput.Select(p => p.sXCM).ToList();
-           string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellJSJL);
-           List<string> ltStrLine = new List<string>();
-          
-           string _topXCM = "";
+         
+           //定义顶深对应的小层名
+           string _topXCM = ""; 
+           //定义底深对应的小层名
            string _botXCM = "";
+           //定义查找标记
            int mark = 0;
 
+           //在系统小层depth根据小层名查找，记录标记，只找到顶深记录1，即底深记录2，找到顶深没找到顶深会不会，在底下有处理
            for (int i = 0; i < listLayerDepth.Count; i++)
            {
                if (fTop >= listLayerDepth[i].fDS1 && fTop <= listLayerDepth[i].fDS2)
@@ -163,9 +194,9 @@ namespace DOGPlatform
            if (mark == 0) _xcm = "-";
            else if (mark == 2)
            {
-               if (_topXCM == _botXCM) _xcm = _topXCM;
-               else if (_topXCM == "" || _botXCM == "") _xcm = _topXCM + "-" + _botXCM;
-               else
+               if (_topXCM == _botXCM) _xcm = _topXCM; //在同一层段内
+               else if (_topXCM == "" || _botXCM == "") _xcm = _topXCM + "-" + _botXCM; //这里处理mark=2 但可能没有顶深的问题
+               else 
                {
                    int _iStart = layerInput.IndexOf(_topXCM);
                    if (_iStart < 0) { _iStart = 0; _xcm = "-"; }

@@ -16,6 +16,8 @@ namespace DOGPlatform.SVG
             int iWidth = 40;
             XmlElement gElevationRuler = svgDoc.CreateElement("g");
             gElevationRuler.SetAttribute("id", "idTrackElevationRuler");
+
+            //加主轴
             XmlElement gLine = svgDoc.CreateElement("line");
             gLine.SetAttribute("x1", "0");
             gLine.SetAttribute("y1", (-ElevationDepthBase).ToString());
@@ -24,6 +26,7 @@ namespace DOGPlatform.SVG
             gLine.SetAttribute("stroke", "black");
             gLine.SetAttribute("stroke-width", "0.5");
             gElevationRuler.AppendChild(gLine);
+            //加方框
             XmlElement gRect = svgDoc.CreateElement("rect");
             gRect.SetAttribute("x", "0");
             gRect.SetAttribute("y", (-ElevationDepthTop).ToString());
@@ -33,7 +36,8 @@ namespace DOGPlatform.SVG
             gRect.SetAttribute("stroke", "black");
             gRect.SetAttribute("fill", "none");
             gElevationRuler.AppendChild(gRect);
-            int iCurrentDepth = (Convert.ToInt16(ElevationDepthBase) / m_tickInveral_main + 1) * m_tickInveral_main;
+            //当前深度
+            int iCurrentDepth = (Convert.ToInt16(ElevationDepthBase) / m_tickInveral_main) * m_tickInveral_main;
             while (iCurrentDepth <= ElevationDepthTop)
             {
                 XmlElement gDepthTick = svgDoc.CreateElement("path");

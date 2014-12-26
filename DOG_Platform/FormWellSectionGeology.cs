@@ -97,7 +97,7 @@ namespace DOGPlatform
 
         void initializeTreeViewWellCollection()
         {
-            this.tvwWellSectionCollection.Nodes.Clear();
+            this.tvWellSectionCollection.Nodes.Clear();
             for (int i = 0; i < ltStrSelectedJH.Count; i++)
             {
                 TreeNode tnWell = new TreeNode();
@@ -105,7 +105,7 @@ namespace DOGPlatform
                 tnWell.Name = ltStrSelectedJH[i];
                 tnWell.Nodes.Add("左侧曲线");
                 tnWell.Nodes.Add("右侧曲线");
-                tvwWellSectionCollection.Nodes.Add(tnWell);
+                tvWellSectionCollection.Nodes.Add(tnWell);
             }
         }
 
@@ -186,8 +186,6 @@ namespace DOGPlatform
             generateSectionDataDirectory();
         }
 
-
-
         void openExitGraph()
         {
             XDocument sectionMapXML = XDocument.Load(cProjectManager.xmlSectionCSS);
@@ -209,39 +207,62 @@ namespace DOGPlatform
         int ElevationRulerBase = -5000;
         int PageWidth = 3000;
         int PageHeight = 5000;
+     
        
-        void generateSectionGraph(int iTypeFlatted, string filenameSVGMap,bool bView)
+        void generateSectionGraph(typeFlatted flatType, string filenameSVGMap,bool bView)
         {
             //xml存数据不合适 因为会有大量的井数据，但是可以存个样式，样式搭配数据，样式里可以有道宽，这样做到数据和样式的分离，成图解析器解析样式就OK。
+           
+            //根据默认值定义section的页面大小 及标题
+           cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageWidth, 0, 0);
+               string sTitle=string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图";
+            cSection.addSVGTitle(sTitle, 100, 100); 
+            XmlElement returnElemment;
 
+            //定义每口井绘制的位置坐标，剖面图y=0，井组分析x，y是井点坐标变换值
             List<Point> PListWellPositon = new List<Point>();
             List<List<cSVGSectionTrackConnect.itemViewLayerDepth>> listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth>>();
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 cWellSectionSVG itemWell = listWellsSection[i];
                 //传入的深度与绘制无关，传入的海拔就是正，绘制时海拔向下为正
-                if (iTypeFlatted == (int)typeFlatted.海拔深度) itemWell.fDepthFlatted = itemWell.fKB;
-                if (iTypeFlatted == (int)typeFlatted.顶面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthTop;
-                if (iTypeFlatted == (int)typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
+                if (flatType ==typeFlatted.海拔深度) itemWell.fDepthFlatted = itemWell.fKB;
+                if (flatType == typeFlatted.顶面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthTop;
+                if (flatType == typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
              
                 if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+200*i*trackBarWellDistance.Value,0));
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {
+                    //第一口井Xview从100开始
                     if (i == 0) PListWellPositon.Add(new Point(100, 0));
                     else
                     {
+                        //这块距离是和地一口基准井的具体
                         int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX,listWellsSection[i].dbY, listWellsSection[0].dbX,listWellsSection[0].dbY));
-                        PListWellPositon.Add(new Point(iDistance * trackBarWellDistance.Value, 0));
+                        //注意加上基准点的100
+                        PListWellPositon.Add(new Point(100+iDistance * trackBarWellDistance.Value, 0));
                     }
+                   
                 }
             }
 
-            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageWidth,0,0);
-            cSection.addSVGTitle(string.Join("-",listWellsSection.Select(p=>p.sJH).ToList())+ "剖面图",100, 100);
-            XmlElement returnElemment;
+            //画井距尺
+            for (int i = 0; i < this.listWellsSection.Count-1; i++)
+            {
+              
+                if (rdbPlaceBYWellDistance.Checked == true)
+                {
+                    //距离是2口相邻井的距离
+                    int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX, listWellsSection[i].dbY, listWellsSection[i+1].dbX, listWellsSection[i+1].dbY));
+                    returnElemment = cSection.gWellDistanceRuler(iDistance);
+                    cSection.addgElement(returnElemment, PListWellPositon[i].X, (int)listWellsSection[0].fDepthFlatted);//拉到同一水平线
+                    //画井距尺
+                }
+            }
+         
 
             //海拔深度时 增加海拔尺，拉平不要海拔尺
-            if (iTypeFlatted == (int)typeFlatted.海拔深度)
+            if (flatType == typeFlatted.海拔深度)
             {
                 int iScaleElevationRuler = 50;
                 cSVGSectionTrackElevationRuler cElevationRuler = new cSVGSectionTrackElevationRuler();
@@ -258,7 +279,6 @@ namespace DOGPlatform
                 float fTopShowed = listWellsSection[i].fShowedDepthTop;
                 float fBaseShowed = listWellsSection[i].fShowedDepthBase;
                 float fDepthFlatted = listWellsSection[i].fDepthFlatted;
-                int iCurrerntWellHorizonPotion = PListWellPositon[i].X;
 
                 cSVGSectionWell currentWell = new cSVGSectionWell(sJH);
 
@@ -286,8 +306,8 @@ namespace DOGPlatform
 
                 //增加联井的view
                 if (rdbDepthModelTVD.Checked == true && currentWellPathList.Count > 2)
-                    listConnectView.Add(cSVGSectionTrackConnect.getListViewXieTrack2VerticalLayerConnect(sJH, iCurrerntWellHorizonPotion, trackDataListLayerDepth, fDepthFlatted));
-                else listConnectView.Add(cSVGSectionTrackConnect.getListViewLayerConnect(sJH,iCurrerntWellHorizonPotion, trackDataListLayerDepth, fDepthFlatted));
+                    listConnectView.Add(cSVGSectionTrackConnect.getListViewXieTrack2VerticalLayerConnect(sJH,  PListWellPositon[i].X, trackDataListLayerDepth, fDepthFlatted));
+                else listConnectView.Add(cSVGSectionTrackConnect.getListViewLayerConnect(sJH, PListWellPositon[i].X, trackDataListLayerDepth, fDepthFlatted));
 
                 //增加解释结论道
                 string filePathJSJL = Path.Combine(dirSectionData, sJH ,fileNameSectionJSJL);
@@ -348,7 +368,7 @@ namespace DOGPlatform
 
                     currentWell.addTrack(returnElemment, iTrackWidth);
                 } 
-                cSection.addgElement(currentWell.gWell, iCurrerntWellHorizonPotion);
+                cSection.addgElement(currentWell.gWell,  PListWellPositon[i].X);
             }
             //同名小层连线的实现 在绘制小层layertrack的时候，把小层的顶底深的绘制点记录，然后此处当做polyline绘制
             bool bConnect = this.cbxConnectSameLayerName.Checked;
@@ -375,8 +395,6 @@ namespace DOGPlatform
             }
 
         }
-
-
       
         private void btnMakeSection_Click(object sender, EventArgs e)
         {
@@ -390,9 +408,9 @@ namespace DOGPlatform
             }
             else filenameSVGMap = this.tbxTitle.Text + ".svg";
 
-            if (rdbFlattedByDepth.Checked == true) generateSectionGraph((int)(typeFlatted.海拔深度), filenameSVGMap,false ) ; 
-            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph((int)(typeFlatted.顶面拉平), filenameSVGMap,false );
-            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph((int)(typeFlatted.底面拉平), filenameSVGMap,false);
+            if (rdbFlattedByDepth.Checked == true) generateSectionGraph(typeFlatted.海拔深度, filenameSVGMap,false ) ; 
+            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph(typeFlatted.顶面拉平, filenameSVGMap,false );
+            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph(typeFlatted.底面拉平, filenameSVGMap,false);
 
         }
 
@@ -407,12 +425,12 @@ namespace DOGPlatform
                     cIOinputLayerDepth cSelectLayerDepth = new cIOinputLayerDepth();
                     cSelectLayerDepth.selectSectionDrawData2File(sJH, filePath);
                 }
-                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
                         wellNote.Nodes.Add("地层");
                 }
-                tvwWellSectionCollection.ExpandAll();
+                tvWellSectionCollection.ExpandAll();
                 cXDocSection.addTrackLayer(cProjectManager.xmlSectionCSS, "idLayer",20);
             }
             else
@@ -431,12 +449,12 @@ namespace DOGPlatform
                     string filePath = Path.Combine(dirSectionData, sJH, fileNameSectionJSJL);
                     cIOinputJSJL.selectSectionDrawData2File(sJH, filePath);
                 }
-                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
                         wellNote.Nodes.Add("解释结论");
                 }
-                tvwWellSectionCollection.ExpandAll();
+                tvWellSectionCollection.ExpandAll();
                 cXDocSection.addTrackJSJL(cProjectManager.xmlSectionCSS, "idJSJL", 20);
             }
             else
@@ -457,7 +475,7 @@ namespace DOGPlatform
                 }
                 cIOinputLog.extractTextLog2File(sJH, sSelectedLogName, filePath);
             }
-            foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+            foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
             {
                 TreeNode tnLog = new TreeNode();
                 tnLog.Text = sSelectedLogName;
@@ -465,7 +483,7 @@ namespace DOGPlatform
                 
             }
 
-            tvwWellSectionCollection.ExpandAll();
+            tvWellSectionCollection.ExpandAll();
            
             string sLogName=this.cbbLogName.SelectedItem.ToString();
             string sLogColor=cPublicMethodBase.getRGB(cbbLogColor.BackColor);
@@ -486,7 +504,7 @@ namespace DOGPlatform
                 }
 
             }
-            foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+            foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
             {
                 if (iLeftOrRight == (int)LeftOrRight.left)
                 {
@@ -505,7 +523,7 @@ namespace DOGPlatform
                     wellNote.Nodes.Add(tnRightLog);
                 }
             }
-            tvwWellSectionCollection.ExpandAll();
+            tvWellSectionCollection.ExpandAll();
         }
         private void btnAddLeftLogTrack_Click(object sender, EventArgs e)
         {
@@ -535,9 +553,10 @@ namespace DOGPlatform
                 string sSelectedLogName = this.cbbLogName.SelectedItem.ToString();
                 foreach (string sJH in ltStrSelectedJH)
                 {
+                    //判断左右 清除数据
                     //cXMLSection.deleteDataLog2Well(false, sJH, sSelectedLogName, cProjectManager.xmlSectionCSS);
                 }
-                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     foreach (TreeNode trackNote in wellNote.Nodes)
                     {
@@ -546,16 +565,16 @@ namespace DOGPlatform
                     }
                 }
 
-                tvwWellSectionCollection.ExpandAll();
+                tvWellSectionCollection.ExpandAll();
             }
         }
 
 
         private void tvwWellSectionCollection_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            TreeNode selectNode = tvwWellSectionCollection.SelectedNode;
+            TreeNode selectNode = tvWellSectionCollection.SelectedNode;
             ContextMenuStrip cmsSection = new System.Windows.Forms.ContextMenuStrip();
-            tvwWellSectionCollection.ContextMenuStrip = cmsSection;
+            tvWellSectionCollection.ContextMenuStrip = cmsSection;
             string _sJH = "";
             string _fileLogScrPath = "";
             string _sLogName = "";
@@ -621,12 +640,12 @@ namespace DOGPlatform
                     cIOinputWellPerforation cSelectInputPerforation = new cIOinputWellPerforation();
                     cSelectInputPerforation.selectSectionDrawData2File(sJH, filePath);
                 }
-                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
                         wellNote.Nodes.Add("射孔");
                 }
-                tvwWellSectionCollection.ExpandAll();
+                tvWellSectionCollection.ExpandAll();
             }
             else
             {
@@ -665,12 +684,12 @@ namespace DOGPlatform
                     string filePath = Path.Combine(dirSectionData, sJH,fileNameSectionProfile);
                     cIOinputInjectProfile.selectSectionDrawData2File(sJH, filePath);
                 }
-                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
+                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
                         wellNote.Nodes.Add("吸水");
                 }
-                tvwWellSectionCollection.ExpandAll();
+                tvWellSectionCollection.ExpandAll();
             }
             else MessageBox.Show("请先确认深度段。");
         }
@@ -701,11 +720,11 @@ namespace DOGPlatform
         private void btnView_Click(object sender, EventArgs e)
         {
             string tempSVGViewfilepath = Path.Combine(cProjectManager.dirPathTemp, "#view.svg");
-            if (rdbFlattedByDepth.Checked == true) generateSectionGraph((int)(typeFlatted.海拔深度), tempSVGViewfilepath, true);
-            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph((int)(typeFlatted.顶面拉平), tempSVGViewfilepath, true);
-            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph((int)(typeFlatted.底面拉平), tempSVGViewfilepath, true);
+            if (rdbFlattedByDepth.Checked == true) generateSectionGraph(typeFlatted.海拔深度, tempSVGViewfilepath, true);
+            else if (rdbFlattedByTopDepth.Checked == true) generateSectionGraph(typeFlatted.顶面拉平, tempSVGViewfilepath, true);
+            else if (rdbFlattedByBaseDepth.Checked == true) generateSectionGraph(typeFlatted.底面拉平, tempSVGViewfilepath, true);
             FormWebNavigation formSVGView = new FormWebNavigation(tempSVGViewfilepath);
-            formSVGView.ShowDialog();
+            formSVGView.Show();
         }
 
         private void nUDElevationRulerTop_ValueChanged(object sender, EventArgs e)

@@ -146,7 +146,7 @@ namespace DOGPlatform
        
         private void tsmiNewProject_Click(object sender, EventArgs e)
         {
-            if (createNewProject()) { enableMenu(); updateMainForm(); }
+            if (createNewProject()) { enableMenu();  }
         }
 
         bool openProject()

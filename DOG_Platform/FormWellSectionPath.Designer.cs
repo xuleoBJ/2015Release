@@ -315,24 +315,24 @@
             // rdbPlaceBYWellDistance
             // 
             this.rdbPlaceBYWellDistance.AutoSize = true;
-            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(145, 21);
+            this.rdbPlaceBYWellDistance.Checked = true;
+            this.rdbPlaceBYWellDistance.Location = new System.Drawing.Point(23, 25);
             this.rdbPlaceBYWellDistance.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPlaceBYWellDistance.Name = "rdbPlaceBYWellDistance";
             this.rdbPlaceBYWellDistance.Size = new System.Drawing.Size(71, 16);
             this.rdbPlaceBYWellDistance.TabIndex = 1;
+            this.rdbPlaceBYWellDistance.TabStop = true;
             this.rdbPlaceBYWellDistance.Text = "井距等比";
             this.rdbPlaceBYWellDistance.UseVisualStyleBackColor = true;
             // 
             // rdbPlaceByEqual
             // 
             this.rdbPlaceByEqual.AutoSize = true;
-            this.rdbPlaceByEqual.Checked = true;
-            this.rdbPlaceByEqual.Location = new System.Drawing.Point(40, 21);
+            this.rdbPlaceByEqual.Location = new System.Drawing.Point(122, 25);
             this.rdbPlaceByEqual.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPlaceByEqual.Name = "rdbPlaceByEqual";
             this.rdbPlaceByEqual.Size = new System.Drawing.Size(71, 16);
             this.rdbPlaceByEqual.TabIndex = 0;
-            this.rdbPlaceByEqual.TabStop = true;
             this.rdbPlaceByEqual.Text = "等距排列";
             this.rdbPlaceByEqual.UseVisualStyleBackColor = true;
             // 
