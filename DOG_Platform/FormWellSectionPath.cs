@@ -21,10 +21,6 @@ namespace DOGPlatform
         List<string> ltStrSelectedJH = new List<string>();  //联井剖面井号
         //存储绘图剖面数据结构
         List<ItemWellSection> listWellsSection = new List<ItemWellSection>();
-        string fileNameSectionProfile = "profile.txt";
-        string fileNameSectionLayerDepth = "layerDepth.txt";
-        string fileNameSectionJSJL = "jsjl.txt";
-        string fileNameSectionPerforation = "inputPerforation.txt";
 
         int ElevationRulerTop = 0;
         int ElevationRulerBase = -5000;
@@ -229,16 +225,11 @@ namespace DOGPlatform
             System.Diagnostics.Process.Start("explorer.exe", Path.GetDirectoryName(cProjectManager.dirPathTemp));
         }
 
-        private void btnAddTextTrack_Click(object sender, EventArgs e)
+        private void btnAddTrackProfile_Click(object sender, EventArgs e)
         {
             if (ltStrSelectedJH.Count > 0)
             {
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH, fileNameSectionProfile);
-                    cIOinputInjectProfile.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataProfile(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 this.lbxTracksCollection.Items.Add("吸水剖面");
                 foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) wellNote.Nodes.Add("吸水剖面");
                 tvwWellSectionCollection.ExpandAll();
@@ -252,16 +243,8 @@ namespace DOGPlatform
          
             if ( this.listWellsSection .Count > 0)
             {
-
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH,fileNameSectionLayerDepth);
-                    cIOinputLayerDepth cSelectLayerDepth = new cIOinputLayerDepth();
-                    cSelectLayerDepth.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataLayerDepth(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 this.lbxTracksCollection.Items.Add("地层");
-
                 foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) 
                 {
                     if(wellNote.Text!="深度尺")
@@ -281,13 +264,7 @@ namespace DOGPlatform
 
             if (this.listWellsSection.Count > 0)
             {
-                //提取所选井段数据存入绘图目录下保存
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH, fileNameSectionJSJL);
-                    cIOinputJSJL.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataJSJL(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 this.lbxTracksCollection.Items.Add("解释结论");
                 foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
                 {
@@ -407,9 +384,7 @@ namespace DOGPlatform
                 currentWell.addTrack(returnElemment, 0);
 
                 //增加地层道
-                string filePathLayer = Path.Combine(dirSectionData, sJH,fileNameSectionLayerDepth);
-                trackLayerDepthDataList trackDataListLayerDepth =
-                    trackLayerDepthDataList.setupDataListTrackLayerDepth(filePathLayer, fTopShowed, fBaseShowed);
+                trackLayerDepthDataList trackDataListLayerDepth = cIOWellSection.trackDataListLayerDepth(sJH, dirSectionData, fTopShowed, fBaseShowed);
                 int iTrackWidth = 15;
                 cSVGSectionTrackLayer layerTrack = new cSVGSectionTrackLayer(iTrackWidth);
                 layerTrack.iTextSize = 6;
@@ -422,8 +397,7 @@ namespace DOGPlatform
              
 
                 //增加解释结论道
-                string filePathJSJL = Path.Combine(dirSectionData, sJH,fileNameSectionJSJL);
-                trackJSJLDataList trackDataListJSJL = trackJSJLDataList.setupDataListTrack(filePathJSJL, fTopShowed, fBaseShowed);
+                trackJSJLDataList trackDataListJSJL = cIOWellSection.trackDataListJSJL(sJH,dirSectionData, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackJSJL JSJLTrack = new cSVGSectionTrackJSJL(iTrackWidth);
                 if (currentWellPathList.Count <= 2)
@@ -432,8 +406,7 @@ namespace DOGPlatform
                 currentWell.addTrack(returnElemment, -iTrackWidth);
 
                    //增加吸水剖面
-                string filePathProfile = Path.Combine(dirSectionData, sJH, fileNameSectionProfile);
-                trackProfileDataList trackDataListProfile = trackProfileDataList.setupDataListTrack(filePathProfile, fTopShowed, fBaseShowed);
+                trackProfileDataList trackDataListProfile = cIOWellSection.trackDataListProfile(sJH,dirSectionData, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackProfile profileTrack = new cSVGSectionTrackProfile(iTrackWidth);
                 returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
@@ -444,8 +417,7 @@ namespace DOGPlatform
                 
 
                 ////增加射孔道
-                string filePathInputPerforation = Path.Combine(dirSectionData, sJH + "\\inputPerforation.txt");
-                trackInputPerforationDataList trackDataListPerforation = trackInputPerforationDataList.setupDataListTrack(filePathInputPerforation, fTopShowed, fBaseShowed);
+                trackInputPerforationDataList trackDataListPerforation =cIOWellSection.trackDataListPerforation(sJH,dirSectionData,  fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackPeforation perforationTrack = new cSVGSectionTrackPeforation(iTrackWidth);
                 if (currentWellPathList.Count <= 2)
@@ -566,19 +538,12 @@ namespace DOGPlatform
         {
             if (ltStrSelectedJH.Count > 0)
             {
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH, fileNameSectionPerforation);
-                    cIOinputWellPerforation cSelectInputPerforation = new cIOinputWellPerforation();
-                    cSelectInputPerforation.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataPerforation(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 this.lbxTracksCollection.Items.Add("射孔");
                 foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) wellNote.Nodes.Add("射孔");
                 tvwWellSectionCollection.ExpandAll();
             }
             else MessageBox.Show("请先确认深度段。");
-      
         }
         private void btnMakeSectionxmlConfig_Click(object sender, EventArgs e)
         {

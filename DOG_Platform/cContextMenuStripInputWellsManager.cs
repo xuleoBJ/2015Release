@@ -66,7 +66,7 @@ namespace DOGPlatform
         public void setupTsmiImportProjectData()
         {
             ToolStripMenuItem tsmiIMportProject = new ToolStripMenuItem();
-            tsmiIMportProject.Text = "项目数据管理";
+            tsmiIMportProject.Text = "项目井数据管理";
             tsmiIMportProject.Click += new System.EventHandler(tsmiImportProject_Click);
             cms.Items.Add(tsmiIMportProject);
         }

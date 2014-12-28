@@ -927,14 +927,14 @@
             // tsmiSection
             // 
             this.tsmiSection.Name = "tsmiSection";
-            this.tsmiSection.Size = new System.Drawing.Size(136, 22);
-            this.tsmiSection.Text = "油藏剖面图";
+            this.tsmiSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSection.Text = "剖面图";
             this.tsmiSection.Click += new System.EventHandler(this.tsmiSection_Click);
             // 
             // tsmiWellpathSection
             // 
             this.tsmiWellpathSection.Name = "tsmiWellpathSection";
-            this.tsmiWellpathSection.Size = new System.Drawing.Size(136, 22);
+            this.tsmiWellpathSection.Size = new System.Drawing.Size(152, 22);
             this.tsmiWellpathSection.Text = "斜井剖面";
             this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
             // 
@@ -950,7 +950,7 @@
             // tsmiSectionFence
             // 
             this.tsmiSectionFence.Name = "tsmiSectionFence";
-            this.tsmiSectionFence.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSectionFence.Size = new System.Drawing.Size(141, 22);
             this.tsmiSectionFence.Text = "2.5地质分析";
             this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
@@ -1106,7 +1106,7 @@
             this.tsBtnDataManager.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsBtnDataManager.Name = "tsBtnDataManager";
             this.tsBtnDataManager.Size = new System.Drawing.Size(23, 22);
-            this.tsBtnDataManager.Text = "数据管理";
+            this.tsBtnDataManager.Text = "工程井数据管理";
             this.tsBtnDataManager.Click += new System.EventHandler(this.tsBtnDataManager_Click);
             // 
             // tsBtnDataView

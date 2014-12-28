@@ -127,6 +127,7 @@ namespace DOGPlatform
             {
                 cProjectData.clearProjectData();
                 showInputStaticGeologyTabpage();
+                tvProjectData.Nodes.Clear();
                 tbcMain.SelectedTab = tbgWellHead;
                 this.ToolStripStatusLabelProjectionInfor.Text = "工程路径：" + cProjectManager.dirPathUserData;
                 bCreated = true;
@@ -197,7 +198,7 @@ namespace DOGPlatform
 
             foreach (TabPage tg in listTabPageStaticData)
             {
-                if (tg.Parent == null)
+                if (tg.Parent == null && tbcMain.Contains(tg)==false)
                 {
                     tbcMain.TabPages.Add(tg);
                 }
@@ -1143,14 +1144,14 @@ namespace DOGPlatform
         private void tvWindows_AfterCheck(object sender, TreeViewEventArgs e)
         {
             TreeNode tn = e.Node;
-            if (tn.Checked == false && tn.Index >= 2)
-            {
-                foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Remove(tbg);
-            }
-            if (tn.Checked == true && tn.Index >= 2)
-            {
-                foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Add(tbg);
-            }
+            //if (tn.Checked == false && tn.Index >= 2)
+            //{
+            //    foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Remove(tbg);
+            //}
+            //if (tn.Checked == true && tn.Index >= 2)
+            //{
+            //    foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Add(tbg);
+            //}
 
         }
 
@@ -1166,7 +1167,7 @@ namespace DOGPlatform
             form.Show();
         }
 
-    
+         
 
       
 

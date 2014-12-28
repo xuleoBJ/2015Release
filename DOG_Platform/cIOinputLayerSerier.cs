@@ -40,5 +40,11 @@ namespace DOGPlatform
             return cProjectData.ltStrProjectXCM.Skip(_indexTopLayer).Take(_indexBotLayer - _indexTopLayer + 1).ToList();
         }
 
+        public static void creatInputFaultFile(string _xcm, List<string> listLinesInput)
+        {
+            string filePath = Path.Combine(cProjectManager.dirPathLayerDir, _xcm, cProjectManager.fileNameInputFaults);
+            cIOBase.write2file(listLinesInput, filePath);
+        }
+
     }
 }

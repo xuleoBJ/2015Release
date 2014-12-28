@@ -1031,7 +1031,7 @@
             this.btnAddTrackProfile.TabIndex = 19;
             this.btnAddTrackProfile.Text = "吸水剖面";
             this.btnAddTrackProfile.UseVisualStyleBackColor = true;
-            this.btnAddTrackProfile.Click += new System.EventHandler(this.btnAddTextTrack_Click);
+            this.btnAddTrackProfile.Click += new System.EventHandler(this.btnAddTrackProfile_Click);
             // 
             // btnPerforatedTrack
             // 

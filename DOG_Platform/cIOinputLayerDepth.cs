@@ -66,14 +66,7 @@ namespace DOGPlatform
         public static void creatInputFile(string _sJH, List<string> listLinesInput)
         {
             string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameInputLayerDepth);
-
             cIOBase.write2file(listLinesInput, filePath);
-
-            //List<string> ltStrHead = new List<string>();
-            //ltStrHead.Add("井号");
-            //ltStrHead.Add("小层名");
-            //ltStrHead.Add("测深m")
-            //cIOBase.creatTextFile(ltStrHead, ltStrLine,filePath);
         }
         public static void creatWellGeoFile(string _sJH)
         {

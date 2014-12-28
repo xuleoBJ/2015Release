@@ -61,7 +61,6 @@ namespace DOGPlatform.SVG
             XmlElement gWellPositon = svgDoc.CreateElement("g");
             gWellPositon.SetAttribute("id", "idWell");
 
-
             List<ItemWellView> listWellView = new List<ItemWellView>();
 
             foreach (XmlNode xn in xmlLayerMap.SelectNodes("/LayerMapConfig/WellInfor/Well"))

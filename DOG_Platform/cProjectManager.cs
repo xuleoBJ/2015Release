@@ -38,6 +38,8 @@ namespace DOGPlatform
         public static string fileNameInputWellProduct = "$inputWellProduct#";
         public static string fileNameInputWellInject = "$inputWellInject#";
 
+        public static string fileNameInputFaults = "$inputFaults#";
+
 
         public static string fileNameWellPerforation = "#perforation#";
         public static string fileNameWellPath = "#wellPath#";

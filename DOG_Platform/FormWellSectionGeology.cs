@@ -23,10 +23,6 @@ namespace DOGPlatform
     public partial class FormWellSectionGeology : Form
     {
         string dirSectionData = Path.Combine(cProjectManager.dirPathTemp, "sectionGeoTemp");
-        string fileNameSectionProfile = "profile.txt";
-        string fileNameSectionLayerDepth = "layerDepth.txt";
-        string fileNameSectionJSJL = "jsjl.txt";
-        string fileNameSectionPerforation = "inputPerforation.txt";
         enum typeFlatted
         {
             海拔深度,
@@ -260,7 +256,6 @@ namespace DOGPlatform
                 }
             }
          
-
             //海拔深度时 增加海拔尺，拉平不要海拔尺
             if (flatType == typeFlatted.海拔深度)
             {
@@ -292,9 +287,7 @@ namespace DOGPlatform
                 currentWell.addTrack(returnElemment, 0);
 
                 //增加地层道
-                string filePathLayer = Path.Combine(dirSectionData, sJH,fileNameSectionLayerDepth);
-                trackLayerDepthDataList trackDataListLayerDepth =
-                    trackLayerDepthDataList.setupDataListTrackLayerDepth(filePathLayer, fTopShowed, fBaseShowed);
+                trackLayerDepthDataList trackDataListLayerDepth = cIOWellSection.trackDataListLayerDepth(sJH, dirSectionData, fTopShowed, fBaseShowed);
                 int iTrackWidth = 15;
                 cSVGSectionTrackLayer layerTrack = new cSVGSectionTrackLayer(iTrackWidth);
                 layerTrack.iTextSize = 6;
@@ -303,15 +296,13 @@ namespace DOGPlatform
                 else returnElemment = layerTrack.gTrackLayerDepth(sJH,trackDataListLayerDepth, fDepthFlatted);
                 currentWell.addTrack(returnElemment, iTrackWidth);
 
-
                 //增加联井的view
                 if (rdbDepthModelTVD.Checked == true && currentWellPathList.Count > 2)
                     listConnectView.Add(cSVGSectionTrackConnect.getListViewXieTrack2VerticalLayerConnect(sJH,  PListWellPositon[i].X, trackDataListLayerDepth, fDepthFlatted));
                 else listConnectView.Add(cSVGSectionTrackConnect.getListViewLayerConnect(sJH, PListWellPositon[i].X, trackDataListLayerDepth, fDepthFlatted));
 
                 //增加解释结论道
-                string filePathJSJL = Path.Combine(dirSectionData, sJH ,fileNameSectionJSJL);
-                trackJSJLDataList trackDataListJSJL = trackJSJLDataList.setupDataListTrack(filePathJSJL, fTopShowed, fBaseShowed);
+                trackJSJLDataList trackDataListJSJL = cIOWellSection.trackDataListJSJL(sJH,dirSectionData, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackJSJL JSJLTrack = new cSVGSectionTrackJSJL(iTrackWidth);
                 if (rdbDepthModelTVD.Checked == true && currentWellPathList.Count > 2) 
@@ -320,8 +311,7 @@ namespace DOGPlatform
                 currentWell.addTrack(returnElemment, -iTrackWidth);
 
                 //增加射孔道
-                string filePathInputPerforation = Path.Combine(dirSectionData, sJH ,fileNameSectionPerforation);
-                trackInputPerforationDataList trackDataListPerforation = trackInputPerforationDataList.setupDataListTrack(filePathInputPerforation, fTopShowed, fBaseShowed);
+                trackInputPerforationDataList trackDataListPerforation =cIOWellSection.trackDataListPerforation(sJH,dirSectionData,  fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackPeforation perforationTrack = new cSVGSectionTrackPeforation(iTrackWidth);
                 if (rdbDepthModelTVD.Checked == true && currentWellPathList.Count > 2)
@@ -331,8 +321,7 @@ namespace DOGPlatform
 
 
                 //增加吸水剖面
-                string filePathProfile = Path.Combine(dirSectionData, sJH,fileNameSectionProfile);
-                trackProfileDataList trackDataListProfile = trackProfileDataList.setupDataListTrack(filePathProfile, fTopShowed, fBaseShowed);
+                trackProfileDataList trackDataListProfile = cIOWellSection.trackDataListProfile(sJH,dirSectionData, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackProfile profileTrack = new cSVGSectionTrackProfile(iTrackWidth);
                 returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
@@ -418,13 +407,7 @@ namespace DOGPlatform
         {
             if (ltStrSelectedJH.Count > 0)
             {
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH,fileNameSectionLayerDepth);
-                    cIOinputLayerDepth cSelectLayerDepth = new cIOinputLayerDepth();
-                    cSelectLayerDepth.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataLayerDepth(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
@@ -443,12 +426,7 @@ namespace DOGPlatform
         {
             if (listWellsSection.Count > 0)
             {
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH, fileNameSectionJSJL);
-                    cIOinputJSJL.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataJSJL(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存 
                 foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
@@ -607,13 +585,7 @@ namespace DOGPlatform
         {
             if (ltStrSelectedJH.Count > 0)
             {
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH ,fileNameSectionPerforation);
-                    cIOinputWellPerforation cSelectInputPerforation = new cIOinputWellPerforation();
-                    cSelectInputPerforation.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataPerforation(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
@@ -652,12 +624,7 @@ namespace DOGPlatform
         {
             if (ltStrSelectedJH.Count > 0)
             {
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //提取所选井段数据存入绘图目录下保存
-                    string filePath = Path.Combine(dirSectionData, sJH,fileNameSectionProfile);
-                    cIOinputInjectProfile.selectSectionDrawData2File(sJH, filePath);
-                }
+                foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataProfile(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存 
                 foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
                 {
                     if (wellNote.Text != "深度尺")
@@ -766,40 +733,7 @@ namespace DOGPlatform
             }
 
         }
-        void deleteLogData(string sSelectedLogName)
-        {
-
-            foreach (string _sJH in ltStrSelectedJH)
-            {
-                string _fileLogScrPath = "";
-                if (rdbLeft.Checked == true) _fileLogScrPath = Path.Combine(dirSectionData, _sJH + "\\left");
-                else _fileLogScrPath = Path.Combine(dirSectionData, _sJH + "\\right");
-                cIOWellSection.delLog(_fileLogScrPath, sSelectedLogName);  
-            }
-            foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
-            {
-                if (rdbLeft.Checked == true)
-                {
-                    TreeNode tnLeftLog = new TreeNode();
-                    tnLeftLog.Text = "左侧曲线";
-                    tnLeftLog.Name = LeftOrRight.left.ToString();
-                    tnLeftLog.Nodes.Add(sSelectedLogName);
-                    wellNote.Nodes.Add(tnLeftLog);
-                }
-                else
-                {
-                    TreeNode tnRightLog = new TreeNode();
-                    tnRightLog.Text = "右侧曲线";
-                    tnRightLog.Name = LeftOrRight.right.ToString();
-                    tnRightLog.Nodes.Add(sSelectedLogName);
-                    wellNote.Nodes.Add(tnRightLog);
-                }
-            }
-            tvWellSectionCollection.ExpandAll();
-        }
-        
-
-              
+                     
 
         
 
