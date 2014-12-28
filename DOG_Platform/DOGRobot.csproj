@@ -203,8 +203,8 @@
     <Compile Include="cContextMenuStripInputWell.cs" />
     <Compile Include="ItemWell.cs" />
     <Compile Include="ItemWellMapLayer.cs" />
-    <Compile Include="cWellSection.cs" />
-    <Compile Include="cWellSectionSVG.cs" />
+    <Compile Include="cIOWellSection.cs" />
+    <Compile Include="ItemWellSection.cs" />
     <Compile Include="cZone.cs" />
     <Compile Include="FormAddSectionLog.cs">
       <SubType>Form</SubType>

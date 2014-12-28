@@ -23,7 +23,6 @@ namespace DOGPlatform
         public TreeNode tnSelected { get; set; }
         public string sJH { get; set; }
    
-        
  
     }
 }

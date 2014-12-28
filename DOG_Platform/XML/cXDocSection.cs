@@ -115,11 +115,11 @@ namespace DOGPlatform.XML
             XSectionRoot.Save(xmlPathSectionConfig);
         }
 
-        public static void addWells(List<cWellSectionSVG> wellItems, string xmlPathSectionConfig)
+        public static void addWells(List<ItemWellSection> wellItems, string xmlPathSectionConfig)
         {
             XElement XSectionRoot = XElement.Load(xmlPathSectionConfig);
             XElement XNode = XSectionRoot.Element("WellCollection");
-            foreach (cWellSectionSVG item in wellItems)
+            foreach (ItemWellSection item in wellItems)
             {
                 XElement newNode = new XElement("Well", new XAttribute("id", item.sJH),
                                      new XElement("X", item.dbX.ToString()),

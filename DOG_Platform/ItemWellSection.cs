@@ -5,9 +5,9 @@ using System.Text;
 
 namespace DOGPlatform
 {
-    class cWellSectionSVG : cWellSection
+    class ItemWellSection : ItemWell
     {
-        public cWellSectionSVG(string _sJH,float _fTopDepth,float _fBaseDepth)
+        public ItemWellSection(string _sJH,float _fTopDepth,float _fBaseDepth)
             : base(_sJH)
         {
             fShowedDepthTop = _fTopDepth;

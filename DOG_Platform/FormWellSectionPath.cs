@@ -20,7 +20,7 @@ namespace DOGPlatform
         string dirSectionData = Path.Combine(cProjectManager.dirPathTemp, "sectionResTemp");
         List<string> ltStrSelectedJH = new List<string>();  //联井剖面井号
         //存储绘图剖面数据结构
-        List<cWellSectionSVG> listWellsSection = new List<cWellSectionSVG>();
+        List<ItemWellSection> listWellsSection = new List<ItemWellSection>();
         string fileNameSectionProfile = "profile.txt";
         string fileNameSectionLayerDepth = "layerDepth.txt";
         string fileNameSectionJSJL = "jsjl.txt";
@@ -137,7 +137,7 @@ namespace DOGPlatform
 
                 for (int i = 0; i < ltStrSelectedJH.Count; i++)
                 {
-                    cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                    ItemWellSection _wellSection = new ItemWellSection(ltStrSelectedJH[i], 0, 0);
                     //有可能上下层有缺失。。。所以这块的技巧是找出深度序列，取最大最小值
                     cIOinputLayerDepth fileLayerDepth = new cIOinputLayerDepth();
                     List<float> fListDS1Return = fileLayerDepth.selectDepthListFromLayerDepthByJHAndXCMList(ltStrSelectedJH[i], ltStrSelectedXCM);
@@ -161,7 +161,7 @@ namespace DOGPlatform
         {
             if (Directory.Exists(dirSectionData)) Directory.Delete(dirSectionData, true);
             Directory.CreateDirectory(dirSectionData);
-            foreach (cWellSectionSVG item in listWellsSection)
+            foreach (ItemWellSection item in listWellsSection)
             {
                 string jhDir = Path.Combine(dirSectionData, item.sJH);
                 Directory.CreateDirectory(jhDir);
@@ -194,7 +194,7 @@ namespace DOGPlatform
             initializeTreeViewWellCollection();
             for (int i = 0; i < ltStrSelectedJH.Count; i++)
             {
-                cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                ItemWellSection _wellSection = new ItemWellSection(ltStrSelectedJH[i], 0, 0);
                 //海拔转成md
                 _wellSection.fShowedDepthTop = _wellSection.fKB - iTopElevation;
                 _wellSection.fShowedDepthBase = _wellSection.fKB - iBottomElevation;
@@ -354,7 +354,7 @@ namespace DOGPlatform
           
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
-                cWellSectionSVG itemWell = listWellsSection[i];
+                ItemWellSection itemWell = listWellsSection[i];
                 itemWell.fDepthFlatted = itemWell.fKB;
                 if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100 + 200 * i * trackBarWellDistance.Value, 0));
                 if (rdbPlaceBYWellDistance.Checked == true)
@@ -913,7 +913,7 @@ namespace DOGPlatform
             List<ItemWellHead> listWellHead = cIOinputWellHead.readWellHead2Struct();
             for (int i = 0; i < ltStrSelectedJH.Count; i++)
             {
-                cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                ItemWellSection _wellSection = new ItemWellSection(ltStrSelectedJH[i], 0, 0);
                 _wellSection.fShowedDepthTop = 0;
                 _wellSection.fShowedDepthBase = listWellHead.Find(p => p.sJH == ltStrSelectedJH[i]).fWellBase;
                 listWellsSection.Add(_wellSection);

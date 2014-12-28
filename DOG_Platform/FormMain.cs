@@ -45,7 +45,7 @@ namespace DOGPlatform
             tsmiData.Enabled = true;
             tsmiGeologyLayer.Enabled = true;
             tsmiGeologySection.Enabled = true;
-            tsmiWellGroup.Enabled = true;
+            tsmiWellConnect.Enabled = true;
             tsmiSaveAnotherProject.Enabled = true;
             tsmiSaveProject.Enabled = true;
 

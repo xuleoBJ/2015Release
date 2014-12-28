@@ -419,11 +419,12 @@
             // 
             this.trackBarWellDistance.LargeChange = 1;
             this.trackBarWellDistance.Location = new System.Drawing.Point(22, 57);
+            this.trackBarWellDistance.Maximum = 50;
             this.trackBarWellDistance.Minimum = 1;
             this.trackBarWellDistance.Name = "trackBarWellDistance";
             this.trackBarWellDistance.Size = new System.Drawing.Size(254, 45);
             this.trackBarWellDistance.TabIndex = 28;
-            this.trackBarWellDistance.Value = 1;
+            this.trackBarWellDistance.Value = 10;
             // 
             // rdbPlaceBYWellDistance
             // 
@@ -483,7 +484,7 @@
             this.groupBox4.Controls.Add(this.cbbLogName);
             this.groupBox4.Location = new System.Drawing.Point(319, 62);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(418, 83);
+            this.groupBox4.Size = new System.Drawing.Size(497, 83);
             this.groupBox4.TabIndex = 5;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "测井曲线";
@@ -491,7 +492,7 @@
             // rdbRight
             // 
             this.rdbRight.AutoSize = true;
-            this.rdbRight.Location = new System.Drawing.Point(83, 52);
+            this.rdbRight.Location = new System.Drawing.Point(88, 22);
             this.rdbRight.Margin = new System.Windows.Forms.Padding(2);
             this.rdbRight.Name = "rdbRight";
             this.rdbRight.Size = new System.Drawing.Size(47, 16);
@@ -503,7 +504,7 @@
             // 
             this.rdbLeft.AutoSize = true;
             this.rdbLeft.Checked = true;
-            this.rdbLeft.Location = new System.Drawing.Point(27, 52);
+            this.rdbLeft.Location = new System.Drawing.Point(32, 22);
             this.rdbLeft.Margin = new System.Windows.Forms.Padding(2);
             this.rdbLeft.Name = "rdbLeft";
             this.rdbLeft.Size = new System.Drawing.Size(47, 16);
@@ -514,13 +515,13 @@
             // 
             // btnDeleteLog
             // 
-            this.btnDeleteLog.Location = new System.Drawing.Point(277, 49);
+            this.btnDeleteLog.Location = new System.Drawing.Point(270, 54);
             this.btnDeleteLog.Name = "btnDeleteLog";
             this.btnDeleteLog.Size = new System.Drawing.Size(56, 23);
             this.btnDeleteLog.TabIndex = 30;
             this.btnDeleteLog.Text = "删除";
             this.btnDeleteLog.UseVisualStyleBackColor = true;
-            this.btnDeleteLog.Click += new System.EventHandler(this.btnDeleteLeftLog_Click);
+            this.btnDeleteLog.Click += new System.EventHandler(this.btnDeleteLog_Click);
             // 
             // nUDLogRightValue
             // 
@@ -530,7 +531,7 @@
             0,
             0,
             0});
-            this.nUDLogRightValue.Location = new System.Drawing.Point(307, 19);
+            this.nUDLogRightValue.Location = new System.Drawing.Point(433, 20);
             this.nUDLogRightValue.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -558,7 +559,7 @@
             0,
             0,
             0});
-            this.nUDLogLeftValue.Location = new System.Drawing.Point(227, 18);
+            this.nUDLogLeftValue.Location = new System.Drawing.Point(353, 19);
             this.nUDLogLeftValue.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -576,7 +577,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(273, 23);
+            this.label22.Location = new System.Drawing.Point(399, 24);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(29, 12);
             this.label22.TabIndex = 27;
@@ -585,7 +586,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(197, 23);
+            this.label21.Location = new System.Drawing.Point(323, 24);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(29, 12);
             this.label21.TabIndex = 27;
@@ -593,7 +594,7 @@
             // 
             // btnAddLogTrack
             // 
-            this.btnAddLogTrack.Location = new System.Drawing.Point(185, 49);
+            this.btnAddLogTrack.Location = new System.Drawing.Point(144, 54);
             this.btnAddLogTrack.Name = "btnAddLogTrack";
             this.btnAddLogTrack.Size = new System.Drawing.Size(56, 23);
             this.btnAddLogTrack.TabIndex = 13;
@@ -604,7 +605,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(94, 23);
+            this.label6.Location = new System.Drawing.Point(220, 24);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 12;
@@ -614,7 +615,7 @@
             // 
             this.cbbLogColor.BackColor = System.Drawing.Color.Blue;
             this.cbbLogColor.FormattingEnabled = true;
-            this.cbbLogColor.Location = new System.Drawing.Point(129, 19);
+            this.cbbLogColor.Location = new System.Drawing.Point(255, 20);
             this.cbbLogColor.Name = "cbbLogColor";
             this.cbbLogColor.Size = new System.Drawing.Size(61, 20);
             this.cbbLogColor.TabIndex = 10;
@@ -623,7 +624,7 @@
             // cbbLogName
             // 
             this.cbbLogName.FormattingEnabled = true;
-            this.cbbLogName.Location = new System.Drawing.Point(25, 19);
+            this.cbbLogName.Location = new System.Drawing.Point(151, 20);
             this.cbbLogName.Name = "cbbLogName";
             this.cbbLogName.Size = new System.Drawing.Size(61, 20);
             this.cbbLogName.TabIndex = 19;

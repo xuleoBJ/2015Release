@@ -111,7 +111,7 @@
             this.tsmiGeologySection = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSection = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWellpathSection = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWellGroup = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiWellConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDynamicCal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalWellTypeDictionary = new System.Windows.Forms.ToolStripMenuItem();
@@ -471,7 +471,7 @@
             this.tbgWellHead.Location = new System.Drawing.Point(4, 22);
             this.tbgWellHead.Name = "tbgWellHead";
             this.tbgWellHead.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellHead.Size = new System.Drawing.Size(917, 610);
+            this.tbgWellHead.Size = new System.Drawing.Size(917, 606);
             this.tbgWellHead.TabIndex = 0;
             this.tbgWellHead.Text = "井位数据";
             this.tbgWellHead.UseVisualStyleBackColor = true;
@@ -522,7 +522,7 @@
             this.splitter2.Location = new System.Drawing.Point(3, 3);
             this.splitter2.Margin = new System.Windows.Forms.Padding(2);
             this.splitter2.Name = "splitter2";
-            this.splitter2.Size = new System.Drawing.Size(2, 604);
+            this.splitter2.Size = new System.Drawing.Size(2, 600);
             this.splitter2.TabIndex = 15;
             this.splitter2.TabStop = false;
             // 
@@ -652,7 +652,7 @@
             this.tsmiData,
             this.tsmiGeologyLayer,
             this.tsmiGeologySection,
-            this.tsmiWellGroup,
+            this.tsmiWellConnect,
             this.tsmiDynamicCal,
             this.tsmiProfileDecision});
             this.msMain.Location = new System.Drawing.Point(0, 0);
@@ -938,20 +938,20 @@
             this.tsmiWellpathSection.Text = "斜井剖面";
             this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
             // 
-            // tsmiWellGroup
+            // tsmiWellConnect
             // 
-            this.tsmiWellGroup.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiWellConnect.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiSectionFence});
-            this.tsmiWellGroup.Enabled = false;
-            this.tsmiWellGroup.Name = "tsmiWellGroup";
-            this.tsmiWellGroup.Size = new System.Drawing.Size(68, 21);
-            this.tsmiWellGroup.Text = "井组分析";
+            this.tsmiWellConnect.Enabled = false;
+            this.tsmiWellConnect.Name = "tsmiWellConnect";
+            this.tsmiWellConnect.Size = new System.Drawing.Size(80, 21);
+            this.tsmiWellConnect.Text = "连通性分析";
             // 
             // tsmiSectionFence
             // 
             this.tsmiSectionFence.Name = "tsmiSectionFence";
-            this.tsmiSectionFence.Size = new System.Drawing.Size(124, 22);
-            this.tsmiSectionFence.Text = "井组地质";
+            this.tsmiSectionFence.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSectionFence.Text = "2.5地质分析";
             this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
             // tsmiDynamicCal
@@ -1372,7 +1372,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWellGroup;
+        private System.Windows.Forms.ToolStripMenuItem tsmiWellConnect;
         private System.Windows.Forms.ToolStripMenuItem tsmiSectionFence;
         private System.Windows.Forms.ToolStripButton tsmiMove;
         private System.Windows.Forms.ToolStripButton tsBtnReflush;

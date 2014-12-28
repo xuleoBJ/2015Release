@@ -35,7 +35,7 @@ namespace DOGPlatform
         }
         List<string> ltStrSelectedJH = new List<string>();  //联井剖面井号
         //存储绘图剖面数据结构
-        List<cWellSectionSVG> listWellsSection = new List<cWellSectionSVG>();
+        List<ItemWellSection> listWellsSection = new List<ItemWellSection>();
      
         public FormWellSectionGeology()
         {
@@ -128,7 +128,7 @@ namespace DOGPlatform
 
                 for (int i = 0; i < ltStrSelectedJH.Count; i++)
                 {
-                    cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                    ItemWellSection _wellSection = new ItemWellSection(ltStrSelectedJH[i], 0, 0);
                     //有可能上下层有缺失。。。所以这块的技巧是找出深度序列，取最大最小值
                     cIOinputLayerDepth fileLayerDepth = new cIOinputLayerDepth();
                     List<float> fListDS1Return = fileLayerDepth.selectDepthListFromLayerDepthByJHAndXCMList(ltStrSelectedJH[i], ltStrSelectedXCM);
@@ -153,7 +153,7 @@ namespace DOGPlatform
         {
             if (Directory.Exists(dirSectionData)) Directory.Delete(dirSectionData, true);
             Directory.CreateDirectory(dirSectionData);
-            foreach (cWellSectionSVG item in listWellsSection)
+            foreach (ItemWellSection item in listWellsSection)
             {
                 string jhDir = Path.Combine(dirSectionData, item.sJH);
                 Directory.CreateDirectory(jhDir);
@@ -176,7 +176,7 @@ namespace DOGPlatform
             initializeTreeViewWellCollection();
             for (int i = 0; i < ltStrSelectedJH.Count; i++)
             {
-                cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                ItemWellSection _wellSection = new ItemWellSection(ltStrSelectedJH[i], 0, 0);
                 //海拔转成md
                 _wellSection.fShowedDepthTop = _wellSection.fKB - iTopElevation;
                 _wellSection.fShowedDepthBase = _wellSection.fKB - iBottomElevation;
@@ -224,13 +224,13 @@ namespace DOGPlatform
             List<List<cSVGSectionTrackConnect.itemViewLayerDepth>> listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth>>();
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
-                cWellSectionSVG itemWell = listWellsSection[i];
+                ItemWellSection itemWell = listWellsSection[i];
                 //传入的深度与绘制无关，传入的海拔就是正，绘制时海拔向下为正
                 if (flatType ==typeFlatted.海拔深度) itemWell.fDepthFlatted = itemWell.fKB;
                 if (flatType == typeFlatted.顶面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthTop;
                 if (flatType == typeFlatted.底面拉平) itemWell.fDepthFlatted = itemWell.fKB - itemWell.fShowedDepthBase;
              
-                if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+200*i*trackBarWellDistance.Value,0));
+                if (rdbPlaceByEqual.Checked == true) PListWellPositon.Add(new Point(100+200*i*trackBarWellDistance.Value/10,0));
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {
                     //第一口井Xview从100开始
@@ -239,8 +239,8 @@ namespace DOGPlatform
                     {
                         //这块距离是和地一口基准井的具体
                         int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX,listWellsSection[i].dbY, listWellsSection[0].dbX,listWellsSection[0].dbY));
-                        //注意加上基准点的100
-                        PListWellPositon.Add(new Point(100+iDistance * trackBarWellDistance.Value, 0));
+                        //注意加上基准点的100,注意井距做了一定的缩放，通过trackbar
+                        PListWellPositon.Add(new Point(100+iDistance * trackBarWellDistance.Value/10, 0));
                     }
                    
                 }
@@ -254,7 +254,7 @@ namespace DOGPlatform
                 {
                     //距离是2口相邻井的距离
                     int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX, listWellsSection[i].dbY, listWellsSection[i+1].dbX, listWellsSection[i+1].dbY));
-                    returnElemment = cSection.gWellDistanceRuler(iDistance);
+                    returnElemment = cSection.gWellDistanceRuler(iDistance, PListWellPositon[i + 1].X - PListWellPositon[i].X);
                     cSection.addgElement(returnElemment, PListWellPositon[i].X, (int)listWellsSection[0].fDepthFlatted);//拉到同一水平线
                     //画井距尺
                 }
@@ -473,14 +473,13 @@ namespace DOGPlatform
                 {
                     filePath = Path.Combine(dirSectionData, sJH + "\\right\\" + sSelectedLogName + ".txt");
                 }
-                cIOinputLog.extractTextLog2File(sJH, sSelectedLogName, filePath);
+                cIOWellSection.addLog(sJH, sSelectedLogName, filePath);
             }
             foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
             {
                 TreeNode tnLog = new TreeNode();
                 tnLog.Text = sSelectedLogName;
                 wellNote.Nodes[iLeftOrRight].Nodes.Add(tnLog);
-                
             }
 
             tvWellSectionCollection.ExpandAll();
@@ -489,7 +488,7 @@ namespace DOGPlatform
             string sLogColor=cPublicMethodBase.getRGB(cbbLogColor.BackColor);
             float fRightValue=Convert.ToSingle(nUDLogRightValue.Value);
             float fLeftValue=Convert.ToSingle(nUDLogLeftValue.Value);
-            cXDocSection.addTrackLog(cProjectManager.xmlSectionCSS, "idLog#" + sLogName, 20, iLeftOrRight, sLogName, fLeftValue, fRightValue, sLogColor);
+            cIOWellSection.addLogProperty(sLogName, sLogColor,fLeftValue, fRightValue, iLeftOrRight);
         }
         
         void deleteLogData(int iLeftOrRight, string sSelectedLogName)
@@ -542,31 +541,6 @@ namespace DOGPlatform
         private void cbbLeftLogColor_Click(object sender, EventArgs e)
         {
             cPublicMethodForm.setComboBoxBackColorByColorDialog(cbbLogColor);
-        }
-
-       
-
-        private void btnDeleteLeftLog_Click(object sender, EventArgs e)
-        {
-            if (ltStrSelectedJH.Count > 0 && cbbLogName.SelectedIndex >= 0)
-            {
-                string sSelectedLogName = this.cbbLogName.SelectedItem.ToString();
-                foreach (string sJH in ltStrSelectedJH)
-                {
-                    //判断左右 清除数据
-                    //cXMLSection.deleteDataLog2Well(false, sJH, sSelectedLogName, cProjectManager.xmlSectionCSS);
-                }
-                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
-                {
-                    foreach (TreeNode trackNote in wellNote.Nodes)
-                    {
-                        if (trackNote.Text == sSelectedLogName)
-                            wellNote.Nodes.Remove(trackNote);
-                    }
-                }
-
-                tvWellSectionCollection.ExpandAll();
-            }
         }
 
 
@@ -707,7 +681,7 @@ namespace DOGPlatform
             List<ItemWellHead> listWellHead= cIOinputWellHead.readWellHead2Struct();
            for (int i = 0; i < ltStrSelectedJH.Count; i++)
             {
-                cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                ItemWellSection _wellSection = new ItemWellSection(ltStrSelectedJH[i], 0, 0);
                 _wellSection.fShowedDepthTop = 0;
                 _wellSection.fShowedDepthBase = listWellHead.Find(p => p.sJH == ltStrSelectedJH[i]).fWellBase;
                 listWellsSection.Add(_wellSection); 
@@ -747,6 +721,82 @@ namespace DOGPlatform
             PageHeight = Convert.ToInt16(nUDPageHeight.Value);
         }
 
+        private TreeNode FindNode(TreeNode tnParent, string strValue)
+        {
+
+            if (tnParent == null) return null;
+
+            if (tnParent.Text == strValue) return tnParent;
+
+            TreeNode tnRet = null;
+
+            foreach (TreeNode tn in tnParent.Nodes)
+            {
+
+                tnRet = FindNode(tn, strValue);
+                if (tnRet != null) break;
+            }
+
+            return tnRet;
+
+        }
+        private void btnDeleteLog_Click(object sender, EventArgs e)
+        {
+            if (ltStrSelectedJH.Count > 0 && cbbLogName.SelectedIndex >= 0)
+            {
+                string sSelectedLogName = this.cbbLogName.SelectedItem.ToString();
+                foreach (string _sJH in ltStrSelectedJH)
+                {
+                    string _fileLogScrPath = "";
+                    if (rdbLeft.Checked == true) _fileLogScrPath = Path.Combine(dirSectionData, _sJH + "\\left");
+                    else _fileLogScrPath = Path.Combine(dirSectionData, _sJH + "\\right");
+                    cIOWellSection.delLog(_fileLogScrPath, sSelectedLogName);
+                }
+                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
+                {
+                    TreeNode tnRet = null;
+                    foreach (TreeNode tn in wellNote.Nodes)
+                    {
+                        tnRet = FindNode(tn, sSelectedLogName);
+                        if (tnRet != null) { tnRet.Remove(); break; }
+                    }
+                }
+
+                tvWellSectionCollection.ExpandAll();
+            }
+
+        }
+        void deleteLogData(string sSelectedLogName)
+        {
+
+            foreach (string _sJH in ltStrSelectedJH)
+            {
+                string _fileLogScrPath = "";
+                if (rdbLeft.Checked == true) _fileLogScrPath = Path.Combine(dirSectionData, _sJH + "\\left");
+                else _fileLogScrPath = Path.Combine(dirSectionData, _sJH + "\\right");
+                cIOWellSection.delLog(_fileLogScrPath, sSelectedLogName);  
+            }
+            foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
+            {
+                if (rdbLeft.Checked == true)
+                {
+                    TreeNode tnLeftLog = new TreeNode();
+                    tnLeftLog.Text = "左侧曲线";
+                    tnLeftLog.Name = LeftOrRight.left.ToString();
+                    tnLeftLog.Nodes.Add(sSelectedLogName);
+                    wellNote.Nodes.Add(tnLeftLog);
+                }
+                else
+                {
+                    TreeNode tnRightLog = new TreeNode();
+                    tnRightLog.Text = "右侧曲线";
+                    tnRightLog.Name = LeftOrRight.right.ToString();
+                    tnRightLog.Nodes.Add(sSelectedLogName);
+                    wellNote.Nodes.Add(tnRightLog);
+                }
+            }
+            tvWellSectionCollection.ExpandAll();
+        }
         
 
               

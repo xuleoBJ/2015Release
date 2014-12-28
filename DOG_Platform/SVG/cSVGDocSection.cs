@@ -54,22 +54,28 @@ namespace DOGPlatform.SVG
             addgElement(gElement, pt.X, pt.Y);
         }
 
-        public XmlElement gWellDistanceRuler (double distance)
+        /// <summary>
+        /// 增加距离尺，需要2个参数，因为有水平缩放，所以要传2个值 一个是线的数值 另一个是画的线的长度
+        /// </summary>
+        /// <param name="distanceValue">距离尺的数值</param>
+        /// <param name="lineDistantce">画的线的长度</param>
+        /// <returns></returns>
+        public XmlElement gWellDistanceRuler (double distanceValue,double lineDistantce)
         {
             XmlElement gDistanceRuler = svgDoc.CreateElement("g");
 
             XmlElement curveHeadInfor = svgDoc.CreateElement("path");
-            string sPath = "m 5 -5" + " v 5 h "+(distance-30).ToString()+" v-5";
+            string sPath = "m 5 -5" + " v 5 h " + (lineDistantce - 30).ToString() + " v-5";
             curveHeadInfor.SetAttribute("d", sPath);
             curveHeadInfor.SetAttribute("fill", "none");
             curveHeadInfor.SetAttribute("stroke", "black");
             gDistanceRuler.AppendChild(curveHeadInfor);
             XmlElement distanceText = svgDoc.CreateElement("text");
-            distanceText.SetAttribute("x", (distance/2).ToString());
+            distanceText.SetAttribute("x", (lineDistantce*0.45).ToString());
             distanceText.SetAttribute("y", (- 5).ToString());
             distanceText.SetAttribute("font-size", "20");
             distanceText.SetAttribute("fill", "red");
-            distanceText.InnerText = distance.ToString()+"m";
+            distanceText.InnerText = distanceValue.ToString() + "m";
             gDistanceRuler.AppendChild(distanceText);
             return gDistanceRuler;
         }

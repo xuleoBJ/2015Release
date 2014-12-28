@@ -18,7 +18,7 @@ namespace DOGPlatform
         string dirSectionData = Path.Combine(cProjectManager.dirPathTemp, "sectionGroupTemp");
         List<string> ltStrSelectedJH = new List<string>();  //联井剖面井号
         //存储绘图剖面数据结构
-        List<cWellSectionSVG> listWellsSection = new List<cWellSectionSVG>();
+        List<ItemWellSection> listWellsSection = new List<ItemWellSection>();
         string fileNameSectionProfile = "profile.txt";
         string fileNameSectionLayerDepth = "layerDepth.txt";
         string fileNameSectionJSJL = "jsjl.txt";
@@ -106,7 +106,7 @@ namespace DOGPlatform
 
                 for (int i = 0; i < ltStrSelectedJH.Count; i++)
                 {
-                    cWellSectionSVG _wellSection = new cWellSectionSVG(ltStrSelectedJH[i], 0, 0);
+                    ItemWellSection _wellSection = new ItemWellSection(ltStrSelectedJH[i], 0, 0);
                     //有可能上下层有缺失。。。所以这块的技巧是找出深度序列，取最大最小值
                     cIOinputLayerDepth fileLayerDepth = new cIOinputLayerDepth();
                     List<float> fListDS1Return = fileLayerDepth.selectDepthListFromLayerDepthByJHAndXCMList(ltStrSelectedJH[i], ltStrSelectedXCM);
@@ -131,7 +131,7 @@ namespace DOGPlatform
         {
             if (Directory.Exists(dirSectionData)) Directory.Delete(dirSectionData, true);
             Directory.CreateDirectory(dirSectionData);
-            foreach (cWellSectionSVG item in listWellsSection)
+            foreach (ItemWellSection item in listWellsSection)
             {
                 string jhDir = Path.Combine(dirSectionData, item.sJH);
                 Directory.CreateDirectory(jhDir);

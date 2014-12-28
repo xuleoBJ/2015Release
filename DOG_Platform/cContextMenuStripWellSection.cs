@@ -34,8 +34,7 @@ namespace DOGPlatform
         }
         private void tsmiDeletLog_Click(object sender, EventArgs e)
         {
-            string filePath=Path.Combine(this.srcDir,sLogName+".txt");
-            if (File.Exists(filePath)) { File.Delete(filePath); }
+            cIOWellSection.delLog(srcDir, sLogName);
             this.tnSelected.Remove(); 
         }
 
@@ -49,7 +48,7 @@ namespace DOGPlatform
         private void tsmiSetLog_Click(object sender, EventArgs e)
         {
              FormWellSectionLogChoose formLog = new FormWellSectionLogChoose(this.sJH);
-                        formLog.ShowDialog();
+            formLog.ShowDialog();
         }
 
         public void setupTsmiLogAdd()
