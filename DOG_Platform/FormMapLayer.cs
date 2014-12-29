@@ -38,6 +38,7 @@ namespace DOGPlatform
 
         private void InitFormLayerMap()
         {
+            for (int i = 5; i >= 2; i--) tbcLayerMap.TabPages.RemoveAt(i);
           //  cPublicMethodForm.inialListBox(lbxJHLayerMap, cProjectData.ltStrProjectJH);
             lbxJHLayerMap.DataSource = cProjectData.ltStrProjectJH;
             List<string> ltStrStaticDataChoise = new List<string>();

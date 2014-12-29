@@ -45,6 +45,7 @@ namespace DOGPlatform
 
         private void InitFormWellsGroupControl()
         {
+            for (int i = 3; i >= 2; i--) tabControlSection.TabPages.RemoveAt(i);
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.ltStrProjectJH);
             cPublicMethodForm.inialComboBox(cbbTopXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbBottomXCM, cProjectData.ltStrProjectXCM);

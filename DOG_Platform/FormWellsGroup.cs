@@ -28,6 +28,7 @@ namespace DOGPlatform
         }
         private void InitFormWellsGroupControl()
         {
+            tbcWellsGroup.TabPages.RemoveAt(2);
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.ltStrProjectJH);
             cPublicMethodForm.inialComboBox(cbbTopXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbBottomXCM, cProjectData.ltStrProjectXCM);
@@ -359,7 +360,7 @@ namespace DOGPlatform
 
         private void tabControlFenceDiagram_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tclWellsGroup.SelectedIndex == 1 && File.Exists(cProjectManager.xmlConfigFenceDiagram )== false)
+            if (tbcWellsGroup.SelectedIndex == 1 && File.Exists(cProjectManager.xmlConfigFenceDiagram )== false)
             { cXMLFenceDiagram.creatFenceDiagramSettingXML(cProjectManager.xmlConfigFenceDiagram); }
         }
 

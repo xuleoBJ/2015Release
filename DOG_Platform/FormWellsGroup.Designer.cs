@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.tclWellsGroup = new System.Windows.Forms.TabControl();
+            this.tbcWellsGroup = new System.Windows.Forms.TabControl();
             this.tbgWellsGroupData = new System.Windows.Forms.TabPage();
             this.btnView = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -149,7 +149,7 @@
             this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
             this.label67 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.tclWellsGroup.SuspendLayout();
+            this.tbcWellsGroup.SuspendLayout();
             this.tbgWellsGroupData.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightLogRightValue)).BeginInit();
@@ -191,18 +191,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).BeginInit();
             this.SuspendLayout();
             // 
-            // tclWellsGroup
+            // tbcWellsGroup
             // 
-            this.tclWellsGroup.Controls.Add(this.tbgWellsGroupData);
-            this.tclWellsGroup.Controls.Add(this.tabPage2);
-            this.tclWellsGroup.Controls.Add(this.tbgPageSetting);
-            this.tclWellsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tclWellsGroup.Location = new System.Drawing.Point(0, 0);
-            this.tclWellsGroup.Name = "tclWellsGroup";
-            this.tclWellsGroup.SelectedIndex = 0;
-            this.tclWellsGroup.Size = new System.Drawing.Size(871, 563);
-            this.tclWellsGroup.TabIndex = 0;
-            this.tclWellsGroup.SelectedIndexChanged += new System.EventHandler(this.tabControlFenceDiagram_SelectedIndexChanged);
+            this.tbcWellsGroup.Controls.Add(this.tbgWellsGroupData);
+            this.tbcWellsGroup.Controls.Add(this.tbgPageSetting);
+            this.tbcWellsGroup.Controls.Add(this.tabPage2);
+            this.tbcWellsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbcWellsGroup.Location = new System.Drawing.Point(0, 0);
+            this.tbcWellsGroup.Name = "tbcWellsGroup";
+            this.tbcWellsGroup.SelectedIndex = 0;
+            this.tbcWellsGroup.Size = new System.Drawing.Size(871, 563);
+            this.tbcWellsGroup.TabIndex = 0;
+            this.tbcWellsGroup.SelectedIndexChanged += new System.EventHandler(this.tabControlFenceDiagram_SelectedIndexChanged);
             // 
             // tbgWellsGroupData
             // 
@@ -1865,11 +1865,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 563);
-            this.Controls.Add(this.tclWellsGroup);
+            this.Controls.Add(this.tbcWellsGroup);
             this.Name = "FormWellsGroup";
             this.Text = "井组分析";
             this.Load += new System.EventHandler(this.FormMapFence_Load);
-            this.tclWellsGroup.ResumeLayout(false);
+            this.tbcWellsGroup.ResumeLayout(false);
             this.tbgWellsGroupData.ResumeLayout(false);
             this.tbgWellsGroupData.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1926,7 +1926,7 @@
         #endregion
 
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.TabControl tclWellsGroup;
+        private System.Windows.Forms.TabControl tbcWellsGroup;
         private System.Windows.Forms.TabPage tbgWellsGroupData;
         private System.Windows.Forms.Button btnMakeFDmap;
         private System.Windows.Forms.GroupBox groupBox2;
