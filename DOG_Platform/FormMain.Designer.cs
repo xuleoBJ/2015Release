@@ -33,6 +33,7 @@
             this.cmsNavigationPanel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiNewWell = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDeleteSelectedWellInPanel = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCloseInput = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStripInfor = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabelProjectionInfor = new System.Windows.Forms.ToolStripStatusLabel();
@@ -144,7 +145,6 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.tsmiCloseInput = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -199,6 +199,13 @@
             this.tsmiDeleteSelectedWellInPanel.Text = "删除选中井";
             this.tsmiDeleteSelectedWellInPanel.Click += new System.EventHandler(this.tsmiDeleteSelectedWellInPanel_Click);
             // 
+            // tsmiCloseInput
+            // 
+            this.tsmiCloseInput.Name = "tsmiCloseInput";
+            this.tsmiCloseInput.Size = new System.Drawing.Size(172, 22);
+            this.tsmiCloseInput.Text = "关闭基础数据输入";
+            this.tsmiCloseInput.Click += new System.EventHandler(this.tsmiCloseInput_Click);
+            // 
             // ToolStripContainer1
             // 
             // 
@@ -238,7 +245,7 @@
             // 
             this.ToolStripStatusLabelProjectionInfor.Name = "ToolStripStatusLabelProjectionInfor";
             this.ToolStripStatusLabelProjectionInfor.Size = new System.Drawing.Size(116, 17);
-            this.ToolStripStatusLabelProjectionInfor.Text = "请打开或者加载项目";
+            this.ToolStripStatusLabelProjectionInfor.Text = "请新井或者加载项目";
             this.ToolStripStatusLabelProjectionInfor.Click += new System.EventHandler(this.ToolStripStatusLabelProjectionInfor_Click);
             // 
             // tssLabelPosition
@@ -741,20 +748,20 @@
             this.tsmiWells,
             this.tsmiWellTops});
             this.tsmiInsert.Name = "tsmiInsert";
-            this.tsmiInsert.Size = new System.Drawing.Size(152, 22);
+            this.tsmiInsert.Size = new System.Drawing.Size(124, 22);
             this.tsmiInsert.Text = "基础数据";
             // 
             // tsmiWells
             // 
             this.tsmiWells.Name = "tsmiWells";
-            this.tsmiWells.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWells.Size = new System.Drawing.Size(112, 22);
             this.tsmiWells.Text = "井文件";
             this.tsmiWells.Click += new System.EventHandler(this.tsmiWells_Click);
             // 
             // tsmiWellTops
             // 
             this.tsmiWellTops.Name = "tsmiWellTops";
-            this.tsmiWellTops.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWellTops.Size = new System.Drawing.Size(112, 22);
             this.tsmiWellTops.Text = "层序";
             this.tsmiWellTops.Click += new System.EventHandler(this.tsmiWellTops_Click);
             // 
@@ -764,7 +771,7 @@
             this.tsmiJSJLmatch,
             this.tsmiJSJLsplit});
             this.tsmiDataDeal.Name = "tsmiDataDeal";
-            this.tsmiDataDeal.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDataDeal.Size = new System.Drawing.Size(124, 22);
             this.tsmiDataDeal.Text = "数据处理";
             // 
             // tsmiJSJLmatch
@@ -788,7 +795,7 @@
             this.tsmiPetrelWellTops,
             this.tsmi4petrelproductLog});
             this.tsmiDataExport.Name = "tsmiDataExport";
-            this.tsmiDataExport.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDataExport.Size = new System.Drawing.Size(124, 22);
             this.tsmiDataExport.Text = "数据导出";
             // 
             // tsmiWellPosition4Petrel
@@ -1220,13 +1227,6 @@
             this.imageListMain.Images.SetKeyName(6, "Grid-2.ico");
             this.imageListMain.Images.SetKeyName(7, "faults.png");
             // 
-            // tsmiCloseInput
-            // 
-            this.tsmiCloseInput.Name = "tsmiCloseInput";
-            this.tsmiCloseInput.Size = new System.Drawing.Size(172, 22);
-            this.tsmiCloseInput.Text = "关闭基础数据输入";
-            this.tsmiCloseInput.Click += new System.EventHandler(this.tsmiCloseInput_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1236,7 +1236,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DogRobot地质研究机器人";
+            this.Text = "DOG-Robot地质研究机器人2015";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Load += new System.EventHandler(this.FormMain_Load);
