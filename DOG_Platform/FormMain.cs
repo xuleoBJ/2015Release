@@ -1169,6 +1169,12 @@ namespace DOGPlatform
             form.Show();
         }
 
+        private void tsmiCloseInput_Click(object sender, EventArgs e)
+        {
+            tbcMain.TabPages.Remove(tbgWellHead);
+            tbcMain.TabPages.Remove(tbgLayerSeriers);
+        }
+
          
 
       

@@ -144,6 +144,7 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
+            this.tsmiCloseInput = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -179,21 +180,22 @@
             // 
             this.cmsNavigationPanel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiNewWell,
-            this.tsmiDeleteSelectedWellInPanel});
+            this.tsmiDeleteSelectedWellInPanel,
+            this.tsmiCloseInput});
             this.cmsNavigationPanel.Name = "cMSPanel";
-            this.cmsNavigationPanel.Size = new System.Drawing.Size(137, 48);
+            this.cmsNavigationPanel.Size = new System.Drawing.Size(173, 70);
             // 
             // tsmiNewWell
             // 
             this.tsmiNewWell.Name = "tsmiNewWell";
-            this.tsmiNewWell.Size = new System.Drawing.Size(136, 22);
+            this.tsmiNewWell.Size = new System.Drawing.Size(172, 22);
             this.tsmiNewWell.Text = "添加新井";
             this.tsmiNewWell.Click += new System.EventHandler(this.tsmiNewWell_Click);
             // 
             // tsmiDeleteSelectedWellInPanel
             // 
             this.tsmiDeleteSelectedWellInPanel.Name = "tsmiDeleteSelectedWellInPanel";
-            this.tsmiDeleteSelectedWellInPanel.Size = new System.Drawing.Size(136, 22);
+            this.tsmiDeleteSelectedWellInPanel.Size = new System.Drawing.Size(172, 22);
             this.tsmiDeleteSelectedWellInPanel.Text = "删除选中井";
             this.tsmiDeleteSelectedWellInPanel.Click += new System.EventHandler(this.tsmiDeleteSelectedWellInPanel_Click);
             // 
@@ -739,20 +741,20 @@
             this.tsmiWells,
             this.tsmiWellTops});
             this.tsmiInsert.Name = "tsmiInsert";
-            this.tsmiInsert.Size = new System.Drawing.Size(124, 22);
+            this.tsmiInsert.Size = new System.Drawing.Size(152, 22);
             this.tsmiInsert.Text = "基础数据";
             // 
             // tsmiWells
             // 
             this.tsmiWells.Name = "tsmiWells";
-            this.tsmiWells.Size = new System.Drawing.Size(112, 22);
+            this.tsmiWells.Size = new System.Drawing.Size(152, 22);
             this.tsmiWells.Text = "井文件";
             this.tsmiWells.Click += new System.EventHandler(this.tsmiWells_Click);
             // 
             // tsmiWellTops
             // 
             this.tsmiWellTops.Name = "tsmiWellTops";
-            this.tsmiWellTops.Size = new System.Drawing.Size(112, 22);
+            this.tsmiWellTops.Size = new System.Drawing.Size(152, 22);
             this.tsmiWellTops.Text = "层序";
             this.tsmiWellTops.Click += new System.EventHandler(this.tsmiWellTops_Click);
             // 
@@ -762,7 +764,7 @@
             this.tsmiJSJLmatch,
             this.tsmiJSJLsplit});
             this.tsmiDataDeal.Name = "tsmiDataDeal";
-            this.tsmiDataDeal.Size = new System.Drawing.Size(124, 22);
+            this.tsmiDataDeal.Size = new System.Drawing.Size(152, 22);
             this.tsmiDataDeal.Text = "数据处理";
             // 
             // tsmiJSJLmatch
@@ -786,7 +788,7 @@
             this.tsmiPetrelWellTops,
             this.tsmi4petrelproductLog});
             this.tsmiDataExport.Name = "tsmiDataExport";
-            this.tsmiDataExport.Size = new System.Drawing.Size(124, 22);
+            this.tsmiDataExport.Size = new System.Drawing.Size(152, 22);
             this.tsmiDataExport.Text = "数据导出";
             // 
             // tsmiWellPosition4Petrel
@@ -967,6 +969,7 @@
             this.tsmiDynamicCal.Name = "tsmiDynamicCal";
             this.tsmiDynamicCal.Size = new System.Drawing.Size(68, 21);
             this.tsmiDynamicCal.Text = "动态计算";
+            this.tsmiDynamicCal.Visible = false;
             // 
             // tsmiCalWellTypeDictionary
             // 
@@ -1032,6 +1035,7 @@
             this.tsmiAdjustProfile.Name = "tsmiAdjustProfile";
             this.tsmiAdjustProfile.Size = new System.Drawing.Size(172, 22);
             this.tsmiAdjustProfile.Text = "选井";
+            this.tsmiAdjustProfile.Visible = false;
             this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
             // 
             // tsmiInjProConnect
@@ -1039,6 +1043,7 @@
             this.tsmiInjProConnect.Name = "tsmiInjProConnect";
             this.tsmiInjProConnect.Size = new System.Drawing.Size(172, 22);
             this.tsmiInjProConnect.Text = "注采对应关系分析";
+            this.tsmiInjProConnect.Visible = false;
             this.tsmiInjProConnect.Click += new System.EventHandler(this.tsmiInjProConnect_Click);
             // 
             // ToolStripMain
@@ -1215,6 +1220,13 @@
             this.imageListMain.Images.SetKeyName(6, "Grid-2.ico");
             this.imageListMain.Images.SetKeyName(7, "faults.png");
             // 
+            // tsmiCloseInput
+            // 
+            this.tsmiCloseInput.Name = "tsmiCloseInput";
+            this.tsmiCloseInput.Size = new System.Drawing.Size(172, 22);
+            this.tsmiCloseInput.Text = "关闭基础数据输入";
+            this.tsmiCloseInput.Click += new System.EventHandler(this.tsmiCloseInput_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1383,6 +1395,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiPIcal;
         private System.Windows.Forms.ToolStripMenuItem tsmiInjProConnect;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalWellTypeDictionary;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCloseInput;
     }
 }
 
