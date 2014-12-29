@@ -156,6 +156,8 @@ namespace DOGPlatform.SVG
             return gWell;
         }
 
+
+
         public List<XmlElement> addgMutiplePolyline(List<int> iListX_FaultSVG, List<int> iListY_FaultSVG, List<string> ltStrFaultName_FaultSVG)
         {
             List<XmlElement> listgPolyline = new List<XmlElement>();
@@ -171,6 +173,30 @@ namespace DOGPlatform.SVG
             return listgPolyline;
         }
 
+        public XmlElement gFaultline(List<PointD> ListFaultsLine, string m_Color, int stroke_width)
+        {
+            List<Point> ListPointView = new List<Point>();
+
+            XmlElement gPolyline = svgDoc.CreateElement("polyline");
+            foreach (PointD item in ListFaultsLine)
+            {
+                Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(item.X, item.Y, xRef, yRef, this.dfscale);
+                ListPointView.Add(pointConvert2View);
+            }
+            gPolyline.SetAttribute("id", "polyline");
+            string _points = "";
+            for (int i = 0; i < ListPointView.Count; i++)
+            {
+                _points = _points + ListPointView[i].X.ToString() + ',' + ListPointView[i].Y.ToString() + " ";
+            }
+
+            gPolyline.SetAttribute("style", stroke_width.ToString());
+            gPolyline.SetAttribute("stroke", m_Color);
+            gPolyline.SetAttribute("fill", "none");
+            gPolyline.SetAttribute("points", _points);
+            return gPolyline;
+        }
+       
         public void delNodeByID(string idPath)
         {
             XmlNode node = svgRoot.SelectSingleNode(idPath);

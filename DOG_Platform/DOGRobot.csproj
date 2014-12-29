@@ -150,6 +150,7 @@
       <DependentUpon>FormProfileSelectWells.cs</DependentUpon>
     </Compile>
     <Compile Include="ItemDicPerforation.cs" />
+    <Compile Include="ItemFaultLine.cs" />
     <Compile Include="ItemJSJL.cs" />
     <Compile Include="ItemLogHeadInfor.cs" />
     <Compile Include="ItemWellHead.cs" />
@@ -167,6 +168,7 @@
     <Compile Include="cFileOperateDicLogHeadGlobe.cs" />
     <Compile Include="cMenuStripDog.cs" />
     <Compile Include="cPerforationList.cs" />
+    <Compile Include="PointD.cs" />
     <Compile Include="SVG\cSVGXEPatternBase.cs" />
     <Compile Include="SVG\cSVGXEPatternCarbonatie.cs" />
     <Compile Include="SVG\cSVGXEPatternLithoSand.cs" />

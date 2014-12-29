@@ -153,18 +153,20 @@ namespace DOGPlatform
 
             int lineindex = 0;
             string[] split;
-            using (StreamReader sr = new StreamReader(filepath, Encoding.Default))
+            if (File.Exists(filepath))
             {
-                String line;
-                while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                using (StreamReader sr = new StreamReader(filepath, Encoding.Default))
                 {
-                    lineindex++;
-                    split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
-                    if (lineindex >= iStartLine)
-                        ltStrReturn.Add(line);
+                    String line;
+                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                    {
+                        lineindex++;
+                        split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (lineindex >= iStartLine)
+                            ltStrReturn.Add(line);
+                    }
                 }
             }
-
             return ltStrReturn;
         }
 

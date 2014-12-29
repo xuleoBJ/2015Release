@@ -138,6 +138,18 @@ namespace DOGPlatform
 
             returnElemment = svgLayerMap.gWellsPosition();
             svgLayerMap.addgElement(returnElemment, 0, 0);
+
+            //如果顶层面断层数据不为空的话 应该加上断层
+            //读取当前顶层的断层数据
+            string _topLayer = cbbSelectedXCMTop.SelectedItem.ToString();
+            List<ItemFaultLine> listFaultLine = cIOinputLayerSerier.readInputFaultFile(_topLayer);
+            foreach (ItemFaultLine line in listFaultLine) 
+            {
+                returnElemment = svgLayerMap.gFaultline(line.ltPoints,"red",2);
+                svgLayerMap.addgElement(returnElemment, 0, 0);
+            
+            }
+
             if (this.cbxScaleRulerShowed.Checked == true)
             {
                 returnElemment = svgLayerMap.gScaleRuler( 0, 0);
@@ -391,7 +403,11 @@ namespace DOGPlatform
             listWellsMapLayer.Clear();
             if (listLayerDataSelected.Count > 0)
             {
-                foreach (ItemDicLayerData item in listLayerDataSelected) listWellsMapLayer.Add(new ItemWellMapLayer(item));
+                foreach (ItemDicLayerData item in listLayerDataSelected) 
+                {
+                    //由于可能计算小层数据表后又对井做修改 所以 必须判断小层数据表的井是否在项目井范围内
+                    if(cProjectData.ltStrProjectJH.IndexOf( item.sJH)>=0) listWellsMapLayer.Add(new ItemWellMapLayer(item));
+                }
                 if (!File.Exists(filePathXMLconfigLayerMap))
                     cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, 1000, 1000);
                 addWells(); 

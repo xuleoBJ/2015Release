@@ -36,9 +36,9 @@
             this.ToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDataImport = new System.Windows.Forms.ToolStripMenuItem();
             this.dgvDataTable = new System.Windows.Forms.DataGridView();
-            this.tsmiPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,12 +76,14 @@
             this.tsmiOpenFile.Name = "tsmiOpenFile";
             this.tsmiOpenFile.Size = new System.Drawing.Size(152, 22);
             this.tsmiOpenFile.Text = "打开文件";
+            this.tsmiOpenFile.Click += new System.EventHandler(this.tsmiOpenFile_Click);
             // 
             // tsmiDeleteCurrentLine
             // 
             this.tsmiDeleteCurrentLine.Name = "tsmiDeleteCurrentLine";
             this.tsmiDeleteCurrentLine.Size = new System.Drawing.Size(152, 22);
             this.tsmiDeleteCurrentLine.Text = "删除选中行";
+            this.tsmiDeleteCurrentLine.Click += new System.EventHandler(this.tsmiDeleteCurrentLine_Click);
             // 
             // ToolStripMenuItem3
             // 
@@ -110,6 +112,13 @@
             this.ToolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
             this.ToolStripMenuItem6.Text = "退出";
             // 
+            // tsmiPaste
+            // 
+            this.tsmiPaste.Name = "tsmiPaste";
+            this.tsmiPaste.Size = new System.Drawing.Size(44, 21);
+            this.tsmiPaste.Text = "粘贴";
+            this.tsmiPaste.Click += new System.EventHandler(this.tsmiPaste_Click);
+            // 
             // tsmiDataImport
             // 
             this.tsmiDataImport.Name = "tsmiDataImport";
@@ -132,13 +141,6 @@
             this.dgvDataTable.RowTemplate.Height = 27;
             this.dgvDataTable.Size = new System.Drawing.Size(498, 388);
             this.dgvDataTable.TabIndex = 12;
-            // 
-            // tsmiPaste
-            // 
-            this.tsmiPaste.Name = "tsmiPaste";
-            this.tsmiPaste.Size = new System.Drawing.Size(44, 21);
-            this.tsmiPaste.Text = "粘贴";
-            this.tsmiPaste.Click += new System.EventHandler(this.tsmiPaste_Click);
             // 
             // Column1
             // 

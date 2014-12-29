@@ -927,14 +927,14 @@
             // tsmiSection
             // 
             this.tsmiSection.Name = "tsmiSection";
-            this.tsmiSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSection.Size = new System.Drawing.Size(124, 22);
             this.tsmiSection.Text = "剖面图";
             this.tsmiSection.Click += new System.EventHandler(this.tsmiSection_Click);
             // 
             // tsmiWellpathSection
             // 
             this.tsmiWellpathSection.Name = "tsmiWellpathSection";
-            this.tsmiWellpathSection.Size = new System.Drawing.Size(152, 22);
+            this.tsmiWellpathSection.Size = new System.Drawing.Size(124, 22);
             this.tsmiWellpathSection.Text = "斜井剖面";
             this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
             // 
@@ -1210,9 +1210,10 @@
             this.imageListMain.Images.SetKeyName(1, "Folder.ico");
             this.imageListMain.Images.SetKeyName(2, "map.png");
             this.imageListMain.Images.SetKeyName(3, "Oil_well_icon16x16.png");
-            this.imageListMain.Images.SetKeyName(4, "layer.png");
+            this.imageListMain.Images.SetKeyName(4, "sequence2.png");
             this.imageListMain.Images.SetKeyName(5, "log.png");
             this.imageListMain.Images.SetKeyName(6, "Grid-2.ico");
+            this.imageListMain.Images.SetKeyName(7, "faults.png");
             // 
             // FormMain
             // 

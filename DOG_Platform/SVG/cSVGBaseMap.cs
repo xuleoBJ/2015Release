@@ -467,6 +467,8 @@ namespace DOGPlatform.SVG
             gPolyline.SetAttribute("points", _points);
             return gPolyline;
         }
+
+      
         public void addBodysandBodyPatternDefs()
         {
 

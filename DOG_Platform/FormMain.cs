@@ -96,6 +96,7 @@ namespace DOGPlatform
             tvProjectData.Nodes.Clear();
             cTreeViewProjectData.setupTNwell(tvProjectData);
             cTreeViewProjectData.setupTNLayer(tvProjectData);
+            cTreeViewProjectData.setupTNLayerChilds(tvProjectData);
 
             foreach (TreeNode tn in tvProjectData.Nodes) if (tn.Level == 0) tn.Expand();
             this.tbcMain.SelectedIndex = 0;
@@ -1115,6 +1116,7 @@ namespace DOGPlatform
                 {
                     WellNavitationInvalidate();
                     cTreeViewProjectData.updateTN_GlobeWellLog(this.tvProjectData);
+                    cTreeViewProjectData.setupTNLayerChilds(this.tvProjectData);
                 }
                 if (tbcMain.SelectedTab == tbgIE) this.webBrowserIE.Refresh();
             }

@@ -86,5 +86,16 @@ namespace DOGPlatform
                 }
             }
         }
+
+        private void tsmiOpenFile_Click(object sender, EventArgs e)
+        {
+            cPublicMethodForm.read2DataGridViewByTextFile(dgvDataTable);
+        }
+
+        private void tsmiDeleteCurrentLine_Click(object sender, EventArgs e)
+        {
+            int index = dgvDataTable.CurrentCell.RowIndex;
+            dgvDataTable.Rows.RemoveAt(index);
+        }
     }
 }

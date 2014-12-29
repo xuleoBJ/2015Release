@@ -61,18 +61,24 @@ namespace DOGPlatform
             }
             td.Nodes.Add(tnGlobeWellLogs);
         }
-        //public void setupTNwellTops(TreeView tvw)
-        //{
-        //    TreeNode tnWellTops = new TreeNode();
-        //    tnWellTops.Name = "tnWellTops";
-        //    tnWellTops.Text = "分层数据";
-        //    foreach (string sXCM in cProjectData.ltStrProjectXCM)
-        //    {
-        //        TreeNode tnXCM = new TreeNode(sXCM, 4, 4);
-        //        tnWellTops.Nodes.Add(tnXCM);
-        //    }
-        //    tvw.Nodes.Add(tnWellTops);
-        //}
+        public static void setupTNLayerChilds(TreeView tv)
+        {
+
+            TreeNode tnWellTops = tv.Nodes
+                                    .Cast<TreeNode>()
+                                    .First(r => r.Name == "tnWellTops");
+
+            foreach (TreeNode tnLayer in tnWellTops.Nodes)
+            {
+                tnLayer.Nodes.Clear();
+                string filePathFaults = Path.Combine(cProjectManager.dirPathLayerDir, tnLayer.Text, cProjectManager.fileNameInputFaults);
+                if (File.Exists(filePathFaults))
+                {
+                    TreeNode tnFault = new TreeNode("断层", 7, 7);
+                    tnLayer.Nodes.Add(tnFault);
+                }
+            }
+        }
         public static void setupTNLayer(TreeView _tv)
         {
             TreeNode tn = new TreeNode();
