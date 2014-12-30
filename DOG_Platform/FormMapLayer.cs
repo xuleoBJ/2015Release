@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region << 版 本 注 释 >>
+/*
+ * ========================================================================
+ * Copyright(c) 2014 Xuleo,Riped, All Rights Reserved.
+ * ========================================================================
+ *  许磊，联系电话13581625021，qq：38643987
+
+ * ========================================================================
+*/
+#endregion
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,7 +34,11 @@ namespace DOGPlatform
         List<ItemWellMapLayer> listWellsMapLayer = new List<ItemWellMapLayer>();
         List<string> ltStrSelectedLayers = new List<string>();
         string selectedLayer;
-       
+
+        int PageWidth = 2000;
+        int PageHeight = 1500;
+        string sUnit = "pt"; 
+
         XmlElement returnElemment;
 
         //set xml 4 store configure information and data
@@ -49,7 +63,7 @@ namespace DOGPlatform
             cbbSelectedXCMTop.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedXCMBot.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedYM.DataSource = cProjectData.ltStrProjectYM;
-
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "pt", "px", "pc", "cm", "in", "em", "ex" }));
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.listProjectWell.FindAll(p=>p.WellPathList.Count>3).Select(p=>p.sJH).ToList());
         } 
         private void cbbSelectedXCM_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,18 +140,18 @@ namespace DOGPlatform
 
         void generateSVGfilemap()
         {
-
             // 这块重新加载的问题 解决了 绘制的问题，重新加载仍旧需要解决一下
-
+            if (cbbUnit.SelectedIndex >= 0) sUnit = cbbUnit.SelectedItem.ToString();
             string filePathSVGLayerMap = filePathXMLconfigLayerMap.Replace(".xml", ".svg");
-
-
-            cSVGDocLayerMap svgLayerMap=new cSVGDocLayerMap(filePathXMLconfigLayerMap,50, 50);;
+            //注意偏移量,偏移主要是为了好看 如果不偏移的话 就会绘到角落上,这时的偏移是整个偏移 后面的不用偏移了，相对偏移0，0
+            int idx = 50;
+            int idy = 50;
+            cSVGDocLayerMap svgLayerMap = new cSVGDocLayerMap(filePathXMLconfigLayerMap, PageWidth, PageHeight, idx, idy, sUnit); ;
           
             if (File.Exists(filePathSVGLayerMap)) File.Delete(filePathSVGLayerMap);
 
             returnElemment = svgLayerMap.gWellsPosition();
-            svgLayerMap.addgElement(returnElemment, 0, 0);
+            svgLayerMap.addgElement(returnElemment,  0, 0 );
 
             //如果顶层面断层数据不为空的话 应该加上断层
             //读取当前顶层的断层数据
@@ -223,30 +237,6 @@ namespace DOGPlatform
                 this.lbl_JMFont.ForeColor = fontDialog.Color;
                 this.lbl_JMFont.Font = fontDialog.Font;
             }
-        }
-
-
-
-        private void btnPinchLine_Click(object sender, EventArgs e)
-        {
-            string filePathSVGLayerMap = "PinchSVG";
-
-            cSVGDocLayerMap cLayerMap = new cSVGDocLayerMap(800, 1000, 0, 0);
-            cLayerMap.makeSVGfile(cProjectManager.dirPathMap + filePathSVGLayerMap);
-            FormWebNavigation formSVGView = new FormWebNavigation(cProjectManager.dirPathMap + filePathSVGLayerMap); formSVGView.Show();
-        }
-
-        private void btnSandBody_Click(object sender, EventArgs e)
-        {
-            string filePathSVGLayerMap = "SandBody.svg";
-
-            cSVGDocLayerMap cLayerMap = new cSVGDocLayerMap(800, 1000, 0, 0);
-            //XmlElement returnElemment;
-            string dPath = "M50,50 Q50,100 100,100z";
-            cLayerMap.addgElement(cLayerMap.gSandBody(dPath), 200, 200);
-
-            cLayerMap.makeSVGfile(cProjectManager.dirPathMap + filePathSVGLayerMap);
-            FormWebNavigation formSVGView = new FormWebNavigation(cProjectManager.dirPathMap + filePathSVGLayerMap); formSVGView.Show();
         }
 
         private void nUDWellCircle_R_ValueChanged(object sender, EventArgs e)

@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region << 版 本 注 释 >>
+/*
+ * ========================================================================
+ * Copyright(c) 2014 Xuleo,Riped, All Rights Reserved.
+ * ========================================================================
+ *  许磊，联系电话13581625021，qq：38643987
+
+ * ========================================================================
+*/
+#endregion
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

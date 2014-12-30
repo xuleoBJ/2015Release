@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region << 版 本 注 释 >>
+/*
+ * ========================================================================
+ * Copyright(c) 2014 Xuleo,Riped, All Rights Reserved.
+ * ========================================================================
+ *  许磊，联系电话13581625021，qq：38643987
+
+ * ========================================================================
+*/
+#endregion
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,8 +26,6 @@ namespace DOGPlatform.SVG
         public const string svgNS = "http://www.w3.org/1999/xlink";
         public int iSVGoffsetX = 0;
         public int iSVGoffsetY = 0;
-        public int iSVGWidth = 200;
-        public int iSVGHeight = 1000;
         public XmlElement svgRoot;
         public XmlDeclaration svgDec;
         public XmlElement gSVG;
@@ -27,19 +35,17 @@ namespace DOGPlatform.SVG
         public XmlAttribute xLinkNode;
 
         public cSVGBase()
-            : this(0, 0)
+            : this(2000, 1500, 0, 0, "pt")
         {
 
         }
         public cSVGBase(int _iDX, int _iDY)
-            : this(2000, 1500, _iDX, _iDY)
+            : this(2000, 1500, _iDX, _iDY,"pt")
         {
 
         }
-        public cSVGBase(int _iWidth, int _iHeight, int _iDX, int _iDY)
+        public cSVGBase(int iWidth, int iHeight, int _iDX, int _iDY,string sUnit)
         {
-            this.iSVGWidth = _iWidth;
-            this.iSVGHeight = _iHeight;
             this.iSVGoffsetX = _iDX;
             this.iSVGoffsetY = _iDY;
             svgDec = svgDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
@@ -50,9 +56,9 @@ namespace DOGPlatform.SVG
             xLinkNode = svgDoc.CreateAttribute("xlink", "href", "http://www.w3.org/1999/xlink");
             svgRoot.Attributes.Append(xLinkNode);
             svgRoot.SetAttribute("version", "1.1");
-            svgRoot.SetAttribute("height", this.iSVGHeight.ToString() + "px");
-            svgRoot.SetAttribute("width", this.iSVGWidth.ToString()+ "px");
-            string sViewBox = "0 0 " + this.iSVGWidth.ToString() + " " + this.iSVGHeight.ToString();
+            svgRoot.SetAttribute("height",iHeight.ToString() + sUnit);
+            svgRoot.SetAttribute("width",iWidth.ToString() + sUnit);
+            string sViewBox = "0 0 " +iWidth.ToString() + " " + iHeight.ToString();
             svgRoot.SetAttribute("viewBox", sViewBox);
             svgDefs = svgDoc.CreateElement("defs");
             svgRoot.AppendChild(svgDefs);
@@ -78,13 +84,10 @@ namespace DOGPlatform.SVG
 
         }
 
-        public cSVGBase(int iWidth, int iHeight, int iDX, int iDY, string sPageUnit)
-            : this(iWidth, iHeight, iDX, iDY)
+        public cSVGBase(int iWidth, int iHeight, int iDX, int iDY)
+            : this(iWidth, iHeight, iDX, iDY,"pt")
         {
-            this.iSVGoffsetX = iDX;
-            this.iSVGoffsetY = iDY;
-            svgRoot.SetAttribute("height", iHeight.ToString() + sPageUnit);
-            svgRoot.SetAttribute("width", iWidth.ToString() + sPageUnit);
+           
         }
         public void addgElement(XmlElement gElement, int ix, int iy)
         {
@@ -122,9 +125,6 @@ namespace DOGPlatform.SVG
         {
             svgDoc.Save(filePath);
         }
-
-
-
 
 
     }

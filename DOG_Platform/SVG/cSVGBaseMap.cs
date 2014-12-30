@@ -1,4 +1,14 @@
-﻿using System;
+﻿#region << 版 本 注 释 >>
+/*
+ * ========================================================================
+ * Copyright(c) 2014 Xuleo,Riped, All Rights Reserved.
+ * ========================================================================
+ *  许磊，联系电话13581625021，qq：38643987
+
+ * ========================================================================
+*/
+#endregion
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,14 +28,13 @@ namespace DOGPlatform.SVG
 
 
         public cBaseMapSVG( int iDX, int iDY)
-            : base( iDX, iDY)
+            : this(2000, 1500, iDX, iDY,"pt")
         {
-            addDef();
         }
         public cBaseMapSVG(int width,int height, int iDX, int iDY)
-            : base(width, height, iDX, iDY)
+            : this(width, height, iDX, iDY,"pt")
         {
-            addDef();
+
         }
         public cBaseMapSVG( int width, int height, int iDX, int iDY, string sUnit)
             : base(width, height, iDX, iDY, sUnit)
@@ -355,7 +364,7 @@ namespace DOGPlatform.SVG
             XmlElement gCompass = svgDoc.CreateElement("g");
             string sTranslate = "translate(" + iDx.ToString() + "," + iDY.ToString() + ")";
             gCompass.SetAttribute("transform", sTranslate);
-            gCompass.SetAttribute("ID", "idCompass");
+            gCompass.SetAttribute("id", "idCompass");
             XmlElement gPolygon1 = svgDoc.CreateElement("polygon");
             gPolygon1.SetAttribute("points", "16,0 32,50 0,50");
             gPolygon1.SetAttribute("fill", "black");

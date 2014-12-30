@@ -17,30 +17,26 @@ namespace DOGPlatform.SVG
         XmlDocument xmlLayerMap = new XmlDocument();
    
      
-        public cSVGDocLayerMap(string _filePathXMLConfig,int _iDX, int _iDY)
-            : base(_iDX, _iDY)
+        public cSVGDocLayerMap(string filePathXMLConfig,int iDX, int iDY)
+            : this(filePathXMLConfig,2000, 1500, iDX, iDY, "pt")
         {
-            this.xmlConfigPath = _filePathXMLConfig;
             
+        }
+
+        public cSVGDocLayerMap(string filePathXMLConfig, int width, int height, int iDX, int iDY)
+            : this(filePathXMLConfig,width, height, iDX, iDY, "pt")
+        {
+        }
+        public cSVGDocLayerMap(string filePathXMLConfig, int width, int height, int iDX, int iDY,string sUnit)
+            : base(width, height, iDX, iDY,sUnit)
+        {
+            this.xmlConfigPath = filePathXMLConfig;
             xmlLayerMap.Load(xmlConfigPath);
-            double.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/xRef").InnerText,out xRef);
-            double.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/yRef").InnerText,out yRef);
+            double.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/xRef").InnerText, out xRef);
+            double.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/yRef").InnerText, out yRef);
             float.TryParse(xmlLayerMap.SelectSingleNode("/LayerMapConfig/Layer/dfMapScale").InnerText, out dfscale);
         }
-
-        public cSVGDocLayerMap(string _filePathXMLConfig, int width, int height, int iDX, int iDY)
-            : base(width, height, iDX, iDY)
-        {
-            this.xmlConfigPath = _filePathXMLConfig;
-        }
-
-        public cSVGDocLayerMap(int width, int height, int iDX, int iDY)
-            : base(width, height, iDX, iDY)
-        {
-
-        }
-
-
+ 
         public void delgWellPosition()
         {
             XmlNode gWells =svgRoot.SelectSingleNode("/svg/g/g[@id='idWell']");
