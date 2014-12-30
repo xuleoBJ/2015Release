@@ -67,7 +67,7 @@ namespace DOGPlatform
                 dgvLayerColorSetting.Rows.Add(_sItem);
                 dgvLayerColorSetting.Rows[i].Cells[1].Style.BackColor = Color.Red;
             }
-            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "pt", "px", "pc", "cm", "in", "em", "ex"}));
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "pt", "px", "pc", "cm", "in"}));
         }
 
         private void btn_addWell_Click(object sender, EventArgs e)

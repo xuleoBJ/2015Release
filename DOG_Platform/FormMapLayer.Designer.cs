@@ -155,11 +155,9 @@
             this.cbxCompassShowed = new System.Windows.Forms.CheckBox();
             this.cbxMapFrame = new System.Windows.Forms.CheckBox();
             this.groupBox27 = new System.Windows.Forms.GroupBox();
-            this.comboBox14 = new System.Windows.Forms.ComboBox();
+            this.cbbScale = new System.Windows.Forms.ComboBox();
             this.label33 = new System.Windows.Forms.Label();
             this.button26 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.tbgLine = new System.Windows.Forms.TabPage();
@@ -224,6 +222,8 @@
             this.cbbSelectedXCMTop = new System.Windows.Forms.ComboBox();
             this.btnGenerateLayerMap = new System.Windows.Forms.Button();
             this.tbcLayerMap = new System.Windows.Forms.TabControl();
+            this.nUDrefX = new System.Windows.Forms.NumericUpDown();
+            this.nUDrefY = new System.Windows.Forms.NumericUpDown();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -281,6 +281,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDWellCircle_R)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tbcLayerMap.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDrefX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDrefY)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -1181,7 +1183,7 @@
             this.tbgHorizonWell.Location = new System.Drawing.Point(4, 22);
             this.tbgHorizonWell.Name = "tbgHorizonWell";
             this.tbgHorizonWell.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgHorizonWell.Size = new System.Drawing.Size(955, 389);
+            this.tbgHorizonWell.Size = new System.Drawing.Size(577, 389);
             this.tbgHorizonWell.TabIndex = 7;
             this.tbgHorizonWell.Text = "水平井段";
             this.tbgHorizonWell.UseVisualStyleBackColor = true;
@@ -1347,7 +1349,7 @@
             this.tbgProduction.Location = new System.Drawing.Point(4, 22);
             this.tbgProduction.Name = "tbgProduction";
             this.tbgProduction.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgProduction.Size = new System.Drawing.Size(955, 389);
+            this.tbgProduction.Size = new System.Drawing.Size(577, 389);
             this.tbgProduction.TabIndex = 6;
             this.tbgProduction.Text = "生产现状";
             this.tbgProduction.UseVisualStyleBackColor = true;
@@ -1502,7 +1504,7 @@
             this.tbgPropertySetting.Controls.Add(this.groupBox27);
             this.tbgPropertySetting.Location = new System.Drawing.Point(4, 22);
             this.tbgPropertySetting.Name = "tbgPropertySetting";
-            this.tbgPropertySetting.Size = new System.Drawing.Size(955, 389);
+            this.tbgPropertySetting.Size = new System.Drawing.Size(577, 389);
             this.tbgPropertySetting.TabIndex = 2;
             this.tbgPropertySetting.Text = "图形配置";
             this.tbgPropertySetting.UseVisualStyleBackColor = true;
@@ -1567,7 +1569,7 @@
             // nUDPageWidth
             // 
             this.nUDPageWidth.AllowDrop = true;
-            this.nUDPageWidth.Location = new System.Drawing.Point(66, 23);
+            this.nUDPageWidth.Location = new System.Drawing.Point(66, 22);
             this.nUDPageWidth.Maximum = new decimal(new int[] {
             20000,
             0,
@@ -1693,11 +1695,11 @@
             // 
             // groupBox27
             // 
-            this.groupBox27.Controls.Add(this.comboBox14);
+            this.groupBox27.Controls.Add(this.nUDrefY);
+            this.groupBox27.Controls.Add(this.nUDrefX);
+            this.groupBox27.Controls.Add(this.cbbScale);
             this.groupBox27.Controls.Add(this.label33);
             this.groupBox27.Controls.Add(this.button26);
-            this.groupBox27.Controls.Add(this.textBox2);
-            this.groupBox27.Controls.Add(this.textBox3);
             this.groupBox27.Controls.Add(this.label35);
             this.groupBox27.Controls.Add(this.label36);
             this.groupBox27.Location = new System.Drawing.Point(336, 158);
@@ -1709,60 +1711,33 @@
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "图形设置";
             // 
-            // comboBox14
+            // cbbScale
             // 
-            this.comboBox14.BackColor = System.Drawing.Color.White;
-            this.comboBox14.FormattingEnabled = true;
-            this.comboBox14.Items.AddRange(new object[] {
-            "1:2",
-            "1:5",
-            "1:10",
-            "1:20",
-            "1:50",
-            "1:100",
-            "1:200",
-            "1:500"});
-            this.comboBox14.Location = new System.Drawing.Point(63, 88);
-            this.comboBox14.Name = "comboBox14";
-            this.comboBox14.Size = new System.Drawing.Size(72, 20);
-            this.comboBox14.TabIndex = 18;
-            this.comboBox14.Text = "1:10";
+            this.cbbScale.BackColor = System.Drawing.Color.White;
+            this.cbbScale.FormattingEnabled = true;
+            this.cbbScale.Location = new System.Drawing.Point(82, 87);
+            this.cbbScale.Name = "cbbScale";
+            this.cbbScale.Size = new System.Drawing.Size(72, 20);
+            this.cbbScale.TabIndex = 18;
+            this.cbbScale.Text = "1:10";
             // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Location = new System.Drawing.Point(20, 93);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(41, 12);
+            this.label33.Size = new System.Drawing.Size(53, 12);
             this.label33.TabIndex = 19;
-            this.label33.Text = "比例尺";
+            this.label33.Text = "比例尺1:";
             // 
             // button26
             // 
-            this.button26.Location = new System.Drawing.Point(141, 86);
+            this.button26.Location = new System.Drawing.Point(160, 85);
             this.button26.Name = "button26";
             this.button26.Size = new System.Drawing.Size(75, 23);
             this.button26.TabIndex = 26;
             this.button26.Text = "坐标字体";
             this.button26.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(84, 56);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(126, 21);
-            this.textBox2.TabIndex = 16;
-            this.textBox2.Text = "0";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(82, 28);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(130, 21);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.Text = "3000";
             // 
             // label35
             // 
@@ -1792,7 +1767,7 @@
             this.tbgLine.Controls.Add(this.cbxAddFaultLine);
             this.tbgLine.Location = new System.Drawing.Point(4, 22);
             this.tbgLine.Name = "tbgLine";
-            this.tbgLine.Size = new System.Drawing.Size(955, 389);
+            this.tbgLine.Size = new System.Drawing.Size(577, 389);
             this.tbgLine.TabIndex = 4;
             this.tbgLine.Text = "线信息";
             this.tbgLine.UseVisualStyleBackColor = true;
@@ -2006,7 +1981,7 @@
             this.tbgWellData.Location = new System.Drawing.Point(4, 22);
             this.tbgWellData.Name = "tbgWellData";
             this.tbgWellData.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellData.Size = new System.Drawing.Size(955, 389);
+            this.tbgWellData.Size = new System.Drawing.Size(577, 389);
             this.tbgWellData.TabIndex = 3;
             this.tbgWellData.Text = "数据信息";
             this.tbgWellData.UseVisualStyleBackColor = true;
@@ -2527,6 +2502,62 @@
             this.tbcLayerMap.Size = new System.Drawing.Size(585, 415);
             this.tbcLayerMap.TabIndex = 0;
             // 
+            // nUDrefX
+            // 
+            this.nUDrefX.AllowDrop = true;
+            this.nUDrefX.Increment = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nUDrefX.Location = new System.Drawing.Point(87, 28);
+            this.nUDrefX.Maximum = new decimal(new int[] {
+            90000000,
+            0,
+            0,
+            0});
+            this.nUDrefX.Minimum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.nUDrefX.Name = "nUDrefX";
+            this.nUDrefX.Size = new System.Drawing.Size(102, 21);
+            this.nUDrefX.TabIndex = 42;
+            this.nUDrefX.Value = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            // 
+            // nUDrefY
+            // 
+            this.nUDrefY.AllowDrop = true;
+            this.nUDrefY.Increment = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nUDrefY.Location = new System.Drawing.Point(88, 55);
+            this.nUDrefY.Maximum = new decimal(new int[] {
+            9000000,
+            0,
+            0,
+            0});
+            this.nUDrefY.Minimum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nUDrefY.Name = "nUDrefY";
+            this.nUDrefY.Size = new System.Drawing.Size(102, 21);
+            this.nUDrefY.TabIndex = 43;
+            this.nUDrefY.Value = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            // 
             // FormMapLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2622,6 +2653,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tbcLayerMap.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nUDrefX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDrefY)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2748,11 +2781,9 @@
         private System.Windows.Forms.CheckBox cbxCompassShowed;
         private System.Windows.Forms.CheckBox cbxMapFrame;
         private System.Windows.Forms.GroupBox groupBox27;
-        private System.Windows.Forms.ComboBox comboBox14;
+        private System.Windows.Forms.ComboBox cbbScale;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.TabPage tbgLine;
@@ -2824,6 +2855,8 @@
         private System.Windows.Forms.NumericUpDown nUDPageWidth;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown nUDrefY;
+        private System.Windows.Forms.NumericUpDown nUDrefX;
 
     }
 }

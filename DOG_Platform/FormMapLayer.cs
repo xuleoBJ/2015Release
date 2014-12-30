@@ -63,9 +63,31 @@ namespace DOGPlatform
             cbbSelectedXCMTop.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedXCMBot.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedYM.DataSource = cProjectData.ltStrProjectYM;
-            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "pt", "px", "pc", "cm", "in", "em", "ex" }));
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "pt", "px", "pc", "cm", "in"}));
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.listProjectWell.FindAll(p=>p.WellPathList.Count>3).Select(p=>p.sJH).ToList());
-        } 
+            this.nUDrefX.Value = decimal.Parse(cProjectData.dfMapXrealRefer.ToString());
+            this.nUDrefY.Value = decimal.Parse(cProjectData.dfMapYrealRefer.ToString());
+            initialCbbScale();
+            this.cbbScale.Text =(1000.0 / cProjectData.dfMapScale).ToString("0");
+        }
+        //初始化控件当新建工程或者打开工程时
+        void initialCbbScale()
+        {
+            List<string> listScale = new List<string>();
+            listScale.Add("10000");
+            listScale.Add("20000");
+            listScale.Add("25000");
+            listScale.Add("50000");
+            listScale.Add("5000");
+            listScale.Add("2000");
+            listScale.Add("1000");
+            listScale.Add("500");
+            listScale.Add("250");
+            listScale.Add("200");
+            listScale.Add("100000");
+            cbbScale.Items.Clear();
+            foreach (string sItem in listScale) cbbScale.Items.Add(sItem);
+        }
         private void cbbSelectedXCM_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbbSelectedXCMBot.Items.Count > 0)

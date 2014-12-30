@@ -114,6 +114,7 @@
             this.tsmiWellpathSection = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWellConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConnectCal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDynamicCal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalWellTypeDictionary = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalProductionFoctor = new System.Windows.Forms.ToolStripMenuItem();
@@ -124,6 +125,7 @@
             this.tsmiProfileDecision = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPIcal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
+            this.选层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsBtnNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnOpenProject = new System.Windows.Forms.ToolStripButton();
@@ -144,8 +146,6 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.tsmiConnectCal = new System.Windows.Forms.ToolStripMenuItem();
-            this.选层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -965,6 +965,13 @@
             this.tsmiSectionFence.Text = "2.5地质分析";
             this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
+            // tsmiConnectCal
+            // 
+            this.tsmiConnectCal.Name = "tsmiConnectCal";
+            this.tsmiConnectCal.Size = new System.Drawing.Size(160, 22);
+            this.tsmiConnectCal.Text = "注采联通性分析";
+            this.tsmiConnectCal.Click += new System.EventHandler(this.tsmiConnectCal_Click);
+            // 
             // tsmiDynamicCal
             // 
             this.tsmiDynamicCal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1034,16 +1041,22 @@
             // tsmiPIcal
             // 
             this.tsmiPIcal.Name = "tsmiPIcal";
-            this.tsmiPIcal.Size = new System.Drawing.Size(172, 22);
+            this.tsmiPIcal.Size = new System.Drawing.Size(111, 22);
             this.tsmiPIcal.Text = "PI分析";
             this.tsmiPIcal.Click += new System.EventHandler(this.tsmiPIcal_Click);
             // 
             // tsmiAdjustProfile
             // 
             this.tsmiAdjustProfile.Name = "tsmiAdjustProfile";
-            this.tsmiAdjustProfile.Size = new System.Drawing.Size(172, 22);
+            this.tsmiAdjustProfile.Size = new System.Drawing.Size(111, 22);
             this.tsmiAdjustProfile.Text = "选井";
             this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
+            // 
+            // 选层ToolStripMenuItem
+            // 
+            this.选层ToolStripMenuItem.Name = "选层ToolStripMenuItem";
+            this.选层ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
+            this.选层ToolStripMenuItem.Text = "选层";
             // 
             // ToolStripMain
             // 
@@ -1065,7 +1078,7 @@
             this.ToolStripSeparator2});
             this.ToolStripMain.Location = new System.Drawing.Point(3, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(377, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(410, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1218,19 +1231,6 @@
             this.imageListMain.Images.SetKeyName(5, "log.png");
             this.imageListMain.Images.SetKeyName(6, "Grid-2.ico");
             this.imageListMain.Images.SetKeyName(7, "faults.png");
-            // 
-            // tsmiConnectCal
-            // 
-            this.tsmiConnectCal.Name = "tsmiConnectCal";
-            this.tsmiConnectCal.Size = new System.Drawing.Size(160, 22);
-            this.tsmiConnectCal.Text = "注采联通性分析";
-            this.tsmiConnectCal.Click += new System.EventHandler(this.tsmiConnectCal_Click);
-            // 
-            // 选层ToolStripMenuItem
-            // 
-            this.选层ToolStripMenuItem.Name = "选层ToolStripMenuItem";
-            this.选层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.选层ToolStripMenuItem.Text = "选层";
             // 
             // FormMain
             // 

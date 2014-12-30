@@ -41,7 +41,7 @@ namespace DOGPlatform
             cPublicMethodForm.inialComboBox(cbbBottomXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbLeftLogName, cProjectData.ltStrLogSeriers);
             cPublicMethodForm.inialComboBox(cbbRightLogName, cProjectData.ltStrLogSeriers);
-            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] {"mm", "em", "ex", "px", "pt", "pc", "cm",  "in" }));
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] {"mm", "px", "pt", "pc", "cm",  "in" }));
         }
         private void btn_deleteWell_Click(object sender, EventArgs e)
         {

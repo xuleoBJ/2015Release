@@ -34,7 +34,7 @@ namespace DOGPlatform
             cPublicMethodForm.inialComboBox(cbbLeftLogName, cProjectData.ltStrLogSeriers);
             cPublicMethodForm.inialComboBox(cbbRightLogName, cProjectData.ltStrLogSeriers);
             initialCbbScale(this.cbbSacle);
-            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "pt", "mm", "px", "pc", "cm", "in", "em", "ex" }));
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "pt", "mm", "px", "pc", "cm", "in" }));
         }
         void initialCbbScale(ComboBox cbb)
         {

@@ -41,7 +41,6 @@ namespace DOGPlatform
         public FormMain()
         {
             InitializeComponent();
-
             intializeMyForm();
             if (cSoftwareLimited.limitedDay() == false)
             {
