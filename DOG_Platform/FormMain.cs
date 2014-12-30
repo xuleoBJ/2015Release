@@ -1163,16 +1163,16 @@ namespace DOGPlatform
             form.Show();
         }
 
-        private void tsmiInjProConnect_Click(object sender, EventArgs e)
-        {
-            FormInjProAna form = new FormInjProAna();
-            form.Show();
-        }
-
         private void tsmiCloseInput_Click(object sender, EventArgs e)
         {
             tbcMain.TabPages.Remove(tbgWellHead);
             tbcMain.TabPages.Remove(tbgLayerSeriers);
+        }
+
+        private void tsmiConnectCal_Click(object sender, EventArgs e)
+        {
+            FormInjProAna form = new FormInjProAna();
+            form.Show();
         }
 
          

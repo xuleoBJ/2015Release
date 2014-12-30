@@ -23,6 +23,21 @@ namespace DOGPlatform
             ltStrWrited.Add(item.fSKHD.ToString());
             return string.Join("\t", ltStrWrited.ToArray());
         }
+        public static ItemDicPerforation parseLine(string line)
+        {
+            string[] split = line.Trim().Split(new char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            ItemDicPerforation item = new ItemDicPerforation();
+            if (split.Length >= 4)
+            {
+                item.sJH = split[0];
+                item.sXCM = split[1];
+                item.YMstart = split[2];
+                item.YMend = split[3];
+                item.fSKHD = 0.0f;
+                float.TryParse(split[4], out item.fSKHD);
+            }
+            return item;
+        }
     }
 
     struct ItemInputPerforate

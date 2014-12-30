@@ -147,7 +147,6 @@ namespace DOGPlatform
             {
                 returnElemment = svgLayerMap.gFaultline(line.ltPoints,"red",2);
                 svgLayerMap.addgElement(returnElemment, 0, 0);
-            
             }
 
             if (this.cbxScaleRulerShowed.Checked == true)

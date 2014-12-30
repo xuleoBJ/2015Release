@@ -37,6 +37,8 @@
             this.cbbSelectedLayerName = new System.Windows.Forms.ComboBox();
             this.btnDelConnectJH = new System.Windows.Forms.Button();
             this.dgvInj2Pro = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbbWellProduct = new System.Windows.Forms.ComboBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,14 +47,14 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.属性 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbbWellProduct = new System.Windows.Forms.ComboBox();
+            this.小层 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDraw = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvInj2Pro)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCalResult
             // 
-            this.btnCalResult.Location = new System.Drawing.Point(457, 54);
+            this.btnCalResult.Location = new System.Drawing.Point(470, 54);
             this.btnCalResult.Margin = new System.Windows.Forms.Padding(2);
             this.btnCalResult.Name = "btnCalResult";
             this.btnCalResult.Size = new System.Drawing.Size(114, 26);
@@ -81,6 +83,7 @@
             this.btnCalConnectWell.TabIndex = 13;
             this.btnCalConnectWell.Text = "计算受效井";
             this.btnCalConnectWell.UseVisualStyleBackColor = true;
+            this.btnCalConnectWell.Click += new System.EventHandler(this.btnCalConnectWell_Click);
             // 
             // label12
             // 
@@ -115,6 +118,7 @@
             this.cbbSelectedLayerName.Name = "cbbSelectedLayerName";
             this.cbbSelectedLayerName.Size = new System.Drawing.Size(81, 20);
             this.cbbSelectedLayerName.TabIndex = 18;
+            this.cbbSelectedLayerName.SelectedIndexChanged += new System.EventHandler(this.cbbSelectedLayerName_SelectedIndexChanged);
             // 
             // btnDelConnectJH
             // 
@@ -138,7 +142,8 @@
             this.Column5,
             this.Column6,
             this.Column7,
-            this.属性});
+            this.属性,
+            this.小层});
             this.dgvInj2Pro.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvInj2Pro.Location = new System.Drawing.Point(0, 97);
             this.dgvInj2Pro.Name = "dgvInj2Pro";
@@ -146,14 +151,31 @@
             this.dgvInj2Pro.Size = new System.Drawing.Size(1073, 497);
             this.dgvInj2Pro.TabIndex = 36;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 61);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 38;
+            this.label1.Text = "生产井号";
+            // 
+            // cbbWellProduct
+            // 
+            this.cbbWellProduct.FormattingEnabled = true;
+            this.cbbWellProduct.Location = new System.Drawing.Point(72, 58);
+            this.cbbWellProduct.Name = "cbbWellProduct";
+            this.cbbWellProduct.Size = new System.Drawing.Size(79, 20);
+            this.cbbWellProduct.TabIndex = 37;
+            // 
             // Column1
             // 
-            this.Column1.HeaderText = "基准井";
+            this.Column1.HeaderText = "注入井";
             this.Column1.Name = "Column1";
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "对应井";
+            this.Column2.HeaderText = "受效井";
             this.Column2.Name = "Column2";
             // 
             // Column3
@@ -173,7 +195,7 @@
             // 
             // Column6
             // 
-            this.Column6.HeaderText = "渗透率";
+            this.Column6.HeaderText = "吸水厚度";
             this.Column6.Name = "Column6";
             // 
             // Column7
@@ -183,31 +205,31 @@
             // 
             // 属性
             // 
-            this.属性.HeaderText = "属性";
+            this.属性.HeaderText = "渗透率";
             this.属性.Name = "属性";
             // 
-            // label1
+            // 小层
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 61);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "生产井号";
+            this.小层.HeaderText = "小层名";
+            this.小层.Name = "小层";
             // 
-            // cbbWellProduct
+            // btnDraw
             // 
-            this.cbbWellProduct.FormattingEnabled = true;
-            this.cbbWellProduct.Location = new System.Drawing.Point(72, 58);
-            this.cbbWellProduct.Name = "cbbWellProduct";
-            this.cbbWellProduct.Size = new System.Drawing.Size(79, 20);
-            this.cbbWellProduct.TabIndex = 37;
+            this.btnDraw.Location = new System.Drawing.Point(637, 54);
+            this.btnDraw.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDraw.Name = "btnDraw";
+            this.btnDraw.Size = new System.Drawing.Size(114, 26);
+            this.btnDraw.TabIndex = 39;
+            this.btnDraw.Text = "绘图分析";
+            this.btnDraw.UseVisualStyleBackColor = true;
+            this.btnDraw.Click += new System.EventHandler(this.btnDraw_Click);
             // 
             // FormInjProAna
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1073, 594);
+            this.Controls.Add(this.btnDraw);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbbWellProduct);
             this.Controls.Add(this.dgvInj2Pro);
@@ -238,6 +260,8 @@
         private System.Windows.Forms.ComboBox cbbSelectedLayerName;
         private System.Windows.Forms.Button btnDelConnectJH;
         private System.Windows.Forms.DataGridView dgvInj2Pro;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbbWellProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -246,7 +270,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn 属性;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbbWellProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn 小层;
+        private System.Windows.Forms.Button btnDraw;
     }
 }

@@ -18,7 +18,7 @@ namespace DOGPlatform
             ltStrHeadColoum.Add("小层名");
             ltStrHeadColoum.Add("射孔年月");
             ltStrHeadColoum.Add("堵孔年月");
-            ltStrHeadColoum.Add("射开");
+            ltStrHeadColoum.Add("射开厚度（m）");
              string sFirstLine =DateTime.Today.ToString()+" "+ sJH + "#射孔数据";
              cIOGeoEarthText.creatFileGeoHeadText(inputFilepath, sFirstLine, ltStrHeadColoum);
         }
@@ -45,8 +45,8 @@ namespace DOGPlatform
                         {
                             if (line.TrimEnd() != "")
                             {
-                                ItemInputPerforate sttJSJL = ItemInputPerforate.parseLine(line);
-                                if (sttJSJL.sJH != null) listReturn.Add(sttJSJL);
+                                ItemInputPerforate sttItem = ItemInputPerforate.parseLine(line);
+                                if (sttItem.sJH != null) listReturn.Add(sttItem);
                             }
                         }
                     }
@@ -55,6 +55,61 @@ namespace DOGPlatform
             return listReturn;
 
         }
+
+        static List<ItemDicPerforation> readDicFile(string _sJH)
+        {
+            List<ItemDicPerforation> listReturn = new List<ItemDicPerforation>();
+            string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellPerforation);
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
+                {
+                    String line;
+                    int iLine = 0;
+                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                    {
+                        iLine++;
+                        if (iLine > 8) //geofile 从8开始
+                        {
+                            if (line.TrimEnd() != "")
+                            {
+                                ItemDicPerforation sttItem = ItemDicPerforation.parseLine(line);
+                                if (sttItem.sJH != null) listReturn.Add(sttItem);
+                            }
+                        }
+                    }
+                }
+            }
+            return listReturn;
+
+        }
+        public static ItemDicPerforation getItemByJHandXCM(string _sJH,string _xcm) 
+        {
+            ItemDicPerforation itemReturn=new ItemDicPerforation();
+            string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellPerforation);
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
+                {
+                    String line;
+                    int iLine = 0;
+                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                    {
+                        iLine++;
+                        if (iLine > 8) //geofile 从8开始
+                        {
+                            if (line.TrimEnd() != "")
+                            {
+                                ItemDicPerforation sttItem = ItemDicPerforation.parseLine(line);
+
+                                if (sttItem.sJH != null) { if (sttItem.sJH == _sJH && sttItem.sXCM == _xcm) return sttItem; }
+                            }
+                        }
+                    }
+                }
+            }
+           return itemReturn;
+        } 
         public static void creatWellGeoFile(string _sJH)
         {
            

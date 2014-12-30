@@ -26,6 +26,7 @@ namespace DOGPlatform
         int ElevationRulerBase = -5000;
         int PageWidth = 3000;
         int PageHeight = 5000;
+        string sUnit = "px";
 
         public FormWellSectionPath()
         {
@@ -40,6 +41,7 @@ namespace DOGPlatform
             cPublicMethodForm.inialComboBox(cbbBottomXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbLeftLogName, cProjectData.ltStrLogSeriers);
             cPublicMethodForm.inialComboBox(cbbRightLogName, cProjectData.ltStrLogSeriers);
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] {"mm", "em", "ex", "px", "pt", "pc", "cm",  "in" }));
         }
         private void btn_deleteWell_Click(object sender, EventArgs e)
         {
@@ -351,7 +353,7 @@ namespace DOGPlatform
                     }
                 }
             }
-
+            if (cbbUnit.SelectedIndex >= 0) sUnit = cbbUnit.SelectedItem.ToString();
             cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
             cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图", 100, 100);
 

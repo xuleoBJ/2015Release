@@ -167,6 +167,8 @@
             this.nUDLayerTrackWidth = new System.Windows.Forms.NumericUpDown();
             this.label45 = new System.Windows.Forms.Label();
             this.cbxFillLayer = new System.Windows.Forms.CheckBox();
+            this.cbbUnit = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -1134,6 +1136,8 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.cbbUnit);
+            this.groupBox12.Controls.Add(this.label7);
             this.groupBox12.Controls.Add(this.nUDPageHeight);
             this.groupBox12.Controls.Add(this.nUDPageWidth);
             this.groupBox12.Controls.Add(this.label67);
@@ -1142,7 +1146,7 @@
             this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Size = new System.Drawing.Size(282, 68);
+            this.groupBox12.Size = new System.Drawing.Size(408, 68);
             this.groupBox12.TabIndex = 29;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "页面大小设置";
@@ -2124,6 +2128,23 @@
             this.cbxFillLayer.Text = "自动填充颜色";
             this.cbxFillLayer.UseVisualStyleBackColor = true;
             // 
+            // cbbUnit
+            // 
+            this.cbbUnit.FormattingEnabled = true;
+            this.cbbUnit.Location = new System.Drawing.Point(307, 22);
+            this.cbbUnit.Name = "cbbUnit";
+            this.cbbUnit.Size = new System.Drawing.Size(75, 20);
+            this.cbbUnit.TabIndex = 40;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(248, 27);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(53, 12);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "图幅单位";
+            // 
             // FormWellSectionGeology
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2347,5 +2368,7 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label lblRulerBase;
         private System.Windows.Forms.NumericUpDown nUDPageHeight;
+        private System.Windows.Forms.ComboBox cbbUnit;
+        private System.Windows.Forms.Label label7;
     }
 }

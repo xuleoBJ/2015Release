@@ -57,6 +57,7 @@ namespace DOGPlatform
                 dgvLayerColorSetting.Rows.Add(_sItem);
                 dgvLayerColorSetting.Rows[i].Cells[1].Style.BackColor = Color.Red;
             }
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "pt", "px", "pc", "cm", "in", "em", "ex"}));
         }
 
         private void btn_addWell_Click(object sender, EventArgs e)
@@ -203,6 +204,7 @@ namespace DOGPlatform
         int ElevationRulerBase = -5000;
         int PageWidth = 3000;
         int PageHeight = 5000;
+        string sUnit ="px"; 
      
        
         void generateSectionGraph(typeFlatted flatType, string filenameSVGMap,bool bView)
@@ -210,7 +212,8 @@ namespace DOGPlatform
             //xml存数据不合适 因为会有大量的井数据，但是可以存个样式，样式搭配数据，样式里可以有道宽，这样做到数据和样式的分离，成图解析器解析样式就OK。
            
             //根据默认值定义section的页面大小 及标题
-           cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageWidth, 0, 0);
+            if(cbbUnit.SelectedIndex>=0) sUnit= cbbUnit.SelectedItem.ToString();
+            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageWidth, 0, 0, sUnit);
                string sTitle=string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图";
             cSection.addSVGTitle(sTitle, 100, 100); 
             XmlElement returnElemment;
@@ -238,7 +241,6 @@ namespace DOGPlatform
                         //注意加上基准点的100,注意井距做了一定的缩放，通过trackbar
                         PListWellPositon.Add(new Point(100+iDistance * trackBarWellDistance.Value/10, 0));
                     }
-                   
                 }
             }
 

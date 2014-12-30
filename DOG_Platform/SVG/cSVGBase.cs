@@ -78,12 +78,13 @@ namespace DOGPlatform.SVG
 
         }
 
-        public cSVGBase(int width, int height, int iDX, int iDY, string sPageUnit)
+        public cSVGBase(int iWidth, int iHeight, int iDX, int iDY, string sPageUnit)
+            : this(iWidth, iHeight, iDX, iDY)
         {
             this.iSVGoffsetX = iDX;
             this.iSVGoffsetY = iDY;
-            svgRoot.SetAttribute("height", height.ToString() + sPageUnit);
-            svgRoot.SetAttribute("width", width.ToString() + sPageUnit);
+            svgRoot.SetAttribute("height", iHeight.ToString() + sPageUnit);
+            svgRoot.SetAttribute("width", iWidth.ToString() + sPageUnit);
         }
         public void addgElement(XmlElement gElement, int ix, int iy)
         {

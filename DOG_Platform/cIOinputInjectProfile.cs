@@ -34,6 +34,33 @@ namespace DOGPlatform
             return listItems;
         }
 
+        public static ItemDicInjectProfile getItemByJHandXCM(string _sJH, string _xcm)
+        {
+            ItemDicInjectProfile itemReturn = new ItemDicInjectProfile();
+            string filePath = Path.Combine(cProjectManager.dirPathWellDir, _sJH, cProjectManager.fileNameWellPerforation);
+            if (File.Exists(filePath))
+            {
+                using (StreamReader sr = new StreamReader(filePath, Encoding.UTF8))
+                {
+                    String line;
+                    int iLine = 0;
+                    while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
+                    {
+                        iLine++;
+                        if (iLine > 10) //geofile 从8开始
+                        {
+                            if (line.TrimEnd() != "")
+                            {
+                                ItemDicInjectProfile sttItem = ItemDicInjectProfile.parseLine(line);
+                                if (sttItem.sJH != null) { if (sttItem.sJH == _sJH && sttItem.sXCM == _xcm) return sttItem; }
+                            }
+                        }
+                    }
+                }
+            }
+            return itemReturn;
+        } 
+
         public static void creatFile(string filePath)
         {
             List<string> ltStrHeadColoum = new List<string>();

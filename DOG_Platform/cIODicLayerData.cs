@@ -14,7 +14,6 @@ namespace DOGPlatform
             //数据缺失的先用地层厚度为-999填充标记，然后正着扫一遍，再反着扫一遍 把所有的值填充合理
             cProjectData.sErrLineInfor= "";
 
-
             List<ItemDicLayerData> listLayerDataDic = new List<ItemDicLayerData>();
 
             if (cProjectData.ltStrProjectJH.Count > 0 && cProjectData.ltStrProjectXCM.Count > 0)
@@ -206,7 +205,6 @@ namespace DOGPlatform
                     {
                         iLineIndex++;
                         if (iLineIndex > 1) ltStrReturn.Add(ItemDicLayerData.parseLine(line));
-
                     }
                 }
             }

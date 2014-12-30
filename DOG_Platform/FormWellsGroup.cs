@@ -34,6 +34,7 @@ namespace DOGPlatform
             cPublicMethodForm.inialComboBox(cbbLeftLogName, cProjectData.ltStrLogSeriers);
             cPublicMethodForm.inialComboBox(cbbRightLogName, cProjectData.ltStrLogSeriers);
             initialCbbScale(this.cbbSacle);
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "pt", "mm", "px", "pc", "cm", "in", "em", "ex" }));
         }
         void initialCbbScale(ComboBox cbb)
         {
@@ -156,10 +157,12 @@ namespace DOGPlatform
 
         int PageWidth = 3000;
         int PageHeight = 5000;
+        string sUnit = "pt";
         void generateSectionGraph(string filenameSVGMap,bool bView)
         {
+            if (cbbUnit.SelectedIndex >= 0) sUnit = cbbUnit.SelectedItem.ToString();
             List<List<cSVGSectionTrackConnect.itemViewLayerDepth>> listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth>>();
-            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
+            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0,sUnit);
             cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "井组分析图", 100, 100);
 
             XmlElement returnElemment;
@@ -359,7 +362,7 @@ namespace DOGPlatform
 
         private void tabControlFenceDiagram_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (tclWellsGroup.SelectedIndex == 1 && File.Exists(cProjectManager.xmlConfigFenceDiagram )== false)
+            if (tbcWellsGroup.SelectedIndex == 1 && File.Exists(cProjectManager.xmlConfigFenceDiagram )== false)
             { cXMLFenceDiagram.creatFenceDiagramSettingXML(cProjectManager.xmlConfigFenceDiagram); }
         }
 
@@ -456,7 +459,7 @@ namespace DOGPlatform
         private void cbbTopXCM_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(cbbBottomXCM.Items.Count>0)
-            this.cbbBottomXCM.SelectedIndex = cbbTopXCM.SelectedIndex;
+            this.cbbBottomXCM.SelectedIndex = cbbTopXCM.SelectedIndex+1;
         }
 
         private void trackBarSacle_Scroll(object sender, EventArgs e)

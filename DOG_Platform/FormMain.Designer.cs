@@ -124,7 +124,6 @@
             this.tsmiProfileDecision = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPIcal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiInjProConnect = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsBtnNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnOpenProject = new System.Windows.Forms.ToolStripButton();
@@ -145,6 +144,8 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
+            this.tsmiConnectCal = new System.Windows.Forms.ToolStripMenuItem();
+            this.选层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -950,7 +951,8 @@
             // tsmiWellConnect
             // 
             this.tsmiWellConnect.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSectionFence});
+            this.tsmiSectionFence,
+            this.tsmiConnectCal});
             this.tsmiWellConnect.Enabled = false;
             this.tsmiWellConnect.Name = "tsmiWellConnect";
             this.tsmiWellConnect.Size = new System.Drawing.Size(80, 21);
@@ -959,7 +961,7 @@
             // tsmiSectionFence
             // 
             this.tsmiSectionFence.Name = "tsmiSectionFence";
-            this.tsmiSectionFence.Size = new System.Drawing.Size(141, 22);
+            this.tsmiSectionFence.Size = new System.Drawing.Size(160, 22);
             this.tsmiSectionFence.Text = "2.5地质分析";
             this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
             // 
@@ -976,7 +978,6 @@
             this.tsmiDynamicCal.Name = "tsmiDynamicCal";
             this.tsmiDynamicCal.Size = new System.Drawing.Size(68, 21);
             this.tsmiDynamicCal.Text = "动态计算";
-            this.tsmiDynamicCal.Visible = false;
             // 
             // tsmiCalWellTypeDictionary
             // 
@@ -1024,7 +1025,7 @@
             this.tsmiProfileDecision.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiPIcal,
             this.tsmiAdjustProfile,
-            this.tsmiInjProConnect});
+            this.选层ToolStripMenuItem});
             this.tsmiProfileDecision.Enabled = false;
             this.tsmiProfileDecision.Name = "tsmiProfileDecision";
             this.tsmiProfileDecision.Size = new System.Drawing.Size(68, 21);
@@ -1042,16 +1043,7 @@
             this.tsmiAdjustProfile.Name = "tsmiAdjustProfile";
             this.tsmiAdjustProfile.Size = new System.Drawing.Size(172, 22);
             this.tsmiAdjustProfile.Text = "选井";
-            this.tsmiAdjustProfile.Visible = false;
             this.tsmiAdjustProfile.Click += new System.EventHandler(this.tsmiAdjustProfile_Click);
-            // 
-            // tsmiInjProConnect
-            // 
-            this.tsmiInjProConnect.Name = "tsmiInjProConnect";
-            this.tsmiInjProConnect.Size = new System.Drawing.Size(172, 22);
-            this.tsmiInjProConnect.Text = "注采对应关系分析";
-            this.tsmiInjProConnect.Visible = false;
-            this.tsmiInjProConnect.Click += new System.EventHandler(this.tsmiInjProConnect_Click);
             // 
             // ToolStripMain
             // 
@@ -1227,6 +1219,19 @@
             this.imageListMain.Images.SetKeyName(6, "Grid-2.ico");
             this.imageListMain.Images.SetKeyName(7, "faults.png");
             // 
+            // tsmiConnectCal
+            // 
+            this.tsmiConnectCal.Name = "tsmiConnectCal";
+            this.tsmiConnectCal.Size = new System.Drawing.Size(160, 22);
+            this.tsmiConnectCal.Text = "注采联通性分析";
+            this.tsmiConnectCal.Click += new System.EventHandler(this.tsmiConnectCal_Click);
+            // 
+            // 选层ToolStripMenuItem
+            // 
+            this.选层ToolStripMenuItem.Name = "选层ToolStripMenuItem";
+            this.选层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.选层ToolStripMenuItem.Text = "选层";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1393,9 +1398,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsBtnDataView;
         private System.Windows.Forms.ToolStripMenuItem tsmiPIcal;
-        private System.Windows.Forms.ToolStripMenuItem tsmiInjProConnect;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalWellTypeDictionary;
         private System.Windows.Forms.ToolStripMenuItem tsmiCloseInput;
+        private System.Windows.Forms.ToolStripMenuItem tsmiConnectCal;
+        private System.Windows.Forms.ToolStripMenuItem 选层ToolStripMenuItem;
     }
 }
 

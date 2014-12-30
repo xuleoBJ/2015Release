@@ -195,6 +195,8 @@
             this.label44 = new System.Windows.Forms.Label();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.cbbUnit = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -1241,6 +1243,8 @@
             // 
             // groupBox18
             // 
+            this.groupBox18.Controls.Add(this.cbbUnit);
+            this.groupBox18.Controls.Add(this.label16);
             this.groupBox18.Controls.Add(this.nUDPageHeight);
             this.groupBox18.Controls.Add(this.nUDPageWidth);
             this.groupBox18.Controls.Add(this.label20);
@@ -1249,7 +1253,7 @@
             this.groupBox18.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox18.Size = new System.Drawing.Size(282, 68);
+            this.groupBox18.Size = new System.Drawing.Size(433, 68);
             this.groupBox18.TabIndex = 59;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "页面大小设置";
@@ -2604,6 +2608,23 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
+            // cbbUnit
+            // 
+            this.cbbUnit.FormattingEnabled = true;
+            this.cbbUnit.Location = new System.Drawing.Point(312, 26);
+            this.cbbUnit.Name = "cbbUnit";
+            this.cbbUnit.Size = new System.Drawing.Size(75, 20);
+            this.cbbUnit.TabIndex = 44;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(253, 30);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 45;
+            this.label16.Text = "图幅单位";
+            // 
             // FormWellSectionPath
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2866,5 +2887,7 @@
         private System.Windows.Forms.TrackBar trackBarWellDistance;
         private System.Windows.Forms.RadioButton rdbPlaceBYWellDistance;
         private System.Windows.Forms.RadioButton rdbPlaceByEqual;
+        private System.Windows.Forms.ComboBox cbbUnit;
+        private System.Windows.Forms.Label label16;
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.tclWellsGroup = new System.Windows.Forms.TabControl();
+            this.tbcWellsGroup = new System.Windows.Forms.TabControl();
             this.tbgWellsGroupData = new System.Windows.Forms.TabPage();
             this.btnView = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
@@ -85,6 +85,14 @@
             this.btnSacleSmaller = new System.Windows.Forms.Button();
             this.btnSacleBigger = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.tbgPageSetting = new System.Windows.Forms.TabPage();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.cbbUnit = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.nUDPageHeight = new System.Windows.Forms.NumericUpDown();
+            this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.nUDJSJLTrackWidth = new System.Windows.Forms.NumericUpDown();
@@ -143,13 +151,7 @@
             this.cbbCurveColor_leftLog = new System.Windows.Forms.ComboBox();
             this.btnMakeSectionByxmlConfig = new System.Windows.Forms.Button();
             this.btnSaveSetting = new System.Windows.Forms.Button();
-            this.tbgPageSetting = new System.Windows.Forms.TabPage();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.nUDPageHeight = new System.Windows.Forms.NumericUpDown();
-            this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
-            this.label67 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.tclWellsGroup.SuspendLayout();
+            this.tbcWellsGroup.SuspendLayout();
             this.tbgWellsGroupData.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightLogRightValue)).BeginInit();
@@ -162,6 +164,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDtopDepthUp)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.设置半径.SuspendLayout();
+            this.tbgPageSetting.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox16.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDJSJLTrackWidth)).BeginInit();
@@ -185,24 +191,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDLeftValue_rightLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightValue_leftLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLeftValue_leftLog)).BeginInit();
-            this.tbgPageSetting.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).BeginInit();
             this.SuspendLayout();
             // 
-            // tclWellsGroup
+            // tbcWellsGroup
             // 
-            this.tclWellsGroup.Controls.Add(this.tbgWellsGroupData);
-            this.tclWellsGroup.Controls.Add(this.tabPage2);
-            this.tclWellsGroup.Controls.Add(this.tbgPageSetting);
-            this.tclWellsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tclWellsGroup.Location = new System.Drawing.Point(0, 0);
-            this.tclWellsGroup.Name = "tclWellsGroup";
-            this.tclWellsGroup.SelectedIndex = 0;
-            this.tclWellsGroup.Size = new System.Drawing.Size(871, 563);
-            this.tclWellsGroup.TabIndex = 0;
-            this.tclWellsGroup.SelectedIndexChanged += new System.EventHandler(this.tabControlFenceDiagram_SelectedIndexChanged);
+            this.tbcWellsGroup.Controls.Add(this.tbgWellsGroupData);
+            this.tbcWellsGroup.Controls.Add(this.tbgPageSetting);
+            this.tbcWellsGroup.Controls.Add(this.tabPage2);
+            this.tbcWellsGroup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbcWellsGroup.Location = new System.Drawing.Point(0, 0);
+            this.tbcWellsGroup.Name = "tbcWellsGroup";
+            this.tbcWellsGroup.SelectedIndex = 0;
+            this.tbcWellsGroup.Size = new System.Drawing.Size(871, 563);
+            this.tbcWellsGroup.TabIndex = 0;
+            this.tbcWellsGroup.SelectedIndexChanged += new System.EventHandler(this.tabControlFenceDiagram_SelectedIndexChanged);
             // 
             // tbgWellsGroupData
             // 
@@ -876,6 +878,117 @@
             this.label11.Size = new System.Drawing.Size(59, 12);
             this.label11.TabIndex = 18;
             this.label11.Text = "比例尺1：";
+            // 
+            // tbgPageSetting
+            // 
+            this.tbgPageSetting.Controls.Add(this.groupBox12);
+            this.tbgPageSetting.Location = new System.Drawing.Point(4, 22);
+            this.tbgPageSetting.Name = "tbgPageSetting";
+            this.tbgPageSetting.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgPageSetting.Size = new System.Drawing.Size(863, 537);
+            this.tbgPageSetting.TabIndex = 2;
+            this.tbgPageSetting.Text = "页面设置";
+            this.tbgPageSetting.UseVisualStyleBackColor = true;
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.cbbUnit);
+            this.groupBox12.Controls.Add(this.label12);
+            this.groupBox12.Controls.Add(this.nUDPageHeight);
+            this.groupBox12.Controls.Add(this.nUDPageWidth);
+            this.groupBox12.Controls.Add(this.label67);
+            this.groupBox12.Controls.Add(this.label48);
+            this.groupBox12.Location = new System.Drawing.Point(23, 35);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox12.Size = new System.Drawing.Size(411, 68);
+            this.groupBox12.TabIndex = 57;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "页面大小设置";
+            // 
+            // cbbUnit
+            // 
+            this.cbbUnit.FormattingEnabled = true;
+            this.cbbUnit.Location = new System.Drawing.Point(302, 23);
+            this.cbbUnit.Name = "cbbUnit";
+            this.cbbUnit.Size = new System.Drawing.Size(75, 20);
+            this.cbbUnit.TabIndex = 42;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(243, 27);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 43;
+            this.label12.Text = "图幅单位";
+            // 
+            // nUDPageHeight
+            // 
+            this.nUDPageHeight.AllowDrop = true;
+            this.nUDPageHeight.Location = new System.Drawing.Point(180, 23);
+            this.nUDPageHeight.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.Name = "nUDPageHeight";
+            this.nUDPageHeight.Size = new System.Drawing.Size(50, 21);
+            this.nUDPageHeight.TabIndex = 39;
+            this.nUDPageHeight.Value = new decimal(new int[] {
+            3000,
+            0,
+            0,
+            0});
+            this.nUDPageHeight.ValueChanged += new System.EventHandler(this.nUDPageHeight_ValueChanged);
+            // 
+            // nUDPageWidth
+            // 
+            this.nUDPageWidth.AllowDrop = true;
+            this.nUDPageWidth.Location = new System.Drawing.Point(66, 23);
+            this.nUDPageWidth.Maximum = new decimal(new int[] {
+            20000,
+            0,
+            0,
+            0});
+            this.nUDPageWidth.Minimum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.nUDPageWidth.Name = "nUDPageWidth";
+            this.nUDPageWidth.Size = new System.Drawing.Size(50, 21);
+            this.nUDPageWidth.TabIndex = 38;
+            this.nUDPageWidth.Value = new decimal(new int[] {
+            2000,
+            0,
+            0,
+            0});
+            this.nUDPageWidth.ValueChanged += new System.EventHandler(this.nUDPageWidth_ValueChanged);
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(19, 26);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(41, 12);
+            this.label67.TabIndex = 37;
+            this.label67.Text = "页面宽";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(133, 26);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(41, 12);
+            this.label48.TabIndex = 27;
+            this.label48.Text = "页面高";
             // 
             // tabPage2
             // 
@@ -1768,108 +1881,16 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
-            // tbgPageSetting
-            // 
-            this.tbgPageSetting.Controls.Add(this.groupBox12);
-            this.tbgPageSetting.Location = new System.Drawing.Point(4, 22);
-            this.tbgPageSetting.Name = "tbgPageSetting";
-            this.tbgPageSetting.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgPageSetting.Size = new System.Drawing.Size(863, 537);
-            this.tbgPageSetting.TabIndex = 2;
-            this.tbgPageSetting.Text = "页面设置";
-            this.tbgPageSetting.UseVisualStyleBackColor = true;
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.nUDPageHeight);
-            this.groupBox12.Controls.Add(this.nUDPageWidth);
-            this.groupBox12.Controls.Add(this.label67);
-            this.groupBox12.Controls.Add(this.label48);
-            this.groupBox12.Location = new System.Drawing.Point(23, 35);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox12.Size = new System.Drawing.Size(282, 68);
-            this.groupBox12.TabIndex = 57;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "页面大小设置";
-            // 
-            // nUDPageHeight
-            // 
-            this.nUDPageHeight.AllowDrop = true;
-            this.nUDPageHeight.Location = new System.Drawing.Point(180, 23);
-            this.nUDPageHeight.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.nUDPageHeight.Minimum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nUDPageHeight.Name = "nUDPageHeight";
-            this.nUDPageHeight.Size = new System.Drawing.Size(50, 21);
-            this.nUDPageHeight.TabIndex = 39;
-            this.nUDPageHeight.Value = new decimal(new int[] {
-            3000,
-            0,
-            0,
-            0});
-            this.nUDPageHeight.ValueChanged += new System.EventHandler(this.nUDPageHeight_ValueChanged);
-            // 
-            // nUDPageWidth
-            // 
-            this.nUDPageWidth.AllowDrop = true;
-            this.nUDPageWidth.Location = new System.Drawing.Point(66, 23);
-            this.nUDPageWidth.Maximum = new decimal(new int[] {
-            20000,
-            0,
-            0,
-            0});
-            this.nUDPageWidth.Minimum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.nUDPageWidth.Name = "nUDPageWidth";
-            this.nUDPageWidth.Size = new System.Drawing.Size(50, 21);
-            this.nUDPageWidth.TabIndex = 38;
-            this.nUDPageWidth.Value = new decimal(new int[] {
-            2000,
-            0,
-            0,
-            0});
-            this.nUDPageWidth.ValueChanged += new System.EventHandler(this.nUDPageWidth_ValueChanged);
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(19, 26);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(41, 12);
-            this.label67.TabIndex = 37;
-            this.label67.Text = "页面宽";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(133, 26);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(41, 12);
-            this.label48.TabIndex = 27;
-            this.label48.Text = "页面高";
-            // 
             // FormWellsGroup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 563);
-            this.Controls.Add(this.tclWellsGroup);
+            this.Controls.Add(this.tbcWellsGroup);
             this.Name = "FormWellsGroup";
             this.Text = "井组分析";
             this.Load += new System.EventHandler(this.FormMapFence_Load);
-            this.tclWellsGroup.ResumeLayout(false);
+            this.tbcWellsGroup.ResumeLayout(false);
             this.tbgWellsGroupData.ResumeLayout(false);
             this.tbgWellsGroupData.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1887,6 +1908,11 @@
             this.groupBox7.ResumeLayout(false);
             this.设置半径.ResumeLayout(false);
             this.设置半径.PerformLayout();
+            this.tbgPageSetting.ResumeLayout(false);
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
@@ -1914,11 +1940,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.nUDLeftValue_rightLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDRightValue_leftLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLeftValue_leftLog)).EndInit();
-            this.tbgPageSetting.ResumeLayout(false);
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPageHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPageWidth)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1926,7 +1947,7 @@
         #endregion
 
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.TabControl tclWellsGroup;
+        private System.Windows.Forms.TabControl tbcWellsGroup;
         private System.Windows.Forms.TabPage tbgWellsGroupData;
         private System.Windows.Forms.Button btnMakeFDmap;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1936,9 +1957,7 @@
         private System.Windows.Forms.NumericUpDown nUDbottomDepthDown;
         private System.Windows.Forms.NumericUpDown nUDtopDepthUp;
         private System.Windows.Forms.Button btnMakeDepthByXCM;
-        private System.Windows.Forms.ComboBox cbbTopXCM;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbbBottomXCM;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label13;
@@ -1946,7 +1965,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button btn_deleteWell;
         private System.Windows.Forms.Button btn_addWell;
-        private System.Windows.Forms.ListBox lbxJHSeclected;
         private System.Windows.Forms.TextBox tbxTitle;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Button btnAddLayerDepth;
@@ -2046,5 +2064,10 @@
         private System.Windows.Forms.NumericUpDown nUDPageWidth;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.ComboBox cbbUnit;
+        private System.Windows.Forms.Label label12;
+        protected System.Windows.Forms.ListBox lbxJHSeclected;
+        protected System.Windows.Forms.ComboBox cbbTopXCM;
+        protected System.Windows.Forms.ComboBox cbbBottomXCM;
     }
 }
