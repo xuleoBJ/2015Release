@@ -21,7 +21,7 @@ namespace DOGPlatform.XML
 
 
                 XmlElement eleMent = xmlLayerMap.CreateElement("fontSize");
-                eleMent.InnerText = "5";
+                eleMent.InnerText = "4";
                 WellText.AppendChild(eleMent);
 
                 eleMent = xmlLayerMap.CreateElement("TypeShowValue");
@@ -62,7 +62,7 @@ namespace DOGPlatform.XML
                 WellText.SetAttribute("id", "idGeoproperty");
 
                 XmlElement eleMent = xmlLayerMap.CreateElement("fontSize");
-                eleMent.InnerText = "5";
+                eleMent.InnerText = "4";
                 WellText.AppendChild(eleMent);
                 eleMent = xmlLayerMap.CreateElement("DX_Text"); //标注偏移
                 WellText.AppendChild(eleMent);

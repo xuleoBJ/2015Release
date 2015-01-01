@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDataImportLog));
             this.label1 = new System.Windows.Forms.Label();
             this.btnOpenEX = new System.Windows.Forms.Button();
             this.tbxUserFilePath = new System.Windows.Forms.TextBox();
@@ -181,6 +182,7 @@
             this.Controls.Add(this.tbxUserFilePath);
             this.Controls.Add(this.btnOpenEX);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDataImportLog";
             this.Text = "测井曲线导入";
             ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).EndInit();

@@ -67,7 +67,7 @@ namespace DOGPlatform
 
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            string _filename=this.tnSelected.Text;
+            string _filename=this.tnSelected.Text+".svg";
             string svgfilepath = Path.Combine(cProjectManager.dirPathMap,_filename ); 
             if (File.Exists(svgfilepath))
             {

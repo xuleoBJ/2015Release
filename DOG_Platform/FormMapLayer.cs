@@ -168,7 +168,13 @@ namespace DOGPlatform
             //注意偏移量,偏移主要是为了好看 如果不偏移的话 就会绘到角落上,这时的偏移是整个偏移 后面的不用偏移了，相对偏移0，0
             int idx = 50;
             int idy = 50;
-            cSVGDocLayerMap svgLayerMap = new cSVGDocLayerMap(filePathXMLconfigLayerMap, PageWidth, PageHeight, idx, idy, sUnit); ;
+            cSVGDocLayerMap svgLayerMap = new cSVGDocLayerMap(filePathXMLconfigLayerMap, PageWidth, PageHeight, idx, idy, sUnit);
+           
+            //add title 
+            string sTitle = this.selectedLayer+ "小层平面图";
+            if (tbxTitle.Text != "") sTitle = tbxTitle.Text;
+            svgLayerMap.addSVGTitle(sTitle, 50, 20);
+            XmlElement returnElemment;
           
             if (File.Exists(filePathSVGLayerMap)) File.Delete(filePathSVGLayerMap);
 
@@ -223,7 +229,7 @@ namespace DOGPlatform
 
      
         private void btnMakeLayerMap_Click(object sender, EventArgs e)
-        {
+        {  
             generateSVGfilemap();
         }
         private void btnSelectAllJH_Click(object sender, EventArgs e)
@@ -306,9 +312,6 @@ namespace DOGPlatform
         {
             cXMLLayerMapGeoproperty.setLayerGeoglogyProperty_Dxoffset(filePathXMLconfigLayerMap, Convert.ToInt16(nUDLayerGeologyProperyDxOffset.Value));
         }
-
-      
-
 
         private void FormMapLayer_Load(object sender, EventArgs e)
         {

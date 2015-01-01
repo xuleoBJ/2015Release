@@ -219,11 +219,9 @@ namespace DOGPlatform.SVG
                 int iYview = pointConvert2View.Y; 
                 string sDCHD=split[3];
                 string SH=split[4];
-                string sYXHD=split[5];
+                string sYXHD=float.Parse (split[5]).ToString("0.0");
                 string STL=split[6];
                 ItemWellMapLayer item = ItemWellMapLayer.parseLine(_data);
-                
-
                 gWellsProperty.AppendChild(gProperty(  iXview, iYview, sDCHD,SH,sYXHD,STL,sFontSize));
 
             }
@@ -236,8 +234,8 @@ namespace DOGPlatform.SVG
             XmlElement gWellLayerProperty = svgDoc.CreateElement("g");
 
             XmlElement gSHText = svgDoc.CreateElement("text");
-            gSHText.SetAttribute("x", (iXview - 2).ToString());
-            gSHText.SetAttribute("y", (iYview + 5).ToString());
+            gSHText.SetAttribute("x", (iXview + 5).ToString());
+            gSHText.SetAttribute("y", (iYview + 6).ToString());
             gSHText.SetAttribute("font-size", sFontSize);
             gSHText.SetAttribute("font-style", "normal");
             gSHText.SetAttribute("fill", "black");
@@ -247,26 +245,18 @@ namespace DOGPlatform.SVG
                 gSHText.InnerText = SH;
 
                 XmlElement gYXHDText = svgDoc.CreateElement("text");
-                gYXHDText.SetAttribute("x", (iXview - 2).ToString());
+                gYXHDText.SetAttribute("x", (iXview +5).ToString());
                 gYXHDText.SetAttribute("y", iYview.ToString());
                 gYXHDText.SetAttribute("font-size", sFontSize);
                 //gYXHDText.SetAttribute("font-style", "normal");
                 gYXHDText.SetAttribute("style", "text-decoration: underline;");
-                gYXHDText.InnerText = sYXHD;
+                gYXHDText.InnerText =" "+ sYXHD+" ";
                 gYXHDText.SetAttribute("fill", "black");
                 gWellLayerProperty.AppendChild(gYXHDText);
 
-                XmlElement gPath = svgDoc.CreateElement("path");
-                string d = "M" + (iXview - 2).ToString() + " " + (iYview + 1).ToString() + "h8";
-                gPath.SetAttribute("d", d);
-                gPath.SetAttribute("y", iYview.ToString());
-                gPath.SetAttribute("stroke", "black");
-                gPath.SetAttribute("stroke-width", "0.5");
-                gPath.SetAttribute("fill", "black");
-                gWellLayerProperty.AppendChild(gPath);
 
                 XmlElement gSTLText = svgDoc.CreateElement("text");
-                gSTLText.SetAttribute("x", (iXview + 6).ToString());
+                gSTLText.SetAttribute("x", (iXview + 14).ToString());
                 gSTLText.SetAttribute("y", (iYview + 3).ToString());
                 gSTLText.SetAttribute("font-size", sFontSize);
                 gSTLText.SetAttribute("font-style", "normal");

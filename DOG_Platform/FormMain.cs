@@ -472,7 +472,6 @@ namespace DOGPlatform
         void updateWebSVG()
         {
             this.tbcMain.SelectedTab = tbgIE;
-
             try
             {
                 if (filePathWebSVG.EndsWith(".svg"))
@@ -781,17 +780,16 @@ namespace DOGPlatform
         {
             if (cProjectData.ltStrProjectJH.Count > 0)
             {
-                int _iSacleRuler = 500; //定义网格单位
+                int iSacleUnit = 500; //定义网格单位
                 if (cProjectData.dfMapScale == 0) cProjectData.dfMapScale =0.1;
-               
-                    cProjectData.dfMapXrealRefer = Math.Floor(cProjectData.listProjectWell.Min(p => p.dbX) / _iSacleRuler - 1) * _iSacleRuler;
-                    cProjectData.dfMapYrealRefer = (Math.Ceiling(cProjectData.listProjectWell.Max(p => p.dbY) / _iSacleRuler) + 1) * _iSacleRuler;
+                cProjectData.dfMapXrealRefer = Math.Floor(cProjectData.listProjectWell.Min(p => p.dbX) / iSacleUnit - 1) * iSacleUnit;
+                cProjectData.dfMapYrealRefer = (Math.Ceiling(cProjectData.listProjectWell.Max(p => p.dbY) / iSacleUnit) + 1) * iSacleUnit; 
 
                 double xMaxDistance = cProjectData.listProjectWell.Max(p => p.dbX) - cProjectData.listProjectWell.Min(p => p.dbX);
                 double yMaxDistance = cProjectData.listProjectWell.Max(p => p.dbY) - cProjectData.listProjectWell.Min(p => p.dbY);
 
-                int iPanelWidth = Convert.ToInt32(Math.Ceiling(xMaxDistance * cProjectData.dfMapScale) + _iSacleRuler * 3 * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
-                int iPanelHeight = Convert.ToInt32(Math.Ceiling(yMaxDistance * cProjectData.dfMapScale) + _iSacleRuler * 3 * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
+                int iPanelWidth = Convert.ToInt32((int)(xMaxDistance / iSacleUnit + 3) * iSacleUnit * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
+                int iPanelHeight = Convert.ToInt32((int)(yMaxDistance / iSacleUnit + 3) * iSacleUnit*cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
                 panelWellNavigation.Dock = System.Windows.Forms.DockStyle.None;
 
                 panelWellNavigation.Width = iPanelWidth;
@@ -859,7 +857,6 @@ namespace DOGPlatform
                     break;
             }
 
-
         }
         private void panelWellNavigation_MouseMove(object sender, MouseEventArgs e)
         {
@@ -905,8 +902,6 @@ namespace DOGPlatform
             }
         }
 
-       
-
         private void tvProjectData_AfterCheck(object sender, TreeViewEventArgs e)
         {
             if (e.Node.Level == 0 && e.Node.Text == "井")
@@ -924,7 +919,6 @@ namespace DOGPlatform
                 {
                     foreach (TreeNode _tn in e.Node.Nodes) _tn.Checked = false;
                 }
-
             };
             if (e.Node.Level == 1 && e.Node.Parent.Text == "井" && e.Node.Index == 0)
             {
@@ -970,17 +964,21 @@ namespace DOGPlatform
             tvResultGraph.ContextMenuStrip = cmsProject;
             TreeNode selectNode = tvResultGraph.SelectedNode;
             cmsProject.Items.Clear();
-
             switch (selectNode.Level)
             {
                 case 0:
-                    break;
-                case 1:
-                    cContextMenuStripSVGGraph cTS = new cContextMenuStripSVGGraph(cmsProject, selectNode, selectNode.Text);
+                    cContextMenuStripSVGGraph cTS = new cContextMenuStripSVGGraph(cmsProject, selectNode, selectNode.Text+".svg");
                     cTS.setupTsmiOpenInInkscape();
                     cTS.setupTsmiRename();
                     cTS.setupTsmiOpenIE();
                     cTS.setupTsmiDeleteFile();
+                    break;
+                case 1:
+                    //cContextMenuStripSVGGraph cTS = new cContextMenuStripSVGGraph(cmsProject, selectNode, selectNode.Text);
+                    //cTS.setupTsmiOpenInInkscape();
+                    //cTS.setupTsmiRename();
+                    //cTS.setupTsmiOpenIE();
+                    //cTS.setupTsmiDeleteFile();
                     break;
                 case 2:
                     break;
@@ -990,9 +988,8 @@ namespace DOGPlatform
                     break;
             }
 
-            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvResultGraph.SelectedNode.Text);
+            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvResultGraph.SelectedNode.Text+".svg");
             updateWebSVG();
-
         }
 
         private void tsmiWells_Click(object sender, EventArgs e)
@@ -1143,7 +1140,6 @@ namespace DOGPlatform
                 FormDataViewSingleWell formDataView = new FormDataViewSingleWell(cProjectData.ltStrProjectJH[0]);
                 formDataView.Show();
             }
-     
         }
 
 

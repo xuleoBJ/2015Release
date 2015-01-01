@@ -252,9 +252,9 @@ namespace DOGPlatform.SVG
             float dfscale = this.dfscale;
             double xMax = dfListX.Max() - dfListX.Min();
             double yMax = dfListY.Max() - dfListY.Min();
-            int _iSacleRuler = 500; //定义网格单位
-            int iPanelWidth = Convert.ToInt32(Math.Ceiling(xMax * dfscale) + _iSacleRuler * 3 * dfscale);//显示好看pannel比最大大3个网格
-            int iPanelHeight = Convert.ToInt32(Math.Ceiling(yMax * dfscale) + _iSacleRuler * 3 * dfscale);//显示好看pannel比最大大3个网格
+            int iSacleUnit = 500; //定义网格单位
+            int iPanelWidth = Convert.ToInt32((int)(xMax / iSacleUnit + 3) * iSacleUnit * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
+            int iPanelHeight = Convert.ToInt32((int)(yMax / iSacleUnit + 3) * iSacleUnit * cProjectData.dfMapScale);
             XmlElement gRectInner = svgDoc.CreateElement("rect");
             gRectInner.SetAttribute("x", "0");
             gRectInner.SetAttribute("y", "0");
@@ -265,7 +265,7 @@ namespace DOGPlatform.SVG
             gRectInner.SetAttribute("stroke", "black");
             gMapFrame.AppendChild(gRectInner);
             XmlElement gRectOuter = svgDoc.CreateElement("rect");
-            int iDistance = 8;//定义内外框距离
+            int iDistance = 10;//定义内外框距离
             gRectOuter.SetAttribute("x", (-iDistance).ToString());
             gRectOuter.SetAttribute("y", (-iDistance).ToString());
             gRectOuter.SetAttribute("width", (iPanelWidth + iDistance*2).ToString());
@@ -279,7 +279,7 @@ namespace DOGPlatform.SVG
             XmlElement gGridLine = svgDoc.CreateElement("g");
             gGridLine.SetAttribute("id", "idgridLine");
             gGridLine.SetAttribute("stroke", "black");
-            gGridLine.SetAttribute("style", "stroke-width:0.1");
+            gGridLine.SetAttribute("style", "stroke-width:0.5");
             gGridLine.SetAttribute("fill", "none");
             gGridLine.SetAttribute("fill-opacity", "0.8");
 
@@ -295,7 +295,7 @@ namespace DOGPlatform.SVG
             gGridText2.SetAttribute("font-style", "normal");
             gGridText2.SetAttribute("fill", "black");
 
-            for (int i = 1; i * _iSacleRuler * cProjectData.dfMapScale <= iPanelWidth; i++)
+            for (int i = 1; i * iSacleUnit * cProjectData.dfMapScale <= iPanelWidth; i++)
             {
                 int iXCurrentView = Convert.ToInt32(i * 500 * cProjectData.dfMapScale);
                 Point point1 = new Point(iXCurrentView, 0);
@@ -312,13 +312,13 @@ namespace DOGPlatform.SVG
 
                 //应该写的数值是 cProject.dfMapXrealRefer + i * 500
                 XmlElement gXText = svgDoc.CreateElement("text");
-                gXText.SetAttribute("x", (iXCurrentView - 10).ToString());
+                gXText.SetAttribute("x", (iXCurrentView - 13).ToString());
                 gXText.SetAttribute("y", "-1");
                 gXText.InnerText = ((cProjectData.dfMapXrealRefer + i * 500)/100000).ToString("0");
                 gGridText.AppendChild(gXText);
 
                 XmlElement gXText2 = svgDoc.CreateElement("text");
-                gXText2.SetAttribute("x", (iXCurrentView+3).ToString());
+                gXText2.SetAttribute("x", (iXCurrentView+2).ToString());
                 gXText2.SetAttribute("y", "-1");
                 gXText2.InnerText = (((cProjectData.dfMapXrealRefer + i * 500)%100000)/100).ToString("0");
                 gGridText2.AppendChild(gXText2);
@@ -327,7 +327,7 @@ namespace DOGPlatform.SVG
 
 
             //应该写的数值是 cProject.dfMapXrealRefer + i * 500
-            for (int i = 1; i * _iSacleRuler * cProjectData.dfMapScale <= iPanelHeight; i++)
+            for (int i = 1; i * iSacleUnit * cProjectData.dfMapScale <= iPanelHeight; i++)
             {
                 int iYCurrentView = Convert.ToInt32(i * 500 * cProjectData.dfMapScale);
                 Point point3 = new Point(0, iYCurrentView);
@@ -343,17 +343,18 @@ namespace DOGPlatform.SVG
 
                 XmlElement gYText = svgDoc.CreateElement("text");
                 gYText.SetAttribute("x", (-iDistance+1).ToString());
-                gYText.SetAttribute("y", (iYCurrentView-2).ToString());
+                gYText.SetAttribute("y", (iYCurrentView-1).ToString());
                 gYText.InnerText = ((cProjectData.dfMapYrealRefer - i * 500)/100000).ToString("0");
                 gGridText.AppendChild(gYText);
 
                 XmlElement gYText2= svgDoc.CreateElement("text");
                 gYText2.SetAttribute("x", (-iDistance + 1).ToString());
-                gYText2.SetAttribute("y", (iYCurrentView+3).ToString());
+                gYText2.SetAttribute("y", (iYCurrentView+5).ToString());
                 gYText2.InnerText = (((cProjectData.dfMapYrealRefer - i * 500) %100000)/100).ToString("0");;
                 gGridText2.AppendChild(gYText2);
 
             }
+
             gMapFrame.AppendChild(gGridLine);
             gMapFrame.AppendChild(gGridText);
             gMapFrame.AppendChild(gGridText2);

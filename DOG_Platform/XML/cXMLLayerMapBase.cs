@@ -87,11 +87,11 @@ namespace DOGPlatform.XML
             node.AppendChild(eleMent);
 
             eleMent = doc.CreateElement("fontSize");
-            eleMent.InnerText = "5";
+            eleMent.InnerText = "10";
             node.AppendChild(eleMent);
 
             eleMent = doc.CreateElement("DX_Text"); //标注偏移
-            eleMent.InnerText = "10";
+            eleMent.InnerText = "12";
             node.AppendChild(eleMent);
             //eleMent = doc.CreateElement("DY_Text"); //标注偏移
             //eleMent.SetAttribute("value", "10");
@@ -111,7 +111,7 @@ namespace DOGPlatform.XML
             eleMent.InnerText = "black";
             node.AppendChild(eleMent);
             eleMent = doc.CreateElement("fontSize");
-            eleMent.InnerText = "4";
+            eleMent.InnerText = "6";
             node.AppendChild(eleMent);
             eleMent = doc.CreateElement("DX_Text"); //标注整体X偏移距离
             eleMent.InnerText = "5";

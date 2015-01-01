@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDataViewSingleWell));
             this.dgvDataTable = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.cbbJH = new System.Windows.Forms.ComboBox();
@@ -84,6 +85,7 @@
             this.Controls.Add(this.cbbJH);
             this.Controls.Add(this.dgvDataTable);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDataViewSingleWell";
             this.Text = "井数据分析";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDataTable)).EndInit();

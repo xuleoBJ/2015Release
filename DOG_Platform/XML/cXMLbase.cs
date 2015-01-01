@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.XPath;
+using System.IO;
 
 namespace DOGPlatform.XML
 {
@@ -20,11 +21,14 @@ namespace DOGPlatform.XML
 
         public static void updateNodeValue(string _xmlFilePath, string _nodePath, string _sValue)
         {
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(_xmlFilePath);
-            XmlNode currentNode = xmlDoc.SelectSingleNode(_nodePath);
-            if (currentNode != null) currentNode.InnerText = _sValue;
-            xmlDoc.Save(_xmlFilePath);
+            if (File.Exists(_xmlFilePath))
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(_xmlFilePath);
+                XmlNode currentNode = xmlDoc.SelectSingleNode(_nodePath);
+                if (currentNode != null) currentNode.InnerText = _sValue;
+                xmlDoc.Save(_xmlFilePath);
+            }
         }
 
         public static void addNode(string _xmlFilePath, string _nodePath, XmlNode _ele)
@@ -46,7 +50,6 @@ namespace DOGPlatform.XML
                 foreach (XmlNode _node in currentNode.SelectNodes(sTagNameRemoved))
                     currentNode.RemoveChild(_node);
             }
-
             xmlDoc.Save(xmlfilePath);
 
         }

@@ -11,26 +11,20 @@ namespace DOGPlatform
     {
         public static void callInk(string svgfilepath)
         {
-          try
+            if (!File.Exists(cProjectManager.filePathInkscape))
             {
-                if (!File.Exists(cProjectManager.filePathInkscape)) 
-                {
-                    if (findPathInkscape() == false) MessageBox.Show("未找到编辑模块，请输入路径或者选择模块。");
-                }
-                else if (svgfilepath != "" && File.Exists(cProjectManager.filePathInkscape))
-                    System.Diagnostics.Process.Start(cProjectManager.filePathInkscape, svgfilepath);
+                if (findPathInkscape() == false) MessageBox.Show("未找到编辑模块，请输入路径或者选择模块。");
             }
-            catch (Exception e1)
-            {
-                MessageBox.Show("未找到编辑模块，请选择其它编辑软件。");
-            }
+            if (svgfilepath != "" && File.Exists(cProjectManager.filePathInkscape)) 
+                System.Diagnostics.Process.Start(cProjectManager.filePathInkscape, svgfilepath); 
+            
         }
 
         static bool findPathInkscape()
         {
             List<string> ListSearchPath = new List<string>();
-            ListSearchPath.Add(@"C:\Program Files (x86)\Inkscape");
             ListSearchPath.Add(@"C:\Program Files\Inkscape");
+            ListSearchPath.Add(@"C:\Program Files (x86)\Inkscape");
             ListSearchPath.Add(@"D:\Program Files\Inkscape");
             ListSearchPath.Add(@"D:\Program Files (x86)\Inkscape");
             foreach (string sPath in ListSearchPath) 

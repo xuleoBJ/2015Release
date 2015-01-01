@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWellsGroup));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.tbcWellsGroup = new System.Windows.Forms.TabControl();
             this.tbgWellsGroupData = new System.Windows.Forms.TabPage();
@@ -1887,6 +1888,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(871, 563);
             this.Controls.Add(this.tbcWellsGroup);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormWellsGroup";
             this.Text = "井组分析";
             this.Load += new System.EventHandler(this.FormMapFence_Load);

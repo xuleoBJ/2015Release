@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormWellSectionPath));
             this.tabControlSection = new System.Windows.Forms.TabControl();
             this.tabPageData = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -107,6 +108,8 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.cbbUnit = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.nUDPageHeight = new System.Windows.Forms.NumericUpDown();
             this.nUDPageWidth = new System.Windows.Forms.NumericUpDown();
             this.label20 = new System.Windows.Forms.Label();
@@ -195,8 +198,6 @@
             this.label44 = new System.Windows.Forms.Label();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.cbbUnit = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.tabControlSection.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -1257,6 +1258,23 @@
             this.groupBox18.TabIndex = 59;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "页面大小设置";
+            // 
+            // cbbUnit
+            // 
+            this.cbbUnit.FormattingEnabled = true;
+            this.cbbUnit.Location = new System.Drawing.Point(312, 26);
+            this.cbbUnit.Name = "cbbUnit";
+            this.cbbUnit.Size = new System.Drawing.Size(75, 20);
+            this.cbbUnit.TabIndex = 44;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(253, 30);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 45;
+            this.label16.Text = "图幅单位";
             // 
             // nUDPageHeight
             // 
@@ -2608,29 +2626,13 @@
             this.btnSaveSetting.Text = "保存设置";
             this.btnSaveSetting.UseVisualStyleBackColor = true;
             // 
-            // cbbUnit
-            // 
-            this.cbbUnit.FormattingEnabled = true;
-            this.cbbUnit.Location = new System.Drawing.Point(312, 26);
-            this.cbbUnit.Name = "cbbUnit";
-            this.cbbUnit.Size = new System.Drawing.Size(75, 20);
-            this.cbbUnit.TabIndex = 44;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(253, 30);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(53, 12);
-            this.label16.TabIndex = 45;
-            this.label16.Text = "图幅单位";
-            // 
             // FormWellSectionPath
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(897, 601);
             this.Controls.Add(this.tabControlSection);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormWellSectionPath";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

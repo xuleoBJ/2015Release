@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormImportProjectData));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiData = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiOpenFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -244,7 +245,7 @@
             this.tbgWellPath.Location = new System.Drawing.Point(4, 22);
             this.tbgWellPath.Name = "tbgWellPath";
             this.tbgWellPath.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgWellPath.Size = new System.Drawing.Size(975, 515);
+            this.tbgWellPath.Size = new System.Drawing.Size(1112, 546);
             this.tbgWellPath.TabIndex = 9;
             this.tbgWellPath.Text = "井斜数据";
             this.tbgWellPath.UseVisualStyleBackColor = true;
@@ -261,7 +262,7 @@
             this.dgvWellDev.Location = new System.Drawing.Point(3, 3);
             this.dgvWellDev.Name = "dgvWellDev";
             this.dgvWellDev.RowTemplate.Height = 23;
-            this.dgvWellDev.Size = new System.Drawing.Size(969, 509);
+            this.dgvWellDev.Size = new System.Drawing.Size(1106, 540);
             this.dgvWellDev.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn1
@@ -290,7 +291,7 @@
             this.tbgLayerDepth.Controls.Add(this.dgvLayerDepth);
             this.tbgLayerDepth.Location = new System.Drawing.Point(4, 22);
             this.tbgLayerDepth.Name = "tbgLayerDepth";
-            this.tbgLayerDepth.Size = new System.Drawing.Size(973, 464);
+            this.tbgLayerDepth.Size = new System.Drawing.Size(1112, 546);
             this.tbgLayerDepth.TabIndex = 3;
             this.tbgLayerDepth.Text = "分层数据";
             this.tbgLayerDepth.UseVisualStyleBackColor = true;
@@ -306,7 +307,7 @@
             this.dgvLayerDepth.Location = new System.Drawing.Point(0, 0);
             this.dgvLayerDepth.Name = "dgvLayerDepth";
             this.dgvLayerDepth.RowTemplate.Height = 23;
-            this.dgvLayerDepth.Size = new System.Drawing.Size(973, 464);
+            this.dgvLayerDepth.Size = new System.Drawing.Size(1112, 546);
             this.dgvLayerDepth.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn8
@@ -330,7 +331,7 @@
             this.tbgJSJL.Controls.Add(this.dgvIntepretation);
             this.tbgJSJL.Location = new System.Drawing.Point(4, 22);
             this.tbgJSJL.Name = "tbgJSJL";
-            this.tbgJSJL.Size = new System.Drawing.Size(973, 464);
+            this.tbgJSJL.Size = new System.Drawing.Size(1112, 546);
             this.tbgJSJL.TabIndex = 2;
             this.tbgJSJL.Text = "解释成果表";
             this.tbgJSJL.UseVisualStyleBackColor = true;
@@ -351,7 +352,7 @@
             this.dgvIntepretation.Location = new System.Drawing.Point(0, 0);
             this.dgvIntepretation.Name = "dgvIntepretation";
             this.dgvIntepretation.RowTemplate.Height = 23;
-            this.dgvIntepretation.Size = new System.Drawing.Size(973, 464);
+            this.dgvIntepretation.Size = new System.Drawing.Size(1112, 546);
             this.dgvIntepretation.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn4
@@ -406,7 +407,7 @@
             this.tbgPerforation.Location = new System.Drawing.Point(4, 22);
             this.tbgPerforation.Name = "tbgPerforation";
             this.tbgPerforation.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgPerforation.Size = new System.Drawing.Size(973, 464);
+            this.tbgPerforation.Size = new System.Drawing.Size(1112, 546);
             this.tbgPerforation.TabIndex = 6;
             this.tbgPerforation.Text = "射孔数据";
             this.tbgPerforation.UseVisualStyleBackColor = true;
@@ -419,7 +420,7 @@
             this.perforationTabControl.Location = new System.Drawing.Point(3, 3);
             this.perforationTabControl.Name = "perforationTabControl";
             this.perforationTabControl.SelectedIndex = 0;
-            this.perforationTabControl.Size = new System.Drawing.Size(967, 458);
+            this.perforationTabControl.Size = new System.Drawing.Size(1106, 540);
             this.perforationTabControl.TabIndex = 24;
             // 
             // tbgSheKong
@@ -428,7 +429,7 @@
             this.tbgSheKong.Location = new System.Drawing.Point(4, 22);
             this.tbgSheKong.Name = "tbgSheKong";
             this.tbgSheKong.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgSheKong.Size = new System.Drawing.Size(959, 432);
+            this.tbgSheKong.Size = new System.Drawing.Size(1098, 514);
             this.tbgSheKong.TabIndex = 0;
             this.tbgSheKong.Text = "射孔数据";
             this.tbgSheKong.UseVisualStyleBackColor = true;
@@ -445,7 +446,7 @@
             this.dgvPerforation.Location = new System.Drawing.Point(3, 3);
             this.dgvPerforation.Name = "dgvPerforation";
             this.dgvPerforation.RowTemplate.Height = 23;
-            this.dgvPerforation.Size = new System.Drawing.Size(953, 426);
+            this.dgvPerforation.Size = new System.Drawing.Size(1092, 508);
             this.dgvPerforation.TabIndex = 2;
             // 
             // dataGridViewTextBoxColumn15
@@ -626,7 +627,7 @@
             this.tbgInjectWellData.Controls.Add(this.dgvWaterInjectionData);
             this.tbgInjectWellData.Location = new System.Drawing.Point(4, 22);
             this.tbgInjectWellData.Name = "tbgInjectWellData";
-            this.tbgInjectWellData.Size = new System.Drawing.Size(973, 464);
+            this.tbgInjectWellData.Size = new System.Drawing.Size(1112, 546);
             this.tbgInjectWellData.TabIndex = 8;
             this.tbgInjectWellData.Text = "水井生产数据";
             this.tbgInjectWellData.UseVisualStyleBackColor = true;
@@ -648,7 +649,7 @@
             this.dgvWaterInjectionData.Location = new System.Drawing.Point(0, 0);
             this.dgvWaterInjectionData.Name = "dgvWaterInjectionData";
             this.dgvWaterInjectionData.RowTemplate.Height = 23;
-            this.dgvWaterInjectionData.Size = new System.Drawing.Size(973, 464);
+            this.dgvWaterInjectionData.Size = new System.Drawing.Size(1112, 546);
             this.dgvWaterInjectionData.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn31
@@ -707,7 +708,7 @@
             this.tbgProFile.Location = new System.Drawing.Point(4, 22);
             this.tbgProFile.Name = "tbgProFile";
             this.tbgProFile.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgProFile.Size = new System.Drawing.Size(973, 464);
+            this.tbgProFile.Size = new System.Drawing.Size(1112, 546);
             this.tbgProFile.TabIndex = 10;
             this.tbgProFile.Text = "吸水剖面";
             this.tbgProFile.UseVisualStyleBackColor = true;
@@ -725,7 +726,7 @@
             this.dgvProfile.Location = new System.Drawing.Point(3, 3);
             this.dgvProfile.Name = "dgvProfile";
             this.dgvProfile.RowTemplate.Height = 23;
-            this.dgvProfile.Size = new System.Drawing.Size(967, 458);
+            this.dgvProfile.Size = new System.Drawing.Size(1106, 540);
             this.dgvProfile.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn10
@@ -777,6 +778,7 @@
             this.Controls.Add(this.cbbJH);
             this.Controls.Add(this.tbcProjectDataInput);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormImportProjectData";
             this.Text = "工程数据管理";
             this.menuStrip1.ResumeLayout(false);
