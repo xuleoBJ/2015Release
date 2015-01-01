@@ -76,30 +76,9 @@ namespace DOGPlatform
               MessageBox.Show("ok");
           }
 
-          private void corldrawToolStripMenuItem_Click(object sender, EventArgs e)
-          {
-              try
-              {
-                  if (this.filepathSVG != "")
-                      System.Diagnostics.Process.Start(@"C:\Program Files\Corel\CorelDRAW Graphics Suite X6\Programs64\CorelDRW.exe", this.filepathSVG);
-              }
-              catch(Exception e1)
-              {
-                  MessageBox.Show("没有找到相应软件，请选择系统自动选择。");
-              }
-          }
-
           private void inkscapeToolStripMenuItem_Click(object sender, EventArgs e)
           {
-              try
-              {
-              if (this.filepathSVG != "")
-                  System.Diagnostics.Process.Start(@"C:\Program Files (x86)\Inkscape\inkscape.exe", this.filepathSVG);
-              }
-              catch(Exception e1)
-              {
-                  MessageBox.Show("没有找到相应软件，请选择系统自动选择。");
-              }
+              if (this.filepathSVG != "") cCallInkscape.callInk(filepathSVG);
           }
 
           public string Test(string args)
@@ -251,6 +230,11 @@ namespace DOGPlatform
 
               XDoc.Save(filepathSVG);
               webBrowserSVG.Refresh();
+          }
+
+          private void tsmiEdit_Click(object sender, EventArgs e)
+          {
+
           }
 
           

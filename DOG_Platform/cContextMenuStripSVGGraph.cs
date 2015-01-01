@@ -39,18 +39,8 @@ namespace DOGPlatform
         }
         private void tsmiImportOpenedInkscaple_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string svgfilepath = Path.Combine(cProjectManager.dirPathMap, this.sFileName);
-
-                if (svgfilepath != "" && !Directory.Exists(@"C:\Program Files (x86)\Inkscape\inkscape.exe"))
-                    System.Diagnostics.Process.Start(@"C:\Program Files (x86)\Inkscape\inkscape.exe", svgfilepath);
-
-            }
-            catch (Exception e1)
-            {
-                MessageBox.Show("未找到编辑模块，请选择其它编辑软件。");
-            }
+            string svgfilepath = Path.Combine(cProjectManager.dirPathMap, this.sFileName);
+            cCallInkscape.callInk(svgfilepath);
         }
 
         public void setupTsmiOpenIE()
@@ -77,7 +67,7 @@ namespace DOGPlatform
 
         private void tsmiDelete_Click(object sender, EventArgs e)
         {
-            string _filename=            this.tnSelected.Text;
+            string _filename=this.tnSelected.Text;
             string svgfilepath = Path.Combine(cProjectManager.dirPathMap,_filename ); 
             if (File.Exists(svgfilepath))
             {
@@ -85,6 +75,8 @@ namespace DOGPlatform
                 if (dialogResult == DialogResult.Yes)
                 {
                     File.Delete(svgfilepath);
+                    string _fileXML=svgfilepath.Replace(".svg",".xml");
+                    if (File.Exists(_fileXML)) File.Delete(_fileXML);
                     tnSelected.Remove();
                 }
             }

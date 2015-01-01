@@ -438,8 +438,13 @@ namespace DOGPlatform
 
         void updateTreeViewProjectGraph()
         {
-            string dir = cProjectManager.dirPathMap;
-            cPublicMethodForm.ListDirectory(tvResultGraph, dir);
+            List<string> filenames = Directory.GetFiles(cProjectManager.dirPathMap, "*.svg").ToList();
+            this.tvResultGraph.Nodes.Clear();
+            foreach (string item in filenames)
+            {
+                TreeNode _tn = new TreeNode(Path.GetFileNameWithoutExtension(item), 2, 2);
+                this.tvResultGraph.Nodes.Add(_tn);
+            }
             tvResultGraph.ExpandAll();
         }
 
@@ -990,16 +995,6 @@ namespace DOGPlatform
 
         }
 
-        private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if (cProjectData.ltStrProjectJH.Count > 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Yes 保存项目，No 放弃修改", "关闭工程", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes) cProjectManager.saveProject();
-            }
-
-        }
-
         private void tsmiWells_Click(object sender, EventArgs e)
         {
             tbcMain.TabPages.Add(tbgWellHead);
@@ -1182,6 +1177,16 @@ namespace DOGPlatform
         {
             FormInjProAna form = new FormInjProAna();
             form.Show();
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (cProjectData.ltStrProjectJH.Count > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Yes 保存关闭，No 放弃关闭", "关闭工程", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes) { cProjectManager.saveProject(); Application.ExitThread(); }
+                else e.Cancel = true; 
+            }
         }
 
          

@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="cBase.cs" />
     <Compile Include="cCalDistance.cs" />
+    <Compile Include="cCallInkscape.cs" />
     <Compile Include="cContextMenuStripBaseGraph.cs" />
     <Compile Include="cContextMenuStripBaseLayer.cs" />
     <Compile Include="cContextMenuStripInputLayer.cs" />

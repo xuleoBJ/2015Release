@@ -22,6 +22,7 @@ namespace DOGPlatform
         public static string dirPathLayerDir = dirProject;
         public static string dirPathTemplate = dirProject;
 
+        public static string filePathInkscape = @"C:\Program Files (x86)\Inkscape\inkscape.exe";
 
         public static string filePathInputWellhead = Path.Combine(dirPathUserData, "$wellHead#.txt");
         public static string filePathInputLayerSeriers = Path.Combine(dirPathUserData, "$layerSerier#.txt");

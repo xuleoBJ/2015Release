@@ -334,7 +334,7 @@
             this.tbgResultGraph.Location = new System.Drawing.Point(4, 22);
             this.tbgResultGraph.Name = "tbgResultGraph";
             this.tbgResultGraph.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgResultGraph.Size = new System.Drawing.Size(158, 348);
+            this.tbgResultGraph.Size = new System.Drawing.Size(158, 351);
             this.tbgResultGraph.TabIndex = 2;
             this.tbgResultGraph.Text = "图";
             this.tbgResultGraph.UseVisualStyleBackColor = true;
@@ -345,7 +345,7 @@
             this.tvResultGraph.LabelEdit = true;
             this.tvResultGraph.Location = new System.Drawing.Point(3, 3);
             this.tvResultGraph.Name = "tvResultGraph";
-            this.tvResultGraph.Size = new System.Drawing.Size(152, 342);
+            this.tvResultGraph.Size = new System.Drawing.Size(152, 345);
             this.tvResultGraph.TabIndex = 2;
             this.tvResultGraph.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_BeforeLabelEdit);
             this.tvResultGraph.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.tvProjectGraph_AfterLabelEdit);
@@ -1078,7 +1078,7 @@
             this.ToolStripSeparator2});
             this.ToolStripMain.Location = new System.Drawing.Point(3, 25);
             this.ToolStripMain.Name = "ToolStripMain";
-            this.ToolStripMain.Size = new System.Drawing.Size(410, 25);
+            this.ToolStripMain.Size = new System.Drawing.Size(377, 25);
             this.ToolStripMain.TabIndex = 3;
             // 
             // tsBtnNewProject
@@ -1243,7 +1243,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DOG-Robot地质研究机器人2015";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.cmsNavigationPanel.ResumeLayout(false);
             this.ToolStripContainer1.BottomToolStripPanel.ResumeLayout(false);

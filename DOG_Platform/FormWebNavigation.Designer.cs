@@ -94,6 +94,7 @@
             this.tsmiEdit.Name = "tsmiEdit";
             this.tsmiEdit.Size = new System.Drawing.Size(152, 22);
             this.tsmiEdit.Text = "编辑";
+            this.tsmiEdit.Click += new System.EventHandler(this.tsmiEdit_Click);
             // 
             // inkscapeToolStripMenuItem
             // 
@@ -122,21 +123,21 @@
             // 画线ToolStripMenuItem
             // 
             this.画线ToolStripMenuItem.Name = "画线ToolStripMenuItem";
-            this.画线ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.画线ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.画线ToolStripMenuItem.Text = "画线";
             this.画线ToolStripMenuItem.Click += new System.EventHandler(this.画线ToolStripMenuItem_Click);
             // 
             // tsmiMove
             // 
             this.tsmiMove.Name = "tsmiMove";
-            this.tsmiMove.Size = new System.Drawing.Size(152, 22);
+            this.tsmiMove.Size = new System.Drawing.Size(100, 22);
             this.tsmiMove.Text = "移动";
             this.tsmiMove.Click += new System.EventHandler(this.tsmiMove_Click);
             // 
             // tsmiDel
             // 
             this.tsmiDel.Name = "tsmiDel";
-            this.tsmiDel.Size = new System.Drawing.Size(152, 22);
+            this.tsmiDel.Size = new System.Drawing.Size(100, 22);
             this.tsmiDel.Text = "删除";
             this.tsmiDel.Click += new System.EventHandler(this.tsmiDel_Click);
             // 
@@ -152,7 +153,7 @@
             // tsmiSand
             // 
             this.tsmiSand.Name = "tsmiSand";
-            this.tsmiSand.Size = new System.Drawing.Size(152, 22);
+            this.tsmiSand.Size = new System.Drawing.Size(112, 22);
             this.tsmiSand.Text = "油砂体";
             this.tsmiSand.Click += new System.EventHandler(this.tsmiSand_Click);
             // 
@@ -162,7 +163,7 @@
             this.tsmiOilLayer,
             this.tsmiWaterLayer});
             this.连接层ToolStripMenuItem.Name = "连接层ToolStripMenuItem";
-            this.连接层ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.连接层ToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.连接层ToolStripMenuItem.Text = "连接层";
             // 
             // tsmiOilLayer
@@ -194,7 +195,7 @@
             // ToolStripContainer1.ContentPanel
             // 
             this.ToolStripContainer1.ContentPanel.Controls.Add(this.tabControlSVGNavigation);
-            this.ToolStripContainer1.ContentPanel.Size = new System.Drawing.Size(894, 623);
+            this.ToolStripContainer1.ContentPanel.Size = new System.Drawing.Size(894, 598);
             this.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ToolStripContainer1.Location = new System.Drawing.Point(0, 25);
             this.ToolStripContainer1.Name = "ToolStripContainer1";
@@ -219,7 +220,7 @@
             this.tabControlSVGNavigation.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlSVGNavigation.Name = "tabControlSVGNavigation";
             this.tabControlSVGNavigation.SelectedIndex = 0;
-            this.tabControlSVGNavigation.Size = new System.Drawing.Size(894, 623);
+            this.tabControlSVGNavigation.Size = new System.Drawing.Size(894, 598);
             this.tabControlSVGNavigation.TabIndex = 1;
             this.tabControlSVGNavigation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControlSVGNavigation_MouseClick);
             // 
@@ -230,7 +231,7 @@
             this.tbgSVGView.Margin = new System.Windows.Forms.Padding(2);
             this.tbgSVGView.Name = "tbgSVGView";
             this.tbgSVGView.Padding = new System.Windows.Forms.Padding(2);
-            this.tbgSVGView.Size = new System.Drawing.Size(886, 597);
+            this.tbgSVGView.Size = new System.Drawing.Size(886, 572);
             this.tbgSVGView.TabIndex = 1;
             this.tbgSVGView.Text = "View1";
             this.tbgSVGView.UseVisualStyleBackColor = true;
@@ -242,7 +243,7 @@
             this.webBrowserSVG.Margin = new System.Windows.Forms.Padding(2);
             this.webBrowserSVG.MinimumSize = new System.Drawing.Size(15, 16);
             this.webBrowserSVG.Name = "webBrowserSVG";
-            this.webBrowserSVG.Size = new System.Drawing.Size(882, 593);
+            this.webBrowserSVG.Size = new System.Drawing.Size(882, 568);
             this.webBrowserSVG.TabIndex = 1;
             // 
             // FormWebNavigation
