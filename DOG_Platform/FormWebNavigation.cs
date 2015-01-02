@@ -23,7 +23,8 @@ namespace DOGPlatform
             InitializeComponent();
             this.filepathSVG = filepath;
             this.Text = filepath;
-            webBrowserSVG.ObjectForScripting = this; 
+          //  webBrowserSVG.ObjectForScripting = this;
+            webBrowserSVG.ObjectForScripting= true;
             updateWebSVG();
         }
 
@@ -45,8 +46,8 @@ namespace DOGPlatform
           {
               OpenFileDialog ofdSVGPath = new OpenFileDialog();
 
-              ofdSVGPath.Title = " 打开项目SVG：";
-              ofdSVGPath.Filter = "svg文件|*.svg|所有文件|*.*\\";
+              ofdSVGPath.Title = " 打开文件";
+              ofdSVGPath.Filter = "svg文件|*.svg|所有文件|*.*";
 
               //设置默认文件类型显示顺序 
               ofdSVGPath.FilterIndex = 1;
@@ -115,9 +116,7 @@ namespace DOGPlatform
 
           private void 画线ToolStripMenuItem_Click(object sender, EventArgs e)
           {
-             // this.webBrowserSVG.Document.InvokeScript("alert", new object[] { "Hello World" });
-
-          
+                     
               HtmlElement scriptEl = webBrowserSVG.Document.CreateElement("script");
  
               webBrowserSVG.Document.InvokeScript("sayHello");
@@ -237,6 +236,31 @@ namespace DOGPlatform
 
           }
 
+          private void tsmiHtml_Click(object sender, EventArgs e)
+          {
+              WriteNewDocument();
+          }
+
+          private void WriteNewDocument()
+          {
+              string sSVG = File.ReadAllText(filepathSVG);
+              if (this.webBrowserSVG.Document != null)
+              {
+                  HtmlDocument doc = webBrowserSVG.Document.OpenNew(true);
+                  doc.Write("<HTML> <head><script type=\"text/javascript\" src=\"d3.v2.min.js\"></script></head><BODY><button type=\"button\">Click Me!</button>"+sSVG+"</BODY></HTML>");
+              }
+          }
+
+          private void tsmiD3_Click(object sender, EventArgs e)
+          {
+              string htmlD3 = Path.Combine(Application.StartupPath, "..", "..", "Html", "testD3.html");
+              if (File.Exists(htmlD3))
+              {
+               //   MessageBox.Show("ok");
+                  webBrowserSVG.Navigate(htmlD3);
+              }
+
+          }
           
       
 

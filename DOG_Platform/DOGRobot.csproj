@@ -651,6 +651,9 @@
     <None Include="Resources\Zoom-Out.ico" />
     <None Include="Resources\hand.png" />
     <None Include="Resources\New.ico" />
+    <Content Include="Html\d3.js" />
+    <Content Include="Html\d3.min.js" />
+    <Content Include="Html\testD3.html" />
     <Content Include="NameRules.txt" />
     <Content Include="Stone Henge.ico" />
   </ItemGroup>

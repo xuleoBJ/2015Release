@@ -123,8 +123,7 @@ namespace DOGPlatform.SVG
             int numRow = 0;
             string sBackColor = _sBackColor;
             string cirleColor = _cirleColor;
-
-            float size = 5.0F;
+            float size = 1.0F;
 
             //首先确定格式 单元格数和是否显示 分割线  
             List<XElement> listPatternMark = new List<XElement>();

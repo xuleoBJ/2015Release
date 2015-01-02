@@ -42,7 +42,6 @@
             this.nUDPatternSandHeight = new System.Windows.Forms.NumericUpDown();
             this.nUDPatternSandWidth = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
-            this.cbxHasSplitLine = new System.Windows.Forms.CheckBox();
             this.label27 = new System.Windows.Forms.Label();
             this.nUDSandRadius = new System.Windows.Forms.NumericUpDown();
             this.btnFeSand = new System.Windows.Forms.Button();
@@ -134,6 +133,7 @@
             this.label24 = new System.Windows.Forms.Label();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.btnAddDef = new System.Windows.Forms.Button();
+            this.cbxHasSplitLine = new System.Windows.Forms.CheckBox();
             this.webBrowserPatternView = new System.Windows.Forms.WebBrowser();
             this.btnAdd2Ink = new System.Windows.Forms.Button();
             this.lblPatternName = new System.Windows.Forms.Label();
@@ -298,14 +298,14 @@
             // nUDPatternSandHeight
             // 
             this.nUDPatternSandHeight.AllowDrop = true;
-            this.nUDPatternSandHeight.Increment = new decimal(new int[] {
-            2,
+            this.nUDPatternSandHeight.Location = new System.Drawing.Point(230, 71);
+            this.nUDPatternSandHeight.Maximum = new decimal(new int[] {
+            20,
             0,
             0,
             0});
-            this.nUDPatternSandHeight.Location = new System.Drawing.Point(230, 71);
             this.nUDPatternSandHeight.Minimum = new decimal(new int[] {
-            4,
+            1,
             0,
             0,
             0});
@@ -313,7 +313,7 @@
             this.nUDPatternSandHeight.Size = new System.Drawing.Size(49, 21);
             this.nUDPatternSandHeight.TabIndex = 34;
             this.nUDPatternSandHeight.Value = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -321,14 +321,14 @@
             // nUDPatternSandWidth
             // 
             this.nUDPatternSandWidth.AllowDrop = true;
-            this.nUDPatternSandWidth.Increment = new decimal(new int[] {
-            2,
+            this.nUDPatternSandWidth.Location = new System.Drawing.Point(329, 73);
+            this.nUDPatternSandWidth.Maximum = new decimal(new int[] {
+            50,
             0,
             0,
             0});
-            this.nUDPatternSandWidth.Location = new System.Drawing.Point(329, 73);
             this.nUDPatternSandWidth.Minimum = new decimal(new int[] {
-            4,
+            1,
             0,
             0,
             0});
@@ -336,7 +336,7 @@
             this.nUDPatternSandWidth.Size = new System.Drawing.Size(49, 21);
             this.nUDPatternSandWidth.TabIndex = 36;
             this.nUDPatternSandWidth.Value = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
@@ -350,17 +350,6 @@
             this.label28.TabIndex = 38;
             this.label28.Text = "砂圈填充颜色";
             // 
-            // cbxHasSplitLine
-            // 
-            this.cbxHasSplitLine.AutoSize = true;
-            this.cbxHasSplitLine.Location = new System.Drawing.Point(636, 39);
-            this.cbxHasSplitLine.Name = "cbxHasSplitLine";
-            this.cbxHasSplitLine.Size = new System.Drawing.Size(84, 16);
-            this.cbxHasSplitLine.TabIndex = 51;
-            this.cbxHasSplitLine.Text = "岩性分割线";
-            this.cbxHasSplitLine.UseVisualStyleBackColor = true;
-            this.cbxHasSplitLine.CheckedChanged += new System.EventHandler(this.cbxHasSplitLine_CheckedChanged);
-            // 
             // label27
             // 
             this.label27.AutoSize = true;
@@ -373,9 +362,15 @@
             // nUDSandRadius
             // 
             this.nUDSandRadius.AllowDrop = true;
+            this.nUDSandRadius.DecimalPlaces = 1;
+            this.nUDSandRadius.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            65536});
             this.nUDSandRadius.Location = new System.Drawing.Point(97, 71);
             this.nUDSandRadius.Maximum = new decimal(new int[] {
-            20,
+            3,
             0,
             0,
             0});
@@ -383,12 +378,12 @@
             1,
             0,
             0,
-            0});
+            65536});
             this.nUDSandRadius.Name = "nUDSandRadius";
             this.nUDSandRadius.Size = new System.Drawing.Size(49, 21);
             this.nUDSandRadius.TabIndex = 50;
             this.nUDSandRadius.Value = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -1477,6 +1472,17 @@
             this.btnAddDef.TabIndex = 45;
             this.btnAddDef.Text = "配置生成";
             this.btnAddDef.UseVisualStyleBackColor = true;
+            // 
+            // cbxHasSplitLine
+            // 
+            this.cbxHasSplitLine.AutoSize = true;
+            this.cbxHasSplitLine.Location = new System.Drawing.Point(636, 39);
+            this.cbxHasSplitLine.Name = "cbxHasSplitLine";
+            this.cbxHasSplitLine.Size = new System.Drawing.Size(84, 16);
+            this.cbxHasSplitLine.TabIndex = 51;
+            this.cbxHasSplitLine.Text = "岩性分割线";
+            this.cbxHasSplitLine.UseVisualStyleBackColor = true;
+            this.cbxHasSplitLine.CheckedChanged += new System.EventHandler(this.cbxHasSplitLine_CheckedChanged);
             // 
             // webBrowserPatternView
             // 

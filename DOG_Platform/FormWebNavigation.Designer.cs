@@ -49,6 +49,8 @@
             this.tabControlSVGNavigation = new System.Windows.Forms.TabControl();
             this.tbgSVGView = new System.Windows.Forms.TabPage();
             this.webBrowserSVG = new System.Windows.Forms.WebBrowser();
+            this.tsmiHtml = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiD3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -99,14 +101,14 @@
             // inkscapeToolStripMenuItem
             // 
             this.inkscapeToolStripMenuItem.Name = "inkscapeToolStripMenuItem";
-            this.inkscapeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.inkscapeToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.inkscapeToolStripMenuItem.Text = "编辑";
             this.inkscapeToolStripMenuItem.Click += new System.EventHandler(this.inkscapeToolStripMenuItem_Click);
             // 
             // 系统自动选择ToolStripMenuItem
             // 
             this.系统自动选择ToolStripMenuItem.Name = "系统自动选择ToolStripMenuItem";
-            this.系统自动选择ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.系统自动选择ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.系统自动选择ToolStripMenuItem.Text = "系统自动选择";
             this.系统自动选择ToolStripMenuItem.Click += new System.EventHandler(this.系统自动选择ToolStripMenuItem_Click);
             // 
@@ -115,7 +117,9 @@
             this.编辑ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.画线ToolStripMenuItem,
             this.tsmiMove,
-            this.tsmiDel});
+            this.tsmiDel,
+            this.tsmiHtml,
+            this.tsmiD3});
             this.编辑ToolStripMenuItem.Name = "编辑ToolStripMenuItem";
             this.编辑ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
             this.编辑ToolStripMenuItem.Text = "编辑";
@@ -123,21 +127,21 @@
             // 画线ToolStripMenuItem
             // 
             this.画线ToolStripMenuItem.Name = "画线ToolStripMenuItem";
-            this.画线ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.画线ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.画线ToolStripMenuItem.Text = "画线";
             this.画线ToolStripMenuItem.Click += new System.EventHandler(this.画线ToolStripMenuItem_Click);
             // 
             // tsmiMove
             // 
             this.tsmiMove.Name = "tsmiMove";
-            this.tsmiMove.Size = new System.Drawing.Size(100, 22);
+            this.tsmiMove.Size = new System.Drawing.Size(152, 22);
             this.tsmiMove.Text = "移动";
             this.tsmiMove.Click += new System.EventHandler(this.tsmiMove_Click);
             // 
             // tsmiDel
             // 
             this.tsmiDel.Name = "tsmiDel";
-            this.tsmiDel.Size = new System.Drawing.Size(100, 22);
+            this.tsmiDel.Size = new System.Drawing.Size(152, 22);
             this.tsmiDel.Text = "删除";
             this.tsmiDel.Click += new System.EventHandler(this.tsmiDel_Click);
             // 
@@ -243,8 +247,23 @@
             this.webBrowserSVG.Margin = new System.Windows.Forms.Padding(2);
             this.webBrowserSVG.MinimumSize = new System.Drawing.Size(15, 16);
             this.webBrowserSVG.Name = "webBrowserSVG";
+            this.webBrowserSVG.ScriptErrorsSuppressed = true;
             this.webBrowserSVG.Size = new System.Drawing.Size(882, 568);
             this.webBrowserSVG.TabIndex = 1;
+            // 
+            // tsmiHtml
+            // 
+            this.tsmiHtml.Name = "tsmiHtml";
+            this.tsmiHtml.Size = new System.Drawing.Size(152, 22);
+            this.tsmiHtml.Text = "html";
+            this.tsmiHtml.Click += new System.EventHandler(this.tsmiHtml_Click);
+            // 
+            // tsmiD3
+            // 
+            this.tsmiD3.Name = "tsmiD3";
+            this.tsmiD3.Size = new System.Drawing.Size(152, 22);
+            this.tsmiD3.Text = "d3";
+            this.tsmiD3.Click += new System.EventHandler(this.tsmiD3_Click);
             // 
             // FormWebNavigation
             // 
@@ -296,5 +315,7 @@
         private System.Windows.Forms.ToolStripMenuItem 连接层ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiOilLayer;
         private System.Windows.Forms.ToolStripMenuItem tsmiWaterLayer;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHtml;
+        private System.Windows.Forms.ToolStripMenuItem tsmiD3;
     }
 }
