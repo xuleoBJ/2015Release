@@ -46,7 +46,7 @@ namespace DOGPlatform
         public void setupTsmiOpenIE()
         {
             ToolStripMenuItem tsmiOpenedIE = new ToolStripMenuItem();
-            tsmiOpenedIE.Text = "新窗口打开";
+            tsmiOpenedIE.Text = "窗口打开";
             tsmiOpenedIE.Click += new System.EventHandler(tsmiOpenedIE_Click);
             cms.Items.Add(tsmiOpenedIE);
         }

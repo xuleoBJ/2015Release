@@ -23,7 +23,6 @@ namespace DOGPlatform
             InitializeComponent();
             this.filepathSVG = filepath;
             this.Text = filepath;
-          //  webBrowserSVG.ObjectForScripting = this;
             webBrowserSVG.ObjectForScripting= true;
             updateWebSVG();
         }
@@ -114,52 +113,8 @@ namespace DOGPlatform
               return "你输入的是：" + args;
           }
 
-          private void 画线ToolStripMenuItem_Click(object sender, EventArgs e)
-          {
-                     
-              HtmlElement scriptEl = webBrowserSVG.Document.CreateElement("script");
- 
-              webBrowserSVG.Document.InvokeScript("sayHello");
-          }
 
-               private void FormWebNavigation_Load(object sender, EventArgs e)
-          {
 
-          }
-
-          private void 系统自动选择ToolStripMenuItem_Click(object sender, EventArgs e)
-          {
-              if (this.filepathSVG != "")
-                  System.Diagnostics.Process.Start(this.filepathSVG);
-          }
-
-          private void tsmiSand_Click(object sender, EventArgs e)
-          {
-             gLithoPatternSand(this.filepathSVG);
-          }
-
-          public void gLithoPatternSand(string filePath)//增加岩石类型
-          {
-              XDocument xDoc = XDocument.Load(filePath);
-              XElement xroot = xDoc.Root;
-              //XElement xdefs1 = xDoc.Element("svg:defs");
-              //string sLithoName = "砂岩";
-              //int iWidthUnit = 20;
-              //int iHeightUnit = 10;
-              //string sBackColor = "yellow";
-
-              //foreach (var tag in xroot.DescendantNodes()) MessageBox.Show(tag.ToString());
-              if (xroot != null)
-              {
-                 // bool x=xroot.HasElements("defs");
-                  XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                  if(xdefs!=null) xdefs.Add(cSVGXEPatternLithoSand.lithoPatternDefsSand("helloworld","p123", 20, 10, 2, "yellow", "red", true));
-                  xroot.Add(cSVGXEPatternLithoSand.lithoPattern("p123"));
-
-                  xDoc.Save(filePath);
-                  webBrowserSVG.Refresh();
-              }
-          }
 
 
           private void tsmiMove_Click(object sender, EventArgs e)
@@ -247,19 +202,35 @@ namespace DOGPlatform
               if (this.webBrowserSVG.Document != null)
               {
                   HtmlDocument doc = webBrowserSVG.Document.OpenNew(true);
-                  doc.Write("<HTML> <head><script type=\"text/javascript\" src=\"d3.v2.min.js\"></script></head><BODY><button type=\"button\">Click Me!</button>"+sSVG+"</BODY></HTML>");
+                  doc.Write("<HTML> <head><script type=\"text/javascript\" src=\"d3.v2.min.js\"></script></head><BODY>"+sSVG+"</BODY></HTML>");
               }
           }
 
           private void tsmiD3_Click(object sender, EventArgs e)
           {
               string htmlD3 = Path.Combine(Application.StartupPath, "..", "..", "Html", "testD3.html");
-              if (File.Exists(htmlD3))
-              {
-               //   MessageBox.Show("ok");
-                  webBrowserSVG.Navigate(htmlD3);
-              }
+              HtmlElement head = webBrowserSVG.Document.GetElementsByTagName("head")[0];
+              HtmlElement scriptEl = webBrowserSVG.Document.CreateElement("script");
+              IHTMLScriptElement element = (IHTMLScriptElement)scriptEl.DomElement;
+              element.text = "function sayHello() { alert('hello,world') }";
+              head.AppendChild(scriptEl);
+              webBrowserSVG.Document.InvokeScript("sayHello");
+          }
 
+          private void htmlToolStripMenuItem_Click(object sender, EventArgs e)
+          {
+              WriteNewDocument();
+          }
+
+          private void tsmiEditInk_Click(object sender, EventArgs e)
+          {
+              if (this.filepathSVG != "") cCallInkscape.callInk(filepathSVG);
+          }
+
+          private void tsmiSystemChoose_Click(object sender, EventArgs e)
+          {
+              if (this.filepathSVG != "")
+                  System.Diagnostics.Process.Start(this.filepathSVG);
           }
           
       

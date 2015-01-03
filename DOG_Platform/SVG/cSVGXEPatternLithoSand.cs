@@ -257,7 +257,6 @@ namespace DOGPlatform.SVG
                 XElement pattern6 = patternElemenTortoise(iWidthUnit, iHeightUnit, 1, 2);
                 listPatternMark.Add(pattern6);
             }
-
  
             XNamespace xn = "http://www.w3.org/2000/svg";
             XNamespace inkscape = "http://www.inkscape.org/namespaces/inkscape";
@@ -275,7 +274,6 @@ namespace DOGPlatform.SVG
 
             if (hasSplitLine == true) lithoPattern.Add(splitLine(iWidthUnit, iHeightUnit, numColumn, numRow));
             for (int i = 0; i < listPatternMark.Count; i++) lithoPattern.Add(listPatternMark[i]);
-
             return lithoPattern;
         }
 
