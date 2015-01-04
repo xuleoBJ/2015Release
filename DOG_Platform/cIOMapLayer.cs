@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 namespace DOGPlatform
 {
-    class cSelectProductData 
+    class cIOMapLayer 
     {
         public List<string> selectJH2ltStrFromProductFile(string fileName)
         {

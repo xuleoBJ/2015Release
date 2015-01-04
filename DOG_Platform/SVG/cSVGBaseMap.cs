@@ -349,7 +349,7 @@ namespace DOGPlatform.SVG
 
                 XmlElement gYText2= svgDoc.CreateElement("text");
                 gYText2.SetAttribute("x", (-iDistance + 1).ToString());
-                gYText2.SetAttribute("y", (iYCurrentView+5).ToString());
+                gYText2.SetAttribute("y", (iYCurrentView+6).ToString());
                 gYText2.InnerText = (((cProjectData.dfMapYrealRefer - i * 500) %100000)/100).ToString("0");;
                 gGridText2.AppendChild(gYText2);
 

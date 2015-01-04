@@ -108,7 +108,7 @@ namespace DOGPlatform
             updateSelectedCondition();
             //此处分油井和水井提取不同的数据资料，油井提取 日产油，日产水，累产油，累产水
             //此处水井提取不同的数据资料，水井提取日注水，累注水
-            cSelectProductData cSelectProductionData = new cSelectProductData();
+            cIOMapLayer cSelectProductionData = new cIOMapLayer();
               if (File.Exists(filePathOilProduct))
             {
                 ltStrSelectedOilJH = cSelectProductionData.selectJH2ltStrFromProductFile(filePathOilProduct);
@@ -147,7 +147,7 @@ namespace DOGPlatform
 
         }
 
-        void addOilWellPieMap(cSelectProductData cSelectProductionData,   int iValue1OilColumnIndex,
+        void addOilWellPieMap(cIOMapLayer cSelectProductionData,   int iValue1OilColumnIndex,
             int iValue2OilColumnIndex, cSVGDocLayerMapProduction cLayerProductionMap ,string filePathOilProduct)
         {
             List<float> fListOilValue = new List<float>();
@@ -170,7 +170,7 @@ namespace DOGPlatform
  fListOilValue, fListWaterValue, dfscale);
             cLayerProductionMap.addgElement(returnElemment, 0, 0); }
 
-        void addWaterWellPieMap(cSelectProductData cSelectProductionData, int iValueWaterColumnIndex,
+        void addWaterWellPieMap(cIOMapLayer cSelectProductionData, int iValueWaterColumnIndex,
          cSVGDocLayerMapProduction cLayerProductionMap, string filePathWaterProduct)
         {
 
@@ -196,7 +196,7 @@ namespace DOGPlatform
 
         }
 
-        void addOilWellProductPieGraph(cSelectProductData cSelectProductionData,cSVGDocLayerMapProduction cLayerProductionMap, string filePathOilProduct)
+        void addOilWellProductPieGraph(cIOMapLayer cSelectProductionData,cSVGDocLayerMapProduction cLayerProductionMap, string filePathOilProduct)
         {
             List<float> fListOilValueDay = new List<float>();
             List<float> fListWaterValueDay = new List<float>();
@@ -226,7 +226,7 @@ namespace DOGPlatform
                 fListOilValueDay, fListWaterValueDay, fListOilValueSum, fListWaterValueDay, fPieScale, iRectWidth);
             cLayerProductionMap.addgElement(returnElemment, 0, 0);
         }
-        void addWaterWellProductPieGraph(cSelectProductData cSelectProductionData, cSVGDocLayerMapProduction cLayerProductionMap, string filePathWaterProduct)
+        void addWaterWellProductPieGraph(cIOMapLayer cSelectProductionData, cSVGDocLayerMapProduction cLayerProductionMap, string filePathWaterProduct)
         {
             List<float> fListWaterValueDay = new List<float>();
             List<float> fListWaterValueSum = new List<float>();
@@ -258,7 +258,7 @@ namespace DOGPlatform
             //此处分油井和水井提取不同的数据资料，油井提取 日产油，日产水，累产油，累产水
             //此处水井提取不同的数据资料，水井提取日注水，累注水
 
-            cSelectProductData cSelectProductionData = new cSelectProductData();
+            cIOMapLayer cSelectProductionData = new cIOMapLayer();
            
             string filenameSVGMap;
             if (this.tbxMapTitleName.Text == "")

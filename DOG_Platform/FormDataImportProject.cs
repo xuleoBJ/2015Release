@@ -89,6 +89,7 @@ namespace DOGPlatform
             List<string> _ltJH = cPublicMethodForm.getDataGridViewColumn(dgvCurrent, 0).Distinct().ToList();
             List<string> _ltJHnotINproject = new List<string>();
 
+            List<string> _ltJHimportOK = new List<string>();
             foreach (string _sjh in _ltJH)
             {
                 if (cProjectData.ltStrProjectJH.IndexOf(_sjh) >= 0)
@@ -129,14 +130,20 @@ namespace DOGPlatform
                      {
                          cIOInputWellInject.creatInputFile(_sjh, _listLines);
                          //cIOInputWaterProductData.creatWellGeoFile(_sjh);
-                     } 
+                     }
+                     _ltJHimportOK.Add(_sjh);
                 }
                 else _ltJHnotINproject.Add(_sjh); 
             }
-            if (_ltJHnotINproject.Count > 0) MessageBox.Show(string.Join("\t", _ltJHnotINproject) + "缺失井信息，请加入井信息后重新加载。");
-        
+            if (_ltJHimportOK.Count > 0) MessageBox.Show(string.Join("\t", _ltJHimportOK) + "导入成功。");
+               
+            if (_ltJHnotINproject.Count > 0)
+            {
+                MessageBox.Show(string.Join("\t", _ltJHnotINproject) + "缺失井信息，请加入井信息后重新加载。"); 
+                return false;
+            }
+
             return true;
-        
         }
 
 
@@ -162,8 +169,7 @@ namespace DOGPlatform
                 if (dialogResult == DialogResult.Yes)
                 {
                     Cursor.Current = Cursors.WaitCursor;
-                    if (dataImported() == true) MessageBox.Show("数据导入成功");
-                    else MessageBox.Show("数据有误");
+                    if (dataImported() == false) MessageBox.Show("数据有误");
                     Cursor.Current = Cursors.Default;
                 } 
             }

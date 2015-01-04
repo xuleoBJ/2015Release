@@ -147,19 +147,7 @@ namespace DOGPlatform
         
         }
 
-        //从XML文件中读取数据，利用SVG增加g，在原始SVG图上插入新内容
-        void reDrawSVGMap()
-        {
-            //从xml配置文件中解析数据
-
-            generateSVGfilemap();
-
-            //插入原SVG
-            //openSVGInIE();
-            //重绘生成
-        }
-
-
+       
         void generateSVGfilemap()
         {
             // 这块重新加载的问题 解决了 绘制的问题，重新加载仍旧需要解决一下
@@ -384,10 +372,6 @@ namespace DOGPlatform
             }
         }
 
-        private void btnAddHorizonalIntervel_Click(object sender, EventArgs e)
-        {
-            reDrawSVGMap();
-        }
 
         private void numUDHorizonalLineWidth_ValueChanged(object sender, EventArgs e)
         {
@@ -409,8 +393,10 @@ namespace DOGPlatform
         private void btnSelectOK_Click(object sender, EventArgs e)
         {
             selectedLayer = cbbSelectedXCMTop.SelectedItem.ToString(); 
-            string fileName=cbbSelectedXCMTop.Text + "-" + cbbSelectedXCMBot.Text;
-
+            string fileName=cbbSelectedXCMTop.Text + "小层平面图";
+            //if (tbxTitle.Text != "") fileName = tbxTitle.Text;
+            //else 
+            tbxTitle.Text = fileName; 
             filePathXMLconfigLayerMap = Path.Combine(cProjectManager.dirPathMap, fileName + ".xml");
 
             List<ItemDicLayerData> listLayerDataSelected = cIODicLayerData.readDicLayerData2struct().FindAll(p=>p.sXCM==selectedLayer);
@@ -422,8 +408,19 @@ namespace DOGPlatform
                     //由于可能计算小层数据表后又对井做修改 所以 必须判断小层数据表的井是否在项目井范围内
                     if(cProjectData.ltStrProjectJH.IndexOf( item.sJH)>=0) listWellsMapLayer.Add(new ItemWellMapLayer(item));
                 }
+
+                //判断当前层的配置文件是否存在，如果不存在，建立，存在 提示用户是否删除，每个层就保留一个小层基本文件
                 if (!File.Exists(filePathXMLconfigLayerMap))
-                    cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, 1000, 1000);
+                    cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, this.PageWidth, this.PageHeight);
+                else
+                {
+                    DialogResult dialogResult = MessageBox.Show("当前层配置已经存在，Yes 覆盖原配置 No 保留原配置", "小层显示配置", MessageBoxButtons.YesNo);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        File.Delete(filePathXMLconfigLayerMap);
+                        cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, this.PageWidth, this.PageHeight);
+                    }
+                }
                 addWells(); 
             }
            

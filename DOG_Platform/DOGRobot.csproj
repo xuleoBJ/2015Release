@@ -202,7 +202,7 @@
     <Compile Include="cIOInputWellInject.cs" />
     <Compile Include="cIOinputWellProduct.cs" />
     <Compile Include="cCordinationTransform.cs" />
-    <Compile Include="cSelectProductData.cs" />
+    <Compile Include="cIOMapLayer.cs" />
     <Compile Include="cSoftwareLimited.cs" />
     <Compile Include="SVG\cSVGXEPatternGravel.cs" />
     <Compile Include="SVG\cSVGDocPatternSand.cs" />
