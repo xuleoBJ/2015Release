@@ -69,14 +69,14 @@
             // openPicToolStripMenuItem
             // 
             this.openPicToolStripMenuItem.Name = "openPicToolStripMenuItem";
-            this.openPicToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.openPicToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.openPicToolStripMenuItem.Text = "打开图像";
             this.openPicToolStripMenuItem.Click += new System.EventHandler(this.openPicToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -235,6 +235,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormDigRobot";
             this.Text = "DigRobot图形数字化工具";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDigRobot_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormDigRobot_FormClosed);
             this.Load += new System.EventHandler(this.FormDigRobot_Load);
             this.menuStrip1.ResumeLayout(false);

@@ -106,7 +106,7 @@ namespace DigRobot
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Dispose(true);
         }
 
         //计算坐标系系数,需要修改 从 cPublicData.ListRef3ScreenPosition提取数据并计算系数才能完整
@@ -224,12 +224,20 @@ namespace DigRobot
 
         private void FormDigRobot_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+
+            this.Dispose(true);
         }
 
         private void FormDigRobot_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void FormDigRobot_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Yes 保存工程并关闭，No 放弃关闭", "关闭工程", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes) { this.Dispose(true); }
+            else e.Cancel = true; 
         }
 
     }
