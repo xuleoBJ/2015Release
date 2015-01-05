@@ -24,6 +24,7 @@ namespace DOGPlatform.SVG
     {
         public XmlDocument svgDoc = new XmlDocument();
         public const string svgNS = "http://www.w3.org/1999/xlink";
+        public const string inkNS =  "http://www.inkscape.org/namespaces/inkscape";
         public int iSVGoffsetX = 0;
         public int iSVGoffsetY = 0;
         public XmlElement svgRoot;
@@ -55,6 +56,7 @@ namespace DOGPlatform.SVG
             svgRoot.SetAttribute("xmlns", "http://www.w3.org/2000/svg");
             xLinkNode = svgDoc.CreateAttribute("xlink", "href", "http://www.w3.org/1999/xlink");
             svgRoot.Attributes.Append(xLinkNode);
+            svgRoot.SetAttribute("xmlns:inkscape", "http://www.inkscape.org/namespaces/inkscape");
             svgRoot.SetAttribute("version", "1.1");
             svgRoot.SetAttribute("height",iHeight.ToString() + sUnit);
             svgRoot.SetAttribute("width",iWidth.ToString() + sUnit);
@@ -66,18 +68,21 @@ namespace DOGPlatform.SVG
             svgCss = svgDoc.CreateElement("style");
             svgRoot.AppendChild(svgCss);
 
-            svgScript = svgDoc.CreateElement("script");
-
-            svgScript.SetAttribute("type", "application/ecmascript");
-            XmlAttribute striptXL = svgDoc.CreateAttribute("xlink", "href", "http://www.w3.org/1999/xlink");
+            //svgScript = svgDoc.CreateElement("script");
+            //svgScript.SetAttribute("type", "application/ecmascript");
+            //XmlAttribute striptXL = svgDoc.CreateAttribute("xlink", "href", "http://www.w3.org/1999/xlink");
             //striptXL.Value = "xl.js";
-            svgScript.Attributes.Append(striptXL);
-            svgRoot.AppendChild(svgScript);
+            //svgScript.Attributes.Append(striptXL);
+            //svgRoot.AppendChild(svgScript);
 
             gSVG = svgDoc.CreateElement("g");
             string sTranslate = "translate(" + iSVGoffsetX.ToString() + "," + iSVGoffsetY.ToString() + ")";
             gSVG.SetAttribute("transform", sTranslate);
-            gSVG.SetAttribute("id", "idAllg");
+            gSVG.SetAttribute("id", "layer1");
+            //XmlAttribute idInkLable = svgDoc.CreateAttribute("inkscape", "lable", inkNS);
+            //gSVG.SetAttributeNode(idInkLable);
+            gSVG.SetAttribute("lable",inkNS, "Layer1");
+            gSVG.SetAttribute("groupmode",inkNS, "layer");
             gSVG.SetAttribute("xml:space", "preserve");
             svgRoot.AppendChild(gSVG);
             svgDoc.AppendChild(svgRoot);

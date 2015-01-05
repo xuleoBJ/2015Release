@@ -63,7 +63,7 @@ namespace DOGPlatform.SVG
         public XmlElement gWellDistanceRuler (double distanceValue,double lineDistantce)
         {
             XmlElement gDistanceRuler = svgDoc.CreateElement("g");
-
+            gDistanceRuler.SetAttribute("id", "idWellDistance");
             XmlElement curveHeadInfor = svgDoc.CreateElement("path");
             string sPath = "m 5 -5" + " v 5 h " + (lineDistantce - 30).ToString() + " v-5";
             curveHeadInfor.SetAttribute("d", sPath);

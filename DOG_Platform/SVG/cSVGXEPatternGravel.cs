@@ -25,7 +25,7 @@ namespace DOGPlatform.SVG
         public static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern, string sBackColor, bool hasSplitLine)
         {
 
-            string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns";
+            string filePahtsvgPattern = Path.Combine(cProjectManager.filePathInkscape, "pattern", "patterns.svg"); 
             string filePath = Path.Combine(filePahtsvgPattern, "patterns.svg");
             XDocument xDoc = XDocument.Load(filePath);
             XElement xroot = xDoc.Root;

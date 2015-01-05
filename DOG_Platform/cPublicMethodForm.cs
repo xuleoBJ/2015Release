@@ -30,7 +30,15 @@ namespace DOGPlatform
             }
             return listStr;
         }
-       
+
+        public static bool NodeExists(TreeNode node, string key)
+        {
+            foreach (TreeNode subNode in node.Nodes)
+            {
+                if (subNode.Text == key) return true;
+            }
+            return false;
+        }
 
 
         public static void loadDgvByGeoText(DataGridView dgv, string geoFilePath)

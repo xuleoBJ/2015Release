@@ -420,12 +420,9 @@ namespace DOGPlatform
             if (ltStrSelectedJH.Count > 0)
             {
                 foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataLayerDepth(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
-                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
-                {
-                    if (wellNote.Text != "深度尺")
-                        wellNote.Nodes.Add("地层");
-                }
-                tvWellSectionCollection.ExpandAll();
+
+                addTreeViewWellSectionCollection("地层");
+               
                 cXDocSection.addTrackLayer(cProjectManager.xmlSectionCSS, "idLayer",20);
             }
             else
@@ -439,12 +436,8 @@ namespace DOGPlatform
             if (listWellsSection.Count > 0)
             {
                 foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataJSJL(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存 
-                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
-                {
-                    if (wellNote.Text != "深度尺")
-                        wellNote.Nodes.Add("解释结论");
-                }
-                tvWellSectionCollection.ExpandAll();
+                addTreeViewWellSectionCollection("解释结论");
+             
                 cXDocSection.addTrackJSJL(cProjectManager.xmlSectionCSS, "idJSJL", 20);
             }
             else
@@ -593,17 +586,22 @@ namespace DOGPlatform
             }
         }
 
+        void addTreeViewWellSectionCollection(string treenodeText)
+        {
+            foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
+            {
+                TreeNode tn = new TreeNode(treenodeText);
+                if (!cPublicMethodForm.NodeExists(wellNote, treenodeText)) wellNote.Nodes.Add(tn);
+            }
+            tvWellSectionCollection.ExpandAll();
+        }
+
         private void btnAddPeforation_Click(object sender, EventArgs e)
         {
             if (ltStrSelectedJH.Count > 0)
             {
                 foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataPerforation(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
-                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
-                {
-                    if (wellNote.Text != "深度尺")
-                        wellNote.Nodes.Add("射孔");
-                }
-                tvWellSectionCollection.ExpandAll();
+                addTreeViewWellSectionCollection("射孔");
             }
             else
             {
@@ -637,12 +635,7 @@ namespace DOGPlatform
             if (ltStrSelectedJH.Count > 0)
             {
                 foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataProfile(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存 
-                foreach (TreeNode wellNote in tvWellSectionCollection.Nodes)
-                {
-                    if (wellNote.Text != "深度尺")
-                        wellNote.Nodes.Add("吸水");
-                }
-                tvWellSectionCollection.ExpandAll();
+                addTreeViewWellSectionCollection("吸水");
             }
             else MessageBox.Show("请先确认深度段。");
         }
