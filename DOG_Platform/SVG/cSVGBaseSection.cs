@@ -11,52 +11,6 @@ namespace DOGPlatform.SVG
     class cSVGBaseSection:cSVGBase
     {
         public List<string> colorList = new List<string>();
-        public List<float> fListDS1Showed_SVG = new List<float>();
-        public List<float> fListDS2Showed_SVG = new List<float>();
-
-        public List<int> iListX_SVG = new List<int>();
-        public List<int> iListY_SVG = new List<int>();
-
-        public List<string> ltStrJH_JSJLTrack = new List<string>();
-        public List<float> fListDS1_JSJLTrack = new List<float>();
-        public List<float> fListDS2_JSJLTrack = new List<float>();
-        public List<int> iListJSType_JSJLTrack = new List<int>();
-
-        public List<string> ltStrJH_LayerTrack = new List<string>();
-        public List<string> ltStrXCM_LayerTrack = new List<string>();
-        public List<float> fListDS1_LayerTrack = new List<float>();
-        public List<float> fListDS2_LayerTrack = new List<float>();
-
-        public List<string> ltStrJH_TextTrack = new List<string>();
-        public List<float> fListDS1_TextTrack = new List<float>();
-        public List<string> ltStrText_TextTrack = new List<string>();
-
-        public List<string> ltStrJH_PerforatedTrack = new List<string>();
-        public List<float> fListDS1_PerforatedTrack = new List<float>();
-        public List<float> fListDS2_PerforatedTrack = new List<float>();
-
-        public List<string> ltStrJH_LithoTrack = new List<string>();
-        public List<float> fListDS1_LithoTrack = new List<float>();
-        public List<float> fListDS2_LithoTrack = new List<float>();
-        public List<int> iListLithoType_LithoTrack = new List<int>();
-
-        public List<string> ltStrJH_PropertyTrack = new List<string>();
-        public List<string> ltStrPropertyName_PropertyTrack = new List<string>();
-        public List<float> fListDS1_PropertyTrack = new List<float>();
-        public List<float> fListValue_PropertyTrack = new List<float>();
-
-        public List<string> ltStrJH_LogTrack = new List<string>();
-        public List<float> fListMD_LogTrack = new List<float>();
-        public List<float> fListValue_LogTrack = new List<float>();
-
-        public List<string> ltStrJH_LeftLogTrack = new List<string>();
-        public List<float> fListMD_LeftLogTrack = new List<float>();
-        public List<float> fListValue_LeftLogTrack = new List<float>();
-
-        public List<string> ltStrJH_RightLogTrack = new List<string>();
-        public List<float> fListMD_RightLogTrack = new List<float>();
-        public List<float> fListValue_RightLogTrack = new List<float>();
-
 
         public cSVGBaseSection(int width, int height, int iDX, int iDY)
             : base(width, height, iDX, iDY)
@@ -71,7 +25,7 @@ namespace DOGPlatform.SVG
         public XmlElement gScaleRuler(float m_scale)
         {
             XmlElement gScaleRuler = svgDoc.CreateElement("g");
-            gScaleRuler.SetAttribute("ID", "ScaleRuler");
+            gScaleRuler.SetAttribute("id", "ScaleRuler");
             float _sacleUnit = Convert.ToSingle(1000.0 * m_scale);
 
             for (int i = 0; i < 4; i++)
@@ -114,7 +68,6 @@ namespace DOGPlatform.SVG
         }
         public void addLithoSandPatternDefs()
         {
-
             XmlElement sandPattern = svgDoc.CreateElement("pattern");
             sandPattern.SetAttribute("id", "patternSand");
             sandPattern.SetAttribute("patternUnits", "userSpaceOnUse");

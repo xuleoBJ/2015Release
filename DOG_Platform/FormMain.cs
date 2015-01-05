@@ -605,7 +605,6 @@ namespace DOGPlatform
         private void FormMain_Load(object sender, EventArgs e)
         {
             cMenuStripMain mainMenuStrip = new cMenuStripMain(msMain);
-            mainMenuStrip.setupTsmiPattern();
             mainMenuStrip.setupTsmiTools();
             mainMenuStrip.setupTsmiHelps();
         }
@@ -1179,7 +1178,7 @@ namespace DOGPlatform
         {
             if (cProjectData.ltStrProjectJH.Count > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Yes 保存关闭，No 放弃关闭", "关闭工程", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Yes 保存工程并关闭，No 放弃关闭", "关闭工程", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes) { cProjectManager.saveProject(); Application.ExitThread(); }
                 else e.Cancel = true; 
             }

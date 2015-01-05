@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using DigRobot;
+
 
 namespace DOGPlatform
 {
@@ -30,15 +32,8 @@ namespace DOGPlatform
       
         public ToolStripMenuItem tsmiDebug = new ToolStripMenuItem("配置调试");
 
-        public void setupTsmiPattern()
-        {
-            ToolStripMenuItem tsmiPattern = new ToolStripMenuItem("图元配置");
-            ToolStripMenuItem tsmiLithoPattern = new ToolStripMenuItem("岩相图元");
-            tsmiPattern.DropDownItems.Add(tsmiLithoPattern);
-            tsmiLithoPattern.Click += new System.EventHandler(tsmiLithoPattern_Click);
-            menuStrip.Items.Add(tsmiPattern);
-        }
 
+       ToolStripMenuItem tsmiLithoPattern = new ToolStripMenuItem("岩相图元");
         private void tsmiLithoPattern_Click(object sender, EventArgs e)
         {
             FormPatternElement fpe = new FormPatternElement();
@@ -72,9 +67,14 @@ namespace DOGPlatform
         public void setupTsmiTools()
         {
             ToolStripMenuItem tsmiTools = new ToolStripMenuItem("工具");
+            tsmiTools.DropDownItems.Add(tsmiLithoPattern);
+            tsmiLithoPattern.Click += new System.EventHandler(tsmiLithoPattern_Click);
+            tsmiTools.DropDownItems.Add(tsmiDigger);
+            tsmiDigger.Click += new System.EventHandler(tsmiDigger_Click);
             tsmiTools.DropDownItems.Add(tsmiErrLog);
             tsmiErrLog.Click += new System.EventHandler(tsmiErrLog_Click);
             menuStrip.Items.Add(tsmiTools);
+           
         }
 
         public void setupTsmiWellSections()
@@ -103,6 +103,13 @@ namespace DOGPlatform
         public void tsmiErrLog_Click(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathErrInfor);
+        }
+
+        public ToolStripMenuItem tsmiDigger = new ToolStripMenuItem("数据采集");
+        public void tsmiDigger_Click(object sender, EventArgs e)
+        {
+            FormDigRobot _formDig = new FormDigRobot();
+            _formDig.Show();
         }
 
         public void setupTsmiWellGroup()

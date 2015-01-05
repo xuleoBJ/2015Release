@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPatternElement));
             this.tbcPattern = new System.Windows.Forms.TabControl();
             this.tbgPatternSand = new System.Windows.Forms.TabPage();
             this.btnTortSand = new System.Windows.Forms.Button();
@@ -1521,6 +1522,7 @@
             this.Controls.Add(this.webBrowserPatternView);
             this.Controls.Add(this.tbcPattern);
             this.Controls.Add(this.cbxHasSplitLine);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPatternElement";
             this.Text = "图元配置";
             this.tbcPattern.ResumeLayout(false);

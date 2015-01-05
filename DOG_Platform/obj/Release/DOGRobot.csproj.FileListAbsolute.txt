@@ -166,3 +166,5 @@ E:\ProjectPlatform\2015Release\DOG_Platform\obj\Release\DOGPlatform.WaitWindowGU
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Release\DOGRobot.csproj.GenerateResource.Cache
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormProfileSelectWells.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormProfilePIcal.resources
+E:\ProjectPlatform\2015Release\DOG_Platform\bin\Release\DigRobot.exe
+E:\ProjectPlatform\2015Release\DOG_Platform\bin\Release\DigRobot.pdb
