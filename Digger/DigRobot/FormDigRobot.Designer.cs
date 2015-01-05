@@ -36,10 +36,7 @@
             this.帮助ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助文档ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.OperationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSet3ref = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSaveDataFilePath = new System.Windows.Forms.ToolStripMenuItem();
-            this.tismiPickUpdata = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSet3Points = new System.Windows.Forms.ToolStripMenuItem();
             this.ptbOriginalPic = new System.Windows.Forms.PictureBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel_infor = new System.Windows.Forms.ToolStripStatusLabel();
@@ -48,13 +45,29 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tbcDig = new System.Windows.Forms.TabControl();
             this.tbgPic = new System.Windows.Forms.TabPage();
-            this.tbgData = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbbPointColor = new System.Windows.Forms.ComboBox();
+            this.btnDelall = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnDelDgvLine = new System.Windows.Forms.Button();
+            this.tbxProperty = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.dgv = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbOriginalPic)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.contextMenuStrip_function.SuspendLayout();
             this.tbcDig.SuspendLayout();
             this.tbgPic.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // 项目ToolStripMenuItem
@@ -69,14 +82,14 @@
             // openPicToolStripMenuItem
             // 
             this.openPicToolStripMenuItem.Name = "openPicToolStripMenuItem";
-            this.openPicToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openPicToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.openPicToolStripMenuItem.Text = "打开图像";
             this.openPicToolStripMenuItem.Click += new System.EventHandler(this.openPicToolStripMenuItem_Click);
             // 
             // 退出ToolStripMenuItem
             // 
             this.退出ToolStripMenuItem.Name = "退出ToolStripMenuItem";
-            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.退出ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.退出ToolStripMenuItem_Click);
             // 
@@ -99,7 +112,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.项目ToolStripMenuItem,
-            this.OperationToolStripMenuItem,
+            this.tsmiSet3Points,
             this.帮助ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -107,51 +120,25 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // OperationToolStripMenuItem
+            // tsmiSet3Points
             // 
-            this.OperationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSet3ref,
-            this.tsmiSaveDataFilePath,
-            this.tismiPickUpdata});
-            this.OperationToolStripMenuItem.Enabled = false;
-            this.OperationToolStripMenuItem.Name = "OperationToolStripMenuItem";
-            this.OperationToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.OperationToolStripMenuItem.Text = "操作";
-            // 
-            // tsmiSet3ref
-            // 
-            this.tsmiSet3ref.Name = "tsmiSet3ref";
-            this.tsmiSet3ref.Size = new System.Drawing.Size(184, 22);
-            this.tsmiSet3ref.Text = "坐标定位";
-            this.tsmiSet3ref.Click += new System.EventHandler(this.ToolStripMenuItemSetSystem3Point_Click);
-            // 
-            // tsmiSaveDataFilePath
-            // 
-            this.tsmiSaveDataFilePath.Name = "tsmiSaveDataFilePath";
-            this.tsmiSaveDataFilePath.Size = new System.Drawing.Size(184, 22);
-            this.tsmiSaveDataFilePath.Text = "设置导出位置";
-            this.tsmiSaveDataFilePath.Click += new System.EventHandler(this.SaveDataFilePathToolStripMenuItem_Click);
-            // 
-            // tismiPickUpdata
-            // 
-            this.tismiPickUpdata.Enabled = false;
-            this.tismiPickUpdata.Name = "tismiPickUpdata";
-            this.tismiPickUpdata.Size = new System.Drawing.Size(184, 22);
-            this.tismiPickUpdata.Text = "输入属性并拾取数据";
-            this.tismiPickUpdata.Click += new System.EventHandler(this.tismiPickUpdata_Click);
+            this.tsmiSet3Points.Enabled = false;
+            this.tsmiSet3Points.Name = "tsmiSet3Points";
+            this.tsmiSet3Points.Size = new System.Drawing.Size(44, 21);
+            this.tsmiSet3Points.Text = "定位";
+            this.tsmiSet3Points.Click += new System.EventHandler(this.OperationToolStripMenuItem_Click);
             // 
             // ptbOriginalPic
             // 
             this.ptbOriginalPic.BackColor = System.Drawing.SystemColors.Control;
             this.ptbOriginalPic.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ptbOriginalPic.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ptbOriginalPic.Location = new System.Drawing.Point(3, 3);
+            this.ptbOriginalPic.Location = new System.Drawing.Point(0, 0);
             this.ptbOriginalPic.Name = "ptbOriginalPic";
-            this.ptbOriginalPic.Size = new System.Drawing.Size(1255, 676);
+            this.ptbOriginalPic.Size = new System.Drawing.Size(947, 676);
             this.ptbOriginalPic.TabIndex = 1;
             this.ptbOriginalPic.TabStop = false;
             this.ptbOriginalPic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_OriginalPic_MouseClick);
-            this.ptbOriginalPic.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_OriginalPic_MouseMove);
             // 
             // statusStrip1
             // 
@@ -194,7 +181,6 @@
             // tbcDig
             // 
             this.tbcDig.Controls.Add(this.tbgPic);
-            this.tbcDig.Controls.Add(this.tbgData);
             this.tbcDig.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcDig.Location = new System.Drawing.Point(0, 25);
             this.tbcDig.Name = "tbcDig";
@@ -204,7 +190,7 @@
             // 
             // tbgPic
             // 
-            this.tbgPic.Controls.Add(this.ptbOriginalPic);
+            this.tbgPic.Controls.Add(this.splitContainer1);
             this.tbgPic.Location = new System.Drawing.Point(4, 22);
             this.tbgPic.Name = "tbgPic";
             this.tbgPic.Padding = new System.Windows.Forms.Padding(3);
@@ -213,15 +199,127 @@
             this.tbgPic.Text = "图形";
             this.tbgPic.UseVisualStyleBackColor = true;
             // 
-            // tbgData
+            // splitContainer1
             // 
-            this.tbgData.Location = new System.Drawing.Point(4, 22);
-            this.tbgData.Name = "tbgData";
-            this.tbgData.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgData.Size = new System.Drawing.Size(1261, 682);
-            this.tbgData.TabIndex = 1;
-            this.tbgData.Text = "数据";
-            this.tbgData.UseVisualStyleBackColor = true;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.ptbOriginalPic);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.label6);
+            this.splitContainer1.Panel2.Controls.Add(this.cbbPointColor);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDelall);
+            this.splitContainer1.Panel2.Controls.Add(this.btnExport);
+            this.splitContainer1.Panel2.Controls.Add(this.btnDelDgvLine);
+            this.splitContainer1.Panel2.Controls.Add(this.tbxProperty);
+            this.splitContainer1.Panel2.Controls.Add(this.label12);
+            this.splitContainer1.Panel2.Controls.Add(this.dgv);
+            this.splitContainer1.Size = new System.Drawing.Size(1255, 676);
+            this.splitContainer1.SplitterDistance = 947;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(170, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 27;
+            this.label6.Text = "点颜色";
+            // 
+            // cbbPointColor
+            // 
+            this.cbbPointColor.BackColor = System.Drawing.Color.Blue;
+            this.cbbPointColor.FormattingEnabled = true;
+            this.cbbPointColor.Location = new System.Drawing.Point(217, 17);
+            this.cbbPointColor.Name = "cbbPointColor";
+            this.cbbPointColor.Size = new System.Drawing.Size(61, 20);
+            this.cbbPointColor.TabIndex = 26;
+            this.cbbPointColor.Click += new System.EventHandler(this.cbbPointColor_Click);
+            // 
+            // btnDelall
+            // 
+            this.btnDelall.Location = new System.Drawing.Point(198, 53);
+            this.btnDelall.Name = "btnDelall";
+            this.btnDelall.Size = new System.Drawing.Size(90, 23);
+            this.btnDelall.TabIndex = 25;
+            this.btnDelall.Text = "清空数据";
+            this.btnDelall.UseVisualStyleBackColor = true;
+            this.btnDelall.Click += new System.EventHandler(this.btnDelall_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(102, 53);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(90, 23);
+            this.btnExport.TabIndex = 24;
+            this.btnExport.Text = "导出文件";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // btnDelDgvLine
+            // 
+            this.btnDelDgvLine.Location = new System.Drawing.Point(5, 53);
+            this.btnDelDgvLine.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelDgvLine.Name = "btnDelDgvLine";
+            this.btnDelDgvLine.Size = new System.Drawing.Size(92, 23);
+            this.btnDelDgvLine.TabIndex = 23;
+            this.btnDelDgvLine.Text = "删除选中行";
+            this.btnDelDgvLine.UseVisualStyleBackColor = true;
+            this.btnDelDgvLine.Click += new System.EventHandler(this.btnDelDgvLine_Click);
+            // 
+            // tbxProperty
+            // 
+            this.tbxProperty.Location = new System.Drawing.Point(37, 18);
+            this.tbxProperty.Margin = new System.Windows.Forms.Padding(2);
+            this.tbxProperty.Name = "tbxProperty";
+            this.tbxProperty.Size = new System.Drawing.Size(122, 21);
+            this.tbxProperty.TabIndex = 14;
+            this.tbxProperty.Text = "Point1";
+            this.tbxProperty.TextChanged += new System.EventHandler(this.tbxProperty_TextChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(29, 12);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "属性";
+            // 
+            // dgv
+            // 
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.dgv.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgv.Location = new System.Drawing.Point(0, 82);
+            this.dgv.Name = "dgv";
+            this.dgv.RowTemplate.Height = 23;
+            this.dgv.Size = new System.Drawing.Size(304, 594);
+            this.dgv.TabIndex = 3;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "属性名";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "X";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Y";
+            this.Column3.Name = "Column3";
             // 
             // FormDigRobot
             // 
@@ -235,6 +333,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormDigRobot";
             this.Text = "DigRobot图形数字化工具";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormDigRobot_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormDigRobot_FormClosed);
             this.Load += new System.EventHandler(this.FormDigRobot_Load);
@@ -246,6 +345,12 @@
             this.contextMenuStrip_function.ResumeLayout(false);
             this.tbcDig.ResumeLayout(false);
             this.tbgPic.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -263,15 +368,23 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem OperationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSet3ref;
-        private System.Windows.Forms.ToolStripMenuItem tismiPickUpdata;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSet3Points;
         private System.Windows.Forms.ToolStripMenuItem 帮助文档ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSaveDataFilePath;
         private System.Windows.Forms.ToolStripMenuItem openPicToolStripMenuItem;
         private System.Windows.Forms.TabControl tbcDig;
         private System.Windows.Forms.TabPage tbgPic;
-        private System.Windows.Forms.TabPage tbgData;
+        private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox tbxProperty;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.Button btnDelDgvLine;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Button btnDelall;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbbPointColor;
 
     }
 }

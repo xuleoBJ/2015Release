@@ -612,6 +612,7 @@
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 12;
             this.label6.Text = "颜色";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // cbbLogColor
             // 
@@ -621,6 +622,7 @@
             this.cbbLogColor.Name = "cbbLogColor";
             this.cbbLogColor.Size = new System.Drawing.Size(61, 20);
             this.cbbLogColor.TabIndex = 10;
+            this.cbbLogColor.SelectedIndexChanged += new System.EventHandler(this.cbbLogColor_SelectedIndexChanged);
             this.cbbLogColor.Click += new System.EventHandler(this.cbbLeftLogColor_Click);
             // 
             // cbbLogName

@@ -18,35 +18,17 @@ namespace DigRobot
     {
         public Image saveImage;                              //保存输入的图像
         private bool bLeftButtonDown = false;          //记录开关，是否是读入坐标数据
-        public static string resultFilePath = "result.txt";  //记录文本
+
+        SolidBrush pointBrush = new SolidBrush(Color.Blue);
+
+       string strProperty = "point1";
 
         public FormDigRobot()
         {
             InitializeComponent();
-           
+            this.tbxProperty.Text = strProperty;
         }
 
-
-        private void setDataFilePath() 
-        {
-            SaveFileDialog sfd = new SaveFileDialog();
-            //设置文件类型 
-            sfd.Title = " 请输入保存数据的位置：";
-            sfd.Filter = "txt文件|*.txt|所有文件|*.*";
-
-            //设置默认文件类型显示顺序 
-            sfd.FilterIndex = 1;
-
-            //保存对话框是否记忆上次打开的目录 
-            sfd.RestoreDirectory = true;
-            resultFilePath = sfd.FileName.ToString();
-            //点了保存按钮进入 
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                resultFilePath = sfd.FileName.ToString(); //获得文件路径 
-            }
-
-        }
 
          private void pictureBox_OriginalPic_MouseClick(object sender, MouseEventArgs e)
         {
@@ -72,26 +54,22 @@ namespace DigRobot
 
                         PointF currentRealPointF = new PointF(cRef3Points.tempPointReal.X, cRef3Points.tempPointReal.Y);
                         cRef3Points.ListRef3RealPosition.Add(currentRealPointF);
-                        MessageBox.Show("第"+ (iCount+1).ToString() +"点坐标设置完毕！");
+                        
                     }
-
-                    if (iCount+1 == 3)
-                    {
-                        //计算系数
-                        calFactor();
-                        tismiPickUpdata.Enabled=true ;
-                    }
+                    if (iCount + 1 == 3) { calFactor(); MessageBox.Show("三点定位设置完毕，请点击开始采集！"); }
                 }
                 else if (iCount == 3)
                 {
                     Graphics g = ((PictureBox)sender).CreateGraphics();
-                    g.FillEllipse(Brushes.Blue, e.X - 4, e.Y - 4, 8, 8);
+                    g.FillEllipse(pointBrush, e.X - 4, e.Y - 4, 8, 8);
                     g.Dispose();
                     double realX = cRef3Points.ListRef3RealPosition[0].X+ cRef3Points.fCordA1 * e.X + cRef3Points.fCordB1 * e.Y + cRef3Points.fCordC1;
                     double realY = cRef3Points.ListRef3RealPosition[0].Y+ cRef3Points.fCordA2 * e.X + cRef3Points.fCordB2 * e.Y + cRef3Points.fCordC2;
-                    StreamWriter  sw = new StreamWriter(resultFilePath, true);
-                    sw.WriteLine( realX.ToString("0.0000") + "\t" + realY.ToString("0.0000")+ "\t"+cRef3Points.strProperty);
-                    sw.Close();
+                    int index = this.dgv.Rows.Add();
+                    this.dgv.Rows[index].Cells[0].Value = strProperty;
+                    this.dgv.Rows[index].Cells[1].Value = realX.ToString("0.0");
+                    this.dgv.Rows[index].Cells[2].Value = realY.ToString("0.0");
+                 
                     toolStripStatusLabel_infor.Text = "X:" + realX.ToString("0.0000") + "    Y:" + realY.ToString("0.0000");
                 }
 
@@ -99,10 +77,6 @@ namespace DigRobot
 
         }
    
-        private void pictureBox_OriginalPic_MouseMove(object sender, MouseEventArgs e)
-        {
-            //toolStripStatusLabel_infor.Text = "X:" + e.X + "  Y:" + e.Y;
-        }
 
         private void 退出ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -207,24 +181,16 @@ namespace DigRobot
             {
                 fName = openFileDialog.FileName;
                 openPicture(fName);
-                OperationToolStripMenuItem.Enabled = true;
+                tsmiSet3Points.Enabled = true;
             }
         }
 
-        private void SaveDataFilePathToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            setDataFilePath();
-        }
 
-        private void tismiPickUpdata_Click(object sender, EventArgs e)
-        {
-            cRef3Points.strProperty = cInputForm.ClassInput("输入属性", "请输入拾取点属性", "");
-        }
+      
 
 
         private void FormDigRobot_FormClosed(object sender, FormClosedEventArgs e)
         {
-
             this.Dispose(true);
         }
 
@@ -240,5 +206,87 @@ namespace DigRobot
             else e.Cancel = true; 
         }
 
+        private void tbxProperty_TextChanged(object sender, EventArgs e)
+        {
+            if (tbxProperty.Text != "") strProperty = tbxProperty.Text;
+            else strProperty = "point1";
+        }
+
+        private void OperationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("请选择三个点作为参考基准点，请在图上点击开始采集第一个点：");
+            bLeftButtonDown = true;
+            cRef3Points.ListRef3ScreenPosition.Clear();
+            cRef3Points.ListRef3RealPosition.Clear();
+        }
+
+        private void btnDelDgvLine_Click(object sender, EventArgs e)
+        {
+            deleteSelectedRowInDataGridView(dgv);
+        }
+
+        public static void deleteSelectedRowInDataGridView(DataGridView dgv)
+        {
+            if (dgv.RowCount > 1)
+            {
+                int idRow = dgv.SelectedCells[0].RowIndex;
+                if (idRow != dgv.RowCount - 1) dgv.Rows.RemoveAt(idRow);
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            //设置文件类型 
+            sfd.Title = " 请输入保存数据的位置：";
+            sfd.Filter = "txt文件|*.txt|所有文件|*.*";
+
+            //设置默认文件类型显示顺序 
+            sfd.FilterIndex = 1;
+
+            //保存对话框是否记忆上次打开的目录 
+            sfd.RestoreDirectory = true;
+            string resultFilePath ="c:\\dig.txt";
+            //点了保存按钮进入 
+            if (sfd.ShowDialog() == DialogResult.OK) resultFilePath = sfd.FileName.ToString(); //获得文件路径 
+            readDataGridView2TXTFile(dgv, resultFilePath);
+        }
+
+        public static void readDataGridView2TXTFile(DataGridView dgv, string filePathGeoTextWrited)
+        {
+          
+                StreamWriter swWrited = new StreamWriter(filePathGeoTextWrited, false, Encoding.UTF8);
+
+                for (int j = 0; j < dgv.RowCount - 1; j++)
+                {
+                    List<string> listData = new List<string>();
+                    for (int i = 0; i < dgv.ColumnCount; i++)
+                    {
+                        listData.Add(dgv.Rows[j].Cells[i].Value.ToString());
+                    }
+                    swWrited.Write(string.Join("\t", listData.ToArray()) + "\r\n");
+                }
+                swWrited.Close();
+
+        }
+
+        private void btnDelall_Click(object sender, EventArgs e)
+        {
+            dgv.Rows.Clear();
+        }
+
+        private void cbbPointColor_Click(object sender, EventArgs e)
+        {
+            setComboBoxBackColorByColorDialog(cbbPointColor);
+            pointBrush.Color = cbbPointColor.BackColor;
+        }
+        public static void setComboBoxBackColorByColorDialog(ComboBox cbb)
+        {
+            ColorDialog colorDialog1 = new ColorDialog();
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                cbb.BackColor = colorDialog1.Color;
+            }
+        }
     }
 }

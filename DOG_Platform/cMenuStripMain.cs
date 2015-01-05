@@ -71,6 +71,8 @@ namespace DOGPlatform
             tsmiLithoPattern.Click += new System.EventHandler(tsmiLithoPattern_Click);
             tsmiTools.DropDownItems.Add(tsmiDigger);
             tsmiDigger.Click += new System.EventHandler(tsmiDigger_Click);
+            tsmiTools.DropDownItems.Add(tsmiCalArea);
+            tsmiCalArea.Click += new System.EventHandler(tsmiCalArea_Click);
             tsmiTools.DropDownItems.Add(tsmiErrLog);
             tsmiErrLog.Click += new System.EventHandler(tsmiErrLog_Click);
             menuStrip.Items.Add(tsmiTools);
@@ -105,13 +107,19 @@ namespace DOGPlatform
             System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathErrInfor);
         }
 
-        public ToolStripMenuItem tsmiDigger = new ToolStripMenuItem("数据采集");
+        public ToolStripMenuItem tsmiDigger = new ToolStripMenuItem("数字化工具");
         public void tsmiDigger_Click(object sender, EventArgs e)
         {
             FormDigRobot _formDig = new FormDigRobot();
             _formDig.Show();
         }
 
+        public ToolStripMenuItem tsmiCalArea = new ToolStripMenuItem("面积周长计算");
+        public void tsmiCalArea_Click(object sender, EventArgs e)
+        {
+            FormCalArea _form= new FormCalArea();
+            _form.Show();
+        }
         public void setupTsmiWellGroup()
         {
             ToolStripMenuItem tsmiTools = new ToolStripMenuItem("井组分析");

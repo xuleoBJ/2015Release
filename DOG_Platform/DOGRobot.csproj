@@ -102,6 +102,12 @@
     <Compile Include="cIOinputInjectProfile.cs" />
     <Compile Include="cIOinputLayerSerier.cs" />
     <Compile Include="cProjectData.cs" />
+    <Compile Include="FormCalArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCalArea.Designer.cs">
+      <DependentUpon>FormCalArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormConnect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -480,6 +486,9 @@
     <Compile Include="XML\cXETrackLog.cs" />
     <Compile Include="XML\cXETrackPerforation.cs" />
     <Compile Include="XML\cXETrackText.cs" />
+    <EmbeddedResource Include="FormCalArea.resx">
+      <DependentUpon>FormCalArea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormProfileSelectWells.resx">
       <DependentUpon>FormProfileSelectWells.cs</DependentUpon>
     </EmbeddedResource>

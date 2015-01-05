@@ -15,7 +15,7 @@ namespace DigRobot
         public static List<PointF> ListRef3ScreenPosition = new List<PointF>();
         public static List<PointF> ListRef3RealPosition = new List<PointF>();
 
-        public static string strProperty = "p1";
+      
 
         //定义两个临时变量供传值用
         public static PointF tempPointScreen = new PointF();

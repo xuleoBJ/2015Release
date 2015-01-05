@@ -37,8 +37,6 @@ namespace DOGPlatform
             }
             else
             {
-
-
                 int iItemInvalid = fListProperty_copy.FindLastIndex(item => item <= 0);
                 while (iItemInvalid >= 0)
                 {
@@ -215,8 +213,35 @@ namespace DOGPlatform
             }
 
             return sum / dfListSJ[dfListSJ.Count - 1];
-
         }
+
+        public static double calArea(List<PointF> points)
+        {
+            if (points.Count >= 3)
+            {
+                points.Add(points[0]);
+                var area = Math.Abs(points.Take(points.Count - 1)
+                   .Select((p, i) => (points[i + 1].X - p.X) * (points[i + 1].Y + p.Y))
+                   .Sum() / 2);
+                return area / 1000000;
+            }
+            else return 0;
+        }
+
+        public static double calLength(List<PointF> points)
+        {
+            if (points.Count >= 2)
+            {
+                float dis = 0.0f;
+                for (int i = 0; i < points.Count - 2; i++) 
+                {
+                    dis = dis + cCalDistance.calDistance2D(points[i].X, points[i].Y, points[i + 1].X, points[i + 1].Y);
+                }
+                return dis / 1000;
+            }
+            else return 0;
+        }
+       
  
 
     }

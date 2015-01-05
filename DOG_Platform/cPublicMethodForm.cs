@@ -428,7 +428,7 @@ namespace DOGPlatform
                     {
                         listData.Add(dgv.Rows[j].Cells[i].Value.ToString());
                     }
-                    swWrited.Write(string.Join("\t", listData.ToArray())+"\n");
+                    swWrited.Write(string.Join("\t", listData.ToArray())+"\r\n");
                 }
 
                 swWrited.Close();
