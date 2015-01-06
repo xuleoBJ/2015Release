@@ -35,8 +35,8 @@ namespace DOGPlatform
         }
          XElement getDef4SandStone(string sLithoName, string sID)
         {
-            int iWidthPattern = Convert.ToInt16(nUDPatternSandWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
+            int iWidthPattern = iHeightPattern * 2;
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
             string sCircleColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
            return cSVGXEPatternLithoSand.lithoPatternDefsSand(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, hasSplit);
@@ -45,8 +45,8 @@ namespace DOGPlatform
 
          XElement getDef4MudStone(string sLithoName, string sID)
          {
-             int iWidthPattern = Convert.ToInt16(this.nUDPatternMudWidth.Value);
              int iHeightPattern = Convert.ToInt16(this.nUDPatternMudHeight.Value);
+             int iWidthPattern = iHeightPattern*2;
              string sBackColor = cPublicMethodBase.getRGB(this.cbbPatternMudBackColor.BackColor);
              return cSVGXEPatternMud.lithoPatternDefsMud(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, hasSplit);
          }
@@ -61,24 +61,24 @@ namespace DOGPlatform
 
          void addDef4Limestone( string sLithoName ,string sID)
         {
-            int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
+            int iWidthPattern = iHeightPattern*2;
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
             cSVGXEPatternCarbonatie.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
         }
 
          XElement getDef4Limestone(string sLithoName, string sID)
          {
-             int iWidthPattern = Convert.ToInt16(nUDPatternLimesWidth.Value);
              int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
+            int iWidthPattern = iHeightPattern*2;
              string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
              return  cSVGXEPatternCarbonatie.lithoPatternLimesDefs(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
          }
 
          void addDef4SandStone(string sLithoName, string sID)
          {
-             int iWidthPattern = Convert.ToInt16(nUDPatternSandWidth.Value);
              int iHeightPattern = Convert.ToInt16(nUDPatternSandHeight.Value);
+             int iWidthPattern = iHeightPattern * 2;
              string sBackColor = cPublicMethodBase.getRGB(cbbPatternSandBackColor.BackColor);
              string sCircleColor = cPublicMethodBase.getRGB(this.cbbInnerColor.BackColor);
              cSVGXEPatternLithoSand.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor, sCircleColor, hasSplit);
@@ -87,16 +87,16 @@ namespace DOGPlatform
 
          void addDef4MudStone(string sLithoName, string sID)
          {
-             int iWidthPattern = Convert.ToInt16(this.nUDPatternMudWidth.Value);
              int iHeightPattern = Convert.ToInt16(this.nUDPatternMudHeight.Value);
+             int iWidthPattern = iHeightPattern*2;
              string sBackColor = cPublicMethodBase.getRGB(this.cbbPatternMudBackColor.BackColor);
              cSVGXEPatternMud.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor,hasSplit);
          }
 
          void addDefGravelStone(string sLithoName, string sID)
          {
-             int iWidthPattern = Convert.ToInt16(nUDPatternGravelWidth.Value);
              int iHeightPattern = Convert.ToInt16(nUDPatternGravelHeight.Value);
+             int iWidthPattern = iHeightPattern*2;
              string sBackColor = cPublicMethodBase.getRGB(this.cbbGravelBackcolor.BackColor);
              cSVGXEPatternGravel.addDef2Ink(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor,hasSplit);
          }
@@ -222,16 +222,16 @@ namespace DOGPlatform
 
         void addDefShaleStone(string sLithoName, string sID)
         {
-            int iWidthPattern = Convert.ToInt16(nUDPatternShaleWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternShaleHeight.Value);
+            int iWidthPattern = iHeightPattern*2;
             string sBackColor = cPublicMethodBase.getRGB(cbbPatternShaleBackColor.BackColor);
             cSVGXEPatternShale.addDef2Ink(sLithoName,sID, iWidthPattern, iHeightPattern, sBackColor);
         }
 
         XElement getDef4ShaleStone(string sLithoName, string sID)
         {
-            int iWidthPattern = Convert.ToInt16(this.nUDPatternMudWidth.Value);
             int iHeightPattern = Convert.ToInt16(this.nUDPatternMudHeight.Value);
+            int iWidthPattern = iHeightPattern*2;
             string sBackColor = cPublicMethodBase.getRGB(this.cbbPatternMudBackColor.BackColor);
             return cSVGXEPatternShale.lithoPatternShaleDefs(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
         }
@@ -282,8 +282,8 @@ namespace DOGPlatform
 
         XElement getDef4GravelStone(string sLithoName, string sID)
         {
-            int iWidthPattern = Convert.ToInt16(nUDPatternGravelWidth.Value);
             int iHeightPattern = Convert.ToInt16(nUDPatternGravelHeight.Value);
+             int iWidthPattern = iHeightPattern*2;
             string sBackColor = cPublicMethodBase.getRGB(this.cbbGravelBackcolor.BackColor);
             return cSVGXEPatternGravel.lithoPatternDefsGravel(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor,hasSplit);
         }
@@ -387,8 +387,9 @@ namespace DOGPlatform
         private void btnPatternView_Click(object sender, EventArgs e)
         {
             SolidBrush backBrush = new SolidBrush(this.cbbPatternSandBackColor.BackColor);
-            int width = Convert.ToInt16( this.nUDPatternSandWidth.Value);
+           
             int height =Convert.ToInt16( this.nUDPatternShaleHeight.Value);
+            int width = height * 2;
             Bitmap bmp = new Bitmap(width, height);
             SolidBrush brush = new SolidBrush( this.cbbInnerColor.BackColor);
             using (Graphics g = Graphics.FromImage(bmp))
@@ -430,8 +431,8 @@ namespace DOGPlatform
         private void btnView_Click(object sender, EventArgs e)
         {
             SolidBrush backBrush = new SolidBrush(this.cbbPatternSandBackColor.BackColor);
-            int width = Convert.ToInt16(this.nUDPatternSandWidth.Value);
             int height = Convert.ToInt16(this.nUDPatternShaleHeight.Value);
+            int width = height * 2;
             Bitmap bmp = new Bitmap(width, height);
             SolidBrush brush = new SolidBrush(this.cbbInnerColor.BackColor);
             using (Graphics g = Graphics.FromImage(bmp))

@@ -54,9 +54,9 @@
             this.tbxProperty = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbOriginalPic)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -296,20 +296,15 @@
             // 
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
             this.Column2,
-            this.Column3});
+            this.Column3,
+            this.Column1});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgv.Location = new System.Drawing.Point(0, 82);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
             this.dgv.Size = new System.Drawing.Size(304, 594);
             this.dgv.TabIndex = 3;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "属性名";
-            this.Column1.Name = "Column1";
             // 
             // Column2
             // 
@@ -320,6 +315,11 @@
             // 
             this.Column3.HeaderText = "Y";
             this.Column3.Name = "Column3";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "属性名";
+            this.Column1.Name = "Column1";
             // 
             // FormDigRobot
             // 
@@ -377,14 +377,14 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.TextBox tbxProperty;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.Button btnDelDgvLine;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnDelall;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbbPointColor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
 
     }
 }

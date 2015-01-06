@@ -30,10 +30,7 @@ namespace DOGPlatform.SVG
         public static void addDef2Ink(string sLithoName, string sURL, int iWidthPattern, int iHeightPattern,int rCircle,
             string sBackColor,string sCircleColor,bool bSplitline)
         {
-            string filePahtsvgPattern = Path.Combine(cProjectManager.filePathInkscape, "pattern", "patterns.svg"); 
-            //  string filePath = Path.Combine(Application.StartupPath,"..", "pattern","patterns.svg");
-            string filePathInk = Path.Combine(filePahtsvgPattern, "patterns.svg");
-            XDocument xDoc = XDocument.Load(filePathInk);
+            XDocument xDoc = XDocument.Load(cProjectManager.filePahtsvgPattern);
             XElement xroot = xDoc.Root;
             if (xroot != null)
             {
@@ -41,7 +38,7 @@ namespace DOGPlatform.SVG
                 XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
                 if (xdefs != null) xdefs.AddFirst(lithoPatternDefsSand(sLithoName, sURL, iWidthPattern, iHeightPattern, rCircle,
                     sBackColor, sCircleColor, bSplitline));
-                xDoc.Save(filePathInk);
+                xDoc.Save(cProjectManager.filePahtsvgPattern);
                 MessageBox.Show("图案添加完成");
             }
         }

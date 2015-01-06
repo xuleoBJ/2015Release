@@ -1116,7 +1116,7 @@
             0,
             0,
             -2147483648});
-            this.nUDElevationRulerBottom.ValueChanged += new System.EventHandler(this.nUDElevationRulerBottom_ValueChanged_1);
+            this.nUDElevationRulerBottom.ValueChanged += new System.EventHandler(this.nUDElevationRulerBottom_ValueChanged);
             // 
             // nUDElevationRulerTop
             // 
@@ -1140,7 +1140,7 @@
             this.nUDElevationRulerTop.Name = "nUDElevationRulerTop";
             this.nUDElevationRulerTop.Size = new System.Drawing.Size(58, 21);
             this.nUDElevationRulerTop.TabIndex = 33;
-            this.nUDElevationRulerTop.ValueChanged += new System.EventHandler(this.nUDElevationRulerTop_ValueChanged_1);
+            this.nUDElevationRulerTop.ValueChanged += new System.EventHandler(this.nUDElevationRulerTop_ValueChanged);
             // 
             // nUDElevationFontSize
             // 

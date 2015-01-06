@@ -131,7 +131,7 @@ namespace DOGPlatform.SVG
         public XmlElement gLayerElement(string sLayerName) 
         {
             XmlElement gLayer = svgDoc.CreateElement("g");
-            gLayer.SetAttribute("visibility", "visible");
+            gLayer.SetAttribute("style", "visibility:visible;");
             string sTranslate = "translate(" + offsetXgEle.ToString() + "," + offsetYgEle.ToString() + ")";
             gLayer.SetAttribute("transform", sLayerName);
          

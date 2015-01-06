@@ -138,7 +138,7 @@ namespace DOGPlatform
                             double.TryParse(split[2], out item.dbY);
                             float.TryParse(split[3], out  item.fKB);
                             int.TryParse(split[4], out  item.iWellType);
-                            float.TryParse(split[5], out   item.fWellBase);
+                            float.TryParse(split[5], out  item.fWellBase);
                             return item;
                         }
                     }

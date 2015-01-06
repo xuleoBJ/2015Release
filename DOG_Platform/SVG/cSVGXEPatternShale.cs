@@ -21,8 +21,7 @@ namespace DOGPlatform.SVG
 
        public  static void addDef2Ink(string sLithoName, string sID, int iWidthPattern, int iHeightPattern, string sBackColor)
         {
-            string filePahtsvgPattern = Path.Combine(cProjectManager.filePathInkscape, "pattern", "patterns.svg"); 
-            string filePathInk = Path.Combine(filePahtsvgPattern, "patterns.svg");
+            string filePathInk = cProjectManager.filePahtsvgPattern;
             XDocument xDoc = XDocument.Load(filePathInk);
             XElement xroot = xDoc.Root;
             if (xroot != null)

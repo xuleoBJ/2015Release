@@ -33,7 +33,6 @@
             this.tbgPatternSand = new System.Windows.Forms.TabPage();
             this.btnTortSand = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblStockID = new System.Windows.Forms.Label();
             this.cbbPatternSandBackColor = new System.Windows.Forms.ComboBox();
             this.tbxPatternNameSand = new System.Windows.Forms.TextBox();
@@ -41,7 +40,6 @@
             this.cbbInnerColor = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.nUDPatternSandHeight = new System.Windows.Forms.NumericUpDown();
-            this.nUDPatternSandWidth = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.nUDSandRadius = new System.Windows.Forms.NumericUpDown();
@@ -64,8 +62,6 @@
             this.btnXiGravel = new System.Windows.Forms.Button();
             this.btnMidGravel = new System.Windows.Forms.Button();
             this.btnHugeGravel = new System.Windows.Forms.Button();
-            this.nUDPatternGravelWidth = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
             this.nUDPatternGravelHeight = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -78,8 +74,6 @@
             this.btnSZmud = new System.Windows.Forms.Button();
             this.btnFSZMud = new System.Windows.Forms.Button();
             this.btnMud = new System.Windows.Forms.Button();
-            this.nUDPatternMudWidth = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
             this.nUDPatternMudHeight = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -90,8 +84,6 @@
             this.btnAsphaltShale = new System.Windows.Forms.Button();
             this.btnSandShale = new System.Windows.Forms.Button();
             this.btnShale = new System.Windows.Forms.Button();
-            this.nUDPatternShaleWidth = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
             this.nUDPatternShaleHeight = new System.Windows.Forms.NumericUpDown();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -102,8 +94,6 @@
             this.btnOoliteLimes = new System.Windows.Forms.Button();
             this.btnDolomite = new System.Windows.Forms.Button();
             this.btnLimestone = new System.Windows.Forms.Button();
-            this.nUDPatternLimesWidth = new System.Windows.Forms.NumericUpDown();
-            this.label9 = new System.Windows.Forms.Label();
             this.nUDPatternLimesHeight = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -142,19 +132,14 @@
             this.tbgPatternSand.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandHeight)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDSandRadius)).BeginInit();
             this.tbgPatternGravel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelHeight)).BeginInit();
             this.tbgPatternMud.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudHeight)).BeginInit();
             this.tbgPatternShale.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleHeight)).BeginInit();
             this.tbgPatternTSY.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesWidth)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesHeight)).BeginInit();
             this.tbgPatternVolcanicRock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
@@ -214,7 +199,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lblStockID);
             this.groupBox1.Controls.Add(this.cbbPatternSandBackColor);
             this.groupBox1.Controls.Add(this.tbxPatternNameSand);
@@ -222,7 +206,6 @@
             this.groupBox1.Controls.Add(this.cbbInnerColor);
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.nUDPatternSandHeight);
-            this.groupBox1.Controls.Add(this.nUDPatternSandWidth);
             this.groupBox1.Controls.Add(this.label28);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.Controls.Add(this.nUDSandRadius);
@@ -232,15 +215,6 @@
             this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "配置信息";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "单元宽";
             // 
             // lblStockID
             // 
@@ -314,29 +288,6 @@
             this.nUDPatternSandHeight.Size = new System.Drawing.Size(49, 21);
             this.nUDPatternSandHeight.TabIndex = 34;
             this.nUDPatternSandHeight.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // nUDPatternSandWidth
-            // 
-            this.nUDPatternSandWidth.AllowDrop = true;
-            this.nUDPatternSandWidth.Location = new System.Drawing.Point(329, 73);
-            this.nUDPatternSandWidth.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.nUDPatternSandWidth.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nUDPatternSandWidth.Name = "nUDPatternSandWidth";
-            this.nUDPatternSandWidth.Size = new System.Drawing.Size(49, 21);
-            this.nUDPatternSandWidth.TabIndex = 36;
-            this.nUDPatternSandWidth.Value = new decimal(new int[] {
             10,
             0,
             0,
@@ -491,8 +442,6 @@
             this.tbgPatternGravel.Controls.Add(this.btnXiGravel);
             this.tbgPatternGravel.Controls.Add(this.btnMidGravel);
             this.tbgPatternGravel.Controls.Add(this.btnHugeGravel);
-            this.tbgPatternGravel.Controls.Add(this.nUDPatternGravelWidth);
-            this.tbgPatternGravel.Controls.Add(this.label2);
             this.tbgPatternGravel.Controls.Add(this.nUDPatternGravelHeight);
             this.tbgPatternGravel.Controls.Add(this.label3);
             this.tbgPatternGravel.Controls.Add(this.label4);
@@ -508,7 +457,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(284, 55);
+            this.label26.Location = new System.Drawing.Point(26, 70);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(41, 12);
             this.label26.TabIndex = 55;
@@ -516,7 +465,7 @@
             // 
             // tbxPatternNameGravel
             // 
-            this.tbxPatternNameGravel.Location = new System.Drawing.Point(331, 53);
+            this.tbxPatternNameGravel.Location = new System.Drawing.Point(81, 61);
             this.tbxPatternNameGravel.Name = "tbxPatternNameGravel";
             this.tbxPatternNameGravel.Size = new System.Drawing.Size(100, 21);
             this.tbxPatternNameGravel.TabIndex = 54;
@@ -591,38 +540,6 @@
             this.btnHugeGravel.UseVisualStyleBackColor = true;
             this.btnHugeGravel.Click += new System.EventHandler(this.btnHugeGravel_Click);
             // 
-            // nUDPatternGravelWidth
-            // 
-            this.nUDPatternGravelWidth.AllowDrop = true;
-            this.nUDPatternGravelWidth.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.nUDPatternGravelWidth.Location = new System.Drawing.Point(203, 52);
-            this.nUDPatternGravelWidth.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.nUDPatternGravelWidth.Name = "nUDPatternGravelWidth";
-            this.nUDPatternGravelWidth.Size = new System.Drawing.Size(49, 21);
-            this.nUDPatternGravelWidth.TabIndex = 42;
-            this.nUDPatternGravelWidth.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(201, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "单元宽";
-            // 
             // nUDPatternGravelHeight
             // 
             this.nUDPatternGravelHeight.AllowDrop = true;
@@ -631,7 +548,7 @@
             0,
             0,
             0});
-            this.nUDPatternGravelHeight.Location = new System.Drawing.Point(129, 53);
+            this.nUDPatternGravelHeight.Location = new System.Drawing.Point(451, 61);
             this.nUDPatternGravelHeight.Minimum = new decimal(new int[] {
             4,
             0,
@@ -649,7 +566,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(129, 35);
+            this.label3.Location = new System.Drawing.Point(396, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 12);
             this.label3.TabIndex = 39;
@@ -658,7 +575,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(37, 37);
+            this.label4.Location = new System.Drawing.Point(205, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(77, 12);
             this.label4.TabIndex = 38;
@@ -668,7 +585,7 @@
             // 
             this.cbbGravelBackcolor.BackColor = System.Drawing.Color.White;
             this.cbbGravelBackcolor.FormattingEnabled = true;
-            this.cbbGravelBackcolor.Location = new System.Drawing.Point(40, 52);
+            this.cbbGravelBackcolor.Location = new System.Drawing.Point(296, 62);
             this.cbbGravelBackcolor.Name = "cbbGravelBackcolor";
             this.cbbGravelBackcolor.Size = new System.Drawing.Size(70, 20);
             this.cbbGravelBackcolor.TabIndex = 37;
@@ -683,8 +600,6 @@
             this.tbgPatternMud.Controls.Add(this.btnSZmud);
             this.tbgPatternMud.Controls.Add(this.btnFSZMud);
             this.tbgPatternMud.Controls.Add(this.btnMud);
-            this.tbgPatternMud.Controls.Add(this.nUDPatternMudWidth);
-            this.tbgPatternMud.Controls.Add(this.label5);
             this.tbgPatternMud.Controls.Add(this.nUDPatternMudHeight);
             this.tbgPatternMud.Controls.Add(this.label7);
             this.tbgPatternMud.Controls.Add(this.label8);
@@ -700,7 +615,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(265, 44);
+            this.label29.Location = new System.Drawing.Point(38, 72);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(41, 12);
             this.label29.TabIndex = 57;
@@ -708,7 +623,7 @@
             // 
             // tbxPatternNameMud
             // 
-            this.tbxPatternNameMud.Location = new System.Drawing.Point(312, 41);
+            this.tbxPatternNameMud.Location = new System.Drawing.Point(94, 63);
             this.tbxPatternNameMud.Name = "tbxPatternNameMud";
             this.tbxPatternNameMud.Size = new System.Drawing.Size(100, 21);
             this.tbxPatternNameMud.TabIndex = 56;
@@ -763,38 +678,6 @@
             this.btnMud.UseVisualStyleBackColor = true;
             this.btnMud.Click += new System.EventHandler(this.btnMud_Click);
             // 
-            // nUDPatternMudWidth
-            // 
-            this.nUDPatternMudWidth.AllowDrop = true;
-            this.nUDPatternMudWidth.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.nUDPatternMudWidth.Location = new System.Drawing.Point(196, 42);
-            this.nUDPatternMudWidth.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.nUDPatternMudWidth.Name = "nUDPatternMudWidth";
-            this.nUDPatternMudWidth.Size = new System.Drawing.Size(49, 21);
-            this.nUDPatternMudWidth.TabIndex = 42;
-            this.nUDPatternMudWidth.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(194, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 41;
-            this.label5.Text = "单元宽";
-            // 
             // nUDPatternMudHeight
             // 
             this.nUDPatternMudHeight.AllowDrop = true;
@@ -803,7 +686,7 @@
             0,
             0,
             0});
-            this.nUDPatternMudHeight.Location = new System.Drawing.Point(122, 43);
+            this.nUDPatternMudHeight.Location = new System.Drawing.Point(442, 63);
             this.nUDPatternMudHeight.Minimum = new decimal(new int[] {
             4,
             0,
@@ -821,7 +704,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(122, 25);
+            this.label7.Location = new System.Drawing.Point(386, 72);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
             this.label7.TabIndex = 39;
@@ -830,7 +713,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(30, 27);
+            this.label8.Location = new System.Drawing.Point(209, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 12);
             this.label8.TabIndex = 38;
@@ -840,7 +723,7 @@
             // 
             this.cbbPatternMudBackColor.BackColor = System.Drawing.Color.White;
             this.cbbPatternMudBackColor.FormattingEnabled = true;
-            this.cbbPatternMudBackColor.Location = new System.Drawing.Point(33, 42);
+            this.cbbPatternMudBackColor.Location = new System.Drawing.Point(301, 64);
             this.cbbPatternMudBackColor.Name = "cbbPatternMudBackColor";
             this.cbbPatternMudBackColor.Size = new System.Drawing.Size(70, 20);
             this.cbbPatternMudBackColor.TabIndex = 37;
@@ -853,8 +736,6 @@
             this.tbgPatternShale.Controls.Add(this.btnAsphaltShale);
             this.tbgPatternShale.Controls.Add(this.btnSandShale);
             this.tbgPatternShale.Controls.Add(this.btnShale);
-            this.tbgPatternShale.Controls.Add(this.nUDPatternShaleWidth);
-            this.tbgPatternShale.Controls.Add(this.label15);
             this.tbgPatternShale.Controls.Add(this.nUDPatternShaleHeight);
             this.tbgPatternShale.Controls.Add(this.label16);
             this.tbgPatternShale.Controls.Add(this.label17);
@@ -870,7 +751,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(269, 39);
+            this.label25.Location = new System.Drawing.Point(22, 44);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 12);
             this.label25.TabIndex = 55;
@@ -878,7 +759,7 @@
             // 
             // tbxPatternNameShale
             // 
-            this.tbxPatternNameShale.Location = new System.Drawing.Point(325, 36);
+            this.tbxPatternNameShale.Location = new System.Drawing.Point(76, 35);
             this.tbxPatternNameShale.Name = "tbxPatternNameShale";
             this.tbxPatternNameShale.Size = new System.Drawing.Size(100, 21);
             this.tbxPatternNameShale.TabIndex = 54;
@@ -913,38 +794,6 @@
             this.btnShale.UseVisualStyleBackColor = true;
             this.btnShale.Click += new System.EventHandler(this.btnShale_Click);
             // 
-            // nUDPatternShaleWidth
-            // 
-            this.nUDPatternShaleWidth.AllowDrop = true;
-            this.nUDPatternShaleWidth.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.nUDPatternShaleWidth.Location = new System.Drawing.Point(192, 44);
-            this.nUDPatternShaleWidth.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.nUDPatternShaleWidth.Name = "nUDPatternShaleWidth";
-            this.nUDPatternShaleWidth.Size = new System.Drawing.Size(49, 21);
-            this.nUDPatternShaleWidth.TabIndex = 42;
-            this.nUDPatternShaleWidth.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(190, 26);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 12);
-            this.label15.TabIndex = 41;
-            this.label15.Text = "单元宽";
-            // 
             // nUDPatternShaleHeight
             // 
             this.nUDPatternShaleHeight.AllowDrop = true;
@@ -953,7 +802,7 @@
             0,
             0,
             0});
-            this.nUDPatternShaleHeight.Location = new System.Drawing.Point(122, 45);
+            this.nUDPatternShaleHeight.Location = new System.Drawing.Point(416, 35);
             this.nUDPatternShaleHeight.Minimum = new decimal(new int[] {
             4,
             0,
@@ -971,7 +820,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(122, 27);
+            this.label16.Location = new System.Drawing.Point(362, 44);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 12);
             this.label16.TabIndex = 39;
@@ -980,7 +829,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(30, 29);
+            this.label17.Location = new System.Drawing.Point(189, 44);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(77, 12);
             this.label17.TabIndex = 38;
@@ -990,7 +839,7 @@
             // 
             this.cbbPatternShaleBackColor.BackColor = System.Drawing.Color.White;
             this.cbbPatternShaleBackColor.FormattingEnabled = true;
-            this.cbbPatternShaleBackColor.Location = new System.Drawing.Point(33, 44);
+            this.cbbPatternShaleBackColor.Location = new System.Drawing.Point(279, 36);
             this.cbbPatternShaleBackColor.Name = "cbbPatternShaleBackColor";
             this.cbbPatternShaleBackColor.Size = new System.Drawing.Size(70, 20);
             this.cbbPatternShaleBackColor.TabIndex = 37;
@@ -1003,8 +852,6 @@
             this.tbgPatternTSY.Controls.Add(this.btnOoliteLimes);
             this.tbgPatternTSY.Controls.Add(this.btnDolomite);
             this.tbgPatternTSY.Controls.Add(this.btnLimestone);
-            this.tbgPatternTSY.Controls.Add(this.nUDPatternLimesWidth);
-            this.tbgPatternTSY.Controls.Add(this.label9);
             this.tbgPatternTSY.Controls.Add(this.nUDPatternLimesHeight);
             this.tbgPatternTSY.Controls.Add(this.label10);
             this.tbgPatternTSY.Controls.Add(this.label11);
@@ -1020,7 +867,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(270, 44);
+            this.label30.Location = new System.Drawing.Point(30, 44);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(41, 12);
             this.label30.TabIndex = 59;
@@ -1028,7 +875,7 @@
             // 
             // tbxPatternNameHuiyan
             // 
-            this.tbxPatternNameHuiyan.Location = new System.Drawing.Point(317, 39);
+            this.tbxPatternNameHuiyan.Location = new System.Drawing.Point(85, 35);
             this.tbxPatternNameHuiyan.Name = "tbxPatternNameHuiyan";
             this.tbxPatternNameHuiyan.Size = new System.Drawing.Size(100, 21);
             this.tbxPatternNameHuiyan.TabIndex = 58;
@@ -1063,38 +910,6 @@
             this.btnLimestone.UseVisualStyleBackColor = true;
             this.btnLimestone.Click += new System.EventHandler(this.btnLimestone_Click);
             // 
-            // nUDPatternLimesWidth
-            // 
-            this.nUDPatternLimesWidth.AllowDrop = true;
-            this.nUDPatternLimesWidth.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.nUDPatternLimesWidth.Location = new System.Drawing.Point(190, 40);
-            this.nUDPatternLimesWidth.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.nUDPatternLimesWidth.Name = "nUDPatternLimesWidth";
-            this.nUDPatternLimesWidth.Size = new System.Drawing.Size(49, 21);
-            this.nUDPatternLimesWidth.TabIndex = 42;
-            this.nUDPatternLimesWidth.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(188, 21);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(41, 12);
-            this.label9.TabIndex = 41;
-            this.label9.Text = "单元宽";
-            // 
             // nUDPatternLimesHeight
             // 
             this.nUDPatternLimesHeight.AllowDrop = true;
@@ -1103,7 +918,7 @@
             0,
             0,
             0});
-            this.nUDPatternLimesHeight.Location = new System.Drawing.Point(116, 41);
+            this.nUDPatternLimesHeight.Location = new System.Drawing.Point(429, 35);
             this.nUDPatternLimesHeight.Minimum = new decimal(new int[] {
             4,
             0,
@@ -1121,7 +936,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(116, 23);
+            this.label10.Location = new System.Drawing.Point(374, 44);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 12);
             this.label10.TabIndex = 39;
@@ -1130,7 +945,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(24, 25);
+            this.label11.Location = new System.Drawing.Point(199, 44);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(77, 12);
             this.label11.TabIndex = 38;
@@ -1140,7 +955,7 @@
             // 
             this.cbbPatternLimesBackColor.BackColor = System.Drawing.Color.White;
             this.cbbPatternLimesBackColor.FormattingEnabled = true;
-            this.cbbPatternLimesBackColor.Location = new System.Drawing.Point(27, 40);
+            this.cbbPatternLimesBackColor.Location = new System.Drawing.Point(290, 36);
             this.cbbPatternLimesBackColor.Name = "cbbPatternLimesBackColor";
             this.cbbPatternLimesBackColor.Size = new System.Drawing.Size(70, 20);
             this.cbbPatternLimesBackColor.TabIndex = 37;
@@ -1530,23 +1345,18 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandHeight)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternSandWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDSandRadius)).EndInit();
             this.tbgPatternGravel.ResumeLayout(false);
             this.tbgPatternGravel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternGravelHeight)).EndInit();
             this.tbgPatternMud.ResumeLayout(false);
             this.tbgPatternMud.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternMudHeight)).EndInit();
             this.tbgPatternShale.ResumeLayout(false);
             this.tbgPatternShale.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternShaleHeight)).EndInit();
             this.tbgPatternTSY.ResumeLayout(false);
             this.tbgPatternTSY.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesWidth)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDPatternLimesHeight)).EndInit();
             this.tbgPatternVolcanicRock.ResumeLayout(false);
             this.tbgPatternVolcanicRock.PerformLayout();
@@ -1573,8 +1383,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbbPatternSandBackColor;
-        private System.Windows.Forms.NumericUpDown nUDPatternSandWidth;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tbgPatternGravel;
         private System.Windows.Forms.TabPage tbgPatternMud;
         private System.Windows.Forms.TabPage tbgPatternTSY;
@@ -1585,20 +1393,14 @@
         private System.Windows.Forms.Button btnZhongSand;
         private System.Windows.Forms.Button btnFenXiSand;
         private System.Windows.Forms.Button btnZhongxiSand;
-        private System.Windows.Forms.NumericUpDown nUDPatternGravelWidth;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown nUDPatternGravelHeight;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbbGravelBackcolor;
-        private System.Windows.Forms.NumericUpDown nUDPatternMudWidth;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.NumericUpDown nUDPatternMudHeight;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbbPatternMudBackColor;
-        private System.Windows.Forms.NumericUpDown nUDPatternLimesWidth;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown nUDPatternLimesHeight;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -1609,8 +1411,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.NumericUpDown nUDPatternShaleWidth;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown nUDPatternShaleHeight;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;

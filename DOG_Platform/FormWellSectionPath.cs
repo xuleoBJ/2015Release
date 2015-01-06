@@ -98,13 +98,8 @@ namespace DOGPlatform
         void initializeTreeViewWellCollection()
         {
             this.lbxTracksCollection.Items.Clear();
-
             this.tvwWellSectionCollection.Nodes.Clear();
-            this.tvwWellSectionCollection.Nodes.Add("深度尺");
-            for (int i = 0; i < ltStrSelectedJH.Count; i++)
-            {
-                tvwWellSectionCollection.Nodes.Add(ltStrSelectedJH[i]);
-            }
+            for (int i = 0; i < ltStrSelectedJH.Count; i++) tvwWellSectionCollection.Nodes.Add(ltStrSelectedJH[i]);
         }
         void updateSelectedListJH()
         {
@@ -247,12 +242,7 @@ namespace DOGPlatform
             {
                 foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataLayerDepth(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 this.lbxTracksCollection.Items.Add("地层");
-                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) 
-                {
-                    if(wellNote.Text!="深度尺")
-                    wellNote.Nodes.Add("地层");
-                }
-
+                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) wellNote.Nodes.Add("地层");
                 tvwWellSectionCollection.ExpandAll();
             }
             else
@@ -268,12 +258,7 @@ namespace DOGPlatform
             {
                 foreach (string sJH in ltStrSelectedJH) cIOWellSection.addSectionDataJSJL(sJH, dirSectionData); //提取所选井段数据存入绘图目录下保存
                 this.lbxTracksCollection.Items.Add("解释结论");
-                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes)
-                {
-                    if (wellNote.Text != "深度尺")
-                        wellNote.Nodes.Add("解释结论");
-                }
-
+                foreach (TreeNode wellNote in tvwWellSectionCollection.Nodes) wellNote.Nodes.Add("解释结论");
                 tvwWellSectionCollection.ExpandAll();
             }
             else
@@ -292,8 +277,6 @@ namespace DOGPlatform
             cPublicMethodForm.setComboBoxBackColorByColorDialog(cbbColorRightLog);
         }
 
-      
-      
         private void generateDrawLogFile(string sLogFile, string sLogName, string sCurveColor)
         {
             
@@ -354,7 +337,7 @@ namespace DOGPlatform
                 }
             }
             if (cbbUnit.SelectedIndex >= 0) sUnit = cbbUnit.SelectedItem.ToString();
-            cSVGDocSection svgSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
+            cSVGDocSection svgSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0,sUnit);
             svgSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图", 100, 100);
 
             XmlElement returnElemment;
@@ -395,10 +378,7 @@ namespace DOGPlatform
                 else returnElemment = layerTrack.gPathTrackLayerDepth(sJH, trackDataListLayerDepth, fDepthFlatted);
                 currentWell.addTrack(returnElemment, iTrackWidth);
 
-                //增加联井的view
-             
-
-                //增加解释结论道
+                              //增加解释结论道
                 trackJSJLDataList trackDataListJSJL = cIOWellSection.trackDataListJSJL(sJH,dirSectionData, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
                 cSVGSectionTrackJSJL JSJLTrack = new cSVGSectionTrackJSJL(iTrackWidth);
@@ -412,8 +392,8 @@ namespace DOGPlatform
                 iTrackWidth = 15;
                 cSVGSectionTrackProfile profileTrack = new cSVGSectionTrackProfile(iTrackWidth);
                 returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
-                if (currentWellPathList.Count > 2)
-                    returnElemment = profileTrack.gXieTrack2VerticalProfile(sJH, trackDataListProfile, fDepthFlatted);
+                if (currentWellPathList.Count <= 2)
+                    returnElemment = profileTrack.gTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
                 else returnElemment = profileTrack.gPathTrackProfile(sJH, trackDataListProfile, fDepthFlatted);
                 currentWell.addTrack(returnElemment, 0);
                 
@@ -636,18 +616,6 @@ namespace DOGPlatform
         {
             XDocument sectionMapXML = XDocument.Load(cProjectManager.xmlConfigSection);
             sectionMapXML.Element("SectionMap").Element("ElevationRuler").Element("tickFontSize").Value = nUDElevationFontSize.Value.ToString("0");
-            sectionMapXML.Save(cProjectManager.xmlConfigSection);
-        }
-        private void nUDElevationRulerTop_ValueChanged(object sender, EventArgs e)
-        {
-            XDocument sectionMapXML = XDocument.Load(cProjectManager.xmlConfigSection);
-            sectionMapXML.Element("SectionMap").Element("ElevationRuler").Element("topElevationDepth").Value = nUDElevationRulerTop.Value.ToString("0");
-            sectionMapXML.Save(cProjectManager.xmlConfigSection);
-        }
-        private void nUDElevationRulerBottom_ValueChanged(object sender, EventArgs e)
-        {
-            XDocument sectionMapXML = XDocument.Load(cProjectManager.xmlConfigSection);
-            sectionMapXML.Element("SectionMap").Element("ElevationRuler").Element("bottomElevationDepth").Value = nUDElevationRulerBottom.Value.ToString("0");
             sectionMapXML.Save(cProjectManager.xmlConfigSection);
         }
         private void nUDTextTrackWidth_ValueChanged(object sender, EventArgs e)
@@ -918,17 +886,19 @@ namespace DOGPlatform
             formSVGView.ShowDialog();
         }
 
-        private void nUDElevationRulerTop_ValueChanged_1(object sender, EventArgs e)
-        {
-            ElevationRulerTop = Convert.ToInt16(nUDElevationRulerTop.Value);
-        }
+    
 
-        private void nUDElevationRulerBottom_ValueChanged_1(object sender, EventArgs e)
+        private void nUDElevationRulerBottom_ValueChanged(object sender, EventArgs e)
         {
             ElevationRulerBase = Convert.ToInt16(nUDElevationRulerBottom.Value);
         }
 
-       
+        private void nUDElevationRulerTop_ValueChanged(object sender, EventArgs e)
+        {
+            ElevationRulerTop = Convert.ToInt16(nUDElevationRulerTop.Value);
+        }
+
+           
   
 
        

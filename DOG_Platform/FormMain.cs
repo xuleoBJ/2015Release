@@ -1104,7 +1104,7 @@ namespace DOGPlatform
         private void tvProjectGraph_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
             e.CancelEdit = true;
-            if (e.Node.Level > 0) e.CancelEdit = false;
+            if (e.Node.Level >= 0) e.CancelEdit = false;
         }
 
         private void tvProjectGraph_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
@@ -1115,10 +1115,10 @@ namespace DOGPlatform
 
         private void afterAfterEditGraphName( string oldNoteText, TreeNode node)
         {
-            string oldfilepath = Path.Combine(cProjectManager.dirPathMap, oldNoteText);
-            string newfilepath = Path.Combine(cProjectManager.dirPathMap, node.Text);
+            string oldfilepath = Path.Combine(cProjectManager.dirPathMap, oldNoteText+".svg");
+            string newfilepath = Path.Combine(cProjectManager.dirPathMap, node.Text+".svg");
             File.Move(oldfilepath, newfilepath);
-            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvResultGraph.SelectedNode.Text);
+            filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvResultGraph.SelectedNode.Text+".svg");
             updateWebSVG();
         }
 
@@ -1231,13 +1231,29 @@ namespace DOGPlatform
                     if (xn.Name == "g")
                     {
                         var idAttribute = xn.Attributes["id"];
-                        var visibleAttribute = xn.Attributes["visibility"];
-                        if (idAttribute != null && visibleAttribute!=null )
+                        var styleAttribute = xn.Attributes["style"];
+                        if (idAttribute != null && styleAttribute != null)
                         {
                             if (idAttribute.Value == e.Node.Text && e.Node.Checked == false)
-                            { visibleAttribute.Value = "hidden"; break; }
+                            { styleAttribute.Value = "visibility:hidden;"; break; }
                             if (idAttribute.Value == e.Node.Text && e.Node.Checked == true)
-                            { visibleAttribute.Value = "visible"; break; }
+                            { styleAttribute.Value = "visibility:visible;"; break; }
+                        }
+                        if (idAttribute != null && styleAttribute == null)
+                        {
+                            styleAttribute = xmlDoc.CreateAttribute("style");
+                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == false)
+                            {
+                                styleAttribute.Value = "visibility:hidden;";
+                                xn.Attributes.Append(styleAttribute);
+                                break;
+                            }
+                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == true)
+                            {
+                                styleAttribute.Value = "visibility:visible;";
+                                xn.Attributes.Append(styleAttribute);
+                                break; 
+                            }
                         }
                         
                     }

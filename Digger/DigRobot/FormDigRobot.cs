@@ -66,10 +66,10 @@ namespace DigRobot
                     double realX = cRef3Points.ListRef3RealPosition[0].X+ cRef3Points.fCordA1 * e.X + cRef3Points.fCordB1 * e.Y + cRef3Points.fCordC1;
                     double realY = cRef3Points.ListRef3RealPosition[0].Y+ cRef3Points.fCordA2 * e.X + cRef3Points.fCordB2 * e.Y + cRef3Points.fCordC2;
                     int index = this.dgv.Rows.Add();
-                    this.dgv.Rows[index].Cells[0].Value = strProperty;
-                    this.dgv.Rows[index].Cells[1].Value = realX.ToString("0.0");
-                    this.dgv.Rows[index].Cells[2].Value = realY.ToString("0.0");
-                 
+                  
+                    this.dgv.Rows[index].Cells[0].Value = realX.ToString("0.0");
+                    this.dgv.Rows[index].Cells[1].Value = realY.ToString("0.0");
+                    this.dgv.Rows[index].Cells[2].Value = strProperty;
                     toolStripStatusLabel_infor.Text = "X:" + realX.ToString("0.0000") + "    Y:" + realY.ToString("0.0000");
                 }
 
@@ -108,10 +108,7 @@ namespace DigRobot
                     }
                 
             }
-            else 
-            {
-                MessageBox.Show("设置定位坐标值有错误！");
-            }
+            else MessageBox.Show("设置定位坐标值有错误！");
 
             List<double> fListSolveD3_ABC1 = new List<double>();
             fListSolveD3_ABC1=cCalMatrix.solveLinear3(calFoctorA1B1C1);
@@ -154,15 +151,13 @@ namespace DigRobot
             cRef3Points.ListRef3RealPosition.Clear();
             cRef3Points.ListRef3ScreenPosition.Clear();
         }
- 
 
         private void openPicture(string strPicturePath) 
         {
             saveImage = Image.FromFile(strPicturePath);                       //保存当前打开图像到saveImage变量中
             if (saveImage.Height < ptbOriginalPic.Height && saveImage.Width < ptbOriginalPic.Width)
                 ptbOriginalPic.SizeMode = PictureBoxSizeMode.CenterImage;
-            else
-                ptbOriginalPic.SizeMode = PictureBoxSizeMode.StretchImage;
+            else ptbOriginalPic.SizeMode = PictureBoxSizeMode.StretchImage;
 
             ptbOriginalPic.Image = Image.FromFile(strPicturePath);               //将打开的图像存放到pictureBox中
         }
@@ -173,7 +168,7 @@ namespace DigRobot
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             openFileDialog.InitialDirectory = "\\\\";
-            openFileDialog.Filter = "jpg文件|*.jpg|bmp文件|*.bmp|所有文件|*.*";
+            openFileDialog.Filter = "jpg文件|*.jpg|bmp文件|*.bmp|png文件|*.png|GIF文件|*.gif|所有文件|*.*";
             openFileDialog.RestoreDirectory = true;
             openFileDialog.FilterIndex = 1;
 
@@ -184,9 +179,6 @@ namespace DigRobot
                 tsmiSet3Points.Enabled = true;
             }
         }
-
-
-      
 
 
         private void FormDigRobot_FormClosed(object sender, FormClosedEventArgs e)
@@ -254,7 +246,6 @@ namespace DigRobot
 
         public static void readDataGridView2TXTFile(DataGridView dgv, string filePathGeoTextWrited)
         {
-          
                 StreamWriter swWrited = new StreamWriter(filePathGeoTextWrited, false, Encoding.UTF8);
 
                 for (int j = 0; j < dgv.RowCount - 1; j++)

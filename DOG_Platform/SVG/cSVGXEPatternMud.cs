@@ -23,9 +23,8 @@ namespace DOGPlatform.SVG
         //根据用户设置，形成pattern，存入ink的配置文件内。
         public static void addDef2Ink(string sLithoName, string sURL, int iWidthPattern, int iHeightPattern, string sBackColor, bool hasSplitLine)
         {
-            string filePahtsvgPattern = Path.Combine(cProjectManager.filePathInkscape,"pattern", "patterns.svg"); 
-            //  string filePath = 
-            string filePathInk = Path.Combine(filePahtsvgPattern, "patterns.svg");
+
+            string filePathInk = cProjectManager.filePahtsvgPattern;
             XDocument xDoc = XDocument.Load(filePathInk);
             XElement xroot = xDoc.Root;
             if (xroot != null)
