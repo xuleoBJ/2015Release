@@ -20,11 +20,11 @@ namespace DOGPlatform.SVG
         
         }
      
-        //public void addgElement(XmlElement gElement, int iDx, int iDY)
+        //public void addgElement2LayerBase(XmlElement gElement, int iDx, int iDY)
         //{
         //    string sTranslate = "translate(" + iDx.ToString() + "," + iDY.ToString() + ")";
         //    gElement.SetAttribute("transform", sTranslate);
-        //    this.gSVG.AppendChild(gElement);
+        //    this.gBaseLayerSVG.AppendChild(gElement);
         //}
         /// <summary>
         /// 增加井柱子，与剖面图有不同

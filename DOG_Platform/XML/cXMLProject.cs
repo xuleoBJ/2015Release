@@ -177,7 +177,6 @@ namespace DOGPlatform.XML
         {
             string sPath = "/Project/ProjectJH";
             cProjectData.ltStrProjectJH = splitNodeInnerText(cProjectManager.xmlProject, sPath);
-
         }
 
         public static void delLogNameNode(string xmlDoc)
@@ -185,7 +184,6 @@ namespace DOGPlatform.XML
             string parentNodePath = @"/LayerMapConfig/HorizonalWell";
             string _tagName = "WellIntervel";
             delNodes(xmlDoc, parentNodePath, _tagName);
-
         }
 
         public static void setProjectLogSeriersNode()
@@ -200,7 +198,6 @@ namespace DOGPlatform.XML
         {
             string sPath="/Project/ProjectLogSeriers";
             cProjectData.ltStrLogSeriers = splitNodeInnerText(cProjectManager.xmlProject, sPath);
-
         }
     }
 }

@@ -162,8 +162,8 @@ namespace DOGPlatform
         {
             if (cbbUnit.SelectedIndex >= 0) sUnit = cbbUnit.SelectedItem.ToString();
             List<List<cSVGSectionTrackConnect.itemViewLayerDepth>> listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth>>();
-            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0,sUnit);
-            cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "井组分析图", 100, 100);
+            cSVGDocSection svgSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0,sUnit);
+            svgSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "井组分析图", 100, 100);
 
             XmlElement returnElemment;
             for (int i = 0; i < listWellsSection.Count; i++)
@@ -262,7 +262,7 @@ namespace DOGPlatform
                     else returnElemment = logTrack.gPathTrackLog(itemHeadInfor, trackDataListRightLog, fDepthFlatted);
                     currentWell.addTrack(returnElemment, iTrackWidth);
                 }
-                cSection.addgElement(currentWell.gWell, currentPositon);
+                svgSection.addgElement2LayerBase(currentWell.gWell, currentPositon);
             }
 
             //if ( cbxConnectSameLayerName.Checked== true)
@@ -274,12 +274,12 @@ namespace DOGPlatform
             //        for (int i = 0; i < listConnectView.Count; i++) ListLayerViewLayerDepth.Add(listConnectView[i].Find(p => p.sXCM == xcm));
             //        cSVGSectionTrackConnect layerConnect = new cSVGSectionTrackConnect();
             //        returnElemment = layerConnect.gConnectPath(ListLayerViewLayerDepth);
-            //        cSection.addgElement(returnElemment, 0,0);
+            //        svgSection.addgElement2LayerBase(returnElemment, 0,0);
             //    }
             //}
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
-            cSection.makeSVGfile(fileSVG);
+            svgSection.makeSVGfile(fileSVG);
             if (bView == false)
             {
                 FormMain.filePathWebSVG = fileSVG;

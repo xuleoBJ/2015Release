@@ -375,7 +375,7 @@ namespace DOGPlatform
             {
                 string dRect = "M" + (50 * i).ToString()+" " + (50 * i).ToString() + "h50 v20 h-50 z";
                 XmlElement lithoElement = cLithoPattern.addLithoPatternSand(sLithoName, iWidthPattern, iHeightPattern, sBackColor, 50*i,80*i,30,20);
-                cLithoPattern.addgElement(lithoElement, 0, 0);
+                cLithoPattern.addgElement2LayerBase(lithoElement, 0, 0);
             }
             cLithoPattern.makeSVGfile(filePathSVGMap);
             FormWebNavigation formSVGView = new FormWebNavigation(filePathSVGMap);

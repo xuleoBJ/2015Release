@@ -44,16 +44,16 @@ namespace DOGPlatform.SVG
                 {
                     iTrackWidth = 15;
                     returnElemment = cSingleWell.addTrackRectWithTitle("深度", iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     returnElemment = cSingleWell.gMDRuler(iDS1ShowDepthXML, iDS2ShowDepthXML, 10, 5);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     iListTrackWidth.Add(iTrackWidth);
                 }
                 if (el_style.Element("trackType").Value == TypeTrack.解释结论道.ToString())
                 {
                     iTrackWidth = 10;
                     returnElemment = cSingleWell.addTrackRectWithTitle(sTrackName, iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     string sData = "";
                     XElement XTrackDataCollect = XsingleWellRootData.Element("DataModel").Element("TrackCollectionData");
                     IEnumerable<XElement> trackDataElements =
@@ -71,7 +71,7 @@ namespace DOGPlatform.SVG
                     if (sttTrackDataListJSJL.fListDS1 != null)
                     {
                         returnElemment = cSingleWell.gTrackJSJL(sttTrackDataListJSJL.fListDS1, sttTrackDataListJSJL.fListDS2, sttTrackDataListJSJL.iListJSJL, iTrackWidth);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     }
 
                     iListTrackWidth.Add(iTrackWidth);
@@ -80,7 +80,7 @@ namespace DOGPlatform.SVG
                 {
                     iTrackWidth = 15;
                     returnElemment = cSingleWell.addTrackRectWithTitle(sTrackName, iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
 
                     string sData = "";
                     XElement XTrackDataCollect = XsingleWellRootData.Element("DataModel").Element("TrackCollectionData");
@@ -102,7 +102,7 @@ namespace DOGPlatform.SVG
                     {
                         returnElemment = cSingleWell.gTrackLayerDepth(sttTrackDataListLayerDepth.fListDS1,
                         sttTrackDataListLayerDepth.fListDS2, sttTrackDataListLayerDepth.ltStrXCM, iTrackWidth);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     }
 
                     iListTrackWidth.Add(iTrackWidth);
@@ -111,7 +111,7 @@ namespace DOGPlatform.SVG
                 {
                     iTrackWidth = 10;
                     returnElemment = cSingleWell.addTrackRectWithTitle(sTrackName, iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     string sData = "";
                     XElement XTrackDataCollect = XsingleWellRootData.Element("DataModel").Element("TrackCollectionData");
                     IEnumerable<XElement> trackDataElements =
@@ -130,7 +130,7 @@ namespace DOGPlatform.SVG
                     if (sttTrackDataListPerforation.fListDS1 != null)
                     {
                         returnElemment = cSingleWell.gTrackPerfoation(sttTrackDataListPerforation.fListDS1, sttTrackDataListPerforation.fListDS2, iTrackWidth);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     }
 
                     iListTrackWidth.Add(iTrackWidth);
@@ -139,14 +139,14 @@ namespace DOGPlatform.SVG
                 {
                     iTrackWidth = 15;
                     returnElemment = cSingleWell.addTrackRectWithTitle("岩性", iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
 
                     string sData = el_style.Element("data").Value;
                     trackLithoDataList sttTrackDataListLitho = cDirDataSourceSingleWell.getTrackLithoDataList(sData, iDS1ShowDepthXML, iDS2ShowDepthXML);
                     if (sttTrackDataListLitho.fListDS1 != null)
                     {
                         returnElemment = cSingleWell.gTrackLitho(sttTrackDataListLitho.fListDS1, sttTrackDataListLitho.fListDS2, sttTrackDataListLitho.iListLithoType, iTrackWidth);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     }
                     iListTrackWidth.Add(iTrackWidth);
                 }
@@ -154,13 +154,13 @@ namespace DOGPlatform.SVG
                 {
                     iTrackWidth = 15;
                     returnElemment = cSingleWell.addTrackRectWithTitle("文本道", iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     string sData = el_style.Element("data").Value;
                     trackTextDataList sttTrackDataListText = cDirDataSourceSingleWell.getTrackTextDataList(sData, iDS1ShowDepthXML, iDS2ShowDepthXML);
                     if (sttTrackDataListText.fListDS1 != null)
                     {
                         returnElemment = cSingleWell.gTrackText(sttTrackDataListText.fListDS1, sttTrackDataListText.fListDS2, sttTrackDataListText.ltStrText, iTrackWidth);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     }
                     iListTrackWidth.Add(iTrackWidth);
                 }
@@ -169,12 +169,12 @@ namespace DOGPlatform.SVG
                     iTrackWidth = 30;
 
                     returnElemment = cSingleWell.addTrackVerticalGrid(0, iDS1ShowDepthXML, iTrackWidth, iDS2ShowDepthXML - iDS1ShowDepthXML);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     returnElemment = cSingleWell.addTrackHorizonalGrid(iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     returnElemment = cSingleWell.addTrackItemLogHeadInfor("杆状图", iDS1ShowDepthXML, iTrackWidth, 0, 100, "red");
 
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     string sData = el_style.Element("data").Value;
                     trackScatterDataList sttTrackDataListScatter = cDirDataSourceSingleWell.getTrackScatterDataList(sData, iDS1ShowDepthXML, iDS2ShowDepthXML);
                     if (sttTrackDataListScatter.fListDS1 != null)
@@ -183,7 +183,7 @@ namespace DOGPlatform.SVG
                         int iRightValue = 100;
                         string sColor = "red";
                         returnElemment = cSingleWell.gTrackScatter("散点图", sttTrackDataListScatter.fListDS1, sttTrackDataListScatter.fListValue, iLeftValue, iRightValue, sColor, iTrackWidth);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     }
                     iListTrackWidth.Add(iTrackWidth);
                 }
@@ -196,9 +196,9 @@ namespace DOGPlatform.SVG
 
                     iTrackWidth = int.Parse(el_style.Element("trackWidth").Value);
                     returnElemment = cSingleWell.addTrackVerticalGrid(0, iDS1ShowDepthXML, iTrackWidth, iDS2ShowDepthXML - iDS1ShowDepthXML);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     returnElemment = cSingleWell.addTrackHorizonalGrid(iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth);
-                    cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                    cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     int iLogNum = 0;
                     foreach (XElement el_log in trackStyleElementsLog)
                     {
@@ -211,17 +211,17 @@ namespace DOGPlatform.SVG
                         {
                             returnElemment = cSingleWell.addTrackLogRectWithTitle(sLogname, iDS1ShowDepthXML, iDS2ShowDepthXML, iTrackWidth,
                                  iLeftValue, iRightValue, sColor);
-                            cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                            cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                         }
 
                         returnElemment = cSingleWell.addTrackItemLogHeadInfor(sLogname, iDS1ShowDepthXML - 6 * (iLogNum - 1), iTrackWidth,
           iLeftValue, iRightValue, sColor);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
 
                         trackLogDataList sttTrackDataListLog = cDirDataSourceSingleWell.getLogSeriers(sJHSelected, sLogname, iDS1ShowDepthXML, iDS2ShowDepthXML);
                         returnElemment = cSingleWell.gTrackLog(sLogname, sttTrackDataListLog.fListMD, sttTrackDataListLog.fListValue,
                             iLeftValue, iRightValue, sColor, iTrackWidth);
-                        cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+                        cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
                     }
                     iListTrackWidth.Add(iTrackWidth);
                 }

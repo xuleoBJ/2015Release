@@ -354,8 +354,8 @@ namespace DOGPlatform
                 }
             }
             if (cbbUnit.SelectedIndex >= 0) sUnit = cbbUnit.SelectedItem.ToString();
-            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
-            cSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图", 100, 100);
+            cSVGDocSection svgSection = new cSVGDocSection(PageWidth, PageHeight, 0, 0);
+            svgSection.addSVGTitle(string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图", 100, 100);
 
             XmlElement returnElemment;
 
@@ -363,7 +363,7 @@ namespace DOGPlatform
             int iScaleElevationRuler = 50;
             cSVGSectionTrackElevationRuler cElevationRuler = new cSVGSectionTrackElevationRuler();
             returnElemment = cElevationRuler.gElevationRuler(ElevationRulerTop, ElevationRulerBase, iScaleElevationRuler);
-            cSection.addgElement(returnElemment, 0);
+            svgSection.addgElement2LayerBase(returnElemment, 0);
 
 
             List<List<cSVGSectionTrackConnect.itemViewLayerDepth> > listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth> >();
@@ -465,11 +465,11 @@ namespace DOGPlatform
                     else returnElemment = logTrack.gPathTrackLog(itemHeadInfor, trackDataListRightLog, fDepthFlatted);
                     currentWell.addTrack(returnElemment, iTrackWidth);
                 }
-                cSection.addgElement(currentWell.gWell, iCurrerntWellHorizonPotion);
+                svgSection.addgElement2LayerBase(currentWell.gWell, iCurrerntWellHorizonPotion);
             }
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
-            cSection.makeSVGfile(fileSVG);
+            svgSection.makeSVGfile(fileSVG);
             if (bView == false)
             {
                 FormMain.filePathWebSVG = fileSVG;
@@ -584,46 +584,46 @@ namespace DOGPlatform
         {
             string filenameSVGMap = "Sandlayer.svg";
 
-            cSVGDocSection cSection = new cSVGDocSection( 800,1000,0, 0);
+            cSVGDocSection svgSection = new cSVGDocSection( 800,1000,0, 0);
             //XmlElement returnElemment;
             string dPath = "M50,50 Q50,100 100,100z";
-            cSection.addgElement(cSection.gSandBody(dPath), 200);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 200);
 
             dPath = "M300,300 v-50  h80 v50z";
-            cSection.addgElement(cSection.gSandBody(dPath), 200);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 200);
 
              dPath ="M130 110 C 120 140, 180 140, 170 110 Z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M10 10 C 20 20, 40 20, 50 10 Z";
-            cSection.addgElement(cSection.gSandBody(dPath), 400);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 400);
 
             dPath = "M70 10 C 70 20, 120 20, 120 10 z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M10 60 C 20 80, 40 80, 50 60 Z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M70 60 C 70 80, 110 80, 110 60 Z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M130 60 C 120 80, 180 80, 170 60Z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M10 110 C 20 140, 40 140, 50 110Z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M70 110 C 70 140, 110 140, 110 110z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M130 110 C 120 140, 180 140, 170 110z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
             dPath = "M10 80 C 40 10, 65 10, 95 80 S 150 150, 180 80 z";
-            cSection.addgElement(cSection.gSandBody(dPath), 300);
+            svgSection.addgElement2LayerBase(svgSection.gSandBody(dPath), 300);
 
 
-            cSection.makeSVGfile(cProjectManager.dirPathMap + filenameSVGMap);
+            svgSection.makeSVGfile(cProjectManager.dirPathMap + filenameSVGMap);
              FormWebNavigation formSVGView = new FormWebNavigation(cProjectManager.dirPathMap + filenameSVGMap);formSVGView.Show();
         }
         private void nUDElevationScale_ValueChanged(object sender, EventArgs e)

@@ -223,9 +223,9 @@ namespace DOGPlatform
            
             //根据默认值定义section的页面大小 及标题
             if(cbbUnit.SelectedIndex>=0) sUnit= cbbUnit.SelectedItem.ToString();
-            cSVGDocSection cSection = new cSVGDocSection(PageWidth, PageWidth, 0, 0, sUnit);
+            cSVGDocSection svgSection = new cSVGDocSection(PageWidth, PageWidth, 0, 0, sUnit);
                string sTitle=string.Join("-", listWellsSection.Select(p => p.sJH).ToList()) + "剖面图";
-            cSection.addSVGTitle(sTitle, 100, 100); 
+            svgSection.addSVGTitle(sTitle, 100, 100); 
             XmlElement returnElemment;
 
             //定义每口井绘制的位置坐标，剖面图y=0，井组分析x，y是井点坐标变换值
@@ -262,8 +262,8 @@ namespace DOGPlatform
                 {
                     //距离是2口相邻井的距离
                     int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX, listWellsSection[i].dbY, listWellsSection[i+1].dbX, listWellsSection[i+1].dbY));
-                    returnElemment = cSection.gWellDistanceRuler(iDistance, PListWellPositon[i + 1].X - PListWellPositon[i].X);
-                    cSection.addgElement(returnElemment, PListWellPositon[i].X, (int)listWellsSection[0].fDepthFlatted);//拉到同一水平线
+                    returnElemment = svgSection.gWellDistanceRuler(iDistance, PListWellPositon[i + 1].X - PListWellPositon[i].X);
+                    svgSection.addgElement2LayerBase(returnElemment, PListWellPositon[i].X, (int)listWellsSection[0].fDepthFlatted);//拉到同一水平线
                     //画井距尺
                 }
             }
@@ -274,7 +274,7 @@ namespace DOGPlatform
                 int iScaleElevationRuler = 50;
                 cSVGSectionTrackElevationRuler cElevationRuler = new cSVGSectionTrackElevationRuler();
                 returnElemment = cElevationRuler.gElevationRuler(ElevationRulerTop, ElevationRulerBase, iScaleElevationRuler);
-                cSection.addgElement(returnElemment, 0);
+                svgSection.addgElement2LayerBase(returnElemment, 0);
             }
 
             //根据井序列循环添加井剖面
@@ -331,7 +331,6 @@ namespace DOGPlatform
                  else returnElemment = perforationTrack.gTrackPerforation(sJH,trackDataListPerforation, fDepthFlatted);
                 currentWell.addTrack(returnElemment, -2 * iTrackWidth);
 
-
                 //增加吸水剖面
                 trackProfileDataList trackDataListProfile = cIOWellSection.trackDataListProfile(sJH,dirSectionData, fTopShowed, fBaseShowed);
                 iTrackWidth = 15;
@@ -369,13 +368,16 @@ namespace DOGPlatform
 
                     currentWell.addTrack(returnElemment, iTrackWidth);
                 } 
-                cSection.addgElement(currentWell.gWell,  PListWellPositon[i].X);
+                svgSection.addgElement2LayerBase(currentWell.gWell,  PListWellPositon[i].X);
             }
+
             //同名小层连线的实现 在绘制小层layertrack的时候，把小层的顶底深的绘制点记录，然后此处当做polyline绘制
             bool bConnect = this.cbxConnectSameLayerName.Checked;
 
             if (bConnect == true)
             {
+                XmlElement gConnectLayer=svgSection.gLayerElement("connectLine");
+                svgSection.addgLayer(gConnectLayer, 0);
                 List<string> listXCM = listConnectView[0].Select(p => p.sXCM).ToList();
                 foreach (string xcm in listXCM)
                 {
@@ -383,12 +385,12 @@ namespace DOGPlatform
                     for (int i = 0; i < listConnectView.Count; i++) ListLayerViewLayerDepth.Add(listConnectView[i].Find(p => p.sXCM == xcm));
                     cSVGSectionTrackConnect layerConnect = new cSVGSectionTrackConnect();
                     returnElemment = layerConnect.gConnectPath(ListLayerViewLayerDepth);
-                    cSection.addgElement(returnElemment, 0);
+                    svgSection.addgElement2Layer(gConnectLayer, returnElemment, 0);  
                 }
             }
 
             string fileSVG = Path.Combine(cProjectManager.dirPathMap, filenameSVGMap);
-            cSection.makeSVGfile(fileSVG);
+            svgSection.makeSVGfile(fileSVG);
             if (bView == false)
             {
                 FormMain.filePathWebSVG = fileSVG;

@@ -168,7 +168,7 @@ namespace DOGPlatform
             float dfscale = float.Parse(tbxPieR.Text);
             XmlElement returnElemment = cLayerProductionMap.addgOilWellProductionPie(ltStrSelectedOilJH, iListXview, iListYview,
  fListOilValue, fListWaterValue, dfscale);
-            cLayerProductionMap.addgElement(returnElemment, 0, 0); }
+            cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0); }
 
         void addWaterWellPieMap(cIOMapLayer cSelectProductionData, int iValueWaterColumnIndex,
          cSVGDocLayerMapProduction cLayerProductionMap, string filePathWaterProduct)
@@ -192,7 +192,7 @@ namespace DOGPlatform
             float dfscale = float.Parse(tbxPieR.Text);
             XmlElement returnElemment = cLayerProductionMap.addgWaterWellProductionPie(ltStrSelectedWaterJH,iListXview,
                 iListYview, fListWaterValue, dfscale);
-            cLayerProductionMap.addgElement(returnElemment, 0, 0);
+            cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
 
         }
 
@@ -224,7 +224,7 @@ namespace DOGPlatform
             XmlElement returnElemment = cLayerProductionMap.addgOilWellProductionGraph(ltStrSelectedOilJH,
                 iListXviewOilWell, iListYviewOilWell,
                 fListOilValueDay, fListWaterValueDay, fListOilValueSum, fListWaterValueDay, fPieScale, iRectWidth);
-            cLayerProductionMap.addgElement(returnElemment, 0, 0);
+            cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
         }
         void addWaterWellProductPieGraph(cIOMapLayer cSelectProductionData, cSVGDocLayerMapProduction cLayerProductionMap, string filePathWaterProduct)
         {
@@ -250,7 +250,7 @@ namespace DOGPlatform
             XmlElement returnElemment = cLayerProductionMap.addgWaterWellProductionGraph(ltStrSelectedWaterJH,
                 iListXviewWaterWell, iListYviewWaterWell, fListWaterValueDay, fListWaterValueDay,fPieScale, iRectWidth);
               
-            cLayerProductionMap.addgElement(returnElemment, 0, 0);
+            cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
         }
         private void btnMap_Click(object sender, EventArgs e)
         {
@@ -303,7 +303,7 @@ namespace DOGPlatform
             if (this.checkBoxMapFrame.Checked == true)
             {
                 returnElemment = cLayerProductionMap.gMapFrame(this.checkBoxGird.Checked);
-                cLayerProductionMap.addgElement(returnElemment, 0, 0);
+                cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
             }
             if (this.checkCompassShowed.Checked == true)
             {

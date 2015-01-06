@@ -40,14 +40,14 @@
             this.ToolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tabControlSVGNavigation = new System.Windows.Forms.TabControl();
-            this.tbgSVGView = new System.Windows.Forms.TabPage();
+            this.tbgBaseLayerSVGView = new System.Windows.Forms.TabPage();
             this.webBrowserSVG = new System.Windows.Forms.WebBrowser();
             this.menuStrip1.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
             this.ToolStripContainer1.SuspendLayout();
             this.tabControlSVGNavigation.SuspendLayout();
-            this.tbgSVGView.SuspendLayout();
+            this.tbgBaseLayerSVGView.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -151,7 +151,7 @@
             // 
             // tabControlSVGNavigation
             // 
-            this.tabControlSVGNavigation.Controls.Add(this.tbgSVGView);
+            this.tabControlSVGNavigation.Controls.Add(this.tbgBaseLayerSVGView);
             this.tabControlSVGNavigation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlSVGNavigation.Location = new System.Drawing.Point(0, 0);
             this.tabControlSVGNavigation.Margin = new System.Windows.Forms.Padding(2);
@@ -161,17 +161,17 @@
             this.tabControlSVGNavigation.TabIndex = 1;
             this.tabControlSVGNavigation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.tabControlSVGNavigation_MouseClick);
             // 
-            // tbgSVGView
+            // tbgBaseLayerSVGView
             // 
-            this.tbgSVGView.Controls.Add(this.webBrowserSVG);
-            this.tbgSVGView.Location = new System.Drawing.Point(4, 22);
-            this.tbgSVGView.Margin = new System.Windows.Forms.Padding(2);
-            this.tbgSVGView.Name = "tbgSVGView";
-            this.tbgSVGView.Padding = new System.Windows.Forms.Padding(2);
-            this.tbgSVGView.Size = new System.Drawing.Size(886, 572);
-            this.tbgSVGView.TabIndex = 1;
-            this.tbgSVGView.Text = "View1";
-            this.tbgSVGView.UseVisualStyleBackColor = true;
+            this.tbgBaseLayerSVGView.Controls.Add(this.webBrowserSVG);
+            this.tbgBaseLayerSVGView.Location = new System.Drawing.Point(4, 22);
+            this.tbgBaseLayerSVGView.Margin = new System.Windows.Forms.Padding(2);
+            this.tbgBaseLayerSVGView.Name = "tbgBaseLayerSVGView";
+            this.tbgBaseLayerSVGView.Padding = new System.Windows.Forms.Padding(2);
+            this.tbgBaseLayerSVGView.Size = new System.Drawing.Size(886, 572);
+            this.tbgBaseLayerSVGView.TabIndex = 1;
+            this.tbgBaseLayerSVGView.Text = "View1";
+            this.tbgBaseLayerSVGView.UseVisualStyleBackColor = true;
             // 
             // webBrowserSVG
             // 
@@ -203,7 +203,7 @@
             this.ToolStripContainer1.ResumeLayout(false);
             this.ToolStripContainer1.PerformLayout();
             this.tabControlSVGNavigation.ResumeLayout(false);
-            this.tbgSVGView.ResumeLayout(false);
+            this.tbgBaseLayerSVGView.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,7 +220,7 @@
         private System.Windows.Forms.ToolStripContainer ToolStripContainer1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TabControl tabControlSVGNavigation;
-        private System.Windows.Forms.TabPage tbgSVGView;
+        private System.Windows.Forms.TabPage tbgBaseLayerSVGView;
         private System.Windows.Forms.WebBrowser webBrowserSVG;
         private System.Windows.Forms.ToolStripMenuItem tsmiHtml;
         private System.Windows.Forms.ToolStripMenuItem htmlToolStripMenuItem;

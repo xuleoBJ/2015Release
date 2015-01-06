@@ -31,29 +31,35 @@ namespace DOGPlatform.SVG
         public List<float> fListKB_Real = new List<float>();
         public List<int> iListWellType_Real = new List<int>();
        
-
-        
-        public void  addgElement(XmlElement gElement,int idx)  //剖面图Y不能移动
+        public void  addgElement2LayerBase(XmlElement gElement,int idx)  //剖面图Y不能移动
         {
             string sTranslate = "translate(" + idx.ToString() + ",0)";
             gElement.SetAttribute("transform", sTranslate);
             XmlNode importNewsItem = svgDoc.ImportNode(gElement, true);
-            this.gSVG.AppendChild(importNewsItem);
+            this.gBaseLayerSVG.AppendChild(importNewsItem);
         }
-
-        public new  void addgElement(XmlElement gElement, int idx,int idy)  //剖面图Y不能移动
+        public void addgLayer(XmlElement gLayer, int ix)
+        {
+            base.addgLayer(gLayer, ix, 0);
+        }
+        public void addgElement2Layer(XmlElement gLayer, XmlElement gElement, int ix)
+        {
+            base.addgElement2Layer(gLayer, gElement, ix, 0);
+        }
+        public new  void addgElement2LayerBase(XmlElement gElement, int idx,int idy)  //剖面图Y不能移动
         {
             string sTranslate = "translate(" + idx.ToString() + "," + idy.ToString() + ")";
             gElement.SetAttribute("transform", sTranslate);
             XmlNode importNewsItem = svgDoc.ImportNode(gElement, true);
-            this.gSVG.AppendChild(importNewsItem);
+            this.gBaseLayerSVG.AppendChild(importNewsItem);
         }
       
-        public void addgElement(XmlElement gElement, Point pt)
+        public void addgElement2LayerBase(XmlElement gElement, Point pt)
         {
-            addgElement(gElement, pt.X, pt.Y);
+            addgElement2LayerBase(gElement, pt.X, pt.Y);
         }
 
+        
         /// <summary>
         /// 增加距离尺，需要2个参数，因为有水平缩放，所以要传2个值 一个是线的数值 另一个是画的线的长度
         /// </summary>

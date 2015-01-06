@@ -465,8 +465,42 @@ namespace DOGPlatform
                     this.tvResultTable.Nodes.Add(_tn);
                 }
             }
+            if (tbcProject.SelectedTab == this.tbgSVGLayer)
+            {
+                if (filePathWebSVG.EndsWith(".svg"))
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load(filePathWebSVG);
+                    XmlNodeList listXN = xmlDoc.DocumentElement.ChildNodes;
+                    this.tvSVGLayer.Nodes.Clear();
+                    tvSVGLayer.CheckBoxes = true;
+                    foreach (XmlNode xn in listXN)
+                    {
+                        var nameAttribute = xn.Attributes["id"];
+                        if (nameAttribute != null)
+                        {
+                            TreeNode tn = new TreeNode(xn.Attributes["id"].Value);
+                            tn.Checked = true;
+                            if (xn.Name == "g") tvSVGLayer.Nodes.Add(tn);
+                        }
+                    }
+                }
+               
+            }
         }
 
+        private void AddLayerNode(XmlNode inXmlNode, TreeNode inTreeNode)
+        {
+            //XmlDocument xmlDoc = new XmlDocument();
+            //xmlDoc.Load(xmlfilePath);
+            //XmlNode currentNode = xmlDoc.SelectSingleNode(fullPath);
+            //if (currentNode != null)
+            //{
+            //    foreach (XmlNode _node in currentNode.SelectNodes(sTagNameRemoved))
+            //        currentNode.RemoveChild(_node);
+            //}
+            //xmlDoc.Save(xmlfilePath);
+        }
 
 
         void updateWebSVG()
@@ -1184,9 +1218,38 @@ namespace DOGPlatform
             }
         }
 
-         
+        private void tvSVGLayer_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            if (filePathWebSVG.EndsWith(".svg") )
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(filePathWebSVG);
+                XmlNodeList listXN = xmlDoc.DocumentElement.ChildNodes;
+                tvSVGLayer.CheckBoxes = true;
+                foreach (XmlNode xn in listXN)
+                {
+                    if (xn.Name == "g")
+                    {
+                        var idAttribute = xn.Attributes["id"];
+                        var visibleAttribute = xn.Attributes["visibility"];
+                        if (idAttribute != null && visibleAttribute!=null )
+                        {
+                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == false)
+                            { visibleAttribute.Value = "hidden"; break; }
+                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == true)
+                            { visibleAttribute.Value = "visible"; break; }
+                        }
+                        
+                    }
+                }
+                xmlDoc.Save(filePathWebSVG);
+                updateWebSVG();
+            }
+        }
 
-      
+
+
+       
 
        
 

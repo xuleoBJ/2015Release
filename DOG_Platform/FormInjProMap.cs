@@ -367,7 +367,7 @@ namespace DOGPlatform
             if (this.cbxMapFrame.Checked == true)
             {
                 returnElemment = cLayerProductionMap.gMapFrame(this.cbxGird.Checked);
-                cLayerProductionMap.addgElement(returnElemment, 0, 0);
+                cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
             }
             if (this.cbxCompassShowed.Checked == true)
             {
@@ -560,7 +560,7 @@ namespace DOGPlatform
                             cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
                         returnElemment = cLayerProductionMap.addgConnectLine(point1Convert2View, point2Convert2View,
                            Color.RoyalBlue.Name, 2, Color.RoyalBlue.Name);
-                        cLayerProductionMap.addgElement(returnElemment, 0, 0);
+                        cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
                     }
                 }
 
@@ -574,7 +574,7 @@ namespace DOGPlatform
             if (this.cbxMapFrame.Checked == true)
             {
                 returnElemment = cLayerProductionMap.gMapFrame(this.cbxGird.Checked);
-                cLayerProductionMap.addgElement(returnElemment, 0, 0);
+                cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
             }
             if (this.cbxCompassShowed.Checked == true)
             {

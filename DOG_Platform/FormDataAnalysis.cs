@@ -68,10 +68,10 @@ namespace DOGPlatform
                 }
                 Point pWell = cCordinationTransform.getPointViewByJH(sJH);
                 XmlElement returnXmlElement = cPieMap.gPieChart(fListData, pWell.X, pWell.Y, r, ltStrcolors, ltStrLable, 100, 100);
-                cPieMap.addgElement(returnXmlElement, 0, 0);
+                cPieMap.addgElement2LayerBase(returnXmlElement, 0, 0);
                 cSVGText svgText = new cSVGText();
                 XmlElement returnJHTextXmlElement = svgText.gElementText(pWell.X, pWell.Y + 20, sJH, 15, "black");
-                cPieMap.addgElement(returnJHTextXmlElement, 0, 0);
+                cPieMap.addgElement2LayerBase(returnJHTextXmlElement, 0, 0);
             }
 
             XmlElement returnElemment;
@@ -83,7 +83,7 @@ namespace DOGPlatform
             if (this.cbxMapFrame.Checked == true)
             {
                 returnElemment = cPieMap.gMapFrame(this.cbxGrid.Checked);
-                cPieMap.addgElement(returnElemment, 0, 0);
+                cPieMap.addgElement2LayerBase(returnElemment, 0, 0);
             }
 
             if (this.cbxCompassShowed.Checked == true)

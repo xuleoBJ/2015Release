@@ -29,11 +29,11 @@ namespace DOGPlatform.SVG
             fVScale = dfscale;
         }
 
-        public void addgElement(XmlElement gElement, int iDx)  //剖面图Y不能移动
+        public void addgElement2LayerBase(XmlElement gElement, int iDx)  //剖面图Y不能移动
         {
-            string sTranslate = "translate(" + (iDx + iSVGoffsetX).ToString() + " "+iSVGoffsetY.ToString()+")";
+            string sTranslate = "translate(" + (iDx + offsetXgEle).ToString() + " "+offsetYgEle.ToString()+")";
             gElement.SetAttribute("transform", sTranslate);
-            this.gSVG.AppendChild(gElement);
+            this.gBaseLayerSVG.AppendChild(gElement);
         }
         public XmlElement gTrackText(List<float> fListDS1, List<float> fListDS2, List<string> ltStrValue, int m_iTrackwidth)
         {

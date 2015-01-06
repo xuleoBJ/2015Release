@@ -86,7 +86,7 @@ namespace DOGPlatform
             XmlElement returnElemment;
             trackLithoDataList sttTrackDataListLitho = cDirDataSourceSingleWell.getTrackDataLitho(fileDrawSourceInfor, iDS1Showed, iDS2Showed);
             returnElemment = cSingleWell.gTrackLitho(sttTrackDataListLitho.fListDS1, sttTrackDataListLitho.fListDS2, sttTrackDataListLitho.iListLithoType, iTrackWidth);
-            cSingleWell.addgElement(returnElemment, iListTrackWidth.Sum());
+            cSingleWell.addgElement2LayerBase(returnElemment, iListTrackWidth.Sum());
         }
 
         private void btnMakeSection_Click(object sender, EventArgs e)

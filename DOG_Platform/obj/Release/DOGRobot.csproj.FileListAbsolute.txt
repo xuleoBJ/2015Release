@@ -171,3 +171,4 @@ E:\ProjectPlatform\2015Release\DOG_Platform\bin\Release\DigRobot.pdb
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\bin\Release\DigRobot.exe
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\bin\Release\DigRobot.pdb
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalArea.resources
+E:\ProjectPlatform\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalArea.resources

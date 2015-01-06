@@ -25,11 +25,11 @@ namespace DOGPlatform.SVG
         public XmlDocument svgDoc = new XmlDocument();
         public const string svgNS = "http://www.w3.org/1999/xlink";
         public const string inkNS =  "http://www.inkscape.org/namespaces/inkscape";
-        public int iSVGoffsetX = 0;
-        public int iSVGoffsetY = 0;
+        public int offsetXgEle = 0;//define x offset of baselayer
+        public int offsetYgEle = 0;
         public XmlElement svgRoot;
         public XmlDeclaration svgDec;
-        public XmlElement gSVG;
+        public XmlElement gBaseLayerSVG;
         public XmlElement svgScript;
         public XmlElement svgCss;
         public XmlElement svgDefs;
@@ -40,15 +40,15 @@ namespace DOGPlatform.SVG
         {
 
         }
-        public cSVGBase(int _iDX, int _iDY)
-            : this(2000, 1500, _iDX, _iDY,"pt")
+        public cSVGBase(int iDXg, int iDYg)
+            : this(2000, 1500, iDXg, iDYg, "pt")
         {
 
         }
-        public cSVGBase(int iWidth, int iHeight, int _iDX, int _iDY,string sUnit)
+        public cSVGBase(int iWidth, int iHeight, int iDXg, int iDYg,string sUnit)
         {
-            this.iSVGoffsetX = _iDX;
-            this.iSVGoffsetY = _iDY;
+            this.offsetXgEle = iDXg;
+            this.offsetYgEle = iDYg;
             svgDec = svgDoc.CreateXmlDeclaration("1.0", "UTF-8", null);
             svgDoc.AppendChild(svgDec);
             svgRoot = svgDoc.CreateElement("svg");
@@ -74,31 +74,72 @@ namespace DOGPlatform.SVG
             //striptXL.Value = "xl.js";
             //svgScript.Attributes.Append(striptXL);
             //svgRoot.AppendChild(svgScript);
-
-            gSVG = svgDoc.CreateElement("g");
-            string sTranslate = "translate(" + iSVGoffsetX.ToString() + "," + iSVGoffsetY.ToString() + ")";
-            gSVG.SetAttribute("transform", sTranslate);
-            gSVG.SetAttribute("id", "layer1");
-            //XmlAttribute idInkLable = svgDoc.CreateAttribute("inkscape", "lable", inkNS);
-            //gSVG.SetAttributeNode(idInkLable);
-            gSVG.SetAttribute("lable",inkNS, "Layer1");
-            gSVG.SetAttribute("groupmode",inkNS, "layer");
-            gSVG.SetAttribute("xml:space", "preserve");
-            svgRoot.AppendChild(gSVG);
+            //创建一个Layer
+            gBaseLayerSVG = svgDoc.CreateElement("g");
+            string sTranslate = "translate(" + offsetXgEle.ToString() + "," + offsetYgEle.ToString() + ")";
+            gBaseLayerSVG.SetAttribute("transform", sTranslate);
+            gBaseLayerSVG.SetAttribute("id", "BaseLayer");
+            gBaseLayerSVG.SetAttribute("label",inkNS, "BaseLayer");
+            gBaseLayerSVG.SetAttribute("groupmode",inkNS, "layer");
+            gBaseLayerSVG.SetAttribute("xml:space", "preserve");
+            svgRoot.AppendChild(gBaseLayerSVG);
             svgDoc.AppendChild(svgRoot);
 
         }
 
-        public cSVGBase(int iWidth, int iHeight, int iDX, int iDY)
-            : this(iWidth, iHeight, iDX, iDY,"pt")
+
+
+        public cSVGBase(int iWidth, int iHeight, int iDXg, int iDYg)
+            : this(iWidth, iHeight, iDXg, iDYg,"pt")
         {
            
         }
-        public void addgElement(XmlElement gElement, int ix, int iy)
+
+        public void addgElement2LayerBase(XmlElement gElement, int ix, int iy)
         {
             string sTranslate = "translate(" + ix.ToString() + "," + iy.ToString() + ")";
             gElement.SetAttribute("transform", sTranslate);
-            this.gSVG.AppendChild(gElement);
+            XmlNode importNewsItem = svgDoc.ImportNode(gElement, true);
+            this.gBaseLayerSVG.AppendChild(importNewsItem);
+        }
+
+        public void addgElement2LayerBase(XmlElement gElement)
+        {
+            addgElement2LayerBase(gElement, 0, 0);
+        }
+        public void addgElement2Layer(XmlElement gLayer,XmlElement gElement, int ix, int iy)
+        {
+            string sTranslate = "translate(" + ix.ToString() + "," + iy.ToString() + ")";
+            gElement.SetAttribute("transform", sTranslate);
+            XmlNode importNewsItem =gLayer.OwnerDocument.ImportNode(gElement, true);
+            gLayer.AppendChild(importNewsItem);
+        }
+        public void addgElement2Layer(XmlElement gLayer, XmlElement gElement)
+        {
+            addgElement2Layer(gLayer, gElement, 0, 0);
+        }
+        public void addgLayer(XmlElement gLayer, int ix, int iy)
+        {
+            string sTranslate = "translate(" + ix.ToString() + "," + iy.ToString() + ")";
+            gLayer.SetAttribute("transform", sTranslate);
+            this.svgRoot.AppendChild(gLayer);
+        }
+        public void addgLayer(XmlElement gLayer)
+        {
+            addgLayer( gLayer, this.offsetXgEle, this.offsetYgEle);
+        }
+        public XmlElement gLayerElement(string sLayerName) 
+        {
+            XmlElement gLayer = svgDoc.CreateElement("g");
+            gLayer.SetAttribute("visibility", "visible");
+            string sTranslate = "translate(" + offsetXgEle.ToString() + "," + offsetYgEle.ToString() + ")";
+            gLayer.SetAttribute("transform", sLayerName);
+         
+            gLayer.SetAttribute("id", sLayerName);
+            gLayer.SetAttribute("lable", inkNS, sLayerName);
+            gLayer.SetAttribute("groupmode", inkNS, "layer");
+            gLayer.SetAttribute("xml:space", "preserve");
+            return gLayer; 
         }
 
         public void addSVGTitle()

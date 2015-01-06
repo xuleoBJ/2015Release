@@ -33,7 +33,7 @@ namespace DOGPlatform
             if (File.Exists(filepathSVG))
             {
                 this.webBrowserSVG.Navigate(new Uri(filepathSVG));
-                this.tbgSVGView.Text = Path.GetFileNameWithoutExtension(filepathSVG);
+                this.tbgBaseLayerSVGView.Text = Path.GetFileNameWithoutExtension(filepathSVG);
             }
             else 
             {

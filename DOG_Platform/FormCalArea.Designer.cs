@@ -34,6 +34,7 @@
             this.btnCopy = new System.Windows.Forms.Button();
             this.btnDelDgvLine = new System.Windows.Forms.Button();
             this.btnCal = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,10 +44,10 @@
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
             this.Column3});
-            this.dgv.Location = new System.Drawing.Point(12, 70);
+            this.dgv.Location = new System.Drawing.Point(12, 103);
             this.dgv.Name = "dgv";
             this.dgv.RowTemplate.Height = 23;
-            this.dgv.Size = new System.Drawing.Size(419, 455);
+            this.dgv.Size = new System.Drawing.Size(311, 437);
             this.dgv.TabIndex = 4;
             // 
             // Column2
@@ -61,7 +62,7 @@
             // 
             // btnCopy
             // 
-            this.btnCopy.Location = new System.Drawing.Point(12, 31);
+            this.btnCopy.Location = new System.Drawing.Point(12, 12);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(90, 23);
             this.btnCopy.TabIndex = 21;
@@ -71,7 +72,7 @@
             // 
             // btnDelDgvLine
             // 
-            this.btnDelDgvLine.Location = new System.Drawing.Point(125, 31);
+            this.btnDelDgvLine.Location = new System.Drawing.Point(123, 12);
             this.btnDelDgvLine.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelDgvLine.Name = "btnDelDgvLine";
             this.btnDelDgvLine.Size = new System.Drawing.Size(90, 23);
@@ -82,7 +83,7 @@
             // 
             // btnCal
             // 
-            this.btnCal.Location = new System.Drawing.Point(341, 31);
+            this.btnCal.Location = new System.Drawing.Point(233, 12);
             this.btnCal.Margin = new System.Windows.Forms.Padding(2);
             this.btnCal.Name = "btnCal";
             this.btnCal.Size = new System.Drawing.Size(90, 23);
@@ -91,15 +92,25 @@
             this.btnCal.UseVisualStyleBackColor = true;
             this.btnCal.Click += new System.EventHandler(this.btnCal_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("SimSun", 12F);
+            this.label1.Location = new System.Drawing.Point(9, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(314, 60);
+            this.label1.TabIndex = 25;
+            this.label1.Text = "提示：输入数据为坐标数据,数据应该按照顺或者逆时针方向采集";
+            // 
             // FormCalArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 552);
+            this.ClientSize = new System.Drawing.Size(376, 552);
             this.Controls.Add(this.btnCal);
             this.Controls.Add(this.btnDelDgvLine);
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.dgv);
+            this.Controls.Add(this.label1);
             this.Name = "FormCalArea";
             this.Text = "计算面积周长";
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
@@ -115,6 +126,7 @@
         private System.Windows.Forms.Button btnCopy;
         private System.Windows.Forms.Button btnDelDgvLine;
         private System.Windows.Forms.Button btnCal;
+        private System.Windows.Forms.Label label1;
 
     }
 }
