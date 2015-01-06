@@ -61,7 +61,7 @@ namespace DOGPlatform
             cbbSelectedXCMTop.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedXCMBot.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedYM.DataSource = cProjectData.ltStrProjectYM;
-            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "px", "pt", "mm", "pc", "cm", "in" }));
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "px", "pt", "pc", "cm", "in" }));
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.listProjectWell.FindAll(p=>p.WellPathList.Count>3).Select(p=>p.sJH).ToList());
             this.nUDrefX.Value = decimal.Parse(cProjectData.dfMapXrealRefer.ToString());
             this.nUDrefY.Value = decimal.Parse(cProjectData.dfMapYrealRefer.ToString());
