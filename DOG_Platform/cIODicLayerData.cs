@@ -15,8 +15,6 @@ namespace DOGPlatform
             //更新算法，保证计算后的数据字典完善：
             //如果这口井有有效厚度而没有孔隙度，渗透率，饱和度，那么找临近的几口井，根据厚度相近的原则，取孔隙度，渗透率
             //数据缺失的先用地层厚度为-999填充标记，然后正着扫一遍，再反着扫一遍 把所有的值填充合理
-            cProjectData.sErrLineInfor= "";
-
             List<ItemDicLayerData> listLayerDataDic = new List<ItemDicLayerData>();
 
             if (cProjectData.ltStrProjectJH.Count > 0 && cProjectData.ltStrProjectXCM.Count > 0)
@@ -25,7 +23,6 @@ namespace DOGPlatform
                 {
                     for (int j = 0; j < cProjectData.ltStrProjectXCM.Count; j++)
                     {
-                        
                         string sCurrentJH = cProjectData.ltStrProjectJH[i].ToString();
                         string sCurrentXCM = cProjectData.ltStrProjectXCM[j].ToString();
                         ItemWellHead currentWellHead = cIOinputWellHead.getWellHeadByJH(sCurrentJH);
@@ -46,7 +43,6 @@ namespace DOGPlatform
                         float fCurrentLayerKXD = 0;//当前层位的厚度加权孔隙度
                         float fCurrentLayerSTL = 0;//当前层位的厚度加权渗透率
                         float fCurrentLayerBHD = 0;//当前层位的厚度加权饱和度
-
                                     
                           
                         //读取层位顶底深，获取fCurrentLayerDS1，fCurrentLayerDS2
@@ -167,12 +163,30 @@ namespace DOGPlatform
             for (int i = listLayerDataDic.Count - 1; i >0 ; i--)
             {
                 ItemDicLayerData currentItem = listLayerDataDic[i];
-                if (currentItem.fDCHD < 0 && currentItem.sJH == listLayerDataDic[i - 1].sJH)
+                if (currentItem.fDCHD>0&& (currentItem.fKXD <= 0 || currentItem.fSTL<=0))
                 {
-                    ItemDicLayerData nextItem = listLayerDataDic[i - 1];
+                    //从 listLayerDataDic中选择 本小层与本井进的2口有数据的井，取平均值
+                   List<ItemDicLayerData> listSelect= listLayerDataDic.FindAll(p => p.sXCM == currentItem.sXCM
+                       && cCalDistance.getNearWells(currentItem.sJH, 5).IndexOf(p.sJH) >= 0).ToList();
+                   if (listSelect.Count > 0)
+                   {
+                       if (currentItem.fKXD <= 0 && listSelect.FindAll(p => p.fKXD > 0).Count>0) currentItem.fKXD = listSelect.FindAll(p => p.fKXD > 0).Select(p => p.fKXD).Average(); 
+                       if (currentItem.fSTL <= 0&& listSelect.FindAll(p => p.fSTL > 0).Count>0) currentItem.fSTL = listSelect.FindAll(p => p.fSTL > 0).Select(p => p.fSTL).Average();
+                   }
+                }
+                listLayerDataDic[i] = currentItem;
+            }
+
+            //完善 小层 孔渗为无效值的情况
+            for (int i = 0; i < listLayerDataDic.Count ; i++)
+            {
+                ItemDicLayerData currentItem = listLayerDataDic[i];
+                if (currentItem.fDCHD < 0 && currentItem.sJH == listLayerDataDic[i + 1].sJH)
+                {
+                    ItemDicLayerData nextItem = listLayerDataDic[i + 1];
                     currentItem.dbX = nextItem.dbX;
                     currentItem.dbY = nextItem.dbY;
-                    currentItem.dfZ = nextItem.dfZ -nextItem.fDCHD;
+                    currentItem.dfZ = nextItem.dfZ + nextItem.fDCHD;
                     currentItem.fDS1_md = nextItem.fDS1_md;
                     currentItem.fDS2_md = nextItem.fDS2_md;
                     currentItem.fDS1_TVD = nextItem.fDS1_TVD;
@@ -183,17 +197,9 @@ namespace DOGPlatform
             }
             write2File(cProjectManager.filePathLayerDataDic,listLayerDataDic);
 
-            if (cProjectData.sErrLineInfor== "")
-            {
-                MessageBox.Show("小层数据表拼写计算完毕");
-            }
-            else
-            {
-                cProjectData.sErrLineInfor= "小层数据表计算中的错误：" + " \r\n" + cProjectData.sErrLineInfor;
-                MessageBox.Show("计算完成，请查看错误信息：", "注意！");
-                cPublicMethodForm.outputErrInfor2Text(cProjectData.sErrLineInfor);
-            }
+            MessageBox.Show("小层数据表拼写计算完毕");
         }
+
 
         public static List<ItemDicLayerData> readDicLayerData2struct()
         {
@@ -203,7 +209,6 @@ namespace DOGPlatform
                 using (StreamReader sr = new StreamReader(cProjectManager.filePathLayerDataDic))
                 {
                     String line;
-
                     while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                     {
                         iLineIndex++;

@@ -203,30 +203,7 @@ namespace DOGPlatform
             ltStrHeadColoum.Add("突进系数Tk");
             ltStrHeadColoum.Add("渗透率级差Jk");
             ltStrHeadColoum.Add("变异系数Vk");
-
-            //ltStrHeadColoum.Add("WellName");
-            //ltStrHeadColoum.Add("LayerName");
-            //ltStrHeadColoum.Add("topDepth(md)");
-            //ltStrHeadColoum.Add("bottomDepth(md)");
-            //ltStrHeadColoum.Add("LayerThickness");
-            //ltStrHeadColoum.Add("SandThickness");
-            //ltStrHeadColoum.Add("EffectiveThickness");
-            //ltStrHeadColoum.Add("Sand/LayerThickness");
-            //ltStrHeadColoum.Add("NumberOFSand");
-            //ltStrHeadColoum.Add("NumberOFOilSand");
-            //ltStrHeadColoum.Add("Pore-WeightBySandThickness(%)");
-            //ltStrHeadColoum.Add("Pore(max)%");
-            //ltStrHeadColoum.Add("Pore(min)%");
-            //ltStrHeadColoum.Add("Pore(average)%");
-            //ltStrHeadColoum.Add("Perm-WeightBySandThickness(md)");
-            //ltStrHeadColoum.Add("Perm(max)");
-            //ltStrHeadColoum.Add("Perm(min)");
-            //ltStrHeadColoum.Add("Perm(average)");
-            //ltStrHeadColoum.Add("Tk");
-            //ltStrHeadColoum.Add("Jk");
-            //ltStrHeadColoum.Add("Vk");
-
-
+       
             sw.WriteLine(string.Join("\t", ltStrHeadColoum.ToArray()));
             if (cProjectData.ltStrProjectJH.Count > 0 && cProjectData.ltStrProjectXCM.Count > 0)
             {

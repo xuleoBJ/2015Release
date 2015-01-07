@@ -33,7 +33,6 @@ namespace DOGPlatform
 
         string sJHselectedOnPanel = "";
 
-
         List<TabPage> listTabpageMain = new List<TabPage>(); //主面板
         List<ToolStripButton> listToolStripButtonsDraw = new List<ToolStripButton>();//动态添加菜单
 
@@ -60,8 +59,8 @@ namespace DOGPlatform
 
             tsmiProfileDecision.Enabled = true;
             tsmiDynamicCal.Enabled = true;
-            tsmiProfileDecision.Visible = false;
-            tsmiDynamicCal.Visible = false;
+            //tsmiProfileDecision.Visible = false;
+            //tsmiDynamicCal.Visible = false;
         }
 
         private void intializeMyForm()

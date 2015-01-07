@@ -23,12 +23,11 @@ namespace DOGPlatform
         }
         private void InitFormLayerMapControl()
         {
-           ;
             //初始化 小层下拉列表
             cPublicMethodForm.inialComboBox(cbbSelectedTopXCM, cProjectData.ltStrProjectXCM);
             cPublicMethodForm.inialComboBox(cbbSelectedBottomXCM, cProjectData.ltStrProjectXCM);
 
-
+            cPublicMethodForm.inialComboBox(cbbProjectJH, cProjectData.ltStrProjectJH);
             //初始化显示井名ListBox
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.ltStrProjectJH);
             //初始化显示起始时间
@@ -591,6 +590,12 @@ namespace DOGPlatform
         {
             if (cbbSelectedBottomXCM.SelectedIndex>=0)
             cbbSelectedBottomXCM.SelectedIndex = cbbSelectedTopXCM.SelectedIndex;
+        }
+
+        private void btntest_Click(object sender, EventArgs e)
+        {
+            string sJH = cbbProjectJH.SelectedItem.ToString();
+            MessageBox.Show(string.Join("\t", cCalDistance.getNearWells(sJH, 5)));
         }
 
   

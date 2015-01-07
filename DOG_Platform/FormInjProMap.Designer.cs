@@ -44,6 +44,7 @@
             this.lbxProducttLayerCollection = new System.Windows.Forms.ListBox();
             this.btnMap = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbxAddWellConnect = new System.Windows.Forms.CheckBox();
             this.btnCalConnection = new System.Windows.Forms.Button();
             this.lblJHoil = new System.Windows.Forms.Label();
             this.lblJHWater = new System.Windows.Forms.Label();
@@ -111,8 +112,9 @@
             this.label26 = new System.Windows.Forms.Label();
             this.btnWellNameFont = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
-            this.btnSaveSetting = new System.Windows.Forms.Button();
-            this.cbxAddWellConnect = new System.Windows.Forms.CheckBox();
+            this.btntest = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbbProjectJH = new System.Windows.Forms.ComboBox();
             this.tabControlLayerMap.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox26.SuspendLayout();
@@ -328,6 +330,16 @@
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "注采关系";
+            // 
+            // cbxAddWellConnect
+            // 
+            this.cbxAddWellConnect.AutoSize = true;
+            this.cbxAddWellConnect.Location = new System.Drawing.Point(142, 33);
+            this.cbxAddWellConnect.Name = "cbxAddWellConnect";
+            this.cbxAddWellConnect.Size = new System.Drawing.Size(96, 16);
+            this.cbxAddWellConnect.TabIndex = 18;
+            this.cbxAddWellConnect.Text = "绘制注采关系";
+            this.cbxAddWellConnect.UseVisualStyleBackColor = true;
             // 
             // btnCalConnection
             // 
@@ -609,13 +621,15 @@
             // 
             // tabPageSetting
             // 
+            this.tabPageSetting.Controls.Add(this.label6);
+            this.tabPageSetting.Controls.Add(this.cbbProjectJH);
             this.tabPageSetting.Controls.Add(this.groupBox28);
             this.tabPageSetting.Controls.Add(this.groupBox27);
             this.tabPageSetting.Controls.Add(this.groupBox25);
             this.tabPageSetting.Controls.Add(this.groupBox24);
             this.tabPageSetting.Controls.Add(this.btnDrawByxmlConfig);
             this.tabPageSetting.Controls.Add(this.groupBox8);
-            this.tabPageSetting.Controls.Add(this.btnSaveSetting);
+            this.tabPageSetting.Controls.Add(this.btntest);
             this.tabPageSetting.Location = new System.Drawing.Point(4, 22);
             this.tabPageSetting.Name = "tabPageSetting";
             this.tabPageSetting.Size = new System.Drawing.Size(714, 515);
@@ -1083,32 +1097,40 @@
             this.label12.TabIndex = 12;
             this.label12.Text = "井符号半径";
             // 
-            // btnSaveSetting
+            // btntest
             // 
-            this.btnSaveSetting.Location = new System.Drawing.Point(84, 378);
-            this.btnSaveSetting.Name = "btnSaveSetting";
-            this.btnSaveSetting.Size = new System.Drawing.Size(94, 26);
-            this.btnSaveSetting.TabIndex = 15;
-            this.btnSaveSetting.Text = "保存设置";
-            this.btnSaveSetting.UseVisualStyleBackColor = true;
+            this.btntest.Location = new System.Drawing.Point(498, 430);
+            this.btntest.Name = "btntest";
+            this.btntest.Size = new System.Drawing.Size(94, 26);
+            this.btntest.TabIndex = 15;
+            this.btntest.Text = "test";
+            this.btntest.UseVisualStyleBackColor = true;
+            this.btntest.Click += new System.EventHandler(this.btntest_Click);
             // 
-            // cbxAddWellConnect
+            // label6
             // 
-            this.cbxAddWellConnect.AutoSize = true;
-            this.cbxAddWellConnect.Location = new System.Drawing.Point(142, 33);
-            this.cbxAddWellConnect.Name = "cbxAddWellConnect";
-            this.cbxAddWellConnect.Size = new System.Drawing.Size(96, 16);
-            this.cbxAddWellConnect.TabIndex = 18;
-            this.cbxAddWellConnect.Text = "绘制注采关系";
-            this.cbxAddWellConnect.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(298, 437);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "井号";
             // 
-            // FormInjProSystemMap
+            // cbbProjectJH
+            // 
+            this.cbbProjectJH.FormattingEnabled = true;
+            this.cbbProjectJH.Location = new System.Drawing.Point(341, 434);
+            this.cbbProjectJH.Name = "cbbProjectJH";
+            this.cbbProjectJH.Size = new System.Drawing.Size(122, 20);
+            this.cbbProjectJH.TabIndex = 28;
+            // 
+            // FormInjProMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(722, 541);
             this.Controls.Add(this.tabControlLayerMap);
-            this.Name = "FormInjProSystemMap";
+            this.Name = "FormInjProMap";
             this.Text = "注采系统分析";
             this.tabControlLayerMap.ResumeLayout(false);
             this.tabPageData.ResumeLayout(false);
@@ -1123,6 +1145,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPageSetting.ResumeLayout(false);
+            this.tabPageSetting.PerformLayout();
             this.groupBox28.ResumeLayout(false);
             this.groupBox27.ResumeLayout(false);
             this.groupBox27.PerformLayout();
@@ -1226,9 +1249,11 @@
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Button btnWellNameFont;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button btnSaveSetting;
+        private System.Windows.Forms.Button btntest;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbbSelectedBottomXCM;
         private System.Windows.Forms.CheckBox cbxAddWellConnect;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cbbProjectJH;
     }
 }
