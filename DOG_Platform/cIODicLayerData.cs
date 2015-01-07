@@ -163,7 +163,7 @@ namespace DOGPlatform
             for (int i = listLayerDataDic.Count - 1; i >0 ; i--)
             {
                 ItemDicLayerData currentItem = listLayerDataDic[i];
-                if (currentItem.fDCHD>0&& (currentItem.fKXD <= 0 || currentItem.fSTL<=0))
+                if (currentItem.fSH>0&& (currentItem.fKXD <= 0 || currentItem.fSTL<=0)) //有砂厚，砂厚大于0的必须有孔隙度和渗透率，用于产量劈分，储量计算
                 {
                     //从 listLayerDataDic中选择 本小层与本井进的2口有数据的井，取平均值
                    List<ItemDicLayerData> listSelect= listLayerDataDic.FindAll(p => p.sXCM == currentItem.sXCM
