@@ -11,6 +11,9 @@ namespace DOGPlatform
     {
         public void generateLayerData()
         {
+
+            //更新算法，保证计算后的数据字典完善：
+            //如果这口井有有效厚度而没有孔隙度，渗透率，饱和度，那么找临近的几口井，根据厚度相近的原则，取孔隙度，渗透率
             //数据缺失的先用地层厚度为-999填充标记，然后正着扫一遍，再反着扫一遍 把所有的值填充合理
             cProjectData.sErrLineInfor= "";
 

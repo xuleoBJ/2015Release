@@ -246,18 +246,25 @@ namespace DOGPlatform.SVG
 
                 XmlElement gYXHDText = svgDoc.CreateElement("text");
                 gYXHDText.SetAttribute("x", (iXview +5).ToString());
-                gYXHDText.SetAttribute("y", iYview.ToString());
+                gYXHDText.SetAttribute("y", (iYview-1).ToString());
                 gYXHDText.SetAttribute("font-size", sFontSize);
-                //gYXHDText.SetAttribute("font-style", "normal");
-                gYXHDText.SetAttribute("style", "text-decoration: underline;");
+                gYXHDText.SetAttribute("font-style", "normal");
+               // gYXHDText.SetAttribute("style", "text-decoration: underline;");
                 gYXHDText.InnerText =" "+ sYXHD+" ";
                 gYXHDText.SetAttribute("fill", "black");
                 gWellLayerProperty.AppendChild(gYXHDText);
 
+                XmlElement spliLine = svgDoc.CreateElement("path");
+                string d = "M " + (iXview+5).ToString() + " " + iYview.ToString() + "h10" ;
+                spliLine.SetAttribute("d", d);
+                spliLine.SetAttribute("stroke", "black");
+                spliLine.SetAttribute("stroke-width", "0.6");
+                spliLine.SetAttribute("fill", "none");
+                gWellLayerProperty.AppendChild(spliLine);
 
                 XmlElement gSTLText = svgDoc.CreateElement("text");
-                gSTLText.SetAttribute("x", (iXview + 14).ToString());
-                gSTLText.SetAttribute("y", (iYview + 3).ToString());
+                gSTLText.SetAttribute("x", (iXview + 16).ToString());
+                gSTLText.SetAttribute("y", (iYview + 2).ToString());
                 gSTLText.SetAttribute("font-size", sFontSize);
                 gSTLText.SetAttribute("font-style", "normal");
                 gSTLText.InnerText = STL;

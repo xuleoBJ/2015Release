@@ -33,7 +33,7 @@ namespace DOGPlatform
                 if (File.Exists(filePath)) 
                 {
                     cProjectManager.filePathInkscape = filePath;
-                    cProjectManager.filePahtsvgPattern = Path.Combine(Path.GetDirectoryName(cProjectManager.filePathInkscape), "share", "pattern", "patterns.svg"); 
+                    cProjectManager.filePahtsvgPattern = Path.Combine(Path.GetDirectoryName(cProjectManager.filePathInkscape), "share", "patterns", "patterns.svg"); 
                     return true ;
                 }
             }

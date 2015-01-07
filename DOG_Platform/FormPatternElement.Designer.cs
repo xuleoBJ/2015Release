@@ -1292,6 +1292,8 @@
             // cbxHasSplitLine
             // 
             this.cbxHasSplitLine.AutoSize = true;
+            this.cbxHasSplitLine.Checked = true;
+            this.cbxHasSplitLine.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbxHasSplitLine.Location = new System.Drawing.Point(636, 39);
             this.cbxHasSplitLine.Name = "cbxHasSplitLine";
             this.cbxHasSplitLine.Size = new System.Drawing.Size(84, 16);

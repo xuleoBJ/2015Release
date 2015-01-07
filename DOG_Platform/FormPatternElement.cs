@@ -18,6 +18,8 @@ namespace DOGPlatform
         public FormPatternElement()
         {
             InitializeComponent();
+            tbcPattern.TabPages.Remove(tbgPatternLayer);
+            tbcPattern.TabPages.Remove(tbgPatternVolcanicRock);
         }
 
         string sLithoName = "粗砂岩";
@@ -71,8 +73,7 @@ namespace DOGPlatform
          {
              int iHeightPattern = Convert.ToInt16(nUDPatternLimesHeight.Value);
             int iWidthPattern = iHeightPattern*2;
-             string sBackColor = cPublicMethodBase.getRGB(cbbPatternLimesBackColor.BackColor);
-             return  cSVGXEPatternCarbonatie.lithoPatternLimesDefs(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor);
+             return  cSVGXEPatternCarbonatie.lithoPatternLimesDefs(sLithoName, sID, iWidthPattern, iHeightPattern);
          }
 
          void addDef4SandStone(string sLithoName, string sID)
@@ -256,7 +257,7 @@ namespace DOGPlatform
         {
             string sLithoName = "灰质泥岩";
             if (this.tbxPatternNameMud.Text.Trim() != "") sLithoName = this.tbxPatternNameMud.Text;
-            string sID = "404";
+            string sID = "406";
             viewPattern(sLithoName, getDef4MudStone(sLithoName, sID));
         }
 

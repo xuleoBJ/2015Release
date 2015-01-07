@@ -220,8 +220,6 @@ namespace DOGPlatform.XML
 
             doc.Save(xmlConfigLayerMap);
             //MessageBox.Show("设置保存。");
-
-
         }
 
         public static void setJHsize(string xmlFilePath, int iSize)

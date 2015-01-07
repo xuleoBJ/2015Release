@@ -179,12 +179,8 @@
             this.cbxAddCoutourLine = new System.Windows.Forms.CheckBox();
             this.cbxAddFaultLine = new System.Windows.Forms.CheckBox();
             this.tbgWellData = new System.Windows.Forms.TabPage();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.label31 = new System.Windows.Forms.Label();
-            this.nUDStaticDatadfscale = new System.Windows.Forms.NumericUpDown();
-            this.label45 = new System.Windows.Forms.Label();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label58 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.cbxAddGeologyProperty = new System.Windows.Forms.CheckBox();
@@ -222,7 +218,6 @@
             this.cbbSelectedXCMTop = new System.Windows.Forms.ComboBox();
             this.btnGenerateLayerMap = new System.Windows.Forms.Button();
             this.tbcLayerMap = new System.Windows.Forms.TabControl();
-            this.label6 = new System.Windows.Forms.Label();
             this.tabPage1.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
@@ -266,9 +261,6 @@
             this.groupBox24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDFaultLineWidth)).BeginInit();
             this.tbgWellData.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDStaticDatadfscale)).BeginInit();
             this.groupBox25.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyDyOffset)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyDxOffset)).BeginInit();
@@ -1988,7 +1980,6 @@
             // 
             // tbgWellData
             // 
-            this.tbgWellData.Controls.Add(this.groupBox5);
             this.tbgWellData.Controls.Add(this.groupBox25);
             this.tbgWellData.Location = new System.Drawing.Point(4, 22);
             this.tbgWellData.Name = "tbgWellData";
@@ -1997,83 +1988,6 @@
             this.tbgWellData.TabIndex = 3;
             this.tbgWellData.Text = "数据信息";
             this.tbgWellData.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.numericUpDown2);
-            this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Controls.Add(this.nUDStaticDatadfscale);
-            this.groupBox5.Controls.Add(this.label45);
-            this.groupBox5.Location = new System.Drawing.Point(11, 167);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(297, 86);
-            this.groupBox5.TabIndex = 31;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "静态数据显示配置";
-            // 
-            // numericUpDown2
-            // 
-            this.numericUpDown2.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.numericUpDown2.Location = new System.Drawing.Point(238, 37);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(37, 21);
-            this.numericUpDown2.TabIndex = 22;
-            this.numericUpDown2.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(163, 43);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(65, 12);
-            this.label31.TabIndex = 21;
-            this.label31.Text = "属性值字号";
-            // 
-            // nUDStaticDatadfscale
-            // 
-            this.nUDStaticDatadfscale.AllowDrop = true;
-            this.nUDStaticDatadfscale.DecimalPlaces = 1;
-            this.nUDStaticDatadfscale.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nUDStaticDatadfscale.Location = new System.Drawing.Point(98, 37);
-            this.nUDStaticDatadfscale.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nUDStaticDatadfscale.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.nUDStaticDatadfscale.Name = "nUDStaticDatadfscale";
-            this.nUDStaticDatadfscale.Size = new System.Drawing.Size(51, 21);
-            this.nUDStaticDatadfscale.TabIndex = 28;
-            this.nUDStaticDatadfscale.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(18, 42);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(77, 12);
-            this.label45.TabIndex = 27;
-            this.label45.Text = "图形缩放比例";
             // 
             // groupBox25
             // 
@@ -2091,15 +2005,24 @@
             this.groupBox25.Controls.Add(this.label29);
             this.groupBox25.Location = new System.Drawing.Point(11, 25);
             this.groupBox25.Name = "groupBox25";
-            this.groupBox25.Size = new System.Drawing.Size(396, 114);
+            this.groupBox25.Size = new System.Drawing.Size(449, 282);
             this.groupBox25.TabIndex = 28;
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "井点地层属性设置";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(224, 26);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "渗透率";
+            // 
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(31, 65);
+            this.label58.Location = new System.Drawing.Point(182, 37);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(29, 12);
             this.label58.TabIndex = 24;
@@ -2109,7 +2032,7 @@
             // 
             this.label57.AutoSize = true;
             this.label57.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label57.Location = new System.Drawing.Point(19, 51);
+            this.label57.Location = new System.Drawing.Point(170, 21);
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(53, 12);
             this.label57.TabIndex = 23;
@@ -2118,7 +2041,7 @@
             // cbxAddGeologyProperty
             // 
             this.cbxAddGeologyProperty.AutoSize = true;
-            this.cbxAddGeologyProperty.Location = new System.Drawing.Point(11, 20);
+            this.cbxAddGeologyProperty.Location = new System.Drawing.Point(16, 40);
             this.cbxAddGeologyProperty.Name = "cbxAddGeologyProperty";
             this.cbxAddGeologyProperty.Size = new System.Drawing.Size(96, 16);
             this.cbxAddGeologyProperty.TabIndex = 27;
@@ -2128,7 +2051,7 @@
             // 
             // nUDLayerGeologyProperyDyOffset
             // 
-            this.nUDLayerGeologyProperyDyOffset.Location = new System.Drawing.Point(324, 48);
+            this.nUDLayerGeologyProperyDyOffset.Location = new System.Drawing.Point(186, 172);
             this.nUDLayerGeologyProperyDyOffset.Name = "nUDLayerGeologyProperyDyOffset";
             this.nUDLayerGeologyProperyDyOffset.Size = new System.Drawing.Size(48, 21);
             this.nUDLayerGeologyProperyDyOffset.TabIndex = 22;
@@ -2141,7 +2064,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(254, 52);
+            this.label30.Location = new System.Drawing.Point(121, 176);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(65, 12);
             this.label30.TabIndex = 21;
@@ -2151,7 +2074,7 @@
             // 
             this.comboBox8.BackColor = System.Drawing.Color.Red;
             this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(306, 27);
+            this.comboBox8.Location = new System.Drawing.Point(155, 124);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(52, 20);
             this.comboBox8.TabIndex = 18;
@@ -2159,7 +2082,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(238, 26);
+            this.label27.Location = new System.Drawing.Point(96, 127);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(53, 12);
             this.label27.TabIndex = 19;
@@ -2172,7 +2095,7 @@
             0,
             0,
             65536});
-            this.nUDLayerGeologyProperyDxOffset.Location = new System.Drawing.Point(211, 52);
+            this.nUDLayerGeologyProperyDxOffset.Location = new System.Drawing.Point(78, 172);
             this.nUDLayerGeologyProperyDxOffset.Name = "nUDLayerGeologyProperyDxOffset";
             this.nUDLayerGeologyProperyDxOffset.Size = new System.Drawing.Size(37, 21);
             this.nUDLayerGeologyProperyDxOffset.TabIndex = 17;
@@ -2189,7 +2112,7 @@
             0,
             0,
             65536});
-            this.nUDLayerGeologyProperyFontSize.Location = new System.Drawing.Point(195, 21);
+            this.nUDLayerGeologyProperyFontSize.Location = new System.Drawing.Point(49, 125);
             this.nUDLayerGeologyProperyFontSize.Name = "nUDLayerGeologyProperyFontSize";
             this.nUDLayerGeologyProperyFontSize.Size = new System.Drawing.Size(37, 21);
             this.nUDLayerGeologyProperyFontSize.TabIndex = 17;
@@ -2202,7 +2125,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(141, 52);
+            this.label28.Location = new System.Drawing.Point(8, 176);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(65, 12);
             this.label28.TabIndex = 12;
@@ -2211,7 +2134,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(155, 29);
+            this.label29.Location = new System.Drawing.Point(14, 128);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(29, 12);
             this.label29.TabIndex = 12;
@@ -2524,15 +2447,6 @@
             this.tbcLayerMap.Size = new System.Drawing.Size(585, 415);
             this.tbcLayerMap.TabIndex = 0;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 55);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "渗透率";
-            // 
             // FormMapLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -2609,10 +2523,6 @@
             this.groupBox24.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDFaultLineWidth)).EndInit();
             this.tbgWellData.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nUDStaticDatadfscale)).EndInit();
             this.groupBox25.ResumeLayout(false);
             this.groupBox25.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nUDLayerGeologyProperyDyOffset)).EndInit();
@@ -2811,11 +2721,6 @@
         private System.Windows.Forms.ComboBox cbbSelectedXCMTop;
         private System.Windows.Forms.Button btnGenerateLayerMap;
         private System.Windows.Forms.TabControl tbcLayerMap;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.NumericUpDown nUDStaticDatadfscale;
-        private System.Windows.Forms.Label label45;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cbbUnit;
         private System.Windows.Forms.Label label3;

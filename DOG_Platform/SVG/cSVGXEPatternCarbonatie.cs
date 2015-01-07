@@ -28,20 +28,17 @@ namespace DOGPlatform.SVG
             {
                 // bool x=xroot.HasElements("defs");
                 XElement xdefs = xroot.Element("{http://www.w3.org/2000/svg}" + "defs");
-                if (xdefs != null) xdefs.AddFirst(lithoPatternLimesDefs(sLithoName, sID, iWidthPattern, iHeightPattern, sBackColor));
+                if (xdefs != null) xdefs.AddFirst(lithoPatternLimesDefs(sLithoName, sID, iWidthPattern, iHeightPattern));
                 xDoc.Save(cProjectManager.filePahtsvgPattern);
                 MessageBox.Show("图案添加完成");
             }
         }
 
 
-        public  static XElement lithoPatternLimesDefs(string stockId, string sID,  int iWidthUnit, int iHeightUnit, string backColor)
+        public  static XElement lithoPatternLimesDefs(string stockId, string sID,  int iWidthUnit, int iHeightUnit)
         {  
             int numColumn = 0;
             int numRow = 0;
-            string fillColor = backColor;
-            string strokeColor = backColor;
-            bool hasSplitLine = true;
 
             XNamespace xn = "http://www.w3.org/2000/svg";
             XNamespace inkscape = "http://www.inkscape.org/namespaces/inkscape";
@@ -102,19 +99,17 @@ namespace DOGPlatform.SVG
             XElement lithoPattern = new XElement(xn + "pattern");
             XAttribute stockid = new XAttribute(inkscape + "stockid", stockId);
             lithoPattern.Add(stockid);
+            lithoPattern.SetAttributeValue("id", stockId.GetHashCode().ToString().Remove(0, 1));
             XAttribute collect = new XAttribute(inkscape + "collect", "always");
             lithoPattern.Add(collect);
-            lithoPattern.SetAttributeValue("id", sID.GetHashCode().ToString().Remove(0,1));
             lithoPattern.SetAttributeValue("patternUnits", "userSpaceOnUse");
             lithoPattern.SetAttributeValue("x", "0");
             lithoPattern.SetAttributeValue("y", "0");
             lithoPattern.SetAttributeValue("width", (iWidthUnit * numColumn).ToString());
             lithoPattern.SetAttributeValue("height", (iHeightUnit * numRow).ToString());
 
-            lithoPattern.Add(backRect(backColor, iWidthUnit, iHeightUnit, numColumn, numRow));
-            if (hasSplitLine == true) lithoPattern.Add(splitLine(iWidthUnit, iHeightUnit, numColumn, numRow));
             for (int i = 0; i < listPatternMark.Count; i++) lithoPattern.Add(listPatternMark[i]);
-
+            lithoPattern.Add(splitLine(iWidthUnit, iHeightUnit, numColumn, numRow));
             return lithoPattern;
           
         }

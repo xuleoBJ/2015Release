@@ -123,10 +123,24 @@
   <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAYAAAAAABoAwAAFgAAACgAAAAQAAAAIAAAAAEAGAAAAAAAAAMAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAABOLhxOLhxOLhxOLhxOLhxOLhxOLhxOLhxOLhxOLhxOLhxOLhwAAAAAAAAAAADMgCj6sojw
+        UBnwUBnwUBnwUBnwUBnwUBnwUBnwUBnwUBnwUBnwUBlOLhwAAAAAAADMgCj6soj2iljMZgB3HAD0dD/M
+        ZgB3HADyXSccuE0ARQDwUBnwUBlOLhwAAAAAAADMgCj6soj3kmL215zMZgD0ekb215zMZgDyZS5F9oAc
+        uE3wUBnwUBlOLhwAAAAAAADMgCj6soj3mWr3kmL2ilj0gk/0ekb0dD/zbDbyZS7yXSfwVh/wUBlOLhwA
+        AAAAAADMgCj6soj4oXTMZgB3HAD2iljMZgB3HAD0dD/MZgB3HADyXSfwUBlOLhwAAAAAAADMgCj6sojq
+        pHb215zMZgD3kmL215zMZgD0ekb215zMZgDyZS7wUBlOLhwAAAAAAADMgCj6sojzqn7qpHb4oXT3mWr3
+        kmL2ilj0gk/0ekb0dD/zbDbwUBlOLhwAAAAAAADMgCj6soj6qn7MZgB3HADipHbMZgB3HAD2jlwvXfYA
+        AID0d0LwUBlOLhwAAAAAAADMgCj6soj6qn7215zMZgDuo3X215zMZgD3lmbF1P4vXfb0f0vwUBlOLhwA
+        AAAAAADMgCj6soj6qn76qn76qn73qn7uo3X6pnn4nm/3lmb2jlz0hlPwUBlOLhwAAAAAAADMgCiARUWv
+        Zk2vZk2vZk2vZk2vZk2vZk2vZk2vZk2vZk2vZk3wUBlOLhwAAAAAAADMgCiARUW18rW18rW18rWx67Gl
+        3aWZz5mPwo+EtYSAr4CvZk3wUBlOLhwAAAAAAADMgCiARUW18rW18rW18rW18rW18rWr46uf1Z+VypWK
+        vIqvZk3wUBlOLhwAAAAAAADMgCiARUWARUWARUWARUWARUWARUWARUWARUWARUWARUWARUX0hlNOLhwA
+        AAAAAAAAAADMgCjMgCjMgCjMgCjMgCjMgCjMgCjMgCjMgCjMgCjMgCjMgCgAAAAAAADAAwAAgAEAAIAB
+        AACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAACAAQAAgAEAAIABAADAAwAA
+</value>
+  </data>
 </root>

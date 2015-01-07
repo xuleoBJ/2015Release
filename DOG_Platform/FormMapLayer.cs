@@ -39,8 +39,8 @@ namespace DOGPlatform
         int PageHeight = 1500;
         string sUnit = "px"; 
 
-        //set xml 4 store configure information and data
-        string filePathXMLconfigLayerMap = "";
+        //首先初始化一个配置文件，然后具体到小层的时候，再复制这个文件与原文件形成配套配置文件，每次初始化的时候晴空
+        string filePathInitXMLconfig = Path.Combine(cProjectManager.dirPathTemp, "layerMapInit.xml");
     
         public FormMapLayer()
         {
@@ -50,7 +50,8 @@ namespace DOGPlatform
 
         private void InitFormLayerMap()
         {
-          //  cPublicMethodForm.inialListBox(lbxJHLayerMap, cProjectData.ltStrProjectJH);
+            File.Delete(filePathInitXMLconfig);
+            cXMLLayerMapBase.creatLayerMapConfigXML(filePathInitXMLconfig, this.PageWidth, this.PageHeight);
             lbxJHLayerMap.DataSource = cProjectData.ltStrProjectJH;
             List<string> ltStrStaticDataChoise = new List<string>();
             ltStrStaticDataChoise.Add("砂厚");
@@ -61,7 +62,7 @@ namespace DOGPlatform
             cbbSelectedXCMTop.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedXCMBot.DataSource = cProjectData.ltStrProjectXCM;
             cbbSelectedYM.DataSource = cProjectData.ltStrProjectYM;
-            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "mm", "px", "pt", "pc", "cm", "in" }));
+            cPublicMethodForm.inialComboBox(cbbUnit, new List<string>(new string[] { "px", "pt", "mm", "pc", "cm", "in" }));
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.listProjectWell.FindAll(p=>p.WellPathList.Count>3).Select(p=>p.sJH).ToList());
             this.nUDrefX.Value = decimal.Parse(cProjectData.dfMapXrealRefer.ToString());
             this.nUDrefY.Value = decimal.Parse(cProjectData.dfMapYrealRefer.ToString());
@@ -95,9 +96,9 @@ namespace DOGPlatform
         void addWells()
         {
    
-            cXMLLayerMapBase.delJHDataNode(filePathXMLconfigLayerMap);
+            cXMLLayerMapBase.delJHDataNode(filePathInitXMLconfig);
             foreach (var item in listWellsMapLayer)
-                cXMLLayerMapBase.addJHDataNode2XML(filePathXMLconfigLayerMap, ItemWellMapLayer.item2string(item)) ;
+                cXMLLayerMapBase.addJHDataNode2XML(filePathInitXMLconfig, ItemWellMapLayer.item2string(item)) ;
             
             cPublicMethodForm.setListBoxwithltStr(lbxJHLayerMap, listWellsMapLayer.Select(p => p.sJH).ToList());
 
@@ -107,14 +108,14 @@ namespace DOGPlatform
         {
             List<string> ltValue = listWellsMapLayer.Select(p => p.sJH+"\t"+p.dbX +"\t"+p.dbY+"\t"+p.fDCHD.ToString() 
                 + "\t" + p.fSH.ToString() + "\t" + p.fYXHD.ToString()+"\t"+p.fSTL.ToString()).ToList() ;
-            cXMLLayerMapGeoproperty.delWellPropertyNode(filePathXMLconfigLayerMap);
-            cXMLLayerMapGeoproperty.addWellProperty2XML(filePathXMLconfigLayerMap, ltValue); 
+            cXMLLayerMapGeoproperty.delWellPropertyNode(filePathInitXMLconfig);
+            cXMLLayerMapGeoproperty.addWellProperty2XML(filePathInitXMLconfig, ltValue); 
         }
 
         void addHorizonal() 
         {
             XmlDocument xmlLayerMap = new XmlDocument();
-            xmlLayerMap.Load(this.filePathXMLconfigLayerMap);
+            xmlLayerMap.Load(this.filePathInitXMLconfig);
             XmlNode currentNode = xmlLayerMap.SelectSingleNode("/LayerMapConfig/HorizonalWell");
             XmlNodeList listIntervel = currentNode.SelectNodes("WellIntervel");
 
@@ -128,33 +129,21 @@ namespace DOGPlatform
                 Point pWellHead = new Point(int.Parse(splitInnerText[2]), int.Parse(splitInnerText[3]));
                 Point pA = new Point(int.Parse(splitInnerText[4]), int.Parse(splitInnerText[5]));
                 Point pB = new Point(int.Parse(splitInnerText[6]), int.Parse(splitInnerText[7]));
-                //
-                //returnElemment = this.svgLayerMap.gHorizonalWellIntervelLine(pWellHead ,pA,pB);
-                //svgLayerMap.addgElement2LayerBase(returnElemment, 0, 0);
+              
             }
         }
 
-
-        void addFaultLine() 
-        {
-        
-        }
-
-        void addCoutour() 
-        {
-        
-        }
 
        
         void generateSVGfilemap()
         {
             // 这块重新加载的问题 解决了 绘制的问题，重新加载仍旧需要解决一下
             if (cbbUnit.SelectedIndex >= 0) sUnit = cbbUnit.SelectedItem.ToString();
-            string filePathSVGLayerMap = filePathXMLconfigLayerMap.Replace(".xml", ".svg");
+            string filePathSVGLayerMap = filePathInitXMLconfig.Replace(".xml", ".svg");
             //注意偏移量,偏移主要是为了好看 如果不偏移的话 就会绘到角落上,这时的偏移是整个偏移 后面的不用偏移了，相对偏移0，0
             int idx = 50;
             int idy = 50;
-            cSVGDocLayerMap svgLayerMap = new cSVGDocLayerMap(filePathXMLconfigLayerMap, PageWidth, PageHeight, idx, idy, sUnit);
+            cSVGDocLayerMap svgLayerMap = new cSVGDocLayerMap(filePathInitXMLconfig, PageWidth, PageHeight, idx, idy, sUnit);
            
             //add title 
             string sTitle = this.selectedLayer+ "小层平面图";
@@ -210,7 +199,7 @@ namespace DOGPlatform
             {
                 XmlElement gLayerHoriWell = svgLayerMap.gLayerElement("水平井");
                 svgLayerMap.addgLayer(gLayerHoriWell);
-                XmlNodeList listHorinalNode = cXMLLayerMapHorizonalWell.getHorizonalWellIntervalNodeList(this.filePathXMLconfigLayerMap);
+                XmlNodeList listHorinalNode = cXMLLayerMapHorizonalWell.getHorizonalWellIntervalNodeList(this.filePathInitXMLconfig);
                 foreach (XmlNode xn in listHorinalNode)
                 {
                     returnElemment = svgLayerMap.gHorizonalWellIntervelLine(xn);
@@ -264,24 +253,24 @@ namespace DOGPlatform
 
         private void nUDWellCircle_R_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapBase.setRdiusValueWellCircle(filePathXMLconfigLayerMap, Convert.ToInt16(nUDWellCircle_R.Value));
+            cXMLLayerMapBase.setRdiusValueWellCircle(filePathInitXMLconfig, Convert.ToInt16(nUDWellCircle_R.Value));
         }
 
         private void nUDJHtext_DX_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapBase.setJH_Dxoffset(filePathXMLconfigLayerMap, Convert.ToInt16(nUDJHtext_DX.Value));
+            cXMLLayerMapBase.setJH_Dxoffset(filePathInitXMLconfig, Convert.ToInt16(nUDJHtext_DX.Value));
         }
 
         private void nUDJHFontSize_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapBase.setJHsize(filePathXMLconfigLayerMap, Convert.ToInt16(nUDJHFontSize.Value));
+            cXMLLayerMapBase.setJHsize(filePathInitXMLconfig, Convert.ToInt16(nUDJHFontSize.Value));
         }
 
         private void nUDFaultLineWidth_ValueChanged(object sender, EventArgs e)
         {
-            XDocument filePathXMLconfigLayerMap = XDocument.Load(cProjectManager.xmlConfigLayerMap);
-            filePathXMLconfigLayerMap.Element("LayerMapConfig").Element("FaultLine").Element("lineWidth").Value = nUDFaultLineWidth.Value.ToString("0");
-            filePathXMLconfigLayerMap.Save(cProjectManager.xmlConfigLayerMap);
+            XDocument filePathInitXMLconfig = XDocument.Load(cProjectManager.xmlConfigLayerMap);
+            filePathInitXMLconfig.Element("LayerMapConfig").Element("FaultLine").Element("lineWidth").Value = nUDFaultLineWidth.Value.ToString("0");
+            filePathInitXMLconfig.Save(cProjectManager.xmlConfigLayerMap);
         }
 
         private void btnLayerMapConfig_Click(object sender, EventArgs e)
@@ -295,17 +284,17 @@ namespace DOGPlatform
 
         private void nUDLayerGeologyProperyFontSize_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapGeoproperty.setLayerGeoglogyPropertyTextsize(filePathXMLconfigLayerMap, Convert.ToInt16(nUDLayerGeologyProperyFontSize.Value));
+            cXMLLayerMapGeoproperty.setLayerGeoglogyPropertyTextsize(filePathInitXMLconfig, Convert.ToInt16(nUDLayerGeologyProperyFontSize.Value));
         }
 
         private void nUDLayerGeologyProperyDyOffset_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapGeoproperty.setLayerGeoglogyProperty_Dyoffset(filePathXMLconfigLayerMap, Convert.ToInt16(nUDLayerGeologyProperyDyOffset.Value));
+            cXMLLayerMapGeoproperty.setLayerGeoglogyProperty_Dyoffset(filePathInitXMLconfig, Convert.ToInt16(nUDLayerGeologyProperyDyOffset.Value));
         }
 
         private void nUDLayerGeologyProperyDxOffset_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapGeoproperty.setLayerGeoglogyProperty_Dxoffset(filePathXMLconfigLayerMap, Convert.ToInt16(nUDLayerGeologyProperyDxOffset.Value));
+            cXMLLayerMapGeoproperty.setLayerGeoglogyProperty_Dxoffset(filePathInitXMLconfig, Convert.ToInt16(nUDLayerGeologyProperyDxOffset.Value));
         }
 
         private void FormMapLayer_Load(object sender, EventArgs e)
@@ -313,10 +302,6 @@ namespace DOGPlatform
             Control.CheckForIllegalCrossThreadCalls = false;
         }
 
-             private void nUDStaticDatadfscale_ValueChanged(object sender, EventArgs e)
-        {
-            cXMLLayerMapBase.setStaticDataVScale(filePathXMLconfigLayerMap, Convert.ToSingle(nUDStaticDatadfscale.Value));
-        }
 
         private void btnSaveSetting_Click(object sender, EventArgs e)
         {
@@ -334,9 +319,9 @@ namespace DOGPlatform
                     llistHorizinalJH.Add(strItem);
                 }
                 //add svg文件中水平井段
-                if (File.Exists(filePathXMLconfigLayerMap))
+                if (File.Exists(filePathInitXMLconfig))
                 {
-                    cXMLLayerMapHorizonalWell.delHorizonalWellIntervalNode(this.filePathXMLconfigLayerMap);
+                    cXMLLayerMapHorizonalWell.delHorizonalWellIntervalNode(this.filePathInitXMLconfig);
 
                     foreach (string _sjh in llistHorizinalJH)
                     {
@@ -366,7 +351,7 @@ namespace DOGPlatform
                                 _ltStrData.Add(tailView.X.ToString());
                                 _ltStrData.Add(tailView.Y.ToString());
                                 string _data = string.Join(" ", _ltStrData);
-                                cXMLLayerMapHorizonalWell.addHorizonalWellIntervalNode2XML(this.filePathXMLconfigLayerMap, _data);
+                                cXMLLayerMapHorizonalWell.addHorizonalWellIntervalNode2XML(this.filePathInitXMLconfig, _data);
                             }
                         }
                     }
@@ -375,26 +360,26 @@ namespace DOGPlatform
             }
             else
             {   //删除水平井段
-                cXMLLayerMapHorizonalWell.delHorizonalWellIntervalNode(this.filePathXMLconfigLayerMap);
+                cXMLLayerMapHorizonalWell.delHorizonalWellIntervalNode(this.filePathInitXMLconfig);
             }
         }
 
 
         private void numUDHorizonalLineWidth_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapHorizonalWell.setLineWidthHorzionalInterval(filePathXMLconfigLayerMap, Convert.ToInt16(this.nUDLineWidthHorizonalInterval.Value));
+            cXMLLayerMapHorizonalWell.setLineWidthHorzionalInterval(filePathInitXMLconfig, Convert.ToInt16(this.nUDLineWidthHorizonalInterval.Value));
         }
 
         private void nUDCirleLineWidth_ValueChanged(object sender, EventArgs e)
         {
-            cXMLLayerMapBase.setLineWidthWellCircle(filePathXMLconfigLayerMap, Convert.ToInt16(this.nUDCirleLineWidth.Value));
+            cXMLLayerMapBase.setLineWidthWellCircle(filePathInitXMLconfig, Convert.ToInt16(this.nUDCirleLineWidth.Value));
         }
 
         private void cbbColorHorizonalInterval_MouseClick(object sender, MouseEventArgs e)
         {
             cPublicMethodForm.setComboBoxBackColorByColorDialog(this.cbbColorHorizonalInterval);
             string rgbColor = cPublicMethodForm.getRGB(this.cbbColorHorizonalInterval.BackColor);
-            cXMLLayerMapHorizonalWell.setColorHorionalInterval(this.filePathXMLconfigLayerMap, rgbColor);
+            cXMLLayerMapHorizonalWell.setColorHorionalInterval(this.filePathInitXMLconfig, rgbColor);
         }
 
         private void btnSelectOK_Click(object sender, EventArgs e)
@@ -404,7 +389,7 @@ namespace DOGPlatform
             //if (tbxTitle.Text != "") fileName = tbxTitle.Text;
             //else 
             tbxTitle.Text = fileName; 
-            filePathXMLconfigLayerMap = Path.Combine(cProjectManager.dirPathMap, fileName + ".xml");
+            string filePathXMLcurrentLayer = Path.Combine(cProjectManager.dirPathMap, fileName + ".xml");
 
             List<ItemDicLayerData> listLayerDataSelected = cIODicLayerData.readDicLayerData2struct().FindAll(p=>p.sXCM==selectedLayer);
             listWellsMapLayer.Clear();
@@ -417,17 +402,20 @@ namespace DOGPlatform
                 }
 
                 //判断当前层的配置文件是否存在，如果不存在，建立，存在 提示用户是否删除，每个层就保留一个小层基本文件
-                if (!File.Exists(filePathXMLconfigLayerMap))
-                    cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, this.PageWidth, this.PageHeight);
+                if (!File.Exists(filePathXMLcurrentLayer))
+                {
+                    File.Copy(filePathInitXMLconfig, filePathXMLcurrentLayer);
+                }
                 else
                 {
                     DialogResult dialogResult = MessageBox.Show("当前层配置已经存在，Yes 覆盖原配置 No 保留原配置", "小层显示配置", MessageBoxButtons.YesNo);
                     if (dialogResult == DialogResult.Yes)
                     {
-                        File.Delete(filePathXMLconfigLayerMap);
-                        cXMLLayerMapBase.creatLayerMapConfigXML(filePathXMLconfigLayerMap, this.PageWidth, this.PageHeight);
+                        File.Delete(filePathXMLcurrentLayer);
+                        File.Copy(filePathInitXMLconfig, filePathXMLcurrentLayer);
                     }
                 }
+                filePathInitXMLconfig = filePathXMLcurrentLayer;
                 addWells(); 
             }
            

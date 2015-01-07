@@ -18,7 +18,6 @@ E:\ProjectPlatform\2015Release\Digger\DigRobot\obj\Release\DigRobot.Properties.R
 E:\ProjectPlatform\2015Release\Digger\DigRobot\obj\Release\DigRobot.csproj.GenerateResource.Cache
 E:\ProjectPlatform\2015Release\Digger\DigRobot\obj\Release\DigRobot.exe
 E:\ProjectPlatform\2015Release\Digger\DigRobot\obj\Release\DigRobot.pdb
-E:\ProjectPlatform\2015Release\Digger\DigRobot\obj\Release\DigRobot.csprojResolveAssemblyReference.cache
 E:\ProjectPlatform\2015Release\Digger\DigRobot\bin\Release\DigRobot.exe.config
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\bin\Release\DigRobot.exe.config
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\bin\Release\DigRobot.exe

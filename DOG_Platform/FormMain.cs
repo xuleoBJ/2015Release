@@ -60,6 +60,8 @@ namespace DOGPlatform
 
             tsmiProfileDecision.Enabled = true;
             tsmiDynamicCal.Enabled = true;
+            tsmiProfileDecision.Visible = false;
+            tsmiDynamicCal.Visible = false;
         }
 
         private void intializeMyForm()
@@ -112,23 +114,9 @@ namespace DOGPlatform
             this.tbcProject.SelectedIndex = 0;
 
             WellNavitationInvalidate();
-            updateTreeViewWindows();
         }
 
-        void updateTreeViewWindows()
-        {
-            tvWindows.CheckBoxes = true;
-            tvWindows.Nodes.Clear();
-            foreach (TabPage tbg in listTabpageMain)
-            {
-                TreeNode tabNote = new TreeNode();
-                tabNote.Name = tbg.Name;
-                tabNote.Text = tbg.Text;
-                tvWindows.Nodes.Add(tabNote);
-                if (tbcMain.TabPages.Contains(tbg)) tabNote.Checked = true;
-            }
-        }
-
+      
         #region 工程管理
         bool createNewProject()
         {
@@ -272,6 +260,7 @@ namespace DOGPlatform
             FormMapLayer formLayerMap = new FormMapLayer();
             formLayerMap.ShowDialog();
             updateWebSVG();
+            updateTreeViewSVGLayer();
         }
 
         private void tsmiSectionReservior_Click(object sender, EventArgs e)
@@ -279,6 +268,7 @@ namespace DOGPlatform
             FormWellSectionPath FormWellsGroup = new FormWellSectionPath();
             FormWellsGroup.ShowDialog();
             updateWebSVG();
+             updateTreeViewSVGLayer();
         }
 
         private void ToolStripStatusLabelProjectionInfor_Click(object sender, EventArgs e)
@@ -465,41 +455,29 @@ namespace DOGPlatform
                     this.tvResultTable.Nodes.Add(_tn);
                 }
             }
-            if (tbcProject.SelectedTab == this.tbgSVGLayer)
-            {
-                if (filePathWebSVG.EndsWith(".svg"))
-                {
-                    XmlDocument xmlDoc = new XmlDocument();
-                    xmlDoc.Load(filePathWebSVG);
-                    XmlNodeList listXN = xmlDoc.DocumentElement.ChildNodes;
-                    this.tvSVGLayer.Nodes.Clear();
-                    tvSVGLayer.CheckBoxes = true;
-                    foreach (XmlNode xn in listXN)
-                    {
-                        var nameAttribute = xn.Attributes["id"];
-                        if (nameAttribute != null)
-                        {
-                            TreeNode tn = new TreeNode(xn.Attributes["id"].Value);
-                            tn.Checked = true;
-                            if (xn.Name == "g") tvSVGLayer.Nodes.Add(tn);
-                        }
-                    }
-                }
-               
-            }
         }
 
-        private void AddLayerNode(XmlNode inXmlNode, TreeNode inTreeNode)
+        private void updateTreeViewSVGLayer()
         {
-            //XmlDocument xmlDoc = new XmlDocument();
-            //xmlDoc.Load(xmlfilePath);
-            //XmlNode currentNode = xmlDoc.SelectSingleNode(fullPath);
-            //if (currentNode != null)
-            //{
-            //    foreach (XmlNode _node in currentNode.SelectNodes(sTagNameRemoved))
-            //        currentNode.RemoveChild(_node);
-            //}
-            //xmlDoc.Save(xmlfilePath);
+            if (filePathWebSVG.EndsWith(".svg"))
+            {
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(filePathWebSVG);
+                XmlNodeList listXN = xmlDoc.DocumentElement.ChildNodes;
+                this.tvSVGLayer.Nodes.Clear();
+                tvSVGLayer.CheckBoxes = true;
+                foreach (XmlNode xn in listXN)
+                {
+                    var nameAttribute = xn.Attributes["id"];
+                    if (nameAttribute != null)
+                    {
+                        TreeNode tn = new TreeNode(xn.Attributes["id"].Value);
+                        tn.Checked = true;
+                        if (xn.Name == "g") tvSVGLayer.Nodes.Add(tn);
+                    }
+                }
+            }
+               
         }
 
 
@@ -512,6 +490,7 @@ namespace DOGPlatform
                 {
                     this.webBrowserIE.Navigate(new Uri(filePathWebSVG));
                     this.tbgIE.Text =Path.GetFileNameWithoutExtension(filePathWebSVG);
+                   
                 }
                 else
                 {
@@ -1023,6 +1002,7 @@ namespace DOGPlatform
 
             filePathWebSVG = Path.Combine(cProjectManager.dirPathMap, tvResultGraph.SelectedNode.Text+".svg");
             updateWebSVG();
+            updateTreeViewSVGLayer();
         }
 
         private void tsmiWells_Click(object sender, EventArgs e)
@@ -1232,30 +1212,25 @@ namespace DOGPlatform
                     {
                         var idAttribute = xn.Attributes["id"];
                         var styleAttribute = xn.Attributes["style"];
-                        if (idAttribute != null && styleAttribute != null)
+                        if (idAttribute != null )
                         {
-                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == false)
-                            { styleAttribute.Value = "visibility:hidden;"; break; }
-                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == true)
-                            { styleAttribute.Value = "visibility:visible;"; break; }
-                        }
-                        if (idAttribute != null && styleAttribute == null)
-                        {
-                            styleAttribute = xmlDoc.CreateAttribute("style");
-                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == false)
+                            if (idAttribute.Value == e.Node.Text && styleAttribute != null )
                             {
-                                styleAttribute.Value = "visibility:hidden;";
-                                xn.Attributes.Append(styleAttribute);
-                                break;
+                                if (e.Node.Checked == false) styleAttribute.Value = "display:none;"; 
+                                else styleAttribute.Value = "visibility:visible;";
+                                break; 
                             }
-                            if (idAttribute.Value == e.Node.Text && e.Node.Checked == true)
+
+                            if (idAttribute.Value == e.Node.Text && styleAttribute == null)
                             {
-                                styleAttribute.Value = "visibility:visible;";
+                                styleAttribute = xmlDoc.CreateAttribute("style");
+                                if (e.Node.Checked == false) styleAttribute.Value = "display:none;";
+                                else styleAttribute.Value = "visibility:visible;";
                                 xn.Attributes.Append(styleAttribute);
                                 break; 
                             }
                         }
-                        
+                       
                     }
                 }
                 xmlDoc.Save(filePathWebSVG);

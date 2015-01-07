@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCalArea));
             this.dgv = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,6 +112,7 @@
             this.Controls.Add(this.btnCopy);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormCalArea";
             this.Text = "计算面积周长";
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();

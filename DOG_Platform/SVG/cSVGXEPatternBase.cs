@@ -53,7 +53,7 @@ namespace DOGPlatform.SVG
            
             string d = "M " + ix.ToString() + " " + (iHeightUnit * orderRow).ToString() + "v" + iHeightUnit.ToString();
             patternElement.SetAttributeValue("d", d);
-            patternElement.SetAttributeValue("stroke", "gray");
+            patternElement.SetAttributeValue("stroke", "black");
             patternElement.SetAttributeValue("stroke-width", "1");
             patternElement.SetAttributeValue("fill", "none");
             return patternElement;

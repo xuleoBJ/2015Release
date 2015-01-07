@@ -27,8 +27,10 @@ namespace DigRobot
         {
             InitializeComponent();
             this.tbxProperty.Text = strProperty;
+            this.dgv.Location = new Point(this.btnDelDgvLine.Location.Y - 3, this.btnDelDgvLine.Location.X) ;
+            this.dgv.Dock = DockStyle.Bottom;
+            
         }
-
 
          private void pictureBox_OriginalPic_MouseClick(object sender, MouseEventArgs e)
         {

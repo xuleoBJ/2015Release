@@ -23,7 +23,7 @@ namespace DOGPlatform
         public static string dirPathTemplate = dirProject;
 
         public static string filePathInkscape = @"C:\Program Files (x86)\Inkscape\inkscape.exe";
-        public static string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\pattern\patterns.svg";
+        public static string filePahtsvgPattern = @"C:\Program Files (x86)\Inkscape\share\patterns\patterns.svg";
         
 
         public static string filePathInputWellhead = Path.Combine(dirPathUserData, "$wellHead#.txt");
