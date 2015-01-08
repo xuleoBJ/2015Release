@@ -133,13 +133,8 @@ namespace DOGPlatform.XML
                 ),
                 new XElement("ProjectLogSeriers"
                 ),
-                   new XElement("ProjectXJH"
+                   new XElement("ProductYM"
                 ),
-                   new XElement("ProductYM",
-                   new XElement("StartYM", DateTime.Now.ToString("yyyyMM")),
-                   new XElement("StartYM", DateTime.Now.ToString("yyyyMM"))
-                ),
-
                 new XElement("WorkFlow",
                 new XElement("ReadData", "1"),
                 new XElement("DataVerify", "1"),
@@ -191,13 +186,27 @@ namespace DOGPlatform.XML
              string sPath="/Project/ProjectLogSeriers";
               string _data = string.Join(" ", cProjectData.ltStrLogSeriers);
               setNodeInnerText(cProjectManager.xmlProject, sPath, _data);
+        }
+
+        public static void setProjectYMNode()
+        {
+              string sPath = "/Project/ProductYM";
+              string _data = string.Join(" ", cProjectData.ltStrProjectYM); 
+              setNodeInnerText(cProjectManager.xmlProject, sPath, _data);
       
         }
+        
        
         public static void getLtStrLogSeriersFromNode()
         {
             string sPath="/Project/ProjectLogSeriers";
             cProjectData.ltStrLogSeriers = splitNodeInnerText(cProjectManager.xmlProject, sPath);
         }
+        public static void getProjectYMFromNode()
+        {
+            string sPath = "/Project/ProductYM";
+            cProjectData.ltStrProjectYM = splitNodeInnerText(cProjectManager.xmlProject, sPath);
+        }
+        
     }
 }

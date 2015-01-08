@@ -50,6 +50,8 @@ namespace DOGPlatform
         public static string fileNameWellLayerDepth = "#layerDepth#";
         public static string fileNameWellProfile = "#injectProfile#";
         public static string fileExtensionWellLog = ".log";
+        public static string fileExtensionDynamic = ".dym";
+        
 
         public static string filePathWellTypeDic = "$WellTypeDic$.txt";
 
@@ -196,6 +198,7 @@ namespace DOGPlatform
             cXMLProject.setProjectRefPointNode();
             cXMLProject.setProjectJHNode();
             cXMLProject.setProjectLogSeriersNode();
+            cXMLProject.setProjectYMNode();
         }
         public static void createWellDir(string sJH)
         {

@@ -1523,11 +1523,6 @@
             0,
             0,
             0});
-            this.nUDrefY.Minimum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
             this.nUDrefY.Name = "nUDrefY";
             this.nUDrefY.Size = new System.Drawing.Size(102, 21);
             this.nUDrefY.TabIndex = 43;
@@ -1548,11 +1543,6 @@
             this.nUDrefX.Location = new System.Drawing.Point(92, 54);
             this.nUDrefX.Maximum = new decimal(new int[] {
             90000000,
-            0,
-            0,
-            0});
-            this.nUDrefX.Minimum = new decimal(new int[] {
-            10000000,
             0,
             0,
             0});
@@ -1604,6 +1594,11 @@
             // nUDPageHeight
             // 
             this.nUDPageHeight.AllowDrop = true;
+            this.nUDPageHeight.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.nUDPageHeight.Location = new System.Drawing.Point(180, 23);
             this.nUDPageHeight.Maximum = new decimal(new int[] {
             20000,
@@ -1636,6 +1631,11 @@
             // nUDPageWidth
             // 
             this.nUDPageWidth.AllowDrop = true;
+            this.nUDPageWidth.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.nUDPageWidth.Location = new System.Drawing.Point(66, 22);
             this.nUDPageWidth.Maximum = new decimal(new int[] {
             20000,

@@ -231,6 +231,8 @@ namespace DOGPlatform
             //定义每口井绘制的位置坐标，剖面图y=0，井组分析x，y是井点坐标变换值
             List<Point> PListWellPositon = new List<Point>();
             List<List<cSVGSectionTrackConnect.itemViewLayerDepth>> listConnectView = new List<List<cSVGSectionTrackConnect.itemViewLayerDepth>>();
+            List<int> listArrangeDistance = new List<int>();
+            int iWellStartXPosition = 100;
             for (int i = 0; i < this.listWellsSection.Count; i++)
             {
                 ItemWellSection itemWell = listWellsSection[i];
@@ -243,13 +245,14 @@ namespace DOGPlatform
                 if (rdbPlaceBYWellDistance.Checked == true)
                 {
                     //第一口井Xview从100开始
-                    if (i == 0) PListWellPositon.Add(new Point(100, 0));
+                    if (i == 0) PListWellPositon.Add(new Point(iWellStartXPosition, 0));
                     else
                     {
-                        //这块距离是和地一口基准井的具体
-                        int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX,listWellsSection[i].dbY, listWellsSection[0].dbX,listWellsSection[0].dbY));
+                        //这块距离是距离上一口井的相对距离
+                        int iDistance = Convert.ToInt16(c2DGeometryAlgorithm.calDistance2D(listWellsSection[i].dbX, listWellsSection[i].dbY, listWellsSection[i - 1].dbX, listWellsSection[i - 1].dbY)) * trackBarWellDistance.Value / 10;
+                        listArrangeDistance.Add(iDistance);
                         //注意加上基准点的100,注意井距做了一定的缩放，通过trackbar
-                        PListWellPositon.Add(new Point(100+iDistance * trackBarWellDistance.Value/10, 0));
+                        PListWellPositon.Add(new Point(iWellStartXPosition + listArrangeDistance.Sum(), 0));
                     }
                 }
             }

@@ -55,7 +55,7 @@ namespace DOGPlatform.SVG
             string _DX_JHText = xmlLayerMap.SelectSingleNode("LayerMapConfig/JHText/DX_Text").InnerText;
 
             XmlElement gWellPositon = svgDoc.CreateElement("g");
-            gWellPositon.SetAttribute("id", "idWell");
+            gWellPositon.SetAttribute("id", "井");
 
             List<ItemWellView> listWellView = new List<ItemWellView>();
 
@@ -77,7 +77,7 @@ namespace DOGPlatform.SVG
         {
 
             XmlElement gWell = svgDoc.CreateElement("g");
-            gWell.SetAttribute("id", "id" + sJH);
+            gWell.SetAttribute("id", sJH);
 
             string m_colorWell = "none";
             if (iWellType == 3)
@@ -204,7 +204,7 @@ namespace DOGPlatform.SVG
             delNodeByID("/svg/g/g[@id='idGeoproperty']");
            
             XmlElement gWellsProperty = svgDoc.CreateElement("g");
-            gWellsProperty.SetAttribute("id", "idGeoproperty");
+            gWellsProperty.SetAttribute("id", "井点属性");
 
              string sFontSize = "6";
             List<ItemWellView> listWellView = new List<ItemWellView>();

@@ -30,9 +30,7 @@ namespace DOGPlatform
         {
             int iYM=int.Parse(sYYYYMM);
             if (iYM%100>1) return (iYM - 1).ToString(); //不是一月份
-            else return ((iYM/100 - 1)*100).ToString()+"12";
-            
-
+            else return (iYM/100 - 1).ToString()+"12";
         }
         private void LoadTreeViewFromXmlFile(string filename, TreeView trv)
         {

@@ -340,40 +340,11 @@ namespace DOGPlatform
                 this.lbl_JMFont.Font = fontDialog.Font;
             }
 
-
         }
 
         private void btnDrawByxmlConfig_Click(object sender, EventArgs e)
         {
-            string filenameSVGMap;
-            if (this.tbxMapTitleName.Text == "")
-            { filenameSVGMap = sSelectedYYYYMM + "-ProductionMap.svg"; }
-            else
-            {
-                filenameSVGMap = this.tbxMapTitleName.Text + ".svg";
-            }
-
-            cSVGDocLayerMapProduction cLayerProductionMap = new cSVGDocLayerMapProduction( 800,1000,0, 0);
-            XmlElement returnElemment;
-
-
-        
-            if (this.cbxScaleRulerShowed.Checked == true)
-            {
-               
-            }
-
-            if (this.cbxMapFrame.Checked == true)
-            {
-                returnElemment = cLayerProductionMap.gMapFrame(this.cbxGird.Checked);
-                cLayerProductionMap.addgElement2LayerBase(returnElemment, 0, 0);
-            }
-            if (this.cbxCompassShowed.Checked == true)
-            {
-                cLayerProductionMap.svgRoot.AppendChild(cLayerProductionMap.gCompass(200, 200));
-            }
-            cLayerProductionMap.makeSVGfile(cProjectManager.dirPathMap +filenameSVGMap);
-             FormWebNavigation formSVGView = new FormWebNavigation(cProjectManager.dirPathMap + filenameSVGMap);formSVGView.Show();
+         MessageBox.Show(DateTime.Now.ToString("yyyyMM"));
         }
 
         private void tabControlLayerMap_SelectedIndexChanged(object sender, EventArgs e)
@@ -598,7 +569,7 @@ namespace DOGPlatform
             MessageBox.Show(string.Join("\t", cCalDistance.getNearWells(sJH, 5)));
         }
 
-  
+         
 
        
 

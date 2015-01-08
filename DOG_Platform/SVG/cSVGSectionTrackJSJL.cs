@@ -35,7 +35,7 @@ namespace DOGPlatform.SVG
         public XmlElement gPathTrackJSJL(string sJH,List<float> fListTopMD, List<float> fListBottomMD, List<int> iListJSJL,float m_KB)
         {
             XmlElement gJSJLTrack = svgDoc.CreateElement("g");
-            gJSJLTrack.SetAttribute("id", sJH + "#TrackJSJL");
+            gJSJLTrack.SetAttribute("id", sJH + "#解释结论");
           
             List<ItemDicWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListTopMD);
             List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListBottomMD);
@@ -66,7 +66,7 @@ namespace DOGPlatform.SVG
         public  XmlElement gTrackJSJL(string sJH,List<float> fListTopTVD, List<float> fListBottomTVD, List<int> iListJSJL, float m_KB)
         {
             XmlElement gJSJLTrack = svgDoc.CreateElement("g");
-            gJSJLTrack.SetAttribute("id", sJH+"#TrackJSJL");
+            gJSJLTrack.SetAttribute("id", sJH + "#解释结论");
             for (int i = 0; i < fListTopTVD.Count; i++)
             {
                 float _top = fListTopTVD[i];

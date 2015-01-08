@@ -73,6 +73,8 @@
             this.cbxScaleRulerShowed = new System.Windows.Forms.CheckBox();
             this.cbxCompassShowed = new System.Windows.Forms.CheckBox();
             this.tabPageSetting = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbbProjectJH = new System.Windows.Forms.ComboBox();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
             this.btnPinchLine = new System.Windows.Forms.Button();
             this.btnSandBody = new System.Windows.Forms.Button();
@@ -113,8 +115,6 @@
             this.btnWellNameFont = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.btntest = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbbProjectJH = new System.Windows.Forms.ComboBox();
             this.tabControlLayerMap.SuspendLayout();
             this.tabPageData.SuspendLayout();
             this.groupBox26.SuspendLayout();
@@ -637,6 +637,23 @@
             this.tabPageSetting.Text = "图形配置";
             this.tabPageSetting.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(298, 437);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(29, 12);
+            this.label6.TabIndex = 29;
+            this.label6.Text = "井号";
+            // 
+            // cbbProjectJH
+            // 
+            this.cbbProjectJH.FormattingEnabled = true;
+            this.cbbProjectJH.Location = new System.Drawing.Point(341, 434);
+            this.cbbProjectJH.Name = "cbbProjectJH";
+            this.cbbProjectJH.Size = new System.Drawing.Size(122, 20);
+            this.cbbProjectJH.TabIndex = 28;
+            // 
             // groupBox28
             // 
             this.groupBox28.Controls.Add(this.btnPinchLine);
@@ -976,12 +993,13 @@
             // 
             // btnDrawByxmlConfig
             // 
-            this.btnDrawByxmlConfig.Location = new System.Drawing.Point(84, 428);
+            this.btnDrawByxmlConfig.Location = new System.Drawing.Point(575, 296);
             this.btnDrawByxmlConfig.Name = "btnDrawByxmlConfig";
             this.btnDrawByxmlConfig.Size = new System.Drawing.Size(94, 26);
             this.btnDrawByxmlConfig.TabIndex = 17;
-            this.btnDrawByxmlConfig.Text = "成图";
+            this.btnDrawByxmlConfig.Text = "test2";
             this.btnDrawByxmlConfig.UseVisualStyleBackColor = true;
+            this.btnDrawByxmlConfig.Click += new System.EventHandler(this.btnDrawByxmlConfig_Click);
             // 
             // groupBox8
             // 
@@ -1106,23 +1124,6 @@
             this.btntest.Text = "test";
             this.btntest.UseVisualStyleBackColor = true;
             this.btntest.Click += new System.EventHandler(this.btntest_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(298, 437);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(29, 12);
-            this.label6.TabIndex = 29;
-            this.label6.Text = "井号";
-            // 
-            // cbbProjectJH
-            // 
-            this.cbbProjectJH.FormattingEnabled = true;
-            this.cbbProjectJH.Location = new System.Drawing.Point(341, 434);
-            this.cbbProjectJH.Name = "cbbProjectJH";
-            this.cbbProjectJH.Size = new System.Drawing.Size(122, 20);
-            this.cbbProjectJH.TabIndex = 28;
             // 
             // FormInjProMap
             // 

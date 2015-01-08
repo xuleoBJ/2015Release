@@ -20,6 +20,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using DOGPlatform;
+using DOGPlatform.XML;
+using System.Diagnostics;
 
 namespace DOGPlatform
 {
@@ -291,7 +293,6 @@ namespace DOGPlatform
         {
             cIODicLayerData cCalLayerData = new cIODicLayerData();
             cCalLayerData.generateLayerData();
-
         }
         private void calMatchJsJlWorkerMethod(object sender, WaitWindowEventArgs e)
         {
@@ -315,10 +316,26 @@ namespace DOGPlatform
             forminjectProductAna.Show();
         }
 
+        private void calDynamicWorkerMethod(object sender, WaitWindowEventArgs e)
+        {
+            //主要分析计算在生产过程中，本井在一定历史时期内的井型，可能为水井，也可能为油井。
+            // 井号 小层名 时间 射孔厚度 砂厚 渗透率 孔隙度 吸水(产液)厚度 吸水%
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            cIODicWellType.updateWellTypeDic();
+            cIODicDynamicData.generateDynamicData();
+            // Format and display the TimeSpan value.
+            // Get the elapsed time as a TimeSpan value.
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10);
+            MessageBox.Show("计算完成。消耗时间：" + elapsedTime);
+        }
         private void tsmiCalWellTypeDictionary_Click(object sender, EventArgs e)
         {
-            cIODicWellType.updateWellTypeDic();
-            MessageBox.Show("计算完成。");
+            WaitWindow.Show(this.calDynamicWorkerMethod);
         }
 
         private void tsmiCalPerforationDictionary_Click(object sender, EventArgs e)
@@ -331,10 +348,7 @@ namespace DOGPlatform
             formFD.Show();
         }
 
-        private void tsmiCalWellProductionDictionary_Click(object sender, EventArgs e)
-        {
-
-        }
+      
         private void tsmiCalProductionFoctor_Click(object sender, EventArgs e)
         {
             FormSettingSplitFactor formSplitFactor = new FormSettingSplitFactor();
@@ -386,6 +400,7 @@ namespace DOGPlatform
 
         private void tsmsCalXCSJB_Click(object sender, EventArgs e)
         {
+            
             WaitWindow.Show(this.calXCSJBWorkerMethod);
         }
 
@@ -456,6 +471,33 @@ namespace DOGPlatform
             }
         }
 
+
+        void addTreeViewSVGNode(XmlNode xn, TreeNode tn,int iLever) 
+        {
+            iLever--;
+            if(iLever>=0){
+            XmlNodeList listXNchilds = xn.ChildNodes;
+            foreach (XmlNode xnChild in listXNchilds)
+            {
+                if (xnChild.Name == "g")
+                {
+                    var childIDAttribute = xnChild.Attributes["id"];
+                    if (childIDAttribute != null)
+                    {
+                        TreeNode tnChild = new TreeNode(xnChild.Attributes["id"].Value);
+                        tnChild.Checked = true;
+                        if (xnChild.Name == "g") 
+                        {
+                            addTreeViewSVGNode(xnChild, tnChild, iLever);
+                            tn.Nodes.Add(tnChild);
+                        }
+                    }
+                }
+            }}
+        
+        }
+
+
         private void updateTreeViewSVGLayer()
         {
             if (filePathWebSVG.EndsWith(".svg"))
@@ -472,7 +514,12 @@ namespace DOGPlatform
                     {
                         TreeNode tn = new TreeNode(xn.Attributes["id"].Value);
                         tn.Checked = true;
-                        if (xn.Name == "g") tvSVGLayer.Nodes.Add(tn);
+                        if (xn.Name == "g") 
+                        {   
+                            //此处递归增加图层
+                            addTreeViewSVGNode(xn, tn,2);
+                            tvSVGLayer.Nodes.Add(tn);
+                        }
                     }
                 }
             }
@@ -985,11 +1032,6 @@ namespace DOGPlatform
                     cTS.setupTsmiDeleteFile();
                     break;
                 case 1:
-                    //cContextMenuStripSVGGraph cTS = new cContextMenuStripSVGGraph(cmsProject, selectNode, selectNode.Text);
-                    //cTS.setupTsmiOpenInInkscape();
-                    //cTS.setupTsmiRename();
-                    //cTS.setupTsmiOpenIE();
-                    //cTS.setupTsmiDeleteFile();
                     break;
                 case 2:
                     break;
@@ -1155,20 +1197,6 @@ namespace DOGPlatform
         }
 
 
-        private void tvWindows_AfterCheck(object sender, TreeViewEventArgs e)
-        {
-            TreeNode tn = e.Node;
-            //if (tn.Checked == false && tn.Index >= 2)
-            //{
-            //    foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Remove(tbg);
-            //}
-            //if (tn.Checked == true && tn.Index >= 2)
-            //{
-            //    foreach (TabPage tbg in tbcMain.TabPages) if (tbg.Name == tn.Name) tbcMain.TabPages.Add(tbg);
-            //}
-
-        }
-
         private void tsmiPIcal_Click(object sender, EventArgs e)
         {
             FormProfilePIcal form = new FormProfilePIcal();
@@ -1205,40 +1233,68 @@ namespace DOGPlatform
                 xmlDoc.Load(filePathWebSVG);
                 XmlNodeList listXN = xmlDoc.DocumentElement.ChildNodes;
                 tvSVGLayer.CheckBoxes = true;
-                foreach (XmlNode xn in listXN)
+                if(e.Node.Level==0) //0的处理
                 {
-                    if (xn.Name == "g")
+                    if (setPropery(xmlDoc, xmlDoc.DocumentElement, e.Node.Text, e.Node.Checked)) goto Outer;
+                    //foreach (XmlNode xn in listXN) if (setPropery(xmlDoc, xn, e.Node.Text, e.Node.Checked)) goto Outer;
+                }
+                if (e.Node.Level == 1) //1级的处理
+                {
+                    
+                    foreach (XmlNode xn in listXN)
                     {
-                        var idAttribute = xn.Attributes["id"];
-                        var styleAttribute = xn.Attributes["style"];
-                        if (idAttribute != null )
-                        {
-                            if (idAttribute.Value == e.Node.Text && styleAttribute != null )
-                            {
-                                if (e.Node.Checked == false) styleAttribute.Value = "display:none;"; 
-                                else styleAttribute.Value = "visibility:visible;";
-                                break; 
-                            }
+                        if (setPropery(xmlDoc, xn, e.Node.Text, e.Node.Checked)) goto Outer;
+                        //XmlNodeList xnChildList = xn.ChildNodes;
+                        //foreach (XmlNode xnChild in xnChildList)
+                        //{
+                        //    if(setPropery( xmlDoc ,xnChild,e.Node.Text,e.Node.Checked))   goto Outer;
+                        //}
+                    }
 
-                            if (idAttribute.Value == e.Node.Text && styleAttribute == null)
+                }
+                if (e.Node.Level == 2) //1级的处理
+                {
+                    foreach (XmlNode xn in listXN)
+                    {
+                        XmlNodeList xnChildList = xn.ChildNodes;
+                        foreach (XmlNode xnChild in xnChildList)
+                        {
+                            XmlNodeList xnChild2List = xn.ChildNodes;
+                            foreach (XmlNode xnChild2 in xnChild2List)
                             {
-                                styleAttribute = xmlDoc.CreateAttribute("style");
-                                if (e.Node.Checked == false) styleAttribute.Value = "display:none;";
-                                else styleAttribute.Value = "visibility:visible;";
-                                xn.Attributes.Append(styleAttribute);
-                                break; 
+                                if (setPropery(xmlDoc, xnChild2, e.Node.Text, e.Node.Checked)) goto Outer;
                             }
                         }
-                       
                     }
+
                 }
+            Outer:
                 xmlDoc.Save(filePathWebSVG);
                 updateWebSVG();
             }
         }
 
 
-
+        bool  setPropery(XmlDocument xmlDoc ,XmlNode xn,string sID,bool bChecked) 
+        {
+            XmlNodeList xnChildList = xn.ChildNodes;
+            foreach (XmlNode xnChild in xnChildList)
+            {
+                if (xnChild.Name == "g")
+                {
+                    var idAttribute = xnChild.Attributes["id"];
+                    if (idAttribute==null ) return false ;
+                    if (idAttribute.Value == sID)
+                    {
+                        cXMLbase.setNodeVisibleProperty(xmlDoc, xnChild, bChecked);
+                        return true;
+                    }
+                    
+                }
+            }
+            return false; 
+        }
+   
        
 
        

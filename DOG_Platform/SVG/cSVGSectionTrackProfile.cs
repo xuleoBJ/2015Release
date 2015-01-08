@@ -46,7 +46,7 @@ namespace DOGPlatform.SVG
         public XmlElement gTrackProfile(string sJH,List<float> fListTopTVD, List<float> fListBottomTVD, List<float> fListPercentZRL, List<float> fListZRL,float m_KB)
         {
             XmlElement gProfileTrack = svgDoc.CreateElement("g");
-            gProfileTrack.SetAttribute("id", sJH + "#TrackProfile");
+            gProfileTrack.SetAttribute("id", sJH + "#吸水剖面");
             for (int i = 0; i < fListTopTVD.Count; i++)
             {
                 float _top = fListTopTVD[i];
@@ -89,7 +89,7 @@ namespace DOGPlatform.SVG
             List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
 
             XmlElement gProfileTrack = svgDoc.CreateElement("g");
-            gProfileTrack.SetAttribute("id", sJH + "#TrackProfile");
+            gProfileTrack.SetAttribute("id", sJH + "#吸水剖面");
             for (int i = 0; i < fListDS1.Count; i++)
             {
                 float _fpercentZRL = fListPercentZRL[i];
@@ -98,11 +98,8 @@ namespace DOGPlatform.SVG
                 double y0 = -m_KB + listWellPathTop[i].f_TVD;
                 double height = listWellPathBase[i].f_TVD - listWellPathTop[i].f_TVD;
                 gProfileTrack.AppendChild(gPatternProfile(x0, y0, _fpercentZRL / 100, height));
-
             }
-
             return gProfileTrack;
-
         }
     }
 }

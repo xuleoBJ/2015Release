@@ -50,7 +50,6 @@ namespace DOGPlatform
             //初始化显示井名ListBox
             cPublicMethodForm.inialListBox(lbxJH, cProjectData.ltStrProjectJH);
             //初始化显示起始时间
-            cProjectData.setProjectYM();
             cPublicMethodForm.inialComboBox(cbbSlectedYM, cProjectData.ltStrProjectYM);
 
         }

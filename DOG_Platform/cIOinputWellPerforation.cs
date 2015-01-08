@@ -46,6 +46,9 @@ namespace DOGPlatform
                             if (line.TrimEnd() != "")
                             {
                                 ItemInputPerforate sttItem = ItemInputPerforate.parseLine(line);
+                                //如果射孔的时间小于目前系统存储的YM的最小值，更新系统年月
+                                string sYMstart = sttItem.sYM;
+                                if(int.Parse(sYMstart)<int.Parse(cProjectData.ltStrProjectYM[0])) cProjectData.setProjectYM(sYMstart);
                                 if (sttItem.sJH != null) listReturn.Add(sttItem);
                             }
                         }
@@ -53,7 +56,6 @@ namespace DOGPlatform
                 }
             }
             return listReturn;
-
         }
 
         static List<ItemDicPerforation> readDicFile(string _sJH)

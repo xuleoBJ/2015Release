@@ -33,7 +33,7 @@ namespace DOGPlatform.SVG
 
         public void setLayerColor() //自动设置颜色带
         {
-           colorList = new List<string>() { "#FFFF66", "#FF99FF", "#FFE4C4", "#FFEBCD", "#F5DEB3", "#FF8C00", "#FFFACD", "#FFE4B5", "#FFDAB9", "#FF83FA", "#FF8C00", "#FF6EB4", "#FF7F50", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#FFA07A", "#7CFC00", "#ADFF2F", "#AFEEEE", "#87CEEB", "#FFF68F", "#FFEFD5", "#FFE4E1", "#FFDEAD", "#FFC1C1", "#FFD700", "#FFBBFF", "#FFAEB9", "#FF83FA", "#FFE1FF", "#FCFCFC", "#FAFAD2", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#E0FFFF" };
+            colorList = new List<string>() { "#FFFF66", "#FF99FF", "#FFE4C4", "#FFEBCD", "#F5DEB3", "#FF8C00", "#FFFACD", "#FFE4B5", "#FFDAB9", "#FF83FA", "#FF8C00", "#FF6EB4", "#FF7F50", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#FFA07A", "#7CFC00", "#ADFF2F", "#AFEEEE", "#87CEEB", "#FFF68F", "#FFEFD5", "#FFE4E1", "#FFDEAD", "#FFC1C1", "#FFD700", "#FFBBFF", "#FFAEB9", "#FF83FA", "#FFE1FF", "#FCFCFC", "#FAFAD2", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#E0FFFF", "#FFFF66", "#FF99FF", "#FFE4C4", "#FFEBCD", "#F5DEB3", "#FF8C00", "#FFFACD", "#FFE4B5", "#FFDAB9", "#FF83FA", "#FF8C00", "#FF6EB4", "#FF7F50", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#FFA07A", "#7CFC00", "#ADFF2F", "#AFEEEE", "#87CEEB", "#FFF68F", "#FFEFD5", "#FFE4E1", "#FFDEAD", "#FFC1C1", "#FFD700", "#FFBBFF", "#FFAEB9", "#FF83FA", "#FFE1FF", "#FCFCFC", "#FAFAD2", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#E0FFFF", "#FFFF66", "#FF99FF", "#FFE4C4", "#FFEBCD", "#F5DEB3", "#FF8C00", "#FFFACD", "#FFE4B5", "#FFDAB9", "#FF83FA", "#FF8C00", "#FF6EB4", "#FF7F50", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#FFA07A", "#7CFC00", "#ADFF2F", "#AFEEEE", "#87CEEB", "#FFF68F", "#FFEFD5", "#FFE4E1", "#FFDEAD", "#FFC1C1", "#FFD700", "#FFBBFF", "#FFAEB9", "#FF83FA", "#FFE1FF", "#FCFCFC", "#FAFAD2", "#F7F7F7", "#F5DEB3", "#F0FFF0", "#EEEEE0", "#EEE685", "#EEB422", "#F2F2F2", "#E0FFFF" };
 
         }
        
@@ -59,7 +59,7 @@ namespace DOGPlatform.SVG
         public XmlElement gTrackLayerDepth(string sJH,List<float> fListDS1, List<float> fListDS2, List<string> ltStrXCM, float m_KB)
         {
             XmlElement gLayerDepthTrack = svgDoc.CreateElement("g");
-            gLayerDepthTrack.SetAttribute("id", sJH+"#LayerTrack");
+            gLayerDepthTrack.SetAttribute("id", sJH+"#层序");
 
             setLayerColor();
             for (int i = 0; i < ltStrXCM.Count; i++)
@@ -120,7 +120,7 @@ namespace DOGPlatform.SVG
         public XmlElement gPathTrackLayerDepth(string sJH, List<float> fListDS1, List<float> fListDS2, List<string> ltStrXCM, float m_KB)
         {
             XmlElement gLayerDepthTrack = svgDoc.CreateElement("g");
-            gLayerDepthTrack.SetAttribute("id", sJH + "#LayerTrack");
+            gLayerDepthTrack.SetAttribute("id", sJH + "#层序");
             setLayerColor();
             List<ItemDicWellPath> listWellPathTop = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS1);
              List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);

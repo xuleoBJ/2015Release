@@ -73,33 +73,16 @@ namespace DOGPlatform
             tsmiDigger.Click += new System.EventHandler(tsmiDigger_Click);
             tsmiTools.DropDownItems.Add(tsmiCalArea);
             tsmiCalArea.Click += new System.EventHandler(tsmiCalArea_Click);
+           
+
+            tsmiTools.DropDownItems.Add(tsmiDataDeal);
+            tsmiDataDeal.Click += new System.EventHandler(tsmiDataDeal_Click);
+
             tsmiTools.DropDownItems.Add(tsmiErrLog);
             tsmiErrLog.Click += new System.EventHandler(tsmiErrLog_Click);
-            menuStrip.Items.Add(tsmiTools);
-           
-        }
 
-        public void setupTsmiWellSections()
-        {
-            ToolStripMenuItem tsmiTools = new ToolStripMenuItem("剖面分析");
-            tsmiTools.DropDownItems.Add(tsmiWellSection);
-            tsmiWellSection.Click += new System.EventHandler(tsmiWellSection_Click);
-            tsmiTools.DropDownItems.Add(tsmiWellPathSection);
-            tsmiWellPathSection.Click += new System.EventHandler(tsmiWellPathSection_Click);
             menuStrip.Items.Add(tsmiTools);
         }
-
-        public ToolStripMenuItem tsmiWellSection = new ToolStripMenuItem("剖面分析");
-        public void tsmiWellSection_Click(object sender, EventArgs e)
-        {
-
-        }
-        public ToolStripMenuItem tsmiWellPathSection = new ToolStripMenuItem("斜井剖面分析");
-        public void tsmiWellPathSection_Click(object sender, EventArgs e)
-        {
-
-        }
-
 
         public ToolStripMenuItem tsmiErrLog = new ToolStripMenuItem("查看错误日志");
         public void tsmiErrLog_Click(object sender, EventArgs e)
@@ -134,11 +117,11 @@ namespace DOGPlatform
             FormWellsGroup formFD = new FormWellsGroup();
             formFD.Show();
         }
-        public ToolStripMenuItem tsmiDogIE = new ToolStripMenuItem("浏览器");
-        public void tsmiDogIE_Click(object sender, EventArgs e)
+        public ToolStripMenuItem tsmiDataDeal = new ToolStripMenuItem("数据处理工具");
+        public void tsmiDataDeal_Click(object sender, EventArgs e)
         {
-            FormWebNavigation forWebSVG = new FormWebNavigation("");
-            forWebSVG.Show();
+            FormDataTableDeal _form = new FormDataTableDeal();
+            _form.Show();
         }
 
         public void setupTsmiHelps()

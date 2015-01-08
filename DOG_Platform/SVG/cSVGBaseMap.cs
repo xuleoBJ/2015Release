@@ -176,7 +176,7 @@ namespace DOGPlatform.SVG
             XmlElement gScaleRuler = svgDoc.CreateElement("g");
             string sTranslate = "translate(" + iDx.ToString() + "," + iDY.ToString() + ")";
             gScaleRuler.SetAttribute("transform", sTranslate);
-            gScaleRuler.SetAttribute("id", "idScaleRuler");
+            gScaleRuler.SetAttribute("id", "比例尺");
             float _sacleUnit = Convert.ToSingle(1000.0 * m_scale);
 
             for (int i = 0; i < 4; i++)
@@ -221,7 +221,7 @@ namespace DOGPlatform.SVG
         public XmlElement gMapFrame(bool bShowGrid)
         {
             XmlElement gMapFrame = svgDoc.CreateElement("g");
-            gMapFrame.SetAttribute("id", "idMapFrame");
+            gMapFrame.SetAttribute("id", "图框");
             List<string> ltStrWellName = new List<string>();
             List<double> dfListX = new List<double>();
             List<double> dfListY = new List<double>();
@@ -277,7 +277,7 @@ namespace DOGPlatform.SVG
 
 
             XmlElement gGridLine = svgDoc.CreateElement("g");
-            gGridLine.SetAttribute("id", "idgridLine");
+            gGridLine.SetAttribute("id", "网格线");
             gGridLine.SetAttribute("stroke", "black");
             gGridLine.SetAttribute("style", "stroke-width:0.5");
             gGridLine.SetAttribute("fill", "none");
@@ -505,7 +505,7 @@ namespace DOGPlatform.SVG
         {
             addBodysandBodyPatternDefs();
             XmlElement gSandBody = svgDoc.CreateElement("g");
-            gSandBody.SetAttribute("ID", "sandBody");
+            gSandBody.SetAttribute("id", "sandBody");
             XmlElement gPath = svgDoc.CreateElement("path");
             gPath.SetAttribute("d", d);
             gPath.SetAttribute("fill", "url(#SandBody)");
@@ -518,7 +518,7 @@ namespace DOGPlatform.SVG
         public XmlElement MarkerArrow(float m_scale)
         {
             XmlElement markerArrow = svgDoc.CreateElement("marker");
-            markerArrow.SetAttribute("ID", "idArrow");
+            markerArrow.SetAttribute("id", "idArrow");
             markerArrow.SetAttribute("viewBox", "0 0 20 20");
             markerArrow.SetAttribute("refX", "0");
             markerArrow.SetAttribute("refY", "10");
@@ -670,7 +670,7 @@ namespace DOGPlatform.SVG
 
             double r = _sizeScale * Math.Sqrt(fPieSum / Math.PI);
             XmlElement gPie = svgDoc.CreateElement("g");
-            gPie.SetAttribute("ID", "gPie");
+            gPie.SetAttribute("id", "gPie");
 
             if (r > 0)
             {

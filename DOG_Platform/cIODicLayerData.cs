@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DOGPlatform
 {
@@ -11,7 +12,10 @@ namespace DOGPlatform
     {
         public void generateLayerData()
         {
-
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            // Get the elapsed time as a TimeSpan value.
+        
             //更新算法，保证计算后的数据字典完善：
             //如果这口井有有效厚度而没有孔隙度，渗透率，饱和度，那么找临近的几口井，根据厚度相近的原则，取孔隙度，渗透率
             //数据缺失的先用地层厚度为-999填充标记，然后正着扫一遍，再反着扫一遍 把所有的值填充合理
@@ -196,8 +200,13 @@ namespace DOGPlatform
                 listLayerDataDic[i] = currentItem;
             }
             write2File(cProjectManager.filePathLayerDataDic,listLayerDataDic);
-
-            MessageBox.Show("小层数据表拼写计算完毕");
+            // Format and display the TimeSpan value.
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10);
+            MessageBox.Show("计算完成。消耗时间：" + elapsedTime);
         }
 
 

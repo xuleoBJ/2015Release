@@ -65,7 +65,8 @@ namespace DOGPlatform
                 getProjectLogSeriersFromXML();
                 if (cProjectData.ltStrLogSeriers.Count == 0) setProjectGlobalLogSeriers();
                 getProjectXCM();
-                getProjectYM(); 
+                getProjectYMFromXML();
+                if (cProjectData.ltStrProjectYM.Count == 0) setProjectYM(cPublicMethodBase.getYMLastMonth(DateTime.Now.ToString("yyyyMM")));
             }
             catch (Exception e)
             {
@@ -102,36 +103,28 @@ namespace DOGPlatform
 
         }
         
-       
-        public static void getProjectYM()
-        {
-
-        }
-        public static void setProjectYM()
+      
+        public static void setProjectYM(string yyyyMM)
         {
             //ltStrProjectYM 生产年月列表赋值
             cProjectData.ltStrProjectYM.Clear();
-            List<string> ltStrTemp = new List<string>();
-          
-            if (ltStrTemp.Count > 0)
+
+            int iYMmin = int.Parse(yyyyMM);
+            int iYMmax = int.Parse(cPublicMethodBase.getYMLastMonth(DateTime.Now.ToString("yyyyMM")));
+
+            while (iYMmin <= iYMmax)
             {
-                int iYMmin = int.Parse(ltStrTemp.Min());
-                int iYMmax = int.Parse(ltStrTemp.Max());
-
-                while (iYMmin < iYMmax)
+                if (iYMmin % 100 < 12)
                 {
-                    if (iYMmin % 100 < 12)
-                    {
-                        iYMmin = iYMmin + 1;
-                    }
-                    else
-                    {
-                        iYMmin = iYMmin + 89;
-                    }
-                    cProjectData.ltStrProjectYM.Add(iYMmin.ToString());
-
+                    iYMmin = iYMmin + 1;
                 }
-            }
+                else
+                {
+                    iYMmin = iYMmin + 89;
+                }
+                cProjectData.ltStrProjectYM.Add(iYMmin.ToString());
+            } 
+            
         }
 
      
@@ -149,6 +142,11 @@ namespace DOGPlatform
             cXMLProject.getLtStrLogSeriersFromNode();
         }
 
+        public static void getProjectYMFromXML()
+        {
+            cProjectData.ltStrProjectYM.Clear();
+            cXMLProject.getProjectYMFromNode();
+        }
          public static void setProjectGlobalLogSeriers()
         {
            ltStrLogSeriers.Clear();

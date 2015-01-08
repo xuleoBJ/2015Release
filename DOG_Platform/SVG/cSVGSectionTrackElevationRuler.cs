@@ -15,7 +15,7 @@ namespace DOGPlatform.SVG
         {
             int iWidth = 40;
             XmlElement gElevationRuler = svgDoc.CreateElement("g");
-            gElevationRuler.SetAttribute("id", "idTrackElevationRuler");
+            gElevationRuler.SetAttribute("id", "海拔尺");
 
             //加主轴
             XmlElement gLine = svgDoc.CreateElement("line");

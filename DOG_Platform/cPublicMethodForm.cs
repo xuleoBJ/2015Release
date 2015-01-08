@@ -599,6 +599,7 @@ namespace DOGPlatform
         {
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
                  dgv.Rows.Clear(); //清空井头信息表格全部内容，以便重新加载
                 //这里是取剪贴板里的内容，如果内容为空，则退出
                 string pastTest = Clipboard.GetText();
@@ -612,6 +613,7 @@ namespace DOGPlatform
                     dgv.Rows.Add(strs);
                 }
                 AutoNumberRowsForGridView(dgv);
+                Cursor.Current = Cursors.Default;
             }
             catch
             {

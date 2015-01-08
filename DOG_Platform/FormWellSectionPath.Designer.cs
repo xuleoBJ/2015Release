@@ -1093,7 +1093,7 @@
             // 
             this.nUDElevationRulerBottom.AllowDrop = true;
             this.nUDElevationRulerBottom.Increment = new decimal(new int[] {
-            100,
+            50,
             0,
             0,
             0});
@@ -1122,7 +1122,7 @@
             // 
             this.nUDElevationRulerTop.AllowDrop = true;
             this.nUDElevationRulerTop.Increment = new decimal(new int[] {
-            100,
+            50,
             0,
             0,
             0});
@@ -1279,6 +1279,11 @@
             // nUDPageHeight
             // 
             this.nUDPageHeight.AllowDrop = true;
+            this.nUDPageHeight.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.nUDPageHeight.Location = new System.Drawing.Point(180, 23);
             this.nUDPageHeight.Maximum = new decimal(new int[] {
             20000,
@@ -1303,6 +1308,11 @@
             // nUDPageWidth
             // 
             this.nUDPageWidth.AllowDrop = true;
+            this.nUDPageWidth.Increment = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             this.nUDPageWidth.Location = new System.Drawing.Point(66, 23);
             this.nUDPageWidth.Maximum = new decimal(new int[] {
             20000,

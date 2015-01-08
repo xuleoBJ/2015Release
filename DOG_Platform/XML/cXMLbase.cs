@@ -90,7 +90,6 @@ namespace DOGPlatform.XML
             }
         }
 
-
         public static List<string> splitNodeInnerText(string filePathxml, string fullPath)
         {
             XmlDocument xmlDoc = new XmlDocument();
@@ -102,9 +101,32 @@ namespace DOGPlatform.XML
             {
                 _data = currentNode.InnerText;
             }
-
             return _data.Split(new Char[] { ' ', '\t', ',' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        }
 
+        public static XmlNode setNodeVisibleProperty(XmlDocument xmlDoc ,XmlNode xn, bool bShow)
+        {
+
+            var idAttribute = xn.Attributes["id"];
+            var styleAttribute = xn.Attributes["style"];
+            if (idAttribute != null)
+            {
+                if ( styleAttribute != null)
+                {
+                    if (bShow == false) styleAttribute.Value = "display:none;";
+                    else styleAttribute.Value = "visibility:visible;";
+                }
+
+                if ( styleAttribute == null)
+                {
+                    styleAttribute = xmlDoc.CreateAttribute("style");
+                    if (bShow == false) styleAttribute.Value = "display:none;";
+                    else styleAttribute.Value = "visibility:visible;";
+                    xn.Attributes.Append(styleAttribute);
+                }
+            }
+
+            return xn; 
         }
 
     }

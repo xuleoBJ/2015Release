@@ -22,7 +22,7 @@ namespace DOGPlatform.SVG
         public XmlElement gTrackPerforation(string sJH,List<float> fListTop, List<float> fListBottom, float m_KB)
         {
             XmlElement gPeforationTrack = svgDoc.CreateElement("g");
-            gPeforationTrack.SetAttribute("id", sJH+"#TrackPeforation");
+            gPeforationTrack.SetAttribute("id", sJH+"#射孔");
             for (int i = 0; i < fListTop.Count; i++)
             {
                 float _top = fListTop[i];
@@ -72,7 +72,7 @@ namespace DOGPlatform.SVG
             List<ItemDicWellPath> listWellPathBase = cIOinputWellPath.getWellPathItemListByJHAndMDList(sJH, fListDS2);
 
             XmlElement gPeforationTrack = svgDoc.CreateElement("g");
-            gPeforationTrack.SetAttribute("id", sJH + "#TrackPeforation");
+            gPeforationTrack.SetAttribute("id", sJH + "#射孔");
             for (int i = 0; i < fListDS1.Count; i++)
             {
                 double x0 = listWellPathTop[0].f_dx;
