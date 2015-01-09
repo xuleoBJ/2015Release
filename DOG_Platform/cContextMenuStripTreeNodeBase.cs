@@ -5,16 +5,16 @@ using System.Text;
 using System.Windows.Forms;
 namespace DOGPlatform
 {
-    class cContextMenuStripBaseGraph
+    class cContextMenuStripTreeNodeBase
     {
         public ContextMenuStrip cms { get; set; }
        
-        public cContextMenuStripBaseGraph(ContextMenuStrip _cms)
+        public cContextMenuStripTreeNodeBase(ContextMenuStrip _cms)
         {
             this.cms = _cms;
         }
 
-        public cContextMenuStripBaseGraph(ContextMenuStrip _cms, TreeNode _tnSelected, string _sFileName):this(_cms)
+        public cContextMenuStripTreeNodeBase(ContextMenuStrip _cms, TreeNode _tnSelected, string _sFileName):this(_cms)
         {
             this.sFileName = _sFileName;
             this.tnSelected = _tnSelected;

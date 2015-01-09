@@ -46,8 +46,8 @@
             this.tbcDig = new System.Windows.Forms.TabControl();
             this.tbgPic = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pnlColor = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbbPointColor = new System.Windows.Forms.ComboBox();
             this.btnDelall = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnDelDgvLine = new System.Windows.Forms.Button();
@@ -211,8 +211,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.pnlColor);
             this.splitContainer1.Panel2.Controls.Add(this.label6);
-            this.splitContainer1.Panel2.Controls.Add(this.cbbPointColor);
             this.splitContainer1.Panel2.Controls.Add(this.btnDelall);
             this.splitContainer1.Panel2.Controls.Add(this.btnExport);
             this.splitContainer1.Panel2.Controls.Add(this.btnDelDgvLine);
@@ -223,24 +223,23 @@
             this.splitContainer1.SplitterDistance = 947;
             this.splitContainer1.TabIndex = 4;
             // 
+            // pnlColor
+            // 
+            this.pnlColor.BackColor = System.Drawing.Color.Blue;
+            this.pnlColor.Location = new System.Drawing.Point(247, 18);
+            this.pnlColor.Name = "pnlColor";
+            this.pnlColor.Size = new System.Drawing.Size(28, 18);
+            this.pnlColor.TabIndex = 28;
+            this.pnlColor.Click += new System.EventHandler(this.pnlColor_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(170, 21);
+            this.label6.Location = new System.Drawing.Point(188, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 12);
+            this.label6.Size = new System.Drawing.Size(53, 12);
             this.label6.TabIndex = 27;
-            this.label6.Text = "点颜色";
-            // 
-            // cbbPointColor
-            // 
-            this.cbbPointColor.BackColor = System.Drawing.Color.Blue;
-            this.cbbPointColor.FormattingEnabled = true;
-            this.cbbPointColor.Location = new System.Drawing.Point(217, 17);
-            this.cbbPointColor.Name = "cbbPointColor";
-            this.cbbPointColor.Size = new System.Drawing.Size(61, 20);
-            this.cbbPointColor.TabIndex = 26;
-            this.cbbPointColor.Click += new System.EventHandler(this.cbbPointColor_Click);
+            this.label6.Text = "采点颜色";
             // 
             // btnDelall
             // 
@@ -275,7 +274,7 @@
             // 
             // tbxProperty
             // 
-            this.tbxProperty.Location = new System.Drawing.Point(37, 18);
+            this.tbxProperty.Location = new System.Drawing.Point(61, 18);
             this.tbxProperty.Margin = new System.Windows.Forms.Padding(2);
             this.tbxProperty.Name = "tbxProperty";
             this.tbxProperty.Size = new System.Drawing.Size(122, 21);
@@ -286,11 +285,11 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 21);
+            this.label12.Location = new System.Drawing.Point(18, 21);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(29, 12);
+            this.label12.Size = new System.Drawing.Size(41, 12);
             this.label12.TabIndex = 13;
-            this.label12.Text = "属性";
+            this.label12.Text = "点属性";
             // 
             // dgv
             // 
@@ -380,10 +379,10 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Button btnDelall;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox cbbPointColor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Panel pnlColor;
 
     }
 }

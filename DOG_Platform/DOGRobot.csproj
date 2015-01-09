@@ -85,7 +85,7 @@
     <Compile Include="cBase.cs" />
     <Compile Include="cCalDistance.cs" />
     <Compile Include="cCallInkscape.cs" />
-    <Compile Include="cContextMenuStripBaseGraph.cs" />
+    <Compile Include="cContextMenuStripTreeNodeBase.cs" />
     <Compile Include="cContextMenuStripBaseLayer.cs" />
     <Compile Include="cContextMenuStripInputLayer.cs" />
     <Compile Include="cContextMenuStripInputWellLog.cs" />
@@ -102,6 +102,7 @@
     <Compile Include="cIOinputHorizionalWellPath.cs" />
     <Compile Include="cIOinputInjectProfile.cs" />
     <Compile Include="cIOinputLayerSerier.cs" />
+    <Compile Include="cContextMenuStripDataTable.cs" />
     <Compile Include="cProjectData.cs" />
     <Compile Include="FormCalArea.cs">
       <SubType>Form</SubType>
@@ -303,6 +304,8 @@
     <Compile Include="ItemDicWellInjection.cs" />
     <Compile Include="ItemWellLayerGeologyProperty.cs" />
     <Compile Include="ItemWellLayerYMValue.cs" />
+    <Compile Include="Voronoi.cs" />
+    <Compile Include="VoronoiElements.cs" />
     <Compile Include="WellNavigation.cs">
       <SubType>Component</SubType>
     </Compile>

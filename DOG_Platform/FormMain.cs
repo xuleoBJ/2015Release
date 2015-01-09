@@ -32,7 +32,8 @@ namespace DOGPlatform
         public static List<string> ltTV_SelectedLogNames = new List<string>();
 
         public static string filePathWebSVG = "";
-
+        public static string filepathTableData = "";
+        
         string sJHselectedOnPanel = "";
 
         List<TabPage> listTabpageMain = new List<TabPage>(); //主面板
@@ -70,11 +71,12 @@ namespace DOGPlatform
             tvProjectData.ImageList = this.imageListMain;
             tvResultGraph.ImageList = this.imageListMain;
             tvResultTable.ImageList = this.imageListMain;
-            listTabpageMain.Add(tbgWellNavigation);
-            listTabpageMain.Add(tbgIE);
+            listTabpageMain.Add(tbgMainWellNavigation);
+            listTabpageMain.Add(tbgMainIE);
+            listTabpageMain.Add(tbgMainTable);
             listTabpageMain.Add(tbgWellHead);
             listTabpageMain.Add(tbgLayerSeriers);
-            for (int i = 3; i >= 2; i--)
+            for (int i = 4; i >= 3; i--)
             {
                 this.tbcMain.TabPages.Remove(tbcMain.TabPages[i]);
             }
@@ -102,6 +104,34 @@ namespace DOGPlatform
         }
 
 
+        void updateDatable()
+        {
+            if (File.Exists(filepathTableData))
+            {
+                dgvDataTable.Columns.Clear();
+                int lineindex = 0;
+                string[] split;
+                List<string> ltStrHeadColoum = new List<string>();
+                using (StreamReader sr = new StreamReader(filepathTableData, Encoding.Default))
+                {
+                    String line;
+                    while ((line = sr.ReadLine()) != null && lineindex < 1) //delete the line whose legth is 0
+                    {
+                        lineindex++;
+                        split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                        for (int i = 0; i < split.Length; i++) ltStrHeadColoum.Add(split[i]);
+                    }
+                }
+                for (int i = 0; i < ltStrHeadColoum.Count; i++)
+                {
+                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+                    col.HeaderText = ltStrHeadColoum[i];
+                    dgvDataTable.Columns.Add(col);
+                }
+                cPublicMethodForm.read2DataGridViewByTextFile(filepathTableData, dgvDataTable);
+                dgvDataTable.Rows.RemoveAt(0);
+            }
+        }
         private void updateMainForm()
         {
             tvProjectData.CheckBoxes = true;
@@ -529,18 +559,18 @@ namespace DOGPlatform
 
         void updateWebSVG()
         {
-            this.tbcMain.SelectedTab = tbgIE;
+            this.tbcMain.SelectedTab = tbgMainIE;
             try
             {
                 if (filePathWebSVG.EndsWith(".svg"))
                 {
                     this.webBrowserIE.Navigate(new Uri(filePathWebSVG));
-                    this.tbgIE.Text =Path.GetFileNameWithoutExtension(filePathWebSVG);
+                    this.tbgMainIE.Text =Path.GetFileNameWithoutExtension(filePathWebSVG);
                    
                 }
                 else
                 {
-                    this.tbcMain.SelectedTab = tbgWellNavigation;
+                    this.tbcMain.SelectedTab = tbgMainWellNavigation;
                 }
             }
             catch (System.UriFormatException)
@@ -675,16 +705,6 @@ namespace DOGPlatform
             this.webBrowserIE.Navigate(new Uri(filepathGrpath));
         }
 
-        private void tsmiCalLayerHeterogeneityInter_Click(object sender, EventArgs e)
-        {
-            WaitWindow.Show(this.calHeterogeneityInterLayerWorkerMethod);
-        }
-
-        private void tsmiShowLayerHeterogeneityInter_Click(object sender, EventArgs e)
-        {
-            FormDataTable formDatatable = new FormDataTable(cProjectManager.filePathInterLayerHeterogeneity);
-            formDatatable.Show();
-        }
 
         private void tsmiWellPosition4Petrel_Click(object sender, EventArgs e)
         {
@@ -769,7 +789,7 @@ namespace DOGPlatform
                     List<ItemDicWellPath> currentWellPath = itemWell.WellPathList;
                     Point headView = cCordinationTransform.transRealPointF2ViewPoint(
                      currentWellPath[0].dbX, currentWellPath[0].dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
-                    dc.DrawEllipse(wellPen, headView.X, headView.Y, 6, 6);
+                    dc.DrawEllipse(wellPen, headView.X-3, headView.Y-3, 6, 6);
 
                     int iCount = currentWellPath.Count;
                     if (iCount > 2)
@@ -1017,7 +1037,7 @@ namespace DOGPlatform
 
             }
         }
-        private void tvwProjectGraph_AfterSelect(object sender, TreeViewEventArgs e)
+        private void tvResultGraph_AfterSelect(object sender, TreeViewEventArgs e)
         {
             tvResultGraph.ContextMenuStrip = cmsProject;
             TreeNode selectNode = tvResultGraph.SelectedNode;
@@ -1048,7 +1068,8 @@ namespace DOGPlatform
 
         private void tsmiWells_Click(object sender, EventArgs e)
         {
-            tbcMain.TabPages.Add(tbgWellHead);
+            if (tbcMain.TabPages.Contains(tbgWellHead) == false) tbcMain.TabPages.Add(tbgWellHead);
+            else tbcMain.TabPages.Remove(tbgWellHead); 
         }
 
         private void tsmiSaveAnotherProject_Click(object sender, EventArgs e)
@@ -1063,7 +1084,8 @@ namespace DOGPlatform
 
         private void tsmiWellTops_Click(object sender, EventArgs e)
         {
-            tbcMain.TabPages.Add(tbgLayerSeriers);
+            if (tbcMain.TabPages.Contains(tbgLayerSeriers) == false) tbcMain.TabPages.Add(tbgLayerSeriers);
+            else tbcMain.TabPages.Remove(tbgLayerSeriers); 
         }
 
         private void tsmi4petrelproductLog_Click(object sender, EventArgs e)
@@ -1167,13 +1189,13 @@ namespace DOGPlatform
         {
             if (cProjectManager.dirProject != Path.GetTempPath())
             {
-                if (tbcMain.SelectedTab == tbgWellNavigation)
+                if (tbcMain.SelectedTab == tbgMainWellNavigation)
                 {
                     WellNavitationInvalidate();
                     cTreeViewProjectData.updateTN_GlobeWellLog(this.tvProjectData);
                     cTreeViewProjectData.setupTNLayerChilds(this.tvProjectData);
                 }
-                if (tbcMain.SelectedTab == tbgIE) this.webBrowserIE.Refresh();
+                if (tbcMain.SelectedTab == tbgMainIE) this.webBrowserIE.Refresh();
             }
         }
 
@@ -1195,7 +1217,6 @@ namespace DOGPlatform
                 formDataView.Show();
             }
         }
-
 
         private void tsmiPIcal_Click(object sender, EventArgs e)
         {
@@ -1240,17 +1261,7 @@ namespace DOGPlatform
                 }
                 if (e.Node.Level == 1) //1级的处理
                 {
-                    
-                    foreach (XmlNode xn in listXN)
-                    {
-                        if (setPropery(xmlDoc, xn, e.Node.Text, e.Node.Checked)) goto Outer;
-                        //XmlNodeList xnChildList = xn.ChildNodes;
-                        //foreach (XmlNode xnChild in xnChildList)
-                        //{
-                        //    if(setPropery( xmlDoc ,xnChild,e.Node.Text,e.Node.Checked))   goto Outer;
-                        //}
-                    }
-
+                    foreach (XmlNode xn in listXN) if (setPropery(xmlDoc, xn, e.Node.Text, e.Node.Checked)) goto Outer;
                 }
                 if (e.Node.Level == 2) //1级的处理
                 {
@@ -1260,13 +1271,9 @@ namespace DOGPlatform
                         foreach (XmlNode xnChild in xnChildList)
                         {
                             XmlNodeList xnChild2List = xn.ChildNodes;
-                            foreach (XmlNode xnChild2 in xnChild2List)
-                            {
-                                if (setPropery(xmlDoc, xnChild2, e.Node.Text, e.Node.Checked)) goto Outer;
-                            }
+                            foreach (XmlNode xnChild2 in xnChild2List) if (setPropery(xmlDoc, xnChild2, e.Node.Text, e.Node.Checked)) goto Outer;
                         }
                     }
-
                 }
             Outer:
                 xmlDoc.Save(filePathWebSVG);
@@ -1289,18 +1296,56 @@ namespace DOGPlatform
                         cXMLbase.setNodeVisibleProperty(xmlDoc, xnChild, bChecked);
                         return true;
                     }
-                    
                 }
             }
             return false; 
         }
+
+        private void tsmiCalRes_Click(object sender, EventArgs e)
+        {
+            FormCalReservor _form = new FormCalReservor();
+            _form.Show();
+        }
+
+        private void tvResultTable_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            filepathTableData = Path.Combine(cProjectManager.dirPathUsedProjectData, tvResultTable.SelectedNode.Text + ".txt");
+            tvResultTable.ContextMenuStrip = cmsProject;
+            TreeNode selectNode = tvResultTable.SelectedNode;
+            cmsProject.Items.Clear();
+            switch (selectNode.Level)
+            {
+                case 0:
+                    cContextMenuStripDataTable cTS = new cContextMenuStripDataTable(cmsProject, selectNode, filepathTableData);
+                    cTS.setupTsmiOpenNewWindow();
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    break;
+            }
+            Cursor.Current = Cursors.WaitCursor;
+            tbcMain.SelectedTab = tbgMainTable;
+            tbgMainTable.Text = tvResultTable.SelectedNode.Text;
+          
+            this.updateDatable();
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void 层内非均质性统计ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WaitWindow.Show(this.calHeterogeneityInnerLayerWorkerMethod);
+        }
+
+        private void 层间非均质性分析ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            WaitWindow.Show(this.calHeterogeneityInterLayerWorkerMethod);
+        }
    
-       
-
-       
-
-      
-       
 
     }
 }

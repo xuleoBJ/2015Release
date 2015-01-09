@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace DOGPlatform
 {
-    class cContextMenuStripSVGGraph : cContextMenuStripBaseGraph
+    class cContextMenuStripSVGGraph : cContextMenuStripTreeNodeBase
     {
         public cContextMenuStripSVGGraph(ContextMenuStrip _cms, TreeNode _tnSelected, string _sFileName)
             : base(_cms, _tnSelected, _sFileName)

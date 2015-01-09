@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using DigRobot;
 
 
+
 namespace DOGPlatform
 {
     class cMenuStripMain : cMenuStripDog
@@ -103,6 +104,7 @@ namespace DOGPlatform
             FormCalArea _form= new FormCalArea();
             _form.Show();
         }
+     
         public void setupTsmiWellGroup()
         {
             ToolStripMenuItem tsmiTools = new ToolStripMenuItem("井组分析");

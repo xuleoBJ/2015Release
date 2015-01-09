@@ -17,6 +17,11 @@ namespace DOGPlatform
             Y = y;
         }
 
+        public void setPoint(double x, double y)
+        {
+            this.X  = x;
+            this.Y = y;
+        }
         public Point ToPoint()
         {
             return new Point((int)X, (int)Y);

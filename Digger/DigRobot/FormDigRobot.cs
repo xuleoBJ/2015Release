@@ -268,17 +268,15 @@ namespace DigRobot
             dgv.Rows.Clear();
         }
 
-        private void cbbPointColor_Click(object sender, EventArgs e)
+       
+
+        private void pnlColor_Click(object sender, EventArgs e)
         {
-            setComboBoxBackColorByColorDialog(cbbPointColor);
-            pointBrush.Color = cbbPointColor.BackColor;
-        }
-        public static void setComboBoxBackColorByColorDialog(ComboBox cbb)
-        {
-            ColorDialog colorDialog1 = new ColorDialog();
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                cbb.BackColor = colorDialog1.Color;
+                pnlColor.BackColor = colorDialog.Color;
+                pointBrush.Color = pnlColor.BackColor;
             }
         }
     }

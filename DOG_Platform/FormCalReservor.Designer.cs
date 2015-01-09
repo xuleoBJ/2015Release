@@ -90,13 +90,26 @@
             this.dataGridViewTextBoxColumn55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCalReservor = new System.Windows.Forms.TabControl();
             this.tabPageWellPotion = new System.Windows.Forms.TabPage();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnCopyFromExcelPayPropery = new System.Windows.Forms.Button();
             this.cbbPayPropery = new System.Windows.Forms.ComboBox();
             this.lblDataStartLine = new System.Windows.Forms.Label();
             this.btnImportPayPropery = new System.Windows.Forms.Button();
             this.btnOpenPayPropery = new System.Windows.Forms.Button();
             this.dgvPayPropery = new System.Windows.Forms.DataGridView();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPageLayerData = new System.Windows.Forms.TabPage();
+            this.dgvIntepretation = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnImportLayerDepth = new System.Windows.Forms.Button();
             this.tabPageFault = new System.Windows.Forms.TabPage();
             this.btnCopyFromExcelFaultLines = new System.Windows.Forms.Button();
@@ -110,19 +123,12 @@
             this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvIntepretation = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tbxOut = new System.Windows.Forms.TextBox();
+            this.panelResCal = new System.Windows.Forms.Panel();
+            this.tssLblInfor = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -134,9 +140,12 @@
             this.tabPageWellPotion.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayPropery)).BeginInit();
             this.tabPageLayerData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIntepretation)).BeginInit();
             this.tabPageFault.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaultLines)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIntepretation)).BeginInit();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSaveSetting
@@ -169,7 +178,7 @@
             this.label11.Location = new System.Drawing.Point(56, 65);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 15);
+            this.label11.Size = new System.Drawing.Size(29, 12);
             this.label11.TabIndex = 12;
             this.label11.Text = "数据";
             // 
@@ -183,7 +192,7 @@
             this.comboBox5.Location = new System.Drawing.Point(103, 60);
             this.comboBox5.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(80, 23);
+            this.comboBox5.Size = new System.Drawing.Size(80, 20);
             this.comboBox5.TabIndex = 10;
             // 
             // checkBox6
@@ -192,7 +201,7 @@
             this.checkBox6.Location = new System.Drawing.Point(15, 25);
             this.checkBox6.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(119, 19);
+            this.checkBox6.Size = new System.Drawing.Size(96, 16);
             this.checkBox6.TabIndex = 3;
             this.checkBox6.Text = "显示注采关系";
             this.checkBox6.UseVisualStyleBackColor = true;
@@ -219,7 +228,7 @@
             this.label17.Location = new System.Drawing.Point(160, 69);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(37, 15);
+            this.label17.Size = new System.Drawing.Size(29, 12);
             this.label17.TabIndex = 12;
             this.label17.Text = "数据";
             // 
@@ -229,7 +238,7 @@
             this.label18.Location = new System.Drawing.Point(21, 68);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(37, 15);
+            this.label18.Size = new System.Drawing.Size(29, 12);
             this.label18.TabIndex = 12;
             this.label18.Text = "类型";
             // 
@@ -243,7 +252,7 @@
             this.comboBox16.Location = new System.Drawing.Point(207, 64);
             this.comboBox16.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox16.Name = "comboBox16";
-            this.comboBox16.Size = new System.Drawing.Size(80, 23);
+            this.comboBox16.Size = new System.Drawing.Size(80, 20);
             this.comboBox16.TabIndex = 10;
             // 
             // comboBox17
@@ -255,7 +264,7 @@
             this.comboBox17.Location = new System.Drawing.Point(68, 64);
             this.comboBox17.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox17.Name = "comboBox17";
-            this.comboBox17.Size = new System.Drawing.Size(80, 23);
+            this.comboBox17.Size = new System.Drawing.Size(80, 20);
             this.comboBox17.TabIndex = 10;
             this.comboBox17.Text = "空白";
             // 
@@ -265,7 +274,7 @@
             this.checkBox7.Location = new System.Drawing.Point(15, 25);
             this.checkBox7.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(119, 19);
+            this.checkBox7.Size = new System.Drawing.Size(96, 16);
             this.checkBox7.TabIndex = 3;
             this.checkBox7.Text = "显示生产数据";
             this.checkBox7.UseVisualStyleBackColor = true;
@@ -296,7 +305,7 @@
             this.label7.Location = new System.Drawing.Point(21, 100);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.Size = new System.Drawing.Size(29, 12);
             this.label7.TabIndex = 11;
             this.label7.Text = "右侧";
             // 
@@ -306,7 +315,7 @@
             this.label9.Location = new System.Drawing.Point(160, 101);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 15);
+            this.label9.Size = new System.Drawing.Size(29, 12);
             this.label9.TabIndex = 12;
             this.label9.Text = "颜色";
             // 
@@ -316,7 +325,7 @@
             this.label6.Location = new System.Drawing.Point(160, 69);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 15);
+            this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 12;
             this.label6.Text = "颜色";
             // 
@@ -326,7 +335,7 @@
             this.label8.Location = new System.Drawing.Point(21, 69);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 15);
+            this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 12;
             this.label8.Text = "左侧";
             // 
@@ -338,7 +347,7 @@
             this.comboBox7.Location = new System.Drawing.Point(68, 96);
             this.comboBox7.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(79, 23);
+            this.comboBox7.Size = new System.Drawing.Size(79, 20);
             this.comboBox7.TabIndex = 10;
             this.comboBox7.Text = "空白";
             // 
@@ -350,7 +359,7 @@
             this.comboBox9.Location = new System.Drawing.Point(207, 98);
             this.comboBox9.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(80, 23);
+            this.comboBox9.Size = new System.Drawing.Size(80, 20);
             this.comboBox9.TabIndex = 10;
             this.comboBox9.Text = "空白";
             // 
@@ -362,7 +371,7 @@
             this.comboBox6.Location = new System.Drawing.Point(207, 64);
             this.comboBox6.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(80, 23);
+            this.comboBox6.Size = new System.Drawing.Size(80, 20);
             this.comboBox6.TabIndex = 10;
             this.comboBox6.Text = "空白";
             // 
@@ -375,7 +384,7 @@
             this.comboBox8.Location = new System.Drawing.Point(68, 64);
             this.comboBox8.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(80, 23);
+            this.comboBox8.Size = new System.Drawing.Size(80, 20);
             this.comboBox8.TabIndex = 10;
             this.comboBox8.Text = "空白";
             // 
@@ -385,7 +394,7 @@
             this.checkBox5.Location = new System.Drawing.Point(15, 25);
             this.checkBox5.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(119, 19);
+            this.checkBox5.Size = new System.Drawing.Size(96, 16);
             this.checkBox5.TabIndex = 3;
             this.checkBox5.Text = "显示测井曲线";
             this.checkBox5.UseVisualStyleBackColor = true;
@@ -415,7 +424,7 @@
             this.label3.Location = new System.Drawing.Point(76, 95);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 15);
+            this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 11;
             this.label3.Text = "数据3";
             // 
@@ -425,7 +434,7 @@
             this.label10.Location = new System.Drawing.Point(149, 56);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(69, 15);
+            this.label10.Size = new System.Drawing.Size(53, 12);
             this.label10.TabIndex = 11;
             this.label10.Text = "/  数据2";
             // 
@@ -435,7 +444,7 @@
             this.label4.Location = new System.Drawing.Point(12, 56);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 15);
+            this.label4.Size = new System.Drawing.Size(35, 12);
             this.label4.TabIndex = 12;
             this.label4.Text = "数据1";
             // 
@@ -452,7 +461,7 @@
             this.comboBox10.Location = new System.Drawing.Point(225, 51);
             this.comboBox10.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(67, 23);
+            this.comboBox10.Size = new System.Drawing.Size(67, 20);
             this.comboBox10.TabIndex = 10;
             this.comboBox10.Text = "空白";
             // 
@@ -469,7 +478,7 @@
             this.comboBox3.Location = new System.Drawing.Point(133, 90);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(87, 23);
+            this.comboBox3.Size = new System.Drawing.Size(87, 20);
             this.comboBox3.TabIndex = 10;
             this.comboBox3.Text = "空白";
             // 
@@ -486,7 +495,7 @@
             this.comboBox4.Location = new System.Drawing.Point(71, 51);
             this.comboBox4.Margin = new System.Windows.Forms.Padding(4);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(69, 23);
+            this.comboBox4.Size = new System.Drawing.Size(69, 20);
             this.comboBox4.TabIndex = 10;
             this.comboBox4.Text = "空白";
             // 
@@ -496,7 +505,7 @@
             this.checkBox4.Location = new System.Drawing.Point(12, 22);
             this.checkBox4.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(104, 19);
+            this.checkBox4.Size = new System.Drawing.Size(84, 16);
             this.checkBox4.TabIndex = 3;
             this.checkBox4.Text = "显示井数据";
             this.checkBox4.UseVisualStyleBackColor = true;
@@ -507,7 +516,7 @@
             this.label5.Location = new System.Drawing.Point(1, 69);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(311, 15);
+            this.label5.Size = new System.Drawing.Size(233, 12);
             this.label5.TabIndex = 13;
             this.label5.Text = "______________________________________";
             // 
@@ -577,18 +586,18 @@
             this.lbl_ShowSelectedNumber.AutoSize = true;
             this.lbl_ShowSelectedNumber.Location = new System.Drawing.Point(205, 26);
             this.lbl_ShowSelectedNumber.Name = "lbl_ShowSelectedNumber";
-            this.lbl_ShowSelectedNumber.Size = new System.Drawing.Size(67, 15);
+            this.lbl_ShowSelectedNumber.Size = new System.Drawing.Size(53, 12);
             this.lbl_ShowSelectedNumber.TabIndex = 10;
             this.lbl_ShowSelectedNumber.Text = "显示井号";
             // 
             // ListBoxWellName_layerMap
             // 
             this.ListBoxWellName_layerMap.FormattingEnabled = true;
-            this.ListBoxWellName_layerMap.ItemHeight = 15;
+            this.ListBoxWellName_layerMap.ItemHeight = 12;
             this.ListBoxWellName_layerMap.Location = new System.Drawing.Point(208, 49);
             this.ListBoxWellName_layerMap.Name = "ListBoxWellName_layerMap";
             this.ListBoxWellName_layerMap.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.ListBoxWellName_layerMap.Size = new System.Drawing.Size(135, 574);
+            this.ListBoxWellName_layerMap.Size = new System.Drawing.Size(135, 568);
             this.ListBoxWellName_layerMap.TabIndex = 9;
             // 
             // label14
@@ -597,7 +606,7 @@
             this.label14.Location = new System.Drawing.Point(14, 142);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(67, 15);
+            this.label14.Size = new System.Drawing.Size(53, 12);
             this.label14.TabIndex = 8;
             this.label14.Text = "结束年月";
             // 
@@ -607,7 +616,7 @@
             this.label2.Location = new System.Drawing.Point(13, 114);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 8;
             this.label2.Text = "起始时间";
             // 
@@ -617,7 +626,7 @@
             this.label13.Location = new System.Drawing.Point(19, 75);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 15);
+            this.label13.Size = new System.Drawing.Size(41, 12);
             this.label13.TabIndex = 8;
             this.label13.Text = "最下层";
             // 
@@ -627,7 +636,7 @@
             this.label1.Location = new System.Drawing.Point(19, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 15);
+            this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 8;
             this.label1.Text = "最上层";
             // 
@@ -637,7 +646,7 @@
             this.cbbEndYM.Location = new System.Drawing.Point(82, 139);
             this.cbbEndYM.Margin = new System.Windows.Forms.Padding(4);
             this.cbbEndYM.Name = "cbbEndYM";
-            this.cbbEndYM.Size = new System.Drawing.Size(106, 23);
+            this.cbbEndYM.Size = new System.Drawing.Size(106, 20);
             this.cbbEndYM.TabIndex = 7;
             // 
             // cbbStartYM
@@ -646,7 +655,7 @@
             this.cbbStartYM.Location = new System.Drawing.Point(82, 108);
             this.cbbStartYM.Margin = new System.Windows.Forms.Padding(4);
             this.cbbStartYM.Name = "cbbStartYM";
-            this.cbbStartYM.Size = new System.Drawing.Size(108, 23);
+            this.cbbStartYM.Size = new System.Drawing.Size(108, 20);
             this.cbbStartYM.TabIndex = 7;
             // 
             // cbbLayerNameBottom_layerMap
@@ -655,7 +664,7 @@
             this.cbbLayerNameBottom_layerMap.Location = new System.Drawing.Point(79, 67);
             this.cbbLayerNameBottom_layerMap.Margin = new System.Windows.Forms.Padding(4);
             this.cbbLayerNameBottom_layerMap.Name = "cbbLayerNameBottom_layerMap";
-            this.cbbLayerNameBottom_layerMap.Size = new System.Drawing.Size(108, 23);
+            this.cbbLayerNameBottom_layerMap.Size = new System.Drawing.Size(108, 20);
             this.cbbLayerNameBottom_layerMap.TabIndex = 7;
             // 
             // cbbLayerNameTop_layerMap
@@ -664,7 +673,7 @@
             this.cbbLayerNameTop_layerMap.Location = new System.Drawing.Point(79, 30);
             this.cbbLayerNameTop_layerMap.Margin = new System.Windows.Forms.Padding(4);
             this.cbbLayerNameTop_layerMap.Name = "cbbLayerNameTop_layerMap";
-            this.cbbLayerNameTop_layerMap.Size = new System.Drawing.Size(108, 23);
+            this.cbbLayerNameTop_layerMap.Size = new System.Drawing.Size(108, 20);
             this.cbbLayerNameTop_layerMap.TabIndex = 7;
             // 
             // groupBox1
@@ -688,7 +697,7 @@
             this.checkBox3.Location = new System.Drawing.Point(21, 41);
             this.checkBox3.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(59, 19);
+            this.checkBox3.Size = new System.Drawing.Size(48, 16);
             this.checkBox3.TabIndex = 3;
             this.checkBox3.Text = "图名";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -698,7 +707,7 @@
             this.textBox1.Location = new System.Drawing.Point(93, 39);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(248, 25);
+            this.textBox1.Size = new System.Drawing.Size(248, 21);
             this.textBox1.TabIndex = 0;
             // 
             // checkBox2
@@ -707,7 +716,7 @@
             this.checkBox2.Location = new System.Drawing.Point(21, 125);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(89, 19);
+            this.checkBox2.Size = new System.Drawing.Size(72, 16);
             this.checkBox2.TabIndex = 2;
             this.checkBox2.Text = "绘制图框";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -718,7 +727,7 @@
             this.checkBox1.Location = new System.Drawing.Point(21, 85);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 19);
+            this.checkBox1.Size = new System.Drawing.Size(72, 16);
             this.checkBox1.TabIndex = 2;
             this.checkBox1.Text = "绘制图例";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -750,7 +759,7 @@
             this.cbbFaultPointsInWell.Location = new System.Drawing.Point(325, 16);
             this.cbbFaultPointsInWell.Margin = new System.Windows.Forms.Padding(4);
             this.cbbFaultPointsInWell.Name = "cbbFaultPointsInWell";
-            this.cbbFaultPointsInWell.Size = new System.Drawing.Size(49, 23);
+            this.cbbFaultPointsInWell.Size = new System.Drawing.Size(49, 20);
             this.cbbFaultPointsInWell.TabIndex = 21;
             this.cbbFaultPointsInWell.Text = "1";
             // 
@@ -824,12 +833,13 @@
             this.tabCalReservor.Controls.Add(this.tabPageWellPotion);
             this.tabCalReservor.Controls.Add(this.tabPageLayerData);
             this.tabCalReservor.Controls.Add(this.tabPageFault);
+            this.tabCalReservor.Controls.Add(this.tabPage1);
+            this.tabCalReservor.Controls.Add(this.tabPage2);
             this.tabCalReservor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCalReservor.Location = new System.Drawing.Point(0, 0);
-            this.tabCalReservor.Margin = new System.Windows.Forms.Padding(4);
             this.tabCalReservor.Name = "tabCalReservor";
             this.tabCalReservor.SelectedIndex = 0;
-            this.tabCalReservor.Size = new System.Drawing.Size(919, 709);
+            this.tabCalReservor.Size = new System.Drawing.Size(689, 567);
             this.tabCalReservor.TabIndex = 1;
             // 
             // tabPageWellPotion
@@ -841,22 +851,30 @@
             this.tabPageWellPotion.Controls.Add(this.btnImportPayPropery);
             this.tabPageWellPotion.Controls.Add(this.btnOpenPayPropery);
             this.tabPageWellPotion.Controls.Add(this.dgvPayPropery);
-            this.tabPageWellPotion.Location = new System.Drawing.Point(4, 25);
-            this.tabPageWellPotion.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPageWellPotion.Location = new System.Drawing.Point(4, 22);
             this.tabPageWellPotion.Name = "tabPageWellPotion";
-            this.tabPageWellPotion.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPageWellPotion.Size = new System.Drawing.Size(911, 680);
+            this.tabPageWellPotion.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageWellPotion.Size = new System.Drawing.Size(681, 541);
             this.tabPageWellPotion.TabIndex = 0;
             this.tabPageWellPotion.Text = "体积系数";
             this.tabPageWellPotion.UseVisualStyleBackColor = true;
             this.tabPageWellPotion.Click += new System.EventHandler(this.tabPageWellPotion_Click);
             // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(457, 62);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(215, 464);
+            this.textBox2.TabIndex = 14;
+            this.textBox2.Text = "计算结果：";
+            // 
             // btnCopyFromExcelPayPropery
             // 
-            this.btnCopyFromExcelPayPropery.Location = new System.Drawing.Point(149, 20);
-            this.btnCopyFromExcelPayPropery.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCopyFromExcelPayPropery.Location = new System.Drawing.Point(112, 16);
             this.btnCopyFromExcelPayPropery.Name = "btnCopyFromExcelPayPropery";
-            this.btnCopyFromExcelPayPropery.Size = new System.Drawing.Size(121, 28);
+            this.btnCopyFromExcelPayPropery.Size = new System.Drawing.Size(91, 22);
             this.btnCopyFromExcelPayPropery.TabIndex = 13;
             this.btnCopyFromExcelPayPropery.Text = "从Excel粘贴";
             this.btnCopyFromExcelPayPropery.UseVisualStyleBackColor = true;
@@ -875,39 +893,35 @@
             "8",
             "9",
             "10"});
-            this.cbbPayPropery.Location = new System.Drawing.Point(381, 20);
-            this.cbbPayPropery.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbPayPropery.Location = new System.Drawing.Point(286, 16);
             this.cbbPayPropery.Name = "cbbPayPropery";
-            this.cbbPayPropery.Size = new System.Drawing.Size(84, 23);
+            this.cbbPayPropery.Size = new System.Drawing.Size(64, 20);
             this.cbbPayPropery.TabIndex = 6;
             this.cbbPayPropery.Text = "1";
             // 
             // lblDataStartLine
             // 
             this.lblDataStartLine.AutoSize = true;
-            this.lblDataStartLine.Location = new System.Drawing.Point(287, 25);
-            this.lblDataStartLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDataStartLine.Location = new System.Drawing.Point(215, 20);
             this.lblDataStartLine.Name = "lblDataStartLine";
-            this.lblDataStartLine.Size = new System.Drawing.Size(82, 15);
+            this.lblDataStartLine.Size = new System.Drawing.Size(65, 12);
             this.lblDataStartLine.TabIndex = 5;
             this.lblDataStartLine.Text = "数据起始行";
             // 
             // btnImportPayPropery
             // 
-            this.btnImportPayPropery.Location = new System.Drawing.Point(493, 20);
-            this.btnImportPayPropery.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImportPayPropery.Location = new System.Drawing.Point(370, 16);
             this.btnImportPayPropery.Name = "btnImportPayPropery";
-            this.btnImportPayPropery.Size = new System.Drawing.Size(95, 28);
+            this.btnImportPayPropery.Size = new System.Drawing.Size(71, 22);
             this.btnImportPayPropery.TabIndex = 3;
             this.btnImportPayPropery.Text = "计算";
             this.btnImportPayPropery.UseVisualStyleBackColor = true;
             // 
             // btnOpenPayPropery
             // 
-            this.btnOpenPayPropery.Location = new System.Drawing.Point(9, 18);
-            this.btnOpenPayPropery.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOpenPayPropery.Location = new System.Drawing.Point(7, 14);
             this.btnOpenPayPropery.Name = "btnOpenPayPropery";
-            this.btnOpenPayPropery.Size = new System.Drawing.Size(120, 29);
+            this.btnOpenPayPropery.Size = new System.Drawing.Size(90, 23);
             this.btnOpenPayPropery.TabIndex = 1;
             this.btnOpenPayPropery.Text = "读取文件";
             this.btnOpenPayPropery.UseVisualStyleBackColor = true;
@@ -919,155 +933,12 @@
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dgvPayPropery.Location = new System.Drawing.Point(8, 71);
-            this.dgvPayPropery.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvPayPropery.Location = new System.Drawing.Point(6, 57);
             this.dgvPayPropery.Name = "dgvPayPropery";
             this.dgvPayPropery.RowTemplate.Height = 23;
-            this.dgvPayPropery.Size = new System.Drawing.Size(580, 585);
+            this.dgvPayPropery.Size = new System.Drawing.Size(435, 468);
             this.dgvPayPropery.TabIndex = 0;
             this.dgvPayPropery.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPayPropery_CellContentClick);
-            // 
-            // tabPageLayerData
-            // 
-            this.tabPageLayerData.Controls.Add(this.dgvIntepretation);
-            this.tabPageLayerData.Controls.Add(this.button2);
-            this.tabPageLayerData.Controls.Add(this.btnImportLayerDepth);
-            this.tabPageLayerData.Location = new System.Drawing.Point(4, 25);
-            this.tabPageLayerData.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPageLayerData.Name = "tabPageLayerData";
-            this.tabPageLayerData.Size = new System.Drawing.Size(911, 680);
-            this.tabPageLayerData.TabIndex = 3;
-            this.tabPageLayerData.Text = "小层数据调整";
-            this.tabPageLayerData.UseVisualStyleBackColor = true;
-            // 
-            // btnImportLayerDepth
-            // 
-            this.btnImportLayerDepth.Location = new System.Drawing.Point(9, 19);
-            this.btnImportLayerDepth.Margin = new System.Windows.Forms.Padding(4);
-            this.btnImportLayerDepth.Name = "btnImportLayerDepth";
-            this.btnImportLayerDepth.Size = new System.Drawing.Size(83, 28);
-            this.btnImportLayerDepth.TabIndex = 5;
-            this.btnImportLayerDepth.Text = "重新导入";
-            this.btnImportLayerDepth.UseVisualStyleBackColor = true;
-            // 
-            // tabPageFault
-            // 
-            this.tabPageFault.Controls.Add(this.btnCopyFromExcelFaultLines);
-            this.tabPageFault.Controls.Add(this.cbbDataFaultFirstLine);
-            this.tabPageFault.Controls.Add(this.label22);
-            this.tabPageFault.Controls.Add(this.btnImportFaultLines);
-            this.tabPageFault.Controls.Add(this.btnOpenFaultLines);
-            this.tabPageFault.Controls.Add(this.dgvFaultLines);
-            this.tabPageFault.Location = new System.Drawing.Point(4, 25);
-            this.tabPageFault.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageFault.Name = "tabPageFault";
-            this.tabPageFault.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabPageFault.Size = new System.Drawing.Size(911, 680);
-            this.tabPageFault.TabIndex = 4;
-            this.tabPageFault.Text = "断层";
-            this.tabPageFault.UseVisualStyleBackColor = true;
-            // 
-            // btnCopyFromExcelFaultLines
-            // 
-            this.btnCopyFromExcelFaultLines.Location = new System.Drawing.Point(115, 23);
-            this.btnCopyFromExcelFaultLines.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCopyFromExcelFaultLines.Name = "btnCopyFromExcelFaultLines";
-            this.btnCopyFromExcelFaultLines.Size = new System.Drawing.Size(108, 28);
-            this.btnCopyFromExcelFaultLines.TabIndex = 16;
-            this.btnCopyFromExcelFaultLines.Text = "从Excel粘贴";
-            this.btnCopyFromExcelFaultLines.UseVisualStyleBackColor = true;
-            // 
-            // cbbDataFaultFirstLine
-            // 
-            this.cbbDataFaultFirstLine.FormattingEnabled = true;
-            this.cbbDataFaultFirstLine.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.cbbDataFaultFirstLine.Location = new System.Drawing.Point(325, 25);
-            this.cbbDataFaultFirstLine.Margin = new System.Windows.Forms.Padding(4);
-            this.cbbDataFaultFirstLine.Name = "cbbDataFaultFirstLine";
-            this.cbbDataFaultFirstLine.Size = new System.Drawing.Size(49, 23);
-            this.cbbDataFaultFirstLine.TabIndex = 14;
-            this.cbbDataFaultFirstLine.Text = "1";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(231, 30);
-            this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(82, 15);
-            this.label22.TabIndex = 13;
-            this.label22.Text = "数据起始行";
-            // 
-            // btnImportFaultLines
-            // 
-            this.btnImportFaultLines.Location = new System.Drawing.Point(384, 24);
-            this.btnImportFaultLines.Margin = new System.Windows.Forms.Padding(4);
-            this.btnImportFaultLines.Name = "btnImportFaultLines";
-            this.btnImportFaultLines.Size = new System.Drawing.Size(89, 28);
-            this.btnImportFaultLines.TabIndex = 12;
-            this.btnImportFaultLines.Text = "入库";
-            this.btnImportFaultLines.UseVisualStyleBackColor = true;
-            // 
-            // btnOpenFaultLines
-            // 
-            this.btnOpenFaultLines.Location = new System.Drawing.Point(11, 21);
-            this.btnOpenFaultLines.Margin = new System.Windows.Forms.Padding(4);
-            this.btnOpenFaultLines.Name = "btnOpenFaultLines";
-            this.btnOpenFaultLines.Size = new System.Drawing.Size(96, 29);
-            this.btnOpenFaultLines.TabIndex = 11;
-            this.btnOpenFaultLines.Text = "读取文件";
-            this.btnOpenFaultLines.UseVisualStyleBackColor = true;
-            // 
-            // dgvFaultLines
-            // 
-            this.dgvFaultLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFaultLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn16,
-            this.Column22,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.Column23});
-            this.dgvFaultLines.Location = new System.Drawing.Point(9, 58);
-            this.dgvFaultLines.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvFaultLines.Name = "dgvFaultLines";
-            this.dgvFaultLines.RowTemplate.Height = 23;
-            this.dgvFaultLines.Size = new System.Drawing.Size(849, 680);
-            this.dgvFaultLines.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.HeaderText = "断层名";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "小层名";
-            this.Column22.Name = "Column22";
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.HeaderText = "X";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.HeaderText = "Y";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            // 
-            // Column23
-            // 
-            this.Column23.HeaderText = "Z";
-            this.Column23.Name = "Column23";
             // 
             // Column2
             // 
@@ -1084,6 +955,18 @@
             this.Column4.HeaderText = "体积系数";
             this.Column4.Name = "Column4";
             // 
+            // tabPageLayerData
+            // 
+            this.tabPageLayerData.Controls.Add(this.dgvIntepretation);
+            this.tabPageLayerData.Controls.Add(this.button2);
+            this.tabPageLayerData.Controls.Add(this.btnImportLayerDepth);
+            this.tabPageLayerData.Location = new System.Drawing.Point(4, 22);
+            this.tabPageLayerData.Name = "tabPageLayerData";
+            this.tabPageLayerData.Size = new System.Drawing.Size(681, 541);
+            this.tabPageLayerData.TabIndex = 3;
+            this.tabPageLayerData.Text = "小层数据调整";
+            this.tabPageLayerData.UseVisualStyleBackColor = true;
+            // 
             // dgvIntepretation
             // 
             this.dgvIntepretation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1094,11 +977,10 @@
             this.Column5,
             this.Column6,
             this.Column7});
-            this.dgvIntepretation.Location = new System.Drawing.Point(9, 55);
-            this.dgvIntepretation.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvIntepretation.Location = new System.Drawing.Point(7, 44);
             this.dgvIntepretation.Name = "dgvIntepretation";
             this.dgvIntepretation.RowTemplate.Height = 23;
-            this.dgvIntepretation.Size = new System.Drawing.Size(867, 587);
+            this.dgvIntepretation.Size = new System.Drawing.Size(650, 470);
             this.dgvIntepretation.TabIndex = 17;
             // 
             // dataGridViewTextBoxColumn4
@@ -1138,31 +1020,205 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(100, 19);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(75, 15);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 28);
+            this.button2.Size = new System.Drawing.Size(75, 22);
             this.button2.TabIndex = 5;
             this.button2.Text = "Excel粘贴";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // btnImportLayerDepth
             // 
-            this.textBox2.Location = new System.Drawing.Point(609, 77);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(285, 579);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Text = "计算结果：";
+            this.btnImportLayerDepth.Location = new System.Drawing.Point(7, 15);
+            this.btnImportLayerDepth.Name = "btnImportLayerDepth";
+            this.btnImportLayerDepth.Size = new System.Drawing.Size(62, 22);
+            this.btnImportLayerDepth.TabIndex = 5;
+            this.btnImportLayerDepth.Text = "重新导入";
+            this.btnImportLayerDepth.UseVisualStyleBackColor = true;
+            // 
+            // tabPageFault
+            // 
+            this.tabPageFault.Controls.Add(this.btnCopyFromExcelFaultLines);
+            this.tabPageFault.Controls.Add(this.cbbDataFaultFirstLine);
+            this.tabPageFault.Controls.Add(this.label22);
+            this.tabPageFault.Controls.Add(this.btnImportFaultLines);
+            this.tabPageFault.Controls.Add(this.btnOpenFaultLines);
+            this.tabPageFault.Controls.Add(this.dgvFaultLines);
+            this.tabPageFault.Location = new System.Drawing.Point(4, 22);
+            this.tabPageFault.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPageFault.Name = "tabPageFault";
+            this.tabPageFault.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPageFault.Size = new System.Drawing.Size(681, 541);
+            this.tabPageFault.TabIndex = 4;
+            this.tabPageFault.Text = "断层";
+            this.tabPageFault.UseVisualStyleBackColor = true;
+            // 
+            // btnCopyFromExcelFaultLines
+            // 
+            this.btnCopyFromExcelFaultLines.Location = new System.Drawing.Point(86, 18);
+            this.btnCopyFromExcelFaultLines.Name = "btnCopyFromExcelFaultLines";
+            this.btnCopyFromExcelFaultLines.Size = new System.Drawing.Size(81, 22);
+            this.btnCopyFromExcelFaultLines.TabIndex = 16;
+            this.btnCopyFromExcelFaultLines.Text = "从Excel粘贴";
+            this.btnCopyFromExcelFaultLines.UseVisualStyleBackColor = true;
+            // 
+            // cbbDataFaultFirstLine
+            // 
+            this.cbbDataFaultFirstLine.FormattingEnabled = true;
+            this.cbbDataFaultFirstLine.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cbbDataFaultFirstLine.Location = new System.Drawing.Point(244, 20);
+            this.cbbDataFaultFirstLine.Name = "cbbDataFaultFirstLine";
+            this.cbbDataFaultFirstLine.Size = new System.Drawing.Size(38, 20);
+            this.cbbDataFaultFirstLine.TabIndex = 14;
+            this.cbbDataFaultFirstLine.Text = "1";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(173, 24);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 12);
+            this.label22.TabIndex = 13;
+            this.label22.Text = "数据起始行";
+            // 
+            // btnImportFaultLines
+            // 
+            this.btnImportFaultLines.Location = new System.Drawing.Point(288, 19);
+            this.btnImportFaultLines.Name = "btnImportFaultLines";
+            this.btnImportFaultLines.Size = new System.Drawing.Size(67, 22);
+            this.btnImportFaultLines.TabIndex = 12;
+            this.btnImportFaultLines.Text = "入库";
+            this.btnImportFaultLines.UseVisualStyleBackColor = true;
+            // 
+            // btnOpenFaultLines
+            // 
+            this.btnOpenFaultLines.Location = new System.Drawing.Point(8, 17);
+            this.btnOpenFaultLines.Name = "btnOpenFaultLines";
+            this.btnOpenFaultLines.Size = new System.Drawing.Size(72, 23);
+            this.btnOpenFaultLines.TabIndex = 11;
+            this.btnOpenFaultLines.Text = "读取文件";
+            this.btnOpenFaultLines.UseVisualStyleBackColor = true;
+            // 
+            // dgvFaultLines
+            // 
+            this.dgvFaultLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFaultLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn16,
+            this.Column22,
+            this.dataGridViewTextBoxColumn17,
+            this.dataGridViewTextBoxColumn18,
+            this.Column23});
+            this.dgvFaultLines.Location = new System.Drawing.Point(7, 46);
+            this.dgvFaultLines.Name = "dgvFaultLines";
+            this.dgvFaultLines.RowTemplate.Height = 23;
+            this.dgvFaultLines.Size = new System.Drawing.Size(637, 544);
+            this.dgvFaultLines.TabIndex = 2;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.HeaderText = "断层名";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // Column22
+            // 
+            this.Column22.HeaderText = "小层名";
+            this.Column22.Name = "Column22";
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.HeaderText = "X";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            // 
+            // dataGridViewTextBoxColumn18
+            // 
+            this.dataGridViewTextBoxColumn18.HeaderText = "Y";
+            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
+            // 
+            // Column23
+            // 
+            this.Column23.HeaderText = "Z";
+            this.Column23.Name = "Column23";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panelResCal);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(681, 541);
+            this.tabPage1.TabIndex = 5;
+            this.tabPage1.Text = "储量分布图";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tbxOut);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(681, 541);
+            this.tabPage2.TabIndex = 6;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tbxOut
+            // 
+            this.tbxOut.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxOut.Location = new System.Drawing.Point(3, 3);
+            this.tbxOut.Multiline = true;
+            this.tbxOut.Name = "tbxOut";
+            this.tbxOut.Size = new System.Drawing.Size(675, 535);
+            this.tbxOut.TabIndex = 0;
+            // 
+            // panelResCal
+            // 
+            this.panelResCal.BackColor = System.Drawing.Color.White;
+            this.panelResCal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelResCal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelResCal.Location = new System.Drawing.Point(3, 3);
+            this.panelResCal.Name = "panelResCal";
+            this.panelResCal.Size = new System.Drawing.Size(675, 535);
+            this.panelResCal.TabIndex = 2;
+            this.panelResCal.Click += new System.EventHandler(this.panelResCal_Click);
+            this.panelResCal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelResCal_Paint);
+            this.panelResCal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelResCal_MouseMove);
+            // 
+            // tssLblInfor
+            // 
+            this.tssLblInfor.Name = "tssLblInfor";
+            this.tssLblInfor.Size = new System.Drawing.Size(32, 17);
+            this.tssLblInfor.Text = "提示";
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssLblInfor});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 545);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(689, 22);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // FormCalReservor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 709);
+            this.ClientSize = new System.Drawing.Size(689, 567);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabCalReservor);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormCalReservor";
-            this.Text = "FormCalReservor";
+            this.Text = "储量计算";
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1181,11 +1237,17 @@
             this.tabPageWellPotion.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPayPropery)).EndInit();
             this.tabPageLayerData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIntepretation)).EndInit();
             this.tabPageFault.ResumeLayout(false);
             this.tabPageFault.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaultLines)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIntepretation)).EndInit();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1286,5 +1348,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox tbxOut;
+        private System.Windows.Forms.Panel panelResCal;
+        private System.Windows.Forms.ToolStripStatusLabel tssLblInfor;
+        private System.Windows.Forms.StatusStrip statusStrip1;
     }
 }
