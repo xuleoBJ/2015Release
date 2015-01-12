@@ -6,17 +6,19 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
+using System.IO;
 namespace DOGPlatform
 {
     public partial class FormCalReservor : Form
     {
         Voronoi voroObject;
+        
         public FormCalReservor()
         {
             InitializeComponent();
             setPanel();
             voroObject = new Voronoi(1);
+            
         }
 
         private void dgvPayPropery_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -96,8 +98,9 @@ namespace DOGPlatform
                 {
                     string s = "\nP " + i + " size1" + ge[i].site1 + "size2" + ge[i].site2 +" "+ ge[i].x1 + ", " + ge[i].y1 + " || " + ge[i].x2 + ", " + ge[i].y2;
                 }
-                string s1 = "P " + i + ": size1" + ge[i].site1 + " size2" + ge[i].site2 + " " + ge[i].x1.ToString("0.0") + ", " + ge[i].y1.ToString("0.0") + " || " + ge[i].x2.ToString("0.0") + ", " + ge[i].y2.ToString("0.0") + "\r\n";
+                string s1 = "P " + i + ": size1 " + ge[i].site1 + " " + ge[i].x1.ToString("0.0") + ", " + ge[i].y1.ToString("0.0") + " size2 " + ge[i].site2 + " " + ge[i].x2.ToString("0.0") + ", " + ge[i].y2.ToString("0.0") + "\r\n";
                  this.tbxOut.Text += s1;
+
             }
             base.OnPaint(e);
         }

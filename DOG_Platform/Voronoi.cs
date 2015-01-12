@@ -65,6 +65,7 @@
  
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace DOGPlatform
 {
@@ -125,7 +126,16 @@ namespace DOGPlatform
 		public List<GraphEdge> generateVoronoi ( double[] xValuesIn, double[] yValuesIn, double minX, double maxX, double minY, double maxY )
 		{
 			sort(xValuesIn, yValuesIn, xValuesIn.Length);
-			
+
+            StreamWriter swNew = new StreamWriter(cProjectManager.filePathErrInfor);
+            swNew.WriteLine(DateTime.Now.ToString());
+           
+           
+            foreach( var _item in sites)
+            {
+             swNew.WriteLine(_item.sitenbr.ToString()+" "+_item.coord.X.ToString()+" "+_item.coord.Y.ToString());
+            }
+			 swNew.Close();
 			// Check bounding box inputs - if mins are bigger than maxes, swap them
 			double temp = 0;
 			if ( minX > maxX )
