@@ -30,7 +30,8 @@ namespace DOGPlatform
         public static string filePathInputLayerSeriers = Path.Combine(dirPathUserData, "$layerSerier#.txt");
 
 
-        public static string filePathErrInfor = Path.Combine(dirPathUserData, "#err.txt");
+        public static string filePathRunInfor = Path.Combine(dirPathUserData, "#Infor.txt");
+        public static string filePathVoi = Path.Combine(dirPathUsedProjectData, "Voi");
 
         public static string fileNameInputLayerDepth = "$inputLayerDepth#.txt";
         public static string fileNameInputJSJL = "$inputJSJL#.txt";
@@ -86,12 +87,15 @@ namespace DOGPlatform
            filePathInputLayerSeriers =Path.Combine(dirPathUserData ,  "$layerSerier#.txt");
 
 
-            filePathErrInfor =Path.Combine(dirPathUserData ,  "#err.txt");
+            filePathRunInfor =Path.Combine(dirPathUserData ,  "#Infor.txt");
+            filePathVoi = Path.Combine(cProjectManager.dirPathUsedProjectData, "Voi");
+
 
             filePathLayerDataDic = Path.Combine( dirPathUsedProjectData , "$LayerDataDic$.txt");
            filePathLayerSplitFactorDic = Path.Combine(dirPathUsedProjectData ,"$LayerSplitFactorDic$.txt");
             filePathInterLayerHeterogeneity =Path.Combine( dirPathUsedProjectData ,"垂向非均质.txt");
             filePathInnerLayerHeterogeneity =Path.Combine( dirPathUsedProjectData , "层内非均质.txt");
+           
  
             xmlConfigLayerMap = Path.Combine(dirPathTemplate, "$ConfigLayerMap#.XML");
             xmlConfigSection = Path.Combine(dirPathTemplate, "$ConfigSection#.XML");
@@ -127,7 +131,7 @@ namespace DOGPlatform
                 List<string> ltStrDataSourceFiles = new List<string>();
                 ltStrDataSourceFiles.Add(cProjectManager.filePathInputWellhead);
                 ltStrDataSourceFiles.Add(cProjectManager.filePathInputLayerSeriers);
-                ltStrDataSourceFiles.Add(cProjectManager.filePathErrInfor);
+                ltStrDataSourceFiles.Add(cProjectManager.filePathRunInfor);
 
                 foreach (string sItem in ltStrDataSourceFiles)
                 {

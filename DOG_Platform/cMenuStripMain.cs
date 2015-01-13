@@ -85,10 +85,10 @@ namespace DOGPlatform
             menuStrip.Items.Add(tsmiTools);
         }
 
-        public ToolStripMenuItem tsmiErrLog = new ToolStripMenuItem("查看错误日志");
+        public ToolStripMenuItem tsmiErrLog = new ToolStripMenuItem("查看信息");
         public void tsmiErrLog_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathErrInfor);
+            System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathRunInfor);
         }
 
         public ToolStripMenuItem tsmiDigger = new ToolStripMenuItem("数字化工具");

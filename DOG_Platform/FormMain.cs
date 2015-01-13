@@ -76,11 +76,14 @@ namespace DOGPlatform
             listTabpageMain.Add(tbgMainTable);
             listTabpageMain.Add(tbgWellHead);
             listTabpageMain.Add(tbgLayerSeriers);
-            for (int i = 4; i >= 3; i--)
+            listTabpageMain.Add(tbgRes);
+            for (int i = 5; i >= 3; i--)
             {
                 this.tbcMain.TabPages.Remove(tbcMain.TabPages[i]);
             }
             initialCbbScale();
+            tslblLayer.Visible = false; 
+            tscbbLayer.Visible = false;
         }
 
         //初始化控件当新建工程或者打开工程时
@@ -1345,7 +1348,103 @@ namespace DOGPlatform
         {
             WaitWindow.Show(this.calHeterogeneityInterLayerWorkerMethod);
         }
-   
+
+        private void tsmiCalResPar_Click(object sender, EventArgs e)
+        {
+            FormCalReservor _form = new FormCalReservor();
+            _form.Show();
+        }
+
+        private void tsmiResMap_Click(object sender, EventArgs e)
+        {
+            if (tbcMain.TabPages.Contains(tbgRes) == false) tbcMain.TabPages.Add(tbgRes);
+            else tbcMain.TabPages.Remove(tbgRes);
+
+            if (this.tslblLayer.Visible == false) 
+            { 
+                tslblLayer.Visible = true;
+                tscbbLayer.Visible = true;
+                tscbbLayer.Items.Clear();
+                foreach (string _sxcm in cProjectData.ltStrProjectXCM) tscbbLayer.Items.Add(_sxcm);
+            
+            }
+            else { tslblLayer.Visible = false; tscbbLayer.Visible = false; } 
+
+            setResPanel();
+
+        }
+
+        void setResPanel()
+        {
+            if (cProjectData.ltStrProjectJH.Count > 0)
+            {
+                int iSacleUnit = 500; //定义网格单位
+                double xMaxDistance = cProjectData.listProjectWell.Max(p => p.dbX) - cProjectData.listProjectWell.Min(p => p.dbX);
+                double yMaxDistance = cProjectData.listProjectWell.Max(p => p.dbY) - cProjectData.listProjectWell.Min(p => p.dbY);
+
+                int iPanelWidth = Convert.ToInt32((int)(xMaxDistance / iSacleUnit + 3) * iSacleUnit * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
+                int iPanelHeight = Convert.ToInt32((int)(yMaxDistance / iSacleUnit + 3) * iSacleUnit * cProjectData.dfMapScale);//显示好看pannel比最大大3个网格
+                panelResCal.Dock = System.Windows.Forms.DockStyle.None;
+
+                panelResCal.Width = iPanelWidth;
+                panelResCal.Height = iPanelHeight;
+                panelResCal.Location = new Point(0, 0);
+
+                this.panelResCal.Invalidate();
+                this.panelResCal.Focus();
+            }
+
+        }
+
+        
+
+        void spreadPoints(PaintEventArgs e,string sXCM)
+        {
+            Graphics dc = e.Graphics;
+
+            List<itemWellLayerVoi> listVoi = cIOVoronoi.read2Struct();
+
+            foreach (itemWellLayerVoi well in listVoi.FindAll(p => p.sXCM == sXCM))
+            {
+                PointF headView = cCordinationTransform.transRealPointF2ViewPoint(
+                    well.dbX, well.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                Pen wellPen = new Pen(Color.Black, 2);
+                //if (well.iWellType == 3) wellPen = new Pen(Color.Red, 2);
+                //else if (well.iWellType == 5) wellPen = new Pen(Color.Green, 2);
+                //else if (well.iWellType == 15) wellPen = new Pen(Color.Blue, 2);
+
+                Pen blackPen = new Pen(Color.Black, 1);
+                dc.DrawEllipse(wellPen, headView.X - 1.5f, headView.Y - 1.5f, 3, 3);
+                List<PointF> listViewVer =new List<PointF>();
+                foreach (PointF _pf in well.ltdpVertex) 
+                {
+                    PointF _currentVer = cCordinationTransform.transRealPointF2ViewPoint(
+                     _pf.X , _pf.Y, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                    listViewVer.Add(_currentVer); 
+                }
+                dc.DrawPolygon(blackPen, listViewVer.ToArray());
+
+                Brush blackBrush = Brushes.Black;
+                Font font = new Font("黑体", 8);
+                dc.DrawString(well.sJH, font, blackBrush,
+                               headView.X + 3, headView.Y + 3);
+
+
+            }
+
+            base.OnPaint(e);
+        }
+
+        private void panelResCal_Paint(object sender, PaintEventArgs e)
+        {
+            addGrid(e);
+            if (this.tscbbLayer.SelectedItem!=null) spreadPoints(e,this.tscbbLayer.SelectedItem.ToString());
+        }
+
+        private void tscbbLayer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setResPanel();
+        }
 
     }
 }

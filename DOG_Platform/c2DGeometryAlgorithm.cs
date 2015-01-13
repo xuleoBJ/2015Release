@@ -172,18 +172,14 @@ namespace DOGPlatform
             return inside;
         }
 
-        //double linePointDist(point A, point B, point C, bool isSegment)
-        //{
-        //    double dist = ((B - A) ^ (C - A)) / sqrt((B - A) * (B - A));
-        //    if (isSegment)
-        //    {
-        //        int dot1 = (C - B) * (B - A);
-        //        if (dot1 > 0) return sqrt((B - C) * (B - C));
-        //        int dot2 = (C - A) * (A - B);
-        //        if (dot2 > 0) return sqrt((A - C) * (A - C));
-        //    }
-        //    return abs(dist);
-        //}
-         
+        //顺时针排序
+        public static List<PointD> orderByClockWise(List<PointD> points)
+      {
+         return points.OrderBy(x => Math.Atan2(x.X, x.Y)).ToList();
+      }
+        public static List<PointF> orderByClockWise(List<PointF> points)
+        {
+            return points.OrderBy(x => Math.Atan2(x.X, x.Y)).ToList();
+        } 
     }
 }

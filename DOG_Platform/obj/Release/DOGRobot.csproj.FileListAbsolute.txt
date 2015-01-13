@@ -80,7 +80,6 @@ E:\DOG-Robot2015Release\2015Release\DOG_Platform\bin\Release\DOGPlatform.pdb
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormWellInfor.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormAddSectionLog.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalInterWell.resources
-E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalReservor.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalWellDistance.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormDataImportLayer.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormDataViewSingleWell.resources
@@ -173,3 +172,5 @@ E:\DOG-Robot2015Release\2015Release\DOG_Platform\bin\Release\DigRobot.pdb
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalArea.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalArea.resources
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormDataTableDeal.resources
+E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormDataTableDeal.resources
+E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalReservor.resources

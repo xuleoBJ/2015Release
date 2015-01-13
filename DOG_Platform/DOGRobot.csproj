@@ -103,6 +103,7 @@
     <Compile Include="cIOinputInjectProfile.cs" />
     <Compile Include="cIOinputLayerSerier.cs" />
     <Compile Include="cContextMenuStripDataTable.cs" />
+    <Compile Include="cIOVoronoi.cs" />
     <Compile Include="cProjectData.cs" />
     <Compile Include="FormCalArea.cs">
       <SubType>Form</SubType>
@@ -189,6 +190,7 @@
     <Compile Include="cFileOperateDicLogHeadGlobe.cs" />
     <Compile Include="cMenuStripDog.cs" />
     <Compile Include="cPerforationList.cs" />
+    <Compile Include="itemWellLayerVoi.cs" />
     <Compile Include="PointD.cs" />
     <Compile Include="SVG\cSVGXEPatternBase.cs" />
     <Compile Include="SVG\cSVGXEPatternCarbonatie.cs" />

@@ -91,18 +91,18 @@ namespace DOGPlatform
 
         public static void printsErrLineInforIndex(int iIndexLine)
         {
-            StreamWriter swNew = new StreamWriter(cProjectManager.filePathErrInfor, false, Encoding.UTF8);
+            StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
             swNew.WriteLine(iIndexLine.ToString());
             swNew.Close();
         }
 
         public static void outputErrInfor2Text(string errInfor)
         {
-            StreamWriter swNew = new StreamWriter(cProjectManager.filePathErrInfor, false, Encoding.UTF8);
+            StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
             swNew.WriteLine(DateTime.Now.ToString());
             swNew.WriteLine(errInfor);
             swNew.Close();
-            System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathErrInfor);
+            System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathRunInfor);
         }
 
         public static List<string> ltStrJHInProject(List<string> ltStrJH )

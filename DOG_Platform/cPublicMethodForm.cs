@@ -11,8 +11,36 @@ using System.Drawing;
 
 namespace DOGPlatform
 {
-    class cPublicMethodForm :cPublicMethodBase 
+    class cPublicMethodForm :cPublicMethodBase
     {
+        public static void loadText2DataGridViewByFirstLineHead(string filepathTableData, DataGridView dgvDataTable)
+        {
+            if (File.Exists(filepathTableData))
+            {
+                dgvDataTable.Columns.Clear();
+                int lineindex = 0;
+                string[] split;
+                List<string> ltStrHeadColoum = new List<string>();
+                using (StreamReader sr = new StreamReader(filepathTableData, Encoding.Default))
+                {
+                    String line;
+                    while ((line = sr.ReadLine()) != null && lineindex < 1) //delete the line whose legth is 0
+                    {
+                        lineindex++;
+                        split = line.Trim().Split(new char[] { ' ', '\t', ',', ';' }, StringSplitOptions.RemoveEmptyEntries);
+                        for (int i = 0; i < split.Length; i++) ltStrHeadColoum.Add(split[i]);
+                    }
+                }
+                for (int i = 0; i < ltStrHeadColoum.Count; i++)
+                {
+                    DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
+                    col.HeaderText = ltStrHeadColoum[i];
+                    dgvDataTable.Columns.Add(col);
+                }
+                cPublicMethodForm.read2DataGridViewByTextFile(filepathTableData, dgvDataTable);
+                dgvDataTable.Rows.RemoveAt(0);
+            }
+        }
         public static void ListDirectory(TreeView treeView, string path)
         {
             treeView.Nodes.Clear();
@@ -495,7 +523,7 @@ namespace DOGPlatform
             iLine = 0;
             bool IsDataOK = true; //数据未校验
             //数据校验过程
-            StreamWriter swErrInfor = new StreamWriter(cProjectManager.filePathErrInfor, false, Encoding.UTF8);
+            StreamWriter swErrInfor = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
             for (int j = 0; j < dgv.RowCount - 1; j++)
                 for (int i = 0; i < dgv.ColumnCount; i++)
                 {   //判读数据是否缺失
@@ -530,7 +558,7 @@ namespace DOGPlatform
             {
                 MessageBox.Show("数据可能有错误，请查看相关信息！", "提示信息");
                 swErrInfor.Close();
-                System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathErrInfor);
+                System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathRunInfor);
             }
         }
 
@@ -540,7 +568,7 @@ namespace DOGPlatform
             bool IsDataOK = true; //数据未校验
             //MessageBox.Show(fisrtDataLine.ToString());
             //数据校验过程
-            StreamWriter swErrInfor = new StreamWriter(cProjectManager.filePathErrInfor, false, Encoding.UTF8);
+            StreamWriter swErrInfor = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
             for (int j = fisrtDataLine; j < dgv.RowCount - 1; j++)
                 for (int i = 0; i < dgv.ColumnCount; i++)
                 {   //判读数据是否缺失
@@ -576,7 +604,7 @@ namespace DOGPlatform
             {
                 MessageBox.Show("数据可能有错误，请查看相关信息！", "提示信息");
                 swErrInfor.Close();
-                System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathErrInfor);
+                System.Diagnostics.Process.Start("notepad.exe", cProjectManager.filePathRunInfor);
             }
         }
 

@@ -228,6 +228,18 @@ namespace DOGPlatform
             else return 0;
         }
 
+        public static double calArea(List<PointD> points)
+        {
+            if (points.Count >= 3)
+            {
+                points.Add(points[0]);
+                var area = Math.Abs(points.Take(points.Count - 1)
+                   .Select((p, i) => (points[i + 1].X - p.X) * (points[i + 1].Y + p.Y))
+                   .Sum() / 2);
+                return area / 1000000;
+            }
+            else return 0;
+        }
         public static double calLength(List<PointF> points)
         {
             if (points.Count >= 2)

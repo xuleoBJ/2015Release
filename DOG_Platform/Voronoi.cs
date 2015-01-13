@@ -127,7 +127,7 @@ namespace DOGPlatform
 		{
 			sort(xValuesIn, yValuesIn, xValuesIn.Length);
 
-            StreamWriter swNew = new StreamWriter(cProjectManager.filePathErrInfor);
+            StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor);
             swNew.WriteLine(DateTime.Now.ToString());
            
            

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -89,43 +90,27 @@
             this.dataGridViewTextBoxColumn54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCalReservor = new System.Windows.Forms.TabControl();
-            this.tabPageWellPotion = new System.Windows.Forms.TabPage();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbgReserviorPar = new System.Windows.Forms.TabPage();
             this.btnCopyFromExcelPayPropery = new System.Windows.Forms.Button();
-            this.cbbPayPropery = new System.Windows.Forms.ComboBox();
-            this.lblDataStartLine = new System.Windows.Forms.Label();
-            this.btnImportPayPropery = new System.Windows.Forms.Button();
+            this.btnCalRes = new System.Windows.Forms.Button();
             this.btnOpenPayPropery = new System.Windows.Forms.Button();
-            this.dgvPayPropery = new System.Windows.Forms.DataGridView();
+            this.dgvCalpar = new System.Windows.Forms.DataGridView();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageLayerData = new System.Windows.Forms.TabPage();
-            this.dgvIntepretation = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbgReservorResult = new System.Windows.Forms.TabPage();
+            this.dgvReservoirResult = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
-            this.btnImportLayerDepth = new System.Windows.Forms.Button();
-            this.tabPageFault = new System.Windows.Forms.TabPage();
-            this.btnCopyFromExcelFaultLines = new System.Windows.Forms.Button();
-            this.cbbDataFaultFirstLine = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.btnImportFaultLines = new System.Windows.Forms.Button();
-            this.btnOpenFaultLines = new System.Windows.Forms.Button();
-            this.dgvFaultLines = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tbxOut = new System.Windows.Forms.TextBox();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tbgReservoirMap = new System.Windows.Forms.TabPage();
             this.panelResCal = new System.Windows.Forms.Panel();
             this.tssLblInfor = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -137,14 +122,11 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaultPointsInWell)).BeginInit();
             this.tabCalReservor.SuspendLayout();
-            this.tabPageWellPotion.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPayPropery)).BeginInit();
-            this.tabPageLayerData.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIntepretation)).BeginInit();
-            this.tabPageFault.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFaultLines)).BeginInit();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tbgReserviorPar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalpar)).BeginInit();
+            this.tbgReservorResult.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservoirResult)).BeginInit();
+            this.tbgReservoirMap.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -830,92 +812,48 @@
             // 
             // tabCalReservor
             // 
-            this.tabCalReservor.Controls.Add(this.tabPageWellPotion);
-            this.tabCalReservor.Controls.Add(this.tabPageLayerData);
-            this.tabCalReservor.Controls.Add(this.tabPageFault);
-            this.tabCalReservor.Controls.Add(this.tabPage1);
-            this.tabCalReservor.Controls.Add(this.tabPage2);
+            this.tabCalReservor.Controls.Add(this.tbgReserviorPar);
+            this.tabCalReservor.Controls.Add(this.tbgReservorResult);
+            this.tabCalReservor.Controls.Add(this.tbgReservoirMap);
             this.tabCalReservor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCalReservor.Location = new System.Drawing.Point(0, 0);
             this.tabCalReservor.Name = "tabCalReservor";
             this.tabCalReservor.SelectedIndex = 0;
-            this.tabCalReservor.Size = new System.Drawing.Size(689, 567);
+            this.tabCalReservor.Size = new System.Drawing.Size(1006, 567);
             this.tabCalReservor.TabIndex = 1;
             // 
-            // tabPageWellPotion
+            // tbgReserviorPar
             // 
-            this.tabPageWellPotion.Controls.Add(this.textBox2);
-            this.tabPageWellPotion.Controls.Add(this.btnCopyFromExcelPayPropery);
-            this.tabPageWellPotion.Controls.Add(this.cbbPayPropery);
-            this.tabPageWellPotion.Controls.Add(this.lblDataStartLine);
-            this.tabPageWellPotion.Controls.Add(this.btnImportPayPropery);
-            this.tabPageWellPotion.Controls.Add(this.btnOpenPayPropery);
-            this.tabPageWellPotion.Controls.Add(this.dgvPayPropery);
-            this.tabPageWellPotion.Location = new System.Drawing.Point(4, 22);
-            this.tabPageWellPotion.Name = "tabPageWellPotion";
-            this.tabPageWellPotion.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageWellPotion.Size = new System.Drawing.Size(681, 541);
-            this.tabPageWellPotion.TabIndex = 0;
-            this.tabPageWellPotion.Text = "体积系数";
-            this.tabPageWellPotion.UseVisualStyleBackColor = true;
-            this.tabPageWellPotion.Click += new System.EventHandler(this.tabPageWellPotion_Click);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(457, 62);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(215, 464);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Text = "计算结果：";
+            this.tbgReserviorPar.Controls.Add(this.btnCopyFromExcelPayPropery);
+            this.tbgReserviorPar.Controls.Add(this.btnCalRes);
+            this.tbgReserviorPar.Controls.Add(this.btnOpenPayPropery);
+            this.tbgReserviorPar.Controls.Add(this.dgvCalpar);
+            this.tbgReserviorPar.Location = new System.Drawing.Point(4, 22);
+            this.tbgReserviorPar.Name = "tbgReserviorPar";
+            this.tbgReserviorPar.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgReserviorPar.Size = new System.Drawing.Size(998, 541);
+            this.tbgReserviorPar.TabIndex = 0;
+            this.tbgReserviorPar.Text = "计算储量参数输入";
+            this.tbgReserviorPar.UseVisualStyleBackColor = true;
             // 
             // btnCopyFromExcelPayPropery
             // 
             this.btnCopyFromExcelPayPropery.Location = new System.Drawing.Point(112, 16);
             this.btnCopyFromExcelPayPropery.Name = "btnCopyFromExcelPayPropery";
-            this.btnCopyFromExcelPayPropery.Size = new System.Drawing.Size(91, 22);
+            this.btnCopyFromExcelPayPropery.Size = new System.Drawing.Size(90, 22);
             this.btnCopyFromExcelPayPropery.TabIndex = 13;
-            this.btnCopyFromExcelPayPropery.Text = "从Excel粘贴";
+            this.btnCopyFromExcelPayPropery.Text = "粘贴";
             this.btnCopyFromExcelPayPropery.UseVisualStyleBackColor = true;
             // 
-            // cbbPayPropery
+            // btnCalRes
             // 
-            this.cbbPayPropery.FormattingEnabled = true;
-            this.cbbPayPropery.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.cbbPayPropery.Location = new System.Drawing.Point(286, 16);
-            this.cbbPayPropery.Name = "cbbPayPropery";
-            this.cbbPayPropery.Size = new System.Drawing.Size(64, 20);
-            this.cbbPayPropery.TabIndex = 6;
-            this.cbbPayPropery.Text = "1";
-            // 
-            // lblDataStartLine
-            // 
-            this.lblDataStartLine.AutoSize = true;
-            this.lblDataStartLine.Location = new System.Drawing.Point(215, 20);
-            this.lblDataStartLine.Name = "lblDataStartLine";
-            this.lblDataStartLine.Size = new System.Drawing.Size(65, 12);
-            this.lblDataStartLine.TabIndex = 5;
-            this.lblDataStartLine.Text = "数据起始行";
-            // 
-            // btnImportPayPropery
-            // 
-            this.btnImportPayPropery.Location = new System.Drawing.Point(370, 16);
-            this.btnImportPayPropery.Name = "btnImportPayPropery";
-            this.btnImportPayPropery.Size = new System.Drawing.Size(71, 22);
-            this.btnImportPayPropery.TabIndex = 3;
-            this.btnImportPayPropery.Text = "计算";
-            this.btnImportPayPropery.UseVisualStyleBackColor = true;
+            this.btnCalRes.Location = new System.Drawing.Point(235, 16);
+            this.btnCalRes.Name = "btnCalRes";
+            this.btnCalRes.Size = new System.Drawing.Size(89, 22);
+            this.btnCalRes.TabIndex = 3;
+            this.btnCalRes.Text = "计算";
+            this.btnCalRes.UseVisualStyleBackColor = true;
+            this.btnCalRes.Click += new System.EventHandler(this.btnCalRes_Click);
             // 
             // btnOpenPayPropery
             // 
@@ -926,19 +864,18 @@
             this.btnOpenPayPropery.Text = "读取文件";
             this.btnOpenPayPropery.UseVisualStyleBackColor = true;
             // 
-            // dgvPayPropery
+            // dgvCalpar
             // 
-            this.dgvPayPropery.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPayPropery.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvCalpar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCalpar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column2,
             this.Column3,
             this.Column4});
-            this.dgvPayPropery.Location = new System.Drawing.Point(6, 57);
-            this.dgvPayPropery.Name = "dgvPayPropery";
-            this.dgvPayPropery.RowTemplate.Height = 23;
-            this.dgvPayPropery.Size = new System.Drawing.Size(435, 468);
-            this.dgvPayPropery.TabIndex = 0;
-            this.dgvPayPropery.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPayPropery_CellContentClick);
+            this.dgvCalpar.Location = new System.Drawing.Point(6, 44);
+            this.dgvCalpar.Name = "dgvCalpar";
+            this.dgvCalpar.RowTemplate.Height = 23;
+            this.dgvCalpar.Size = new System.Drawing.Size(347, 481);
+            this.dgvCalpar.TabIndex = 0;
             // 
             // Column2
             // 
@@ -955,48 +892,53 @@
             this.Column4.HeaderText = "体积系数";
             this.Column4.Name = "Column4";
             // 
-            // tabPageLayerData
+            // tbgReservorResult
             // 
-            this.tabPageLayerData.Controls.Add(this.dgvIntepretation);
-            this.tabPageLayerData.Controls.Add(this.button2);
-            this.tabPageLayerData.Controls.Add(this.btnImportLayerDepth);
-            this.tabPageLayerData.Location = new System.Drawing.Point(4, 22);
-            this.tabPageLayerData.Name = "tabPageLayerData";
-            this.tabPageLayerData.Size = new System.Drawing.Size(681, 541);
-            this.tabPageLayerData.TabIndex = 3;
-            this.tabPageLayerData.Text = "小层数据调整";
-            this.tabPageLayerData.UseVisualStyleBackColor = true;
+            this.tbgReservorResult.Controls.Add(this.dgvReservoirResult);
+            this.tbgReservorResult.Location = new System.Drawing.Point(4, 22);
+            this.tbgReservorResult.Name = "tbgReservorResult";
+            this.tbgReservorResult.Size = new System.Drawing.Size(998, 541);
+            this.tbgReservorResult.TabIndex = 3;
+            this.tbgReservorResult.Text = "储量计算结果";
+            this.tbgReservorResult.UseVisualStyleBackColor = true;
             // 
-            // dgvIntepretation
+            // dgvReservoirResult
             // 
-            this.dgvIntepretation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn4,
+            this.dgvReservoirResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn6,
-            this.Column9,
+            this.dataGridViewTextBoxColumn4,
             this.Column10,
             this.Column5,
+            this.Column7,
+            this.Column9,
             this.Column6,
-            this.Column7});
-            this.dgvIntepretation.Location = new System.Drawing.Point(7, 44);
-            this.dgvIntepretation.Name = "dgvIntepretation";
-            this.dgvIntepretation.RowTemplate.Height = 23;
-            this.dgvIntepretation.Size = new System.Drawing.Size(650, 470);
-            this.dgvIntepretation.TabIndex = 17;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "井号";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.Column1,
+            this.Column8,
+            this.Column11});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvReservoirResult.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvReservoirResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvReservoirResult.Location = new System.Drawing.Point(0, 0);
+            this.dgvReservoirResult.Name = "dgvReservoirResult";
+            this.dgvReservoirResult.RowTemplate.Height = 23;
+            this.dgvReservoirResult.Size = new System.Drawing.Size(998, 541);
+            this.dgvReservoirResult.TabIndex = 17;
             // 
             // dataGridViewTextBoxColumn6
             // 
             this.dataGridViewTextBoxColumn6.HeaderText = "小层名";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
-            // Column9
+            // dataGridViewTextBoxColumn4
             // 
-            this.Column9.HeaderText = "砂厚（m）";
-            this.Column9.Name = "Column9";
+            this.dataGridViewTextBoxColumn4.HeaderText = "井号";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // Column10
             // 
@@ -1008,177 +950,46 @@
             this.Column5.HeaderText = "孔隙度（%）";
             this.Column5.Name = "Column5";
             // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "渗透率（md）";
-            this.Column6.Name = "Column6";
-            // 
             // Column7
             // 
             this.Column7.HeaderText = "饱和度（%）";
             this.Column7.Name = "Column7";
             // 
-            // button2
+            // Column9
             // 
-            this.button2.Location = new System.Drawing.Point(75, 15);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 22);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Excel粘贴";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Column9.HeaderText = "含油面积（km2）";
+            this.Column9.Name = "Column9";
             // 
-            // btnImportLayerDepth
+            // Column6
             // 
-            this.btnImportLayerDepth.Location = new System.Drawing.Point(7, 15);
-            this.btnImportLayerDepth.Name = "btnImportLayerDepth";
-            this.btnImportLayerDepth.Size = new System.Drawing.Size(62, 22);
-            this.btnImportLayerDepth.TabIndex = 5;
-            this.btnImportLayerDepth.Text = "重新导入";
-            this.btnImportLayerDepth.UseVisualStyleBackColor = true;
+            this.Column6.HeaderText = "地面原油密度";
+            this.Column6.Name = "Column6";
             // 
-            // tabPageFault
+            // Column1
             // 
-            this.tabPageFault.Controls.Add(this.btnCopyFromExcelFaultLines);
-            this.tabPageFault.Controls.Add(this.cbbDataFaultFirstLine);
-            this.tabPageFault.Controls.Add(this.label22);
-            this.tabPageFault.Controls.Add(this.btnImportFaultLines);
-            this.tabPageFault.Controls.Add(this.btnOpenFaultLines);
-            this.tabPageFault.Controls.Add(this.dgvFaultLines);
-            this.tabPageFault.Location = new System.Drawing.Point(4, 22);
-            this.tabPageFault.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPageFault.Name = "tabPageFault";
-            this.tabPageFault.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageFault.Size = new System.Drawing.Size(681, 541);
-            this.tabPageFault.TabIndex = 4;
-            this.tabPageFault.Text = "断层";
-            this.tabPageFault.UseVisualStyleBackColor = true;
+            this.Column1.HeaderText = "体积系数";
+            this.Column1.Name = "Column1";
             // 
-            // btnCopyFromExcelFaultLines
+            // Column8
             // 
-            this.btnCopyFromExcelFaultLines.Location = new System.Drawing.Point(86, 18);
-            this.btnCopyFromExcelFaultLines.Name = "btnCopyFromExcelFaultLines";
-            this.btnCopyFromExcelFaultLines.Size = new System.Drawing.Size(81, 22);
-            this.btnCopyFromExcelFaultLines.TabIndex = 16;
-            this.btnCopyFromExcelFaultLines.Text = "从Excel粘贴";
-            this.btnCopyFromExcelFaultLines.UseVisualStyleBackColor = true;
+            this.Column8.HeaderText = "储量";
+            this.Column8.Name = "Column8";
             // 
-            // cbbDataFaultFirstLine
+            // Column11
             // 
-            this.cbbDataFaultFirstLine.FormattingEnabled = true;
-            this.cbbDataFaultFirstLine.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.cbbDataFaultFirstLine.Location = new System.Drawing.Point(244, 20);
-            this.cbbDataFaultFirstLine.Name = "cbbDataFaultFirstLine";
-            this.cbbDataFaultFirstLine.Size = new System.Drawing.Size(38, 20);
-            this.cbbDataFaultFirstLine.TabIndex = 14;
-            this.cbbDataFaultFirstLine.Text = "1";
+            this.Column11.HeaderText = "储量丰度";
+            this.Column11.Name = "Column11";
             // 
-            // label22
+            // tbgReservoirMap
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(173, 24);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(65, 12);
-            this.label22.TabIndex = 13;
-            this.label22.Text = "数据起始行";
-            // 
-            // btnImportFaultLines
-            // 
-            this.btnImportFaultLines.Location = new System.Drawing.Point(288, 19);
-            this.btnImportFaultLines.Name = "btnImportFaultLines";
-            this.btnImportFaultLines.Size = new System.Drawing.Size(67, 22);
-            this.btnImportFaultLines.TabIndex = 12;
-            this.btnImportFaultLines.Text = "入库";
-            this.btnImportFaultLines.UseVisualStyleBackColor = true;
-            // 
-            // btnOpenFaultLines
-            // 
-            this.btnOpenFaultLines.Location = new System.Drawing.Point(8, 17);
-            this.btnOpenFaultLines.Name = "btnOpenFaultLines";
-            this.btnOpenFaultLines.Size = new System.Drawing.Size(72, 23);
-            this.btnOpenFaultLines.TabIndex = 11;
-            this.btnOpenFaultLines.Text = "读取文件";
-            this.btnOpenFaultLines.UseVisualStyleBackColor = true;
-            // 
-            // dgvFaultLines
-            // 
-            this.dgvFaultLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFaultLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn16,
-            this.Column22,
-            this.dataGridViewTextBoxColumn17,
-            this.dataGridViewTextBoxColumn18,
-            this.Column23});
-            this.dgvFaultLines.Location = new System.Drawing.Point(7, 46);
-            this.dgvFaultLines.Name = "dgvFaultLines";
-            this.dgvFaultLines.RowTemplate.Height = 23;
-            this.dgvFaultLines.Size = new System.Drawing.Size(637, 544);
-            this.dgvFaultLines.TabIndex = 2;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.HeaderText = "断层名";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            // 
-            // Column22
-            // 
-            this.Column22.HeaderText = "小层名";
-            this.Column22.Name = "Column22";
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.HeaderText = "X";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            this.dataGridViewTextBoxColumn18.HeaderText = "Y";
-            this.dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            // 
-            // Column23
-            // 
-            this.Column23.HeaderText = "Z";
-            this.Column23.Name = "Column23";
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.panelResCal);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(681, 541);
-            this.tabPage1.TabIndex = 5;
-            this.tabPage1.Text = "储量分布图";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.tbxOut);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(681, 541);
-            this.tabPage2.TabIndex = 6;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tbxOut
-            // 
-            this.tbxOut.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxOut.Location = new System.Drawing.Point(3, 3);
-            this.tbxOut.Multiline = true;
-            this.tbxOut.Name = "tbxOut";
-            this.tbxOut.Size = new System.Drawing.Size(675, 535);
-            this.tbxOut.TabIndex = 0;
+            this.tbgReservoirMap.Controls.Add(this.panelResCal);
+            this.tbgReservoirMap.Location = new System.Drawing.Point(4, 22);
+            this.tbgReservoirMap.Name = "tbgReservoirMap";
+            this.tbgReservoirMap.Padding = new System.Windows.Forms.Padding(3);
+            this.tbgReservoirMap.Size = new System.Drawing.Size(998, 541);
+            this.tbgReservoirMap.TabIndex = 5;
+            this.tbgReservoirMap.Text = "储量分布图";
+            this.tbgReservoirMap.UseVisualStyleBackColor = true;
             // 
             // panelResCal
             // 
@@ -1187,7 +998,7 @@
             this.panelResCal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelResCal.Location = new System.Drawing.Point(3, 3);
             this.panelResCal.Name = "panelResCal";
-            this.panelResCal.Size = new System.Drawing.Size(675, 535);
+            this.panelResCal.Size = new System.Drawing.Size(992, 535);
             this.panelResCal.TabIndex = 2;
             this.panelResCal.Click += new System.EventHandler(this.panelResCal_Click);
             this.panelResCal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelResCal_Paint);
@@ -1205,7 +1016,7 @@
             this.tssLblInfor});
             this.statusStrip1.Location = new System.Drawing.Point(0, 545);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(689, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1006, 22);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -1213,7 +1024,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 567);
+            this.ClientSize = new System.Drawing.Size(1006, 567);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabCalReservor);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -1233,17 +1044,11 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFaultPointsInWell)).EndInit();
             this.tabCalReservor.ResumeLayout(false);
-            this.tabPageWellPotion.ResumeLayout(false);
-            this.tabPageWellPotion.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPayPropery)).EndInit();
-            this.tabPageLayerData.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvIntepretation)).EndInit();
-            this.tabPageFault.ResumeLayout(false);
-            this.tabPageFault.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFaultLines)).EndInit();
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tbgReserviorPar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCalpar)).EndInit();
+            this.tbgReservorResult.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReservoirResult)).EndInit();
+            this.tbgReservoirMap.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1314,45 +1119,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn54;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn55;
         private System.Windows.Forms.TabControl tabCalReservor;
-        private System.Windows.Forms.TabPage tabPageWellPotion;
+        private System.Windows.Forms.TabPage tbgReserviorPar;
         private System.Windows.Forms.Button btnCopyFromExcelPayPropery;
-        private System.Windows.Forms.ComboBox cbbPayPropery;
-        private System.Windows.Forms.Label lblDataStartLine;
-        private System.Windows.Forms.Button btnImportPayPropery;
+        private System.Windows.Forms.Button btnCalRes;
         private System.Windows.Forms.Button btnOpenPayPropery;
-        private System.Windows.Forms.DataGridView dgvPayPropery;
-        private System.Windows.Forms.TabPage tabPageLayerData;
-        private System.Windows.Forms.Button btnImportLayerDepth;
-        private System.Windows.Forms.TabPage tabPageFault;
-        private System.Windows.Forms.Button btnCopyFromExcelFaultLines;
-        private System.Windows.Forms.ComboBox cbbDataFaultFirstLine;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button btnImportFaultLines;
-        private System.Windows.Forms.Button btnOpenFaultLines;
-        private System.Windows.Forms.DataGridView dgvFaultLines;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridView dgvCalpar;
+        private System.Windows.Forms.TabPage tbgReservorResult;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridView dgvIntepretation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox tbxOut;
+        private System.Windows.Forms.DataGridView dgvReservoirResult;
+        private System.Windows.Forms.TabPage tbgReservoirMap;
         private System.Windows.Forms.Panel panelResCal;
         private System.Windows.Forms.ToolStripStatusLabel tssLblInfor;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
     }
 }
