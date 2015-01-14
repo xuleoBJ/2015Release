@@ -172,14 +172,6 @@ namespace DOGPlatform
             return inside;
         }
 
-        //顺时针排序
-        public static List<PointD> orderByClockWise(List<PointD> points)
-      {
-         return points.OrderBy(x => Math.Atan2(x.X, x.Y)).ToList();
-      }
-        public static List<PointF> orderByClockWise(List<PointF> points)
-        {
-            return points.OrderBy(x => Math.Atan2(x.X, x.Y)).ToList();
-        } 
+      
     }
 }

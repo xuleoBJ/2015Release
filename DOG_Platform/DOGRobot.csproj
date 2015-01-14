@@ -104,6 +104,7 @@
     <Compile Include="cIOinputLayerSerier.cs" />
     <Compile Include="cContextMenuStripDataTable.cs" />
     <Compile Include="cIOVoronoi.cs" />
+    <Compile Include="cConvexHull.cs" />
     <Compile Include="cProjectData.cs" />
     <Compile Include="FormCalArea.cs">
       <SubType>Form</SubType>

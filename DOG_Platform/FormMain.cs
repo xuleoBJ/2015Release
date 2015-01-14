@@ -1357,7 +1357,7 @@ namespace DOGPlatform
 
         private void tsmiResMap_Click(object sender, EventArgs e)
         {
-            if (tbcMain.TabPages.Contains(tbgRes) == false) tbcMain.TabPages.Add(tbgRes);
+            if (tbcMain.TabPages.Contains(tbgRes) == false) { tbcMain.TabPages.Add(tbgRes); tbcMain.SelectedTab = tbgRes; }
             else tbcMain.TabPages.Remove(tbgRes);
 
             if (this.tslblLayer.Visible == false) 
@@ -1403,7 +1403,8 @@ namespace DOGPlatform
             Graphics dc = e.Graphics;
 
             List<itemWellLayerVoi> listVoi = cIOVoronoi.read2Struct();
-
+            StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor,true, Encoding.UTF8);
+          
             foreach (itemWellLayerVoi well in listVoi.FindAll(p => p.sXCM == sXCM))
             {
                 PointF headView = cCordinationTransform.transRealPointF2ViewPoint(
@@ -1412,6 +1413,9 @@ namespace DOGPlatform
                 //if (well.iWellType == 3) wellPen = new Pen(Color.Red, 2);
                 //else if (well.iWellType == 5) wellPen = new Pen(Color.Green, 2);
                 //else if (well.iWellType == 15) wellPen = new Pen(Color.Blue, 2);
+                List<string> sList = new List<string>();
+                sList.Add(well.sJH);
+                sList.Add(well.sXCM);
 
                 Pen blackPen = new Pen(Color.Black, 1);
                 dc.DrawEllipse(wellPen, headView.X - 1.5f, headView.Y - 1.5f, 3, 3);
@@ -1420,18 +1424,21 @@ namespace DOGPlatform
                 {
                     PointF _currentVer = cCordinationTransform.transRealPointF2ViewPoint(
                      _pf.X , _pf.Y, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
-                    listViewVer.Add(_currentVer); 
+                    listViewVer.Add(_currentVer);
+                    sList.Add(_currentVer.X.ToString() + " " + _currentVer.Y.ToString());
                 }
+                //if(cProjectData.ltStrProjectJH.IndexOf(well.sJH)%2==0)
                 dc.DrawPolygon(blackPen, listViewVer.ToArray());
 
+                swNew.WriteLine(string.Join(" ",sList));
                 Brush blackBrush = Brushes.Black;
                 Font font = new Font("黑体", 8);
                 dc.DrawString(well.sJH, font, blackBrush,
                                headView.X + 3, headView.Y + 3);
 
-
             }
-
+           
+            swNew.Close();
             base.OnPaint(e);
         }
 
@@ -1444,6 +1451,28 @@ namespace DOGPlatform
         private void tscbbLayer_SelectedIndexChanged(object sender, EventArgs e)
         {
             setResPanel();
+        }
+
+        private void tsmiCalVoronoi_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            cIOVoronoi.calVoiAndwrite2File();
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10);
+            MessageBox.Show("计算完成。消耗时间：" + elapsedTime);
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void panelResCal_MouseClick(object sender, MouseEventArgs e)
+        {
+            double xReal = cCordinationTransform.transXview2Xreal(e.X, cProjectData.dfMapXrealRefer, cProjectData.dfMapScale);
+            double yReal = cCordinationTransform.transYview2Yreal(e.Y, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+            this.tssLabelPosition.Text = sJHselectedOnPanel + " X=" + xReal.ToString("0.0") + " Y=" + yReal.ToString("0.0");
         }
 
     }

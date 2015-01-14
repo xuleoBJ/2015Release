@@ -227,7 +227,6 @@ namespace DOGPlatform
                         if (ge.site2 == i) points.Add(new PointD(ge.x1, ge.y1));  
                     }
                     //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
-                    list_ClockPoints.Add(c2DGeometryAlgorithm.orderByClockWise(points));
                 }
                 //有了 listCurrentLayerData和对应的list_ClockPoints，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i=0; i < listCurrentLayerData.Count; i++) 
@@ -347,7 +346,6 @@ namespace DOGPlatform
             inialCalPar();
         
             write2File(calReserve());
-    //        cPublicMethodForm.loadText2DataGridViewByFirstLineHead(filePath, this.dgvReservoirResult);
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
