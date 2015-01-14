@@ -20,13 +20,13 @@ namespace DOGPlatform
                     while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                     {
                         itemWellLayerVoi item = new itemWellLayerVoi();
-                        item.dbX = 0.0;
-                        item.dbY = 0.0;
-
+                       
                         string[] split = line.Trim().Split();
 
                         item.sJH = split[0];
                         item.sXCM = split[1];
+                        item.dbX = 0.0;
+                        item.dbY = 0.0;
                         double.TryParse(split[2], out  item.dbX);
                         double.TryParse(split[3], out item.dbY);
                         int iCount = 4;
@@ -85,14 +85,11 @@ namespace DOGPlatform
                 List<GraphEdge> list_ge = voroObject.generateVoronoi(xVal, yVal, minX, maxX, minY, maxY);
 
                 StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
-                
                 for (int i = 0; i < list_ge.Count; i++)
                 {
-                    
                         Point p1 = new Point((int)list_ge[i].x1, (int)list_ge[i].y1);
                         Point p2 = new Point((int)list_ge[i].x2, (int)list_ge[i].y2);
                         string sLine = "\nP " + i + " size1: " + list_ge[i].site1+ " " + list_ge[i].x1 + ", " + list_ge[i].y1  + " size2: " + list_ge[i].site2 +" " + list_ge[i].x2 + ", " + list_ge[i].y2;
-
                         swNew.WriteLine(sLine);
                 }
               
@@ -105,11 +102,11 @@ namespace DOGPlatform
                     List<PointF> points = new List<PointF>();
                     foreach (GraphEdge ge in list_ge)
                     {
-                        if (ge.site1 == i) points.Add(new PointF(Convert.ToSingle( ge.x2), Convert.ToSingle(ge.y2)));  //如果site1ID=输入时的序号，就取site2
-                        if (ge.site2 == i) points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1)));
+                        if (ge.site2 == i) points.Add(new PointF(Convert.ToSingle( ge.x2), Convert.ToSingle(ge.y2)));  //如果site1ID=输入时的序号，就取site2
+                        if (ge.site1 == i) points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1)));
                     }
                     //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
-                    list_ClockPoints.Add( ConvexHull.CH2(points.Distinct().ToList(),true));
+                    list_ClockPoints.Add( cSortPoints.sortPoints(points.Distinct().ToList()));
                 }
                 //有了 listCurrentLayerData和对应的list_ClockPoints，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i = 0; i < listCurrentLayerData.Count; i++)

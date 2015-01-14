@@ -106,6 +106,7 @@
     <Compile Include="cIOVoronoi.cs" />
     <Compile Include="cConvexHull.cs" />
     <Compile Include="cProjectData.cs" />
+    <Compile Include="cSortPoints.cs" />
     <Compile Include="FormCalArea.cs">
       <SubType>Form</SubType>
     </Compile>

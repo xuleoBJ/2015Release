@@ -22,7 +22,6 @@ E:\ProjectPlatform\2015Release\Digger\DigRobot\bin\Release\DigRobot.exe.config
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\bin\Release\DigRobot.exe.config
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\bin\Release\DigRobot.exe
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\bin\Release\DigRobot.pdb
-E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\obj\Release\DigRobot.csprojResolveAssemblyReference.cache
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\obj\Release\DigRobot._3PointCoordinateForm.resources
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\obj\Release\DigRobot.aboutForm.resources
 E:\DOG-Robot2015Release\2015Release\Digger\DigRobot\obj\Release\DigRobot.coordinateLocationForm.resources

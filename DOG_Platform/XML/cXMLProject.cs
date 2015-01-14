@@ -154,7 +154,7 @@ namespace DOGPlatform.XML
         {   
             setNodeInnerText(cProjectManager.xmlProject, "/Project/refY", cProjectData.dfMapYrealRefer.ToString());
             setNodeInnerText(cProjectManager.xmlProject, "/Project/refX", cProjectData.dfMapXrealRefer.ToString());
-            setNodeInnerText(cProjectManager.xmlProject, "/Project/scale", cProjectData.dfMapScale.ToString());
+            setNodeInnerText(cProjectManager.xmlProject, "/Project/scale", cProjectData.dfMapScale.ToString("0.000"));
         }
         public static void getProjectRefPointNode() //更新参考点
         {
@@ -193,7 +193,6 @@ namespace DOGPlatform.XML
               string sPath = "/Project/ProductYM";
               string _data = string.Join(" ", cProjectData.ltStrProjectYM); 
               setNodeInnerText(cProjectManager.xmlProject, sPath, _data);
-      
         }
         
        
