@@ -1418,6 +1418,7 @@ namespace DOGPlatform
                 sList.Add(well.sXCM);
 
                 Pen blackPen = new Pen(Color.Black, 1);
+                Pen redPen = new Pen(Color.Red, 1);
                 dc.DrawEllipse(wellPen, headView.X - 1.5f, headView.Y - 1.5f, 3, 3);
                 List<PointF> listViewVer =new List<PointF>();
                 foreach (PointF _pf in well.ltdpVertex) 
@@ -1427,8 +1428,8 @@ namespace DOGPlatform
                     listViewVer.Add(_currentVer);
                     sList.Add(_currentVer.X.ToString() + " " + _currentVer.Y.ToString());
                 }
-                //if(cProjectData.ltStrProjectJH.IndexOf(well.sJH)%2==0)
-                dc.DrawPolygon(blackPen, listViewVer.ToArray());
+                if (cProjectData.ltStrProjectJH.IndexOf(well.sJH) % 2 == 0) dc.DrawPolygon(blackPen, listViewVer.ToArray());
+                else dc.DrawPolygon(redPen, listViewVer.ToArray()); 
 
                 swNew.WriteLine(string.Join(" ",sList));
                 Brush blackBrush = Brushes.Black;

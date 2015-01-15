@@ -97,22 +97,20 @@ namespace DOGPlatform
             
             List<GraphEdge> ge;
             ge = MakeVoronoiGraph(sites, panelResCal.Width , panelResCal.Height);
-
+            StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, true, Encoding.UTF8);
             // رسم أضلاع فورونوي
             for (int i = 0; i < ge.Count; i++)
             {
-                try
-                {
+                
                     Point p1 = new Point((int)ge[i].x1, (int)ge[i].y1);
                     Point p2 = new Point((int)ge[i].x2, (int)ge[i].y2);
                     dc.DrawLine(Pens.Black, p1.X, p1.Y, p2.X, p2.Y);
-                }
-                catch
-                {
-                    string s = "\nP " + i + " size1" + ge[i].site1 + "size2" + ge[i].site2 +" "+ ge[i].x1 + ", " + ge[i].y1 + " || " + ge[i].x2 + ", " + ge[i].y2;
-                }
-                        
+
+                    string sLine = "P" + i + " size1: " + ge[i].site1 + " " + ge[i].x1.ToString("0.0") + " " + ge[i].y1.ToString("0.0") + " size2: " + ge[i].site2 + "  " + ge[i].x2.ToString("0.0") + " " + ge[i].y2.ToString("0.0");
+   
+                   swNew.WriteLine(sLine);      
             }
+            swNew.Close();
             base.OnPaint(e);
         }
 

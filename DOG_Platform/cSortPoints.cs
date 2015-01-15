@@ -8,58 +8,49 @@ namespace DOGPlatform
 {
     class cSortPoints
     {
-        public static List<PointF> sortPoints(List<PointF> points) 
+        struct XYAngleID 
         {
-             //find the smallest X index
-            List<float> listX = points.Select(p => p.X).ToList();
-            float fXMin = listX.Min();
-            int indexMinX= points.FindIndex(p => p.X == fXMin);
-            List<double> dfListAngle = new List<double>();
-            List<double> listAngleSorted = new List<double>();
-            for (int i = 0; i < points.Count; i++)
-            {
-                double mainPointX = (double)points[indexMinX].X;
-                double mainPointY = (double)points[indexMinX].Y;
-                double kone;
-                if ((double)points[i].X == mainPointX && (double)points[i].Y == mainPointY)
-                    kone = 0;
-                else
-                {
-                    double otherPointX = (double)points[i].X - (double)points[indexMinX].X;
-                    double otherPointY = (double)points[indexMinX].Y - (double)points[i].Y;
-                    kone = Angle(otherPointX, otherPointY);
-                }
-
-                dfListAngle.Add(kone);
-                listAngleSorted.Add(kone);
-            }
-
-            listAngleSorted.Sort();
-            List<PointF> listReturn = new List<PointF>();
-            foreach (double _angle in listAngleSorted) 
-            {
-                int _index = dfListAngle.IndexOf(_angle);
-                listReturn.Add(points[_index]);
-            }
-            return listReturn;
-         
+            public int id;
+            public float fx;
+            public float fy;
+            public double angle;
         }
 
-        public static double Angle(double px2, double py2)
+        public static List<PointF> sortPoints(List<PointF> points,PointF pCent)
         {
-            double angle = 0.0;
+            List<XYAngleID> dfListAngle = new List<XYAngleID>();
+            for (int i = 0; i < points.Count; i++)
+            {
+                XYAngleID agID = new XYAngleID();
+                agID.id = i;
+                agID.fx = points[i].X;
+                agID.fy = points[i].Y;
+                agID.angle = Angle(points[i], pCent); ;
+                dfListAngle.Add(agID); 
+            }
+
+            List<PointF> listReturn = new List<PointF>();
+
+            foreach (XYAngleID item in dfListAngle.OrderBy(p => p.angle))
+            {
+                listReturn.Add(new PointF(item.fx, item.fy));
+            }
+
+            return listReturn;
+
+        }
+         public static double Angle(PointF p1, PointF pCent)
+        {
             //Calculate the angle
-            angle = System.Math.Atan(System.Math.Abs( px2) / System.Math.Abs(py2));
+            double angle = System.Math.Atan2(p1.Y - pCent.Y, p1.X - pCent.X);
 
             // Convert to degrees
             angle = angle * 180 / System.Math.PI;
-
-            if (py2 < 0)
-                angle = 180 - angle;
-
+            if (p1.Y - pCent.Y > 0)
+                angle = 180 + angle;
             return angle;
         }
-
+       
       
 
     }

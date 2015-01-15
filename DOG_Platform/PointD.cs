@@ -26,7 +26,10 @@ namespace DOGPlatform
         {
             return new Point((int)X, (int)Y);
         }
-
+        public PointF ToPointF()
+        {
+            return new PointF((Single)X, (Single)Y);
+        }
         public override bool Equals(object obj)
         {
             return obj is PointD && this == (PointD)obj;

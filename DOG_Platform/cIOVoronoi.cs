@@ -100,13 +100,18 @@ namespace DOGPlatform
                 for (int i = 0; i < sites.Count; i++)
                 {
                     List<PointF> points = new List<PointF>();
+                    List<GraphEdge> ListEdgeCur = new List<GraphEdge>();
                     foreach (GraphEdge ge in list_ge)
                     {
-                        if (ge.site2 == i) points.Add(new PointF(Convert.ToSingle( ge.x2), Convert.ToSingle(ge.y2)));  //如果site1ID=输入时的序号，就取site2
-                        if (ge.site1 == i) points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1)));
+                        if (ge.site2 == i || ge.site1 == i)
+                        {
+                            ListEdgeCur.Add(ge);//收集环绕顶点的所有边
+                            points.Add(new PointF(Convert.ToSingle(ge.x2), Convert.ToSingle(ge.y2)));  //获得边
+                            points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1))); //获得顶点
+                        }
                     }
                     //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
-                    list_ClockPoints.Add( cSortPoints.sortPoints(points.Distinct().ToList()));
+                    list_ClockPoints.Add(cSortPoints.sortPoints(points.Distinct().ToList(), sites[i]));
                 }
                 //有了 listCurrentLayerData和对应的list_ClockPoints，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i = 0; i < listCurrentLayerData.Count; i++)

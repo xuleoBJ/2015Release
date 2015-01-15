@@ -59,8 +59,13 @@ namespace DOGPlatform
             double py = y1 + (y2 - y1) * r;
             return Math.Sqrt((x - px) * (x - px) + (py - y1) * (py - y1));
         }
-
-        /// <summary>
+        /** * Determines the angle of a straight line drawn between point one and two. The number returned, which is a float in degrees, tells us how much we have to rotate a horizontal line clockwise for it to match the line between the two points. * If you prefer to deal with angles using radians instead of degrees, just change the last line to: "return Math.Atan2(yDiff, xDiff);" */ 
+        public static double  GetAngleOfLineBetweenTwoPoints(PointF p1, PointF p2) 
+        {
+            float xDiff = p2.X - p1.X; 
+            float yDiff = p2.Y - p1.Y; 
+            return Math.Atan2(yDiff, xDiff) * (180 / Math.PI);
+        } 
         /// 判断两条线是否相交
         /// </summary>
         /// <param name="a">线段1起点坐标</param>
