@@ -92,39 +92,35 @@
             this.tsmiInsert = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWells = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWellTops = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDataDeal = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiJSJLmatch = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiJSJLsplit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDataExport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWellPosition4Petrel = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPetrelWellTops = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmi4petrelproductLog = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiGeologyLayer = new System.Windows.Forms.ToolStripMenuItem();
-            this.计算分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGeoStatistics = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalXCSJB = new System.Windows.Forms.ToolStripMenuItem();
-            this.非均质性tsmiCalLayerHeterogeneityInner = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiInnerLayerHeterogeneity = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiVeticalLayerHeterogeneity = new System.Windows.Forms.ToolStripMenuItem();
+            this.非均质性ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHeterogeneityLayerInner = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiHeterogeneityLayerInter = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiGeologyLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalWellDistance = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLayerGeology = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVoronoi = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVoronoical = new System.Windows.Forms.ToolStripMenuItem();
+            this.分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.储量分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGeologySection = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSection = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiWellpathSection = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiWellConnect = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiConnectCal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDynamicCal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalProductionFoctor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalWellTypeDictionary = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiLayerInjectProductSystem = new System.Windows.Forms.ToolStripMenuItem();
-            this.动态地质分析ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSynthesis = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiSectionFence = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConnectCal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiProfileDecision = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiPIcal = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAdjustProfile = new System.Windows.Forms.ToolStripMenuItem();
             this.选层ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.储量计算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiCalResPar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiResMap = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsBtnNewProject = new System.Windows.Forms.ToolStripButton();
             this.tsBtnOpenProject = new System.Windows.Forms.ToolStripButton();
@@ -148,7 +144,11 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.tsmiCalVoronoi = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiStatisticsLayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiJSJLMatchLayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiJSJLsplitLayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiCalResPar = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiResMap = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -686,7 +686,7 @@
             this.tbgRes.Location = new System.Drawing.Point(4, 22);
             this.tbgRes.Name = "tbgRes";
             this.tbgRes.Padding = new System.Windows.Forms.Padding(3);
-            this.tbgRes.Size = new System.Drawing.Size(917, 610);
+            this.tbgRes.Size = new System.Drawing.Size(917, 606);
             this.tbgRes.TabIndex = 17;
             this.tbgRes.Text = "储量分布";
             this.tbgRes.UseVisualStyleBackColor = true;
@@ -698,7 +698,7 @@
             this.panelResCal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelResCal.Location = new System.Drawing.Point(3, 3);
             this.panelResCal.Name = "panelResCal";
-            this.panelResCal.Size = new System.Drawing.Size(911, 604);
+            this.panelResCal.Size = new System.Drawing.Size(911, 600);
             this.panelResCal.TabIndex = 3;
             this.panelResCal.Paint += new System.Windows.Forms.PaintEventHandler(this.panelResCal_Paint);
             this.panelResCal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelResCal_MouseClick);
@@ -709,12 +709,12 @@
             this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiProject,
             this.tsmiData,
+            this.tsmiGeoStatistics,
             this.tsmiGeologyLayer,
             this.tsmiGeologySection,
-            this.tsmiWellConnect,
             this.tsmiDynamicCal,
-            this.tsmiProfileDecision,
-            this.储量计算ToolStripMenuItem});
+            this.tsmiSynthesis,
+            this.tsmiProfileDecision});
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
             this.msMain.Size = new System.Drawing.Size(1093, 25);
@@ -738,14 +738,14 @@
             // tsmiNewProject
             // 
             this.tsmiNewProject.Name = "tsmiNewProject";
-            this.tsmiNewProject.Size = new System.Drawing.Size(133, 22);
+            this.tsmiNewProject.Size = new System.Drawing.Size(152, 22);
             this.tsmiNewProject.Text = "新建项目";
             this.tsmiNewProject.Click += new System.EventHandler(this.tsmiNewProject_Click);
             // 
             // tsmiOpenProject
             // 
             this.tsmiOpenProject.Name = "tsmiOpenProject";
-            this.tsmiOpenProject.Size = new System.Drawing.Size(133, 22);
+            this.tsmiOpenProject.Size = new System.Drawing.Size(152, 22);
             this.tsmiOpenProject.Text = "打开项目";
             this.tsmiOpenProject.Click += new System.EventHandler(this.tsmiOpenProject_Click);
             // 
@@ -753,32 +753,32 @@
             // 
             this.tsmiSaveProject.Enabled = false;
             this.tsmiSaveProject.Name = "tsmiSaveProject";
-            this.tsmiSaveProject.Size = new System.Drawing.Size(133, 22);
+            this.tsmiSaveProject.Size = new System.Drawing.Size(152, 22);
             this.tsmiSaveProject.Text = "保存项目";
             this.tsmiSaveProject.Click += new System.EventHandler(this.tsmSaveProject_Click);
             // 
             // ToolStripMenuItem1
             // 
             this.ToolStripMenuItem1.Name = "ToolStripMenuItem1";
-            this.ToolStripMenuItem1.Size = new System.Drawing.Size(130, 6);
+            this.ToolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
             // 
             // tsmiSaveAnotherProject
             // 
             this.tsmiSaveAnotherProject.Enabled = false;
             this.tsmiSaveAnotherProject.Name = "tsmiSaveAnotherProject";
-            this.tsmiSaveAnotherProject.Size = new System.Drawing.Size(133, 22);
+            this.tsmiSaveAnotherProject.Size = new System.Drawing.Size(152, 22);
             this.tsmiSaveAnotherProject.Text = "项目另存...";
             this.tsmiSaveAnotherProject.Click += new System.EventHandler(this.tsmiSaveAnotherProject_Click);
             // 
             // ToolStripMenuItem2
             // 
             this.ToolStripMenuItem2.Name = "ToolStripMenuItem2";
-            this.ToolStripMenuItem2.Size = new System.Drawing.Size(130, 6);
+            this.ToolStripMenuItem2.Size = new System.Drawing.Size(149, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(133, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(152, 22);
             this.tsmiExit.Text = "退出";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -786,7 +786,6 @@
             // 
             this.tsmiData.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiInsert,
-            this.tsmiDataDeal,
             this.tsmiDataExport});
             this.tsmiData.Enabled = false;
             this.tsmiData.Name = "tsmiData";
@@ -799,7 +798,7 @@
             this.tsmiWells,
             this.tsmiWellTops});
             this.tsmiInsert.Name = "tsmiInsert";
-            this.tsmiInsert.Size = new System.Drawing.Size(124, 22);
+            this.tsmiInsert.Size = new System.Drawing.Size(152, 22);
             this.tsmiInsert.Text = "基础数据";
             // 
             // tsmiWells
@@ -816,29 +815,6 @@
             this.tsmiWellTops.Text = "层序";
             this.tsmiWellTops.Click += new System.EventHandler(this.tsmiWellTops_Click);
             // 
-            // tsmiDataDeal
-            // 
-            this.tsmiDataDeal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiJSJLmatch,
-            this.tsmiJSJLsplit});
-            this.tsmiDataDeal.Name = "tsmiDataDeal";
-            this.tsmiDataDeal.Size = new System.Drawing.Size(124, 22);
-            this.tsmiDataDeal.Text = "数据处理";
-            // 
-            // tsmiJSJLmatch
-            // 
-            this.tsmiJSJLmatch.Name = "tsmiJSJLmatch";
-            this.tsmiJSJLmatch.Size = new System.Drawing.Size(160, 22);
-            this.tsmiJSJLmatch.Text = "解释结果归小层";
-            this.tsmiJSJLmatch.Click += new System.EventHandler(this.tsmiJSJLmatch_Click);
-            // 
-            // tsmiJSJLsplit
-            // 
-            this.tsmiJSJLsplit.Name = "tsmiJSJLsplit";
-            this.tsmiJSJLsplit.Size = new System.Drawing.Size(160, 22);
-            this.tsmiJSJLsplit.Text = "解释结果劈分";
-            this.tsmiJSJLsplit.Click += new System.EventHandler(this.tsmiJSJLsplit_Click);
-            // 
             // tsmiDataExport
             // 
             this.tsmiDataExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -846,7 +822,7 @@
             this.tsmiPetrelWellTops,
             this.tsmi4petrelproductLog});
             this.tsmiDataExport.Name = "tsmiDataExport";
-            this.tsmiDataExport.Size = new System.Drawing.Size(124, 22);
+            this.tsmiDataExport.Size = new System.Drawing.Size(152, 22);
             this.tsmiDataExport.Text = "数据导出";
             // 
             // tsmiWellPosition4Petrel
@@ -870,55 +846,58 @@
             this.tsmi4petrelproductLog.Text = "petrel解释结论（productLog）";
             this.tsmi4petrelproductLog.Click += new System.EventHandler(this.tsmi4petrelproductLog_Click);
             // 
-            // tsmiGeologyLayer
+            // tsmiGeoStatistics
             // 
-            this.tsmiGeologyLayer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.计算分析ToolStripMenuItem,
-            this.非均质性tsmiCalLayerHeterogeneityInner,
-            this.tsmiCalWellDistance,
-            this.tsmiLayerGeology});
-            this.tsmiGeologyLayer.Enabled = false;
-            this.tsmiGeologyLayer.Name = "tsmiGeologyLayer";
-            this.tsmiGeologyLayer.Size = new System.Drawing.Size(68, 21);
-            this.tsmiGeologyLayer.Text = "小层平面";
-            // 
-            // 计算分析ToolStripMenuItem
-            // 
-            this.计算分析ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCalXCSJB});
-            this.计算分析ToolStripMenuItem.Name = "计算分析ToolStripMenuItem";
-            this.计算分析ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
-            this.计算分析ToolStripMenuItem.Text = "小层数据字典";
+            this.tsmiGeoStatistics.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCalXCSJB,
+            this.非均质性ToolStripMenuItem,
+            this.tsmiStatisticsLayer});
+            this.tsmiGeoStatistics.Enabled = false;
+            this.tsmiGeoStatistics.Name = "tsmiGeoStatistics";
+            this.tsmiGeoStatistics.Size = new System.Drawing.Size(68, 21);
+            this.tsmiGeoStatistics.Text = "地质统计";
             // 
             // tsmiCalXCSJB
             // 
             this.tsmiCalXCSJB.Name = "tsmiCalXCSJB";
-            this.tsmiCalXCSJB.Size = new System.Drawing.Size(100, 22);
-            this.tsmiCalXCSJB.Text = "计算";
-            this.tsmiCalXCSJB.Click += new System.EventHandler(this.tsmsCalXCSJB_Click);
+            this.tsmiCalXCSJB.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCalXCSJB.Text = "小层数据表";
+            this.tsmiCalXCSJB.Click += new System.EventHandler(this.tsmiCalXCSJB_Click);
             // 
-            // 非均质性tsmiCalLayerHeterogeneityInner
+            // 非均质性ToolStripMenuItem
             // 
-            this.非均质性tsmiCalLayerHeterogeneityInner.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiInnerLayerHeterogeneity,
-            this.tsmiVeticalLayerHeterogeneity});
-            this.非均质性tsmiCalLayerHeterogeneityInner.Name = "非均质性tsmiCalLayerHeterogeneityInner";
-            this.非均质性tsmiCalLayerHeterogeneityInner.Size = new System.Drawing.Size(160, 22);
-            this.非均质性tsmiCalLayerHeterogeneityInner.Text = "非均质性计算";
+            this.非均质性ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiHeterogeneityLayerInner,
+            this.tsmiHeterogeneityLayerInter});
+            this.非均质性ToolStripMenuItem.Name = "非均质性ToolStripMenuItem";
+            this.非均质性ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.非均质性ToolStripMenuItem.Text = "非均质性";
             // 
-            // tsmiInnerLayerHeterogeneity
+            // tsmiHeterogeneityLayerInner
             // 
-            this.tsmiInnerLayerHeterogeneity.Name = "tsmiInnerLayerHeterogeneity";
-            this.tsmiInnerLayerHeterogeneity.Size = new System.Drawing.Size(124, 22);
-            this.tsmiInnerLayerHeterogeneity.Text = "层内统计";
-            this.tsmiInnerLayerHeterogeneity.Click += new System.EventHandler(this.层内非均质性统计ToolStripMenuItem_Click);
+            this.tsmiHeterogeneityLayerInner.Name = "tsmiHeterogeneityLayerInner";
+            this.tsmiHeterogeneityLayerInner.Size = new System.Drawing.Size(152, 22);
+            this.tsmiHeterogeneityLayerInner.Text = "层内";
+            this.tsmiHeterogeneityLayerInner.Click += new System.EventHandler(this.tsmiHeterogeneityLayerInner_Click);
             // 
-            // tsmiVeticalLayerHeterogeneity
+            // tsmiHeterogeneityLayerInter
             // 
-            this.tsmiVeticalLayerHeterogeneity.Name = "tsmiVeticalLayerHeterogeneity";
-            this.tsmiVeticalLayerHeterogeneity.Size = new System.Drawing.Size(124, 22);
-            this.tsmiVeticalLayerHeterogeneity.Text = "垂向分析";
-            this.tsmiVeticalLayerHeterogeneity.Click += new System.EventHandler(this.层间非均质性分析ToolStripMenuItem_Click);
+            this.tsmiHeterogeneityLayerInter.Name = "tsmiHeterogeneityLayerInter";
+            this.tsmiHeterogeneityLayerInter.Size = new System.Drawing.Size(152, 22);
+            this.tsmiHeterogeneityLayerInter.Text = "层间";
+            this.tsmiHeterogeneityLayerInter.Click += new System.EventHandler(this.tsmiHeterogeneityLayerInter_Click);
+            // 
+            // tsmiGeologyLayer
+            // 
+            this.tsmiGeologyLayer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCalWellDistance,
+            this.tsmiLayerGeology,
+            this.tsmiVoronoi,
+            this.储量分析ToolStripMenuItem});
+            this.tsmiGeologyLayer.Enabled = false;
+            this.tsmiGeologyLayer.Name = "tsmiGeologyLayer";
+            this.tsmiGeologyLayer.Size = new System.Drawing.Size(68, 21);
+            this.tsmiGeologyLayer.Text = "平面分析";
             // 
             // tsmiCalWellDistance
             // 
@@ -933,6 +912,37 @@
             this.tsmiLayerGeology.Size = new System.Drawing.Size(160, 22);
             this.tsmiLayerGeology.Text = "小层平面图分析";
             this.tsmiLayerGeology.Click += new System.EventHandler(this.tsmiLayerGeology_Click);
+            // 
+            // tsmiVoronoi
+            // 
+            this.tsmiVoronoi.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiVoronoical,
+            this.分析ToolStripMenuItem});
+            this.tsmiVoronoi.Name = "tsmiVoronoi";
+            this.tsmiVoronoi.Size = new System.Drawing.Size(160, 22);
+            this.tsmiVoronoi.Text = "voronoi分析";
+            // 
+            // tsmiVoronoical
+            // 
+            this.tsmiVoronoical.Name = "tsmiVoronoical";
+            this.tsmiVoronoical.Size = new System.Drawing.Size(100, 22);
+            this.tsmiVoronoical.Text = "计算";
+            this.tsmiVoronoical.Click += new System.EventHandler(this.tsmiVoronoical_Click);
+            // 
+            // 分析ToolStripMenuItem
+            // 
+            this.分析ToolStripMenuItem.Name = "分析ToolStripMenuItem";
+            this.分析ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.分析ToolStripMenuItem.Text = "分析";
+            // 
+            // 储量分析ToolStripMenuItem
+            // 
+            this.储量分析ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiCalResPar,
+            this.tsmiResMap});
+            this.储量分析ToolStripMenuItem.Name = "储量分析ToolStripMenuItem";
+            this.储量分析ToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.储量分析ToolStripMenuItem.Text = "储量分析";
             // 
             // tsmiGeologySection
             // 
@@ -958,37 +968,11 @@
             this.tsmiWellpathSection.Text = "斜井剖面";
             this.tsmiWellpathSection.Click += new System.EventHandler(this.tsmiWellpathSection_Click);
             // 
-            // tsmiWellConnect
-            // 
-            this.tsmiWellConnect.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiSectionFence,
-            this.tsmiConnectCal});
-            this.tsmiWellConnect.Enabled = false;
-            this.tsmiWellConnect.Name = "tsmiWellConnect";
-            this.tsmiWellConnect.Size = new System.Drawing.Size(80, 21);
-            this.tsmiWellConnect.Text = "连通性分析";
-            // 
-            // tsmiSectionFence
-            // 
-            this.tsmiSectionFence.Name = "tsmiSectionFence";
-            this.tsmiSectionFence.Size = new System.Drawing.Size(160, 22);
-            this.tsmiSectionFence.Text = "2.5地质分析";
-            this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
-            // 
-            // tsmiConnectCal
-            // 
-            this.tsmiConnectCal.Name = "tsmiConnectCal";
-            this.tsmiConnectCal.Size = new System.Drawing.Size(160, 22);
-            this.tsmiConnectCal.Text = "注采联通性分析";
-            this.tsmiConnectCal.Click += new System.EventHandler(this.tsmiConnectCal_Click);
-            // 
             // tsmiDynamicCal
             // 
             this.tsmiDynamicCal.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiCalProductionFoctor,
-            this.tsmiCalWellTypeDictionary,
-            this.tsmiLayerInjectProductSystem,
-            this.动态地质分析ToolStripMenuItem});
+            this.tsmiCalWellTypeDictionary});
             this.tsmiDynamicCal.Enabled = false;
             this.tsmiDynamicCal.Name = "tsmiDynamicCal";
             this.tsmiDynamicCal.Size = new System.Drawing.Size(68, 21);
@@ -1008,19 +992,29 @@
             this.tsmiCalWellTypeDictionary.Text = "劈分计算";
             this.tsmiCalWellTypeDictionary.Click += new System.EventHandler(this.tsmiCalWellTypeDictionary_Click);
             // 
-            // tsmiLayerInjectProductSystem
+            // tsmiSynthesis
             // 
-            this.tsmiLayerInjectProductSystem.Name = "tsmiLayerInjectProductSystem";
-            this.tsmiLayerInjectProductSystem.Size = new System.Drawing.Size(148, 22);
-            this.tsmiLayerInjectProductSystem.Text = "注采系统分析";
-            this.tsmiLayerInjectProductSystem.Click += new System.EventHandler(this.tsmiLayerInjectProductSystem_Click);
+            this.tsmiSynthesis.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiSectionFence,
+            this.tsmiConnectCal});
+            this.tsmiSynthesis.Enabled = false;
+            this.tsmiSynthesis.Name = "tsmiSynthesis";
+            this.tsmiSynthesis.Size = new System.Drawing.Size(68, 21);
+            this.tsmiSynthesis.Text = "综合分析";
             // 
-            // 动态地质分析ToolStripMenuItem
+            // tsmiSectionFence
             // 
-            this.动态地质分析ToolStripMenuItem.Name = "动态地质分析ToolStripMenuItem";
-            this.动态地质分析ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
-            this.动态地质分析ToolStripMenuItem.Text = "动态地质分析";
-            this.动态地质分析ToolStripMenuItem.Click += new System.EventHandler(this.动态地质分析ToolStripMenuItem_Click);
+            this.tsmiSectionFence.Name = "tsmiSectionFence";
+            this.tsmiSectionFence.Size = new System.Drawing.Size(160, 22);
+            this.tsmiSectionFence.Text = "井组栅状图分析";
+            this.tsmiSectionFence.Click += new System.EventHandler(this.tsmiSectionFence_Click);
+            // 
+            // tsmiConnectCal
+            // 
+            this.tsmiConnectCal.Name = "tsmiConnectCal";
+            this.tsmiConnectCal.Size = new System.Drawing.Size(160, 22);
+            this.tsmiConnectCal.Text = "注采联通性分析";
+            this.tsmiConnectCal.Click += new System.EventHandler(this.tsmiConnectCal_Click);
             // 
             // tsmiProfileDecision
             // 
@@ -1052,30 +1046,6 @@
             this.选层ToolStripMenuItem.Name = "选层ToolStripMenuItem";
             this.选层ToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
             this.选层ToolStripMenuItem.Text = "选层";
-            // 
-            // 储量计算ToolStripMenuItem
-            // 
-            this.储量计算ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiCalVoronoi,
-            this.tsmiCalResPar,
-            this.tsmiResMap});
-            this.储量计算ToolStripMenuItem.Name = "储量计算ToolStripMenuItem";
-            this.储量计算ToolStripMenuItem.Size = new System.Drawing.Size(68, 21);
-            this.储量计算ToolStripMenuItem.Text = "储量计算";
-            // 
-            // tsmiCalResPar
-            // 
-            this.tsmiCalResPar.Name = "tsmiCalResPar";
-            this.tsmiCalResPar.Size = new System.Drawing.Size(152, 22);
-            this.tsmiCalResPar.Text = "计算参数";
-            this.tsmiCalResPar.Click += new System.EventHandler(this.tsmiCalResPar_Click);
-            // 
-            // tsmiResMap
-            // 
-            this.tsmiResMap.Name = "tsmiResMap";
-            this.tsmiResMap.Size = new System.Drawing.Size(152, 22);
-            this.tsmiResMap.Text = "储量分布";
-            this.tsmiResMap.Click += new System.EventHandler(this.tsmiResMap_Click);
             // 
             // ToolStripMain
             // 
@@ -1270,12 +1240,42 @@
             this.imageListMain.Images.SetKeyName(6, "Grid-2.ico");
             this.imageListMain.Images.SetKeyName(7, "faults.png");
             // 
-            // tsmiCalVoronoi
+            // tsmiStatisticsLayer
             // 
-            this.tsmiCalVoronoi.Name = "tsmiCalVoronoi";
-            this.tsmiCalVoronoi.Size = new System.Drawing.Size(152, 22);
-            this.tsmiCalVoronoi.Text = "voronoi计算";
-            this.tsmiCalVoronoi.Click += new System.EventHandler(this.tsmiCalVoronoi_Click);
+            this.tsmiStatisticsLayer.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiJSJLMatchLayer,
+            this.tsmiJSJLsplitLayer});
+            this.tsmiStatisticsLayer.Name = "tsmiStatisticsLayer";
+            this.tsmiStatisticsLayer.Size = new System.Drawing.Size(152, 22);
+            this.tsmiStatisticsLayer.Text = "层内统计";
+            // 
+            // tsmiJSJLMatchLayer
+            // 
+            this.tsmiJSJLMatchLayer.Name = "tsmiJSJLMatchLayer";
+            this.tsmiJSJLMatchLayer.Size = new System.Drawing.Size(160, 22);
+            this.tsmiJSJLMatchLayer.Text = "解释结果归小层";
+            this.tsmiJSJLMatchLayer.Click += new System.EventHandler(this.tsmiJSJLmatch_Click);
+            // 
+            // tsmiJSJLsplitLayer
+            // 
+            this.tsmiJSJLsplitLayer.Name = "tsmiJSJLsplitLayer";
+            this.tsmiJSJLsplitLayer.Size = new System.Drawing.Size(160, 22);
+            this.tsmiJSJLsplitLayer.Text = "解释结论劈分";
+            this.tsmiJSJLsplitLayer.Click += new System.EventHandler(this.tsmiJSJLsplit_Click);
+            // 
+            // tsmiCalResPar
+            // 
+            this.tsmiCalResPar.Name = "tsmiCalResPar";
+            this.tsmiCalResPar.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCalResPar.Text = "储量参数";
+            this.tsmiCalResPar.Click += new System.EventHandler(this.tsmiCalResPar_Click);
+            // 
+            // tsmiResMap
+            // 
+            this.tsmiResMap.Name = "tsmiResMap";
+            this.tsmiResMap.Size = new System.Drawing.Size(152, 22);
+            this.tsmiResMap.Text = "储量分布";
+            this.tsmiResMap.Click += new System.EventHandler(this.tsmiResMap_Click);
             // 
             // FormMain
             // 
@@ -1286,7 +1286,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DOG-Robot地质研究机器人2015";
+            this.Text = "GeoScape";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -1357,15 +1357,10 @@
         private System.Windows.Forms.ToolStripMenuItem 根据井号筛选解释结论ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 删除缺失分层数据的井ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiGeologyLayer;
-        private System.Windows.Forms.ToolStripMenuItem 计算分析ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCalXCSJB;
-        private System.Windows.Forms.ToolStripMenuItem 非均质性tsmiCalLayerHeterogeneityInner;
-        private System.Windows.Forms.ToolStripMenuItem tsmiInnerLayerHeterogeneity;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalWellDistance;
         private System.Windows.Forms.ToolStripMenuItem tsmiLayerGeology;
         private System.Windows.Forms.ToolStripMenuItem tsmiDynamicCal;
         private System.Windows.Forms.ToolStripMenuItem tsmiCalProductionFoctor;
-        private System.Windows.Forms.ToolStripMenuItem tsmiLayerInjectProductSystem;
         private System.Windows.Forms.ToolStrip ToolStripMain;
         private System.Windows.Forms.ToolStripButton tsBtnNewProject;
         private System.Windows.Forms.ToolStripButton tsBtnOpenProject;
@@ -1378,7 +1373,6 @@
         private System.Windows.Forms.ToolStripSeparator ToolStripSeparator2;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.ContextMenuStrip cmsProject;
-        private System.Windows.Forms.ToolStripMenuItem 动态地质分析ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiDataExport;
         private System.Windows.Forms.ToolStripMenuItem tsmiWellPosition4Petrel;
         private System.Windows.Forms.ToolStripMenuItem tsmi4petrelproductLog;
@@ -1411,9 +1405,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiGeologySection;
         private System.Windows.Forms.ToolStripMenuItem tsmiSection;
         private System.Windows.Forms.ToolStripMenuItem tsmiWellpathSection;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDataDeal;
-        private System.Windows.Forms.ToolStripMenuItem tsmiJSJLmatch;
-        private System.Windows.Forms.ToolStripMenuItem tsmiJSJLsplit;
         private System.Windows.Forms.ToolStripMenuItem tsmiProfileDecision;
         private System.Windows.Forms.ToolStripMenuItem tsmiAdjustProfile;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
@@ -1422,7 +1413,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.ToolStripMenuItem tsmiWellConnect;
+        private System.Windows.Forms.ToolStripMenuItem tsmiSynthesis;
         private System.Windows.Forms.ToolStripMenuItem tsmiSectionFence;
         private System.Windows.Forms.ToolStripButton tsmiMove;
         private System.Windows.Forms.ToolStripButton tsBtnReflush;
@@ -1444,15 +1435,24 @@
         private System.Windows.Forms.TreeView tvResultTable;
         private System.Windows.Forms.TabPage tbgMainTable;
         private System.Windows.Forms.DataGridView dgvDataTable;
-        private System.Windows.Forms.ToolStripMenuItem tsmiVeticalLayerHeterogeneity;
-        private System.Windows.Forms.ToolStripMenuItem 储量计算ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCalResPar;
-        private System.Windows.Forms.ToolStripMenuItem tsmiResMap;
         private System.Windows.Forms.TabPage tbgRes;
         private System.Windows.Forms.Panel panelResCal;
         private System.Windows.Forms.ToolStripLabel tslblLayer;
         private System.Windows.Forms.ToolStripComboBox tscbbLayer;
-        private System.Windows.Forms.ToolStripMenuItem tsmiCalVoronoi;
+        private System.Windows.Forms.ToolStripMenuItem tsmiVoronoi;
+        private System.Windows.Forms.ToolStripMenuItem tsmiVoronoical;
+        private System.Windows.Forms.ToolStripMenuItem 分析ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiGeoStatistics;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCalXCSJB;
+        private System.Windows.Forms.ToolStripMenuItem 非均质性ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHeterogeneityLayerInner;
+        private System.Windows.Forms.ToolStripMenuItem tsmiHeterogeneityLayerInter;
+        private System.Windows.Forms.ToolStripMenuItem 储量分析ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiStatisticsLayer;
+        private System.Windows.Forms.ToolStripMenuItem tsmiJSJLMatchLayer;
+        private System.Windows.Forms.ToolStripMenuItem tsmiJSJLsplitLayer;
+        private System.Windows.Forms.ToolStripMenuItem tsmiCalResPar;
+        private System.Windows.Forms.ToolStripMenuItem tsmiResMap;
     }
 }
 

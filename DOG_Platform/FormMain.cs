@@ -54,9 +54,10 @@ namespace DOGPlatform
         void enableMenu() 
         {
             tsmiData.Enabled = true;
+            tsmiGeoStatistics.Enabled = true;
             tsmiGeologyLayer.Enabled = true;
             tsmiGeologySection.Enabled = true;
-            tsmiWellConnect.Enabled = true;
+            tsmiSynthesis.Enabled = true;
             tsmiSaveAnotherProject.Enabled = true;
             tsmiSaveProject.Enabled = true;
 
@@ -431,16 +432,9 @@ namespace DOGPlatform
             System.Diagnostics.Process.Start("explorer.exe", cProjectManager.filePathInterLayerHeterogeneity);
         }
 
-        private void tsmsCalXCSJB_Click(object sender, EventArgs e)
+        private void tsmiCalXCSJB_Click(object sender, EventArgs e)
         {
-            
             WaitWindow.Show(this.calXCSJBWorkerMethod);
-        }
-
-        private void tsmiShowXCSJB_Click(object sender, EventArgs e)
-        {
-            FormDataTable newFormData = new FormDataTable(cProjectManager.filePathLayerDataDic);
-            newFormData.Show();
         }
 
         private void tsmiLayerInjectProductSystem_Click(object sender, EventArgs e)
@@ -1474,6 +1468,31 @@ namespace DOGPlatform
             double xReal = cCordinationTransform.transXview2Xreal(e.X, cProjectData.dfMapXrealRefer, cProjectData.dfMapScale);
             double yReal = cCordinationTransform.transYview2Yreal(e.Y, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
             this.tssLabelPosition.Text = sJHselectedOnPanel + " X=" + xReal.ToString("0.0") + " Y=" + yReal.ToString("0.0");
+        }
+
+        private void tsmiVoronoical_Click(object sender, EventArgs e)
+        {
+            Cursor.Current = Cursors.WaitCursor;
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
+            cIOVoronoi.calVoiAndwrite2File();
+            stopWatch.Stop();
+            TimeSpan ts = stopWatch.Elapsed;
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+               ts.Hours, ts.Minutes, ts.Seconds,
+               ts.Milliseconds / 10);
+            MessageBox.Show("计算完成。消耗时间：" + elapsedTime);
+            Cursor.Current = Cursors.Default;
+        }
+
+        private void tsmiHeterogeneityLayerInner_Click(object sender, EventArgs e)
+        {
+            WaitWindow.Show(this.calHeterogeneityInnerLayerWorkerMethod);
+        }
+
+        private void tsmiHeterogeneityLayerInter_Click(object sender, EventArgs e)
+        {
+            WaitWindow.Show(this.calHeterogeneityInterLayerWorkerMethod);
         }
 
     }
