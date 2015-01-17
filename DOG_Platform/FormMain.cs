@@ -132,6 +132,7 @@ namespace DOGPlatform
                     col.HeaderText = ltStrHeadColoum[i];
                     dgvDataTable.Columns.Add(col);
                 }
+                this.tbcMain.SelectedTab = tbgMainTable;
                 cPublicMethodForm.read2DataGridViewByTextFile(filepathTableData, dgvDataTable);
                 dgvDataTable.Rows.RemoveAt(0);
             }
@@ -435,6 +436,8 @@ namespace DOGPlatform
         private void tsmiCalXCSJB_Click(object sender, EventArgs e)
         {
             WaitWindow.Show(this.calXCSJBWorkerMethod);
+            filepathTableData = cProjectManager.filePathLayerDataDic;
+            updateDatable();
         }
 
         private void tsmiLayerInjectProductSystem_Click(object sender, EventArgs e)
@@ -1196,23 +1199,32 @@ namespace DOGPlatform
             }
         }
 
-        private void tsBtnDataManager_Click(object sender, EventArgs e)
+        void inputProjectDataOpen() 
         {
             if (cProjectManager.dirProject != Path.GetTempPath())
             {
-            FormImportProjectData frmImportProject = new FormImportProjectData();
-            frmImportProject.ShowDialog();
-            cProjectData.setProjectWellsInfor();
+                FormImportProjectData frmImportProject = new FormImportProjectData();
+                frmImportProject.ShowDialog();
+                cProjectData.setProjectWellsInfor();
             }
         }
 
-        private void tsBtnDataView_Click(object sender, EventArgs e)
+        private void tsBtnDataManager_Click(object sender, EventArgs e)
+        {
+            inputProjectDataOpen(); 
+        }
+
+        void viewProjectDataOpen() 
         {
             if (cProjectManager.dirProject != Path.GetTempPath())
             {
                 FormDataViewSingleWell formDataView = new FormDataViewSingleWell(cProjectData.ltStrProjectJH[0]);
                 formDataView.Show();
             }
+        }
+        private void tsBtnDataView_Click(object sender, EventArgs e)
+        {
+            viewProjectDataOpen(); 
         }
 
         private void tsmiPIcal_Click(object sender, EventArgs e)
@@ -1488,11 +1500,25 @@ namespace DOGPlatform
         private void tsmiHeterogeneityLayerInner_Click(object sender, EventArgs e)
         {
             WaitWindow.Show(this.calHeterogeneityInnerLayerWorkerMethod);
+            filepathTableData = cProjectManager.filePathInnerLayerHeterogeneity;
+            updateDatable();
         }
 
         private void tsmiHeterogeneityLayerInter_Click(object sender, EventArgs e)
         {
             WaitWindow.Show(this.calHeterogeneityInterLayerWorkerMethod);
+            filepathTableData = cProjectManager.filePathInterLayerHeterogeneity;
+            updateDatable();
+        }
+
+        private void tsmiProjectDataInput_Click(object sender, EventArgs e)
+        {
+            inputProjectDataOpen();
+        }
+
+        private void tsmiProjectDataView_Click(object sender, EventArgs e)
+        {
+            viewProjectDataOpen(); 
         }
 
     }
