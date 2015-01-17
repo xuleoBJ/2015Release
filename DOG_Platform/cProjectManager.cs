@@ -62,6 +62,7 @@ namespace DOGPlatform
         public static string filePathLayerSplitFactorDic = "$LayerSplitFactorDic$.txt";
         public static string filePathInterLayerHeterogeneity = "";
         public static string filePathInnerLayerHeterogeneity = "";
+        public static string filePathReserver =  "储量.txt";
 
         public static string xmlProject = "";
         public static string xmlConfigLayerMap = "";
@@ -92,9 +93,10 @@ namespace DOGPlatform
 
 
             filePathLayerDataDic = Path.Combine( dirPathUsedProjectData , "$LayerDataDic$.txt");
-           filePathLayerSplitFactorDic = Path.Combine(dirPathUsedProjectData ,"$LayerSplitFactorDic$.txt");
+            filePathLayerSplitFactorDic = Path.Combine(dirPathUsedProjectData ,"$LayerSplitFactorDic$.txt");
             filePathInterLayerHeterogeneity =Path.Combine( dirPathUsedProjectData ,"垂向非均质.txt");
             filePathInnerLayerHeterogeneity =Path.Combine( dirPathUsedProjectData , "层内非均质.txt");
+            filePathReserver = Path.Combine(cProjectManager.dirPathUsedProjectData, "储量.txt");
            
  
             xmlConfigLayerMap = Path.Combine(dirPathTemplate, "$ConfigLayerMap#.XML");

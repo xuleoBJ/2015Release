@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSaveSetting = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -95,25 +94,13 @@
             this.btnCalRes = new System.Windows.Forms.Button();
             this.btnOpenPayPropery = new System.Windows.Forms.Button();
             this.dgvCalpar = new System.Windows.Forms.DataGridView();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tbgReservorResult = new System.Windows.Forms.TabPage();
-            this.dgvReservoirResult = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbgReservoirMap = new System.Windows.Forms.TabPage();
             this.panelResCal = new System.Windows.Forms.Panel();
             this.tssLblInfor = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -124,8 +111,6 @@
             this.tabCalReservor.SuspendLayout();
             this.tbgReserviorPar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalpar)).BeginInit();
-            this.tbgReservorResult.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReservoirResult)).BeginInit();
             this.tbgReservoirMap.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -813,7 +798,6 @@
             // tabCalReservor
             // 
             this.tabCalReservor.Controls.Add(this.tbgReserviorPar);
-            this.tabCalReservor.Controls.Add(this.tbgReservorResult);
             this.tabCalReservor.Controls.Add(this.tbgReservoirMap);
             this.tabCalReservor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabCalReservor.Location = new System.Drawing.Point(0, 0);
@@ -877,109 +861,6 @@
             this.dgvCalpar.Size = new System.Drawing.Size(347, 481);
             this.dgvCalpar.TabIndex = 0;
             // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "小层名";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "原油密度（）";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "体积系数";
-            this.Column4.Name = "Column4";
-            // 
-            // tbgReservorResult
-            // 
-            this.tbgReservorResult.Controls.Add(this.dgvReservoirResult);
-            this.tbgReservorResult.Location = new System.Drawing.Point(4, 22);
-            this.tbgReservorResult.Name = "tbgReservorResult";
-            this.tbgReservorResult.Size = new System.Drawing.Size(998, 541);
-            this.tbgReservorResult.TabIndex = 3;
-            this.tbgReservorResult.Text = "储量计算结果";
-            this.tbgReservorResult.UseVisualStyleBackColor = true;
-            // 
-            // dgvReservoirResult
-            // 
-            this.dgvReservoirResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn4,
-            this.Column10,
-            this.Column5,
-            this.Column7,
-            this.Column9,
-            this.Column6,
-            this.Column1,
-            this.Column8,
-            this.Column11});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvReservoirResult.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvReservoirResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvReservoirResult.Location = new System.Drawing.Point(0, 0);
-            this.dgvReservoirResult.Name = "dgvReservoirResult";
-            this.dgvReservoirResult.RowTemplate.Height = 23;
-            this.dgvReservoirResult.Size = new System.Drawing.Size(998, 541);
-            this.dgvReservoirResult.TabIndex = 17;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "小层名";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "井号";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // Column10
-            // 
-            this.Column10.HeaderText = "有效厚度（m）";
-            this.Column10.Name = "Column10";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "孔隙度（%）";
-            this.Column5.Name = "Column5";
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "饱和度（%）";
-            this.Column7.Name = "Column7";
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "含油面积（km2）";
-            this.Column9.Name = "Column9";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "地面原油密度";
-            this.Column6.Name = "Column6";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "体积系数";
-            this.Column1.Name = "Column1";
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "储量";
-            this.Column8.Name = "Column8";
-            // 
-            // Column11
-            // 
-            this.Column11.HeaderText = "储量丰度";
-            this.Column11.Name = "Column11";
-            // 
             // tbgReservoirMap
             // 
             this.tbgReservoirMap.Controls.Add(this.panelResCal);
@@ -1020,6 +901,21 @@
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "小层名";
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "原油密度（吨/立方米）";
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "体积系数";
+            this.Column4.Name = "Column4";
+            // 
             // FormCalReservor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1046,8 +942,6 @@
             this.tabCalReservor.ResumeLayout(false);
             this.tbgReserviorPar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCalpar)).EndInit();
-            this.tbgReservorResult.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReservoirResult)).EndInit();
             this.tbgReservoirMap.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -1124,24 +1018,12 @@
         private System.Windows.Forms.Button btnCalRes;
         private System.Windows.Forms.Button btnOpenPayPropery;
         private System.Windows.Forms.DataGridView dgvCalpar;
-        private System.Windows.Forms.TabPage tbgReservorResult;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridView dgvReservoirResult;
         private System.Windows.Forms.TabPage tbgReservoirMap;
         private System.Windows.Forms.Panel panelResCal;
         private System.Windows.Forms.ToolStripStatusLabel tssLblInfor;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

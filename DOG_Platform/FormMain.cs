@@ -1358,7 +1358,9 @@ namespace DOGPlatform
         private void tsmiCalResPar_Click(object sender, EventArgs e)
         {
             FormCalReservor _form = new FormCalReservor();
-            _form.Show();
+            _form.ShowDialog();
+            filepathTableData = cProjectManager.filePathReserver;
+            updateDatable();
         }
 
         private void tsmiResMap_Click(object sender, EventArgs e)

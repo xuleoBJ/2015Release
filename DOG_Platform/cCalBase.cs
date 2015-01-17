@@ -223,7 +223,7 @@ namespace DOGPlatform
                 var area = Math.Abs(points.Take(points.Count - 1)
                    .Select((p, i) => (points[i + 1].X - p.X) * (points[i + 1].Y + p.Y))
                    .Sum() / 2);
-                return area / 1000000;
+                return area ;
             }
             else return 0;
         }

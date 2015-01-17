@@ -34,7 +34,7 @@ namespace DOGPlatform
             public float fBo;
             public double dbReserver;
             public double dbCLFD;//储量丰度
-            public List<PointD> ltPD_Vertex_Voronoi;
+            public List<PointF> ltPD_Vertex_Voronoi;
         }
         List<itemReservePar> layerReservaParCal = new List<itemReservePar>();
         
@@ -177,10 +177,12 @@ namespace DOGPlatform
             List<itemWellLayerReserve> listLayerWellReserves = new List<itemWellLayerReserve>();
          // 读入小层数据字典
             List<ItemDicLayerData> listData = cIODicLayerData.readDicLayerData2struct();
+            List<itemWellLayerVoi> listVoi = cIOVoronoi.read2Struct();
        //   按小层顺序筛选，并计算voronoi，通过voronic 求取每个井层的面积
             foreach (string xcm in cProjectData.ltStrProjectXCM) 
             {
                 List<ItemDicLayerData> listCurrentLayerData = listData.FindAll(p => p.sXCM == xcm);
+                List<itemWellLayerVoi> listCurrenrLayerVoi = listVoi.FindAll(p => p.sXCM == xcm);
                 itemReservePar currentCalResrvePar = layerReservaParCal.First(p => p.sXCM == xcm);
                
                   //如果没填得检查一遍
@@ -188,24 +190,24 @@ namespace DOGPlatform
                 //尽量让排序后的sizes和Voronoi内部的size是同一个顺序，这块需要校验=Y的情况
                 //如果都是相等的，可以从0开始找
                 //List<ItemDicLayerData> sortedCurrentLayerData = listCurrentLayerData.OrderBy(p => p.dbY).ToList();
-                List<PointF> sites = new List<PointF>();
+                //List<PointF> sites = new List<PointF>();
 
-                foreach (ItemDicLayerData well in listCurrentLayerData)
-                    sites.Add(new PointF(Convert.ToSingle(well.dbX), Convert.ToSingle(well.dbY)));
+                //foreach (ItemDicLayerData well in listCurrentLayerData)
+                //    sites.Add(new PointF(Convert.ToSingle(well.dbX), Convert.ToSingle(well.dbY)));
             
 
-                double[] xVal = new double[sites.Count];
-                double[] yVal = new double[sites.Count];
-                for (int i = 0; i < sites.Count; i++)
-                {
-                    xVal[i] = sites[i].X;
-                    yVal[i] = sites[i].Y;
-                }
-                double minX= cProjectData.listProjectWell.Min(p => p.dbX)-100;
-                double maxX= cProjectData.listProjectWell.Max(p => p.dbX)+100;
-                double minY= cProjectData.listProjectWell.Min(p => p.dbY)-100;
-                double maxY= cProjectData.listProjectWell.Max(p => p.dbY)+100;
-                List<GraphEdge> list_ge = voroObject.generateVoronoi(xVal, yVal, minX, maxX, minY, maxY);
+                //double[] xVal = new double[sites.Count];
+                //double[] yVal = new double[sites.Count];
+                //for (int i = 0; i < sites.Count; i++)
+                //{
+                //    xVal[i] = sites[i].X;
+                //    yVal[i] = sites[i].Y;
+                //}
+                //double minX= cProjectData.listProjectWell.Min(p => p.dbX)-100;
+                //double maxX= cProjectData.listProjectWell.Max(p => p.dbX)+100;
+                //double minY= cProjectData.listProjectWell.Min(p => p.dbY)-100;
+                //double maxY= cProjectData.listProjectWell.Max(p => p.dbY)+100;
+                //List<GraphEdge> list_ge = voroObject.generateVoronoi(xVal, yVal, minX, maxX, minY, maxY);
                 //foreach (ItemWell well in cProjectData.listProjectWell)
                 //{
                 //    PointF headView = cCordinationTransform.transRealPointF2ViewPoint(
@@ -215,18 +217,18 @@ namespace DOGPlatform
                 //List<GraphEdge> list_ge= MakeVoronoiGraph(sites, panelResCal.Width, panelResCal.Height);
                 //定义一个数据结构 就是返回 顶点序列，边的顺或者逆时针方向的结构列表
                 //注意 这里安装sites的个数找 但是 ge里egde存的是
-                List<List<PointD>> list_ClockPoints = new List<List<PointD>>();
-                for (int i = 0; i < sites.Count; i++) 
-                {
-                    List<PointD> points = new List<PointD>();
-                    foreach (GraphEdge ge in list_ge) 
-                    {
-                        if (ge.site1 == i) points.Add(new PointD(ge.x2, ge.y2));  //如果site1ID=输入时的序号，就取site2
-                        if (ge.site2 == i) points.Add(new PointD(ge.x1, ge.y1));  
-                    }
-                    //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
-                }
-                //有了 listCurrentLayerData和对应的list_ClockPoints，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
+                //List<List<PointD>> list_ClockPoints = new List<List<PointD>>();
+                //for (int i = 0; i < sites.Count; i++) 
+                //{
+                //    List<PointD> points = new List<PointD>();
+                //    foreach (GraphEdge ge in list_ge) 
+                //    {
+                //        if (ge.site1 == i) points.Add(new PointD(ge.x2, ge.y2));  //如果site1ID=输入时的序号，就取site2
+                //        if (ge.site2 == i) points.Add(new PointD(ge.x1, ge.y1));  
+                //    }
+                //    //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
+                //}
+                //有了 listCurrentLayerData和读取ListVoi 对应的计算参数，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i=0; i < listCurrentLayerData.Count; i++) 
                 {
                     itemWellLayerReserve currentWellReserver = new itemWellLayerReserve();
@@ -239,11 +241,11 @@ namespace DOGPlatform
                     currentWellReserver.fBHD = listCurrentLayerData[i].fBHD;
                     currentWellReserver.destinyOil = currentCalResrvePar.destiny;
                     currentWellReserver.fBo = currentCalResrvePar.fBo;
-                    currentWellReserver.ltPD_Vertex_Voronoi = list_ClockPoints[i];
+                    currentWellReserver.ltPD_Vertex_Voronoi = listCurrenrLayerVoi.Find(p=>p.sJH== listCurrentLayerData[i].sJH).ltdpVertex;
                     //N=100×Ao×h×ф×Soi×ρo/fBoi 
-                  currentWellReserver.dbArea = cCalBase.calArea(list_ClockPoints[i]);
-                    //面积计算还原坐标结构，存的是view坐标，需要还原成原坐标系坐标
-                    currentWellReserver.dbReserver = 100 * currentWellReserver.dbArea * currentWellReserver.fYXHD * currentWellReserver.fKXD * currentWellReserver.fBHD
+                    currentWellReserver.dbArea = cCalBase.calArea(currentWellReserver.ltPD_Vertex_Voronoi) / 1000000;
+                    //面积计算还原坐标结构，存的是view坐标，需要还原成原坐标系坐标,注意面积单位问题
+                    currentWellReserver.dbReserver = 0.01 * currentWellReserver.dbArea* currentWellReserver.fYXHD  * currentWellReserver.fBHD
                         * currentWellReserver.destinyOil / currentWellReserver.fBo;
                     listLayerWellReserves.Add(currentWellReserver);
                     currentWellReserver.dbCLFD = 0.0;
@@ -256,11 +258,9 @@ namespace DOGPlatform
 
          void write2File(List<itemWellLayerReserve> listLayerWellReserves)
         {
-            string filePathRes = Path.Combine(cProjectManager.dirPathUsedProjectData, "储量.txt");
-            StreamWriter sw = new StreamWriter(filePathRes, false, Encoding.UTF8);
-           
-            StreamWriter swVoi = new StreamWriter(cProjectManager.filePathVoi, false, Encoding.UTF8);
-            List<string> ltStrHeadColoum = new List<string>();  //小层数据表头
+
+            StreamWriter sw = new StreamWriter(cProjectManager.filePathReserver, false, Encoding.UTF8);
+            List<string> ltStrHeadColoum = new List<string>();  
             ltStrHeadColoum.Add("井号");
             ltStrHeadColoum.Add("小层名");
             ltStrHeadColoum.Add("X");
@@ -292,21 +292,9 @@ namespace DOGPlatform
                 ltStrWrited.Add(item.dbCLFD.ToString("0.0")); //底深MD
                 sw.WriteLine(string.Join("\t", ltStrWrited.ToArray()));
 
-                List<string> liStrVoi = new List<string>();
-                liStrVoi.Add(item.sJH);
-                liStrVoi.Add(item.sXCM);
-                liStrVoi.Add(item.dbX.ToString("0.0"));
-                liStrVoi.Add(item.dbY.ToString("0.0"));
-                foreach (PointD pd in item.ltPD_Vertex_Voronoi)
-                {
-                    liStrVoi.Add(pd.X.ToString("0.0"));
-                    liStrVoi.Add(pd.Y.ToString("0.0"));
-                }
-                swVoi.WriteLine(string.Join("\t", liStrVoi.ToArray()));
+             
             }
             sw.Close();
-            swVoi.Close();
-
         }
         void inialCalPar()
         {
@@ -342,7 +330,6 @@ namespace DOGPlatform
             Stopwatch stopWatch = new Stopwatch();
             stopWatch.Start();
             inialCalPar();
-        
             write2File(calReserve());
             stopWatch.Stop();
             TimeSpan ts = stopWatch.Elapsed;
@@ -351,6 +338,7 @@ namespace DOGPlatform
                ts.Milliseconds / 10);
             MessageBox.Show("计算完成。消耗时间：" + elapsedTime);
             Cursor.Current = Cursors.Default;
+            this.Close();
         }
 
      
