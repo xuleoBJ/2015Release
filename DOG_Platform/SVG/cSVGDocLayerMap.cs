@@ -192,6 +192,37 @@ namespace DOGPlatform.SVG
             gPolyline.SetAttribute("points", _points);
             return gPolyline;
         }
+
+        public XmlElement gVoronoiPolygon(string sid,List<PointF> ListVoronoiReal, string m_Color, int stroke_width)
+        {
+            XmlElement gEle = svgDoc.CreateElement("g");
+            gEle.SetAttribute("id", "Voi#" + sid);
+            if (ListVoronoiReal.Count == 0) return gEle;
+            else
+            {
+                List<Point> ListPointView = new List<Point>();
+
+
+                XmlElement gPolyline = svgDoc.CreateElement("polygon");
+                foreach (PointF item in ListVoronoiReal)
+                {
+                    Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(item.X, item.Y, xRef, yRef, this.dfscale);
+                    ListPointView.Add(pointConvert2View);
+                }
+
+                string _points = "";
+                for (int i = 0; i < ListPointView.Count; i++)
+                {
+                    _points = _points + ListPointView[i].X.ToString() + ',' + ListPointView[i].Y.ToString() + " ";
+                }
+                gPolyline.SetAttribute("style", stroke_width.ToString());
+                gPolyline.SetAttribute("stroke", m_Color);
+                gPolyline.SetAttribute("fill", "none");
+                gPolyline.SetAttribute("points", _points);
+                gEle.AppendChild(gPolyline);
+                return gEle;
+            }
+        }
        
         public void delNodeByID(string idPath)
         {

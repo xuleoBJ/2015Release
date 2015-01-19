@@ -144,13 +144,13 @@ namespace DOGPlatform
             int idx = 50;
             int idy = 50;
             cSVGDocLayerMap svgLayerMap = new cSVGDocLayerMap(filePathInitXMLconfig, PageWidth, PageHeight, idx, idy, sUnit);
-           
+
             //add title 
-            string sTitle = this.selectedLayer+ "小层平面图";
+            string sTitle = this.selectedLayer + "小层平面图";
             if (tbxTitle.Text != "") sTitle = tbxTitle.Text;
             svgLayerMap.addSVGTitle(sTitle, 50, 20);
             XmlElement returnElemment;
-          
+
             if (File.Exists(filePathSVGLayerMap)) File.Delete(filePathSVGLayerMap);
 
             returnElemment = svgLayerMap.gWellsPosition();
@@ -160,26 +160,48 @@ namespace DOGPlatform
             //读取当前顶层的断层数据
             string _topLayer = cbbSelectedXCMTop.SelectedItem.ToString();
             List<ItemFaultLine> listFaultLine = cIOinputLayerSerier.readInputFaultFile(_topLayer);
-            foreach (ItemFaultLine line in listFaultLine) 
+            foreach (ItemFaultLine line in listFaultLine)
             {
-                returnElemment = svgLayerMap.gFaultline(line.ltPoints,"red",2);
+                returnElemment = svgLayerMap.gFaultline(line.ltPoints, "red", 2);
                 svgLayerMap.addgElement2LayerBase(returnElemment);
             }
 
+            //add voi
+
+            {
+                XmlElement gVoronoiLayer = svgLayerMap.gLayerElement("voronoi");
+                svgLayerMap.addgLayer(gVoronoiLayer);
+                List<itemWellLayerVoi> listVoi = cIOVoronoi.read2Struct();
+                foreach (itemWellLayerVoi well in listVoi.FindAll(p => p.sXCM == _topLayer))
+                {
+                    returnElemment = svgLayerMap.gVoronoiPolygon(well.sJH, well.ltdpVertex, "red", 2);
+                    svgLayerMap.addgElement2Layer(gVoronoiLayer, returnElemment);
+                    //List<PointF> listViewVer = new List<PointF>();
+                    //foreach (PointF _pf in well.ltdpVertex)
+                    //{
+                       
+                    //    //PointF _currentVer = cCordinationTransform.transRealPointF2ViewPoint(
+                    //    // _pf.X, _pf.Y, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                    //    //listViewVer.Add(_currentVer);
+                    //}
+                   
+                }
+             
+            }
             if (this.cbxScaleRulerShowed.Checked == true)
             {
                 XmlElement gLayerScaleRuler = svgLayerMap.gLayerElement("比例尺");
                 svgLayerMap.addgLayer(gLayerScaleRuler);
                 returnElemment = svgLayerMap.gScaleRuler(0, 0);
-                svgLayerMap.addgElement2Layer(gLayerScaleRuler, returnElemment, 100, 100);  
+                svgLayerMap.addgElement2Layer(gLayerScaleRuler, returnElemment, 100, 100);
             }
 
             if (this.cbxAddGeologyProperty.Checked == true)
             {
-                XmlElement gPropertLayer = svgLayerMap.gLayerElement("井点属性");
-                svgLayerMap.addgLayer(gPropertLayer);
+                XmlElement gVoronoiLayer = svgLayerMap.gLayerElement("井点属性");
+                svgLayerMap.addgLayer(gVoronoiLayer);
                 returnElemment = svgLayerMap.gWellsGeologyProperty();
-                svgLayerMap.addgElement2Layer(gPropertLayer, returnElemment);  
+                svgLayerMap.addgElement2Layer(gVoronoiLayer, returnElemment);
             }
 
             if (this.cbxMapFrame.Checked == true)
@@ -192,7 +214,7 @@ namespace DOGPlatform
             {
                 XmlElement gLayerCompass = svgLayerMap.gLayerElement("指南针");
                 svgLayerMap.addgLayer(gLayerCompass);
-                svgLayerMap.addgElement2Layer(gLayerCompass, svgLayerMap.gCompass(300, 100)); 
+                svgLayerMap.addgElement2Layer(gLayerCompass, svgLayerMap.gCompass(300, 100));
             }
 
             if (this.cbxAddHorizonWell.Checked == true)
@@ -203,7 +225,7 @@ namespace DOGPlatform
                 foreach (XmlNode xn in listHorinalNode)
                 {
                     returnElemment = svgLayerMap.gHorizonalWellIntervelLine(xn);
-                    svgLayerMap.addgElement2Layer(gLayerHoriWell, returnElemment);  
+                    svgLayerMap.addgElement2Layer(gLayerHoriWell, returnElemment);
                 }
             }
             svgLayerMap.makeSVGfile(filePathSVGLayerMap);

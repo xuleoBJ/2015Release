@@ -35,7 +35,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(101, 37);
+            this.label1.Location = new System.Drawing.Point(101, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 12);
             this.label1.TabIndex = 0;
@@ -44,11 +44,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 66);
+            this.label2.Location = new System.Drawing.Point(68, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 12);
+            this.label2.Size = new System.Drawing.Size(161, 12);
             this.label2.TabIndex = 1;
-            this.label2.Text = "QQ:38643987 TEL:13581625021";
+            this.label2.Text = "泰泽工作室 TEL:13581625021";
             // 
             // FormCopyRight
             // 

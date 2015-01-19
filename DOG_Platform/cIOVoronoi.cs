@@ -53,6 +53,7 @@ namespace DOGPlatform
         public static List<itemWellLayerVoi> calVoi()
         {
             Voronoi voroObject = new Voronoi(0.1);
+            int iExtentDis = 200; //外边距
             List<itemWellLayerVoi> listLayerVoronoi = new List<itemWellLayerVoi>();
             // 读入小层数据字典
             List<ItemDicLayerData> listData = cIODicLayerData.readDicLayerData2struct();
@@ -66,10 +67,9 @@ namespace DOGPlatform
                 //尽量让排序后的sizes和Voronoi内部的size是同一个顺序，这块需要校验=Y的情况
         
                 List<PointF> sites = new List<PointF>();
-
+                StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
                 foreach (ItemDicLayerData well in listCurrentLayerData)
                     sites.Add(new PointF(Convert.ToSingle(well.dbX), Convert.ToSingle(well.dbY)));
-
 
                 double[] xVal = new double[sites.Count];
                 double[] yVal = new double[sites.Count];
@@ -77,14 +77,15 @@ namespace DOGPlatform
                 {
                     xVal[i] = sites[i].X;
                     yVal[i] = sites[i].Y;
+                    string sLine = "\nP " + i + " size1: " + xVal[i] + ", " + yVal[i]; 
+                    swNew.WriteLine(sLine);
                 }
-                double minX = cProjectData.listProjectWell.Min(p => p.dbX) - 200;
-                double maxX = cProjectData.listProjectWell.Max(p => p.dbX) + 200;
-                double minY = cProjectData.listProjectWell.Min(p => p.dbY) - 200;
-                double maxY = cProjectData.listProjectWell.Max(p => p.dbY) + 200;
+                double minX = cProjectData.listProjectWell.Min(p => p.dbX) - iExtentDis;
+                double maxX = cProjectData.listProjectWell.Max(p => p.dbX) + iExtentDis;
+                double minY = cProjectData.listProjectWell.Min(p => p.dbY) - iExtentDis;
+                double maxY = cProjectData.listProjectWell.Max(p => p.dbY) + iExtentDis;
                 List<GraphEdge> list_ge = voroObject.generateVoronoi(xVal, yVal, minX, maxX, minY, maxY);
-
-                StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
+               
                 for (int i = 0; i < list_ge.Count; i++)
                 {
                         Point p1 = new Point((int)list_ge[i].x1, (int)list_ge[i].y1);
@@ -103,15 +104,15 @@ namespace DOGPlatform
                     List<GraphEdge> ListEdgeCur = new List<GraphEdge>();
                     foreach (GraphEdge ge in list_ge)
                     {
-                        if (ge.site2 == i || ge.site1 == i)
-                        {
-                            ListEdgeCur.Add(ge);//收集环绕顶点的所有边
-                            points.Add(new PointF(Convert.ToSingle(ge.x2), Convert.ToSingle(ge.y2)));  //获得边
-                            points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1))); //获得顶点
-                        }
+                        if (ge.site2 == i || ge.site1 == i) ListEdgeCur.Add(ge);//收集环绕顶点的所有边
+                    }
+                    foreach (GraphEdge ge in ListEdgeCur) 
+                    {
+                        points.Add(new PointF(Convert.ToSingle(ge.x2), Convert.ToSingle(ge.y2)));
+                        points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1))); //获得顶点
                     }
                     //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
-                    list_ClockPoints.Add(cSortPoints.sortPoints(points.Distinct().ToList(), sites[i]));
+                    list_ClockPoints.Add(cSortPoints.sortPoints(points.Distinct().OrderBy(p=>p.Y).ToList(), sites[i]));
                 }
                 //有了 listCurrentLayerData和对应的list_ClockPoints，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i = 0; i < listCurrentLayerData.Count; i++)

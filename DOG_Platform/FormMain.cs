@@ -112,6 +112,7 @@ namespace DOGPlatform
         {
             if (File.Exists(filepathTableData))
             {
+                this.tbcProject.SelectedTab = tbgResultTable;
                 dgvDataTable.Columns.Clear();
                 int lineindex = 0;
                 string[] split;
@@ -1345,15 +1346,7 @@ namespace DOGPlatform
             Cursor.Current = Cursors.Default;
         }
 
-        private void 层内非均质性统计ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            WaitWindow.Show(this.calHeterogeneityInnerLayerWorkerMethod);
-        }
-
-        private void 层间非均质性分析ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            WaitWindow.Show(this.calHeterogeneityInterLayerWorkerMethod);
-        }
+    
 
         private void tsmiCalResPar_Click(object sender, EventArgs e)
         {
