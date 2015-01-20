@@ -176,15 +176,6 @@ namespace DOGPlatform
                 {
                     returnElemment = svgLayerMap.gVoronoiPolygon(well.sJH, well.ltdpVertex, "red", 2);
                     svgLayerMap.addgElement2Layer(gVoronoiLayer, returnElemment);
-                    //List<PointF> listViewVer = new List<PointF>();
-                    //foreach (PointF _pf in well.ltdpVertex)
-                    //{
-                       
-                    //    //PointF _currentVer = cCordinationTransform.transRealPointF2ViewPoint(
-                    //    // _pf.X, _pf.Y, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
-                    //    //listViewVer.Add(_currentVer);
-                    //}
-                   
                 }
              
             }

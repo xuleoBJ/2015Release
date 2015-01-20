@@ -28,7 +28,7 @@ namespace DOGPlatform
         }
         public PointF ToPointF()
         {
-            return new PointF((Single)X, (Single)Y);
+            return new PointF(float.Parse(X.ToString("0.0")), float.Parse(Y.ToString("0.0")));
         }
         public override bool Equals(object obj)
         {

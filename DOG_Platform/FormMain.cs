@@ -1422,7 +1422,7 @@ namespace DOGPlatform
                 Pen redPen = new Pen(Color.Red, 1);
                 dc.DrawEllipse(wellPen, headView.X - 1.5f, headView.Y - 1.5f, 3, 3);
                 List<PointF> listViewVer =new List<PointF>();
-                foreach (PointF _pf in well.ltdpVertex) 
+                foreach (PointD _pf in well.ltdpVertex) 
                 {
                     PointF _currentVer = cCordinationTransform.transRealPointF2ViewPoint(
                      _pf.X , _pf.Y, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);

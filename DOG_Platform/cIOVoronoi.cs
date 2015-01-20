@@ -14,11 +14,15 @@ namespace DOGPlatform
             List<itemWellLayerVoi> listReturn = new List<itemWellLayerVoi>();
             if (File.Exists(cProjectManager.filePathVoi))
             {
+              
                 using (StreamReader sr = new StreamReader(cProjectManager.filePathVoi, System.Text.Encoding.UTF8))
                 {
                     String line;
+                    int indexLine = 0;
+
                     while ((line = sr.ReadLine()) != null) //delete the line whose legth is 0
                     {
+                        indexLine++;
                         itemWellLayerVoi item = new itemWellLayerVoi();
                        
                         string[] split = line.Trim().Split();
@@ -30,12 +34,20 @@ namespace DOGPlatform
                         double.TryParse(split[2], out  item.dbX);
                         double.TryParse(split[3], out item.dbY);
                         int iCount = 4;
-                        while (split.Length > iCount)
+                        while (split.Length > iCount && indexLine%2==1)//单行加顶点
                         {
-                            PointF pf = new PointF();
-                            pf.X = float.Parse(split[iCount]);
-                            pf.Y = float.Parse(split[iCount + 1]);
+                            PointD pf = new PointD();
+                            pf.X =double .Parse(split[iCount]);
+                            pf.Y = double.Parse(split[iCount + 1]);
                             item.ltdpVertex.Add(pf);
+                            iCount = iCount + 2;
+                        }
+                        while (split.Length > iCount && indexLine % 2 == 0)//双行加边
+                        {
+                            PointD pf = new PointD();
+                            pf.X = double.Parse(split[iCount]);
+                            pf.Y = double.Parse(split[iCount + 1]);
+                            //item.listGE.Add(pf);
                             iCount = iCount + 2;
                         }
                         listReturn.Add(item);
@@ -65,11 +77,11 @@ namespace DOGPlatform
                 //如果没填得检查一遍
                 //内部会排序并有对应的ID
                 //尽量让排序后的sizes和Voronoi内部的size是同一个顺序，这块需要校验=Y的情况
-        
-                List<PointF> sites = new List<PointF>();
+
+                List<PointD> sites = new List<PointD>();
                 StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, false, Encoding.UTF8);
                 foreach (ItemDicLayerData well in listCurrentLayerData)
-                    sites.Add(new PointF(Convert.ToSingle(well.dbX), Convert.ToSingle(well.dbY)));
+                    sites.Add(new PointD(well.dbX, well.dbY));
 
                 double[] xVal = new double[sites.Count];
                 double[] yVal = new double[sites.Count];
@@ -97,10 +109,11 @@ namespace DOGPlatform
                 swNew.Close();
                 //定义一个数据结构 就是返回 顶点序列，边的顺或者逆时针方向的结构列表
                 //注意 这里安装sites的个数找 但是 ge里egde存的是
-                List<List<PointF>> list_ClockPoints = new List<List<PointF>>();
+                List<List<PointD>> list_ClockPoints = new List<List<PointD>>();
+                List<List<GraphEdge>> list_CurrenGE = new List<List<GraphEdge>>();
                 for (int i = 0; i < sites.Count; i++)
                 {
-                    List<PointF> points = new List<PointF>();
+                    List<PointD> points = new List<PointD>();
                     List<GraphEdge> ListEdgeCur = new List<GraphEdge>();
                     foreach (GraphEdge ge in list_ge)
                     {
@@ -108,11 +121,16 @@ namespace DOGPlatform
                     }
                     foreach (GraphEdge ge in ListEdgeCur) 
                     {
-                        points.Add(new PointF(Convert.ToSingle(ge.x2), Convert.ToSingle(ge.y2)));
-                        points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1))); //获得顶点
+                        PointD p1 = new PointD(ge.x1,ge.y1);
+                        PointD p2=new PointD(ge.x2, ge.y2);
+
+                        if (points.FindIndex(p=>p.X==p1.X&&p.Y==p1.Y) < 0) points.Add(p1);
+                        if (points.FindIndex(p=>p.X==p2.X&&p.Y==p2.Y)<0)points.Add(p2);//获得顶点
                     }
+                    List<PointD> PointDistinct=points.Distinct().ToList();
                     //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
-                    list_ClockPoints.Add(cSortPoints.sortPoints(points.Distinct().OrderBy(p=>p.Y).ToList(), sites[i]));
+                    list_ClockPoints.Add(cSortPoints.sortPoints(PointDistinct, sites[i]));
+                    list_CurrenGE.Add(ListEdgeCur);
                 }
                 //有了 listCurrentLayerData和对应的list_ClockPoints，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i = 0; i < listCurrentLayerData.Count; i++)
@@ -122,7 +140,8 @@ namespace DOGPlatform
                     item.sXCM = listCurrentLayerData[i].sXCM;
                     item.dbX = listCurrentLayerData[i].dbX;
                     item.dbY = listCurrentLayerData[i].dbY;
-                    item.ltdpVertex= list_ClockPoints[i];
+                    item.ltdpVertex= list_ClockPoints[i];//顶点
+                    item.listGE = list_CurrenGE[i]; //边
                     listLayerVoronoi.Add(item);
                 }
 
@@ -143,12 +162,27 @@ namespace DOGPlatform
                 liStrVoi.Add(item.sXCM);
                 liStrVoi.Add(item.dbX.ToString("0.0"));
                 liStrVoi.Add(item.dbY.ToString("0.0"));
-                foreach (PointF pd in item.ltdpVertex)
+                foreach (PointD pd in item.ltdpVertex)
                 {
                     liStrVoi.Add(pd.X.ToString("0.0"));
                     liStrVoi.Add(pd.Y.ToString("0.0"));
                 }
                 swVoi.WriteLine(string.Join("\t", liStrVoi.ToArray()));
+                List<string> liStrVoi2 = new List<string>();
+                liStrVoi2.Add(item.sJH);
+                liStrVoi2.Add(item.sXCM);
+                liStrVoi2.Add(item.dbX.ToString("0.0"));
+                liStrVoi2.Add(item.dbY.ToString("0.0"));
+                foreach (GraphEdge ge in item.listGE)
+                {
+                    liStrVoi2.Add(ge.site1.ToString());
+                    liStrVoi2.Add(ge.x1.ToString("0.0"));
+                    liStrVoi2.Add(ge.y1.ToString("0.0"));
+                    liStrVoi2.Add(ge.site2.ToString());
+                    liStrVoi2.Add(ge.x2.ToString("0.0"));
+                    liStrVoi2.Add(ge.y2.ToString("0.0"));
+                }
+                swVoi.WriteLine(string.Join("\t", liStrVoi2.ToArray()));
             }
             swVoi.Close();
         }

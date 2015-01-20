@@ -55,20 +55,6 @@ using System.Collections.Generic;
 
 namespace DOGPlatform
 {
-    //public class Point
-    //{
-    //    public double x, y;
-		
-    //    public Point ()
-    //    {
-    //    }
-		
-    //    public void setPoint ( double x, double y )
-    //    {
-    //        this.x = x;
-    //        this.y = y;
-    //    }
-    //}
 	
 	// use for sites and vertecies
 	public class Site

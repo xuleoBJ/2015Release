@@ -34,7 +34,7 @@ namespace DOGPlatform
             public float fBo;
             public double dbReserver;
             public double dbCLFD;//储量丰度
-            public List<PointF> ltPD_Vertex_Voronoi;
+            public List<PointD> ltPD_Vertex_Voronoi;
         }
         List<itemReservePar> layerReservaParCal = new List<itemReservePar>();
         
@@ -81,7 +81,8 @@ namespace DOGPlatform
             {
                 PointF headView = cCordinationTransform.transRealPointF2ViewPoint(
                     well.dbX, well.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
-                sites.Add(headView);
+               // sites.Add(headView);
+                sites.Add(new PointF(Convert.ToSingle(well.dbX), Convert.ToSingle(well.dbY)));
                 Pen wellPen = new Pen(Color.Black, 2);
                 if (well.iWellType == 3) wellPen = new Pen(Color.Red, 2);
                 else if (well.iWellType == 5) wellPen = new Pen(Color.Green, 2);
@@ -94,23 +95,63 @@ namespace DOGPlatform
                 dc.DrawString(well.sJH, font, blackBrush,
                                headView.X + 3, headView.Y + 3);
             }
-            
-            List<GraphEdge> ge;
-            ge = MakeVoronoiGraph(sites, panelResCal.Width , panelResCal.Height);
-            StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, true, Encoding.UTF8);
-            // رسم أضلاع فورونوي
-            for (int i = 0; i < ge.Count; i++)
-            {
-                
-                    Point p1 = new Point((int)ge[i].x1, (int)ge[i].y1);
-                    Point p2 = new Point((int)ge[i].x2, (int)ge[i].y2);
-                    dc.DrawLine(Pens.Black, p1.X, p1.Y, p2.X, p2.Y);
+            int iExtentDis = 200;
 
-                    string sLine = "P" + i + " size1: " + ge[i].site1 + " " + ge[i].x1.ToString("0.0") + " " + ge[i].y1.ToString("0.0") + " size2: " + ge[i].site2 + "  " + ge[i].x2.ToString("0.0") + " " + ge[i].y2.ToString("0.0");
-   
-                   swNew.WriteLine(sLine);      
+            double[] xVal = new double[sites.Count];
+            double[] yVal = new double[sites.Count];
+            for (int i = 0; i < sites.Count; i++)
+            {
+                xVal[i] = sites[i].X;
+                yVal[i] = sites[i].Y;
             }
-            swNew.Close();
+            double minX = cProjectData.listProjectWell.Min(p => p.dbX) - iExtentDis;
+            double maxX = cProjectData.listProjectWell.Max(p => p.dbX) + iExtentDis;
+            double minY = cProjectData.listProjectWell.Min(p => p.dbY) - iExtentDis;
+            double maxY = cProjectData.listProjectWell.Max(p => p.dbY) + iExtentDis;
+            List<GraphEdge> list_ge = voroObject.generateVoronoi(xVal, yVal, minX, maxX, minY, maxY);
+
+            //定义一个数据结构 就是返回 顶点序列，边的顺或者逆时针方向的结构列表
+            //注意 这里安装sites的个数找 但是 ge里egde存的是
+            List<List<PointD>> list_ClockPoints = new List<List<PointD>>();
+            for (int i = 0; i < sites.Count; i++)
+            {
+                List<PointD> points = new List<PointD>();
+                List<GraphEdge> ListEdgeCur = new List<GraphEdge>();
+                foreach (GraphEdge ge in list_ge)
+                {
+                    if (ge.site2 == i || ge.site1 == i) ListEdgeCur.Add(ge);//收集环绕顶点的所有边
+                }
+
+                foreach (GraphEdge ge in ListEdgeCur)
+                {
+                    PointF p1 = cCordinationTransform.transRealPointF2ViewPoint(
+                   ge.x1, ge.y1, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                    PointF p2 = cCordinationTransform.transRealPointF2ViewPoint(
+                  ge.x2, ge.y2, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
+                    dc.DrawLine(Pens.Black, p1.X, p1.Y, p2.X, p2.Y);
+                    //points.Add(new PointF(Convert.ToSingle(ge.x2), Convert.ToSingle(ge.y2)));
+                    //points.Add(new PointF(Convert.ToSingle(ge.x1), Convert.ToSingle(ge.y1))); //获得顶点
+                }
+                //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
+                //list_ClockPoints.Add(cSortPoints.sortPoints(points.Distinct().OrderBy(p => p.Y).ToList(), sites[i]));
+            }
+
+            //List<GraphEdge> ge;
+            //ge = MakeVoronoiGraph(sites, panelResCal.Width , panelResCal.Height);
+            //StreamWriter swNew = new StreamWriter(cProjectManager.filePathRunInfor, true, Encoding.UTF8);
+            //// رسم أضلاع فورونوي
+            //for (int i = 0; i < ge.Count; i++)
+            //{
+                
+            //        Point p1 = new Point((int)ge[i].x1, (int)ge[i].y1);
+            //        Point p2 = new Point((int)ge[i].x2, (int)ge[i].y2);
+            //        dc.DrawLine(Pens.Black, p1.X, p1.Y, p2.X, p2.Y);
+
+            //        string sLine = "P" + i + " size1: " + ge[i].site1 + " " + ge[i].x1.ToString("0.0") + " " + ge[i].y1.ToString("0.0") + " size2: " + ge[i].site2 + "  " + ge[i].x2.ToString("0.0") + " " + ge[i].y2.ToString("0.0");
+   
+            //       swNew.WriteLine(sLine);      
+            //}
+            //swNew.Close();
             base.OnPaint(e);
         }
 

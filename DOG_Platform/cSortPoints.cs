@@ -11,12 +11,12 @@ namespace DOGPlatform
         struct XYAngleID 
         {
             public int id;
-            public float fx;
-            public float fy;
+            public double  fx;
+            public double fy;
             public double angle;
         }
 
-        public static List<PointF> sortPoints(List<PointF> points,PointF pCent)
+        public static List<PointD> sortPoints(List<PointD> points,PointD pCent)
         {
             List<XYAngleID> dfListAngle = new List<XYAngleID>();
             for (int i = 0; i < points.Count; i++)
@@ -29,17 +29,17 @@ namespace DOGPlatform
                 dfListAngle.Add(agID); 
             }
 
-            List<PointF> listReturn = new List<PointF>();
+            List<PointD> listReturn = new List<PointD>();
 
             foreach (XYAngleID item in dfListAngle.OrderBy(p => p.angle))
             {
-                listReturn.Add(new PointF(item.fx, item.fy));
+                listReturn.Add(new PointD(item.fx, item.fy));
             }
 
             return listReturn;
 
         }
-         public static double Angle(PointF p1, PointF pCent)
+         public static double Angle(PointD p1, PointD pCent)
         {
             //Calculate the angle
             double angle = System.Math.Atan2(p1.Y - pCent.Y, p1.X - pCent.X);

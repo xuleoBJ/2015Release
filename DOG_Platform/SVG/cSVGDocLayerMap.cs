@@ -193,7 +193,7 @@ namespace DOGPlatform.SVG
             return gPolyline;
         }
 
-        public XmlElement gVoronoiPolygon(string sid,List<PointF> ListVoronoiReal, string m_Color, int stroke_width)
+        public XmlElement gVoronoiPolygon(string sid,List<PointD> ListVoronoiReal, string m_Color, int stroke_width)
         {
             XmlElement gEle = svgDoc.CreateElement("g");
             gEle.SetAttribute("id", "Voi#" + sid);
@@ -204,7 +204,7 @@ namespace DOGPlatform.SVG
 
 
                 XmlElement gPolyline = svgDoc.CreateElement("polygon");
-                foreach (PointF item in ListVoronoiReal)
+                foreach (PointD item in ListVoronoiReal)
                 {
                     Point pointConvert2View = cCordinationTransform.transRealPointF2ViewPoint(item.X, item.Y, xRef, yRef, this.dfscale);
                     ListPointView.Add(pointConvert2View);
