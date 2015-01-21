@@ -15,9 +15,6 @@ namespace DOGPlatform
         public double dbX;
         public double dbY;
         public List<PointD> ltdpVertex=new List<PointD>();
-        public List<GraphEdge> listGE = new List<GraphEdge>();
-
-       
     }
 
    

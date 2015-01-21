@@ -225,50 +225,11 @@ namespace DOGPlatform
                 List<ItemDicLayerData> listCurrentLayerData = listData.FindAll(p => p.sXCM == xcm);
                 List<itemWellLayerVoi> listCurrenrLayerVoi = listVoi.FindAll(p => p.sXCM == xcm);
                 itemReservePar currentCalResrvePar = layerReservaParCal.First(p => p.sXCM == xcm);
-               
                   //如果没填得检查一遍
                 //内部会排序并有对应的ID
                 //尽量让排序后的sizes和Voronoi内部的size是同一个顺序，这块需要校验=Y的情况
                 //如果都是相等的，可以从0开始找
-                //List<ItemDicLayerData> sortedCurrentLayerData = listCurrentLayerData.OrderBy(p => p.dbY).ToList();
-                //List<PointF> sites = new List<PointF>();
-
-                //foreach (ItemDicLayerData well in listCurrentLayerData)
-                //    sites.Add(new PointF(Convert.ToSingle(well.dbX), Convert.ToSingle(well.dbY)));
-            
-
-                //double[] xVal = new double[sites.Count];
-                //double[] yVal = new double[sites.Count];
-                //for (int i = 0; i < sites.Count; i++)
-                //{
-                //    xVal[i] = sites[i].X;
-                //    yVal[i] = sites[i].Y;
-                //}
-                //double minX= cProjectData.listProjectWell.Min(p => p.dbX)-100;
-                //double maxX= cProjectData.listProjectWell.Max(p => p.dbX)+100;
-                //double minY= cProjectData.listProjectWell.Min(p => p.dbY)-100;
-                //double maxY= cProjectData.listProjectWell.Max(p => p.dbY)+100;
-                //List<GraphEdge> list_ge = voroObject.generateVoronoi(xVal, yVal, minX, maxX, minY, maxY);
-                //foreach (ItemWell well in cProjectData.listProjectWell)
-                //{
-                //    PointF headView = cCordinationTransform.transRealPointF2ViewPoint(
-                //        well.dbX, well.dbY, cProjectData.dfMapXrealRefer, cProjectData.dfMapYrealRefer, cProjectData.dfMapScale);
-                //    sites.Add(headView);
-                //} 
-                //List<GraphEdge> list_ge= MakeVoronoiGraph(sites, panelResCal.Width, panelResCal.Height);
-                //定义一个数据结构 就是返回 顶点序列，边的顺或者逆时针方向的结构列表
-                //注意 这里安装sites的个数找 但是 ge里egde存的是
-                //List<List<PointD>> list_ClockPoints = new List<List<PointD>>();
-                //for (int i = 0; i < sites.Count; i++) 
-                //{
-                //    List<PointD> points = new List<PointD>();
-                //    foreach (GraphEdge ge in list_ge) 
-                //    {
-                //        if (ge.site1 == i) points.Add(new PointD(ge.x2, ge.y2));  //如果site1ID=输入时的序号，就取site2
-                //        if (ge.site2 == i) points.Add(new PointD(ge.x1, ge.y1));  
-                //    }
-                //    //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
-                //}
+    
                 //有了 listCurrentLayerData和读取ListVoi 对应的计算参数，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i=0; i < listCurrentLayerData.Count; i++) 
                 {

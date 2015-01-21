@@ -34,20 +34,12 @@ namespace DOGPlatform
                         double.TryParse(split[2], out  item.dbX);
                         double.TryParse(split[3], out item.dbY);
                         int iCount = 4;
-                        while (split.Length > iCount && indexLine%2==1)//单行加顶点
+                        while (split.Length > iCount)
                         {
                             PointD pf = new PointD();
                             pf.X =double .Parse(split[iCount]);
                             pf.Y = double.Parse(split[iCount + 1]);
                             item.ltdpVertex.Add(pf);
-                            iCount = iCount + 2;
-                        }
-                        while (split.Length > iCount && indexLine % 2 == 0)//双行加边
-                        {
-                            PointD pf = new PointD();
-                            pf.X = double.Parse(split[iCount]);
-                            pf.Y = double.Parse(split[iCount + 1]);
-                            //item.listGE.Add(pf);
                             iCount = iCount + 2;
                         }
                         listReturn.Add(item);
@@ -110,14 +102,13 @@ namespace DOGPlatform
                 //定义一个数据结构 就是返回 顶点序列，边的顺或者逆时针方向的结构列表
                 //注意 这里安装sites的个数找 但是 ge里egde存的是
                 List<List<PointD>> list_ClockPoints = new List<List<PointD>>();
-                List<List<GraphEdge>> list_CurrenGE = new List<List<GraphEdge>>();
                 for (int i = 0; i < sites.Count; i++)
                 {
                     List<PointD> points = new List<PointD>();
                     List<GraphEdge> ListEdgeCur = new List<GraphEdge>();
                     foreach (GraphEdge ge in list_ge)
                     {
-                        if (ge.site2 == i || ge.site1 == i) ListEdgeCur.Add(ge);//收集环绕顶点的所有边
+                        if ((ge.site2 == i || ge.site1 == i) && (!(ge.x1==ge.x2&&ge.y1==ge.y2))) ListEdgeCur.Add(ge);//收集环绕顶点的所有边
                     }
                     foreach (GraphEdge ge in ListEdgeCur) 
                     {
@@ -130,7 +121,6 @@ namespace DOGPlatform
                     List<PointD> PointDistinct=points.Distinct().ToList();
                     //按序号找到所有的顶点，按顺时针或者逆时针排序后输出
                     list_ClockPoints.Add(cSortPoints.sortPoints(PointDistinct, sites[i]));
-                    list_CurrenGE.Add(ListEdgeCur);
                 }
                 //有了 listCurrentLayerData和对应的list_ClockPoints，加上对应的密度，体积系数就能按容积法求出面积，然后输出了
                 for (int i = 0; i < listCurrentLayerData.Count; i++)
@@ -141,7 +131,6 @@ namespace DOGPlatform
                     item.dbX = listCurrentLayerData[i].dbX;
                     item.dbY = listCurrentLayerData[i].dbY;
                     item.ltdpVertex= list_ClockPoints[i];//顶点
-                    item.listGE = list_CurrenGE[i]; //边
                     listLayerVoronoi.Add(item);
                 }
 
@@ -168,21 +157,6 @@ namespace DOGPlatform
                     liStrVoi.Add(pd.Y.ToString("0.0"));
                 }
                 swVoi.WriteLine(string.Join("\t", liStrVoi.ToArray()));
-                List<string> liStrVoi2 = new List<string>();
-                liStrVoi2.Add(item.sJH);
-                liStrVoi2.Add(item.sXCM);
-                liStrVoi2.Add(item.dbX.ToString("0.0"));
-                liStrVoi2.Add(item.dbY.ToString("0.0"));
-                foreach (GraphEdge ge in item.listGE)
-                {
-                    liStrVoi2.Add(ge.site1.ToString());
-                    liStrVoi2.Add(ge.x1.ToString("0.0"));
-                    liStrVoi2.Add(ge.y1.ToString("0.0"));
-                    liStrVoi2.Add(ge.site2.ToString());
-                    liStrVoi2.Add(ge.x2.ToString("0.0"));
-                    liStrVoi2.Add(ge.y2.ToString("0.0"));
-                }
-                swVoi.WriteLine(string.Join("\t", liStrVoi2.ToArray()));
             }
             swVoi.Close();
         }

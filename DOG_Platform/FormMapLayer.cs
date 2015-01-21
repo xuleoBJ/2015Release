@@ -223,7 +223,6 @@ namespace DOGPlatform
             FormMain.filePathWebSVG = filePathSVGLayerMap;
             this.Close();
         }
-
      
         private void btnMakeLayerMap_Click(object sender, EventArgs e)
         {  
