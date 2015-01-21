@@ -174,3 +174,4 @@ E:\ProjectPlatform\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalArea.
 E:\ProjectPlatform\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormDataTableDeal.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormDataTableDeal.resources
 E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormCalReservor.resources
+E:\DOG-Robot2015Release\2015Release\DOG_Platform\obj\Release\DOGPlatform.FormVoronoiAna.resources

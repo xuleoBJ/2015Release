@@ -1516,5 +1516,11 @@ namespace DOGPlatform
             viewProjectDataOpen(); 
         }
 
+        private void tsmiVoronoiAna_Click(object sender, EventArgs e)
+        {
+            FormVoronoiAna _form = new FormVoronoiAna();
+            _form.Show();
+        }
+
     }
 }

@@ -173,6 +173,12 @@
     <Compile Include="FormProfileSelectWells.Designer.cs">
       <DependentUpon>FormProfileSelectWells.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormVoronoiAna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormVoronoiAna.Designer.cs">
+      <DependentUpon>FormVoronoiAna.cs</DependentUpon>
+    </Compile>
     <Compile Include="ItemDicPerforation.cs" />
     <Compile Include="ItemFaultLine.cs" />
     <Compile Include="ItemJSJL.cs" />
@@ -508,6 +514,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormProfileSelectWells.resx">
       <DependentUpon>FormProfileSelectWells.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormVoronoiAna.resx">
+      <DependentUpon>FormVoronoiAna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormWellInfor.resx">
       <DependentUpon>FormWellInfor.cs</DependentUpon>

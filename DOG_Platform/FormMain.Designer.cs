@@ -106,6 +106,9 @@
             this.tsmiStatisticsLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiJSJLMatchLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiJSJLsplitLayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.voronoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVoronoiCal = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiVoronoiAna = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiGeologyLayer = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiCalWellDistance = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiLayerGeology = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,9 +151,6 @@
             this.根据井号筛选解释结论ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.删除缺失分层数据的井ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imageListMain = new System.Windows.Forms.ImageList(this.components);
-            this.voronoiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.计算ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.分析ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsNavigationPanel.SuspendLayout();
             this.ToolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.ToolStripContainer1.ContentPanel.SuspendLayout();
@@ -895,14 +895,14 @@
             // tsmiHeterogeneityLayerInner
             // 
             this.tsmiHeterogeneityLayerInner.Name = "tsmiHeterogeneityLayerInner";
-            this.tsmiHeterogeneityLayerInner.Size = new System.Drawing.Size(152, 22);
+            this.tsmiHeterogeneityLayerInner.Size = new System.Drawing.Size(100, 22);
             this.tsmiHeterogeneityLayerInner.Text = "层内";
             this.tsmiHeterogeneityLayerInner.Click += new System.EventHandler(this.tsmiHeterogeneityLayerInner_Click);
             // 
             // tsmiHeterogeneityLayerInter
             // 
             this.tsmiHeterogeneityLayerInter.Name = "tsmiHeterogeneityLayerInter";
-            this.tsmiHeterogeneityLayerInter.Size = new System.Drawing.Size(152, 22);
+            this.tsmiHeterogeneityLayerInter.Size = new System.Drawing.Size(100, 22);
             this.tsmiHeterogeneityLayerInter.Text = "层间";
             this.tsmiHeterogeneityLayerInter.Click += new System.EventHandler(this.tsmiHeterogeneityLayerInter_Click);
             // 
@@ -928,6 +928,29 @@
             this.tsmiJSJLsplitLayer.Size = new System.Drawing.Size(160, 22);
             this.tsmiJSJLsplitLayer.Text = "解释结论劈分";
             this.tsmiJSJLsplitLayer.Click += new System.EventHandler(this.tsmiJSJLsplit_Click);
+            // 
+            // voronoiToolStripMenuItem
+            // 
+            this.voronoiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiVoronoiCal,
+            this.tsmiVoronoiAna});
+            this.voronoiToolStripMenuItem.Name = "voronoiToolStripMenuItem";
+            this.voronoiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.voronoiToolStripMenuItem.Text = "Voronoi";
+            // 
+            // tsmiVoronoiCal
+            // 
+            this.tsmiVoronoiCal.Name = "tsmiVoronoiCal";
+            this.tsmiVoronoiCal.Size = new System.Drawing.Size(152, 22);
+            this.tsmiVoronoiCal.Text = "计算";
+            this.tsmiVoronoiCal.Click += new System.EventHandler(this.tsmiVoronoical_Click);
+            // 
+            // tsmiVoronoiAna
+            // 
+            this.tsmiVoronoiAna.Name = "tsmiVoronoiAna";
+            this.tsmiVoronoiAna.Size = new System.Drawing.Size(152, 22);
+            this.tsmiVoronoiAna.Text = "分析";
+            this.tsmiVoronoiAna.Click += new System.EventHandler(this.tsmiVoronoiAna_Click);
             // 
             // tsmiGeologyLayer
             // 
@@ -966,14 +989,14 @@
             // tsmiCalResPar
             // 
             this.tsmiCalResPar.Name = "tsmiCalResPar";
-            this.tsmiCalResPar.Size = new System.Drawing.Size(152, 22);
+            this.tsmiCalResPar.Size = new System.Drawing.Size(124, 22);
             this.tsmiCalResPar.Text = "储量参数";
             this.tsmiCalResPar.Click += new System.EventHandler(this.tsmiCalResPar_Click);
             // 
             // tsmiResMap
             // 
             this.tsmiResMap.Name = "tsmiResMap";
-            this.tsmiResMap.Size = new System.Drawing.Size(152, 22);
+            this.tsmiResMap.Size = new System.Drawing.Size(124, 22);
             this.tsmiResMap.Text = "储量分布";
             this.tsmiResMap.Click += new System.EventHandler(this.tsmiResMap_Click);
             // 
@@ -1273,28 +1296,6 @@
             this.imageListMain.Images.SetKeyName(6, "Grid-2.ico");
             this.imageListMain.Images.SetKeyName(7, "faults.png");
             // 
-            // voronoiToolStripMenuItem
-            // 
-            this.voronoiToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.计算ToolStripMenuItem,
-            this.分析ToolStripMenuItem1});
-            this.voronoiToolStripMenuItem.Name = "voronoiToolStripMenuItem";
-            this.voronoiToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.voronoiToolStripMenuItem.Text = "Voronoi";
-            // 
-            // 计算ToolStripMenuItem
-            // 
-            this.计算ToolStripMenuItem.Name = "计算ToolStripMenuItem";
-            this.计算ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.计算ToolStripMenuItem.Text = "计算";
-            this.计算ToolStripMenuItem.Click += new System.EventHandler(this.tsmiVoronoical_Click);
-            // 
-            // 分析ToolStripMenuItem1
-            // 
-            this.分析ToolStripMenuItem1.Name = "分析ToolStripMenuItem1";
-            this.分析ToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.分析ToolStripMenuItem1.Text = "分析";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1471,8 +1472,8 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiProjectDataInput;
         private System.Windows.Forms.ToolStripMenuItem tsmiProjectDataView;
         private System.Windows.Forms.ToolStripMenuItem voronoiToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 计算ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 分析ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiVoronoiCal;
+        private System.Windows.Forms.ToolStripMenuItem tsmiVoronoiAna;
     }
 }
 
