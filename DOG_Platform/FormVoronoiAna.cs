@@ -46,5 +46,7 @@ namespace DOGPlatform
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK) pnlColor.BackColor = colorDialog.Color;
         }
+
+      
     }
 }
